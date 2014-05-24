@@ -1,0 +1,656 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Wicket Ajax Modal ‘Are you sure?’ window - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Wicket Ajax Modal ‘Are You Sure?’ Window While developing web application with Wicket I sometimes need to check whether the user really, really does &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/blog/2010/02/wicket-ajax-modal-are-you-sure-window/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/blog/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Wicket Ajax Modal ‘Are You Sure?’ Window</h1>
+	<div class="entry-content" itemprop="articleBody"><p>While developing web application with Wicket I sometimes need to check  whether the user really, really does want to do something, for example  to delete an entity from the database. The first and easiest choice that  comes to my mind is to use JavaScript window.</p>
+
+<p>So we have HomePage.html:</p>
+
+<p>[html]
+&lt;!DOCTYPE html</p>
+
+<pre><code>PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+</code></pre>
+
+<p><html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" ></p>
+
+<pre><code>&lt;head&gt;
+    &lt;title&gt;Wicket Ajax 'Are you sure?' Modal Window&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;div align="center"&gt;
+        &lt;strong&gt;Wicket Ajax 'Are you sure?' Modal Window&lt;/strong&gt;
+
+        &lt;form action="" wicket:id="formWithJavaScript"&gt;
+            &lt;input type="submit" wicket:id="buttonWithJavaScript" value="Action!"/&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt;
+</code></pre>
+
+<p></html>
+[/html]</p>
+
+<p>and corresponding Java class:</p>
+
+<p>[java]
+package pl.tdziurko.ajaxmodalwindowapp;</p>
+
+<p>// imports omitted</p>
+
+<p>public class HomePage extends WebPage {</p>
+
+<pre><code>private static final long serialVersionUID = 1L;
+
+public HomePage(final PageParameters parameters) {
+
+    Form formWithJavaScript = new Form("formWithJavaScript");
+
+    Button buttonWithJavaScript = new Button("buttonWithJavaScript") {
+
+        @Override
+        public void onSubmit() {
+            System.out.println("Doing my job");
+        }
+    };
+    buttonWithJavaScript.add(new SimpleAttributeModifier(
+            "onclick", "if(!confirm('Do you really want to perform this action?')) return false;"));
+
+    formWithJavaScript.add(buttonWithJavaScript);
+    add(formWithJavaScript);
+
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Finally, we can see how it looks:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2010/11/javaScriptWindow.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2010/11/javaScriptWindow.png" alt="" /></a>It solves our problem but in the era of Web2.0, rounded corners and  shiny looks it isn&rsquo;t enough. Why can&rsquo;t we use ajax modal window to ask  user for confirmation? It would make our application look good and our  css magician could make it look even better.<!-- more --></p>
+
+<p>So let&rsquo;s try with creating reusable &lsquo;Are you sure?&rsquo; ajax modal window with Wicket.</p>
+
+<p>At the beginning we must prepare panel which will be displayed in our modal window. Let&rsquo;s name it YesNoPanel.</p>
+
+<p>[html]
+&lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;UTF-8&rdquo;?>
+&lt;!DOCTYPE html</p>
+
+<pre><code>PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+</code></pre>
+
+<p><html xmlns:wicket></p>
+
+<pre><code>&lt;head&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;wicket:panel&gt;
+        &lt;form wicket:id="yesNoForm" action=""&gt;
+            &lt;span wicket:id="message"&gt;Are you sure?&lt;/span&gt;
+            &lt;table style="width: 65%;" align="center"&gt;
+                &lt;tr&gt;
+                    &lt;td align="left"&gt;
+                        &lt;input type="submit" wicket:id="noButton" value="No" /&gt;
+                    &lt;/td&gt;
+                    &lt;td align="right"&gt;
+                        &lt;input type="submit" wicket:id="yesButton" value="Yes" /&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/form&gt;
+    &lt;/wicket:panel&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p></html>
+[/html]</p>
+
+<p>and Java class:</p>
+
+<p>[java]
+package pl.tdziurko.ajaxmodalwindowapp.areyousuremodal;</p>
+
+<p>import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
+import org.apache.wicket.markup.html.basic.MultiLineLabel;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.panel.Panel;
+import pl.tdziurko.ajaxmodalwindowapp.areyousuremodal.AreYouSurePanel.ConfirmationAnswer;</p>
+
+<p>public class YesNoPanel extends Panel {</p>
+
+<pre><code>public YesNoPanel(String id, String message, final ModalWindow modalWindow, final ConfirmationAnswer answer) {
+    super(id);
+
+    Form yesNoForm = new Form("yesNoForm");
+
+    MultiLineLabel messageLabel = new MultiLineLabel("message", message);
+    yesNoForm.add(messageLabel);
+    modalWindow.setTitle("Please confirm");
+    modalWindow.setInitialHeight(200);
+    modalWindow.setInitialWidth(350);
+
+    AjaxButton yesButton = new AjaxButton("yesButton", yesNoForm) {
+
+        @Override
+        protected void onSubmit(AjaxRequestTarget target, Form form) {
+            if (target != null) {
+                answer.setAnswer(true);
+                modalWindow.close(target);
+            }
+        }
+    };
+
+    AjaxButton noButton = new AjaxButton("noButton", yesNoForm) {
+
+        @Override
+        protected void onSubmit(AjaxRequestTarget target, Form form) {
+            if (target != null) {
+                answer.setAnswer(false);
+                modalWindow.close(target);
+            }
+        }
+    };
+
+    yesNoForm.add(yesButton);
+    yesNoForm.add(noButton);
+
+    add(yesNoForm);
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Everything looks pretty straightforward. We pass to the constructor text  which will be displayed as a confirmation question, references to  ModalWindow object in which YesNoPanel is placed and to  ConfirmationAnswer object.
+ConfirmationAnswer class will be created  in the next paragraph and will be used to store information whether user  pressed &lsquo;Yes&rsquo; or &lsquo;No&rsquo; button in our panel.</p>
+
+<p>Now it&rsquo;s time to  prepare wrapping form to our YesNoPanel. We could simply achieve it by  creating panel with form and one button in it. In our example it will be  AreYouSurePanel class:</p>
+
+<p>[html]
+&lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;UTF-8&rdquo;?>
+&lt;!DOCTYPE html</p>
+
+<pre><code>PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+</code></pre>
+
+<p><html xmlns:wicket></p>
+
+<pre><code>&lt;head&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;wicket:panel &gt;
+        &lt;form wicket:id="confirmForm" action="" style="display: inline;"&gt;
+            &lt;input type="submit" wicket:id="confirmButton" value="Default name" /&gt;
+            &lt;span style="display: none;" wicket:id="modal"&gt;&lt;/span&gt;
+        &lt;/form&gt;
+    &lt;/wicket:panel&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p></html>
+[/html]</p>
+
+<p>and in Java:</p>
+
+<p>[java]
+package pl.tdziurko.ajaxmodalwindowapp.areyousuremodal;</p>
+
+<p>import java.io.Serializable;
+import java.util.Map;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.extensions.ajax.markup.html.modal.ModalWindow;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.Model;</p>
+
+<p>public abstract class AreYouSurePanel extends Panel {</p>
+
+<pre><code>protected ModalWindow confirmModal;
+protected ConfirmationAnswer answer;
+protected Map&lt;string,string&gt; modifiersToApply;
+
+public AreYouSurePanel(String id, String buttonName, String modalMessageText) {
+    super(id);
+    answer = new ConfirmationAnswer(false);
+    addElements(id, buttonName, modalMessageText);
+}
+
+protected void addElements(String id, String buttonName, String modalMessageText) {
+
+    confirmModal = createConfirmModal(id, modalMessageText);
+
+    Form form = new Form("confirmForm");
+    add(form);
+
+    AjaxButton confirmButton = new AjaxButton("confirmButton", new Model(buttonName)) {
+
+        @Override
+        protected void onSubmit(AjaxRequestTarget target, Form form) {
+            confirmModal.show(target);
+        }
+    };
+
+    form.add(confirmButton);
+
+    form.add(confirmModal);
+
+}
+
+protected abstract void onConfirm(AjaxRequestTarget target);
+protected abstract void onCancel(AjaxRequestTarget target);
+
+protected ModalWindow createConfirmModal(String id, String modalMessageText) {
+
+    ModalWindow modalWindow = new ModalWindow("modal");
+    modalWindow.setCookieName(id);
+    modalWindow.setContent(new YesNoPanel(modalWindow.getContentId(), modalMessageText, modalWindow, answer));
+    modalWindow.setWindowClosedCallback(new ModalWindow.WindowClosedCallback() {
+
+        @Override
+        public void onClose(AjaxRequestTarget target) {
+            if (answer.isAnswer()) {
+                onConfirm(target);
+            } else {
+                onCancel(target);
+            }
+        }
+    });
+
+    return modalWindow;
+}
+
+public class ConfirmationAnswer implements Serializable {
+
+    private boolean answer;
+
+    public ConfirmationAnswer(boolean answer) {
+        this.answer = answer;
+    }
+
+    public boolean isAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(boolean answer) {
+        this.answer = answer;
+    }
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Here we do following steps:</p>
+
+<ol>
+<li><p> Create form with one AjaxButton which shows modalWindow when clicked.</p></li>
+<li><p> Create modalWindow with YesNoPanel in it. As mentioned earlier, we pass  there references to our modal window and to confirmationAnswer object.</p></li>
+<li><p> Add WindowClosedCallback to modalWindow and basing on user choice  perform onConfirm or onCancel method. These methods are both abstract to  force developer extending AreYouSurePanel to implement them according  to his needs.</p></li>
+</ol>
+
+
+<p>That&rsquo;s it, we are done. To test how it&rsquo;s working we must change a bit our page class and html file:</p>
+
+<p>[html]
+&lt;!DOCTYPE html</p>
+
+<pre><code>PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+</code></pre>
+
+<p><html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" ></p>
+
+<pre><code>&lt;head&gt;
+    &lt;title&gt;Wicket Ajax 'Are you sure?' Modal Window&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;div align="center"&gt;
+        &lt;strong&gt;Wicket Ajax 'Are you sure?' Modal Window&lt;/strong&gt;
+
+        &lt;form action="" wicket:id="formWithJavaScript"&gt;
+            &lt;input type="submit" wicket:id="buttonWithJavaScript" value="Action!"/&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+
+    &lt;div align="center"&gt;
+        &lt;span wicket:id="yesNoPanel"/&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt;
+</code></pre>
+
+<p></html>
+[/html]</p>
+
+<p>and</p>
+
+<p>[java]
+package pl.tdziurko.ajaxmodalwindowapp;</p>
+
+<p>// imports omitted</p>
+
+<p>public class HomePage extends WebPage {</p>
+
+<pre><code>private static final long serialVersionUID = 1L;
+
+public HomePage(final PageParameters parameters) {
+
+    Form formWithJavaScript = new Form("formWithJavaScript");
+
+    Button buttonWithJavaScript = new Button("buttonWithJavaScript") {
+
+        @Override
+        public void onSubmit() {
+            System.out.println("Doing my job");
+        }
+    };
+    buttonWithJavaScript.add(new SimpleAttributeModifier(
+            "onclick", "if(!confirm('Do you really want to perform this action?')) return false;"));
+
+    formWithJavaScript.add(buttonWithJavaScript);
+    add(formWithJavaScript);
+
+    AreYouSurePanel yesNoPanel = new AreYouSurePanel("yesNoPanel", "Ajax Action!", "Do you really want to perform this action?") {
+
+        @Override
+        protected void onConfirm(AjaxRequestTarget target) {
+            System.out.println("Doing my job after ajax modal");
+        }
+
+        @Override
+        protected void onCancel(AjaxRequestTarget target) { }
+
+    };
+
+    add(yesNoPanel);
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>And after clicking &lsquo;Ajax Action!&rsquo; we could see that it&rsquo;s working as intended:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2010/11/ajaxModalWindow.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2010/11/ajaxModalWindow.png" alt="" /></a></p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-02T09:43:34+01:00" data-updated="true" itemprop="datePublished">Feb 2<span>nd</span>, 2010</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/blog/2010/01/finally-my-scwcd-mission-completed/" title="上一篇: Finally my SCWCD mission completed">&laquo; Finally my SCWCD mission completed</a>
+		  
+		  
+			<a class="basic-alignment right" href="/blog/2010/02/wicket-useful-links/" title="下一篇: Wicket - useful links">Wicket - useful links &raquo;</a>
+		  
+		</p>
+	</div>
+	<div class="jiathis">
+	
+		<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1376918307020726" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</div>
+
+	
+	</div>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

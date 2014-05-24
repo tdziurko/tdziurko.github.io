@@ -1,0 +1,564 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Wicket Tutorial, part 1 - setting up project with Spring 3, JPA 2 and MySQL - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Wicket Tutorial, Part 1 - Setting Up Project With Spring 3, JPA 2 and MySQL Today I start my personal project Item Directory which will be developed &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/blog/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/blog/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Wicket Tutorial, Part 1 - Setting Up Project With Spring 3, JPA 2 and MySQL</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Today I start my personal project <strong>Item Directory</strong> which will be developed as a element of Wicket Tutorial series on this blog. Item Directory will be a web application to help you manage your collections of items (books, CDs, movies or even postage stamps).  Application is built with<strong> Java, Wicket, JPA, Spring 3 and MySQL</strong> as a database. It is a response for my family needs to manage some items hidden in shelves, bookcases and cabinets where we need something and we think &ldquo;We have it somewhere, but I have no idea where it is located&rdquo; :)</p>
+
+<h2>Is this Wicket tutorial for me?</h2>
+
+<p>This tutorial is for Java developers who want learn about this great framework in practise not only from reading a book. Because I like to learn while creating something, this tutorial will guide you through development process. I will concentrate mainly on adding new features and developing project instead of explaining every single aspect of how Wicket works in its internals or every single line of code I created. But those parts I think are worth some explanation will be discussed in detail.</p>
+
+<p>Of course if something seems unclear to you or you think I should write some longer explanation in some part of my post, please send a comment and I will try to answer to your needs as best as I can :) Moreover all code will be available to download from Mercurial repository, so you can easily download and deploy application with Jetty to test and see how it exactly works.</p>
+
+<p>And last thing: as it is my first bigger tutorial published here, all comments, suggestions, etc. are very appreciated. Additionally, ideas what to do/implement next are also welcome and will be considered :)</p>
+
+<!-- more -->
+
+
+<h2>Beginning</h2>
+
+<p>This post will be dedicated to setting up project base with very simple (but working!) Wicket, Spring 3, JPA 2 and MySQL integration. For those who want Maven archetypes to start Wicket project in one command there are two places to go:</p>
+
+<ul>
+<li><p><a href="http://code.google.com/p/wicketcool/">Wicket Cool</a>, project by <a href="http://www.paulszulc.com/">Paul Szulc</a> offering rather complicated but very useful archetype for Wicket, HSQLDB, <a href="http://www.liquibase.org/">Liquibase</a>, JPA 2, Spring technology stack. I like it very much although it has some flaws. In my last Wicket commercial project our team used WicketCool as a base for development.</p></li>
+<li><p><a href="http://www.jweekend.com/dev/LegUp">Wicket Leg Up</a>, project by <a href="http://www.jweekend.com">jWeekend</a>, providing archetype with many different technologies to use with Wicket.</p></li>
+</ul>
+
+
+<p>My initial commit is mainly based on <strong>WicketCool</strong> because I like its Maven modularization and clean application architecture layers. But as it&rsquo;s too sophisticated for purposes of this tutorial and for ItemDirectory early development I removed some stuff to make things easier to understand. My project base does not contain: Liquibase integration, testing classes (yes, I did that intentionally to make project less complex, sorry TDD lovers), HSQLDB (I use MySQL instead). I also removed and modified some classes to make them easier to understand at the beginning of this tutorial. In some cases I plan to use those deleted elements in the future, but currently they are redundant.</p>
+
+<h2>Project source code</h2>
+
+<p>Source code for this post can be downloaded from Bitbucket: <a href="https://bitbucket.org/tdziurko/item-directory/get/a61e7cf66cc3.tar.gz">https://bitbucket.org/tdziurko/item-directory/get/a61e7cf66cc3.tar.gz</a><a href="https://bitbucket.org/tdziurko/item-directory/src/a61e7cf66cc3"> </a>or pulled with Mercurial using command:</p>
+
+<pre><code>hg clone https://bitbucket.org/tdziurko/item-directory -r "Base Project"
+</code></pre>
+
+<p>Latest application version is always available at <a href="https://bitbucket.org/tdziurko/item-directory/overview">https://bitbucket.org/tdziurko/item-directory/overview</a> or with command:</p>
+
+<pre><code>hg clone https://bitbucket.org/tdziurko/item-directory
+</code></pre>
+
+<h2>Project Overview</h2>
+
+<p>ItemDirectory is a Maven project consisting of three child projects: domain, service and webapplication. These three names are self-explanatory so it should be clear what will be located in each of these sub-projects. After downloading it you must first prepare MySQL (two scripts located in itemdirectory/itemdirectory.domain/src/main/resources/sql and then execute two Maven commands to run  application locally:</p>
+
+<pre><code>mvn clean install
+</code></pre>
+
+<p>in itemdirectory dir and:</p>
+
+<pre><code>mvn jetty:run
+</code></pre>
+
+<p>in itemdirectory\itemdirectory.webapplication dir.</p>
+
+<p>And after a while when Maven tries to download half of the Internet, you could type <a href="http://localhost:9090/item-directory/">http://localhost:9090/item-directory/</a> to see following page:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/01/ItemDirectoryHello.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/01/ItemDirectoryHello.png" alt="" /></a></p>
+
+<h2>First step &ndash; make this technology stack work for me</h2>
+
+<p>Note: this part should be read with downloaded source code as in some cases I won&rsquo;t post complete and every code listing.</p>
+
+<p>In domain project we have few elements worth noting:</p>
+
+<ol>
+<li><p> Directory src/main/resources/sql with two SQL scripts to create database and create first table.</p></li>
+<li><p> One interface (<em>IEntity</em>) and one abstract class (<em>AbstractEntity</em>) for entity classes to gather all repeating code in one place.</p></li>
+<li><p> One interface (<em>DAO</em>) and one abstract class (<em>AbstractDAO</em>) for all DAO classes.</p></li>
+<li><p> Simple <em>User</em> class to represent user of our application.</p></li>
+<li><p> <em>UserDao</em> and <em>UserDaoImpl</em> classes for access to <em>users</em> table.</p></li>
+<li><p> <em>domain-context.xml</em> file with Spring general configuration (data source, transactions, enabled beans config with annotations, etc.).</p></li>
+</ol>
+
+
+<p>In service project there are only service classes for actions connected with User class. Service layer is the place where all application logic will be located.</p>
+
+<p>And now, the most important part of this post: webapplication project and its contents. This part of ItemDirectory application needs more detailed explanation.</p>
+
+<p><strong>Web.xml, deployment descriptor:</strong></p>
+
+<p>[xml]
+&lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;UTF-8&rdquo;?>
+&lt;web-app xmlns=&ldquo;<a href="http://java.sun.com/xml/ns/j2ee">http://java.sun.com/xml/ns/j2ee</a>&rdquo;</p>
+
+<pre><code>xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+version="2.4"&gt;
+
+&lt;display-name&gt;Item Directory&lt;/display-name&gt;
+
+&lt;filter&gt;
+    &lt;filter-name&gt;openEntityManagerInViewFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;
+        org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter
+    &lt;/filter-class&gt;
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;openEntityManagerInViewFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+
+&lt;context-param&gt;
+    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+    &lt;param-value&gt;/WEB-INF/applicationContext.xml&lt;/param-value&gt;
+&lt;/context-param&gt;
+
+&lt;listener&gt;
+    &lt;listener-class&gt;
+        org.springframework.web.context.ContextLoaderListener
+    &lt;/listener-class&gt;
+&lt;/listener&gt;
+
+&lt;filter&gt;
+    &lt;filter-name&gt;wicket.filter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.apache.wicket.protocol.http.WicketFilter&lt;/filter-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;applicationFactoryClassName&lt;/param-name&gt;
+        &lt;param-value&gt;
+            org.apache.wicket.spring.SpringWebApplicationFactory
+        &lt;/param-value&gt;
+    &lt;/init-param&gt;
+&lt;/filter&gt;
+
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;wicket.filter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre>
+
+<p>&lt;/web-app>
+[/xml]</p>
+
+<p>What do we have here?</p>
+
+<p>First, some Spring-related configuration: <em>Open Session In View</em> filter (or <em>Open Entity Manager in View</em> like they call it for JPA), location of applicationContext.xml and context loader listener to allow our application interact with Spring. And after this there are elements indispensable in every Wicket application: declaration of Wicket filter and Wicket Application class. The only thing to add is that thanks to the <em>SpringWebApplicationFactory</em> instance of our Application object will be created and managed by Spring.</p>
+
+<p><strong>Wicket Application class:</strong></p>
+
+<p>Next very important file is class <em>Application.java</em>, the heart of every Wicket application. From here we can change every aspect of both Wicket and our application configuration:</p>
+
+<p>[java]
+@Component(value = &ldquo;wicketApplication&rdquo;)
+public class Application extends WebApplication {</p>
+
+<pre><code>private static final String DEFAULT_ENCODING = "UTF-8";
+
+@Autowired
+    private ApplicationContext applicationContext;
+
+@Override
+protected void init() {
+    super.init();
+    addComponentInstantiationListener(new SpringComponentInjector(this, applicationContext, true));
+
+    getMarkupSettings().setDefaultMarkupEncoding(DEFAULT_ENCODING);
+    getRequestCycleSettings().setResponseRequestEncoding(DEFAULT_ENCODING);
+
+    // (...)
+
+    if (getConfigurationType().equals(WebApplication.DEPLOYMENT)) {
+        getMarkupSettings().setStripWicketTags(true);
+        getMarkupSettings().setStripComments(true);
+        getMarkupSettings().setCompressWhitespace(true);
+    }
+
+}
+
+// (...)
+
+@Override
+public String getConfigurationType() {
+    return WebApplication.DEVELOPMENT;
+}
+
+@Override
+public Class getHomePage() {
+    return HomePage.class;
+}
+
+public static Application get() {
+    return (Application) WebApplication.get();
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Interesting places in this class are:</p>
+
+<ul>
+<li><p><em>@Component </em>declaration to inform Spring about our Wicket application class which needs to be instantiated.</p></li>
+<li><p><em>@Autowired applicationContext</em> to allow Spring to inject beans in Wicket components.</p></li>
+<li><p>overridden method <em>init()</em> to change default configuration: character encoding, Spring component to inject beans and flags to make sure that our application deployed on the production server will not contain redundant white spaces and Wicket tags in HTML code</p></li>
+<li><p>declared home page of our application</p></li>
+<li><p>application configured to work in development mode that will allow us to debug errors faster and easier.</p></li>
+</ul>
+
+
+<p><strong>Classes for web pages:</strong></p>
+
+<p>Every web application should have at least one web page to present some information to the user. We will start with two  classes: <em>BasePage</em> will be a skeleton of every page in ItemDirectory application. This class in the future will contain common layout, top and left menu which in most cases will be the same for every page in our web app. In HTML file for this class there is one interesting element: <em>wicket-child</em> a place-holder for content added by pages extending BasePage class:</p>
+
+<p>[html]
+&lt;!DOCTYPE html PUBLIC &ldquo;&ndash;//W3C//DTD XHTML 1.0 Strict//EN&rdquo;</p>
+
+<pre><code>"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+</code></pre>
+
+<p>&lt;html xmlns=&ldquo;<a href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</a>&rdquo; xml:lang=&ldquo;en&rdquo; lang=&ldquo;en&rdquo;</p>
+
+<pre><code>xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"&gt;
+</code></pre>
+
+<p><head>
+</head>
+<body></p>
+
+<pre><code>&lt;wicket:child/&gt;
+</code></pre>
+
+<p></body>
+</html>
+[/html]</p>
+
+<p>With this abstract page our only one concrete web page HomePage.html can look like that:</p>
+
+<p>[html]
+&lt;!DOCTYPE html PUBLIC &ldquo;&ndash;//W3C//DTD XHTML 1.0 Strict//EN&rdquo;</p>
+
+<pre><code>"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+</code></pre>
+
+<p>&lt;html xmlns=&ldquo;<a href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</a>&rdquo; xml:lang=&ldquo;en&rdquo; lang=&ldquo;en&rdquo;</p>
+
+<pre><code>xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"&gt;
+</code></pre>
+
+<p><head></p>
+
+<pre><code>&lt;wicket:head&gt;
+    &lt;title&gt;Item Directory v0.1&lt;/title&gt;
+&lt;/wicket:head&gt;
+</code></pre>
+
+<p></head>
+<body></p>
+
+<pre><code>&lt;wicket:extend&gt;
+    &lt;h1 wicket:id="helloLabel"&gt;&lt;/h1&gt;
+    &lt;span wicket:id="currentTime"&gt;&lt;/span&gt;
+    &lt;br/&gt;
+    &lt;br/&gt;
+    Number of user in database: &lt;span wicket:id="numberOfUsers"/&gt;
+&lt;/wicket:extend&gt;
+</code></pre>
+
+<p></body>
+</html>
+[/html]</p>
+
+<p>Wicket while rendering this web page will omit everything placed outside <em>wicket-extend</em> tags except some places marked with other Wicket tags (like _ wicket:head<em> which allow to add some data from concrete class to web page header). Framework in render phase will place all elements between </em>wicket-extend<em> from HomePage.html in BasePage.html file replacing </em>wicket:child_ tag. This works like simple inheritance: child page tells its parent what content to render in the defined place in parent&rsquo;s content.</p>
+
+<p>And as you should already know, like in every Wicket application our <em>HomePage.html</em> file needs accompanying Java class <em>HomePage.java</em>:</p>
+
+<p>[java]
+import java.util.Date;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+import pl.tomaszdziurko.itemdirectory.service.users.UserService;
+import pl.tomaszdziurko.itemdirectory.web.BasePage;</p>
+
+<p>public class HomePage extends BasePage {</p>
+
+<pre><code>@SpringBean
+private UserService userService;
+
+public HomePage() {
+    initGui();
+}
+
+private void initGui() {
+    add(new Label("helloLabel", "Wicket is saying 'Hello' to you!"));
+    add(new Label("currentTime", new Date().toString()));
+
+    add(new Label("numberOfUsers", userService.size() + ""));
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>In this class @SpringBean annotation is responsible for providing access to beans (UserService bean in this case) and method <em>initGui()</em> contains three labels to render something to the user. The last label confirms that our access to the database through service layer, domain layer to MySQL is working properly.</p>
+
+<p>And this is the end of the first part of Wicket tutorial. I hope you find it useful. Any comments appreciated! In next post we will talk about the first version of application layout and how to add new data to database.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-09T19:58:58+01:00" data-updated="true" itemprop="datePublished">Jan 9<span>th</span>, 2011</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/blog/2010/12/custom-pagingnavigator-with-changing-items-per-page-in-wicket/" title="上一篇: Custom PagingNavigator with changing items per page in Wicket">&laquo; Custom PagingNavigator with changing items per page in Wicket</a>
+		  
+		  
+			<a class="basic-alignment right" href="/blog/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/" title="下一篇: Wicket Tutorial, part 2 - adding common layout to the project">Wicket Tutorial, part 2 - adding common layout to the project &raquo;</a>
+		  
+		</p>
+	</div>
+	<div class="jiathis">
+	
+		<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1376918307020726" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</div>
+
+	
+	</div>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

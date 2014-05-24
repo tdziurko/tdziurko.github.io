@@ -1,0 +1,378 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Developing a plugin for IntelliJ IDEA - some useful tips and links - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Developing a Plugin for IntelliJ IDEA - Some Useful Tips and Links When I started thinking about writing my first plugin for IntelliJ IDEA the &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/blog/2011/09/developing-plugin-intellij-idea-some-tips-and-links/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/blog/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Developing a Plugin for IntelliJ IDEA - Some Useful Tips and Links</h1>
+	<div class="entry-content" itemprop="articleBody"><p>When I started thinking about writing my first plugin for IntelliJ IDEA the biggest problem was lack of good and comprehensive guides how to do it and how to do it well gathered in one place. So this post will be a written collection of my personal experiences, links and other resources I found useful and noteworthy in my road to releasing <a href="http://tomaszdziurko.pl/2011/08/share-pastie-plugin-intellij-idea/">Share with Pastie</a> plugin to <a href="http://plugins.intellij.net/plugin/?idea&amp;id=6267">public IntelliJ repository</a>.</p>
+
+<h3>Links</h3>
+
+<p>Before starting writing your mind-blowing and super-extra-useful plugin you should first do some reading. Below there is a list of places worth visiting:</p>
+
+<p><a href="http://confluence.jetbrains.net/display/IDEADEV/Getting+Started+with+Plugin+Development">Getting Started</a> - a place where you should start. The most basic introduction to creating new plugins.</p>
+
+<p><a href="http://www.jetbrains.com/idea/documentation/howto_03.html">Basics of plugin development</a> &ndash; second page similar to previous one but some interesting knowledge can be found there.</p>
+
+<p><a href="http://confluence.jetbrains.net/display/IDEADEV/Plugin+Development+FAQ"><!-- more -->Plugin Development FAQ</a> - the best place with ready solutions and answers to your questions and problems</p>
+
+<p><a href="http://devnet.jetbrains.net/community/idea/open_api_and_plugin_development">Open API forum</a> - a place to go if you are really stuck with your problem</p>
+
+<h3>Show me the code</h3>
+
+<p>Resources in the above links are helpful but sooner or later you will have to dive into code to check how something works or how you could implement some feature. There are two ways of analysing source code of IntelliJ IDEA itself:</p>
+
+<p>open your console and type: git clone git://git.jetbrains.org/idea/community.git idea</p>
+
+<p>or check <a href="http://grepcode.com/snapshot/repository.grepcode.com/java/ext/com.jetbrains/intellij-idea/10.0/">IntelliJ IDEA 10 source code at GrepCode</a></p>
+
+<p>I have used both ways: Git repository to checkout the whole project, open it in IDEA and find usages, etc, and GrepCode to quickly find how single code fragment looks like.</p>
+
+<p><strong>Learn from others</strong></p>
+
+<p>Sometimes you might want to add some feature which is very similar to one you saw in plugin written by someone else. If you are lucky, source code of this plugin is available. The only thing you need to do is visit <a href="http://plugins.intellij.net/?idea">http://plugins.intellij.net/?idea</a>, find plugin with similar feature and check if its source code is publicly available. That&rsquo;s how I found the way to add green balloon with message that selected code fragment was successfully shared with Pastie.</p>
+
+<h3>Some useful code samples</h3>
+
+<p>There are a few elements which probably exists in source code of almost every plugin. To ease you pain of googling it or trying to figure it out, here are some two short samples I consider the most popular.</p>
+
+<p><strong>Getting current project, current file, etc.</strong></p>
+
+<p>Your plugin action should extend AnAction abstract class from IntelliJ OpenAPI. The only parameter passed to actionPerformed method is AnActionEvent. And from this object you can access various places:</p>
+
+<p>[java]
+Project currentProject = DataKeys.PROJECT.getData(actionEvent.getDataContext());
+VirtualFile currentFile = DataKeys.VIRTUAL_FILE.getData(actionEvent.getDataContext());
+Editor editor = DataKeys.EDITOR.getData(actionEvent.getDataContext());</p>
+
+<p>// and so on&hellip;
+[/java]</p>
+
+<p>List of all places available in this way can be found in <a href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.jetbrains/intellij-idea/10.0/com/intellij/openapi/actionSystem/DataKeys.java">DataKeys</a> class (and its parents) constants list.</p>
+
+<p><strong>Balloon with info or error message</strong></p>
+
+<p>This kind of popup is very useful to communicate feedback messages to user. It can be info message or error/warn. Default colors are green for info, red for error and orange for warnings. In Share With Pastie I am using it to inform that selected text was successfully sent to Pastie and link is waiting in clipboard.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/08/plugin_2.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/08/plugin_2.png" alt="" /></a></p>
+
+<p>But before we show our balloon we need to specify a place when it will be located. In my plugin it is StatusBar (the lowest element in IDEA GUI):</p>
+
+<p>[java]
+StatusBar statusBar = WindowManager.getInstance()</p>
+
+<pre><code>                    .getStatusBar(DataKeys.PROJECT.getData(actionEvent.getDataContext()));
+</code></pre>
+
+<p>[/java]</p>
+
+<p>and then we can prepare balloon and display it:</p>
+
+<p>[java]
+JBPopupFactory.getInstance()</p>
+
+<pre><code>            .createHtmlTextBalloonBuilder(htmlText, messageType, null)
+            .setFadeoutTime(7500)
+            .createBalloon()
+            .show(RelativePoint.getCenterOf(statusBar.getComponent()),
+                                             Balloon.Position.atRight);
+</code></pre>
+
+<p>[/java]</p>
+
+<h3>A few trivias</h3>
+
+<p><strong>Plugin DevKit</strong></p>
+
+<p>The most important thing is to download or activate plugin named Plugin DevKit which will allow to run and debug your own plugin during development process. This seems extremely trivial but you might have deactivated this plugin  (like me :) ) or removed it to speed up start time.</p>
+
+<p><strong>UI Designer</strong></p>
+
+<p>If you are planning to develop plugin with additional windows, popups, etc. plugin named UI Designer is very handy. It&rsquo;s something very similar to GUI builder from NetBeans and allows you to create Swing Panels through dragging, dropping and re-sizing components.</p>
+
+<p><strong>Group and Action IDs</strong></p>
+
+<p>When I was searching for a proper place to show my action in one of the menus available inside IntelliJ IDEA I encountered <a href="http://keithlea.com/idea-actions/">a page </a>with list of group and action IDs which could help me with configuring my plugin. But this page appeared to be really outdated so I tried to find another way to determine proper values of those IDs. And of course, solution was lying just in front of me. If we press Alt + Insert in project view we will see a menu allowing to create several new objects. And one of them is Action. After clicking it, we will see a very friendly action creator which will looks like below. And of course it contains list of available groups and actions to place our plugin menu item next to them.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/09/actions_ids.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/09/actions_ids.png" alt="" /></a></p>
+
+<p><strong>Proper VM memory settings</strong></p>
+
+<p>Next thing is to configure your run/debug configuration to work properly because depending on your hardware setup (available memory mainly) and IntelliJ IDEA settings you might encounter freezes when starting your plugin in development mode (most frequently those are crashes during index rebuilding) .</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/09/run_config.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/09/run_config.png" alt="" /></a></p>
+
+<p>To prevent such problems you should configure memory settings in &ldquo;Run/Debug Configurations&rdquo; window and add proper Virtual Machine parameters. For me <em>-Xms256m -XX:PermSize=128m -XX:MaxPermSize=512m</em> worked well.</p>
+
+<p><strong>
+</strong></p>
+
+<h3>The end</h3>
+
+<p>So this is list of my experiences, tips and thoughts about creating your own IntelliJ IDEA plugin. I hope you find it useful and your plugin will let us (Developers) to be even more productive and deliver code faster and in better quality :) My friend said &ldquo;If I knew how to create plugins for IDEA, I would build a new one every three weeks because I am constantly having new ideas how to improve my workflow&rdquo;, so maybe after reading this post at least start of plugin development process will be easier.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-13T21:30:52+02:00" data-updated="true" itemprop="datePublished">Sep 13<span>th</span>, 2011</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/blog/2011/08/share-pastie-plugin-intellij-idea/" title="上一篇: Share with Pastie - my first plugin for IntelliJ IDEA">&laquo; Share with Pastie - my first plugin for IntelliJ IDEA</a>
+		  
+		  
+			<a class="basic-alignment right" href="/blog/2011/09/pragmatic-thinking-and-learning-how-to-think-consciously/" title="下一篇: Pragmatic Thinking and Learning - how to think consciously about thinking and learning">Pragmatic Thinking and Learning - how to think consciously about thinking and learning &raquo;</a>
+		  
+		</p>
+	</div>
+	<div class="jiathis">
+	
+		<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1376918307020726" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</div>
+
+	
+	</div>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

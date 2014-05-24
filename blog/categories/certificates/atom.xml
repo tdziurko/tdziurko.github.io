@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Certificates | Tomasz Dziurko]]></title>
+  <link href="http://tdziurko.github.io/blog/categories/certificates/atom.xml" rel="self"/>
+  <link href="http://tdziurko.github.io/"/>
+  <updated>2014-05-25T00:00:05+02:00</updated>
+  <id>http://tdziurko.github.io/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The life cycle of servlet]]></title>
+    <link href="http://tdziurko.github.io/blog/2010/04/the-life-cycle-of-servlet/"/>
+    <updated>2010-04-21T16:55:08+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2010/04/the-life-cycle-of-servlet</id>
+    <content type="html"><![CDATA[<p><strong>Life cycle of servlet from the perspective of the container</strong></p>
+
+<ol>
+<li><p>After  start, the container is looking for servlet classes in the appropriate directory (for Apache Tomcat  would be $ TOMCAT_HOME / webapps) .</p></li>
+<li><p>Once they are found, there are two possible ways: servlets are loaded immediately or only when someone wants to use them. By using term &ldquo;load servlet&rdquo; I mean the execution of its constructor and init () method. init () is executed only once in the life cycle of servlet . It allows you to prepare it for usage (eg to connect to the database, initialize any resources).</p></li>
+</ol>
+
+
+<p>Code below presents fragment of web.xml file allowing to define order in which servlets are loaded when the containter starts:</p>
+
+<p>[xml]
+&lt;web-app></p>
+
+<pre><code>...
+&lt;servlet&gt;
+    &lt;servlet-name&gt;FirstToLoadServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;pl.tdziurko.scwcd.servlets.FirstToLoadServlet&lt;/servlet-class&gt;
+    &lt;load-on-startup&gt;0&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+&lt;servlet&gt;
+    &lt;servlet-name&gt;SecondToLoadServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;pl.tdziurko.scwcd.servlets.SecondToLoadServlet&lt;/servlet-class&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+...
+</code></pre>
+
+<p>&lt;/web-app>
+[/xml]</p>
+
+<!-- more -->
+
+
+<p>Regarding the <em>load-on-startup</em> element specification states that:</p>
+
+<ul>
+<li><p>The value of the element must be an integer</p></li>
+<li><p>Servlets are loaded starting from the one with number 0</p></li>
+<li><p>For values lower than 0 container can load servlet at any time, same behaviour exists where there is no <em>load-on-startup</em> element in the web.xml</p></li>
+<li><p>For servlets with the same value of <em>load-on-startup </em>element, container can load them in any order</p></li>
+</ul>
+
+
+<p>But back to our life cycle:</p>
+
+<ol>
+<li><p>Execution of service() method for incoming requests.</p></li>
+<li><p>Execution of destroy() method which allows servlet to release its resources. This method is executed only once in whole life cycle.</p></li>
+</ol>
+
+
+<p><strong>Life cycle of servlet from the user&rsquo;s perspective</strong></p>
+
+<ol>
+<li><p>User enters url matching servlet class.</p></li>
+<li><p>Container seeing that the address refers to the servlet, creates to object implementing interfaces <em>HttpServletRequest</em> and <em>HttpServletResponse</em>, then finds appropriate servlet (defined in web.xml), <strong>creates new thread</strong> and calls service() method passing request and response objects as arguments.</p></li>
+<li><p>Method service() calls doXXX() method on the basis of type of HTTP method. Most often it&rsquo;s doGet() or doPost(). Same arguments (req, resp) are passed to this method.</p></li>
+<li><p>Called method generates response and writes it to received <em>HttpServletResponse </em>object.</p></li>
+<li><p>service() method ends, response is sent to the user, thread dies (or returns to the pool). Cycle ends.</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SCJP to certyfikowany programista Java, a SCJD?]]></title>
+    <link href="http://tdziurko.github.io/blog/2010/04/scjp-to-certyfikowany-programista-java-a-scjd/"/>
+    <updated>2010-04-09T21:00:36+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2010/04/scjp-to-certyfikowany-programista-java-a-scjd</id>
+    <content type="html"><![CDATA[<p>Dear Reader</p>
+
+<pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
+</code></pre>
+
+<p>Pewnie nie uwierzycie, ale istnieją miejsca na Ziemi, w których nie chcą  od ręki uznać dyplomu SCJP ;) i potrzebują tłumaczenia na język  ojczysty. Tak właśnie jest w polskich urzędach, gdzie bardzo miła pani  powiedziała, że wierzy mi, iż jest to certyfikat potwierdzający jakieś  kwalifikacje, ale żeby mogła wprowadzić go do bazy musi mieć tłumaczenie  i to przysięgłe. Rozpocząłem więc pielgrzymkę po biurach tłumaczeń,  które jak się okazało tłumaczą od ręki, ale nie zawsze pod przysięgą. W  końcu dotarłem do miłego pana, który wziął moje oba certyfikaty i  powiedział, że tłumaczenie będzie gotowe w ciągu dwóch dni.
+Gdy  pojawiłem się po odbiór okazało się, że tłumaczenie nie jest jeszcze w  pełni gotowe, bo tłumacz chciał ze mną skonsultować dwie kwestie:  tłumaczenie &ldquo;Sun Certified Programmer&rdquo; oraz &ldquo;Sun Certified Web Component  Developer&rdquo;. Po krótkiej dyskusji ustaliliśmy następujące brzmienie tych  nazw:
+&ndash; Certyfikowany Programista w języku programowania Java Standard Edition 5.0
+&ndash; Certyfikowany Programista Komponentów Internetowych w języku programowania Java Enterprise Edition 5
+Nazwy  nie są na pewno idealne, bo tłumacz nie mógł po prostu pominąć  niektórych fragmentów po angielsku, ale moim zdaniem dobrze oddają sens.  Zadowolony wróciłem do domu po czym naszła mnie taka oto myśl:
+Co  zrobiłby tłumacz, gdybym razem z certyfikatem SCJP przyniósł mu również  SCJD (Sun Certified Java Developer)? Jak poradziłby sobie ze słowem developer, które w języku polskim ma w sumie takie samo znaczenie jak programmer?  Myślałem nad tą kwestią sporo czasu i stwierdziłem, że chyba jedynym  dobrym rozwiązaniem byłoby wprowadzenie jakiegoś przymiotnika  określającego wyższy poziom umiejętności developera od programmera, czyli na przykład:
+a) Certyfikowany Programista w języku programowania Java Standard Edition 5.0 na poziomie zaawansowanym
+b) Certyfikowany Starszy Programista &hellip;
+Jednak żadne z tych tłumaczeń nie jest w pełni udane. Może Wy macie lepsze pomysły?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Finally my SCWCD mission completed]]></title>
+    <link href="http://tdziurko.github.io/blog/2010/01/finally-my-scwcd-mission-completed/"/>
+    <updated>2010-01-23T14:10:13+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2010/01/finally-my-scwcd-mission-completed</id>
+    <content type="html"><![CDATA[<p>Much later than planned (check <a href="http://tomaszdziurko.pl/2009/04/lets-start-preperations-to-scwcd/">my post</a> when I revealed intent to pass SCWCD) I managed to get this certificate. The result (94%) is in my opinion more than good :) Preparations began fairly long time ago (over a year ago) but since this time there were some unexpected circumstances (mainly project which seems to grew and grew) and that&rsquo;s why SCWCD mission took me so long.</p>
+
+<p>I  started preparations as usual, by downloading specifications  and adding API to Firefox bookmarks (list of links <a href="../2009/04/lets-start-preperations-to-scwcd/">here</a>). Then I bought <a href="http://oreilly.com/catalog/9780596516680/">Head First Servlets  and JSP</a>, the most recommended book for this certificate. I had ambitiously assumed that I will be able to write more detailed posts about what I learnt but unfortunately lack of time didn&rsquo;t allow me to do it.<!-- more --></p>
+
+<p>I  read the book twice in a fairly considerable period of time. First reading was to revise servlets and read about areas I hadn&rsquo;t met before  (mainly Custom Tags). This time I didn&rsquo;t concentrate on details, it was the purpose of the second reading. Simultaneously with reading I started experimenting with NetBeans and writing simple JSP&rsquo;s, creating web.xml manually, etc.</p>
+
+<p>The final impulse to take the exam was promotion from Sun connected with Kirk Pepperdine&rsquo;s talk at Warsaw JUG (more about this promotion in Polish can be found at <a href="http://jlaskowski.blogspot.com/2010/01/pakiety-certyfikacyjne-od-suna-za-600.html">Jacek Laskowski blog</a>). I saved about 300 Polish Zlotys, bought exam voucher and e-simulator with example questions which at the end turned out to be very similar to real exam (not surprising at all :) ). This simulator, free mocks and notes available at <a href="http://faq.javaranch.com/java/ScwcdLinks">JavaRanch Forum</a> and questions from Head First book was more than enough and this time I didn&rsquo;t buy simulator from WhizLabs or Enthuware.</p>
+
+<p>And what I think about SCWCD itself? Unfortunately I didn&rsquo;t like it as much as SCJP. That time I felt that everything I was learning would be useful, and now at SCWCD learning path, I had to memorize things I DEFINITELY won&rsquo;t use in real projects (custom tags especially). Although some chapters were interesting and I think every developer should know how to manually build a web application , how servlet works and what design patterns could be useful for various scenarios. Obviously knowledge about JSP tags is also desirable, especially when you are joining older project written in this technology.</p>
+
+<p>To sum up, SCWCD certificate is good to have but some stuff you have to familiarize with could make you sad/sick/depressed/angry (choose at least one).</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Servlets –  family of classes and interfaces]]></title>
+    <link href="http://tdziurko.github.io/blog/2009/04/servlets-family-of-classes-and-interfaces/"/>
+    <updated>2009-04-30T09:03:40+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2009/04/servlets-family-of-classes-and-interfaces</id>
+    <content type="html"><![CDATA[<p>Today I am going to present the most important methods, classes and interfaces in the Servlet API.</p>
+
+<h3>public interface Servlet</h3>
+
+<p>Main interface from which all starts. It defines key methods for the life cycle of servlet:</p>
+
+<p>[java]</p>
+
+<p>public void init(ServletConfig config) throws ServletException;
+public ServletConfig getServletConfig();
+public void service(ServletRequest req, ServletResponse res) throws ServletException, java.io.IOException;</p>
+
+<p>public void destroy();</p>
+
+<p>[/java]</p>
+
+<p>and one additional method</p>
+
+<p>[java]</p>
+
+<p>public String getServletInfo();</p>
+
+<p>[/java]</p>
+
+<p>which should return information about servlet (version, author, resposibility, etc.)<!-- more --></p>
+
+<h3><strong>public abstract class GenericServlet implements Servlet, ServletConfig</strong></h3>
+
+<p>Abstract  class implementing all Servlet interface methods, except method service (), which is implemented by a class one step  lower in the hierarchy: HttpServlet. Additionally GenericServlet also provides methods from ServletConfig interface allowing developer to read init parameters of servlet</p>
+
+<p>[java]</p>
+
+<p>public String getInitParameter(java.lang.String name) { }
+public Enumeration getInitParameterNames() { }</p>
+
+<p>[/java]</p>
+
+<p>These  parameters are defined in the web.xml file by using the elements &lt;init-param> nested in the declaration of a servlet:</p>
+
+<p>[xml]</p>
+
+<p>&lt;web-app>
+  <servlet></p>
+
+<pre><code>&lt;servlet-name&gt;FirstToLoadServlet&lt;/servlet-name&gt;
+&lt;servlet-class&gt;pl.tdziurko.scwcd.servlets.FirstToLoadServlet&lt;/servlet-class&gt;
+&lt;init-param&gt;
+  &lt;param-name&gt;initParameter&lt;/param-name&gt;
+  &lt;param-value&gt;initValue&lt;/param-value&gt;
+&lt;/init-param&gt;
+&lt;init-param&gt;
+  &lt;param-name&gt;anotherInitParameter&lt;/param-name&gt;
+  &lt;param-value&gt;anotherInitValue&lt;/param-value&gt;
+&lt;/init-param&gt;
+</code></pre>
+
+<p>  </servlet>
+  &lt;servlet-mapping></p>
+
+<pre><code>&lt;servlet-name&gt;FirstToLoadServlet&lt;/servlet-name&gt;
+&lt;url-pattern&gt;/FirstToLoadServlet&lt;/url-pattern&gt;
+</code></pre>
+
+<p>  &lt;/servlet-mapping>
+&lt;/web-app></p>
+
+<p>[/xml]</p>
+
+<p>Another method of the interface ServletConfig</p>
+
+<p>[java]</p>
+
+<p>public ServletContext getServletContext () {}</p>
+
+<p>[/java]</p>
+
+<p>returns the context in which servlet is running. From this context we can get information about server version and many other things which I don&rsquo;t cover in this episode of &ldquo;Preparing to SCWCD&rdquo; series :)</p>
+
+<p>The final method in class GenericServlet worth mentioning is</p>
+
+<p>[java]public void init () throws ServletException {}</p>
+
+<p>[/java]</p>
+
+<p>This method is added for the developers convenience. Rather  than overloading the init (ServletConfig config) and remember to call  super.init (config) , we can put our init logic in servlet initialization  method init (), which is called by the init (ServletConfig config).</p>
+
+<h3>public abstract class HttpServlet extends GenericServlet</h3>
+
+<p>It&rsquo;s the class, which will be extended by all our servlets. It has methods for handling HTTP requests:</p>
+
+<p>[java]</p>
+
+<p>protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, java.io.IOException {}</p>
+
+<p>[/java]</p>
+
+<p>and its brothers working with other HTTP protocol requests: doPost, doHead, doOptions, doPut, doDelete and doTrace.</p>
+
+<p>The two most important methods in this class are:</p>
+
+<p>[java]</p>
+
+<p>public void service (ServletRequest req, ServletResponse res) throws ServletException, java.io.IOException {}
+protected void service (HttpServletRequest req, HttpServletResponse resp) {}</p>
+
+<p>[/java]</p>
+
+<p>The first one (public one) is called by the container and redirects call to second one (protected), which, depending on the type of request calls one of doXXX() method.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Let’s start preperations to SCWCD]]></title>
+    <link href="http://tdziurko.github.io/blog/2009/04/lets-start-preperations-to-scwcd/"/>
+    <updated>2009-04-21T14:01:42+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2009/04/lets-start-preperations-to-scwcd</id>
+    <content type="html"><![CDATA[<p>Here are some useful links, materials and books which I am going to use while preparing to Sun Certified Web Component Developer (SCWCD):</p>
+
+<ul>
+<li><p><a href="http://oreilly.com/catalog/9780596516680/">Head First Servlets and JSP, Second Edition</a> book</p></li>
+<li><p><a href="http://www.jcp.org/aboutJava/communityprocess/final/jsr154/index.html">Java Servlet 2.4 Specification</a></p></li>
+<li><p><a href="http://jcp.org/aboutJava/communityprocess/final/jsr152/index.html">JavaServer Pages 2.0 Specification</a></p></li>
+<li><p><a href="http://jcp.org/aboutJava/communityprocess/final/jsr052/index2.html">Standard Tag Library for JavaServer Pages</a></p></li>
+<li><p><a href="http://java.sun.com/j2ee/1.4/docs/api/index.html">JEE 1.4 API</a></p></li>
+</ul>
+
+
+<p>My aim is to pass this exam before July 2009 with result not lower than 80%.</p>
+
+<p><strong>Update</strong>:  And how it ended can be found in my another post &ndash; <a href="http://tomaszdziurko.pl/2010/01/finally-my-scwcd-mission-completed/">here</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

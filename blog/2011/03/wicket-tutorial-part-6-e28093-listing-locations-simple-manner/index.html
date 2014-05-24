@@ -1,0 +1,506 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Wicket Tutorial, part 6 – listing locations in a simple manner - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Wicket Tutorial, Part 6 – Listing Locations in a Simple Manner Today we will add simple listing view for locations added to the database in previous &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/blog/2011/03/wicket-tutorial-part-6-e28093-listing-locations-simple-manner/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/blog/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Wicket Tutorial, Part 6 – Listing Locations in a Simple Manner</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Today we will add simple listing view for locations added to the database in previous posts.  I said &lsquo;simple&rsquo; as there are some more sophisticated ways to show many items using Wicket but probably we will not have many locations to show in our application so simple view without pagination should be ok. More complicated way (<a href="http://wicketstuff.org/wicket14/repeater/?wicket:bookmarkablePage=:org.apache.wicket.examples.repeater.DataTablePage">DataTable</a> component) will be covered in the future when we will add &lsquo;listing items&rsquo; feature&#8217;.</p>
+
+<!-- more -->
+
+
+<p>But first small bug I found in our DAO layer. In class AbstractDAO we created method findByProperty and there is one line there:</p>
+
+<p>[java]</p>
+
+<p>return getEntityManager().createQuery(findEntityQuery).getSingleResult();</p>
+
+<p>[/java]</p>
+
+<p>At first everything  seems to be ok, but what will happen when query returns no result? An ugly exception is thrown. So we have to fix it with following code:</p>
+
+<p>[java]
+TypedQuery<EntityClass> query = getEntityManager().createQuery(findEntityQuery);</p>
+
+<pre><code>    List&lt;EntityClass&gt; entities = query.setMaxResults(1).getResultList();
+
+    if(entities.isEmpty()) {
+        return null;
+    }
+    else {
+        return entities.get(0);
+    }
+</code></pre>
+
+<p>[/java]</p>
+
+<p>After this one, we could return to main topic of this post.</p>
+
+<h3>Preparing logic</h3>
+
+<p>As we need list of all locations we must add one method to ListingService interface and class:</p>
+
+<p>[java]
+public class LocationServiceImpl implements LocationService {</p>
+
+<pre><code>@Autowired
+private LocationDao locationDao;
+
+// (...)
+
+public List&lt;Location&gt; findAll() {
+    return locationDao.findAll();
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>LocationDao uses generic method findAll from AbstractDAO to load all objects from db.</p>
+
+<h3>Adding listing component</h3>
+
+<p>When we are ready with our logic, we could look at LocationsPage.java and HTML files:</p>
+
+<p>First we add placeholders for Wicket objects in HTML:
+&ndash; <em>locations</em> for component to list all locations from database. We add it around tr element so each item will be rendered as separate table row. Of course you can use li, span, div instead.
+&ndash; <em>id</em>: a label <strong>inside</strong> locations to render ID of each entity object
+&ndash; <em>name</em>: a label <strong>inside</strong> locations to show name of each location</p>
+
+<p>[html]
+<body></p>
+
+<pre><code>&lt;wicket:extend&gt;
+    &lt;h3&gt;Locations&lt;/h3&gt;
+    &lt;br/&gt;
+        &lt;table&gt;
+            &lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;/tr&gt;
+            &lt;span wicket:id="locations"&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;&lt;span wicket:id="id"&gt;&lt;/span&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;span wicket:id="name"&gt;&lt;/span&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/span&gt;
+        &lt;/table&gt;
+    &lt;div style="float: right;"&gt;
+        &lt;a href="#" wicket:id="addLocationPageLink"&gt;Add new location&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/wicket:extend&gt;
+</code></pre>
+
+<p></body>
+[/html]</p>
+
+<p>Then we modify wicket page class:</p>
+
+<p>[java]
+public class LocationsPage extends BasePage {</p>
+
+<pre><code>//   (...)
+
+private void initGui() {
+    addLocationsModule();                               // (1)
+    addCreateNewLocationLink();
+}
+
+private void addLocationsModule() {
+    ListView&lt;Location&gt; locations = new ListView&lt;Location&gt;("locations", createModelForLocations()) { // (2)
+        @Override
+        protected void populateItem(ListItem&lt;Location&gt; item) {             // (3)
+            item.add(new Label("id", new PropertyModel&lt;Location&gt;(item.getModel(), "id")));    // (4)
+            item.add(new Label("name", new PropertyModel&lt;Location&gt;(item.getModel(), "name")));
+        }
+    };
+
+    add(locations);
+}
+
+private LoadableDetachableModel&lt;List&lt;Location&gt;&gt; createModelForLocations() {    // (5)
+
+    return new LoadableDetachableModel&lt;List&lt;Location&gt;&gt;() {    // (6)
+
+        @Override
+        protected List&lt;Location&gt; load() {    // (7)
+            return locationService.findAll();
+        }
+    };
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>So what is happening in the code above? Let me explain it in more detail. In <strong>(1)</strong> we add new method to initGui(), in<strong> (2)</strong> we create <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/list/ListView.html">ListView</a> component which renders list of object in a selected way. In <strong>(2)</strong> you can also notice a createModelForLocations() method invocation, but this method will be covered a little later. ListView class has one method we have to implement: populateItem <strong>(3)</strong> which is called for each object from collections or collection model passed to ListView.</p>
+
+<p>In this method we must add two labels declared inside locations element in HTML file, and we do it in <strong>(4)</strong>.  And here, as authors of Wicket and developers using this framework suggest, we use model instead of sending pure String value to the component. Why? Because if we use property of entity loaded from database, we are connecting view with this data and when page state is serialized also entity object is serialized too. And if our application uses Open Session in View we could end with the whole object graph serialized which will dramatically increase memory needed for each user session. So this is not what we really want :)</p>
+
+<p>In <strong>(4)</strong> we are using <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/PropertyModel.html">PropertyModel</a> which wraps Location model to get one property from it, id or name. Model wrapping is one of the best ways to use Wicket models effectively. Thanks to it we have only one Location model and we can wrap it many times in many ways to use it in a different situations.</p>
+
+<p>Now, it&rsquo;s time to talk about mysterious method creating model for our ListView component <strong>(5)</strong>:</p>
+
+<p>[java]</p>
+
+<pre><code>private LoadableDetachableModel&lt;List&lt;Location&gt;&gt; createModelForLocations() {
+
+    return new LoadableDetachableModel&lt;List&lt;Location&gt;&gt;() {
+
+        @Override
+        protected List&lt;Location&gt; load() {
+            return locationService.findAll();
+        }
+    };
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>In this method we are using <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/LoadableDetachableModel.html">LoadableDetachableModel</a>, another feature which you should use often if you want your applications to be memory efficient. This model (more detailed info can be found <a href="https://cwiki.apache.org/WICKET/detachable-models.html">here</a>) has one nice feature, it nullifies model object at the end of each request and loads it when needed. So no risk to have your 100000 entity objects serialized when page is saved on the server.</p>
+
+<h3>Results</h3>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/03/SS-20110312191713.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/03/SS-20110312191713.png" alt="" /></a></p>
+
+<p>Working as expected. But if we view this page with empty database it will look rather strange:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/03/SS-20110312192333.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/03/SS-20110312192333.png" alt="" /></a></p>
+
+<p>ListView component isn&rsquo;t rendered (no locations so nothing to show) but as it is placed inside table and under row with headers this part of HTML is visible.  We must fix it and additionally, we will add with information label when there are no locations.</p>
+
+<p>The simplest way of hiding component is to call setVisible(false) method but as we want to hide pure HTML which isn&rsquo;t directly assigned to any Wicket component, this way won&rsquo;t work. In such cases framework provides <em>wicket:enclosure</em> tag (read more about Wicket tags <a href="https://cwiki.apache.org/WICKET/wickets-xhtml-tags.html">here</a>) which renders html inside only when connected Wicket component is visible. Let me show this in practice:</p>
+
+<p>[html]</p>
+
+<pre><code>    &lt;wicket:enclosure child="locations"&gt;
+        &lt;table&gt;
+            &lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;/tr&gt;
+            &lt;span wicket:id="locations"&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;&lt;span wicket:id="id"&gt;&lt;/span&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;span wicket:id="name"&gt;&lt;/span&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/span&gt;
+        &lt;/table&gt;
+    &lt;/wicket:enclosure&gt;
+</code></pre>
+
+<p>[/html]</p>
+
+<p>We simply surround table with wicket:enclosure and define its child component as locations. So when locations.getVisible() returns false, no code inside enclosure is rendered.
+Now we need to make location ListView component invisible when list is empty:</p>
+
+<p>[java]</p>
+
+<pre><code>    locations.setVisible(!locations.getList().isEmpty());
+</code></pre>
+
+<p>[/java]</p>
+
+<p>Moreover we want to show information when there are no locations, so we add label:</p>
+
+<p>[html]
+<body></p>
+
+<pre><code>&lt;wicket:extend&gt;
+    &lt;h3&gt;Locations&lt;/h3&gt;
+    &lt;br/&gt;
+    &lt;wicket:enclosure child="locations"&gt;
+        &lt;table&gt;
+            &lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;/tr&gt;
+            &lt;span wicket:id="locations"&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;&lt;span wicket:id="id"&gt;&lt;/span&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;span wicket:id="name"&gt;&lt;/span&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+            &lt;/span&gt;
+        &lt;/table&gt;
+    &lt;/wicket:enclosure&gt;
+
+    &lt;div wicket:id="noLocationsLabel"&gt;&lt;/div&gt; &lt;!--  NEW label here --&gt;
+    &lt;div style="float: right;"&gt;
+        &lt;a href="#" wicket:id="addLocationPageLink"&gt;Add new location&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/wicket:extend&gt;
+</code></pre>
+
+<p></body>
+[/html]</p>
+
+<p>and in Java page class we create Label which is visible when ListView is not:</p>
+
+<p>[java]</p>
+
+<pre><code>    Label noLocationsLabel = new Label("noLocationsLabel", "There are no locations in the database. Maybe you can add one?");
+    noLocationsLabel.setVisible(!locations.isVisible());
+    add(noLocationsLabel);
+</code></pre>
+
+<p>[/java]</p>
+
+<p>After these improvements our page is ready:
+<a href="http://tomaszdziurko.pl/wp-content/uploads/2011/03/SS-20110312194653.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/03/SS-20110312194653.png" alt="" /></a>Page is ready,  you are ready to use ListView component in your projects  so we reached the end of this post. As usual latest source code is available <a href="https://bitbucket.org/tdziurko/item-directory/src">here</a> and changeset from this post (except DAO bug fix which was pushed earlier) can be viewed <a href="https://bitbucket.org/tdziurko/item-directory/changeset/2403961c4a2b">here</a>.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-12T19:58:47+01:00" data-updated="true" itemprop="datePublished">Mar 12<span>th</span>, 2011</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/blog/2011/02/who-the-heck-is-corey-haines/" title="上一篇: Who the heck is Corey Haines? ">&laquo; Who the heck is Corey Haines? </a>
+		  
+		  
+			<a class="basic-alignment right" href="/blog/2011/03/wicket-tutorial-series-building-web-application-scratch/" title="下一篇: Wicket tutorial series - building web application from scratch">Wicket tutorial series - building web application from scratch &raquo;</a>
+		  
+		</p>
+	</div>
+	<div class="jiathis">
+	
+		<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1376918307020726" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</div>
+
+	
+	</div>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

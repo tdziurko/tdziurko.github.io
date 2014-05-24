@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Java | Tomasz Dziurko]]></title>
+  <link href="http://tdziurko.github.io/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://tdziurko.github.io/"/>
+  <updated>2014-05-25T00:00:05+02:00</updated>
+  <id>http://tdziurko.github.io/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Transparently persist and retrieve encrypted data from database]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
+    <updated>2013-07-31T08:45:07+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of <a href="http://confitura.pl">Confitura</a> (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.</p>
+
+<p>In this post I will shortly describe how we can store encrypted data in our database and retrieve it as already decrypted in a simple, transparent way using <a href="http://www.jasypt.org/">Jasypt</a> library. Our use case will be to store Twitter Api credentials so they are safe in our database but still easy to retrieve and use to post updates in our timeline.</p>
+
+<!-- more -->
+
+
+<p>So what we have is a simple entity representing our settings item:
+[java]
+@Entity
+public class SettingsItem implements Serializable {</p>
+
+<pre><code>@Id
+@GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
+private Integer id;
+
+private String name;
+private String encryptedValue;
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>In such table we will store values for Twitter Consumer Key, Twitter Access Token and so on.</p>
+
+<p>What we would like to achieve is that when we create SettingItem object with value as plain text and then we persist it, encryption is automatically performed so in the DB we have encrypted String. And of course, when we retrieve data from DB, we want to see decrypted String without additional effort, just out of the box.</p>
+
+<h3>Jasypt to the rescue</h3>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/07/jasypt-small.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/07/jasypt-small.png" alt="jasypt-small" /></a>
+<a href="http://www.jasypt.org">Jasypt</a> is a simple encryption library written in Java. It frees developer from dealing with low level configuration details and makes whole encryption process easy and straightforward. And what is most interesting now, it also has nice integration with Hibernate allowing seamless encryption/decryption of data stored in database.</p>
+
+<h4>Setup</h4>
+
+<p>To use Jasypt and its Hibernate integration module we have to add two items to our pom:
+[xml]</p>
+
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.jasypt&lt;/groupId&gt;
+    &lt;artifactId&gt;jasypt&lt;/artifactId&gt;
+    &lt;version&gt;1.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.jasypt&lt;/groupId&gt;
+    &lt;artifactId&gt;jasypt-hibernate4&lt;/artifactId&gt;
+    &lt;version&gt;1.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>[/xml]</p>
+
+<h4>Custom type</h4>
+
+<p>Then we have to declare custom Hibernate type (@TypeDef) in our entity:</p>
+
+<p>[java]
+@TypeDef(</p>
+
+<pre><code>    name="encryptedString",
+    typeClass=EncryptedStringType.class,
+    parameters= {
+            // value will be used later to register encryptor
+            @Parameter(name="encryptorRegisteredName", value="STRING_ENCRYPTOR")
+    }
+</code></pre>
+
+<p>)
+@Entity
+public class SettingsItem implements Serializable {
+   // (&hellip;)
+}
+[/java]</p>
+
+<p>and after that in the same class we can mark our encryptedValue field to use this custom type:</p>
+
+<p>[java]</p>
+
+<pre><code>@Type(type="encryptedString")
+private String encryptedValue;
+</code></pre>
+
+<p>[/java]</p>
+
+<h4>Registering encryptor</h4>
+
+<p>We are almost done. Last thing we have to do is register encryptor in HibernatePBEEncryptorRegistry class. This can be done in  initialization class of our application, e.g. ServletContext or simply in class with main(String[] args) method:</p>
+
+<p>[java]</p>
+
+<pre><code>String password = System.getProperty("jasypt.password");
+
+StandardPBEStringEncryptor strongEncryptor = new StandardPBEStringEncryptor();
+strongEncryptor.setPassword(password);
+HibernatePBEEncryptorRegistry registry =
+        HibernatePBEEncryptorRegistry.getInstance();
+registry.registerPBEStringEncryptor("STRING_ENCRYPTOR", strongEncryptor);
+</code></pre>
+
+<p>[/java]</p>
+
+<p>One important thing here is that by using System.getProperty() or System.getenv() we can safely configure our encryption mechanism, password is provided at runtime by setting proper value on server machine.</p>
+
+<h4>Summary</h4>
+
+<p>As as a summary, one short passing test showing that our solution works:</p>
+
+<p>[java]
+public class SettingsItemRepositoryShould extends IntegrationTest {</p>
+
+<pre><code>@Autowired
+private SettingsItemRepository repository;
+
+
+@BeforeClass
+public static void init() {
+    StandardPBEStringEncryptor strongEncryptor = new StandardPBEStringEncryptor();
+    strongEncryptor.setPassword("JohnDoe");
+
+    HibernatePBEEncryptorRegistry registry =
+            HibernatePBEEncryptorRegistry.getInstance();
+    registry.registerPBEStringEncryptor("STRING_ENCRYPTOR", strongEncryptor);
+}
+
+@Test
+public void shouldEncryptAndDecryptValue() {
+    // Given
+    String settingName = "test";
+    String value = "EncryptMe";
+
+    // When
+    repository.save(new SettingsItem(settingName, value));
+
+    // Then
+    SettingsItem settingsItem = repository.findByName(settingName);
+    assertThat(settingsItem.getEncryptedValue()).isEqualTo(value);
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[XStream - XStreamely easy way to work with XML data in Java]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
+    <updated>2013-04-22T10:55:55+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
+    <content type="html"><![CDATA[<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif" alt="xstream" /></a></p>
+
+<h3>Overview</h3>
+
+<p><a href="http://xstream.codehaus.org/">XStream</a> is a small library to serialize data between Java objects and XML. It&rsquo;s lightweight, small, has nice API and what is most important, it works with and without custom annotations that we might be not allowed to add when we are not the owner of Java classes.</p>
+
+<!-- more -->
+
+
+<h3>First example</h3>
+
+<p>Suppose we have a requirement to load configuration from xml file:
+[xml]
+<config></p>
+
+<pre><code>&lt;inputFile&gt;/Users/tomek/work/mystuff/input.csv&lt;/inputFile&gt;
+&lt;truststoreFile&gt;/Users/tomek/work/mystuff/truststore.ts&lt;/truststoreFile&gt;
+&lt;keystoreFile&gt;/Users/tomek/work/mystuff/CN-user.jks&lt;/keystoreFile&gt;
+
+&lt;!-- ssl stores passwords--&gt;
+&lt;truststorePassword&gt;password&lt;/truststorePassword&gt;
+&lt;keystorePassword&gt;password&lt;/keystorePassword&gt;
+
+&lt;!-- user credentials --&gt;
+&lt;user&gt;user&lt;/user&gt;
+&lt;password&gt;secret&lt;/password&gt;
+</code></pre>
+
+<p></config>
+[/xml]</p>
+
+<p>And we want to load it into Configuration object:
+[java]
+public class Configuration {</p>
+
+<pre><code>private String inputFile;
+private String user;
+private String password;
+
+private String truststoreFile;
+private String keystoreFile;
+private String keystorePassword;
+private String truststorePassword;
+
+// getters, setters, etc.
+</code></pre>
+
+<p>}
+[/java]
+So basically what we have to do is:
+[java]</p>
+
+<pre><code>FileReader fileReader = new FileReader("config.xml");  // load our xml file  
+XStream xstream = new XStream();     // init XStream
+// define root alias so XStream knows which element and which class are equivalent
+xstream.alias("config", Configuration.class);    
+Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
+</code></pre>
+
+<p>[/java]</p>
+
+<p>And that&rsquo;s all, easy peasy :)</p>
+
+<h3>Something more serious</h3>
+
+<p>Ok, but previous example is very basic so now let&rsquo;s do something more complicated: real XML returned by real WebService.</p>
+
+<p>[xml]
+<DATA xmlns=""></p>
+
+<pre><code>&lt;BAN&gt;
+    &lt;UPDATED_AT&gt;2013-03-09&lt;/UPDATED_AT&gt;
+    &lt;TROUBLEMAKER&gt;
+        &lt;NAME1&gt;JOHN&lt;/NAME1&gt;
+        &lt;NAME2&gt;EXAMPLE&lt;/NAME2&gt;
+        &lt;AGE&gt;24&lt;/AGE&gt;
+        &lt;NUMBER&gt;ASD123123&lt;/NUMBER&gt;
+    &lt;/TROUBLEMAKER&gt;
+&lt;/BAN&gt;
+&lt;BAN&gt;
+    &lt;UPDATED_AT&gt;2012-03-10&lt;/UPDATED_AT&gt;
+    &lt;TROUBLEMAKER&gt;
+        &lt;NAME1&gt;ANNA&lt;/NAME1&gt;
+        &lt;NAME2&gt;BAKER&lt;/NAME2&gt;
+        &lt;AGE&gt;26&lt;/AGE&gt;
+        &lt;NUMBER&gt;AXN567890&lt;/NUMBER&gt;
+    &lt;/TROUBLEMAKER&gt;
+&lt;/BAN&gt;
+&lt;BAN&gt;
+    &lt;UPDATED_AT&gt;2010-12-05&lt;/UPDATED_AT&gt;
+    &lt;TROUBLEMAKER&gt;
+        &lt;NAME1&gt;TOM&lt;/NAME1&gt;
+        &lt;NAME2&gt;MEADOW&lt;/NAME2&gt;
+        &lt;NUMBER&gt;SGH08945&lt;/NUMBER&gt;
+        &lt;AGE&gt;48&lt;/AGE&gt;
+    &lt;/TROUBLEMAKER&gt;
+&lt;/BAN&gt;
+</code></pre>
+
+<p></DATA>
+[/xml]</p>
+
+<p>What we have here is simple list of bans written in XML. We want to load it into collection of Ban objects. So let&rsquo;s prepare some classes (getters/setters/toString omitted):
+[java]
+public class Data {</p>
+
+<pre><code>private List bans = new ArrayList(); 
+</code></pre>
+
+<p>}</p>
+
+<p>public class Ban {</p>
+
+<pre><code>private String dateOfUpdate;
+private Person person;
+</code></pre>
+
+<p>}</p>
+
+<p>public class Person {</p>
+
+<pre><code>private String firstName;
+private String lastName;
+private int age;
+private String documentNumber;
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>As you can see there is some naming and type mismatch between XML and Java classes (e.g. field name1->firstName, dateOfUpdate is String not a Date), but it&rsquo;s here for some example purposes.</p>
+
+<p>So the goal here is to parse XML and get Data object with populated collection of Ban instances containing correct data. Let&rsquo;s see how it can be achieved.</p>
+
+<h4>Parse with annotations</h4>
+
+<p>First, easier way is to use annotations. And that&rsquo;s the suggested approach in situation when we can modify Java classes to which XML will be mapped.
+So we have:
+[java]
+@XStreamAlias(&ldquo;DATA&rdquo;) // maps DATA element in XML to this class
+public class Data {</p>
+
+<pre><code>// Here is something more complicated. If we have list of elements that are 
+// not wrapped in a element representing a list (like we have in our XML: 
+// multiple &lt;ban&gt; elements not wrapped inside &lt;bans&gt; collection, 
+// we have to declare that we want to treat these elements as an implicit list 
+// so they can be converted to List of objects. 
+@XStreamImplicit(itemFieldName = "ban") 
+private List bans = new ArrayList();
+</code></pre>
+
+<p>}</p>
+
+<p>@XStreamAlias(&ldquo;BAN&rdquo;) // another mapping
+public class Ban {</p>
+
+<pre><code>/*
+ We want to have different field names in Java classes so
+ we define what element should be mapped to each field
+*/
+@XStreamAlias("UPDATED_AT") // 
+private String dateOfUpdate;
+
+@XStreamAlias("TROUBLEMAKER")
+private Person person;
+</code></pre>
+
+<p>}</p>
+
+<p>@XStreamAlias(&ldquo;TROUBLEMAKER&rdquo;)
+public class Person {</p>
+
+<pre><code>@XStreamAlias("NAME1")
+private String firstName;
+
+@XStreamAlias("NAME2")
+private String lastName;
+
+@XStreamAlias("AGE") // String will be auto converted to int value
+private int age;
+
+@XStreamAlias("NUMBER")
+private String documentNumber;
+</code></pre>
+
+<p>[/java]</p>
+
+<p>And actual parsing logic is very short:</p>
+
+<p>[java]</p>
+
+<pre><code>FileReader reader = new FileReader("file.xml");  // load file
+
+XStream xstream = new XStream();
+xstream.processAnnotations(Data.class);     // inform XStream to parse annotations in Data class
+xstream.processAnnotations(Ban.class);      // and in two other classes... 
+xstream.processAnnotations(Person.class);   // we use for mappings
+Data data = (Data) xstream.fromXML(reader); // parse
+
+// Print some data to console to see if results are correct
+System.out.println("Number of bans = " + data.getBans().size());
+Ban firstBan = data.getBans().get(0);
+System.out.println("First ban = " + firstBan.toString()); 
+</code></pre>
+
+<p>[/java]</p>
+
+<p>As you can see annotations are very easy to use and as a result final code is very concise. But what to do in situation when we can&rsquo;t modify mapping classes? We can use different approach that doesn&rsquo;t require any modifications in Java classes representing XML data.</p>
+
+<h4>Parse without annotations</h4>
+
+<p>When we can&rsquo;t enrich our model classes with annotations, there is another solution. We can define all mapping details using methods from XStream object:</p>
+
+<p>[java]</p>
+
+<pre><code>FileReader reader = new FileReader("file.xml");  // three first lines are easy, 
+XStream xstream = new XStream();                 // same initialisation as in the 
+xstream.alias("DATA", Data.class);               // basic example above
+
+xstream.alias("BAN", Ban.class);             // two more aliases to map... 
+xstream.alias("TROUBLEMAKER", Person.class); // between node names and classes
+
+// We want to have different field names in Java classes so
+// we have to use aliasField(&lt;fieldInXml&gt;, &lt;mappedJavaClass&gt;, &lt;mappedFieldInJavaClass&gt;)
+xstream.aliasField("UPDATED_AT", Ban.class, "dateOfUpdate"); 
+xstream.aliasField("TROUBLEMAKER", Ban.class, "person");
+
+xstream.aliasField("NAME1", Person.class, "firstName");
+xstream.aliasField("NAME2", Person.class, "lastName");
+xstream.aliasField("AGE", Person.class, "age");  // notice here that XML will be auto-converted to int "age"
+xstream.aliasField("NUMBER", Person.class, "documentNumber");
+
+/*
+ Another way to define implicit collection
+*/ 
+xstream.addImplicitCollection(Bans.class, "bans");
+
+Data data = (Data) xstream.fromXML(reader);  // do the actual parsing
+
+// let's print results to check if data was parsed
+System.out.println("Number of bans = " + data.getBans().size());
+Ban firstBan = data.getBans().get(0);
+System.out.println("First ban = " + firstBan.toString());
+</code></pre>
+
+<p>[/java]</p>
+
+<p>As you can see XStream allows to easily convert more complicated XML structures into Java objects, it also gives a possibility to tune results by using different names if this from XML doesn&rsquo;t suit our needs.
+But there is one thing should catch your attention: we are converting XML representing a Date into raw String which isn&rsquo;t quite what we would like to get as a result. That&rsquo;s why we will add converter to do some job for us.</p>
+
+<h3>Using existing custom type converter</h3>
+
+<p>XStream library comes with set of built converters for most common use cases. We will use DateConverter. So now our class for Ban looks like that:
+[java]
+public class Ban {</p>
+
+<pre><code>private Date dateOfUpdate;
+private Person person;
+</code></pre>
+
+<p>}
+[/java]
+And to use DateConverter we simply have to register it with date format that we expect to appear in XML data:
+[java]
+   xstream.registerConverter(new DateConverter(&ldquo;yyyy-MM-dd&rdquo;, new String[] {}));
+[/java]</p>
+
+<p>and that&rsquo;s it. Now instead of String our object is populated with Date instance. Cool and easy! But what about classes and situations that aren&rsquo;t covered by existing converters? We could write our own.</p>
+
+<h3>Writing custom converter from scratch</h3>
+
+<p>Assume that instead of dateOfUpdate we want to know how many days ago update was done:
+[java]
+public class Ban {</p>
+
+<pre><code>private int daysAgo;
+private Person person;
+</code></pre>
+
+<p>}
+[/java]
+Of course we could calculate it manually for each Ban object but using converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/Converter.html">Converter</a> interface so we have to implement three methods with signatures looking a little bit scary:
+[java]
+public class DaysAgoConverter implements Converter {</p>
+
+<pre><code>@Override
+public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
+}
+
+@Override
+public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+}
+
+@Override
+public boolean canConvert(Class type) {
+    return false;
+}
+</code></pre>
+
+<p>}
+[/java]
+Last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/basic/AbstractSingleValueConverter.html">AbstractSingleValueConverter</a>that shields us from so low level mechanisms. And now our class looks much better:
+[java]
+public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
+
+<pre><code>@Override
+public boolean canConvert(Class type) {
+    return type.equals(Integer.class);
+}
+
+@Override
+public Object fromString(String str) {
+    return null;
+}
+
+public String toString(Object obj) {
+    return null;
+}
+</code></pre>
+
+<p>}
+[/java]
+Additionally we must override method toString(Object obj) defined in AbstractSingleValueConverter as we want to store Date in XML calculated from Integer, not a simple <em>Object.toString</em> value which would be returned from default <em>toString</em> defined in abstract parent.</p>
+
+<p><strong>Implementation</strong></p>
+
+<p>Code below is pretty straightforward, but most interesting lines are commented. I&rsquo;ve skipped all validation stuff to make this example shorter.
+[java]
+public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
+
+<pre><code>private final static String FORMAT = "yyyy-MM-dd"; // default Date format that will be used in conversion
+private final DateTime now = DateTime.now().toDateMidnight().toDateTime(); // current day at midnight
+
+public boolean canConvert(Class type) {
+    return type.equals(Integer.class);     // Converter works only with Integers
+}
+
+@Override
+public Object fromString(String str) {
+    SimpleDateFormat format = new SimpleDateFormat(FORMAT);
+    try {
+        Date date = format.parse(str);
+        return Days.daysBetween(new DateTime(date), now).getDays();  // we simply calculate days between using JodaTime
+    } catch (ParseException e) {
+        throw new RuntimeException("Invalid date format in " + str);
+    }
+}
+
+public String toString(Object obj) {
+    if (obj == null) {
+        return null;
+    }
+
+    Integer daysAgo = ((Integer) obj);
+    return now.minusDays(daysAgo).toString(FORMAT); // here we subtract days from now and return formatted date string
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p><strong>Usage</strong>
+To use our custom converter for a specific field we have to inform about it XStream object using registerLocalConverter:
+[java]</p>
+
+<pre><code>xstream.registerLocalConverter(Ban.class, "daysAgo", new DaysAgoConverter());
+</code></pre>
+
+<p>[/java]
+We are using &ldquo;local&rdquo; method to apply this conversion only to specific field and not to every Integer field in XML file. And after that we will get our Ban objects populated with number of days instead of Date.</p>
+
+<h3>Summary</h3>
+
+<p>That&rsquo;s all what I wanted to show you in this post. Now you have basic knowledge about what XStream is capable of and how it can be used to easily map XML data to Java objects If you need something more advanced, please check <a href="http://xstream.codehaus.org/">project official page</a> as it contains very good documentation and examples.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Running unit tests and integration tests separately with Maven Failsafe and TestNG]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/01/running-unit-tests-integration-tests-separately-maven-testng/"/>
+    <updated>2013-01-23T16:42:28+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/01/running-unit-tests-integration-tests-separately-maven-testng</id>
+    <content type="html"><![CDATA[<p>Recently for my new pet project I decided that I would like to have some tests executed during standard <em>mvn test</em> and some other ones only during different phase, let&rsquo;s call it integration phase. I googled and googled and nothing seemed to work, so after struggling with making my setup work I&rsquo;ve decided to write down my findings how I was able to configure TestNG with Maven to run integration and unit tests separately.</p>
+
+<h3>Basic (not working) setup</h3>
+
+<p>For integration testing there is a <a href="http://maven.apache.org/surefire/maven-failsafe-plugin/integration-test-mojo.html">Maven Failsafe plugin</a> that is supposed to do what we want out of the box. Unfortunately, things are not as easy and straightforward as we might expect.</p>
+
+<!-- more -->
+
+
+<p>Let&rsquo;s look at basic setup that should work:</p>
+
+<p>We have two test classes, one with IT postfix that will indicate that this is our integration test:</p>
+
+<p>[java]
+import org.testng.annotations.Test;</p>
+
+<p>import static org.fest.assertions.Assertions.assertThat;</p>
+
+<p>public class ExampleUnitTest {</p>
+
+<pre><code>@Test
+public void shouldPass() {
+    assertThat(false).isFalse();
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>and</p>
+
+<p>[java]
+import org.testng.annotations.Test;</p>
+
+<p>import static org.fest.assertions.Assertions.assertThat;</p>
+
+<p>public class StatusTestIT {</p>
+
+<pre><code>@Test
+public void shouldFail() {
+    assertThat("aaa").isEqualTo("");
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>and now let&rsquo;s declare plugin mentioned above in our pom.xml:</p>
+
+<p>[xml]
+<project></p>
+
+<pre><code>&lt;!-- ... --&gt;
+&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;!-- ... --&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+            &lt;version&gt;2.9&lt;/version&gt;
+        &lt;/plugin&gt;
+
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
+            &lt;version&gt;2.13&lt;/version&gt;
+            &lt;configuration&gt;
+                &lt;includes&gt;
+                    &lt;include&gt;**/*IT.java&lt;/include&gt;
+                &lt;/includes&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+
+<p></project>
+[/xml]</p>
+
+<p>After that we should see two things. <em>mvn test</em> should pass as we have a one green test in ExampleUnitTest class, but <em>mvn failsafe:integration-test</em> should fail with StatusTestIT red. But as I said before, this does not work. <em>mvn test</em> looks as expected, but second Maven execution is passing as well showing that no test were run. Plugin seems to omit our completely valid test&hellip;</p>
+
+<h3>Small fix doing its job</h3>
+
+<p>After testing different approaches I found out that all we need to make this setup work is to add plugin execution to an integration-test phase of maven life cycle. So tiny change, but now our integration tests are executed only when we call <em>mvn integration-test</em>.</p>
+
+<p>[xml]
+<plugin></p>
+
+<pre><code>&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+&lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
+&lt;version&gt;2.13&lt;/version&gt;
+&lt;configuration&gt;
+    &lt;includes&gt;
+        &lt;include&gt;**/*IT.java&lt;/include&gt;
+    &lt;/includes&gt;
+&lt;/configuration&gt;
+&lt;executions&gt;
+    &lt;execution&gt;
+        &lt;id&gt;failsafe-integration-tests&lt;/id&gt;
+        &lt;phase&gt;integration-test&lt;/phase&gt;
+        &lt;goals&gt;
+            &lt;goal&gt;integration-test&lt;/goal&gt;
+        &lt;/goals&gt;
+    &lt;/execution&gt;
+&lt;/executions&gt;
+</code></pre>
+
+<p></plugin>
+[/xml]</p>
+
+<p>And that&rsquo;s all, we could execute integration tests only when we really want to. Of course there are some things to remember when adopting setup described above:</p>
+
+<ul>
+<li><p>our unit tests must have Test postfix, if you use something else, we have to configure surefire plugin using <em>include</em></p></li>
+<li><p>during integration test unit tests are executed too. This is a small flaw in this setup, but exclude <em>*/</em>Test.java seem not to work :(</p></li>
+</ul>
+
+
+<p>Source code of this example setup is available on <a href="https://github.com/tdziurko/maven-testng-integration-tests">GitHub</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fixing bug in Hibernate Envers]]></title>
+    <link href="http://tdziurko.github.io/blog/2012/10/fixing-bug-hibernate-envers/"/>
+    <updated>2012-10-11T17:00:47+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2012/10/fixing-bug-hibernate-envers</id>
+    <content type="html"><![CDATA[<p>Recently in our project we were reported a strange bug. In a one report where we display historical data provided by <a href="http://www.jboss.org/envers">Hibernate Envers</a>, users encountered duplicated records in dropdown used for filtering. We tried to find a source of this bug, but after spending a few hours looking at the code responsible for this functionality we had to give up and ask for a dump from production database to check what actually is stored in one table. And when we got it and started investigating, it turned out that there is a bug in Hibernate Envers 3.6 that is a cause of our problems. But luckily after some investigation and invaluable help from <a href="http://www.warski.org/blog/">Adam Warski</a> (author of Envers) we were able to fix this issue.</p>
+
+<!-- more -->
+
+
+<h3>Bug itself</h3>
+
+<p>Let&rsquo;s consider following scenario:</p>
+
+<ol>
+<li><p> Transaction is started. We insert some audited entities during it and then it is rolled back.</p></li>
+<li><p> The same EntityManager is reused to start another transaction</p></li>
+<li><p> Second transaction is committed</p></li>
+</ol>
+
+
+<p>But when we check audit tables for entities that were created and then rolled back in step one we will notice that they are still there and were not rolled back as we could expect. We were able to reproduce it in a failing test in our project so next step was to prepare failing test in Envers so we could verify if our fix is working.</p>
+
+<h3>Failing test</h3>
+
+<p>The simplest test cases already present in Envers are located in Simple.java class and they look quite straightforward:</p>
+
+<p>[java]
+public class Simple extends AbstractEntityTest {</p>
+
+<pre><code>private Integer id1;
+
+public void configure(Ejb3Configuration cfg) {
+    cfg.addAnnotatedClass(IntTestEntity.class);
+}
+
+@Test
+public void initData() {
+    EntityManager em = getEntityManager();
+    em.getTransaction().begin();
+    IntTestEntity ite = new IntTestEntity(10);
+    em.persist(ite);
+    id1 = ite.getId();
+    em.getTransaction().commit();
+
+    em.getTransaction().begin();
+    ite = em.find(IntTestEntity.class, id1);
+    ite.setNumber(20);
+    em.getTransaction().commit();
+}
+
+@Test(dependsOnMethods = "initData")
+public void testRevisionsCounts() {
+    assert Arrays.asList(1, 2).equals(getAuditReader().getRevisions(IntTestEntity.class, id1));
+}
+
+@Test(dependsOnMethods = "initData")
+public void testHistoryOfId1() {
+    IntTestEntity ver1 = new IntTestEntity(10, id1);
+    IntTestEntity ver2 = new IntTestEntity(20, id1);
+
+    assert getAuditReader().find(IntTestEntity.class, id1, 1).equals(ver1);
+    assert getAuditReader().find(IntTestEntity.class, id1, 2).equals(ver2);
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>so preparing my failing test executing scenario described above wasn&rsquo;t a rocket science:</p>
+
+<p>[java]
+/<em>*
+ * @author Tomasz Dziurko (tdziurko at gmail dot com)
+ </em>/
+public class TransactionRollbackBehaviour  extends AbstractEntityTest {</p>
+
+<pre><code>public void configure(Ejb3Configuration cfg) {
+    cfg.addAnnotatedClass(IntTestEntity.class);
+}
+
+@Test
+public void testAuditRecordsRollback() {
+    // Given
+    EntityManager em = getEntityManager();
+    em.getTransaction().begin();
+    IntTestEntity iteToRollback = new IntTestEntity(30);
+    em.persist(iteToRollback);
+    Integer rollbackedIteId = iteToRollback.getId();
+    em.getTransaction().rollback();
+
+    // When
+    em.getTransaction().begin();
+    IntTestEntity ite2 = new IntTestEntity(50);
+    em.persist(ite2);
+    Integer ite2Id = ite2.getId();
+    em.getTransaction().commit();
+
+    // Then
+    List&lt;Number&gt; revisionsForSavedClass = getAuditReader().getRevisions(IntTestEntity.class, ite2Id);
+    assertEquals(revisionsForSavedClass.size(), 1, "There should be one revision for inserted entity");
+
+    List&lt;Number&gt; revisionsForRolledbackClass = getAuditReader().getRevisions(IntTestEntity.class, rollbackedIteId);
+    assertEquals(revisionsForRolledbackClass.size(), 0, "There should be no revisions for insert that was rolled back");
+}
+</code></pre>
+
+<p>}</p>
+
+<p>[/java]</p>
+
+<p>Now I could verify that tests is failing on forked <a href="https://github.com/hibernate/hibernate-orm/tree/3.6">3.6 branch</a> and check if fix that we had is making this test green.</p>
+
+<h3>The fix</h3>
+
+<p>After writing failing test in our project, I placed several breakpoints in Envers code to understand better what is wrong there. But imagine being thrown in a project developed for a few years by many programmers smarter than you. I felt overwhelmed and have no idea where fix should be applied and what exactly is not working as expected. Luckily in <a href="http://softwaremill.com">my company</a> we have Adam Warski on board. He is the initial author of Envers and actually he pointed us the solution.</p>
+
+<p>The fix itself contains only check that registers audit process that will be execute on transaction completion only when such process is still in the <em>Map&lt;Transaction, AuditProcess></em> for given transaction. It sounds complicated, but if you look at the class <em>AuditProcessManager</em> in <a href="https://github.com/tdziurko/hibernate-orm/commit/02c071718f29797bf0d76f3a6f2e6a5438ccaab1">this commit</a> it should be more clear what is happening there.</p>
+
+<h3>Official path</h3>
+
+<p>Besides locating problem and fixing it, there are some more official steps that must be performed to have fix included in Envers.</p>
+
+<p>Step 1. Create JIRA issue with bug - <a href="https://hibernate.onjira.com/browse/HHH-7682">https://hibernate.onjira.com/browse/HHH-7682</a></p>
+
+<p>Step 2: Create local branch <em>Envers-bugfix-HHH-7682</em> of forked Hibernate 3.6</p>
+
+<p>Step 3: Commit and push failing test and fix to your local and remote repository on Github</p>
+
+<p>Step 4: Create pull request - <a href="https://github.com/hibernate/hibernate-orm/pull/393">https://github.com/hibernate/hibernate-orm/pull/393</a></p>
+
+<p>Step 5: Wait for merge</p>
+
+<p>And that&rsquo;s all. Now fix is merged into main repository and we have one bug less in the world of open source :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Deploying Java Web Application on Jelastic]]></title>
+    <link href="http://tdziurko.github.io/blog/2012/10/deploying-java-web-application-jelastic/"/>
+    <updated>2012-10-09T21:44:34+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2012/10/deploying-java-web-application-jelastic</id>
+    <content type="html"><![CDATA[<p>Some time ago having your own full-fledged hosting with Java, Tomcat and any database wasn&rsquo;t cheap, but luckily we live in a very interesting times and now there are many virtual hosting services in the Cloud providing an easy and affordable way to deploy your application and make it available to users.</p>
+
+<p>And what is the best in such solutions, they grow with your application or startup. Services are free or almost free when your web application doesn&rsquo;t need much memory and processors but when your web-app starts to gather more users' attention and you have more and more concurrent sessions and visits each day, you could easily enhance your setup to match your needs. Everything is a matter of a few clicks, simple and fast.</p>
+
+<p>To test how this deployment process look like, I&rsquo;ve decided to put my <a href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/">Wicket tutorial</a> web application online. It consist of three pages and two tables in database so I think it shouldn&rsquo;t be a too complicated process to deploy it online. And as a Java hosting service I&rsquo;ve chosen <a href="http://jelastic.com">Jelastic</a>, recent winner of <a href="http://www.java.net/dukeschoice">2012 Duke&rsquo;s Choice Awards</a> announced during JavaOne conference this year. Duke&rsquo;s Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
+
+<h3>First steps</h3>
+
+<p>So after creating an account and choosing a hosting in Germany (which is the closest one to Poland where I live) I am redirected to my personal administration panel where in a straightforward step-by-step wizard I am requested to choose container /server (Tomcat 6/7,  Jetty amd Glassfish are available) and then my subdomain name. After that my server is deployed and after a moment I could check that <a href="http://tomaszdziurko.jelastic.dogado.eu/">http://tomaszdziurko.jelastic.dogado.eu/</a> is live and running. User is also encouraged to try and deploy pre-defined Hello World application. The whole process is extremely easy, just one click and in a moment we could check that we&rsquo;ve just deployed our first war on Jelastic:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/10/jelastic-demo.jpeg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/10/jelastic-demo.jpeg" alt="" /></a></p>
+
+<h3>Configuring more real application environment</h3>
+
+<p>So far everything was easy, but we didn&rsquo;t touch any real scenario so now it&rsquo;s high time to start deploying our example Wicket application. First step is to upload application war to the Jelastic. Then we have to enable and configure our database with three tables. To do that we choose &ldquo;Environment topology&rdquo; next to our only server and here we could turn on/off many interesting features: load balancers, caching solutions, multiple containers, SSL-s and what we currently need SQL and/or NoSQL database:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/10/dbConfig.jpeg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/10/dbConfig.jpeg" alt="" /></a></p>
+
+<p>So let&rsquo;s enable MySQL 5.5 and wait some time until it is configured and started on our virtual server. When everything is ready we will receive an email with login and password to our MySQL database instance. Now we could login to myPhpAdmin web interface and create user and MySQL tables required by our Wicket application. Because database url is no longer localhost:3306 we have to modify properties file in our project, rebuild it and upload war again. After that we are ready to deploy application on Jelastic. Simply, we click &ldquo;Deploy&rdquo; icon and then choose context name where application will be accessible. After that we must wait for &ldquo;Success&rdquo; message from deployment process and now we could check if <a href="http://tomaszdziurko.jelastic.dogado.eu/item-directory">http://tomaszdziurko.jelastic.dogado.eu/item-directory</a> is working as expected.</p>
+
+<h3>More and more options to choose and play with</h3>
+
+<p>This basic scenario has shown you how simple Java web application with database connecticity could be deployed on <a href="http://jelastic.com">Jelastic</a>. Of course in any business you will need more sophisticated stuff, but there aren&rsquo;t many things that you will not find available in this service. Most interesting stuff what you can do is:</p>
+
+<ul>
+<li><p>link your web-app to private Git/SVN repository and deploy it directly from Jelastic admin panel</p></li>
+<li><p>choose from multiple SQL and NoSQL databases</p></li>
+<li><p>launch your Virtual Dedicated Server (VDS) with root privileges and full control there</p></li>
+<li><p>use predefined load balancing and session replication configuration</p></li>
+<li><p>add new or duplicate server or database in a few clicks</p></li>
+<li><p>enable SSL</p></li>
+<li><p>use latest Java 7 in your applications</p></li>
+</ul>
+
+
+<h3>There are some cons too</h3>
+
+<p>Of course there are some drawbacks present. From what I&rsquo;ve noticed there are four things I find useful but missing on Jelastic:</p>
+
+<ul>
+<li><p><del>ability to set a few environment variables without buying whole VDS. I wanted to use these variables to deploy open source project directly from Github repository but with database login/password stored not in the publicly available source code but in these variables that could be loaded later in application and used to connect to database.</del> Update: looks like it is possible. See comment below by Marina Sprawa from Jelastic</p></li>
+<li><p>premium account type with pricing that is more suitable for people that only want to play with Jelastic and their pet projects longer than for 2 weeks using trial period</p></li>
+<li><p><del>ability to configure continuous deployment environment that auto deploys latest version each time when new commit appears in the repository</del> Update: it is also possible, see comment by Marina below</p></li>
+<li><p>JBoss 6 or 7 as an application server to choose from. I am not a big fan of Glassfish so for Java EE application I would prefer to use JBoss product.</p></li>
+</ul>
+
+
+<h3>Summary</h3>
+
+<p>So to sum up, service looks very interesting and if you consider using external service provider to deploy, scale and tune your production environment, Jelastic is one of the best choices currently available. Its options to quickly and easily configure load balancing and other parameters and hardware that is required when your application suddenly becomes very popular are a life-saver. Even for smaller projects there are many stuff that you will appreciate and quickly get accustomed to, so Jelastic looks as a good place to launching your startup application online.</p>
+]]></content>
+  </entry>
+  
+</feed>

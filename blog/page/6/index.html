@@ -1,0 +1,727 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Feb 17th, 2011 How-to, Item Directory application, Java, Wicket, Wicket Tutorial Wicket Tutorial, Part 4 - Custom Validator for Unique Entity Name &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/blog/page/6/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/blog/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner">
+<div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-17T22:51:42+01:00" data-updated="true" itemprop="datePublished">Feb 17<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/" itemprop="url">Wicket Tutorial, Part 4 - Custom Validator for Unique Entity Name</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Welcome back to our <a href="http://tomaszdziurko.pl/category/wicket-tutorial/">Wicket tutorial</a> series! :) As I mentioned in <a href="http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-3-form-application/">previous post</a>, today we will concentrate on building validator stopping user from adding item location with non-unique name. At first we will start with non-generic but working validator and then we will try to make is as flexible as possible. Ok, so let&rsquo;s write some code!</p>
+
+<h3>Problem</h3>
+
+<p>As you might remember, currently we have Wicket form with basic validation checking existence of name field and whether its length is in proper range or not:</p>
+
+<p>[java]</p>
+
+<pre><code>    Form&lt;AddLocationPage&gt; addLocationForm = new Form&lt;AddLocationPage&gt;("addLocationForm",
+            new CompoundPropertyModel&lt;AddLocationPage&gt;(this));
+    add(addLocationForm);
+
+    Label nameLabel = new Label("nameLabel", "Location name");
+    addLocationForm.add(nameLabel);
+
+    RequiredTextField&lt;String&gt; nameField = new RequiredTextField&lt;String&gt;("name");
+    nameField.add(LengthBetweenValidator.lengthBetween(MIN_LOCATION_NAME_LENGTH, MAX_LOCATION_NAME_LENGTH));
+    addLocationForm.add(nameField);
+
+    Button submitButton = new Button("submitButton") {
+        @Override
+        public void onSubmit() {
+            Location location = new Location(name);
+            locationService.save(location);
+
+            getSession().info("Location added successfully");
+            setResponsePage(LocationsPage.class);
+        }
+    };
+    addLocationForm.add(submitButton);
+</code></pre>
+
+<p>[/java]</p>
+
+
+		
+		<a href="/blog/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-06T12:50:52+01:00" data-updated="true" itemprop="datePublished">Feb 6<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/conferences/'>Conferences</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/02/crowded-conferences-2011-calendar-poland-wicket-author-talk-33rddegree/" itemprop="url">Crowded Conferences 2011 Calendar in Poland and Wicket Author Talk at 33rdDegree</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>This year seems to be really great for those Java Developers here in Poland who want to learn and listen about new technologies, methodologies, etc. at conference meetings. When I examined conferences calendar I found it very packed with many interesting events. And only one thing is troublesome where you are, like me, freelancing: you have to take a day or two off (so you don&rsquo;t work and earn money) and moreover, you have to pay for conference with your own cash :) Such situation forces me to analyse and think carefully about which conference to attend and which I should skip.</p>
+
+<p>In the first half of this year there are three big conferences to choose from: <a href="http://www.4developers.org.pl/">4Developers 2011</a> in Warsaw,  <a href="http://33degree.org/index.html">33rdDegree</a> and <a href="http://2011.geecon.org/main/home">GeeCON 2011</a> both in Cracow. 4Developers isn&rsquo;t aimed only too Java people so I decided to skip it this year. GeeCON looks very promising but when I recently got information that one of the <strong>Wicket authors</strong>: <a href="http://martijndashorst.com/blog/about/">Martijn Dashorst</a> will be speaking at 33rdDegree I know that this will be my choice! :)</p>
+
+<p>So if you want to:</p>
+
+<ul>
+<li><p>hear about Wicket, about what are the new features in hot new 1.5 version from person as close as is it possible to Wicket developers team</p></li>
+<li><p>attend Android/Scala/Git workshops for free</p></li>
+<li><p>meet one of the most well-known Polish speakers:<a href="http://jlaskowski.blogspot.com/"> Jacek Laskowski</a> (when I think &ldquo;Java Polish blogger&rdquo; he&rsquo;s the one to come first to my mind), <a href="http://art-of-software.blogspot.com/">Sławomir Sobótka</a> (craftsmanship is probably his unrevealed and top secret second name), <a href="http://monkeyisland.pl/about/">Szczepan Faber</a> (bartender at <a href="http://mockito.org/">Mockito</a>), <a href="http://sprawnainzynieriaoprogramowania.blogspot.com/">Paweł Lipiński</a> (great TDD presentation show-man)</p></li>
+<li><p>hear and even talk with Ted Neward, Linda Rising, Sang Shin (who don&rsquo;t know these names, shame on you! :) )</p></li>
+<li><p>see when Martijn Dashorst (Wicket talk) /Nicolas Leroux (<a href="http://33degree.org/talks.html#Play">Play talk</a>) / Dierk König (<a href="http://33degree.org/talks.html#RichGrailsUIs">Grails talk</a>) attacks and argue with Matt Raible after his talk <a href="http://33degree.org/talks.html#ComparingJVMWebFrameworks">Comparing JVM Web Frameworks</a> when Matt will declare that none of Wicket/Play/Grails are best of best web framework? ;)</p></li>
+</ul>
+
+
+<p>If you want to be a part of some of these things above, let&rsquo;s meet at <a href="http://33degree.org/index.html">33rdDegree</a> conference. Coming soon in April 2011 :)</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-03T12:09:24+01:00" data-updated="true" itemprop="datePublished">Feb 3<span>rd</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/02/wicket-tutorial-part-3-form-application/" itemprop="url">Wicket Tutorial, Part 3 - First Form in Our Application</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Hello Visitor :) In previous posts we created <a href="http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">base project</a> and added <a href="http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/">common layout</a> to ItemDirectory Wicket application. Today we are going to add first form to allow users to insert some data into our application.</p>
+
+<p>As main feature of ItemDirectory is to manage information where items (books, movies, music, postage stamps) are stored in our home/work, the first data we need to know are locations where we actually can store those things. So we start with adding table, entity and form to manage locations of our precious items.</p>
+
+<h3>Database, entity and DAO</h3>
+
+<p>First thing we need is locations table in database and entity mapping class:</p>
+
+<ul>
+<li>sql create table script listing:</li>
+</ul>
+
+
+<p>[sql]
+create table locations (</p>
+
+<pre><code>id bigint(20) not null auto_increment,
+name varchar(255) not null,
+    PRIMARY KEY (id),
+UNIQUE KEY unique_name (name)
+</code></pre>
+
+<p>);
+[/sql]</p>
+
+<ul>
+<li>entity class listing:</li>
+</ul>
+
+
+<p>[java]
+@javax.persistence.Entity
+@Table(name = &ldquo;locations&rdquo;)
+public class Location extends AbstractEntity {</p>
+
+<pre><code>@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long id;
+</code></pre>
+
+<p>   @Column(length=255, nullable=false)</p>
+
+<pre><code>private String name;
+    protected Location() {
+    super();
+}
+public Location(String name) {
+    super();
+    this.name = name;
+}
+// getters, setters omitted
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>As you can see, Location class is very simple: only one field, but the only thing we want at the moment from this entity is a name describing where item is stored. Is it &ldquo;Bookcase in living room, second drawer from the top&rdquo; or &ldquo;Cabinet in the saloon, top bookshelf&rdquo;.</p>
+
+
+		
+		<a href="/blog/2011/02/wicket-tutorial-part-3-form-application/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-21T10:02:00+01:00" data-updated="true" itemprop="datePublished">Jan 21<span>st</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/" itemprop="url">Wicket Tutorial, Part 2 - Adding Common Layout to the Project</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Hello everyone! In the <a href="http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">previous</a> post we set up base project using Wicket for out future development of ItemDirectory web application. That post, which was intended to be mainly about Wicket, surprisingly gathered some attention amongst Spring fans and was even mentioned in <a href="http://www.springsource.org/node/2994">weekly summary at SpringSource.com</a>. Nice! :)</p>
+
+<p>Ok, enough about the past. Today we are going to add some nice common layout to ItemDirectory. Go go go! :)</p>
+
+<h3>The layout</h3>
+
+<p>As winning &ldquo;The best designed web application ever&rdquo; award is not the purpose of this tutorial, I didn&rsquo;t want to spend a lot of time on creating beautiful layout. After a short search in Google results I found nice free template which seems to suit well to our tutorial needs:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/01/template.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/01/template.png" alt="" /></a></p>
+
+<p>Author of this free template is <a href="http://www.spyka.net/">Spyka</a> and you can download it from <a href="http://www.spyka.net/web-templates/static/">here</a>. There you can find two other colour variations of our template ( if you don&rsquo;t like orange :) ) and many others to choose from if you want to choose completely different one.</p>
+
+
+		
+		<a href="/blog/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-09T19:58:58+01:00" data-updated="true" itemprop="datePublished">Jan 9<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/" itemprop="url">Wicket Tutorial, Part 1 - Setting Up Project With Spring 3, JPA 2 and MySQL</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Today I start my personal project <strong>Item Directory</strong> which will be developed as a element of Wicket Tutorial series on this blog. Item Directory will be a web application to help you manage your collections of items (books, CDs, movies or even postage stamps).  Application is built with<strong> Java, Wicket, JPA, Spring 3 and MySQL</strong> as a database. It is a response for my family needs to manage some items hidden in shelves, bookcases and cabinets where we need something and we think &ldquo;We have it somewhere, but I have no idea where it is located&rdquo; :)</p>
+
+<h2>Is this Wicket tutorial for me?</h2>
+
+<p>This tutorial is for Java developers who want learn about this great framework in practise not only from reading a book. Because I like to learn while creating something, this tutorial will guide you through development process. I will concentrate mainly on adding new features and developing project instead of explaining every single aspect of how Wicket works in its internals or every single line of code I created. But those parts I think are worth some explanation will be discussed in detail.</p>
+
+<p>Of course if something seems unclear to you or you think I should write some longer explanation in some part of my post, please send a comment and I will try to answer to your needs as best as I can :) Moreover all code will be available to download from Mercurial repository, so you can easily download and deploy application with Jetty to test and see how it exactly works.</p>
+
+<p>And last thing: as it is my first bigger tutorial published here, all comments, suggestions, etc. are very appreciated. Additionally, ideas what to do/implement next are also welcome and will be considered :)</p>
+
+
+		
+		<a href="/blog/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-31T13:06:45+01:00" data-updated="true" itemprop="datePublished">Dec 31<span>st</span>, 2010</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/12/custom-pagingnavigator-with-changing-items-per-page-in-wicket/" itemprop="url">Custom PagingNavigator With Changing Items Per Page in Wicket</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>In one of my recent projects I had to create Wicket pagination component with one additional functionality allowing user to dynamically change maximum number of items presented on each page.</p>
+
+<p>Finished component will look like below:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2010/12/customPaginator.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2010/12/customPaginator.png" alt="" /></a>
+Of course I was not going to implement this from the scratch, because most of work had been already done by Wicket authors and commiters in component <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/navigation/paging/PagingNavigator.html">PagingNavigator</a>. Source of this component as a reference to changes I made can be found <a href="http://pastebin.com/kwzBG9mH">here</a>.</p>
+
+<p><strong>The first steps in creating our component:</strong>
+&ndash; add List <em>itemsPerPageValues</em> holding numbers for &lsquo;items per page&rsquo; which will be shown to the user allowing him to click and change this value.
+&ndash; provide default List <em>DEFAULT_ITEMS_PER_PAGE_VALUES</em>, which will be used (what a surprise!) as a default :)
+&ndash; give our component reference to the <em>DataView</em> object on which we will execute change items per page method.</p>
+
+
+		
+		<a href="/blog/2010/12/custom-pagingnavigator-with-changing-items-per-page-in-wicket/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-19T23:15:09+01:00" data-updated="true" itemprop="datePublished">Dec 19<span>th</span>, 2010</time></div>
+		<div class="tags">
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/12/what-would-you-do-if-your-boss-give-you-one-week-for-self-education/" itemprop="url">What Would You Do if Your Boss Give You One Week for Self-education?</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Let&rsquo;s suppose following scenario:</p>
+
+<p>You are somewhat experienced Java Developer working on a very sophisticated project in the science sector. You create very, very complicated module using very, very time-consuming algorithm which can not be multithreaded. And when you are ready, tests with small data portions went fine, your boss comes to your desk and clicks big, red button on your monitor to proudly start the whole process. Of course nothing bad happens, you just can observe growing CPU and memory usage. Your team expect that those calculation will take about one week to finish and give you results which are indispensable for you next tasks. It&rsquo;s JIRA blocker status and until it finishes, you had nothing to do. Your boss asks you to visit him in his room and says:</p>
+
+<ul>
+<li>Tom, you did a great job with this module. Everything seems to run smoothly and I can not wait to see the results! We must wait one week and it&rsquo;s a spare time which <strong>I would like you to use for you self-education and self-development</strong>. What you are going to do and learn?</li>
+</ul>
+
+
+<p>Of course we don&rsquo;t know whether this boss is going to pay Tom for this time or not :) But it&rsquo;s not the case. Tom now has a problem: 40 hours of free time which he can spend on any technology/methodology/language/etc he wants to learn and this opportunity comes to him so unexpectedly that he can not make up his mind.</p>
+
+<p>Please help him! What would <strong>YOU </strong>do with these<strong> 40 hours</strong>? :)</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-19T15:49:15+02:00" data-updated="true" itemprop="datePublished">Oct 19<span>th</span>, 2010</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/conferences/'>Conferences</a>, <a class='category' href='/blog/categories/news/'>News</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/10/slides-from-jdd-2010-available/" itemprop="url">Slides From JDD 2010 Available</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>I have good news for those who didn&rsquo;t attend a JDD conference this year or simply weren&rsquo;t attentive enough. You can download slides from almost all talks from <a href="http://10.jdd.org.pl/materialy">here</a>. If you are interested in slides from &ldquo;Technical Debt&rdquo; which are not yet available on JDD website you can download them from <a href="http://tomaszdziurko.pl/wp-content/uploads/2011/05/Thomas_Sundberg_TechnicalDebt.pdf">here</a> as I received straight from the author :)</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-10T21:50:30+02:00" data-updated="true" itemprop="datePublished">Oct 10<span>th</span>, 2010</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/conferences/'>Conferences</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/10/jdd-2010-from-my-perspective/" itemprop="url">JDD 2010 From My Perspective</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>A few days ago I attended a  <a href="http://10.jdd.org.pl/">Java Developers&#8217; Day 2010</a> conference in Cracow. If someone ask me to sum this event I would tell: not bad but definitely not very good. I think that popularity of Java conferences in Poland made people who are responsible for organizing JDD think that whether they do it very well or they just screw some things up it won&rsquo;t affect number of developers who are willing to pay for tickets. This is short summary of JDD&#8217;10. If you are interested in more complains and a few praises please continue reading this post :)</p>
+
+<h3><strong>What definitely was NOT good</strong></h3>
+
+<ol>
+<li>Agenda was not fully ready until the conference start was really, really close.</li>
+<li>Start time changed ONE day before conference. Ok, maybe it&rsquo;s not organizers fault, but at the end who cares. It had changed and forced me to take luggage with me instead of leaving it where I planned to sleep.</li>
+<li>If I rent one half of sports hall for my wedding I really, really WOULD check that there is no basketball match or training planned at the same time in the second half of the hall.</li>
+<li>Scala workshop was definitely good, but room was cold and not only me complained about it. There is nothing nice in sitting for over three hours in such environment.</li>
+<li>We all have to thank sponsors for their support and money they gave to the organizers. But I think it shouldn&rsquo;t be too hard to prepare presentation which won&rsquo;t be so, so, so much marketing-like and as a result really boring. That&rsquo;s why only at sponsors lectures I saw many people surfing on the Internet, reading e-mails and even simply staying at the coffee hall to chat and do something more interesting.</li>
+<li>Almost blinding Thomas Sundberg with reflectors at the end of his talk that he wasn&rsquo;t able to see people asking questions was embarrassing for me and so it should be for organizers.
+		
+		<a href="/blog/2010/10/jdd-2010-from-my-perspective/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-02T08:55:55+02:00" data-updated="true" itemprop="datePublished">Oct 2<span>nd</span>, 2010</time></div>
+		<div class="tags">
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2010/10/programming-books-in-english-with-free-worldwide-delivery-repost/" itemprop="url">Programming Books in English With Free Worldwide Delivery, Repost</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Few days ago in the discussion in Polish LinkedIn-like portal <a href="http://www.goldenline.pl">GoldenLine</a> about constant learning for people working in the IT, delivery costs from Amazon to Poland and ebooks appeared that only small group of people knows about online book store that sends all its books for free, even to Poland :)</p>
+
+<p>This book store is <a href="http://www.bookdepository.co.uk/">The Book Depository</a> and I found this information in <a href="http://groups.google.pl/group/warszawa-jug/browse_thread/thread/c7f393dbc9f6b449/e2012f715b167428?q=#e2012f715b167428">this post</a> (in Polish) by <a href="http://www.margiel.eu/">Michał Margiel</a> (thanks!) on the Warsaw Java Users Group forum. But because not everyone reads this forum regularly and awareness that such book store exists can be very useful for most of us, IT people, I am reposting it on my blog :)</p>
+
+		
+		
+	</div>
+
+</article>
+
+</div>
+<nav id="pagenavi">
+    
+        <a href="/blog/page/5/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/7/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

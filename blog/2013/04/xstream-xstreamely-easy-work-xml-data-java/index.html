@@ -1,0 +1,648 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>XStream - XStreamely easy way to work with XML data in Java - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="XStream - XStreamely Easy Way to Work With XML Data in Java From time to time there is a moment when we have to deal with XML data. And most of the &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/blog/2013/04/xstream-xstreamely-easy-work-xml-data-java/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/blog/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">XStream - XStreamely Easy Way to Work With XML Data in Java</h1>
+	<div class="entry-content" itemprop="articleBody"><p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif" alt="xstream" /></a></p>
+
+<h3>Overview</h3>
+
+<p><a href="http://xstream.codehaus.org/">XStream</a> is a small library to serialize data between Java objects and XML. It&rsquo;s lightweight, small, has nice API and what is most important, it works with and without custom annotations that we might be not allowed to add when we are not the owner of Java classes.</p>
+
+<!-- more -->
+
+
+<h3>First example</h3>
+
+<p>Suppose we have a requirement to load configuration from xml file:
+[xml]
+<config></p>
+
+<pre><code>&lt;inputFile&gt;/Users/tomek/work/mystuff/input.csv&lt;/inputFile&gt;
+&lt;truststoreFile&gt;/Users/tomek/work/mystuff/truststore.ts&lt;/truststoreFile&gt;
+&lt;keystoreFile&gt;/Users/tomek/work/mystuff/CN-user.jks&lt;/keystoreFile&gt;
+
+&lt;!-- ssl stores passwords--&gt;
+&lt;truststorePassword&gt;password&lt;/truststorePassword&gt;
+&lt;keystorePassword&gt;password&lt;/keystorePassword&gt;
+
+&lt;!-- user credentials --&gt;
+&lt;user&gt;user&lt;/user&gt;
+&lt;password&gt;secret&lt;/password&gt;
+</code></pre>
+
+<p></config>
+[/xml]</p>
+
+<p>And we want to load it into Configuration object:
+[java]
+public class Configuration {</p>
+
+<pre><code>private String inputFile;
+private String user;
+private String password;
+
+private String truststoreFile;
+private String keystoreFile;
+private String keystorePassword;
+private String truststorePassword;
+
+// getters, setters, etc.
+</code></pre>
+
+<p>}
+[/java]
+So basically what we have to do is:
+[java]</p>
+
+<pre><code>FileReader fileReader = new FileReader("config.xml");  // load our xml file  
+XStream xstream = new XStream();     // init XStream
+// define root alias so XStream knows which element and which class are equivalent
+xstream.alias("config", Configuration.class);    
+Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
+</code></pre>
+
+<p>[/java]</p>
+
+<p>And that&rsquo;s all, easy peasy :)</p>
+
+<h3>Something more serious</h3>
+
+<p>Ok, but previous example is very basic so now let&rsquo;s do something more complicated: real XML returned by real WebService.</p>
+
+<p>[xml]
+<DATA xmlns=""></p>
+
+<pre><code>&lt;BAN&gt;
+    &lt;UPDATED_AT&gt;2013-03-09&lt;/UPDATED_AT&gt;
+    &lt;TROUBLEMAKER&gt;
+        &lt;NAME1&gt;JOHN&lt;/NAME1&gt;
+        &lt;NAME2&gt;EXAMPLE&lt;/NAME2&gt;
+        &lt;AGE&gt;24&lt;/AGE&gt;
+        &lt;NUMBER&gt;ASD123123&lt;/NUMBER&gt;
+    &lt;/TROUBLEMAKER&gt;
+&lt;/BAN&gt;
+&lt;BAN&gt;
+    &lt;UPDATED_AT&gt;2012-03-10&lt;/UPDATED_AT&gt;
+    &lt;TROUBLEMAKER&gt;
+        &lt;NAME1&gt;ANNA&lt;/NAME1&gt;
+        &lt;NAME2&gt;BAKER&lt;/NAME2&gt;
+        &lt;AGE&gt;26&lt;/AGE&gt;
+        &lt;NUMBER&gt;AXN567890&lt;/NUMBER&gt;
+    &lt;/TROUBLEMAKER&gt;
+&lt;/BAN&gt;
+&lt;BAN&gt;
+    &lt;UPDATED_AT&gt;2010-12-05&lt;/UPDATED_AT&gt;
+    &lt;TROUBLEMAKER&gt;
+        &lt;NAME1&gt;TOM&lt;/NAME1&gt;
+        &lt;NAME2&gt;MEADOW&lt;/NAME2&gt;
+        &lt;NUMBER&gt;SGH08945&lt;/NUMBER&gt;
+        &lt;AGE&gt;48&lt;/AGE&gt;
+    &lt;/TROUBLEMAKER&gt;
+&lt;/BAN&gt;
+</code></pre>
+
+<p></DATA>
+[/xml]</p>
+
+<p>What we have here is simple list of bans written in XML. We want to load it into collection of Ban objects. So let&rsquo;s prepare some classes (getters/setters/toString omitted):
+[java]
+public class Data {</p>
+
+<pre><code>private List bans = new ArrayList(); 
+</code></pre>
+
+<p>}</p>
+
+<p>public class Ban {</p>
+
+<pre><code>private String dateOfUpdate;
+private Person person;
+</code></pre>
+
+<p>}</p>
+
+<p>public class Person {</p>
+
+<pre><code>private String firstName;
+private String lastName;
+private int age;
+private String documentNumber;
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>As you can see there is some naming and type mismatch between XML and Java classes (e.g. field name1->firstName, dateOfUpdate is String not a Date), but it&rsquo;s here for some example purposes.</p>
+
+<p>So the goal here is to parse XML and get Data object with populated collection of Ban instances containing correct data. Let&rsquo;s see how it can be achieved.</p>
+
+<h4>Parse with annotations</h4>
+
+<p>First, easier way is to use annotations. And that&rsquo;s the suggested approach in situation when we can modify Java classes to which XML will be mapped.
+So we have:
+[java]
+@XStreamAlias(&ldquo;DATA&rdquo;) // maps DATA element in XML to this class
+public class Data {</p>
+
+<pre><code>// Here is something more complicated. If we have list of elements that are 
+// not wrapped in a element representing a list (like we have in our XML: 
+// multiple &lt;ban&gt; elements not wrapped inside &lt;bans&gt; collection, 
+// we have to declare that we want to treat these elements as an implicit list 
+// so they can be converted to List of objects. 
+@XStreamImplicit(itemFieldName = "ban") 
+private List bans = new ArrayList();
+</code></pre>
+
+<p>}</p>
+
+<p>@XStreamAlias(&ldquo;BAN&rdquo;) // another mapping
+public class Ban {</p>
+
+<pre><code>/*
+ We want to have different field names in Java classes so
+ we define what element should be mapped to each field
+*/
+@XStreamAlias("UPDATED_AT") // 
+private String dateOfUpdate;
+
+@XStreamAlias("TROUBLEMAKER")
+private Person person;
+</code></pre>
+
+<p>}</p>
+
+<p>@XStreamAlias(&ldquo;TROUBLEMAKER&rdquo;)
+public class Person {</p>
+
+<pre><code>@XStreamAlias("NAME1")
+private String firstName;
+
+@XStreamAlias("NAME2")
+private String lastName;
+
+@XStreamAlias("AGE") // String will be auto converted to int value
+private int age;
+
+@XStreamAlias("NUMBER")
+private String documentNumber;
+</code></pre>
+
+<p>[/java]</p>
+
+<p>And actual parsing logic is very short:</p>
+
+<p>[java]</p>
+
+<pre><code>FileReader reader = new FileReader("file.xml");  // load file
+
+XStream xstream = new XStream();
+xstream.processAnnotations(Data.class);     // inform XStream to parse annotations in Data class
+xstream.processAnnotations(Ban.class);      // and in two other classes... 
+xstream.processAnnotations(Person.class);   // we use for mappings
+Data data = (Data) xstream.fromXML(reader); // parse
+
+// Print some data to console to see if results are correct
+System.out.println("Number of bans = " + data.getBans().size());
+Ban firstBan = data.getBans().get(0);
+System.out.println("First ban = " + firstBan.toString()); 
+</code></pre>
+
+<p>[/java]</p>
+
+<p>As you can see annotations are very easy to use and as a result final code is very concise. But what to do in situation when we can&rsquo;t modify mapping classes? We can use different approach that doesn&rsquo;t require any modifications in Java classes representing XML data.</p>
+
+<h4>Parse without annotations</h4>
+
+<p>When we can&rsquo;t enrich our model classes with annotations, there is another solution. We can define all mapping details using methods from XStream object:</p>
+
+<p>[java]</p>
+
+<pre><code>FileReader reader = new FileReader("file.xml");  // three first lines are easy, 
+XStream xstream = new XStream();                 // same initialisation as in the 
+xstream.alias("DATA", Data.class);               // basic example above
+
+xstream.alias("BAN", Ban.class);             // two more aliases to map... 
+xstream.alias("TROUBLEMAKER", Person.class); // between node names and classes
+
+// We want to have different field names in Java classes so
+// we have to use aliasField(&lt;fieldInXml&gt;, &lt;mappedJavaClass&gt;, &lt;mappedFieldInJavaClass&gt;)
+xstream.aliasField("UPDATED_AT", Ban.class, "dateOfUpdate"); 
+xstream.aliasField("TROUBLEMAKER", Ban.class, "person");
+
+xstream.aliasField("NAME1", Person.class, "firstName");
+xstream.aliasField("NAME2", Person.class, "lastName");
+xstream.aliasField("AGE", Person.class, "age");  // notice here that XML will be auto-converted to int "age"
+xstream.aliasField("NUMBER", Person.class, "documentNumber");
+
+/*
+ Another way to define implicit collection
+*/ 
+xstream.addImplicitCollection(Bans.class, "bans");
+
+Data data = (Data) xstream.fromXML(reader);  // do the actual parsing
+
+// let's print results to check if data was parsed
+System.out.println("Number of bans = " + data.getBans().size());
+Ban firstBan = data.getBans().get(0);
+System.out.println("First ban = " + firstBan.toString());
+</code></pre>
+
+<p>[/java]</p>
+
+<p>As you can see XStream allows to easily convert more complicated XML structures into Java objects, it also gives a possibility to tune results by using different names if this from XML doesn&rsquo;t suit our needs.
+But there is one thing should catch your attention: we are converting XML representing a Date into raw String which isn&rsquo;t quite what we would like to get as a result. That&rsquo;s why we will add converter to do some job for us.</p>
+
+<h3>Using existing custom type converter</h3>
+
+<p>XStream library comes with set of built converters for most common use cases. We will use DateConverter. So now our class for Ban looks like that:
+[java]
+public class Ban {</p>
+
+<pre><code>private Date dateOfUpdate;
+private Person person;
+</code></pre>
+
+<p>}
+[/java]
+And to use DateConverter we simply have to register it with date format that we expect to appear in XML data:
+[java]
+   xstream.registerConverter(new DateConverter(&ldquo;yyyy-MM-dd&rdquo;, new String[] {}));
+[/java]</p>
+
+<p>and that&rsquo;s it. Now instead of String our object is populated with Date instance. Cool and easy! But what about classes and situations that aren&rsquo;t covered by existing converters? We could write our own.</p>
+
+<h3>Writing custom converter from scratch</h3>
+
+<p>Assume that instead of dateOfUpdate we want to know how many days ago update was done:
+[java]
+public class Ban {</p>
+
+<pre><code>private int daysAgo;
+private Person person;
+</code></pre>
+
+<p>}
+[/java]
+Of course we could calculate it manually for each Ban object but using converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/Converter.html">Converter</a> interface so we have to implement three methods with signatures looking a little bit scary:
+[java]
+public class DaysAgoConverter implements Converter {</p>
+
+<pre><code>@Override
+public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
+}
+
+@Override
+public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+}
+
+@Override
+public boolean canConvert(Class type) {
+    return false;
+}
+</code></pre>
+
+<p>}
+[/java]
+Last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/basic/AbstractSingleValueConverter.html">AbstractSingleValueConverter</a>that shields us from so low level mechanisms. And now our class looks much better:
+[java]
+public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
+
+<pre><code>@Override
+public boolean canConvert(Class type) {
+    return type.equals(Integer.class);
+}
+
+@Override
+public Object fromString(String str) {
+    return null;
+}
+
+public String toString(Object obj) {
+    return null;
+}
+</code></pre>
+
+<p>}
+[/java]
+Additionally we must override method toString(Object obj) defined in AbstractSingleValueConverter as we want to store Date in XML calculated from Integer, not a simple <em>Object.toString</em> value which would be returned from default <em>toString</em> defined in abstract parent.</p>
+
+<p><strong>Implementation</strong></p>
+
+<p>Code below is pretty straightforward, but most interesting lines are commented. I&rsquo;ve skipped all validation stuff to make this example shorter.
+[java]
+public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
+
+<pre><code>private final static String FORMAT = "yyyy-MM-dd"; // default Date format that will be used in conversion
+private final DateTime now = DateTime.now().toDateMidnight().toDateTime(); // current day at midnight
+
+public boolean canConvert(Class type) {
+    return type.equals(Integer.class);     // Converter works only with Integers
+}
+
+@Override
+public Object fromString(String str) {
+    SimpleDateFormat format = new SimpleDateFormat(FORMAT);
+    try {
+        Date date = format.parse(str);
+        return Days.daysBetween(new DateTime(date), now).getDays();  // we simply calculate days between using JodaTime
+    } catch (ParseException e) {
+        throw new RuntimeException("Invalid date format in " + str);
+    }
+}
+
+public String toString(Object obj) {
+    if (obj == null) {
+        return null;
+    }
+
+    Integer daysAgo = ((Integer) obj);
+    return now.minusDays(daysAgo).toString(FORMAT); // here we subtract days from now and return formatted date string
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p><strong>Usage</strong>
+To use our custom converter for a specific field we have to inform about it XStream object using registerLocalConverter:
+[java]</p>
+
+<pre><code>xstream.registerLocalConverter(Ban.class, "daysAgo", new DaysAgoConverter());
+</code></pre>
+
+<p>[/java]
+We are using &ldquo;local&rdquo; method to apply this conversion only to specific field and not to every Integer field in XML file. And after that we will get our Ban objects populated with number of days instead of Date.</p>
+
+<h3>Summary</h3>
+
+<p>That&rsquo;s all what I wanted to show you in this post. Now you have basic knowledge about what XStream is capable of and how it can be used to easily map XML data to Java objects If you need something more advanced, please check <a href="http://xstream.codehaus.org/">project official page</a> as it contains very good documentation and examples.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-22T10:55:55+02:00" data-updated="true" itemprop="datePublished">Apr 22<span>nd</span>, 2013</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/blog/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/" title="上一篇: Jasmine tests reporter in TeamCity with Scala and SBT">&laquo; Jasmine tests reporter in TeamCity with Scala and SBT</a>
+		  
+		  
+			<a class="basic-alignment right" href="/blog/2013/04/scalatra-html-js-json-escaping/" title="下一篇: Easy Html/Javascript JSON escaping in Scalatra ">Easy Html/Javascript JSON escaping in Scalatra  &raquo;</a>
+		  
+		</p>
+	</div>
+	<div class="jiathis">
+	
+		<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1376918307020726" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</div>
+
+	
+	</div>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

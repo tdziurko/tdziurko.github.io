@@ -1,16 +1,2574 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-24T23:33:55+02:00</updated>
+  <updated>2014-05-25T00:00:05+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Tomasz Dziurko]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[GeeCON 2014 – Brain dump, Day 3]]></title>
+    <link href="http://tdziurko.github.io/blog/2014/05/geecon-2014-brain-dump-day-3/"/>
+    <updated>2014-05-18T23:27:30+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2014/05/geecon-2014-brain-dump-day-3</id>
+    <content type="html"><![CDATA[<p>Last, third post with my notes from GeeCON 2014 conference:</p>
+
+<p><strong>Tomasz Kowalczewski - Reactive Java</strong></p>
+
+<ul>
+<li><p>Something almost &ldquo;reactive&rdquo; is already in JDK8: Completable Future, more reading: <a href="http://www.nurkiewicz.com/2013/05/java-8-definitive-guide-to.html">&ldquo;Java 8: Definitive guide to CompletableFuture&rdquo;</a></p></li>
+<li><p><a href="https://github.com/Netflix/RxJava">RxJava</a> has nice DSL allowing to configure observables in elegant way</p></li>
+<li><p>Project has <a href="https://github.com/Netflix/RxJava/wiki">good wiki</a>, worth to dive deeper</p></li>
+<li><p>Observables can be easily converted to Iterator (good for step-by-step migrations)</p></li>
+</ul>
+
+
+<p><strong>Tom Bujok - 33 things you want to do better</strong></p>
+
+<ul>
+<li>(didn&rsquo;t attend this one), but there are very good <a href="https://speakerdeck.com/tombujok/33-things-you-want-to-do-better-3">slides available</a></li>
+</ul>
+
+
+<p><strong>Sander Mak, Paul Bakker - Modular JavaScript</strong></p>
+
+<ul>
+<li><p><a href="http://www.commonjs.org/">CommonJS</a> (preferred one) and <a href="https://github.com/amdjs/amdjs-api/blob/master/AMD.md">AMD</a></p></li>
+<li><p>Chuck Norris Stamp Of Approval &ndash; <a href="http://www.clipartbest.com/clipart-nTXEB7jTB">image</a> ;)</p></li>
+</ul>
+
+
+<p><strong>Sandro Mancuso - Crafted Design</strong></p>
+
+<ul>
+<li><p>Controller only controls the flow, usually only invokes use_cases</p></li>
+<li><p>use_cases, package for logic/features</p></li>
+<li><p>Packages by feature</p></li>
+<li><p>There were too many diagrams hard to describe in text so you should really check <a href="http://www.slideshare.net/sandromancuso/crafted-design-geecon-2014">slides</a></p></li>
+</ul>
+
+
+<p><strong>Michael Feathers - Beyond Error Handling</strong></p>
+
+<ul>
+<li><p>Book <a href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">&ldquo;Growing Object-Oriented Software, Guided by Tests&rdquo;</a></p></li>
+<li><p>We shouldn&rsquo;t pass nulls inside the application</p></li>
+<li><p>&ldquo;Do not check for stupid everywhere, check for stupid at the door&rdquo;</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GeeCON 2014 – Brain dump, Day 2]]></title>
+    <link href="http://tdziurko.github.io/blog/2014/05/geecon-2014-brain-dump-day-2/"/>
+    <updated>2014-05-17T23:31:25+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2014/05/geecon-2014-brain-dump-day-2</id>
+    <content type="html"><![CDATA[<p>This is the second part of my notes from GeeCON 2014 conference.</p>
+
+<p><strong>Hazem Saleh - Jasmine Automated Tests for JavaScript</strong></p>
+
+<ul>
+<li><p>Testing asynchronous code with <a href="http://jasmine.github.io/2.0/introduction.html">Jasmine</a> looks really ugly. <a href="http://michalostruszka.pl/">Michał Ostruszka</a> suggests using <a href="http://visionmedia.github.io/mocha/">Mocha</a> for such use cases.</p></li>
+<li><p><a href="https://github.com/gotwarlost/istanbul">Istanbul</a> &ndash; code coverage for Java Script</p></li>
+</ul>
+
+
+<p><strong>Sam Newman - Deploying And Testing Microservices</strong></p>
+
+<ul>
+<li><p><a href="http://www.thoughtworks.com/radar/#/">Technology Radar</a> from ThoughtWorks</p></li>
+<li><p>Book <a href="http://shop.oreilly.com/product/0636920033158.do">&ldquo;Building Microservices&rdquo;</a> by Sam Newman, currently in early version</p></li>
+<li><p>It&rsquo;s worth to follow <a href="https://twitter.com/samnewman">Sam Newman</a> on Twitter</p></li>
+<li><p><a href="http://www.mbtest.org/">Mountebank</a> &ndash; tool to provide test doubles using various protocols (http, https, etc)</p></li>
+<li><p>&ldquo;Get good at releasing services independently&rdquo;</p></li>
+<li><p>Last tests should be performed on production just after the release, but make sure that it do not affect your business</p></li>
+<li><p><a href="http://martinfowler.com/articles/consumerDrivenContracts.html">&ldquo;Consumer Driven Contracts&rdquo;</a> article by Martin Fowler</p></li>
+<li><p><a href="https://github.com/realestate-com-au/pact">Pact</a> - tool enabling consumer driven contract testing</p></li>
+<li><p><a href="http://www.packer.io/">Packer</a> &ndash; tool for creating identical images for multiple platforms</p></li>
+<li><p><a href="http://www.ansible.com/home">Ansible</a> &ndash; tool to automate app deployment, configuration management, etc., <a href="http://red-badger.com/blog/2013/06/29/ansible/">further reading</a></p></li>
+<li><p>One service per machine</p>
+
+<ul>
+<li><p>pros: easy to reason about (who to blame when CPU is 100%)</p></li>
+<li><p>cons: cost and management overhead</p></li>
+</ul>
+</li>
+<li><p><a href="https://www.docker.io/">Docker</a> - virtualized container allowing to automate deployment of any application</p>
+
+<ul>
+<li>&ldquo;not production ready&rdquo;</li>
+</ul>
+</li>
+<li><p>&ldquo;Deploy one thing at a time&rdquo;</p></li>
+<li><p><a href="http://dbdeploy.com/">DbDeploy</a> - Database Change Management tool</p></li>
+<li><p>&ldquo;You can&rsquo;t expect to change your database as often as you change your software&rdquo;</p></li>
+<li><p>&ldquo;It&rsquo;s easier to manage one service with two versions of API&rdquo;</p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<p><strong>Michał Ostruszka - SRP applied &ndash; building modern web applications</strong></p>
+
+<ul>
+<li><p><a href="http://gulpjs.com/">gulp</a>, <a href="http://gruntjs.com/">grunt</a> (more popular one) &ndash; build systems for frontend/JS</p></li>
+<li><p><a href="http://yeoman.io/">yeoman</a>, <a href="http://www.linemanjs.com/">lineman</a> - tools to generate bootstrap of frontend part of your application using e.g. AngularJS, Ember, Backbone, etc.</p></li>
+</ul>
+
+
+<p><strong>Peter Lawrey - Micro-second latency logging, persistence, IPC and more</strong></p>
+
+<ul>
+<li><p><a href="http://vanillajava.blogspot.com/2013/07/openhft-java-lang-project.html">OpenHFT</a> (High Frequency Trading)</p></li>
+<li><p><a href="https://github.com/OpenHFT/Java-Chronicle">Java Chronicle</a> project &ndash; persisted low latency messaging library</p></li>
+<li><p><a href="https://github.com/OpenHFT/HugeCollections">HugeCollections</a> - Huge Collections for Java using efficient off heap storage</p></li>
+<li><p><a href="http://www.fasterj.com/articles/sharedhashmap1a.shtml">SharedHashMap</a>, another <a href="https://github.com/OpenHFT/HugeCollections/wiki/When-to-use-SharedHashMap">link</a>:</p>
+
+<ul>
+<li><p>GC-free implementation of hash map</p></li>
+<li><p>persistent, stored in the file</p></li>
+<li><p>shared between processes</p></li>
+<li><p>1/5th of a size of corresponding HashMap in the memory</p></li>
+</ul>
+</li>
+</ul>
+
+
+<p><strong>Kevlin Henney - Seven Ineffective Coding Habits of Many Java Programmers</strong></p>
+
+<ul>
+<li><p>Book <a href="https://www.goodreads.com/book/show/7003902-97-things-every-programmer-should-know">&ldquo;97 Things Every Programmer Should Know&rdquo;</a></p></li>
+<li><p>Comments in your code are sign of defeat, you failed in explaining your intentions using the code itself</p></li>
+<li><p>Max. column width: 80 chars, we shouldn&rsquo;t be forced to move head while reading</p></li>
+<li><p>Keep method arguments in one line or each argument in a new line</p></li>
+<li><p>Why do we add &ldquo;Exception&rdquo; to the exception classes? Do we add &ldquo;Class&rdquo; at the end of each class name?</p></li>
+</ul>
+
+
+<p><strong>Kevlin Henney - Worse Is Better, for Better or for Worse</strong></p>
+
+<ul>
+<li><p>Stop over-promising</p></li>
+<li><p>Concentrate on something you can complete</p></li>
+<li><p>&ldquo;You learn by finishing things&rdquo;</p></li>
+<li><p>Book <a href="101%20Things%20I%20Learned%20in%20Architecture%20School">&ldquo;101 Things I Learned in Architecture School&rdquo;</a>, worth to read also from the perspective of developer/architect</p></li>
+<li><p>Book <a href="https://www.goodreads.com/book/show/225111.The_Laws_of_Simplicity">&ldquo;The Laws of Simplicity: Design, Technology, Business, Life&rdquo;</a></p></li>
+<li><p>Small off-topic: Kevlin gave one of the best closing keynotes I&rsquo;ve ever seen titled &ldquo;Cool Code&rdquo;. You can watch video <a href="http://vimeo.com/44792649">here</a>. Really entertaining talk!</p></li>
+</ul>
+
+
+<p>That&rsquo;s all I&rsquo;ve noted from second dat at GeeCON 2014. Stay tuned for the 3rd part of my brain dump.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GeeCON 2014 - Brain dump, Day 1]]></title>
+    <link href="http://tdziurko.github.io/blog/2014/05/geecon-2014-brain-dump-day-1/"/>
+    <updated>2014-05-15T21:00:10+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2014/05/geecon-2014-brain-dump-day-1</id>
+    <content type="html"><![CDATA[<p>Inspired by post <a href="http://scottberkun.com/2014/min-max-note-taking/">&ldquo;Min/max note taking for conferences&rdquo;</a> I&rsquo;ve noted down my impressions, most interesting sentences, mentioned tools/books/blogs during ongoing GeeCON 2014 conference. This is my &#8221;Brain dump&#8221; after Day 1:</p>
+
+<p><strong>Pavel Sekanina - Nothing comes for free</strong></p>
+
+<ul>
+<li><p>Be yourself, be true. It makes everything much easier.</p></li>
+<li><p>Your colleagues do not have to like you, but they should appreciate you for your skills, attitude and professionalism.</p></li>
+</ul>
+
+
+<p><strong>Jurgen Appelo - The 7 Duties of Great Software Professionals</strong></p>
+
+<ul>
+<li><p>Won Entrepreneur of the Year 1999 in Holland &ndash; <a href="http://www.nieuwsbank.nl/inp/1999/12/1215R099.htm">details</a> in Dutch (Google Translate for English version)</p></li>
+<li><p>recommended book <a href="https://www.goodreads.com/book/show/6452796-drive">&ldquo;Drive&rdquo;</a></p></li>
+<li><p>Measure how you spend time to find ways where you can optimise things</p></li>
+<li><p>There is <a href="http://ale2014.alenetwork.eu/">ALE 2014 Unconference</a> in Cracow in August, looking very interesting</p></li>
+<li><p>&ldquo;Actually be cool instead of saying everyone &lsquo;we are cool&rsquo;&rdquo;</p></li>
+<li><p>We tend to anticipate too much, what if, what will happen when&hellip; We should explore more things</p></li>
+<li><p>Time management: attach what is useful with what is pleasurable</p></li>
+<li><p>Time management: try to set aside a little bit of time each day</p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<p><strong>Jakub Jurkiewicz - Back to the Future &ndash; how to go back in time and provide better future for your agile team.</strong></p>
+
+<ul>
+<li><p>very often forgotten point of retrospectives: &ldquo;reflect how to become more effective&rdquo;</p></li>
+<li><p>ice breakers: Factor fiction game &ndash; everyone tells three (2 true, 1 false) sentences about himself and let other team members try to guess</p></li>
+<li><p>Worth to read and try: <a href="http://insight.typepad.co.uk/40_icebreakers_for_small_groups.pdf">40 Icebreakers for Small Groups </a></p></li>
+<li><p>Very important rule &ldquo;Do not leave the retrospective room without saying what you wanted to say&rdquo;</p></li>
+<li><p>Gather data about specific topics. e.g. how people perceive communication inside of the team, quality of the job, etc. and then check how this indicators are changing when you compare them with results from the retrospectives in the past</p></li>
+<li><p>Give people space and time to share appreciations. Allow them to give &ldquo;kudos&rdquo; to others.</p></li>
+<li><p>Decide what to do, write down action points.</p></li>
+<li><p>Action points should be SMART: Specific, Measurable, Assignable, Realistic, Time-related</p></li>
+<li><p>Do retrospective about how this retrospective went. What was ok, what needs improvement.</p></li>
+<li><p>Interesting tool for remote retros:  <a href="http://www.ideaboardz.com/">http://www.ideaboardz.com/</a></p></li>
+<li><p>Books to check: <a href="https://www.goodreads.com/book/show/721338.Agile_Retrospectives">&ldquo;Agile retrospectives&rdquo;</a>, <a href="https://www.goodreads.com/book/show/1523368.Project_Retrospectives">&ldquo;Project retrospectives&rdquo;</a></p></li>
+</ul>
+
+
+<p><strong>Patroklos Papapetrou - Managing your Technical Debt with SonarQube</strong></p>
+
+<ul>
+<li>Code quality &ndash; how fast developers can add business value to the system</li>
+</ul>
+
+
+<p><strong>Adam Warski - Keep it Simple with Scala</strong></p>
+
+<ul>
+<li><p><a href="https://github.com/scala/async">Scala Async</a> - readable lib to write asynchronous code</p></li>
+<li><p><a href="http://spray.io/">Spray.io</a> &ndash; Akka based REST library in Scala with readable DSL</p></li>
+<li><p>Over heard during this talk: Spock is very cool, but what I miss in it is type safety. ScalaTest is much better when you refactor stuff.</p></li>
+<li><p><a href="https://github.com/adamw/macwire">Macwire</a> &ndash; simple, non-invasive DI for Scala</p></li>
+</ul>
+
+
+<p><strong>Tim Boudreau - Node.js for Java developers</strong></p>
+
+<ul>
+<li><p>speaker webpage to check - <a href="http://timboudreau.com/">http://timboudreau.com/</a></p></li>
+<li><p><a href="http://spumko.github.io/">hapi</a> - rich framework for building web applications and services for Node.js</p></li>
+<li><p><a href="https://github.com/spumko/joi">joi</a> &ndash; library to JSON validation</p></li>
+</ul>
+
+
+<p><strong>Olga Madejska &ndash; &lsquo;I will never deploy on Fridays&rsquo; &ndash; yeah, right&hellip;</strong></p>
+
+<ul>
+<li><p>Show your drafts/unfinished work as soon as it is possible. The quicker feedback the better final result will be.</p></li>
+<li><p>Treat project as something that you will have to work with till the end of your life. Do not cut corners.</p></li>
+<li><p>&ldquo;Every manual task that can be forgotten, will be forgotten&rdquo; &ndash;> automate everything</p></li>
+</ul>
+
+
+<p>That&rsquo;s all about Day 1. Other days should appear within next week.</p>
+
+<h3>And your GeeCON?</h3>
+
+<p>What about you? Did you find anything very interesting during GeeCON? Or maybe I&rsquo;ve missed really interesting talk on Day 1?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Deep dive into AngularJS - my review of "Mastering Web Application Development with AngularJS"]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
+    <updated>2013-11-24T23:53:30+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
+    <content type="html"><![CDATA[<p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover-243x300.jpg" alt="AngularJs-cover" /></a></p>
+
+<h3>Overview</h3>
+
+<p>The book starts with gentle introduction to the framework, we have a simple Hello World application just to get a quick glance how AngularJS works. Then in later chapters we learn how to organise project (directories layout, build system), communicate with backend, get data and display data to the user, design navigation and other usual topics which are covered in every book about all web frameworks. Luckily everything is provided in an easy to understand way with a lot of useful tips and code snippets.</p>
+
+<p>And when after reading this part of book  I thought &ldquo;Oh man, AngularJS is easy, now I get it &rdquo; I reached  two chapters about directives. And trust me, if someone says &ldquo;I fully understand directives from AngularJS&rdquo; he either is AngularJS committer/author or a liar. I knew that directives are powerful and complex, but I wasn&rsquo;t aware that they are so powerful and so complex. These two chapters are a masterpiece in taking you into world of getting as much as possible from this flagship AngularJS feature. But it is so complicated topic that I had to read these chapters twice probably only to get to &ldquo;I understand it more or less&rdquo; level. But at least I know that every time I need to write non-trivial directive I could grab this book as a reference and find detailed explanation of how directives work and what they are capable of.</p>
+
+<p>After section about directives there are easier topics like internationalization, quick look at framework internals and very useful part describing how to detect and solve performance problems of your application.</p>
+
+<h4><strong>What I liked:</strong></h4>
+
+<ul>
+<li><p>level of detail, this book is most complete reference guide to understand and leverage power of AngularJS</p></li>
+<li><p>best explanation of directives and their powers</p></li>
+<li><p>many useful tips from people using AngularJS in they daily job</p></li>
+<li><p>very test-oriented examples</p></li>
+<li><p>avoiding step-by-step tutorial approach and choosing more systematic way of introducing a framework</p></li>
+</ul>
+
+
+<h4><strong>What I didn&rsquo;t like:</strong></h4>
+
+<ul>
+<li><p>Almost nothing about various projects around AngularJS that could be helpful during development and learning</p></li>
+<li><p>Nothing about animations</p></li>
+</ul>
+
+
+<h3>Summary</h3>
+
+<p>Simply Must Have reference title for every AngularJS developer. The most advanced book about this framework on the market with plenty of practical suggestions. Very detailed but written in a way that is easy to follow. If you want to understand AngularJS and how to use if effectively, this book is a very good choice.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Recenzja "Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce", czyli o tym co każdy programista umieć powinien]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
+    <updated>2013-10-30T16:33:49+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
+    <content type="html"><![CDATA[<p>Dear Reader</p>
+
+<pre><code>This post is in my native language as it is a review of book pyblished only in Poland. Please feel free to check my other posts which are mainly written in English.
+</code></pre>
+
+<p>Dość rzadko sięgam po książki informatyczne wydane w naszym ojczystym języku. Powód jest dość prozaiczny: z reguły w momencie, gdy wychodzi polskie tłumaczenie &ldquo;JavaAwesomeWebFramework 1.2 w Akcji&rdquo; po angielsku jest już  dostępna &ldquo;JavaAwesomeWebFramework 2.0 in Action&rdquo; i cała wiedza zawarta w polskiej wersji jest, delikatnie mówiąc, lekko nieaktualna.</p>
+
+<p>Ale są tematy, które można nazwać, choć to dość górnolotne słowo, ponadczasowymi, bo dotyczą zagadnień aktualnych zarówno teraz jak i kilka lat temu. I do takich należy właśnie komunikacja z klientem. Temat dość ciężki, należący do tzw. &ldquo;obszarów miękkich&rdquo; i przez co traktowany przez programistów mocno po macoszemu. Co niestety powoduje częste napięcia na linii klient-zespół programistów, bo programista uważa, że on jest bez winy, a to klient wyraził się niejasno i jest źródłem wszystkich problemów.</p>
+
+<p>I właśnie na takie problemy receptą jest lektura i stosowanie rad zawartych w książce <a href="http://helion.pl/ksiazki/oprogramowanie-szyte-na-miare-jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-michal-bartyzel,opszmi.htm">&ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo;</a> Michała Bartyzela.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/10/bartyzel_klient.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/10/bartyzel_klient-300x300.jpg" alt="Audiobooks Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce. eBook. Pdf" /></a></p>
+
+<!-- more -->
+
+
+
+
+<blockquote>Klient wie, czego chce, ale nie wie czego potrzebuje</blockquote>
+
+
+<p>Właśnie takim, bardzo mądrym stwierdzeniem zaczyna się ta książka. I jeśli dobrze je przemyślimy i weźmiemy do serca to nasze postrzeganie klienta zmieni się diametralnie. Klient przychodzi do nas z problemem biznesowym i wie co jest jego rozwiązaniem. Nie wie jednak co jest potrzebne, żeby to rozwiązanie przekuć na aplikację. I tu się zaczyna nasza rola jako członków zespołu programistów. Zrozumieć problem i stworzyć aplikacją, która go rozwiązuje. Bo choćby nie wiem jak czysty, piękny i przetestowany był nasz kod, to jeśli nie pomoże klientowi w jego problemie to cały projekt będzie porażką, a nasza firma straci klienta. <em>&ldquo;Think about Business Value&rdquo;</em> jak często mawia <a href="http://pawel.wrzesz.cz/">Paweł Wrzeszcz</a>, mój kolega z pracy.</p>
+
+<p>Książka podzielona jest na kilka rozdziałów, które po kolei omawiają sposoby dobrej komunikacji, sztukę zadawania pytań (zarówno konkretyzujących jak i uogólniających), ustalanie priorytetów wymagań, a także efektywne prowadzenia spotkań, które nie będą stratą czasu i pozwolą nam osiągnąć założone cele.</p>
+
+<p>Każdy rozdział zawiera sporo przykładów zwrotów i zachowań, które ułatwią nam rozmowy z drugą stroną, a na końcu publikacji umieszczony jest swojego rodzaju bryk z zebranymi wszystkimi poradami w pigułce.</p>
+
+<p><strong>Podsumowanie</strong></p>
+
+<p>Jeśli książkę &ldquo;Clean Code&rdquo; Uncle Boba uważam za coś, co każdy programista powinien przeczytać zanim dopuści się go do klawiatury i kodu, to &ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo; jest pozycją, którą każdy programista powinien przyswoić <strong>zanim dopuści się go</strong> do rozmów z klientem. I wydaje mi się, że książka jest na tyle wartościowa, że warto by rozważyć jej przetłumaczenie na język angielski, no może po poprawieniu ilustracji, które były rysowane trochę &ldquo;na kolanie&rdquo; :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Agile By Example 2013 - review]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/10/agile-2013-review/"/>
+    <updated>2013-10-18T23:11:26+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/10/agile-2013-review</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve just returned from my trip to Warsaw to attend 3rd edition of <a href="http://agilebyexample.com">Agile By Example</a>.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/10/abe_2013.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/10/abe_2013.jpg" alt="abe_2013" /></a></p>
+
+<p>Here&rsquo;s my thoughts, impression and notes after this event.</p>
+
+<h4>Overview</h4>
+
+<p>This year&rsquo;s Agile By Example (or simply ABE) was my 2nd visit to this conference, I&rsquo;ve missed only the first edition. Last year I felt really refreshed by the conference built not only around code, coding, testing and developing software. This edition was bigger and had more famous speakers, also venue was really much more impressive. Cinema (as everyone who attended <a href="http://www.devoxx.be/">Devoxx</a> can confirm) is a great place to held any event of this type and Kino Praha was no different. Enormous screen, climatic rooms and cozy seats are things that really improve perception of the conference.</p>
+
+<!-- more -->
+
+
+<h4>Day One &ndash; notes</h4>
+
+<p><strong>Jeff Sutherland, opening key</strong></p>
+
+<p>Presentation by one of the fathers of Scrum. Evangelistic, as expected, but too much about Scrum as a &ldquo;silver bullet&rdquo; that will solve all our problems, every time, everywhere.</p>
+
+<ul>
+<li>Plan for interruptions. In each iteration add buffer to deal with unexpected stuff when it appears. Also add time to improve process to each sprint.</li>
+</ul>
+
+
+<p><strong>Pawel Brodzinki &ndash; Building Teams</strong></p>
+
+<p>****Really controversial with saying that we should hire women even if their technical skills is below the level we look for. It was said that woman will increase cognitive intelligence in team and will recompensate lower skills with increasing diversity and mentioned type of intelligence.</p>
+
+<ul>
+<li>From conversation with Pawel during the break, my question: What should be accepted difference between skill of hired woman and the rest of the team. Answer: &ldquo;Level that won&rsquo;t cause woman to hate you that you hired her and level that won&rsquo;t cause team to hate her and you&rdquo;. Pretty obvious, but thought provoking.</li>
+</ul>
+
+
+<p><strong>Tomek Włodarek &ndash; Are we agile yet
+</strong></p>
+
+<ul>
+<li><p>Scrumpede &ndash; 1. Sudden frenzied rush of (panic–stricken) organizations to do Scrum because it is the next best thing. 2. To flee in a headlong rush back to prescriptive ways of doing things because Scrum is difficult and hard work.</p></li>
+<li><p>Very interesting quote <em>&ldquo;Without knowledge action is useless and knowledge without action is futile.&rdquo;</em>, so even with the best intentions we are to fail if we aren&rsquo;t equipped with knowledge what should be done and how it should be done correctly.</p></li>
+</ul>
+
+
+<p><strong>Michał Przadka &ndash; Get agile and don&rsquo;t die trying</strong></p>
+
+<ul>
+<li><p>Don&rsquo;t&#8217; start with transforming whole organization or big part of it. Start with a small team, and then, step by step build agile environment around it.</p></li>
+<li><p>Some people might not fit into a new model of work. Some even say that it might be up to 30% that decide to leave a company if issue is not addressed properly</p></li>
+<li><p>Get help from coaches, agile mentors. My comment: Strangely it was repeated many times during the conference by different speakers. And what is most interesting, they weren&rsquo;t these coaches but people that hired an agile coach that proved to help a lot and be a successful and now they are suggesting similar steps to the other teams/organizations.  It could mean that such transformations are much easier with an assistance of someone who &ldquo;been there, done that&rdquo;.</p></li>
+<li><p>Kanban is deceptively simple, but requires a really high level of discipline to work. Albeit it&rsquo;s not the best idea to start &ldquo;being agile&rdquo; with Kanban</p></li>
+<li><p>If you can introduce only one practice, start with retrospective meetings. They really change a lot.</p></li>
+</ul>
+
+
+<p><strong>Sandro Mancuso &ndash; Software Craftsmanship</strong></p>
+
+<p>Most entertaining presentation during first day. There were some &ldquo;shits&rdquo;, many laughs, but also many comments how we should be a craftsman in what we do. If you can attend any of Sandro&rsquo;s talk, please do it or at least try to watch a video. It&rsquo;s really worth it :)</p>
+
+<ul>
+<li>We should prepare code in the project to accept changes in the future so that adding new stuff won&rsquo;t become painful and slow</li>
+</ul>
+
+
+<h4>Day Two &ndash; notes</h4>
+
+<p><strong>Jurgen Appelo &ndash; keynote</strong></p>
+
+<p>Jurgen is a quality speaker and his performance during ABE confirmed that. Talks was about intrinsic motivators, driving a change and convincing people to do what we want. Overview can be read <a href="http://www.noop.nl/2013/02/champfrogs.html">here</a>.</p>
+
+<ul>
+<li><p><em>Fake it until you make it </em>which means faking optimism will actually make you more optimisting and change the way other people perceive you.</p></li>
+<li><p>Look like a successful person, people like to be close to the success.</p></li>
+</ul>
+
+
+<p><strong>Paul Klipp &ndash; Kanban</strong></p>
+
+<p>Well prepared thoughts after five years of using Kanban in Paul&rsquo;s company. What didn&rsquo;t work, what they did about it and what were the results. Short stories from seasoned agile advocate.</p>
+
+<p><strong>Malcom Peacock &ndash; Planning a release</strong></p>
+
+<p>Very interesting analogy between planning a family car trip and planning a release of a product/project.</p>
+
+<ul>
+<li><p>Satellite navigation is our source of estimations, but we have to add some time for unexpected stuff that might appear during the travel.</p></li>
+<li><p>Geographical position is analogy to requirements, if we get wrong position, estimations will be incorrect and we will never reach our destination.</p></li>
+<li><p>In case of any delays, update release plan as Sat Nav updates estimated date of arrival.</p></li>
+<li><p>Inform product owner about changes as you would inform your passengers.</p></li>
+</ul>
+
+
+<p><strong>Michał Ostruszka &ndash; Code Reviews</strong></p>
+
+<p>This one is hard to judge as Michał,like me, is one of <a href="https://softwaremill.com/20-ceos-in-one-company/">twenty CEOs</a> in <a href="https://softwaremill.com/">SoftwareMill</a> :) Code reviews are very important part of our development process and Michał told about experiences, problems and solutions that should help when introducing or struggling with code reviews in your organization.</p>
+
+<p><strong>Tomasz Borowski &ndash; Spaceship Commander</strong></p>
+
+<p>Very interesting talk about introducing gamification to solve some problems in organisation. Lessons learnt during the process, examples what worked well, things that didn&rsquo;t and  had to be changed along the way. Game written as a core of described gamification process is <a href="http://yougameapp.com/">available online</a> and also open sourced on <a href="https://github.com/miksturait/YouGame">GitHub</a>.</p>
+
+<ul>
+<li><p>Beware of ending in pontification instead of gamification.</p></li>
+<li><p>Hide worst performers to avoid stupid managers using results of the game as a reason to fire people.</p></li>
+<li><p><del><em>Results of the game are base to yearly bonuses</em>. I am not sure if I got if correctly, but this one is in my opinion a huge mistake. Instead of gamification we end up with bonusification and all fun that comes with gamifying things in company is severely damaged.</del> Ok, Tomasz wrote me a tweet that they are not using YouGamApp to calculate bonuses. But they have something interesting instead just to allow people to give kudos to other team members. Please check readme on this <a href="https://github.com/miksturait/merit-money">project&rsquo;s GitHub page</a>.</p></li>
+</ul>
+
+
+<p><strong>Marek Kirejczyk &ndash; Agile Office</strong></p>
+
+<p>Marek showed us office of this company where thanks to visualisation of many things (burn-down charts, organisation changes kanban board, etc.) they radically increased transparency and empowered agile climate in <a href="http://www.elpassion.com/">elPassion</a>.</p>
+
+<p><strong>Tom Gilb &ndash; Agility is the Tool, not the Purpose</strong></p>
+
+<p>Tom is called a grand-father of Scrum as he introduced very similar concepts some time before Scrum was created. His talk was about how to by measuring impact of different project areas/functionalities/submodules on features/results we could analyze and pick with ones with highest effect and lowest cost. He showed rather complicated matrix from which company was able to choose on which area concentrate first. Concept is quite similar to <a href="http://impactmapping.org/">impact mapping</a>, but Tom&rsquo;s approach is more rigid and number-based. And for me it looks as both advantage and drawback: numbers should give are pretty objective view on project but on the other side, they are taken from discussions with people, so they can also be incorrect and subjective as well. Nevertheless, I fell this approach can be quite successful for smaller groups of people and not very complicated feature/impact matrix.</p>
+
+<p><strong>Surprise talk - Iwona Cymerman</strong></p>
+
+<p>Speaker and topic of this talks weren&rsquo;t revealed earlier and many people stayed until the end of event to see what this surprise is about. And I think no one was dissapointed.</p>
+
+<p>Most inspiring presentation of the conference. Iwona told us about introducing agile practices (stand-up meetings, pomodoro, agile manifesto) in here job which is not IT-related at all. She&rsquo;s a scientist in a Lab conducting various biology researches.  She also presented a history about how she started a movement that forces Parlament in Poland to change wrong law that affects every scientist in our country (vote will take place in a few weeks, fingers crossed).</p>
+
+<h4>Summary</h4>
+
+<p>After first day of ABE 2013 I felt a little bit disappointed, there were no &ldquo;wow&rdquo; effect, I&rsquo;ve made some notes but during breaks we shared similar thought with a few colleagues that maybe we are too agile-aware to learn anything new during this event. But then, 2nd day came by and everything changed. Topics were more interesting, talks more engaging and solutions more inspiring so at the and I can tell that even for someone who works in an agile environment for about 3 years it was well spent time. Some new stuff, some inspirations and of course, a great occasion to share and discuss our problems and approaches with people from different companies and with different experiences.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Transparently persist and retrieve encrypted data from database]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
+    <updated>2013-07-31T08:45:07+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
+    <content type="html"><![CDATA[<p>It&rsquo;s over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of <a href="http://confitura.pl">Confitura</a> (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.</p>
+
+<p>In this post I will shortly describe how we can store encrypted data in our database and retrieve it as already decrypted in a simple, transparent way using <a href="http://www.jasypt.org/">Jasypt</a> library. Our use case will be to store Twitter Api credentials so they are safe in our database but still easy to retrieve and use to post updates in our timeline.</p>
+
+<!-- more -->
+
+
+<p>So what we have is a simple entity representing our settings item:
+[java]
+@Entity
+public class SettingsItem implements Serializable {</p>
+
+<pre><code>@Id
+@GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
+private Integer id;
+
+private String name;
+private String encryptedValue;
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>In such table we will store values for Twitter Consumer Key, Twitter Access Token and so on.</p>
+
+<p>What we would like to achieve is that when we create SettingItem object with value as plain text and then we persist it, encryption is automatically performed so in the DB we have encrypted String. And of course, when we retrieve data from DB, we want to see decrypted String without additional effort, just out of the box.</p>
+
+<h3>Jasypt to the rescue</h3>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/07/jasypt-small.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/07/jasypt-small.png" alt="jasypt-small" /></a>
+<a href="http://www.jasypt.org">Jasypt</a> is a simple encryption library written in Java. It frees developer from dealing with low level configuration details and makes whole encryption process easy and straightforward. And what is most interesting now, it also has nice integration with Hibernate allowing seamless encryption/decryption of data stored in database.</p>
+
+<h4>Setup</h4>
+
+<p>To use Jasypt and its Hibernate integration module we have to add two items to our pom:
+[xml]</p>
+
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.jasypt&lt;/groupId&gt;
+    &lt;artifactId&gt;jasypt&lt;/artifactId&gt;
+    &lt;version&gt;1.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.jasypt&lt;/groupId&gt;
+    &lt;artifactId&gt;jasypt-hibernate4&lt;/artifactId&gt;
+    &lt;version&gt;1.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>[/xml]</p>
+
+<h4>Custom type</h4>
+
+<p>Then we have to declare custom Hibernate type (@TypeDef) in our entity:</p>
+
+<p>[java]
+@TypeDef(</p>
+
+<pre><code>    name="encryptedString",
+    typeClass=EncryptedStringType.class,
+    parameters= {
+            // value will be used later to register encryptor
+            @Parameter(name="encryptorRegisteredName", value="STRING_ENCRYPTOR")
+    }
+</code></pre>
+
+<p>)
+@Entity
+public class SettingsItem implements Serializable {
+   // (&hellip;)
+}
+[/java]</p>
+
+<p>and after that in the same class we can mark our encryptedValue field to use this custom type:</p>
+
+<p>[java]</p>
+
+<pre><code>@Type(type="encryptedString")
+private String encryptedValue;
+</code></pre>
+
+<p>[/java]</p>
+
+<h4>Registering encryptor</h4>
+
+<p>We are almost done. Last thing we have to do is register encryptor in HibernatePBEEncryptorRegistry class. This can be done in  initialization class of our application, e.g. ServletContext or simply in class with main(String[] args) method:</p>
+
+<p>[java]</p>
+
+<pre><code>String password = System.getProperty("jasypt.password");
+
+StandardPBEStringEncryptor strongEncryptor = new StandardPBEStringEncryptor();
+strongEncryptor.setPassword(password);
+HibernatePBEEncryptorRegistry registry =
+        HibernatePBEEncryptorRegistry.getInstance();
+registry.registerPBEStringEncryptor("STRING_ENCRYPTOR", strongEncryptor);
+</code></pre>
+
+<p>[/java]</p>
+
+<p>One important thing here is that by using System.getProperty() or System.getenv() we can safely configure our encryption mechanism, password is provided at runtime by setting proper value on server machine.</p>
+
+<h4>Summary</h4>
+
+<p>As as a summary, one short passing test showing that our solution works:</p>
+
+<p>[java]
+public class SettingsItemRepositoryShould extends IntegrationTest {</p>
+
+<pre><code>@Autowired
+private SettingsItemRepository repository;
+
+
+@BeforeClass
+public static void init() {
+    StandardPBEStringEncryptor strongEncryptor = new StandardPBEStringEncryptor();
+    strongEncryptor.setPassword("JohnDoe");
+
+    HibernatePBEEncryptorRegistry registry =
+            HibernatePBEEncryptorRegistry.getInstance();
+    registry.registerPBEStringEncryptor("STRING_ENCRYPTOR", strongEncryptor);
+}
+
+@Test
+public void shouldEncryptAndDecryptValue() {
+    // Given
+    String settingName = "test";
+    String value = "EncryptMe";
+
+    // When
+    repository.save(new SettingsItem(settingName, value));
+
+    // Then
+    SettingsItem settingsItem = repository.findByName(settingName);
+    assertThat(settingsItem.getEncryptedValue()).isEqualTo(value);
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Taking a screenshot when UI tests written in Geb fail]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
+    <updated>2013-05-27T19:30:36+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
+    <content type="html"><![CDATA[<p>This is a second post about <a href="http://www.gebish.org/"><strong>Geb</strong></a> in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.</p>
+
+<h3>The Problem</h3>
+
+<p>We need a simple way to configure Geb UI tests to take a screenshot on each test fail. This should be &ldquo;add and forget&rdquo; config that does not need any changes when we add more tests to our application.</p>
+
+<h3>Solution</h3>
+
+<p>We have to find some type of listener that waits for different test results and fires proper method when test fails. In <a href="http://testng.org/">TestNG</a> we have a <a href="http://testng.org/javadocs/org/testng/TestListenerAdapter.html">TestListenerAdapter</a> so probably Geb or Spock should have something similar.</p>
+
+<!-- more -->
+
+
+<p>After some digging I was able to locate <em>IRunListener</em> with method I need:
+[groovy]
+public interface IRunListener {</p>
+
+<pre><code>void beforeSpec(org.spockframework.runtime.model.SpecInfo specInfo);
+
+void beforeFeature(org.spockframework.runtime.model.FeatureInfo featureInfo);
+
+void beforeIteration(org.spockframework.runtime.model.IterationInfo iterationInfo);
+
+void afterIteration(org.spockframework.runtime.model.IterationInfo iterationInfo);
+
+void afterFeature(org.spockframework.runtime.model.FeatureInfo featureInfo);
+
+void afterSpec(org.spockframework.runtime.model.SpecInfo specInfo);
+
+void error(org.spockframework.runtime.model.ErrorInfo errorInfo); // &lt; -- this is it
+
+void specSkipped(org.spockframework.runtime.model.SpecInfo specInfo);
+
+void featureSkipped(org.spockframework.runtime.model.FeatureInfo featureInfo);
+</code></pre>
+
+<p>}
+[/groovy]</p>
+
+<p><strong>Simple version of test failure listener</strong>
+Luckily this interface comes with abstract class named <em>AbstractRunListener</em> that allows us to implement only methods we want instead of fulfilling the whole contract specified by IRunListener.</p>
+
+<p>So our first step will be to print something to the console every time our test fails:</p>
+
+<p>[groovy]
+class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
+
+<p>   def void error(ErrorInfo error) {</p>
+
+<pre><code>   System.out.println("Error in method " + error.method.name);
+</code></pre>
+
+<p>   }
+}
+[/groovy]</p>
+
+<p><strong>Adding custom listener to all tests with Spock extension</strong>
+But except implementation of a listener, we have to add this listener to our tests. Currently in Spock this is possible only with extensions. Again, I had to find proper extension to use and ended with interface IGlobalExtension which has only one method visiting each spec (test method) in our codebase:
+[groovy]
+public interface IGlobalExtension {
+  void visitSpec(SpecInfo spec);
+}
+[/groovy]</p>
+
+<p>So extension implementation looks as follows, to each visited spec we add our TakeScreenshotOnTestFailureListener listener:
+[groovy]
+class GlobalSpecExtension implements IGlobalExtension {</p>
+
+<pre><code>@Override
+void visitSpec(SpecInfo specInfo) {
+    specInfo.addListener(new TakeScreenshotOnTestFailureListener())
+}
+</code></pre>
+
+<p>}
+[/groovy]</p>
+
+<p><strong>Registering Spock global extension</strong>
+Each global extension have to be registered to Spock. This can be achieved by placing text file with easy to remember name in META-INF/services directory. File must be named <em>org.spockframework.runtime.extension.IGlobalExtension</em> and should contain full name of our implementation of IGlobalExtension interface:
+[java]
+com.smscpl.mc5.uitests.geb_extensions.GlobalSpecExtension
+[/java]</p>
+
+<p><strong>Taking a screenshot on each UI test fail</strong>
+Now on each test fail we will see that our text message is printed to the console. This proves that our solution is going in the right direction and last thing still not implemented is taking a screenshot.</p>
+
+<p>Taking a screenshot using Selenium driver is quite easy, it is one method call, but before that we have to acquire driver instance in our listener class. Directly it is impossible to access driver directly from the listener so we need to store it in globally accessible object. Simplest solution is to save reference to the driver when we create it in our GebConfig file. So let&rsquo;s create a singleton that will hold our browser:</p>
+
+<p>[groovy]
+@Singleton
+class BrowserInstance {</p>
+
+<pre><code>def FirefoxDriver browser;
+</code></pre>
+
+<p>}
+[/groovy]</p>
+
+<p>and initialise it in GebConfig.groovy script located in root package of our project:</p>
+
+<p>[groovy]
+driver =</p>
+
+<pre><code>{
+    newDriver = new FirefoxDriver()
+    BrowserInstance.instance.browser = newDriver
+    return newDriver
+}
+</code></pre>
+
+<p>[/groovy]</p>
+
+<p>Now we can access driver from our listener object, so final taking screenshot logic is pretty straightforward:
+[groovy]
+class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
+
+<p>   def void error(ErrorInfo error) {</p>
+
+<pre><code>   File screenFile = BrowserInstance.instance.browser.getScreenshotAs(OutputType.FILE); // take a screenshot
+
+   String fileName = createFileName(error) // generate file name based on test class and method names
+   File destinationFile = new File(System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + fileName)
+   Files.copy(screenFile, destinationFile)
+
+   System.out.println("##teamcity[publishArtifacts '" + destinationFile.getAbsolutePath() + "']"); // publish as artifact in TeamCity
+</code></pre>
+
+<p>   }</p>
+
+<pre><code>def private String createFileName(ErrorInfo error) {
+    String specName = error.method.parent.name
+    String testName = error.method.name
+    String milliseconds = new Date().getTime()
+    String fileName = specName + ": '" + testName + "' " + milliseconds + ".png"
+    fileName
+}
+</code></pre>
+
+<p>}
+[/groovy]</p>
+
+<p>And that&rsquo;s all. Each test fail will now appear with corresponding screenshot from browser.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Reusing browser instance in Geb UI tests]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/05/reusing-browser-instance-geb-ui-tests/"/>
+    <updated>2013-05-13T12:46:19+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/05/reusing-browser-instance-geb-ui-tests</id>
+    <content type="html"><![CDATA[<h4>UPDATE</h4>
+
+<p>_When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below is valid and works, there is a much simpler solution to this problem incorporated by Geb itself and I strongly suggest using it instead of mine, home-crafted hack. All credits go to <a href="http://stackoverflow.com/users/52142/artur-gajowy">Artur Gajowy</a> for showing me better approach.</p>
+
+<p>I have added short paragraph about this simpler solution at the end of this article, probably you should go <a href="http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests/#better-solution">directly there</a> :).
+_</p>
+
+<p><a href="http://gebish.org">Geb</a> is next-generation UI testing library that frees developer from dealing with Selenium API which is in many cases not so friendly. The most important feature of Geb is its support, or I would even say, strong encouragement to use Page Objects in your UI tests. Page Objects are also present in Selenium, but they are not as intuitive and east to use as in Geb.
+But enough about Geb itself. Today I will share with you simple trick how to share one browser instance when running many Geb UI tests. This will significantly reduce time needed to execute UI tests and also reduce memory usage on test machines.</p>
+
+<!-- more -->
+
+
+<h3>The Problem</h3>
+
+<p>Assume we have many test classes (spefications) similar to this one below.</p>
+
+<p>[groovy]
+class ExampleUITest extends GebSpec {</p>
+
+<pre><code>def "Should test feature 1"() {
+    given:
+    to LoginPage
+
+    when:
+    loginWith("login", "password")
+
+    then:
+    at HomePage
+    assert loggedUserLabel == "loggedUser"
+}
+
+def "Should test feature 2"() {
+    given:
+    to LoginPage
+
+    when:
+    loginWith("login", "password")
+
+    then:
+    at HomePage
+    assert loggedUserLabel == "loggedUser"
+}
+
+// and so on...
+</code></pre>
+
+<p>[/groovy]</p>
+
+<p>What we have to do is prepare browser instance (in our case Firefox one) to click through our tests. We could to it in setup() method:</p>
+
+<p>[groovy]
+class ExampleUITest extends GebSpec {</p>
+
+<pre><code>def setup() {
+    driver = new FirefoxDriver()
+}
+
+def "Should test feature 1"() {
+    // ...
+}  
+
+def cleanup() {
+    driver.quit()
+}
+</code></pre>
+
+<p>[/groovy]</p>
+
+<p>This approach works but it has one, big drawback. We all know that UI tests tend to last quite long and creating new browser instance for each, yes, each test method will only make this situation worse as it also takes some time to start browser on your testing server.</p>
+
+<p><strong>Second approach</strong></p>
+
+<p>We also could reuse same browser in each specification (each Geb class) by using setupSpec() and cleanupSpec() methods instead. This will reduce number of new instances created but still we will have many of them, especially in large codebase with many test classes.</p>
+
+<h3>Solution</h3>
+
+<p>My solution to this issue takes from both approaches presented above. But instead of creating browser for each specification, I am reusing one created in the first executed class.</p>
+
+<p>To make it work we need to introduce common abstract class for all our UI tests:
+[groovy]
+class IntelliGebSpec extends GebSpec {</p>
+
+<pre><code>static def cachedDriver // static variable will store our single driver instance
+
+def setupSpec() {
+    if ( cachedDriver == null) { // in first Specification this will be true
+        cachedDriver = new FirefoxDriver()  // so let's create driver and put it in cachedDriver variable
+    }
+}
+
+def setup() {
+    driver = cachedDriver   // each test should use our cached browser instance
+}
+
+// as we are reusing browser, we should logout from our application after
+// each test to have clean browser state on each test run
+def cleanup() {  
+    if ($(id: "logout").isDisplayed()) {
+        $(id: "logout").click()
+        waitFor { $(id: "inputName").isDisplayed() }
+    }
+    driver.manage().deleteAllCookies()
+}
+</code></pre>
+
+<p>}  <br/>
+[/groovy]</p>
+
+<h3>Summary</h3>
+
+<p>In this post I have shown my home made solution to reusing browser in multiple tests. I strongly suggest all of you to check and try Geb, as after over a year of using Selenium I am really impressed by this library. Easy to use with really cool Page Objects support.</p>
+
+<h3>Update: the best solution</h3>
+
+<p>As explained in reference documentation <a href="http://www.gebish.org/manual/current/configuration.html#driver_caching">here</a>, Geb provides mechanism to configure and reuse single instance of browser in all our UI tests. Only thing we have to do is create GebConfig script in default package that will contain driver instantiation script, e.g.:
+[groovy]
+// complete GebConfig.groovy file:
+driver =</p>
+
+<pre><code>{
+    newDriver = new FirefoxDriver()
+    newDriver.manage().window().setSize(new Dimension(1024, 768))
+    return newDriver
+}
+</code></pre>
+
+<p>[/groovy]</p>
+
+<p>And that&rsquo;s it, no hacking, no ugly static field.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Easy Html/Javascript JSON escaping in Scalatra ]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/04/scalatra-html-js-json-escaping/"/>
+    <updated>2013-04-30T23:59:59+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/04/scalatra-html-js-json-escaping</id>
+    <content type="html"><![CDATA[<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
+<a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
+So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.</p>
+
+<h3>Basic Scalatra project</h3>
+
+<p>To show how it could be accomplished, we need a simple sample project using Scalatra. I didn&rsquo;t want to create it from scratch by myself so I removed some Swagger related stuff from project by my colleague Krzysztof Ciesielski (<a href="http://abstractionextraction.wordpress.com/2013/03/31/using-swagger-with-scalatra/">his post about Scalatra and Swagger</a>) and I was ready to go :) Full commit with this basic project is available <a href="https://github.com/tdziurko/scalatra-json-escaping/commit/099c7ac30fe0f63319a890e848a94390c035e801">here</a>, but the most interesting class is shown below:</p>
+
+<!-- more -->
+
+
+<p>[scala]
+class ExampleServlet() extends ScalatraServlet with JacksonJsonSupport with JValueResult {</p>
+
+<p>  protected implicit val jsonFormats: Formats = DefaultFormats</p>
+
+<p>  val messages = List(</p>
+
+<pre><code>Message(1, "&lt;script&gt;&lt;alert&gt;Script hacker&lt;/alert&gt;&lt;/script&gt;", "Johny Hacker", new Date()),
+Message(2, "Decent message", "John Smith", new Date()),
+Message(3, "Message with &lt;b&gt;bolded fragment&lt;/b&gt;", "Kate Norton", new Date())
+</code></pre>
+
+<p>  )</p>
+
+<p>  before() {</p>
+
+<pre><code>contentType = formats("json")
+</code></pre>
+
+<p>  }</p>
+
+<p>  get(&ldquo;/&rdquo;) {</p>
+
+<pre><code>messages
+</code></pre>
+
+<p>  }</p>
+
+<p>  get(&ldquo;/:id&rdquo;) {</p>
+
+<pre><code>val id = params("id").toInt;
+val messageOptional = messages.find((m: Message) =&gt; m.id == id)
+
+log("optional =" + messageOptional)
+messageOptional match {
+  case Some(e) =&gt; e
+  case _ =&gt;
+}
+</code></pre>
+
+<p>  }
+}</p>
+
+<p>case class Message(id: Int, text: String, author: String, created: Date)
+[/scala]
+Ok, so what we have here? Simple Rest service that returns JSON. Get method without any params returns list of messages and get with passed id returns single message with given id. For the sake of simplicity, I have hardcoded list of three messages with two of them containing some Html/JS elements.</p>
+
+<h3>Definition of Done</h3>
+
+<p>It is always good to have clear Definition of Done so in our case there are two things we want our methods to do:</p>
+
+<ul>
+<li><p>Get /rest/example without parameters should return list of messages with escaped content</p></li>
+<li><p>Get /rest/example/1 (with parameter) should return single messages without escaping</p></li>
+</ul>
+
+
+<h3>Implementation details</h3>
+
+<p>To add escaping we need to find place in Scalatra where objects returned from method are converted to Json. After some digging I found <em>JacksonJsonOutput</em> trait with method <em>writeJon</em>:
+[scala]
+trait JacksonJsonOutput extends JsonOutput[JValue] with jackson.JsonMethods {
+  protected def writeJson(json: JValue, writer: Writer) {</p>
+
+<pre><code>mapper.writeValue(writer, json)
+</code></pre>
+
+<p>  }
+}
+[/scala]</p>
+
+<p>So what we have to do is override method and somehow define logic to perform actual escaping for us. Luckily JValue has function <em>map</em> that allows to apply passed function to every value in JSON. So we could fire escapeHtml4 method from Apache Commons Lang on each String value in JSON:
+[scala]
+  override def writeJson(json: JValue, writer: Writer) {</p>
+
+<pre><code>val escapedJson = json.map((x: JValue) =&gt;
+  x match {     // let's check what type is this element
+    case JString(y) =&gt; JString(escapeHtml4(y))    // if it is a String, escape it
+    case _ =&gt; x        // keep value of other type as is
+  }
+)
+mapper.writeValue(writer, escapedJson)
+</code></pre>
+
+<p>  }
+[/scala]</p>
+
+<p>As you can see all logic is done by <em>map</em> function, we only need to add a few lines of code that will filter and escape String values in JSON. So far so good, but now we are escaping every methods from our Rest API. This is not exactly what we wanted to achieve. To get it done right, we need to define a mechanism to disable escaping for a specific method.</p>
+
+<h4>Wrapping marker object</h4>
+
+<p>So we need a marker &ldquo;something&rdquo; (class, interface or trait) that will tell <em>writeJson</em> method which data shouldn&rsquo;t be escaped.
+And after trying different approaches it turned out that only thing we need is to wrap value returned from method in a marker object and then in <em>writeJson</em> check if its is wrapped or not and escape only not wrapped data. So workflow looks as follows:</p>
+
+<ol>
+<li><p> If we dont&#8217; want escaping, wrap returned object in a <em>NotEscapedJsonWrapper</em></p></li>
+<li><p> In writeJson check if object to write is a wrapper. If so, only unwrap it and write. It it is not a wrapper, escape all Strings inside object and wride data after that</p></li>
+</ol>
+
+
+<p>Looks easy. We need simple wrapper class:
+[scala]
+  case class NotEscapedJsonWrapper<a href="notEscapedData:%20T">T</a>
+[/scala]</p>
+
+<p>and we need to wrap response with this object:
+[scala]
+  get(&ldquo;/:id&rdquo;) {</p>
+
+<pre><code>val id = params("id").toInt;
+val messageOptional = messages.find((m: Message) =&gt; m.id == id)
+
+log("optional =" + messageOptional)
+
+messageOptional match {
+  case Some(e) =&gt; NotEscapedJsonWrapper(e) // wrap data that we don't want to be escaped
+  case _ =&gt;
+}
+</code></pre>
+
+<p>  }
+[/scala]</p>
+
+<p>And after that we have to modify <em>writeJson</em> to check if object to be written is wrapped with &ldquo;not-escape-me&rdquo; marker object or not.
+[scala]
+  override def writeJson(json: JValue, writer: Writer) {</p>
+
+<pre><code>(json \ "notEscapedData") match {     // check if json contains field 'notEscapedData' meaning that it is wrapping object
+  case JNothing =&gt; {                  // no wrapper, so we perform escaping
+    val escapedJson = json.map((x: JValue) =&gt;
+      x match {
+        case JString(y) =&gt; JString(escapeHtml4(y))
+        case _ =&gt; x
+      }
+    )
+    mapper.writeValue(writer, escapedJson)
+  }
+  case _ =&gt; {    // field 'notEscapedData' detected, unwrap and return clean object
+    mapper.writeValue(writer, json \ "notEscapedData")
+  }
+}
+</code></pre>
+
+<p>  }
+[/scala]</p>
+
+<p>And after that we could compile and start container with our small application. When we enter /rest/example we will get list of all messages with every String properly escaped. And if we request /rest/example/1 we will get single message as not-escaped data. That&rsquo;s all, we have our escaping working.</p>
+
+<h3>Summary</h3>
+
+<p>In this short post I&rsquo;ve described how to implement Html/Js escaping in Scalatra based application in a pretty straightforward way that can be easily defined in one, common place without need to add manual escaping in every method that needs that. Thanks to this, our application is much safer and only explicitly declared methods can return potentially unsafe data.
+Source code of this small example app is available <a href="https://github.com/tdziurko/scalatra-json-escaping">on GitHub</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[XStream - XStreamely easy way to work with XML data in Java]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
+    <updated>2013-04-22T10:55:55+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
+    <content type="html"><![CDATA[<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif" alt="xstream" /></a></p>
+
+<h3>Overview</h3>
+
+<p><a href="http://xstream.codehaus.org/">XStream</a> is a small library to serialize data between Java objects and XML. It&rsquo;s lightweight, small, has nice API and what is most important, it works with and without custom annotations that we might be not allowed to add when we are not the owner of Java classes.</p>
+
+<!-- more -->
+
+
+<h3>First example</h3>
+
+<p>Suppose we have a requirement to load configuration from xml file:
+[xml]
+<config></p>
+
+<pre><code>&lt;inputFile&gt;/Users/tomek/work/mystuff/input.csv&lt;/inputFile&gt;
+&lt;truststoreFile&gt;/Users/tomek/work/mystuff/truststore.ts&lt;/truststoreFile&gt;
+&lt;keystoreFile&gt;/Users/tomek/work/mystuff/CN-user.jks&lt;/keystoreFile&gt;
+
+&lt;!-- ssl stores passwords--&gt;
+&lt;truststorePassword&gt;password&lt;/truststorePassword&gt;
+&lt;keystorePassword&gt;password&lt;/keystorePassword&gt;
+
+&lt;!-- user credentials --&gt;
+&lt;user&gt;user&lt;/user&gt;
+&lt;password&gt;secret&lt;/password&gt;
+</code></pre>
+
+<p></config>
+[/xml]</p>
+
+<p>And we want to load it into Configuration object:
+[java]
+public class Configuration {</p>
+
+<pre><code>private String inputFile;
+private String user;
+private String password;
+
+private String truststoreFile;
+private String keystoreFile;
+private String keystorePassword;
+private String truststorePassword;
+
+// getters, setters, etc.
+</code></pre>
+
+<p>}
+[/java]
+So basically what we have to do is:
+[java]</p>
+
+<pre><code>FileReader fileReader = new FileReader("config.xml");  // load our xml file  
+XStream xstream = new XStream();     // init XStream
+// define root alias so XStream knows which element and which class are equivalent
+xstream.alias("config", Configuration.class);    
+Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
+</code></pre>
+
+<p>[/java]</p>
+
+<p>And that&rsquo;s all, easy peasy :)</p>
+
+<h3>Something more serious</h3>
+
+<p>Ok, but previous example is very basic so now let&rsquo;s do something more complicated: real XML returned by real WebService.</p>
+
+<p>[xml]
+<DATA xmlns=""></p>
+
+<pre><code>&lt;BAN&gt;
+    &lt;UPDATED_AT&gt;2013-03-09&lt;/UPDATED_AT&gt;
+    &lt;TROUBLEMAKER&gt;
+        &lt;NAME1&gt;JOHN&lt;/NAME1&gt;
+        &lt;NAME2&gt;EXAMPLE&lt;/NAME2&gt;
+        &lt;AGE&gt;24&lt;/AGE&gt;
+        &lt;NUMBER&gt;ASD123123&lt;/NUMBER&gt;
+    &lt;/TROUBLEMAKER&gt;
+&lt;/BAN&gt;
+&lt;BAN&gt;
+    &lt;UPDATED_AT&gt;2012-03-10&lt;/UPDATED_AT&gt;
+    &lt;TROUBLEMAKER&gt;
+        &lt;NAME1&gt;ANNA&lt;/NAME1&gt;
+        &lt;NAME2&gt;BAKER&lt;/NAME2&gt;
+        &lt;AGE&gt;26&lt;/AGE&gt;
+        &lt;NUMBER&gt;AXN567890&lt;/NUMBER&gt;
+    &lt;/TROUBLEMAKER&gt;
+&lt;/BAN&gt;
+&lt;BAN&gt;
+    &lt;UPDATED_AT&gt;2010-12-05&lt;/UPDATED_AT&gt;
+    &lt;TROUBLEMAKER&gt;
+        &lt;NAME1&gt;TOM&lt;/NAME1&gt;
+        &lt;NAME2&gt;MEADOW&lt;/NAME2&gt;
+        &lt;NUMBER&gt;SGH08945&lt;/NUMBER&gt;
+        &lt;AGE&gt;48&lt;/AGE&gt;
+    &lt;/TROUBLEMAKER&gt;
+&lt;/BAN&gt;
+</code></pre>
+
+<p></DATA>
+[/xml]</p>
+
+<p>What we have here is simple list of bans written in XML. We want to load it into collection of Ban objects. So let&rsquo;s prepare some classes (getters/setters/toString omitted):
+[java]
+public class Data {</p>
+
+<pre><code>private List bans = new ArrayList(); 
+</code></pre>
+
+<p>}</p>
+
+<p>public class Ban {</p>
+
+<pre><code>private String dateOfUpdate;
+private Person person;
+</code></pre>
+
+<p>}</p>
+
+<p>public class Person {</p>
+
+<pre><code>private String firstName;
+private String lastName;
+private int age;
+private String documentNumber;
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>As you can see there is some naming and type mismatch between XML and Java classes (e.g. field name1->firstName, dateOfUpdate is String not a Date), but it&rsquo;s here for some example purposes.</p>
+
+<p>So the goal here is to parse XML and get Data object with populated collection of Ban instances containing correct data. Let&rsquo;s see how it can be achieved.</p>
+
+<h4>Parse with annotations</h4>
+
+<p>First, easier way is to use annotations. And that&rsquo;s the suggested approach in situation when we can modify Java classes to which XML will be mapped.
+So we have:
+[java]
+@XStreamAlias(&ldquo;DATA&rdquo;) // maps DATA element in XML to this class
+public class Data {</p>
+
+<pre><code>// Here is something more complicated. If we have list of elements that are 
+// not wrapped in a element representing a list (like we have in our XML: 
+// multiple &lt;ban&gt; elements not wrapped inside &lt;bans&gt; collection, 
+// we have to declare that we want to treat these elements as an implicit list 
+// so they can be converted to List of objects. 
+@XStreamImplicit(itemFieldName = "ban") 
+private List bans = new ArrayList();
+</code></pre>
+
+<p>}</p>
+
+<p>@XStreamAlias(&ldquo;BAN&rdquo;) // another mapping
+public class Ban {</p>
+
+<pre><code>/*
+ We want to have different field names in Java classes so
+ we define what element should be mapped to each field
+*/
+@XStreamAlias("UPDATED_AT") // 
+private String dateOfUpdate;
+
+@XStreamAlias("TROUBLEMAKER")
+private Person person;
+</code></pre>
+
+<p>}</p>
+
+<p>@XStreamAlias(&ldquo;TROUBLEMAKER&rdquo;)
+public class Person {</p>
+
+<pre><code>@XStreamAlias("NAME1")
+private String firstName;
+
+@XStreamAlias("NAME2")
+private String lastName;
+
+@XStreamAlias("AGE") // String will be auto converted to int value
+private int age;
+
+@XStreamAlias("NUMBER")
+private String documentNumber;
+</code></pre>
+
+<p>[/java]</p>
+
+<p>And actual parsing logic is very short:</p>
+
+<p>[java]</p>
+
+<pre><code>FileReader reader = new FileReader("file.xml");  // load file
+
+XStream xstream = new XStream();
+xstream.processAnnotations(Data.class);     // inform XStream to parse annotations in Data class
+xstream.processAnnotations(Ban.class);      // and in two other classes... 
+xstream.processAnnotations(Person.class);   // we use for mappings
+Data data = (Data) xstream.fromXML(reader); // parse
+
+// Print some data to console to see if results are correct
+System.out.println("Number of bans = " + data.getBans().size());
+Ban firstBan = data.getBans().get(0);
+System.out.println("First ban = " + firstBan.toString()); 
+</code></pre>
+
+<p>[/java]</p>
+
+<p>As you can see annotations are very easy to use and as a result final code is very concise. But what to do in situation when we can&rsquo;t modify mapping classes? We can use different approach that doesn&rsquo;t require any modifications in Java classes representing XML data.</p>
+
+<h4>Parse without annotations</h4>
+
+<p>When we can&rsquo;t enrich our model classes with annotations, there is another solution. We can define all mapping details using methods from XStream object:</p>
+
+<p>[java]</p>
+
+<pre><code>FileReader reader = new FileReader("file.xml");  // three first lines are easy, 
+XStream xstream = new XStream();                 // same initialisation as in the 
+xstream.alias("DATA", Data.class);               // basic example above
+
+xstream.alias("BAN", Ban.class);             // two more aliases to map... 
+xstream.alias("TROUBLEMAKER", Person.class); // between node names and classes
+
+// We want to have different field names in Java classes so
+// we have to use aliasField(&lt;fieldInXml&gt;, &lt;mappedJavaClass&gt;, &lt;mappedFieldInJavaClass&gt;)
+xstream.aliasField("UPDATED_AT", Ban.class, "dateOfUpdate"); 
+xstream.aliasField("TROUBLEMAKER", Ban.class, "person");
+
+xstream.aliasField("NAME1", Person.class, "firstName");
+xstream.aliasField("NAME2", Person.class, "lastName");
+xstream.aliasField("AGE", Person.class, "age");  // notice here that XML will be auto-converted to int "age"
+xstream.aliasField("NUMBER", Person.class, "documentNumber");
+
+/*
+ Another way to define implicit collection
+*/ 
+xstream.addImplicitCollection(Bans.class, "bans");
+
+Data data = (Data) xstream.fromXML(reader);  // do the actual parsing
+
+// let's print results to check if data was parsed
+System.out.println("Number of bans = " + data.getBans().size());
+Ban firstBan = data.getBans().get(0);
+System.out.println("First ban = " + firstBan.toString());
+</code></pre>
+
+<p>[/java]</p>
+
+<p>As you can see XStream allows to easily convert more complicated XML structures into Java objects, it also gives a possibility to tune results by using different names if this from XML doesn&rsquo;t suit our needs.
+But there is one thing should catch your attention: we are converting XML representing a Date into raw String which isn&rsquo;t quite what we would like to get as a result. That&rsquo;s why we will add converter to do some job for us.</p>
+
+<h3>Using existing custom type converter</h3>
+
+<p>XStream library comes with set of built converters for most common use cases. We will use DateConverter. So now our class for Ban looks like that:
+[java]
+public class Ban {</p>
+
+<pre><code>private Date dateOfUpdate;
+private Person person;
+</code></pre>
+
+<p>}
+[/java]
+And to use DateConverter we simply have to register it with date format that we expect to appear in XML data:
+[java]
+   xstream.registerConverter(new DateConverter(&ldquo;yyyy-MM-dd&rdquo;, new String[] {}));
+[/java]</p>
+
+<p>and that&rsquo;s it. Now instead of String our object is populated with Date instance. Cool and easy! But what about classes and situations that aren&rsquo;t covered by existing converters? We could write our own.</p>
+
+<h3>Writing custom converter from scratch</h3>
+
+<p>Assume that instead of dateOfUpdate we want to know how many days ago update was done:
+[java]
+public class Ban {</p>
+
+<pre><code>private int daysAgo;
+private Person person;
+</code></pre>
+
+<p>}
+[/java]
+Of course we could calculate it manually for each Ban object but using converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/Converter.html">Converter</a> interface so we have to implement three methods with signatures looking a little bit scary:
+[java]
+public class DaysAgoConverter implements Converter {</p>
+
+<pre><code>@Override
+public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
+}
+
+@Override
+public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+}
+
+@Override
+public boolean canConvert(Class type) {
+    return false;
+}
+</code></pre>
+
+<p>}
+[/java]
+Last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/basic/AbstractSingleValueConverter.html">AbstractSingleValueConverter</a>that shields us from so low level mechanisms. And now our class looks much better:
+[java]
+public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
+
+<pre><code>@Override
+public boolean canConvert(Class type) {
+    return type.equals(Integer.class);
+}
+
+@Override
+public Object fromString(String str) {
+    return null;
+}
+
+public String toString(Object obj) {
+    return null;
+}
+</code></pre>
+
+<p>}
+[/java]
+Additionally we must override method toString(Object obj) defined in AbstractSingleValueConverter as we want to store Date in XML calculated from Integer, not a simple <em>Object.toString</em> value which would be returned from default <em>toString</em> defined in abstract parent.</p>
+
+<p><strong>Implementation</strong></p>
+
+<p>Code below is pretty straightforward, but most interesting lines are commented. I&rsquo;ve skipped all validation stuff to make this example shorter.
+[java]
+public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
+
+<pre><code>private final static String FORMAT = "yyyy-MM-dd"; // default Date format that will be used in conversion
+private final DateTime now = DateTime.now().toDateMidnight().toDateTime(); // current day at midnight
+
+public boolean canConvert(Class type) {
+    return type.equals(Integer.class);     // Converter works only with Integers
+}
+
+@Override
+public Object fromString(String str) {
+    SimpleDateFormat format = new SimpleDateFormat(FORMAT);
+    try {
+        Date date = format.parse(str);
+        return Days.daysBetween(new DateTime(date), now).getDays();  // we simply calculate days between using JodaTime
+    } catch (ParseException e) {
+        throw new RuntimeException("Invalid date format in " + str);
+    }
+}
+
+public String toString(Object obj) {
+    if (obj == null) {
+        return null;
+    }
+
+    Integer daysAgo = ((Integer) obj);
+    return now.minusDays(daysAgo).toString(FORMAT); // here we subtract days from now and return formatted date string
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p><strong>Usage</strong>
+To use our custom converter for a specific field we have to inform about it XStream object using registerLocalConverter:
+[java]</p>
+
+<pre><code>xstream.registerLocalConverter(Ban.class, "daysAgo", new DaysAgoConverter());
+</code></pre>
+
+<p>[/java]
+We are using &ldquo;local&rdquo; method to apply this conversion only to specific field and not to every Integer field in XML file. And after that we will get our Ban objects populated with number of days instead of Date.</p>
+
+<h3>Summary</h3>
+
+<p>That&rsquo;s all what I wanted to show you in this post. Now you have basic knowledge about what XStream is capable of and how it can be used to easily map XML data to Java objects If you need something more advanced, please check <a href="http://xstream.codehaus.org/">project official page</a> as it contains very good documentation and examples.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jasmine tests reporter in TeamCity with Scala and SBT]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/"/>
+    <updated>2013-03-26T23:10:57+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/03/jasmine-tests-reporter-teamcity-scala-sbt</id>
+    <content type="html"><![CDATA[<p><em>This post is basically re-post of article I have written on my company blog <a href="http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity">here</a>. But before you go there to read the full story, please check this short introduction below to decide if you are interested :)</em></p>
+
+<p>In <a href="http://SoftwareMill.com">our company</a> sandbox project called <a href="https://github.com/softwaremill/bootzooka">Bootzoooka</a> we are using pretty cool technology stack: Scala, Scalatra, SBT and AngularJS. Of course we have some JavaScript tests that are executed using <a href="https://github.com/guardian/sbt-jasmine-plugin">sbt jasmine plugin</a> from Guardian. Current 0.8 version of this plugin allows to execute these tests in TeamCity and even fails build when any JS test is not passing, but it didn&rsquo;t provide full test report for these tests. This plugin worked quite well for us, but we wanted something more and that&rsquo;s why added story saying &ldquo;<em>As a Developer I want to see jasmine tests in TeamCity report</em>&rdquo; to our Bootzooka backlog.</p>
+
+<p>To sum up, we have added support to TeamCity <a href="http://confluence.jetbrains.com/display/TCD65/Build+Script+Interaction+with+TeamCity#BuildScriptInteractionwithTeamCity-ReportingTests">Reporting Tests</a> feature allowing CI to react on specific log messages produced during different test execution phases and after that we released our forked version <a href="https://github.com/softwaremill/sbt-jasmine-plugin/tree/0.8.1">0.8.1 of sbt jasmine plugin</a> and also made a pull request to Guardian project.</p>
+
+<p>The whole process of plugin modification is described in <a href="http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity">this blog post </a>mentioned above.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Instant AngularJS Starter - book review]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/03/instant-angularjs-starter-book-review/"/>
+    <updated>2013-03-18T22:53:16+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/03/instant-angularjs-starter-book-review</id>
+    <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.
+<a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
+
+<h3>Content</h3>
+
+<p>Book is indeed very short and concise, but still worth reading. It contains four main chapters, two short: one about AngularJS in general and second one with places about this library that are worth visiting and people on the Web that often publish something interesting and valuable on this topic. Luckily two remaning chapters are longer and contain the most interesting part of material covered in this book.</p>
+
+<p>First large chapter guides us through a simple web application using Angular, starting from the scratch and then describing all its features and how they are implemented. It is a well formed and thought out step by step tutorial introducing newbies to the most important and most often used features of the library. And even if you have some experience with it, you will find something new and useful there.</p>
+
+<p>Second large section is about top five features of AngularJS that make it special and so easy to use. There are some stuff about the most frequently used directives and annotations, detailed description of dependency injection and its internals, modules and how application could be modularised. And the last part is about writing custom, reusable directives. For me that was the most informative part of this book.</p>
+
+<h3>Impressions</h3>
+
+<p>So to sum up, I can suggest &ldquo;Instant AngularJS Starter&rdquo; to everyone starting their adventure with AngularJS and also for developers that have some experience with this library. In my opinion it is well structured and allows much easier start that online documentation available on the official site. From the other side, definitely it is not a best choice for those using Angular extensively for a year or so, as I think they won&rsquo;t find anything new inside.</p>
+
+<p>With my experience lasting only a few months, I have found many useful stuff, I have learnt about less known directives: <em>ng-pluralize, ng-cloak or ng-init</em> to name only a few. There were also a very interesting explanation what are differences between <em>service</em>, <em>factory</em> and <em>provider</em> methods and in which cases they should be used.</p>
+
+<p>On the other hand I was really missing one subject: testing. Definitely this is the area that strongly distinguishes AngularJS from other libraries and frameworks and in my opinion it should be covered in every, even short, book about this library.</p>
+
+<p>But in spite of that, I was really happy to read this book and my knowledge about Angular increased significantly after finishing it. Some thing were new and some were shifted to a correct locations in my head.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Twitter Bootstrap Navbar as AngularJS component]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/02/twitter-bootstrap-navbar-angularjs-component/"/>
+    <updated>2013-02-28T23:26:25+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/02/twitter-bootstrap-navbar-angularjs-component</id>
+    <content type="html"><![CDATA[<p>You all know <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>, don&rsquo;t you? It&rsquo;s the awesome library to make your web application looks pretty good without spending many hours on CSS. We are using Bootstrap based design in our current project that also uses AngularJS and as we are planning to have many new pages, we decided that&rsquo;s the earlier we introduce some components to our UI the better. And, what shouldn&rsquo;t be a surprise, navigation bar natually became the first candidate.</p>
+
+<h3>Overview</h3>
+
+<p>So in this post I am going to show how externalize Twitter Bootstrap Navbar into a separate, flexible AngularJS component. All source code is available in <a href="https://github.com/tdziurko/twitter-bootstrap-navbar-as-angularjs-directive">my GitHub repository</a> , so everything should be easy to follow and repeat.</p>
+
+<h3>Basic setup</h3>
+
+<p>To start from the basics, I&rsquo;ve prepared three pages that use the same navigation bar. These pages will soon become our super simple web application using AngularJS:</p>
+
+<p><a href="http://tomaszdziurko.pl/2013/02/twitter-bootstrap-navbar-angularjs-component/navbar_angularjs1/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/02/navbar_angularjs1.png" alt="navbar_angularjs1" /></a></p>
+
+<p>Next step will be adding AngularJS and converting three pages into one small application. This is done in this <a href="https://github.com/tdziurko/twitter-bootstrap-navbar-as-angularjs-directive/commit/9d135332ef5e934920a65975f41fb06f6cc852a8">commit</a>. And after that we are ready to start working on our Navbar component.<!-- more --></p>
+
+<h3>Problem</h3>
+
+<p>On each page we have very similar html fragment rendering navbar element.</p>
+
+<p>[html highlight=&ldquo;8&rdquo;]</p>
+
+<pre><code>&lt;div class="navbar navbar-inverse"&gt;
+    &lt;div class="navbar-inner"&gt;
+        &lt;div class="container"&gt;
+            &lt;a class="brand"&gt;Example App&lt;/a&gt;
+
+            &lt;div class="nav-collapse"&gt;
+                &lt;ul class="nav"&gt;
+                    &lt;li class="active"&gt;&lt;a href="home.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="second.html"&gt;Second&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="third.html"&gt;Third&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>[/html]</p>
+
+<p>The only difference is in where class <em>active</em> which highlights link is located. And every time we see such repetition, our DRY detector should start ringing and don&rsquo;t stop until we do something about it.</p>
+
+<h3>Simple directive</h3>
+
+<p>For a start, we will move this code fragment into a AngularJS directive. At first, it will be only a &ldquo;dumb&rdquo; piece of code that just renders the same html in different places. All html from the listing above is now located in the components/bootstrapNavbar.html file.</p>
+
+<p>Next thing we need is a directive declaration in JS file:
+[js]
+angular.module(&ldquo;navbarapp&rdquo;, [&ldquo;controllers&rdquo;])
+  .directive(&ldquo;bootstrapNavbar&rdquo;, function() { // (1)
+  return {</p>
+
+<pre><code>restrict: "E",         // (2)
+replace: true,         // (3)
+transclude: true,      // (4)
+templateUrl: "bootstrapNavbar.html"    // (5)
+</code></pre>
+
+<p>  }});
+;
+[/js]</p>
+
+<p>What happens here:</p>
+
+<ol>
+<li><p> we declare directive, please keep in mind that name of directive you use in the code will be boostrap-navbar, camelCase is transformed into &ndash; character.</p></li>
+<li><p> restrict: E &ndash; means that directive is used as an element, there are other options: C-class, A-attribute, more on <a href="http://docs.angularjs.org/guide/directive">docs</a></p></li>
+<li><p> replace: true &ndash; means that markup from template will completely replace directive element in the page markup</p></li>
+<li><p> transclude: true &ndash; what it means&hellip; you better tell me, I am not able to describe it more vaguely that it is done in the <a href="http://docs.angularjs.org/guide/directive">docs</a> ;)</p></li>
+<li><p> templateUrl &ndash; file where we store our template content</p></li>
+</ol>
+
+
+<p>After that we should replace navbar html markup on every page with something like:</p>
+
+<p>[html]
+&lt;bootstrap-navbar>&lt;/bootstrap-navbar>
+[/html]</p>
+
+<p>Now it&rsquo;s high time to test it. Unfortunately there is one problem. Security policy does not allow browser to execute XHR(Ajax) calls from html file stored on our disk. So we have to setup lightweight httpServer to serve our files to browser. You can do it using Jetty or anything similar. I tried one from Python and it worked without issues. So basically navigate to directory where all files are stored, execute:
+[python]
+python -m SimpleHTTPServer 9000
+[/python]
+and then open your browser using address <a href="http://localhost:9000/home.html">http://localhost:9000/home.html</a>. You should see the same page as before, but now it is using our directive.</p>
+
+<h3>Flexibility++</h3>
+
+<p>So we have our first directive, yay! But its IQ is not that high. If you navigate to Second and Third Page, you will notice that it always renders link to Home Page as active, which is not exactly true for all pages. And in this paragraph we will try to make it smarter.</p>
+
+<p>At first, let&rsquo;s add attribute <em>current-tab</em> to our directive usages:
+[html]
+  &lt;bootstrap-navbar current-tab=&ldquo;Second&rdquo;>&lt;/bootstrap-navbar>
+[/html]</p>
+
+<p>Passed value must be the same as link name in the navbar, so in our example app it should be either: Home, Second or Third.</p>
+
+<p>Next step is to prepare our template file for easy modification. Because we will use jQuery selectors to find link to activate, we will remove active class and also add an id attribute to <em>ul</em> element to make it easier to locate with selector:</p>
+
+<p>[html]</p>
+
+<div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand">Example App</a>
+
+            <div class="nav-collapse">
+                <ul class="nav" id="navigation-tabs">     <!-- id added here -->
+                    <li><a href="../home.html">Home</a></li>   <!-- removed class='active' -->
+                    <li><a href="../second.html">Second</a></li>
+                    <li><a href="../third.html">Third</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p>[/html]</p>
+
+<p><strong>Core logic</strong>
+Now the last thing we have to do is some jQuery selector magic with little addition of AngularJS magic :)</p>
+
+<p>Angular directives have function <em>compile</em> which allows to alter directive template markup, so we will use it here. What this function receives is value of parameters defined on the component usage in our pages, so basically we have an access to all attributes that are declared where our navbar component is used, specifically our <em>current-tab</em> attribute (again transformed to <em>currentTab</em> inside JS file).
+So when we know which link should be highlighted, jQuery selectors come to do the actual job:
+[js]
+angular.module(&ldquo;navbarapp&rdquo;, [&ldquo;controllers&rdquo;])
+  .directive(&ldquo;bootstrapNavbar&rdquo;, function() {
+  return {</p>
+
+<pre><code>restrict: "E",
+replace: true,
+transclude: true,
+templateUrl: "components/bootstrapNavbar.html",
+compile: function(element, attrs) {  // (1)
+  var li, liElements, links, index, length;
+
+  liElements = $(element).find("#navigation-tabs li");   // (2)
+  for (index = 0, length = liElements.length; index &lt; length; index++) {
+    li = liElements[index];
+    links = $(li).find("a");  // (3)
+    if (links[0].textContent === attrs.currentTab) $(li).addClass("active"); // (4)
+  }
+}
+</code></pre>
+
+<p>  }});
+;
+[/js]</p>
+
+<p>So what we do here:</p>
+
+<ol>
+<li><p> define compile function that has passed two things, element on which it is called (template markup in our case) and attrs, an object with all attributes declared where our directive was used.</p></li>
+<li><p> select all list items from #navigation-tabs node</p></li>
+<li><p> find all links there, it will be only one</p></li>
+<li><p> if text content of link is equal to currentTab attribute we know that this is the link to highlight, so we simply add proper CSS class there</p></li>
+</ol>
+
+
+<p>It&rsquo;s the simplest working solution. Of course we could add some error checking, but I wanted to show easy to follow approach to introducing flexible components to AngularJS applications.</p>
+
+<h3>Summary</h3>
+
+<p>In this post I tried to show how with a few simple steps we could apply DRY rule to our html markup in AngularJS application. And as your application grow, you will probably find more and more places where html is duplicated making it a good candidate to convert it into component directive.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Running unit tests and integration tests separately with Maven Failsafe and TestNG]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/01/running-unit-tests-integration-tests-separately-maven-testng/"/>
+    <updated>2013-01-23T16:42:28+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/01/running-unit-tests-integration-tests-separately-maven-testng</id>
+    <content type="html"><![CDATA[<p>Recently for my new pet project I decided that I would like to have some tests executed during standard <em>mvn test</em> and some other ones only during different phase, let&rsquo;s call it integration phase. I googled and googled and nothing seemed to work, so after struggling with making my setup work I&rsquo;ve decided to write down my findings how I was able to configure TestNG with Maven to run integration and unit tests separately.</p>
+
+<h3>Basic (not working) setup</h3>
+
+<p>For integration testing there is a <a href="http://maven.apache.org/surefire/maven-failsafe-plugin/integration-test-mojo.html">Maven Failsafe plugin</a> that is supposed to do what we want out of the box. Unfortunately, things are not as easy and straightforward as we might expect.</p>
+
+<!-- more -->
+
+
+<p>Let&rsquo;s look at basic setup that should work:</p>
+
+<p>We have two test classes, one with IT postfix that will indicate that this is our integration test:</p>
+
+<p>[java]
+import org.testng.annotations.Test;</p>
+
+<p>import static org.fest.assertions.Assertions.assertThat;</p>
+
+<p>public class ExampleUnitTest {</p>
+
+<pre><code>@Test
+public void shouldPass() {
+    assertThat(false).isFalse();
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>and</p>
+
+<p>[java]
+import org.testng.annotations.Test;</p>
+
+<p>import static org.fest.assertions.Assertions.assertThat;</p>
+
+<p>public class StatusTestIT {</p>
+
+<pre><code>@Test
+public void shouldFail() {
+    assertThat("aaa").isEqualTo("");
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>and now let&rsquo;s declare plugin mentioned above in our pom.xml:</p>
+
+<p>[xml]
+<project></p>
+
+<pre><code>&lt;!-- ... --&gt;
+&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;!-- ... --&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+            &lt;version&gt;2.9&lt;/version&gt;
+        &lt;/plugin&gt;
+
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+            &lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
+            &lt;version&gt;2.13&lt;/version&gt;
+            &lt;configuration&gt;
+                &lt;includes&gt;
+                    &lt;include&gt;**/*IT.java&lt;/include&gt;
+                &lt;/includes&gt;
+            &lt;/configuration&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+
+<p></project>
+[/xml]</p>
+
+<p>After that we should see two things. <em>mvn test</em> should pass as we have a one green test in ExampleUnitTest class, but <em>mvn failsafe:integration-test</em> should fail with StatusTestIT red. But as I said before, this does not work. <em>mvn test</em> looks as expected, but second Maven execution is passing as well showing that no test were run. Plugin seems to omit our completely valid test&hellip;</p>
+
+<h3>Small fix doing its job</h3>
+
+<p>After testing different approaches I found out that all we need to make this setup work is to add plugin execution to an integration-test phase of maven life cycle. So tiny change, but now our integration tests are executed only when we call <em>mvn integration-test</em>.</p>
+
+<p>[xml]
+<plugin></p>
+
+<pre><code>&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+&lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
+&lt;version&gt;2.13&lt;/version&gt;
+&lt;configuration&gt;
+    &lt;includes&gt;
+        &lt;include&gt;**/*IT.java&lt;/include&gt;
+    &lt;/includes&gt;
+&lt;/configuration&gt;
+&lt;executions&gt;
+    &lt;execution&gt;
+        &lt;id&gt;failsafe-integration-tests&lt;/id&gt;
+        &lt;phase&gt;integration-test&lt;/phase&gt;
+        &lt;goals&gt;
+            &lt;goal&gt;integration-test&lt;/goal&gt;
+        &lt;/goals&gt;
+    &lt;/execution&gt;
+&lt;/executions&gt;
+</code></pre>
+
+<p></plugin>
+[/xml]</p>
+
+<p>And that&rsquo;s all, we could execute integration tests only when we really want to. Of course there are some things to remember when adopting setup described above:</p>
+
+<ul>
+<li><p>our unit tests must have Test postfix, if you use something else, we have to configure surefire plugin using <em>include</em></p></li>
+<li><p>during integration test unit tests are executed too. This is a small flaw in this setup, but exclude <em>*/</em>Test.java seem not to work :(</p></li>
+</ul>
+
+
+<p>Source code of this example setup is available on <a href="https://github.com/tdziurko/maven-testng-integration-tests">GitHub</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Configuring SBT JSLint with TeamCity build]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/01/configuring-sbt-jslint-with-teamcity/"/>
+    <updated>2013-01-08T22:23:39+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/01/configuring-sbt-jslint-with-teamcity</id>
+    <content type="html"><![CDATA[<p>In this post I will shortly describe configuration process of JSLint SBT plugin and then TeamCity build config that reacts on errors/warnings raised by this plugin.</p>
+
+<h3>Problem</h3>
+
+<p>In my current project we are working with rather non-standard technologies for a decent Java developer. Our backend runs on Scala and <a href="http://www.scalatra.org/">Scalatra</a> and serves pure JSON to the frontend written in JavaScript and <a href="http://angularjs.org/">AngularJS</a>. And as we are far from being seasoned JS developers, we want to have quality our JS codebase guarded by some automatic tool.</p>
+
+<h3>Toolbox</h3>
+
+<p>After some research it appeared that <a href="http://www.jslint.com/">JSLint</a> is for JS the same as <a href="http://findbugs.sourceforge.net/">FindBugs</a> for Java so we decided to try it out in our project. Luckily there is a <a href="https://github.com/philcali/sbt-jslint">JSLint SBT plugin</a> so we weren&rsquo;t forced to carve our own solution.</p>
+
+<!-- more -->
+
+
+<h3>Configuration</h3>
+
+<h4>SBT-JSLint plugin</h4>
+
+<p>According to the documentation to configure plugin we have to perform two following steps:</p>
+
+<ol>
+<li>Add plugin declaration to Plugins.scala file</li>
+</ol>
+
+
+<p>[scala]
+object Plugins extends Build {
+  lazy val plugins = Project(</p>
+
+<pre><code>"plugins",
+file("."),
+settings = Defaults.defaultSettings ++
+  Seq(addSbtPlugin("com.github.philcali" % "sbt-jslint" % "0.1.3"))
+</code></pre>
+
+<p>  )
+}
+[/scala]</p>
+
+<ol>
+<li>Include plugin settings in Build.scala:</li>
+</ol>
+
+
+<p>[scala]
+import sbtjslint.Plugin.<em>
+import sbtjslint.Plugin.LintKeys.</em></p>
+
+<p>// &hellip;
+  lazy val ui: Project = Project(</p>
+
+<pre><code>"bootstrap-ui",
+file("bootstrap-ui"),
+settings = buildSettings ++ lintSettings
+</code></pre>
+
+<p>  )
+[/scala]</p>
+
+<p>But as usual these steps are not enough. First of all, when we run <em>sbt jslint</em> we will see that it scans some default directory looking for JS files to analyse. And of course our JavaScript lies in a completely different place. Secondly, we want to add <em>jslint</em> step to build process so it is executed every time. So simply, we need lintCustomSettings with declared custom JS location and jslint step process added to test step in our build:</p>
+
+<p>[scala]
+  val lintCustomSettings = lintSettings ++ inConfig(Test)(Seq(</p>
+
+<pre><code>sourceDirectory in jslint &lt;&lt;= (baseDirectory)(_ / "src/main/webapp/app"),
+compile in Test &lt;&lt;= (compile in Test) dependsOn (jslint)
+</code></pre>
+
+<p>  ))</p>
+
+<p>  lazy val ui: Project = Project(</p>
+
+<pre><code>"bootstrap-ui",
+file("bootstrap-ui"),
+settings = buildSettings ++ lintCustomSettings
+</code></pre>
+
+<p>  )
+[/scala]</p>
+
+<p>Now after running <em>sbt test</em> we will see that JavaScript code is checked and report is printed to the console and also written in target/jslint/results.xml file.</p>
+
+<p>When you analyse report.xml you might be overwhelmed by the number of warnings raised by the plugin. Some of them are quite useful, but some might be ignored or, even better, disabled by custom flags. In our project we use something like:</p>
+
+<p>[scala]
+  flags in jslint ++= Seq(&ldquo;undef&rdquo;, &ldquo;vars&rdquo;, &ldquo;browser&rdquo;)
+[/scala]</p>
+
+<p>added to lintCustomSettings. For more flags and their descriptions please visit <a href="https://github.com/philcali/sbt-jslint/blob/master/README.md#some-notes">plugin documentation</a>.</p>
+
+<h4>Team City config</h4>
+
+<p>Now, as we have our plugin running and generating report.xml, we could configure TeamCity build to react on JS errors and warnings.</p>
+
+<p>Simply go to <em>Edit Configuration Settings</em> of your build and then choose &ldquo;Build Step: Command Line&rdquo;:</p>
+
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step1/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step1.png" alt="tc-step1" /></a></p>
+
+<p>And in the section Additional Build Features click &ldquo;Add build feature&rdquo;, choose &ldquo;XML report processing&rdquo;, then &ldquo;JSLint&rdquo; and specify path to the report.xml file. Personally I also check &ldquo;Verbose output&rdquo; to see more details in the build log.</p>
+
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step2/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step2.png" alt="tc-step2" /></a></p>
+
+<p>After saving we can go next build step named &ldquo;Build failure conditions&rdquo; and define two new rules there so we end up with something similar to screen presented below:</p>
+
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step3/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step3-1024x116.png" alt="tc-step3" /></a></p>
+
+<p>And finally our build is fully configured to report and  react on problems in JavaScript files:</p>
+
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step4/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step4.png" alt="tc-step4" /></a></p>
+
+<p>Reference commits from my current project:</p>
+
+<ul>
+<li><p><a href="https://github.com/softwaremill/bootstrap/commit/1a2d764db96c58ded2c07c9b88a6214f9b1b5794">commit 1</a></p></li>
+<li><p><a href="https://github.com/softwaremill/bootstrap/commit/c284acadcfdcad5cdaad1f082a6dab51d1f92107">commit 2</a> (only last modification in Build.scala)</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fixing bug in Hibernate Envers]]></title>
+    <link href="http://tdziurko.github.io/blog/2012/10/fixing-bug-hibernate-envers/"/>
+    <updated>2012-10-11T17:00:47+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2012/10/fixing-bug-hibernate-envers</id>
+    <content type="html"><![CDATA[<p>Recently in our project we were reported a strange bug. In a one report where we display historical data provided by <a href="http://www.jboss.org/envers">Hibernate Envers</a>, users encountered duplicated records in dropdown used for filtering. We tried to find a source of this bug, but after spending a few hours looking at the code responsible for this functionality we had to give up and ask for a dump from production database to check what actually is stored in one table. And when we got it and started investigating, it turned out that there is a bug in Hibernate Envers 3.6 that is a cause of our problems. But luckily after some investigation and invaluable help from <a href="http://www.warski.org/blog/">Adam Warski</a> (author of Envers) we were able to fix this issue.</p>
+
+<!-- more -->
+
+
+<h3>Bug itself</h3>
+
+<p>Let&rsquo;s consider following scenario:</p>
+
+<ol>
+<li><p> Transaction is started. We insert some audited entities during it and then it is rolled back.</p></li>
+<li><p> The same EntityManager is reused to start another transaction</p></li>
+<li><p> Second transaction is committed</p></li>
+</ol>
+
+
+<p>But when we check audit tables for entities that were created and then rolled back in step one we will notice that they are still there and were not rolled back as we could expect. We were able to reproduce it in a failing test in our project so next step was to prepare failing test in Envers so we could verify if our fix is working.</p>
+
+<h3>Failing test</h3>
+
+<p>The simplest test cases already present in Envers are located in Simple.java class and they look quite straightforward:</p>
+
+<p>[java]
+public class Simple extends AbstractEntityTest {</p>
+
+<pre><code>private Integer id1;
+
+public void configure(Ejb3Configuration cfg) {
+    cfg.addAnnotatedClass(IntTestEntity.class);
+}
+
+@Test
+public void initData() {
+    EntityManager em = getEntityManager();
+    em.getTransaction().begin();
+    IntTestEntity ite = new IntTestEntity(10);
+    em.persist(ite);
+    id1 = ite.getId();
+    em.getTransaction().commit();
+
+    em.getTransaction().begin();
+    ite = em.find(IntTestEntity.class, id1);
+    ite.setNumber(20);
+    em.getTransaction().commit();
+}
+
+@Test(dependsOnMethods = "initData")
+public void testRevisionsCounts() {
+    assert Arrays.asList(1, 2).equals(getAuditReader().getRevisions(IntTestEntity.class, id1));
+}
+
+@Test(dependsOnMethods = "initData")
+public void testHistoryOfId1() {
+    IntTestEntity ver1 = new IntTestEntity(10, id1);
+    IntTestEntity ver2 = new IntTestEntity(20, id1);
+
+    assert getAuditReader().find(IntTestEntity.class, id1, 1).equals(ver1);
+    assert getAuditReader().find(IntTestEntity.class, id1, 2).equals(ver2);
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>so preparing my failing test executing scenario described above wasn&rsquo;t a rocket science:</p>
+
+<p>[java]
+/<em>*
+ * @author Tomasz Dziurko (tdziurko at gmail dot com)
+ </em>/
+public class TransactionRollbackBehaviour  extends AbstractEntityTest {</p>
+
+<pre><code>public void configure(Ejb3Configuration cfg) {
+    cfg.addAnnotatedClass(IntTestEntity.class);
+}
+
+@Test
+public void testAuditRecordsRollback() {
+    // Given
+    EntityManager em = getEntityManager();
+    em.getTransaction().begin();
+    IntTestEntity iteToRollback = new IntTestEntity(30);
+    em.persist(iteToRollback);
+    Integer rollbackedIteId = iteToRollback.getId();
+    em.getTransaction().rollback();
+
+    // When
+    em.getTransaction().begin();
+    IntTestEntity ite2 = new IntTestEntity(50);
+    em.persist(ite2);
+    Integer ite2Id = ite2.getId();
+    em.getTransaction().commit();
+
+    // Then
+    List&lt;Number&gt; revisionsForSavedClass = getAuditReader().getRevisions(IntTestEntity.class, ite2Id);
+    assertEquals(revisionsForSavedClass.size(), 1, "There should be one revision for inserted entity");
+
+    List&lt;Number&gt; revisionsForRolledbackClass = getAuditReader().getRevisions(IntTestEntity.class, rollbackedIteId);
+    assertEquals(revisionsForRolledbackClass.size(), 0, "There should be no revisions for insert that was rolled back");
+}
+</code></pre>
+
+<p>}</p>
+
+<p>[/java]</p>
+
+<p>Now I could verify that tests is failing on forked <a href="https://github.com/hibernate/hibernate-orm/tree/3.6">3.6 branch</a> and check if fix that we had is making this test green.</p>
+
+<h3>The fix</h3>
+
+<p>After writing failing test in our project, I placed several breakpoints in Envers code to understand better what is wrong there. But imagine being thrown in a project developed for a few years by many programmers smarter than you. I felt overwhelmed and have no idea where fix should be applied and what exactly is not working as expected. Luckily in <a href="http://softwaremill.com">my company</a> we have Adam Warski on board. He is the initial author of Envers and actually he pointed us the solution.</p>
+
+<p>The fix itself contains only check that registers audit process that will be execute on transaction completion only when such process is still in the <em>Map&lt;Transaction, AuditProcess></em> for given transaction. It sounds complicated, but if you look at the class <em>AuditProcessManager</em> in <a href="https://github.com/tdziurko/hibernate-orm/commit/02c071718f29797bf0d76f3a6f2e6a5438ccaab1">this commit</a> it should be more clear what is happening there.</p>
+
+<h3>Official path</h3>
+
+<p>Besides locating problem and fixing it, there are some more official steps that must be performed to have fix included in Envers.</p>
+
+<p>Step 1. Create JIRA issue with bug - <a href="https://hibernate.onjira.com/browse/HHH-7682">https://hibernate.onjira.com/browse/HHH-7682</a></p>
+
+<p>Step 2: Create local branch <em>Envers-bugfix-HHH-7682</em> of forked Hibernate 3.6</p>
+
+<p>Step 3: Commit and push failing test and fix to your local and remote repository on Github</p>
+
+<p>Step 4: Create pull request - <a href="https://github.com/hibernate/hibernate-orm/pull/393">https://github.com/hibernate/hibernate-orm/pull/393</a></p>
+
+<p>Step 5: Wait for merge</p>
+
+<p>And that&rsquo;s all. Now fix is merged into main repository and we have one bug less in the world of open source :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Deploying Java Web Application on Jelastic]]></title>
+    <link href="http://tdziurko.github.io/blog/2012/10/deploying-java-web-application-jelastic/"/>
+    <updated>2012-10-09T21:44:34+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2012/10/deploying-java-web-application-jelastic</id>
+    <content type="html"><![CDATA[<p>Some time ago having your own full-fledged hosting with Java, Tomcat and any database wasn&rsquo;t cheap, but luckily we live in a very interesting times and now there are many virtual hosting services in the Cloud providing an easy and affordable way to deploy your application and make it available to users.</p>
+
+<p>And what is the best in such solutions, they grow with your application or startup. Services are free or almost free when your web application doesn&rsquo;t need much memory and processors but when your web-app starts to gather more users&#8217; attention and you have more and more concurrent sessions and visits each day, you could easily enhance your setup to match your needs. Everything is a matter of a few clicks, simple and fast.</p>
+
+<p>To test how this deployment process look like, I&rsquo;ve decided to put my <a href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/">Wicket tutorial</a> web application online. It consist of three pages and two tables in database so I think it shouldn&rsquo;t be a too complicated process to deploy it online. And as a Java hosting service I&rsquo;ve chosen <a href="http://jelastic.com">Jelastic</a>, recent winner of <a href="http://www.java.net/dukeschoice">2012 Duke&rsquo;s Choice Awards</a> announced during JavaOne conference this year. Duke&rsquo;s Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
+
+<h3>First steps</h3>
+
+<p>So after creating an account and choosing a hosting in Germany (which is the closest one to Poland where I live) I am redirected to my personal administration panel where in a straightforward step-by-step wizard I am requested to choose container /server (Tomcat 6/7,  Jetty amd Glassfish are available) and then my subdomain name. After that my server is deployed and after a moment I could check that <a href="http://tomaszdziurko.jelastic.dogado.eu/">http://tomaszdziurko.jelastic.dogado.eu/</a> is live and running. User is also encouraged to try and deploy pre-defined Hello World application. The whole process is extremely easy, just one click and in a moment we could check that we&rsquo;ve just deployed our first war on Jelastic:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/10/jelastic-demo.jpeg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/10/jelastic-demo.jpeg" alt="" /></a></p>
+
+<h3>Configuring more real application environment</h3>
+
+<p>So far everything was easy, but we didn&rsquo;t touch any real scenario so now it&rsquo;s high time to start deploying our example Wicket application. First step is to upload application war to the Jelastic. Then we have to enable and configure our database with three tables. To do that we choose &ldquo;Environment topology&rdquo; next to our only server and here we could turn on/off many interesting features: load balancers, caching solutions, multiple containers, SSL-s and what we currently need SQL and/or NoSQL database:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/10/dbConfig.jpeg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/10/dbConfig.jpeg" alt="" /></a></p>
+
+<p>So let&rsquo;s enable MySQL 5.5 and wait some time until it is configured and started on our virtual server. When everything is ready we will receive an email with login and password to our MySQL database instance. Now we could login to myPhpAdmin web interface and create user and MySQL tables required by our Wicket application. Because database url is no longer localhost:3306 we have to modify properties file in our project, rebuild it and upload war again. After that we are ready to deploy application on Jelastic. Simply, we click &ldquo;Deploy&rdquo; icon and then choose context name where application will be accessible. After that we must wait for &ldquo;Success&rdquo; message from deployment process and now we could check if <a href="http://tomaszdziurko.jelastic.dogado.eu/item-directory">http://tomaszdziurko.jelastic.dogado.eu/item-directory</a> is working as expected.</p>
+
+<h3>More and more options to choose and play with</h3>
+
+<p>This basic scenario has shown you how simple Java web application with database connecticity could be deployed on <a href="http://jelastic.com">Jelastic</a>. Of course in any business you will need more sophisticated stuff, but there aren&rsquo;t many things that you will not find available in this service. Most interesting stuff what you can do is:</p>
+
+<ul>
+<li><p>link your web-app to private Git/SVN repository and deploy it directly from Jelastic admin panel</p></li>
+<li><p>choose from multiple SQL and NoSQL databases</p></li>
+<li><p>launch your Virtual Dedicated Server (VDS) with root privileges and full control there</p></li>
+<li><p>use predefined load balancing and session replication configuration</p></li>
+<li><p>add new or duplicate server or database in a few clicks</p></li>
+<li><p>enable SSL</p></li>
+<li><p>use latest Java 7 in your applications</p></li>
+</ul>
+
+
+<h3>There are some cons too</h3>
+
+<p>Of course there are some drawbacks present. From what I&rsquo;ve noticed there are four things I find useful but missing on Jelastic:</p>
+
+<ul>
+<li><p><del>ability to set a few environment variables without buying whole VDS. I wanted to use these variables to deploy open source project directly from Github repository but with database login/password stored not in the publicly available source code but in these variables that could be loaded later in application and used to connect to database.</del> Update: looks like it is possible. See comment below by Marina Sprawa from Jelastic</p></li>
+<li><p>premium account type with pricing that is more suitable for people that only want to play with Jelastic and their pet projects longer than for 2 weeks using trial period</p></li>
+<li><p><del>ability to configure continuous deployment environment that auto deploys latest version each time when new commit appears in the repository</del> Update: it is also possible, see comment by Marina below</p></li>
+<li><p>JBoss 6 or 7 as an application server to choose from. I am not a big fan of Glassfish so for Java EE application I would prefer to use JBoss product.</p></li>
+</ul>
+
+
+<h3>Summary</h3>
+
+<p>So to sum up, service looks very interesting and if you consider using external service provider to deploy, scale and tune your production environment, Jelastic is one of the best choices currently available. Its options to quickly and easily configure load balancing and other parameters and hardware that is required when your application suddenly becomes very popular are a life-saver. Even for smaller projects there are many stuff that you will appreciate and quickly get accustomed to, so Jelastic looks as a good place to launching your startup application online.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Remember Me functionality in Apache Wicket]]></title>
+    <link href="http://tdziurko.github.io/blog/2012/09/remember-functionality-apache-wicket/"/>
+    <updated>2012-09-14T16:33:03+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2012/09/remember-functionality-apache-wicket</id>
+    <content type="html"><![CDATA[<p>It is quite common in web applications to have &ldquo;Remember Me&rdquo; functionality that allows user to be automatically logged in each time when he visits our website.</p>
+
+<p>Such feature can be implemented using <a href="http://static.springsource.org/spring-security/site/">Spring Security</a>, but in my opinion using request based authentication framework with component based web framework is not the best idea. These two worlds just do not fit well together so I prefer to use my own baked solution which I will present below.</p>
+
+<h3>Base project</h3>
+
+<p>We start with a simple web application written using latest, still hot <a href="http://wicket.apache.org/2012/09/05/wicket-6.0.0-released.html">Apache Wicket 6</a>. You can download complete sources from <a href="https://github.com/tdziurko/wicket-rememberme">GitHub</a> and start application using <em>mvn clean compile jetty:run</em> .</p>
+
+<p>Base application consists of two pages:</p>
+
+<ul>
+<li><p>Home Page: displays welcome message for logged and not-logged users or either logout or login link.</p></li>
+<li><p>Login Page: allows user to login basing on simple in-memory collection of users. Some working login/password pairs: John/john, Lisa/lisa, Tom/tom .</p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/09/home_page1.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/09/home_page1.jpg" alt="" /></a></p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/09/login_page.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/09/login_page-1024x488.jpg" alt="" /></a></p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/09/home_page2.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/09/home_page2-1024x402.jpg" alt="" /></a></p>
+
+<h3>Remember Me functionality</h3>
+
+<p>Standard way to implement Remember Me functionality looks as follows:</p>
+
+<ol>
+<li><p> Ask user if he wants to be remembered and auto-logged in the future.</p></li>
+<li><p> If so, save cookies with login and password on his computer.</p></li>
+<li><p> For every new user coming to our website, check if cookies from step 2 are present and if so, auto login user.</p></li>
+<li><p> When he manually logs out, remove cookies so it is possible to clear data used to auto-login.</p></li>
+</ol>
+
+
+<p>Point 2 needs some explanation. In this example app we are going to save login and <strong>not hashed, not encrypted</strong> password in cookies. In real scenario this is unacceptable. Instead of it, you should consider storing hashed and salted password so even if someone  intercepts user cookie, password still will be secret and more work will be needed to decode it.
+<strong>Update:</strong> <a href="https://twitter.com/mmatloka">Michał Matłoka</a> posted two very interesting links how this could be done in real systems. Those approaches do not even use password nor password hashes. For more details please look into his comment below this post.</p>
+
+<p><strong>Step 1: As a User I want to decide if  I want to use &ldquo;Remember Me&rdquo; feature</strong>
+<a href="https://github.com/tdziurko/wicket-rememberme/commit/c5e91b39a203c9103754f8a03ab2e4151fc9e199">Link to commit with this step</a></p>
+
+<p>To allow user to notify application that he wants to use &lsquo;Remember Me&rsquo; functionality we will simply add a checkbox to login page. So we need to amend LoginPage java and html file a bit (new stuff is highlighted):</p>
+
+<p>[html highlight=&ldquo;21,22,23,24,25,26,27&rdquo; title=&ldquo;LoginPage.html fragment&rdquo;]</p>
+
+<pre><code>&lt;form wicket:id="form" class="form-horizontal"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Please login&lt;/legend&gt;
+    &lt;/fieldset&gt;
+
+    &lt;div class="control-group"&gt;
+        &lt;div wicket:id="feedback"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="control-group"&gt;
+        &lt;label class="control-label" for="login"&gt;Login&lt;/label&gt;
+        &lt;div class="controls"&gt;
+            &lt;input type="text" id="login" wicket:id="login" /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="control-group"&gt;
+        &lt;label class="control-label" for="password"&gt;Password&lt;/label&gt;
+        &lt;div class="controls"&gt;
+            &lt;input type="password" id="password" wicket:id="password" /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="control-group"&gt;
+        &lt;div class="controls"&gt;
+            &lt;label class="checkbox"&gt;
+                &lt;input type="checkbox" wicket:id="rememberMe"&gt; Remember me on this computer
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-actions"&gt;
+        &lt;input type="submit" wicket:id="submit" value="Login" title="Login" class="btn btn-primary"/&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>[/html]</p>
+
+<p>[java highlight=&ldquo;3,13&rdquo; title=&ldquo;LoginPage.java fragment&rdquo;]</p>
+
+<pre><code>private String login;
+private String password;
+private boolean rememberMe;
+
+public LoginPage() {
+
+    Form&lt;Void&gt; loginForm = new Form&lt;Void&gt;("form");
+    add(loginForm);
+
+    loginForm.add(new FeedbackPanel("feedback"));
+    loginForm.add(new RequiredTextField&lt;String&gt;("login", new PropertyModel&lt;String&gt;(this, "login")));
+    loginForm.add(new PasswordTextField("password", new PropertyModel&lt;String&gt;(this, "password")));
+    loginForm.add(new CheckBox("rememberMe", new PropertyModel&lt;Boolean&gt;(this, "rememberMe")));
+
+    Button submit = new Button("submit") {
+        // (...)
+    };
+
+    loginForm.add(submit);
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>Now we are ready for next step.</p>
+
+<p><strong>Step 2: As a System I want to save login and password in cookies</strong>
+<a href="https://github.com/tdziurko/wicket-rememberme/commit/b9a419161871b47821171790f443cf92869ac631">Link to commit with this step</a></p>
+
+<p>First we need a CookieService that will encapsulate all logic responsible for working with cookies: saving, listing and clearing cookie when needed. Code is rather simple, we work with WebResponse and WebRequest classes to modify cookies in user&rsquo;s browser.</p>
+
+<p>[java title=&ldquo;CookieService.java&rdquo;]
+public class CookieService {</p>
+
+<pre><code>public Cookie loadCookie(Request request, String cookieName) {
+
+    List&lt;Cookie&gt; cookies = ((WebRequest) request).getCookies();
+
+    if (cookies == null) {
+        return null;
+    }
+
+    for (Cookie cookie : cookies) {
+        if(cookie.getName().equals(cookieName)) {
+            return cookie;
+        }
+    }
+
+    return null;
+}
+
+public void saveCookie(Response response, String cookieName, String cookieValue, int expiryTimeInDays) {
+    Cookie cookie = new Cookie(cookieName, cookieValue);
+    cookie.setMaxAge((int) TimeUnit.DAYS.toSeconds(expiryTimeInDays));
+    ((WebResponse)response).addCookie(cookie);
+}
+
+public void removeCookieIfPresent(Request request, Response response, String cookieName) {
+    Cookie cookie = loadCookie(request, cookieName);
+
+    if(cookie != null) {
+        ((WebResponse)response).clearCookie(cookie);
+    }
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Then when user checks &lsquo;Remember Me&rsquo; on LoginPage, we have to save cookies in his browser:</p>
+
+<p>[java title=&ldquo;LoginPage.java fragment&rdquo; highlight=&ldquo;14,15,16,17,18&rdquo;]</p>
+
+<pre><code>Button submit = new Button("submit") {
+    @Override
+    public void onSubmit() {
+        UserService userService = WicketApplication.get().getUserService();
+
+        User user = userService.findByLoginAndPassword(login, password);
+
+        if(user == null) {
+            error("Invalid login and/or password. Please try again.");
+        }
+        else {
+            UserSession.get().setUser(user);
+
+            if(rememberMe) {
+                CookieService cookieService = WicketApplication.get().getCookieService();
+                cookieService.saveCookie(getResponse(), REMEMBER_ME_LOGIN_COOKIE, user.getLogin(), REMEMBER_ME_DURATION_IN_DAYS);
+                cookieService.saveCookie(getResponse(), REMEMBER_ME_PASSWORD_COOKIE, user.getPassword(), REMEMBER_ME_DURATION_IN_DAYS);
+            }
+
+            setResponsePage(HomePage.class);
+        }
+    }
+};
+</code></pre>
+
+<p>[/java]</p>
+
+<p><strong>Step 3: As a User I want to be auto-logged when I return to web application</strong>
+<a href="https://github.com/tdziurko/wicket-rememberme/commit/59cb50d433a79a73b1020b488d5a13a7355da0d3">Link to commit with this step</a></p>
+
+<p>To check if user entering our application is a &ldquo;returning user to auto-login&rdquo; we have to enrich logic responsible for creating new user session. Currently it is done in WicketApplication class which when requested, creates new WebSession instance. So every time new session is created, we have to check for cookies presence and if they are valid user/password pair, auto-login this user.</p>
+
+<p>So let&rsquo;s start with extracting session related logic into separate class called SessionProvider. It will need UserService and CookieService to check for existing users and cookies so we pass them as a references in the constructor.</p>
+
+<p>[java title=&ldquo;WicketApplication.java fragment&rdquo; highlight=&ldquo;5,9&rdquo;]
+public class WicketApplication extends WebApplication {</p>
+
+<pre><code>private UserService userService = new UserService();
+private CookieService cookieService = new CookieService();
+private SessionProvider sessionProvider = new SessionProvider(userService, cookieService);
+
+@Override
+public Session newSession(Request request, Response response) {
+    return sessionProvider.createNewSession(request);
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Role of SessionProvider is to create new UserSession, check if proper cookies are present and if so, set logged user. Additionally we add feedback message to inform user that he was auto logged. So let&rsquo;s look into the code:</p>
+
+<p>[java title=&ldquo;SessionProvider.java&rdquo;]
+public class SessionProvider {</p>
+
+<pre><code>public SessionProvider(UserService userService, CookieService cookieService) {
+    this.userService = userService;
+    this.cookieService = cookieService;
+}
+
+public WebSession createNewSession(Request request) {
+    UserSession session = new UserSession(request);
+
+    Cookie loginCookie = cookieService.loadCookie(request, REMEMBER_ME_LOGIN_COOKIE);
+    Cookie passwordCookie = cookieService.loadCookie(request, REMEMBER_ME_PASSWORD_COOKIE);
+
+    if(loginCookie != null &amp;&amp; passwordCookie != null) {
+        User user = userService.findByLoginAndPassword(loginCookie.getValue(), passwordCookie.getValue());
+
+        if(user != null) {
+            session.setUser(user);
+            session.info("You were automatically logged in.");
+        }
+    }
+
+    return session;
+}
+</code></pre>
+
+<p>}</p>
+
+<p>[/java]</p>
+
+<p>To show feedback message on HomePage.java we must add FeedbackPanel there, but for the brevity I will omit this in this post. You can read <a href="https://github.com/tdziurko/wicket-rememberme/commit/59cb50d433a79a73b1020b488d5a13a7355da0d3">commit</a> to check how to do that.</p>
+
+<p>So we after three steps we should have &lsquo;Remember Me&rsquo; working. To check it quickly please modify session timeout in web.xml file by adding:</p>
+
+<p>[xml title=&ldquo;web.xml fragment&rdquo;]</p>
+
+<pre><code>&lt;session-config&gt;
+    &lt;session-timeout&gt;1&lt;/session-timeout&gt;
+&lt;/session-config&gt;
+</code></pre>
+
+<p>[/xml]</p>
+
+<p>and then start application <em>mvn clean compile jetty:run</em>, go to login page, login, close browser and after over a 1 minute (when session expires) open it again on <a href="http://localhost:8080.">http://localhost:8080.</a> You should see something like this:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/09/auto_logged.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/09/auto_logged-1024x313.jpg" alt="" /></a></p>
+
+<p>So it works. But we still need one more thing: allow user to remove cookies and turn-off auto-login.</p>
+
+<p><strong>Step 4: As a User I want to be able to logout and clear my cookies</strong>
+<a href="https://github.com/tdziurko/wicket-rememberme/commit/d9b35803ea0321dc5e80f80d480a6af527a457fa">Link to commit with this step</a>
+In the last step we have to allow user to clear his data and disable &ldquo;Remember Me&rdquo; for his account. This will be achieved by clearing both cookies when user explicitly clicks Logout link.</p>
+
+<p>[java title=&ldquo;HomePage.java fragment&rdquo; highlight=&ldquo;4,5,6,7,8,9&rdquo;]</p>
+
+<pre><code>Link&lt;Void&gt; logoutLink = new Link&lt;Void&gt;("logout") {
+    @Override
+    public void onClick() {
+        CookieService cookieService = WicketApplication.get().getCookieService();
+        cookieService.removeCookieIfPresent(getRequest(), getResponse(), SessionProvider.REMEMBER_ME_LOGIN_COOKIE);
+        cookieService.removeCookieIfPresent(getRequest(), getResponse(), SessionProvider.REMEMBER_ME_PASSWORD_COOKIE);
+
+        UserSession.get().setUser(null);
+        UserSession.get().invalidate();
+    }
+};
+logoutLink.setVisible(UserSession.get().userLoggedIn());
+add(logoutLink);
+</code></pre>
+
+<p>[/java]</p>
+
+<h3>Summary</h3>
+
+<p>So that&rsquo;s all. In this port we have implemented simple &lsquo;Remember Me&rsquo; functionality in web application written using Apache Wicket without using any external authentication libraries.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Practical Unit Testing with TestNG and Mockito - review]]></title>
+    <link href="http://tdziurko.github.io/blog/2012/07/practical-unit-testing-testng-mockito-review/"/>
+    <updated>2012-07-20T17:14:06+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2012/07/practical-unit-testing-testng-mockito-review</id>
+    <content type="html"><![CDATA[<p>Book &ldquo;<em>Practical Unit Testing with TestNG and Mockito</em>&rdquo; (<a href="http://practicalunittesting.com/">website</a>) covers wide spectrum of knowledge about testing in Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get most of this title. Below you can read some of my thoughts after reading this book.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png" alt="" /></a></p>
+
+<!-- more -->
+
+
+<h3>Quick look at content</h3>
+
+<p><a href="http://kaczanowscy.pl/tomek/">Tomek Kaczanowski</a>, author of this book, starts with describing some basic concepts needed to understand testing and classification of tests. He introduces definitions of SUT- System Under Test and DOC &ndash; Depended On Component. Then after this really short theoretical chapter we start diving deeper into gradually more and more complex testing cases.</p>
+
+<p>We start with simple class without any dependencies, easy to understand and easy to test. Then we could feel rhythm of Test-Driven Development with TestNG, learn how to use mocks, stubs and spiess from Mockito, employ matchers and checking assertions using FEST. Example after example, we are introduced to more complex features of those libraries. but luckily for those not using TestNG with Mockito, each chapter is full of general tips and suggestions abuot testing methodology, how to approach testing properly and finally how and what to test.</p>
+
+<p>Then we could learn about customizing TestNG using listeners and reporters, organizing test classes into packages and modules, organizing code in test methods (famous BDD given-when-then trio).</p>
+
+<p>Last chapters are devoted completely to most general things: maintaining tests, deciding which parts of your code base are worth testing, checking quality of your tests with static analysis tools (PMD, Coberturda and so on).</p>
+
+<h3>My opinion</h3>
+
+<p>I am using TestNG for over a year (after switching from JUnit), Mockito for more than three years so I am quite familiar with those tools. And for people with similar or greater experience this book will not surprise on each single page. This will or, at least in my opinion, will happen for those less familiar with testing and using TestNG and Mockito. For them this book is a totally must read as it gently introduces reader to world of proper unit testing using best toolbos available in Java world.</p>
+
+<p>I am far from saying that for more experienced developers this book is not a good way to spend their time. It&rsquo;s still good, I learned many interesting features of described libraries but what is most important, my knowledge about testing is now more complete and more ordered. Reading all this stuff helped me to put many stuff into &ldquo;proper shelves&rdquo; in my mind. And that&rsquo;s very good.</p>
+
+<p><strong>To sum up:</strong> The less experienced in testing you are, the more you will get from this book. And for people who are testing and using TestNG and Mockito for over a eight or more years: this book is probably not for you.</p>
+
+<p>If you place yourself in the middle, <em>Practical Unit Testing with TestNG and Mockito</em> is still a very good choice as it will help you to systematize all the stuff you already know and meanwhile you will surely learn something new about tools and, worth to note, about general efficient and painless approach to testing your code.</p>
+
+<h2>My takeaways</h2>
+
+<p>Below some of my personal notes about things I didn&rsquo;t know or didn&rsquo;t use often before reading this book.</p>
+
+<h5><strong>Enriching html test reports</strong></h5>
+
+<p>TestNG has a nice class <em>org.testng.Reporter</em> that allows developer to add some information to html reports</p>
+
+<p>[java]</p>
+
+<pre><code>@Test
+public void testSomething() {
+    Reporter.log("This is so soo important, please read it!");
+
+    //test something
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>And after running such tests in html report we will see something like presenten on the screenshot below:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/07/testng-reporter.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/07/testng-reporter.jpg" alt="" /></a></p>
+
+<p>and additionally all such messages are gathered in one, separate report.</p>
+
+<h5><strong>Clear separation between important and dummy test data</strong></h5>
+
+<p>Let&rsquo;s suppose that we are testing following method</p>
+
+<p>[java]</p>
+
+<pre><code>@Test
+public void loadByAgeRange() {
+    service.loadClientBy(1, 20, 40, null);
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>and compare it with listing below:</p>
+
+<p>[java]</p>
+
+<pre><code>@Test
+public void loadByAgeRange() {
+    int ageFrom = 20;
+    int ageTo = 40;
+
+    service.loadClientBy(ANY_TYPE, ageFrom, ageTo, ANY_REGION);
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>Isn&rsquo;t it much clearer? We replace dummy data with constants indicating which part is important and what parameters are not critical in this method.</p>
+
+<h5><strong>Mocks auto injection</strong></h5>
+
+<p>Mockito allows us to automatically inject all mock into object we are going to test:</p>
+
+<p>[java]</p>
+
+<pre><code>@InjectMocks private ObjectUnderTest object = new ObjectUnderTest();
+</code></pre>
+
+<p>[/java]</p>
+
+<p>Of course it has some limitations (see <a href="http://docs.mockito.googlecode.com/hg/1.9.0/org/mockito/InjectMocks.html">JavaDocs</a>) but it&rsquo;s good to know that such feature is already in Mockito.</p>
+
+<h5><strong><a href="http://code.google.com/p/make-it-easy/">Make-it-easy</a> &ndash; A tiny framework that makes it easy to write Test Data Builders in Java</strong></h5>
+
+<p>This small project will help you to create builders for your test cases easily. More can be found on <a href="http://code.google.com/p/make-it-easy/wiki/GettingStarted">its wiki</a>, but below simple use case showing how it looks:</p>
+
+<p>[java]</p>
+
+<pre><code>Person nat = make(a(Person, with(name, "Tomek"), with(age, 28)));
+</code></pre>
+
+<p>[/java]</p>
+
+<h5><strong>Partial Mocking</strong></h5>
+
+<p>If there is a method we want to test but at the same time there is another method in tested object that want to mock, it is possible to do that by usinf Mockito spy():</p>
+
+<p>[java]
+@Test
+public void testCaluculationSummary() {</p>
+
+<pre><code>TestedObject object = spy(new TestedObject());
+when(object.executeHeavyCalculations()).thenReturn("resultString");
+
+int result = object.getCalculationsSummary();
+
+assertThat(result).isEqualTo(10);
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<h5><strong>Testing and capturing method arguments</strong></h5>
+
+<p>Mockito gives us another very useful feature, ability to check what arguments were passed to methods using <a href="http://docs.mockito.googlecode.com/hg/org/mockito/ArgumentCaptor.html">ArgumentCaptor</a>:</p>
+
+<p>[java]</p>
+
+<pre><code>@Test
+public void testArgument() {
+    // ...
+    CustomerService customerService = mock(CustomerService.class);
+    ArgumentCaptor argument = ArgumentCaptor.forClass(Customer.class);
+    verify(customerService).saveCustomer(argument.capture());
+
+    testedObject.executeSomeMethodCallingSaveCustomer()
+
+    assertThat(argument.getValue()).isEqualTo(expectedCustomer);
+}
+</code></pre>
+
+<p>[/java]</p>
+]]></content>
+  </entry>
   
 </feed>

@@ -1,0 +1,435 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Twitter Bootstrap Navbar as AngularJS component - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Twitter Bootstrap Navbar as AngularJS Component You all know Twitter Bootstrap, don&rsquo;t you? It&rsquo;s the awesome library to make your web &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/blog/2013/02/twitter-bootstrap-navbar-angularjs-component/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/blog/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Twitter Bootstrap Navbar as AngularJS Component</h1>
+	<div class="entry-content" itemprop="articleBody"><p>You all know <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>, don&rsquo;t you? It&rsquo;s the awesome library to make your web application looks pretty good without spending many hours on CSS. We are using Bootstrap based design in our current project that also uses AngularJS and as we are planning to have many new pages, we decided that&rsquo;s the earlier we introduce some components to our UI the better. And, what shouldn&rsquo;t be a surprise, navigation bar natually became the first candidate.</p>
+
+<h3>Overview</h3>
+
+<p>So in this post I am going to show how externalize Twitter Bootstrap Navbar into a separate, flexible AngularJS component. All source code is available in <a href="https://github.com/tdziurko/twitter-bootstrap-navbar-as-angularjs-directive">my GitHub repository</a> , so everything should be easy to follow and repeat.</p>
+
+<h3>Basic setup</h3>
+
+<p>To start from the basics, I&rsquo;ve prepared three pages that use the same navigation bar. These pages will soon become our super simple web application using AngularJS:</p>
+
+<p><a href="http://tomaszdziurko.pl/2013/02/twitter-bootstrap-navbar-angularjs-component/navbar_angularjs1/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/02/navbar_angularjs1.png" alt="navbar_angularjs1" /></a></p>
+
+<p>Next step will be adding AngularJS and converting three pages into one small application. This is done in this <a href="https://github.com/tdziurko/twitter-bootstrap-navbar-as-angularjs-directive/commit/9d135332ef5e934920a65975f41fb06f6cc852a8">commit</a>. And after that we are ready to start working on our Navbar component.<!-- more --></p>
+
+<h3>Problem</h3>
+
+<p>On each page we have very similar html fragment rendering navbar element.</p>
+
+<p>[html highlight=&ldquo;8&rdquo;]</p>
+
+<pre><code>&lt;div class="navbar navbar-inverse"&gt;
+    &lt;div class="navbar-inner"&gt;
+        &lt;div class="container"&gt;
+            &lt;a class="brand"&gt;Example App&lt;/a&gt;
+
+            &lt;div class="nav-collapse"&gt;
+                &lt;ul class="nav"&gt;
+                    &lt;li class="active"&gt;&lt;a href="home.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="second.html"&gt;Second&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="third.html"&gt;Third&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>[/html]</p>
+
+<p>The only difference is in where class <em>active</em> which highlights link is located. And every time we see such repetition, our DRY detector should start ringing and don&rsquo;t stop until we do something about it.</p>
+
+<h3>Simple directive</h3>
+
+<p>For a start, we will move this code fragment into a AngularJS directive. At first, it will be only a &ldquo;dumb&rdquo; piece of code that just renders the same html in different places. All html from the listing above is now located in the components/bootstrapNavbar.html file.</p>
+
+<p>Next thing we need is a directive declaration in JS file:
+[js]
+angular.module(&ldquo;navbarapp&rdquo;, [&ldquo;controllers&rdquo;])
+  .directive(&ldquo;bootstrapNavbar&rdquo;, function() { // (1)
+  return {</p>
+
+<pre><code>restrict: "E",         // (2)
+replace: true,         // (3)
+transclude: true,      // (4)
+templateUrl: "bootstrapNavbar.html"    // (5)
+</code></pre>
+
+<p>  }});
+;
+[/js]</p>
+
+<p>What happens here:</p>
+
+<ol>
+<li><p> we declare directive, please keep in mind that name of directive you use in the code will be boostrap-navbar, camelCase is transformed into &ndash; character.</p></li>
+<li><p> restrict: E &ndash; means that directive is used as an element, there are other options: C-class, A-attribute, more on <a href="http://docs.angularjs.org/guide/directive">docs</a></p></li>
+<li><p> replace: true &ndash; means that markup from template will completely replace directive element in the page markup</p></li>
+<li><p> transclude: true &ndash; what it means&hellip; you better tell me, I am not able to describe it more vaguely that it is done in the <a href="http://docs.angularjs.org/guide/directive">docs</a> ;)</p></li>
+<li><p> templateUrl &ndash; file where we store our template content</p></li>
+</ol>
+
+
+<p>After that we should replace navbar html markup on every page with something like:</p>
+
+<p>[html]
+&lt;bootstrap-navbar>&lt;/bootstrap-navbar>
+[/html]</p>
+
+<p>Now it&rsquo;s high time to test it. Unfortunately there is one problem. Security policy does not allow browser to execute XHR(Ajax) calls from html file stored on our disk. So we have to setup lightweight httpServer to serve our files to browser. You can do it using Jetty or anything similar. I tried one from Python and it worked without issues. So basically navigate to directory where all files are stored, execute:
+[python]
+python -m SimpleHTTPServer 9000
+[/python]
+and then open your browser using address <a href="http://localhost:9000/home.html">http://localhost:9000/home.html</a>. You should see the same page as before, but now it is using our directive.</p>
+
+<h3>Flexibility++</h3>
+
+<p>So we have our first directive, yay! But its IQ is not that high. If you navigate to Second and Third Page, you will notice that it always renders link to Home Page as active, which is not exactly true for all pages. And in this paragraph we will try to make it smarter.</p>
+
+<p>At first, let&rsquo;s add attribute <em>current-tab</em> to our directive usages:
+[html]
+  &lt;bootstrap-navbar current-tab=&ldquo;Second&rdquo;>&lt;/bootstrap-navbar>
+[/html]</p>
+
+<p>Passed value must be the same as link name in the navbar, so in our example app it should be either: Home, Second or Third.</p>
+
+<p>Next step is to prepare our template file for easy modification. Because we will use jQuery selectors to find link to activate, we will remove active class and also add an id attribute to <em>ul</em> element to make it easier to locate with selector:</p>
+
+<p>[html]</p>
+
+<div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand">Example App</a>
+
+            <div class="nav-collapse">
+                <ul class="nav" id="navigation-tabs">     <!-- id added here -->
+                    <li><a href="../home.html">Home</a></li>   <!-- removed class='active' -->
+                    <li><a href="../second.html">Second</a></li>
+                    <li><a href="../third.html">Third</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p>[/html]</p>
+
+<p><strong>Core logic</strong>
+Now the last thing we have to do is some jQuery selector magic with little addition of AngularJS magic :)</p>
+
+<p>Angular directives have function <em>compile</em> which allows to alter directive template markup, so we will use it here. What this function receives is value of parameters defined on the component usage in our pages, so basically we have an access to all attributes that are declared where our navbar component is used, specifically our <em>current-tab</em> attribute (again transformed to <em>currentTab</em> inside JS file).
+So when we know which link should be highlighted, jQuery selectors come to do the actual job:
+[js]
+angular.module(&ldquo;navbarapp&rdquo;, [&ldquo;controllers&rdquo;])
+  .directive(&ldquo;bootstrapNavbar&rdquo;, function() {
+  return {</p>
+
+<pre><code>restrict: "E",
+replace: true,
+transclude: true,
+templateUrl: "components/bootstrapNavbar.html",
+compile: function(element, attrs) {  // (1)
+  var li, liElements, links, index, length;
+
+  liElements = $(element).find("#navigation-tabs li");   // (2)
+  for (index = 0, length = liElements.length; index &lt; length; index++) {
+    li = liElements[index];
+    links = $(li).find("a");  // (3)
+    if (links[0].textContent === attrs.currentTab) $(li).addClass("active"); // (4)
+  }
+}
+</code></pre>
+
+<p>  }});
+;
+[/js]</p>
+
+<p>So what we do here:</p>
+
+<ol>
+<li><p> define compile function that has passed two things, element on which it is called (template markup in our case) and attrs, an object with all attributes declared where our directive was used.</p></li>
+<li><p> select all list items from #navigation-tabs node</p></li>
+<li><p> find all links there, it will be only one</p></li>
+<li><p> if text content of link is equal to currentTab attribute we know that this is the link to highlight, so we simply add proper CSS class there</p></li>
+</ol>
+
+
+<p>It&rsquo;s the simplest working solution. Of course we could add some error checking, but I wanted to show easy to follow approach to introducing flexible components to AngularJS applications.</p>
+
+<h3>Summary</h3>
+
+<p>In this post I tried to show how with a few simple steps we could apply DRY rule to our html markup in AngularJS application. And as your application grow, you will probably find more and more places where html is duplicated making it a good candidate to convert it into component directive.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-28T23:26:25+01:00" data-updated="true" itemprop="datePublished">Feb 28<span>th</span>, 2013</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/blog/2013/01/running-unit-tests-integration-tests-separately-maven-testng/" title="上一篇: Running unit tests and integration tests separately with Maven Failsafe and TestNG">&laquo; Running unit tests and integration tests separately with Maven Failsafe and TestNG</a>
+		  
+		  
+			<a class="basic-alignment right" href="/blog/2013/03/instant-angularjs-starter-book-review/" title="下一篇: Instant AngularJS Starter - book review">Instant AngularJS Starter - book review &raquo;</a>
+		  
+		</p>
+	</div>
+	<div class="jiathis">
+	
+		<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1376918307020726" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</div>
+
+	
+	</div>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

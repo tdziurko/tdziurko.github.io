@@ -1,0 +1,679 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Jul 24th, 2011 Java, Wicket Conversation Scope in Wicket Using CDI Some time ago I was asked to do some research about integrating Wicket with &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/blog/page/5/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/blog/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner">
+<div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-24T15:17:37+02:00" data-updated="true" itemprop="datePublished">Jul 24<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/07/conversation-scope-wicket-cdi/" itemprop="url">Conversation Scope in Wicket Using CDI</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Some time ago I was asked to do some research about integrating Wicket with conversation scope from Context and Dependency Injection (CDI) from JEE6 specification. And as not everything was clear and easy to run, I decided to post my findings in this blog.</p>
+
+<h3>Project setup</h3>
+
+<p>To make things easier we will base on existing example web application showing how to integrate Wicket with Weld (CDI) from project <a href="http://seamframework.org/Seam3/WicketModule">Seam-Wicket</a> (formerly named <a href="http://weld-development-discussions.46994.n3.nabble.com/Move-weld-wicket-to-seam-wicket-td724181.html">weld-wicket</a>). So first let&rsquo;s pull latest version of Seam-Wicket project from Git:</p>
+
+<p>[xml]
+git clone git://github.com/seam/wicket.git
+cd wicket
+mvn clean install
+[/xml]</p>
+
+<p>and in examples directory there is numberguess Maven project. Just import it into your favourite IDE and execute</p>
+
+<p>[xml]
+mvn install jetty:run -P jetty
+[/xml]</p>
+
+
+		
+		<a href="/blog/2011/07/conversation-scope-wicket-cdi/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-16T00:05:09+02:00" data-updated="true" itemprop="datePublished">Jul 16<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies/" itemprop="url">Wicket Tutorial, Part 9 – Storing and Loading User Preferences From Cookies</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>In the previous post we learnt a few tricks regarding internationalization features in Wicket. Today we will go further and will let application to remember some user preferences using HTTP Cookies. Storing some basic data in cookies is an easy and popular way of letting user customize look and feel of web application he uses very often. Some portals use cookies to render modules in order chosen by user so that most interesting information are in the top.</p>
+
+<p>In our ItemDirectory web application we don&rsquo;t have (yet!) any sophisticated mechanism which could rely on cookies so we will show how it can be used to store and load language selected by the user.</p>
+
+
+		
+		<a href="/blog/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-20T21:52:06+02:00" data-updated="true" itemprop="datePublished">Jun 20<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/" itemprop="url">Wicket Tutorial, Part 8 – Adding Internationalization Support</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Today we will continue Wicket tutorial series with adding support to multiple languages in web application. Ok, let&rsquo;s do it step by step.</p>
+
+<h3>Create form to change language</h3>
+
+<p>To make our changes visible and testable at the beginning we add form to change application language. To make it more reusable we will implement it as a Wicket panel.
+So first, let&rsquo;s create html and Java files:</p>
+
+
+		
+		<a href="/blog/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-07T20:45:32+02:00" data-updated="true" itemprop="datePublished">May 7<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/05/wicket-tutorial-part-7-e28093-editing-and-removing-item-locations/" itemprop="url">Wicket Tutorial, Part 7 – Editing and Removing Item Locations</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Welcome back to our practical Wicket tutorial series. I apologize for long break after last post (shame on me as it was published more than 1,5 month ago) but I had many unplanned things with higher priority: Wicket demo appplication  on <a href="http://33degree.org/talks.html#BOFWebFrameworks">33rdDegree</a> conference to prepare, a conference itself and most time-consuming one, I damaged knee ligament during football match and after that everyday for three weeks I was driving to the hospital for rehabilitation so day became too short to write something here. But now everything seems to be ok and I have some spare time to continue Wicket tutorial subject.</p>
+
+<p>Today we will add two new features: editing and removing locations from our application. Currently we don&rsquo;t have any items connected with locations so deleting shouldn&rsquo;t be too complicated. Later on, when we add some items, we will have to rework this functionality but now it shouldn&rsquo;t bother us too much.</p>
+
+
+		
+		<a href="/blog/2011/05/wicket-tutorial-part-7-e28093-editing-and-removing-item-locations/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-01T11:17:10+02:00" data-updated="true" itemprop="datePublished">May 1<span>st</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/books/'>Books</a>, <a class='category' href='/blog/categories/how-to/'>How-to</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/05/why-we-dont-like-public-speeches-and-what-can-be-done-about-it/" itemprop="url">Why We Don&#8217;t Like Public Speeches and What Can Be Done About It</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>The first step to eliminate your weaknesses is to realise that they exist and name them. I know I am not good when it comes to public speech. My diploma thesis is quite good, source code isn&rsquo;t so bad at all, but the way I presented them in the front of people  who could say &ldquo;Yes&rdquo; or &ldquo;No&rdquo; to my degree, was really far away from the state I could summarize as &ldquo;decent presentation&rdquo;. In short:  it definitely wasn&rsquo;t the best performance ever but probably was close to the worst one :)</p>
+
+<p>And that&rsquo;s why I recently bought an interesting book <a href="http://www.amazon.com/Confessions-Public-Speaker-Scott-Berkun/dp/0596801998">&ldquo;Confesions of a Public Speaker&rdquo;</a> by Scott Berkun.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/05/confessions-of-a-public-speaker.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/05/confessions-of-a-public-speaker.jpg" alt="" /></a></p>
+
+<p>The most important thing you should know before you even consider buying this title is that:</p>
+
+<h3>Reading this book will NOT make you a better speaker, only practice can do it.</h3>
+
+<p>But this book will tell you why you should practice, what you should practice and how you could prepare to your speech to maximize probability of performing really well.</p>
+
+
+		
+		<a href="/blog/2011/05/why-we-dont-like-public-speeches-and-what-can-be-done-about-it/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-04T13:08:30+02:00" data-updated="true" itemprop="datePublished">Apr 4<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/conferences/'>Conferences</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/04/short-wicket-talk-web-frameworks-shootout-33rddegree-conference/" itemprop="url">Our Short Wicket Talk at Web Frameworks Shootout, 33rdDegree Conference</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>If you, by any chance, are one of the <a href="http://33degree.org">33rdDegree</a> conference participants and you are interested in developing web applications using Java/JVM environment you should also be interested in one of the BOF sessions on Wednesday during the conference: <a href="http://33degree.org/talks.html#BOFWebFrameworks">Web frameworks shootout</a>.</p>
+
+<p>We (<a href="http://paulszulc.com">Paul Szulc</a> with me as a support) will be presenting Wicket framework and its nice features which help Java Developers to build web applications easily and with a lot of fun! :) At this BOF session you will have an opportunity to see more short and concise presentations of the following new and cool web frameworks: Play, Lift, and Grails,  so a lot of new knowledge are waiting there for you :)</p>
+
+<p>Of course if you want to talk with me about Wicket or anything else, don&#8217;t hesitate and catch me anytime during 33rdDegree.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-12T21:53:55+01:00" data-updated="true" itemprop="datePublished">Mar 12<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/03/wicket-tutorial-series-building-web-application-scratch/" itemprop="url">Wicket Tutorial Series - Building Web Application From Scratch</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>This post aggregates the  series of Wicket tutorial articles from this blog. But as this tutorial is still not finished and new posts will be published in the near future, please return here again to find new parts or (simpler) just add my <a href="http://www.tomaszdziurko.pl/feed">RSS</a> to your reader.</p>
+
+<h3>Wicket tutorial series</h3>
+
+<pre><code>1. 
+</code></pre>
+
+<p><a href="http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">Wicket Tutorial, part 1 – setting up project with Spring 3, JPA 2 and MySQL</a></p>
+
+<pre><code>2. 
+</code></pre>
+
+<p><a href="http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/">Wicket Tutorial, part 2 – adding common layout to the project</a></p>
+
+<pre><code>3. 
+</code></pre>
+
+<p><a href="http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-3-form-application/">Wicket Tutorial, part 3 – first form in our application</a></p>
+
+<pre><code>4. 
+</code></pre>
+
+<p><a href="http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/">Wicket Tutorial, part 4 – custom validator for unique entity name</a></p>
+
+<pre><code>5. 
+</code></pre>
+
+<p><a href="http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/">Wicket tutorial, part 5 – generic unique entity validator</a></p>
+
+<pre><code>6. 
+</code></pre>
+
+<p><a href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-part-6-%E2%80%93-listing-locations-simple-manner/">Wicket Tutorial, part 6 – listing locations in a simple manner</a></p>
+
+<pre><code>7. 
+</code></pre>
+
+<p><a href="http://tomaszdziurko.pl/2011/05/wicket-tutorial-part-7-%E2%80%93-editing-and-removing-item-locations/">Wicket Tutorial, part 7 – editing and removing item locations</a></p>
+
+<ul>
+<li><p><a href="http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-%E2%80%93-adding-internationalization-support/">Wicket Tutorial, part 8 &ndash; adding internationalization support</a></p></li>
+<li><p><a href="http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-%E2%80%93-storing-loading-user-preferences-cookies/">Wicket Tutorial, part 9 – storing and loading user preferences from cookies</a></p></li>
+</ul>
+
+
+<p>You might also be interested in post <a href="http://tomaszdziurko.pl/2010/02/wicket-useful-links/">Wicket – useful links</a> with other good tutorials, presentations and tools I found useful while learning and using Wicket.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-12T19:58:47+01:00" data-updated="true" itemprop="datePublished">Mar 12<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/03/wicket-tutorial-part-6-e28093-listing-locations-simple-manner/" itemprop="url">Wicket Tutorial, Part 6 – Listing Locations in a Simple Manner</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Today we will add simple listing view for locations added to the database in previous posts.  I said &lsquo;simple&rsquo; as there are some more sophisticated ways to show many items using Wicket but probably we will not have many locations to show in our application so simple view without pagination should be ok. More complicated way (<a href="http://wicketstuff.org/wicket14/repeater/?wicket:bookmarkablePage=:org.apache.wicket.examples.repeater.DataTablePage">DataTable</a> component) will be covered in the future when we will add &lsquo;listing items&rsquo; feature&#8217;.</p>
+
+
+		
+		<a href="/blog/2011/03/wicket-tutorial-part-6-e28093-listing-locations-simple-manner/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-27T16:30:39+01:00" data-updated="true" itemprop="datePublished">Feb 27<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/02/who-the-heck-is-corey-haines/" itemprop="url">Who the Heck Is Corey Haines?</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>As you may have noticed (new blue square in the header) I started using <a href="http://twitter.com/TomaszDziurko">Twitter</a> recently. Just to try and see how it could improve the quality of information I receive and information I finally find useful and worth reading.  I checked who my friends are following and <a href="http://www.paulszulc.com/">Paul Szulc</a> told me to check his following list so I started watching some people he suggested. Some names were familiar, some were not but I decided not to judge too early, just read what they say and analyse.</p>
+
+<p>Amongst those people were one man, Corey Haines, tweeting really often. I had no idea who he was and I haven&rsquo;t even check what Google would return. I know, shame on me, but last week was the end of scrum sprint and we were on tight schedule so I didn&rsquo;t have a lot of free time.</p>
+
+<p>But why am I writing about him? Lately I was talking with Paul Szulc again and we were discussing about what IT books are worth reading, he told me about <a href="http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627">&ldquo;Growing Object-Oriented Software, Guided by Tests&rdquo;</a> by Steve Freeman (by the way, Steve is going to speak at <a href="http://33degree.org/">33rdDegree</a> in April here in Poland, so another smart person will try to to widen my horizons there). Paul sent me a link to presentation from QCon 2010 to watch before starting any new book. Presentation is titled <a href="http://www.infoq.com/presentations/Software-Craftsmanship-Beyond-The-Hype">&ldquo;Software Craftsmanship &ndash; Beyond The Hype&rdquo;</a> and today I decided to watch it despite my wife asking me to watch next episode of CSI series with her :) So I spent an hour on this video and who did I see there? Corey Haines :) Apparently <a href="http://twitter.com/#!/coreyhaines">he is not only tweeting a lot</a> but also he is a speaker at many conferences too. And what could I say about his presentation? Really, really good. As craftsmanship became a slogan he points some useful things to do to improve your skills, learn and reach higher level. And what I liked the most is a sentence which I understand as:</p>
+
+<h3>Software Craftsmanship is not (only) about developing quality software but about Developing Quality Software Developers</h3>
+
+<p>and I liked it so much that I decided to share it with you :) So if you have one free hour , please consider watching Corney Haines talk <a href="http://www.infoq.com/presentations/Software-Craftsmanship-Beyond-The-Hype">&ldquo;Software Craftsmanship &ndash; Beyond The Hype&rdquo;</a>.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-20T00:04:04+01:00" data-updated="true" itemprop="datePublished">Feb 20<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</div>
+		
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/blog/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/" itemprop="url">Wicket Tutorial, Part 5 - Generic Unique Entity Validator</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>As I promised in the <a href="http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/">previous post</a>, today we will focus on transforming our unique name validator in Wicket to generic one. So now, let&rsquo;s simply list what we are going to achieve;</p>
+
+<ul>
+<li><p>validator should validate any entity object in our project</p></li>
+<li><p>validator should check unique value of any property from validated object</p></li>
+<li><p>error message should be generic too but customization should be easy</p></li>
+</ul>
+
+
+
+		
+		<a href="/blog/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+</div>
+<nav id="pagenavi">
+    
+        <a href="/blog/page/4/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/6/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Books | Tomasz Dziurko]]></title>
+  <link href="http://tdziurko.github.io/blog/categories/books/atom.xml" rel="self"/>
+  <link href="http://tdziurko.github.io/"/>
+  <updated>2014-05-25T00:00:05+02:00</updated>
+  <id>http://tdziurko.github.io/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Deep dive into AngularJS - my review of "Mastering Web Application Development with AngularJS"]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
+    <updated>2013-11-24T23:53:30+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
+    <content type="html"><![CDATA[<p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover-243x300.jpg" alt="AngularJs-cover" /></a></p>
+
+<h3>Overview</h3>
+
+<p>The book starts with gentle introduction to the framework, we have a simple Hello World application just to get a quick glance how AngularJS works. Then in later chapters we learn how to organise project (directories layout, build system), communicate with backend, get data and display data to the user, design navigation and other usual topics which are covered in every book about all web frameworks. Luckily everything is provided in an easy to understand way with a lot of useful tips and code snippets.</p>
+
+<p>And when after reading this part of book  I thought &ldquo;Oh man, AngularJS is easy, now I get it &rdquo; I reached  two chapters about directives. And trust me, if someone says &ldquo;I fully understand directives from AngularJS&rdquo; he either is AngularJS committer/author or a liar. I knew that directives are powerful and complex, but I wasn&rsquo;t aware that they are so powerful and so complex. These two chapters are a masterpiece in taking you into world of getting as much as possible from this flagship AngularJS feature. But it is so complicated topic that I had to read these chapters twice probably only to get to &ldquo;I understand it more or less&rdquo; level. But at least I know that every time I need to write non-trivial directive I could grab this book as a reference and find detailed explanation of how directives work and what they are capable of.</p>
+
+<p>After section about directives there are easier topics like internationalization, quick look at framework internals and very useful part describing how to detect and solve performance problems of your application.</p>
+
+<h4><strong>What I liked:</strong></h4>
+
+<ul>
+<li><p>level of detail, this book is most complete reference guide to understand and leverage power of AngularJS</p></li>
+<li><p>best explanation of directives and their powers</p></li>
+<li><p>many useful tips from people using AngularJS in they daily job</p></li>
+<li><p>very test-oriented examples</p></li>
+<li><p>avoiding step-by-step tutorial approach and choosing more systematic way of introducing a framework</p></li>
+</ul>
+
+
+<h4><strong>What I didn&rsquo;t like:</strong></h4>
+
+<ul>
+<li><p>Almost nothing about various projects around AngularJS that could be helpful during development and learning</p></li>
+<li><p>Nothing about animations</p></li>
+</ul>
+
+
+<h3>Summary</h3>
+
+<p>Simply Must Have reference title for every AngularJS developer. The most advanced book about this framework on the market with plenty of practical suggestions. Very detailed but written in a way that is easy to follow. If you want to understand AngularJS and how to use if effectively, this book is a very good choice.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Recenzja "Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce", czyli o tym co każdy programista umieć powinien]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
+    <updated>2013-10-30T16:33:49+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
+    <content type="html"><![CDATA[<p>Dear Reader</p>
+
+<pre><code>This post is in my native language as it is a review of book pyblished only in Poland. Please feel free to check my other posts which are mainly written in English.
+</code></pre>
+
+<p>Dość rzadko sięgam po książki informatyczne wydane w naszym ojczystym języku. Powód jest dość prozaiczny: z reguły w momencie, gdy wychodzi polskie tłumaczenie &ldquo;JavaAwesomeWebFramework 1.2 w Akcji&rdquo; po angielsku jest już  dostępna &ldquo;JavaAwesomeWebFramework 2.0 in Action&rdquo; i cała wiedza zawarta w polskiej wersji jest, delikatnie mówiąc, lekko nieaktualna.</p>
+
+<p>Ale są tematy, które można nazwać, choć to dość górnolotne słowo, ponadczasowymi, bo dotyczą zagadnień aktualnych zarówno teraz jak i kilka lat temu. I do takich należy właśnie komunikacja z klientem. Temat dość ciężki, należący do tzw. &ldquo;obszarów miękkich&rdquo; i przez co traktowany przez programistów mocno po macoszemu. Co niestety powoduje częste napięcia na linii klient-zespół programistów, bo programista uważa, że on jest bez winy, a to klient wyraził się niejasno i jest źródłem wszystkich problemów.</p>
+
+<p>I właśnie na takie problemy receptą jest lektura i stosowanie rad zawartych w książce <a href="http://helion.pl/ksiazki/oprogramowanie-szyte-na-miare-jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-michal-bartyzel,opszmi.htm">&ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo;</a> Michała Bartyzela.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/10/bartyzel_klient.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/10/bartyzel_klient-300x300.jpg" alt="Audiobooks Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce. eBook. Pdf" /></a></p>
+
+<!-- more -->
+
+
+
+
+<blockquote>Klient wie, czego chce, ale nie wie czego potrzebuje</blockquote>
+
+
+<p>Właśnie takim, bardzo mądrym stwierdzeniem zaczyna się ta książka. I jeśli dobrze je przemyślimy i weźmiemy do serca to nasze postrzeganie klienta zmieni się diametralnie. Klient przychodzi do nas z problemem biznesowym i wie co jest jego rozwiązaniem. Nie wie jednak co jest potrzebne, żeby to rozwiązanie przekuć na aplikację. I tu się zaczyna nasza rola jako członków zespołu programistów. Zrozumieć problem i stworzyć aplikacją, która go rozwiązuje. Bo choćby nie wiem jak czysty, piękny i przetestowany był nasz kod, to jeśli nie pomoże klientowi w jego problemie to cały projekt będzie porażką, a nasza firma straci klienta. <em>&ldquo;Think about Business Value&rdquo;</em> jak często mawia <a href="http://pawel.wrzesz.cz/">Paweł Wrzeszcz</a>, mój kolega z pracy.</p>
+
+<p>Książka podzielona jest na kilka rozdziałów, które po kolei omawiają sposoby dobrej komunikacji, sztukę zadawania pytań (zarówno konkretyzujących jak i uogólniających), ustalanie priorytetów wymagań, a także efektywne prowadzenia spotkań, które nie będą stratą czasu i pozwolą nam osiągnąć założone cele.</p>
+
+<p>Każdy rozdział zawiera sporo przykładów zwrotów i zachowań, które ułatwią nam rozmowy z drugą stroną, a na końcu publikacji umieszczony jest swojego rodzaju bryk z zebranymi wszystkimi poradami w pigułce.</p>
+
+<p><strong>Podsumowanie</strong></p>
+
+<p>Jeśli książkę &ldquo;Clean Code&rdquo; Uncle Boba uważam za coś, co każdy programista powinien przeczytać zanim dopuści się go do klawiatury i kodu, to &ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo; jest pozycją, którą każdy programista powinien przyswoić <strong>zanim dopuści się go</strong> do rozmów z klientem. I wydaje mi się, że książka jest na tyle wartościowa, że warto by rozważyć jej przetłumaczenie na język angielski, no może po poprawieniu ilustracji, które były rysowane trochę &ldquo;na kolanie&rdquo; :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Instant AngularJS Starter - book review]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/03/instant-angularjs-starter-book-review/"/>
+    <updated>2013-03-18T22:53:16+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/03/instant-angularjs-starter-book-review</id>
+    <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.
+<a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
+
+<h3>Content</h3>
+
+<p>Book is indeed very short and concise, but still worth reading. It contains four main chapters, two short: one about AngularJS in general and second one with places about this library that are worth visiting and people on the Web that often publish something interesting and valuable on this topic. Luckily two remaning chapters are longer and contain the most interesting part of material covered in this book.</p>
+
+<p>First large chapter guides us through a simple web application using Angular, starting from the scratch and then describing all its features and how they are implemented. It is a well formed and thought out step by step tutorial introducing newbies to the most important and most often used features of the library. And even if you have some experience with it, you will find something new and useful there.</p>
+
+<p>Second large section is about top five features of AngularJS that make it special and so easy to use. There are some stuff about the most frequently used directives and annotations, detailed description of dependency injection and its internals, modules and how application could be modularised. And the last part is about writing custom, reusable directives. For me that was the most informative part of this book.</p>
+
+<h3>Impressions</h3>
+
+<p>So to sum up, I can suggest &ldquo;Instant AngularJS Starter&rdquo; to everyone starting their adventure with AngularJS and also for developers that have some experience with this library. In my opinion it is well structured and allows much easier start that online documentation available on the official site. From the other side, definitely it is not a best choice for those using Angular extensively for a year or so, as I think they won&rsquo;t find anything new inside.</p>
+
+<p>With my experience lasting only a few months, I have found many useful stuff, I have learnt about less known directives: <em>ng-pluralize, ng-cloak or ng-init</em> to name only a few. There were also a very interesting explanation what are differences between <em>service</em>, <em>factory</em> and <em>provider</em> methods and in which cases they should be used.</p>
+
+<p>On the other hand I was really missing one subject: testing. Definitely this is the area that strongly distinguishes AngularJS from other libraries and frameworks and in my opinion it should be covered in every, even short, book about this library.</p>
+
+<p>But in spite of that, I was really happy to read this book and my knowledge about Angular increased significantly after finishing it. Some thing were new and some were shifted to a correct locations in my head.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Practical Unit Testing with TestNG and Mockito - review]]></title>
+    <link href="http://tdziurko.github.io/blog/2012/07/practical-unit-testing-testng-mockito-review/"/>
+    <updated>2012-07-20T17:14:06+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2012/07/practical-unit-testing-testng-mockito-review</id>
+    <content type="html"><![CDATA[<p>Book &ldquo;<em>Practical Unit Testing with TestNG and Mockito</em>&rdquo; (<a href="http://practicalunittesting.com/">website</a>) covers wide spectrum of knowledge about testing in Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get most of this title. Below you can read some of my thoughts after reading this book.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png" alt="" /></a></p>
+
+<!-- more -->
+
+
+<h3>Quick look at content</h3>
+
+<p><a href="http://kaczanowscy.pl/tomek/">Tomek Kaczanowski</a>, author of this book, starts with describing some basic concepts needed to understand testing and classification of tests. He introduces definitions of SUT- System Under Test and DOC &ndash; Depended On Component. Then after this really short theoretical chapter we start diving deeper into gradually more and more complex testing cases.</p>
+
+<p>We start with simple class without any dependencies, easy to understand and easy to test. Then we could feel rhythm of Test-Driven Development with TestNG, learn how to use mocks, stubs and spiess from Mockito, employ matchers and checking assertions using FEST. Example after example, we are introduced to more complex features of those libraries. but luckily for those not using TestNG with Mockito, each chapter is full of general tips and suggestions abuot testing methodology, how to approach testing properly and finally how and what to test.</p>
+
+<p>Then we could learn about customizing TestNG using listeners and reporters, organizing test classes into packages and modules, organizing code in test methods (famous BDD given-when-then trio).</p>
+
+<p>Last chapters are devoted completely to most general things: maintaining tests, deciding which parts of your code base are worth testing, checking quality of your tests with static analysis tools (PMD, Coberturda and so on).</p>
+
+<h3>My opinion</h3>
+
+<p>I am using TestNG for over a year (after switching from JUnit), Mockito for more than three years so I am quite familiar with those tools. And for people with similar or greater experience this book will not surprise on each single page. This will or, at least in my opinion, will happen for those less familiar with testing and using TestNG and Mockito. For them this book is a totally must read as it gently introduces reader to world of proper unit testing using best toolbos available in Java world.</p>
+
+<p>I am far from saying that for more experienced developers this book is not a good way to spend their time. It&rsquo;s still good, I learned many interesting features of described libraries but what is most important, my knowledge about testing is now more complete and more ordered. Reading all this stuff helped me to put many stuff into &ldquo;proper shelves&rdquo; in my mind. And that&rsquo;s very good.</p>
+
+<p><strong>To sum up:</strong> The less experienced in testing you are, the more you will get from this book. And for people who are testing and using TestNG and Mockito for over a eight or more years: this book is probably not for you.</p>
+
+<p>If you place yourself in the middle, <em>Practical Unit Testing with TestNG and Mockito</em> is still a very good choice as it will help you to systematize all the stuff you already know and meanwhile you will surely learn something new about tools and, worth to note, about general efficient and painless approach to testing your code.</p>
+
+<h2>My takeaways</h2>
+
+<p>Below some of my personal notes about things I didn&rsquo;t know or didn&rsquo;t use often before reading this book.</p>
+
+<h5><strong>Enriching html test reports</strong></h5>
+
+<p>TestNG has a nice class <em>org.testng.Reporter</em> that allows developer to add some information to html reports</p>
+
+<p>[java]</p>
+
+<pre><code>@Test
+public void testSomething() {
+    Reporter.log("This is so soo important, please read it!");
+
+    //test something
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>And after running such tests in html report we will see something like presenten on the screenshot below:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/07/testng-reporter.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/07/testng-reporter.jpg" alt="" /></a></p>
+
+<p>and additionally all such messages are gathered in one, separate report.</p>
+
+<h5><strong>Clear separation between important and dummy test data</strong></h5>
+
+<p>Let&rsquo;s suppose that we are testing following method</p>
+
+<p>[java]</p>
+
+<pre><code>@Test
+public void loadByAgeRange() {
+    service.loadClientBy(1, 20, 40, null);
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>and compare it with listing below:</p>
+
+<p>[java]</p>
+
+<pre><code>@Test
+public void loadByAgeRange() {
+    int ageFrom = 20;
+    int ageTo = 40;
+
+    service.loadClientBy(ANY_TYPE, ageFrom, ageTo, ANY_REGION);
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>Isn&rsquo;t it much clearer? We replace dummy data with constants indicating which part is important and what parameters are not critical in this method.</p>
+
+<h5><strong>Mocks auto injection</strong></h5>
+
+<p>Mockito allows us to automatically inject all mock into object we are going to test:</p>
+
+<p>[java]</p>
+
+<pre><code>@InjectMocks private ObjectUnderTest object = new ObjectUnderTest();
+</code></pre>
+
+<p>[/java]</p>
+
+<p>Of course it has some limitations (see <a href="http://docs.mockito.googlecode.com/hg/1.9.0/org/mockito/InjectMocks.html">JavaDocs</a>) but it&rsquo;s good to know that such feature is already in Mockito.</p>
+
+<h5><strong><a href="http://code.google.com/p/make-it-easy/">Make-it-easy</a> &ndash; A tiny framework that makes it easy to write Test Data Builders in Java</strong></h5>
+
+<p>This small project will help you to create builders for your test cases easily. More can be found on <a href="http://code.google.com/p/make-it-easy/wiki/GettingStarted">its wiki</a>, but below simple use case showing how it looks:</p>
+
+<p>[java]</p>
+
+<pre><code>Person nat = make(a(Person, with(name, "Tomek"), with(age, 28)));
+</code></pre>
+
+<p>[/java]</p>
+
+<h5><strong>Partial Mocking</strong></h5>
+
+<p>If there is a method we want to test but at the same time there is another method in tested object that want to mock, it is possible to do that by usinf Mockito spy():</p>
+
+<p>[java]
+@Test
+public void testCaluculationSummary() {</p>
+
+<pre><code>TestedObject object = spy(new TestedObject());
+when(object.executeHeavyCalculations()).thenReturn("resultString");
+
+int result = object.getCalculationsSummary();
+
+assertThat(result).isEqualTo(10);
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<h5><strong>Testing and capturing method arguments</strong></h5>
+
+<p>Mockito gives us another very useful feature, ability to check what arguments were passed to methods using <a href="http://docs.mockito.googlecode.com/hg/org/mockito/ArgumentCaptor.html">ArgumentCaptor</a>:</p>
+
+<p>[java]</p>
+
+<pre><code>@Test
+public void testArgument() {
+    // ...
+    CustomerService customerService = mock(CustomerService.class);
+    ArgumentCaptor argument = ArgumentCaptor.forClass(Customer.class);
+    verify(customerService).saveCustomer(argument.capture());
+
+    testedObject.executeSomeMethodCallingSaveCustomer()
+
+    assertThat(argument.getValue()).isEqualTo(expectedCustomer);
+}
+</code></pre>
+
+<p>[/java]</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[There is so much I need to know that I didn't know that I need to know - notes after reading "Information Diet" book]]></title>
+    <link href="http://tdziurko.github.io/blog/2012/04/notes-from-information-diet-book/"/>
+    <updated>2012-04-29T17:05:08+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2012/04/notes-from-information-diet-book</id>
+    <content type="html"><![CDATA[<p>During <a href="http://2012.33degree.org/">33rd Degree</a> conference in Cracow O'Reilly had its stand with books in very attractive prices and similarly to previous year I couldn&rsquo;t resist to buy something. This time I decided to get <a href="http://www.amazon.com/The-Information-Diet-Conscious-Consumption/dp/1449304680">&ldquo;The Information Diet&rdquo;</a> by Clay Johnson.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/04/infodiet.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/04/infodiet.jpg" alt="" /></a></p>
+
+<p>The <em>A Case for Conscious Consumption</em> subtitle looked very promising as I, as probably most of people working in IT, have problem with too many sources to read, check and analyze to extract information that are relevant and worth to spend my time on it. And I hoped that this book would help me to solve this issue.</p>
+
+<h4><!-- more -->Information obesity like a food obesity</h4>
+
+<p>In the first part of the book author shows an analogy between food and information obesity. A few hundred of years ago human civilization didn&rsquo;t produce enough food for everyone so obesity was a sign of wealth. Only well situated people had enough money (and as a result food) to actually get fat. But then, agriculture developed and finally humans learnt how to produce food more effectively. And in XXI century we have more food that we can eat (of course I mean developed countries) and what is more worrying, the better food tastes the worst it is for our health so we eat more junk found than healthy one.</p>
+
+<p>Similar situation is with information. In XXI humanity produces so much information that no one is able to consume every piece of it. And we tend to consume information that &ldquo;tastes&rdquo; good and is far from being &ldquo;healthy&rdquo; and valuable. Such &ldquo;unhealthy&rdquo; data has some certain features. It :</p>
+
+<ul>
+<li><p>confirms our beliefs</p></li>
+<li><p>does not show arguments of the other side</p></li>
+<li><p>shows content that does not require thinking</p></li>
+</ul>
+
+
+<p>For me this analogy was quite convincing but building and describing it on over sixty pages is definitely too much and the same result could be achieved in a much shorter way.</p>
+
+<h4>Information Diet</h4>
+
+<p>Second part forms main thought of this book about how to learn to make conscious choices what and how to consume information that surrounds us. The main takeaways after reading this part for me are:</p>
+
+<ul>
+<li><p>you should concentrate more on information from your neighborhood (your district, your town). Local news saying that there is a ongoing road repair near your house is more important for you than news about war in Syria as it is more likely to affect you in a noticeable way</p></li>
+<li><p>Sitting kills you so taking short breaks from your computer is really, really suggested</p></li>
+<li><p>Eliminate all notifications, blinking icons showing that you have a message in your Facebook/Twitter/IM client/e-mail etc.</p></li>
+<li><p><a href="http://rescuetime.com/">RescueTime.com</a> is a great tool to measure the way you use your computer. It could track what applications, what websites you read and for how long each day, week, month so you could clearly see what kind of information consumption is eating most of your time and energy and tune your habits accordingly</p></li>
+<li><p><a href="http://www.pomodorotechnique.com/">Pomodoro technique</a> is good way of reducing temptation to check Facebook/Twitter every two minutes but you can also start from shorter cycles (5 or 10 minutes) before you become a regular pomodoer</p></li>
+</ul>
+
+
+<p>That list does not look so impressive, isn&rsquo;t it? You probably aren&rsquo;t very convinced to go and buy this book, right? :)</p>
+
+<p>But the main and most important thing after reading this title is that it made me think about the way I consume information. I started to reduce time spent on reading stuff that isn&rsquo;t actually useful, I unsubscribed from some RSS feeds, I stopped following some people who produces too much information noise that wasn&rsquo;t valuable and relevant, for other ones I set filters to hide tweets containing words that are out of my area of interest. So it actually pushed me towards more effective and conscious information diet. And that is why I didn&rsquo;t consider time spent on reading <em>Information Diet</em> as a wasted.</p>
+]]></content>
+  </entry>
+  
+</feed>

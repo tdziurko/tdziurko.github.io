@@ -1,0 +1,494 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Wicket tutorial, part 5 - generic unique entity validator - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Wicket Tutorial, Part 5 - Generic Unique Entity Validator As I promised in the previous post, today we will focus on transforming our unique name &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/blog/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/blog/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Wicket Tutorial, Part 5 - Generic Unique Entity Validator</h1>
+	<div class="entry-content" itemprop="articleBody"><p>As I promised in the <a href="http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/">previous post</a>, today we will focus on transforming our unique name validator in Wicket to generic one. So now, let&rsquo;s simply list what we are going to achieve;</p>
+
+<ul>
+<li><p>validator should validate any entity object in our project</p></li>
+<li><p>validator should check unique value of any property from validated object</p></li>
+<li><p>error message should be generic too but customization should be easy</p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>Generic DAO element</h3>
+
+<p>First thing we need is common query to load any entity with chosen property name and value. So we start with adding findByProperty method to DAO interface:</p>
+
+<p>[java]
+public interface DAO<EntityClass extends IEntity> {</p>
+
+<pre><code>List&lt;EntityClass&gt; findAll();
+
+EntityClass findById(Long id);
+
+EntityClass findByProperty(String propertyName, Object propertyValue);
+
+// (...)
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Next we implement this method in base DAO class named AbstractDAO:</p>
+
+<p>[java]
+public abstract class AbstractDAO<EntityClass extends AbstractEntity></p>
+
+<pre><code>    implements DAO&lt;EntityClass&gt; {
+
+// (...)
+
+public EntityClass findByProperty(String propertyName, Object propertyValue) {
+
+    if(propertyName == null || propertyValue == null) {
+        throw new IllegalArgumentException("Property name and value cannot be null! Values: propertyName" + propertyName + ", propertyValue = " + propertyValue);
+    }
+
+    CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();     // (1)
+    CriteriaQuery&lt;EntityClass&gt; findEntityQuery = cb.createQuery(getClazz());     // (2)
+    Root&lt;EntityClass&gt; entity = findEntityQuery.from(getClazz());               // (3)
+
+    Predicate propertyPredicate = cb.equal(entity.get(propertyName), propertyValue);   //  (4)
+
+    findEntityQuery.where(propertyPredicate);       // (5)
+
+    return getEntityManager().createQuery(findEntityQuery).getSingleResult();       // (6)
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Little explanation to the code above: we are using JPA2 Criteria Api which is one of the coolest new feature in the second edition of Java Persistence Api. As it&rsquo;s not a main topic of this post, don&rsquo;t expect detailed information about JPA2 here. I will just try to provide short description of each step:</p>
+
+<ol>
+<li><p> CritieriaBuilder is a factory for almost every method and object in Critieria API, so we use one here.</p></li>
+<li><p> CritieriaQuery specifies what we want to get from the database. In this case, we need object of class returned by getClazz() object.  getClazz() is a method from DAO interface which will be implemented in concrete DAO classes such as LocationDAOImpl.</p></li>
+<li><p> Root<EntityClass> represents SQL &lsquo;from&rsquo; clause.</p></li>
+<li><p> Predicates represent elements after SQL &lsquo;where&rsquo;.  We need only one, similar to &lsquo;&#8217;where entity.propertyName = :propertyValue&rsquo; so we create it with CriteriaBuilder.</p></li>
+<li><p> Predicate to do its job, must be added to query.</p></li>
+<li><p> Finally, we can return found results (or null).</p></li>
+</ol>
+
+
+<h3>Generic validator</h3>
+
+<p>First step to create flexible validator is to rename it to more proper form. So now our class UniqueLocationNameValidator is UniqueEntityValidator. And since we are going to use classes other than only String for a validated property, we now can&rsquo;t extend <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/validation/validator/StringValidator.html">StringValidator</a>. Instead of it, we will use  <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/validation/validator/AbstractValidator.html">AbstractValidator</a>. But as it&rsquo;s generic we must introduce generic parameter too and signature of new class will look like this:</p>
+
+<p>[java]</p>
+
+<p>public class UniqueEntityValidator<PropertyClass> extends AbstractValidator<PropertyClass></p>
+
+<p>[/java]</p>
+
+<p>Then, as we are going to use any provided DAO instance, now we don&rsquo;t inject LocationService to the validator but pass  DAO implementing class for validated entity with the constructor. Another thing needed when constructing validator object is property name which will be used in validation process and also by the DAO to try to load existing entity.</p>
+
+<p>[java]</p>
+
+<p>public class UniqueEntityValidator<PropertyClass> extends AbstractValidator<PropertyClass> {</p>
+
+<pre><code>private DAO&lt;? extends IEntity&gt; dao;
+private String propertyName;
+private long entityIdToIgnore;
+
+public UniqueEntityValidator(DAO&lt;? extends IEntity&gt; dao, long entityIdToIgnore, String propertyName) {
+    this(dao, propertyName);
+    this.entityIdToIgnore = entityIdToIgnore;
+}
+
+public UniqueEntityValidator(DAO&lt;? extends IEntity&gt; dao, String propertyName) {
+    this.dao = dao;
+    this.propertyName = propertyName;
+}
+
+// (...)
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Ok, we are almost there. Let&rsquo;s see how the most important method in our validator look like:</p>
+
+<p>[java]</p>
+
+<p>@Override
+protected void onValidate(IValidatable<PropertyClass> validatable) {</p>
+
+<pre><code>IEntity entity = dao.findByProperty(propertyName, validatable.getValue());
+
+if(entity != null &amp;&amp; entity.getId().longValue() != entityIdToIgnore) {
+    error(validatable);
+}
+</code></pre>
+
+<p>}</p>
+
+<p>[/java]</p>
+
+<p>When I started writing this generic validator, I thought that onValidate will be more complicated. But it appeared that it&rsquo;s very clean and simple solution (like most things in Wicket :) ). We just use findByProperty method from passed with constructor DAO and that&rsquo;s all.</p>
+
+<h3>Generic error message</h3>
+
+<p>Every Wicket validator provides two elements that can be shown with error message:  label of validated component and user input. So in our example we create UniqueEntityValidator.properties file and place it next to validator class with one message inside:</p>
+
+<p>[xml]</p>
+
+<p>UniqueEntityValidator = Item with ${label} equal to &lsquo;${input}&rsquo; already exists.</p>
+
+<p>[/xml]</p>
+
+<p>Here we can see how label and input elements are used. Wicket in a runtime replaces these placeholders with proper data. Label as a default is a Wicket componentId value, but it can be customized with component.setLabel(new Model<String>(&ldquo;customLabel&rdquo;);</p>
+
+<p>Of course this message can be changed in a simple way, we must only override method resourceKey() to return not validator class name but our new validator message key which will be used to find corresponding error message:</p>
+
+<p>[java]</p>
+
+<pre><code>    UniqueEntityValidator&lt;String&gt; locationNameValidator = new UniqueEntityValidator&lt;String&gt;(locationDao, "name") {
+        @Override
+        protected String resourceKey() {
+            return "CustomValidator";
+        }
+    };
+            nameField.add(locationNameValidator);
+</code></pre>
+
+<p>[/java]</p>
+
+<p>New message (key CustomValidator with our custom error message value) should be placed in proper properties file: PageClass.properties or Application.properties in most cases.</p>
+
+<p>And, because we reached end of this post, we could see how new validator is uded in AddLocationPage:</p>
+
+<p>[java]
+public class AddLocationPage extends BasePage {</p>
+
+<pre><code>private static final int MIN_LOCATION_NAME_LENGTH = 5;
+private static final int MAX_LOCATION_NAME_LENGTH = 255;
+
+@SpringBean
+private LocationService locationService;
+
+@SpringBean
+private LocationDao locationDao;
+
+private String name;
+
+public AddLocationPage() {
+    initGui();
+}
+
+private void initGui() {
+
+    Form&lt;AddLocationPage&gt; addLocationForm = new Form&lt;AddLocationPage&gt;("addLocationForm",
+            new CompoundPropertyModel&lt;AddLocationPage&gt;(this));
+    add(addLocationForm);
+
+    Label nameLabel = new Label("nameLabel", "Location name");
+    addLocationForm.add(nameLabel);
+
+    RequiredTextField&lt;String&gt; nameField = new RequiredTextField&lt;String&gt;("name");
+    nameField.setLabel(new Model&lt;String&gt;("Name"));
+    nameField.add(LengthBetweenValidator.lengthBetween(MIN_LOCATION_NAME_LENGTH, MAX_LOCATION_NAME_LENGTH));
+
+    // here!
+    UniqueEntityValidator&lt;String&gt; locationNameValidator = new UniqueEntityValidator&lt;String&gt;(locationDao, "name");
+    nameField.add(locationNameValidator);
+
+    addLocationForm.add(nameField);
+
+    Button submitButton = new Button("submitButton") {
+        @Override
+        public void onSubmit() {
+            Location location = new Location(name);
+            locationService.save(location);
+
+            getSession().info("Location added successfully");
+            setResponsePage(LocationsPage.class);
+        }
+    };
+    addLocationForm.add(submitButton);
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Generic String property allows validator to know that validatable.getValue() in UniqueEntityValidator should return String object and no casting is necessary. This rule applies to any validator we use in this way: unique Integer value, unique Date, etc.</p>
+
+<p>We&rsquo;re done for today. Source code from this post can be viewed in <a href="https://bitbucket.org/tdziurko/item-directory/changeset/b92757c92ac2">this changeset</a> in BitBucket repository and complete tutorial source is available <a href="https://bitbucket.org/tdziurko/item-directory/src">here</a>. At this moment I haven&rsquo;t made a decision what will be the topic of next post. Maybe you can suggest something what you find most interesting in Wicket and I will try to implement such feature in ItemDirectory application :)</p>
+
+<p>Thank you for your time!</p>
+
+<pre><code>// (here!)
+</code></pre>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-20T00:04:04+01:00" data-updated="true" itemprop="datePublished">Feb 20<span>th</span>, 2011</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/blog/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/" title="上一篇: Wicket Tutorial, part 4 - custom validator for unique entity name">&laquo; Wicket Tutorial, part 4 - custom validator for unique entity name</a>
+		  
+		  
+			<a class="basic-alignment right" href="/blog/2011/02/who-the-heck-is-corey-haines/" title="下一篇: Who the heck is Corey Haines? ">Who the heck is Corey Haines?  &raquo;</a>
+		  
+		</p>
+	</div>
+	<div class="jiathis">
+	
+		<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1376918307020726" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</div>
+
+	
+	</div>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

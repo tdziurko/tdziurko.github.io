@@ -1,0 +1,652 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Custom PagingNavigator with changing items per page in Wicket - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Custom PagingNavigator With Changing Items Per Page in Wicket In one of my recent projects I had to create Wicket pagination component with one &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/blog/2010/12/custom-pagingnavigator-with-changing-items-per-page-in-wicket/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/blog/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Custom PagingNavigator With Changing Items Per Page in Wicket</h1>
+	<div class="entry-content" itemprop="articleBody"><p>In one of my recent projects I had to create Wicket pagination component with one additional functionality allowing user to dynamically change maximum number of items presented on each page.</p>
+
+<p>Finished component will look like below:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2010/12/customPaginator.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2010/12/customPaginator.png" alt="" /></a>
+Of course I was not going to implement this from the scratch, because most of work had been already done by Wicket authors and commiters in component <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/navigation/paging/PagingNavigator.html">PagingNavigator</a>. Source of this component as a reference to changes I made can be found <a href="http://pastebin.com/kwzBG9mH">here</a>.</p>
+
+<p><strong>The first steps in creating our component:</strong>
+&ndash; add List <em>itemsPerPageValues</em> holding numbers for &lsquo;items per page&rsquo; which will be shown to the user allowing him to click and change this value.
+&ndash; provide default List <em>DEFAULT_ITEMS_PER_PAGE_VALUES</em>, which will be used (what a surprise!) as a default :)
+&ndash; give our component reference to the <em>DataView</em> object on which we will execute change items per page method.</p>
+
+<!-- more -->
+
+
+<p>Below we can see changes in class fields and constructors:</p>
+
+<p>[java]
+public class CustomPagingNavigator extends Panel {</p>
+
+<pre><code>public static final String NAVIGATION_ID = "navigation";
+public static final List&lt;Integer&gt; DEFAULT_ITEMS_PER_PAGE_VALUES = Arrays.asList(5, 10, 50);
+
+private PagingNavigation pagingNavigation;
+private final DataView&lt;?&gt; dataView;
+private final IPagingLabelProvider labelProvider;
+private final List&lt;Integer&gt; itemsPerPageValues;
+private WebMarkupContainer pagingLinksContainer;
+
+public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView) {
+    this(id, dataView, null, DEFAULT_ITEMS_PER_PAGE_VALUES);
+}
+
+public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView, List&lt;Integer&gt; itemsPerPageValues) {
+    this(id, dataView, null, itemsPerPageValues);
+}
+
+public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView, final IPagingLabelProvider labelProvider) {
+    this(id, dataView, labelProvider, DEFAULT_ITEMS_PER_PAGE_VALUES);
+}
+
+public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView, final IPagingLabelProvider labelProvider,
+        List&lt;Integer&gt; itemsPerPageValues) {
+    super(id);
+    this.dataView = dataView;
+    this.labelProvider = labelProvider;
+    this.itemsPerPageValues = itemsPerPageValues;
+
+    // these methods will be described later in this post
+    addContainerWithPagingLinks();
+    addLinksChangingItemsPerPageNumber();
+}
+(...)
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>First new method is <em>addContainerWithPagingLinks</em> based mainly of <em>onBeforeRender</em> from <a href="http://pastebin.com/kwzBG9mH">PagingNavigator</a>. This method adds paging links to the component to allow user to change number of viewed page. One small addition is an overriden <em>isVisible</em> which will hide paging fragment when there is only one page to show.</p>
+
+<p>[java]
+private void addContainerWithPagingLinks() {</p>
+
+<pre><code>    pagingLinksContainer = new WebMarkupContainer("pagingLinksContainer") {
+        @Override
+        public boolean isVisible() {
+            return dataView.getPageCount() &gt; 1;
+        }
+    }
+
+    pagingNavigation = newNavigation(dataView, labelProvider);
+    pagingLinksContainer.add(pagingNavigation);
+
+    // Add additional page links
+    pagingLinksContainer.add(newPagingNavigationLink("first", dataView, 0).add(
+            new TitleAppender("PagingNavigator.first")));
+    pagingLinksContainer.add(newPagingNavigationIncrementLink("prev", dataView, -1).add(
+            new TitleAppender("PagingNavigator.previous")));
+    pagingLinksContainer.add(newPagingNavigationIncrementLink("next", dataView, 1).add(
+            new TitleAppender("PagingNavigator.next")));
+    pagingLinksContainer.add(newPagingNavigationLink("last", dataView, -1).add(
+            new TitleAppender("PagingNavigator.last")));
+
+    add(pagingLinksContainer);
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>Next step is to override <em>isVisible</em> method in our component which will hide it completely when DataView has no items to render:</p>
+
+<p>[java]</p>
+
+<pre><code>@Override
+public boolean isVisible() {
+    return dataView.getItemCount() &gt; 0;
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>And now it&rsquo;s time to create the core of our component: a place where items per page can be changed. This is done in method:</p>
+
+<p>[java]</p>
+
+<pre><code>private void addLinksChangingItemsPerPageNumber() {
+    ListView&lt;Integer&gt; itemsPerPageList = new ListView&lt;Integer&gt;("itemsPerPage", itemsPerPageValues) {
+        @Override
+        protected void populateItem(ListItem&lt;Integer&gt; item) {
+            Link&lt;Void&gt; itemPerPageLink = new ItemPerPageLink&lt;Void&gt;("itemPerPageLink", dataView,
+                    pagingLinksContainer, item.getModelObject());
+            itemPerPageLink.add(new Label("itemsValue", item.getModel()));
+            item.add(itemPerPageLink);
+        }
+    };
+
+    add(itemsPerPageList);
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>In the above method we create ListView for Integers from <em>itemsPerPageValues</em> and for each number we add link (new class <em>ItemPerPageLink</em> explained below) which will change <em>DataView</em> itemsPerPage property. Except reference to DataView we also give to our link reference to pagingLinksContainer to hide it after user changes itemsPerPage and there will be only one page to show.</p>
+
+<p>Complete class ItemPerPageLink source code:</p>
+
+<p>[java]
+public class ItemPerPageLink<T> extends Link<T> {</p>
+
+<pre><code>private final int itemsPerPage;
+private final DataView&lt;?&gt; dataView;
+private final WebMarkupContainer pagingLinksContainer;
+
+public ItemPerPageLink(final String id, final DataView&lt;?&gt; dataView, WebMarkupContainer pagingLinksContainer, int itemsPerPageValue) {
+    super(id);
+    this.dataView = dataView;
+    this.pagingLinksContainer = pagingLinksContainer;
+    this.itemsPerPage = itemsPerPageValue;
+    setEnabled(itemsPerPageValue != dataView.getItemsPerPage());
+
+}
+
+@Override
+public void onClick() {
+    dataView.setItemsPerPage(itemsPerPage);
+    pagingLinksContainer.setVisible(dataView.getPageCount() &gt; 1);
+}
+
+@Override
+protected void onComponentTag(ComponentTag tag) {
+    super.onComponentTag(tag);
+    tag.put("title", itemsPerPage);
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>In this class we:
+1. Disable link for number which is current dataView.itemsPerPage value.
+2. Hide pagingLinksContainer when there is only one page.
+3. Change itemsPerPage property in onClick method.
+4. Set link title to the value of items per page.</p>
+
+<p>And that&rsquo;s all. For those who want complete solution in one place there is complete source of the class CustomPagingNavigator with its markup:</p>
+
+<p>[java]
+import java.util.Arrays;
+import java.util.List;</p>
+
+<p>import org.apache.wicket.Component;
+import org.apache.wicket.behavior.AbstractBehavior;
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.AbstractLink;
+import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.navigation.paging.IPageable;
+import org.apache.wicket.markup.html.navigation.paging.IPagingLabelProvider;
+import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
+import org.apache.wicket.markup.html.navigation.paging.PagingNavigationIncrementLink;
+import org.apache.wicket.markup.html.navigation.paging.PagingNavigationLink;
+import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
+import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.repeater.data.DataView;</p>
+
+<p>public class CustomPagingNavigator extends Panel {</p>
+
+<pre><code>public static final String NAVIGATION_ID = "navigation";
+public static final List&lt;Integer&gt; DEFAULT_ITEMS_PER_PAGE_VALUES = Arrays.asList(5, 25, 50);
+
+private PagingNavigation pagingNavigation;
+private final DataView&lt;?&gt; dataView;
+private final IPagingLabelProvider labelProvider;
+private final List&lt;Integer&gt; itemsPerPageValues;
+private WebMarkupContainer pagingLinksContainer;
+
+public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView) {
+    this(id, dataView, null, DEFAULT_ITEMS_PER_PAGE_VALUES);
+}
+
+public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView, List&lt;Integer&gt; itemsPerPageValues) {
+    this(id, dataView, null, itemsPerPageValues);
+}
+
+public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView, final IPagingLabelProvider labelProvider) {
+    this(id, dataView, labelProvider, DEFAULT_ITEMS_PER_PAGE_VALUES);
+}
+
+public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView, final IPagingLabelProvider labelProvider,
+        List&lt;Integer&gt; itemsPerPageValues) {
+    super(id);
+    this.dataView = dataView;
+    this.labelProvider = labelProvider;
+    this.itemsPerPageValues = itemsPerPageValues;
+
+    addContainerWithPagingLinks();
+    addLinksChangingItemsPerPageNumber();
+}
+
+@Override
+public boolean isVisible() {
+    return dataView.getItemCount() &gt; 0;
+}
+
+private void addContainerWithPagingLinks() {
+
+    pagingLinksContainer = new WebMarkupContainer("pagingLinksContainer") {
+        @Override
+        public boolean isVisible() {
+            return dataView.getPageCount() &gt; 1;
+        }
+    };
+
+    pagingNavigation = newNavigation(dataView, labelProvider);
+    pagingLinksContainer.add(pagingNavigation);
+
+    // Add additional page links
+    pagingLinksContainer.add(newPagingNavigationLink("first", dataView, 0).add(
+            new TitleAppender("PagingNavigator.first")));
+    pagingLinksContainer.add(newPagingNavigationIncrementLink("prev", dataView, -1).add(
+            new TitleAppender("PagingNavigator.previous")));
+    pagingLinksContainer.add(newPagingNavigationIncrementLink("next", dataView, 1).add(
+            new TitleAppender("PagingNavigator.next")));
+    pagingLinksContainer.add(newPagingNavigationLink("last", dataView, -1).add(
+            new TitleAppender("PagingNavigator.last")));
+
+    add(pagingLinksContainer);
+}
+
+protected PagingNavigation newNavigation(final IPageable pageable, final IPagingLabelProvider labelProvider) {
+    return new PagingNavigation(NAVIGATION_ID, pageable, labelProvider);
+}
+
+protected AbstractLink newPagingNavigationIncrementLink(String id, IPageable pageable, int increment) {
+    return new PagingNavigationIncrementLink&lt;Void&gt;(id, pageable, increment);
+}
+
+protected AbstractLink newPagingNavigationLink(String id, IPageable pageable, int pageNumber) {
+    return new PagingNavigationLink&lt;Void&gt;(id, pageable, pageNumber);
+}
+
+private void addLinksChangingItemsPerPageNumber() {
+    ListView&lt;Integer&gt; itemsPerPageList = new ListView&lt;Integer&gt;("itemsPerPage", itemsPerPageValues) {
+        @Override
+        protected void populateItem(ListItem&lt;Integer&gt; item) {
+            Link&lt;Void&gt; itemPerPageLink = new ItemPerPageLink&lt;Void&gt;("itemPerPageLink", dataView,
+                    pagingLinksContainer, item.getModelObject());
+            itemPerPageLink.add(new Label("itemsValue", item.getModel()));
+            item.add(itemPerPageLink);
+        }
+    };
+
+    add(itemsPerPageList);
+}
+
+public final PagingNavigation getPagingNavigation() {
+    return pagingNavigation;
+}
+
+private final class TitleAppender extends AbstractBehavior {
+    private static final long serialVersionUID = 1L;
+
+    private final String resourceKey;
+
+    public TitleAppender(String resourceKey) {
+        this.resourceKey = resourceKey;
+    }
+
+    @Override
+    public void onComponentTag(Component component, ComponentTag tag) {
+        tag.put("title", CustomPagingNavigator.this.getString(resourceKey));
+    }
+}
+</code></pre>
+
+<p>}</p>
+
+<p>[/java]</p>
+
+<p>And its markup:</p>
+
+<p>[html]
+&lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;UTF-8&rdquo; ?>
+<html xmlns:wicket>
+<body>
+&lt;wicket:panel></p>
+
+<pre><code>&lt;div&gt;
+    &lt;div&gt;
+        Items per page:
+    &lt;span wicket:id="itemsPerPage"&gt;
+        &lt;a wicket:id="itemPerPageLink"&gt;&lt;span wicket:id="itemsValue"&gt;&lt;/span&gt;&lt;/a&gt;
+    &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div wicket:id="pagingLinksContainer"&gt;
+        &lt;table&gt;
+
+            &lt;tbody&gt;
+            &lt;tr valign="top"&gt;
+                &lt;td&gt;
+                    &lt;a wicket:id="first" href=""&gt;
+                        &lt;span&gt;First&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/td&gt;
+                &lt;td&gt;
+                    &lt;a wicket:id="prev"  href=""&gt;
+                        &lt;span&gt;Previous&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/td&gt;
+                &lt;td wicket:id="navigation"&gt;
+                    &lt;a wicket:id="pageLink"&gt;&lt;span
+                            wicket:id="pageNumber"&gt;5&lt;/span&gt;&lt;/a&gt;
+                &lt;/td&gt;
+
+                &lt;td&gt;
+                    &lt;a wicket:id="next" href="#"&gt;
+                        &lt;span&gt;Next&lt;/span&gt;&lt;/a&gt;
+                &lt;/td&gt;
+                &lt;td&gt;
+                    &lt;a wicket:id="last" href="#"&gt;
+                        &lt;span&gt;Last&lt;/span&gt;&lt;/a&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>&lt;/wicket:panel>
+</body>
+</html></p>
+
+<p>[/html]</p>
+
+<h3>Usage of the component</h3>
+
+<p>Our newly created component can be used in a very similar way to the standard Wicket PagingNavigator:</p>
+
+<p>[java]
+public class DataViewPanel extends Panel {</p>
+
+<pre><code>public DataViewPanel(String id) {
+    super(id);
+    DataView dataView = new DataView("dataView", new CustomDataProvider());
+    dataView.setItemsPerPage(5);
+    add(dataView);
+
+    CustomPagingNavigator customPagingNavigator = new CustomPagingNavigator("paginator", dataView);
+    add(customPagingNavigator);
+}
+</code></pre>
+
+<p>}</p>
+
+<p>[/java]</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-31T13:06:45+01:00" data-updated="true" itemprop="datePublished">Dec 31<span>st</span>, 2010</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/blog/2010/12/what-would-you-do-if-your-boss-give-you-one-week-for-self-education/" title="上一篇: What would you do if your boss give you one week for self-education?">&laquo; What would you do if your boss give you one week for self-education?</a>
+		  
+		  
+			<a class="basic-alignment right" href="/blog/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/" title="下一篇: Wicket Tutorial, part 1 - setting up project with Spring 3, JPA 2 and MySQL">Wicket Tutorial, part 1 - setting up project with Spring 3, JPA 2 and MySQL &raquo;</a>
+		  
+		</p>
+	</div>
+	<div class="jiathis">
+	
+		<div class="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1376918307020726" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+</div>
+
+	
+	</div>
+</div>
+
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

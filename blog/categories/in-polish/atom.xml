@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: In Polish | Tomasz Dziurko]]></title>
+  <link href="http://tdziurko.github.io/blog/categories/in-polish/atom.xml" rel="self"/>
+  <link href="http://tdziurko.github.io/"/>
+  <updated>2014-05-25T00:00:05+02:00</updated>
+  <id>http://tdziurko.github.io/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Recenzja "Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce", czyli o tym co każdy programista umieć powinien]]></title>
+    <link href="http://tdziurko.github.io/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
+    <updated>2013-10-30T16:33:49+01:00</updated>
+    <id>http://tdziurko.github.io/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
+    <content type="html"><![CDATA[<p>Dear Reader</p>
+
+<pre><code>This post is in my native language as it is a review of book pyblished only in Poland. Please feel free to check my other posts which are mainly written in English.
+</code></pre>
+
+<p>Dość rzadko sięgam po książki informatyczne wydane w naszym ojczystym języku. Powód jest dość prozaiczny: z reguły w momencie, gdy wychodzi polskie tłumaczenie &ldquo;JavaAwesomeWebFramework 1.2 w Akcji&rdquo; po angielsku jest już  dostępna &ldquo;JavaAwesomeWebFramework 2.0 in Action&rdquo; i cała wiedza zawarta w polskiej wersji jest, delikatnie mówiąc, lekko nieaktualna.</p>
+
+<p>Ale są tematy, które można nazwać, choć to dość górnolotne słowo, ponadczasowymi, bo dotyczą zagadnień aktualnych zarówno teraz jak i kilka lat temu. I do takich należy właśnie komunikacja z klientem. Temat dość ciężki, należący do tzw. &ldquo;obszarów miękkich&rdquo; i przez co traktowany przez programistów mocno po macoszemu. Co niestety powoduje częste napięcia na linii klient-zespół programistów, bo programista uważa, że on jest bez winy, a to klient wyraził się niejasno i jest źródłem wszystkich problemów.</p>
+
+<p>I właśnie na takie problemy receptą jest lektura i stosowanie rad zawartych w książce <a href="http://helion.pl/ksiazki/oprogramowanie-szyte-na-miare-jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-michal-bartyzel,opszmi.htm">&ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo;</a> Michała Bartyzela.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/10/bartyzel_klient.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/10/bartyzel_klient-300x300.jpg" alt="Audiobooks Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce. eBook. Pdf" /></a></p>
+
+<!-- more -->
+
+
+
+
+<blockquote>Klient wie, czego chce, ale nie wie czego potrzebuje</blockquote>
+
+
+<p>Właśnie takim, bardzo mądrym stwierdzeniem zaczyna się ta książka. I jeśli dobrze je przemyślimy i weźmiemy do serca to nasze postrzeganie klienta zmieni się diametralnie. Klient przychodzi do nas z problemem biznesowym i wie co jest jego rozwiązaniem. Nie wie jednak co jest potrzebne, żeby to rozwiązanie przekuć na aplikację. I tu się zaczyna nasza rola jako członków zespołu programistów. Zrozumieć problem i stworzyć aplikacją, która go rozwiązuje. Bo choćby nie wiem jak czysty, piękny i przetestowany był nasz kod, to jeśli nie pomoże klientowi w jego problemie to cały projekt będzie porażką, a nasza firma straci klienta. <em>&ldquo;Think about Business Value&rdquo;</em> jak często mawia <a href="http://pawel.wrzesz.cz/">Paweł Wrzeszcz</a>, mój kolega z pracy.</p>
+
+<p>Książka podzielona jest na kilka rozdziałów, które po kolei omawiają sposoby dobrej komunikacji, sztukę zadawania pytań (zarówno konkretyzujących jak i uogólniających), ustalanie priorytetów wymagań, a także efektywne prowadzenia spotkań, które nie będą stratą czasu i pozwolą nam osiągnąć założone cele.</p>
+
+<p>Każdy rozdział zawiera sporo przykładów zwrotów i zachowań, które ułatwią nam rozmowy z drugą stroną, a na końcu publikacji umieszczony jest swojego rodzaju bryk z zebranymi wszystkimi poradami w pigułce.</p>
+
+<p><strong>Podsumowanie</strong></p>
+
+<p>Jeśli książkę &ldquo;Clean Code&rdquo; Uncle Boba uważam za coś, co każdy programista powinien przeczytać zanim dopuści się go do klawiatury i kodu, to &ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo; jest pozycją, którą każdy programista powinien przyswoić <strong>zanim dopuści się go</strong> do rozmów z klientem. I wydaje mi się, że książka jest na tyle wartościowa, że warto by rozważyć jej przetłumaczenie na język angielski, no może po poprawieniu ilustracji, które były rysowane trochę &ldquo;na kolanie&rdquo; :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Confitura 2012 - wolontariusze poszukiwani!]]></title>
+    <link href="http://tdziurko.github.io/blog/2012/06/confitura-2012-wolontariusze-poszukiwani/"/>
+    <updated>2012-06-02T14:56:33+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2012/06/confitura-2012-wolontariusze-poszukiwani</id>
+    <content type="html"><![CDATA[<p>Dear Reader</p>
+
+<pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
+</code></pre>
+
+<p>W związku z dynamicznym rozwojem naszej konferencji aktualnie poszukujemy osób na stanowisko Wolontariusz oraz Fotograf. Poniżej opis stanowisk oraz wymagania.</p>
+
+<p><strong>Oferujemy:</strong></p>
+
+<ul>
+<li>pracę w młodym i dynamicznym zespole</li>
+<li>atrakcyjne wynagrodzenie w postaci szacunku innych i satysfakcji</li>
+<li>jasną ścieżkę kariery (uczestnik &ndash;> wolontariusz &ndash; > członek kapituły )</li>
+<li>ciekawy wpis do CV</li>
+<li>wstęp na imprezę po zakończeniu konferencji</li>
+<li>możliwość poznania wielu ciekawych ludzi</li>
+</ul>
+
+
+<p><strong>Wymagania:</strong></p>
+
+<ul>
+<li>dyspozycyjność w piątek 29.06 (od godzin popołudniowych) oraz w sobotę 30.06 od rana do zakończenia imprezy</li>
+<li>chęć do pracy</li>
+<li>zdolności interpersonalne</li>
+<li>umiejętnośc pracy w zespole</li>
+<li>uśmiech</li>
+</ul>
+
+
+<p><strong>Dodatkowo dla Fotografów:</strong></p>
+
+<ul>
+<li>własny, w miarę dobry aparat fotograficzny</li>
+<li>umiejętność jego używania wykraczającą poza tryb &ldquo;auto&rdquo; ;)</li>
+</ul>
+
+
+<p><strong>Do zadań Wolontariuszy i Fotografów będą należały:</strong></p>
+
+<ul>
+<li>pomoc w przygotowaniach do konferencji (plakaty, oznaczenia sal, pakowanie materiałów konferencyjnych)</li>
+<li>prowadzenie procesu rejestracji w dniu konferencji</li>
+<li>pomoc prelegentom przed i w trakcie wykładów (2-4 wykłady na wolontariusza, częściowo z możliwością wyboru prezentacji, którymi chce się opiekować)</li>
+<li>wszystko inne co będzie trzeba zrobić, a w tej chwili nie przychodzi nam do głowy :)</li>
+<li>(dla Fotografów), uwiecznianie wszystkiego i wszystkich na zdjęciach i wrzucanie ich na bieżąco na Picassę</li>
+</ul>
+
+
+<p><strong>Czego nie obiecujemy:</strong></p>
+
+<ul>
+<li>możliwości obejrzenia wszystkich wykładów, na które się będzie miało ochotę</li>
+</ul>
+
+
+<p>Osoby zainteresowane proszone są o przesłanie CV&hellip; wróć!&hellip; przesłanie maila na adres <strong>tomek.dziurko (małpka) confitura . pl</strong> z dopiskiem &lsquo;Wolonatriusz" lub &ldquo;Fotograf&rdquo;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sobotnia mobilizacja na Mobilizację]]></title>
+    <link href="http://tdziurko.github.io/blog/2011/10/sobotnia-mobilizacja-na-mobilizacje/"/>
+    <updated>2011-10-26T22:34:32+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2011/10/sobotnia-mobilizacja-na-mobilizacje</id>
+    <content type="html"><![CDATA[<p>Dear Reader</p>
+
+<pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
+</code></pre>
+
+<p>W sobotę w Łodzi odbyła się pierwsza edycja konferencji <a href="http://mobilization.pl/">Mobilization</a> organizowanej przez JUG z tego miasta. Ponieważ w tematyce technologii mobilnych czuję się mocno zielony i poza warsztatami z Androida na ostatniej <a href="https://github.com/warszawajug/warsjawa2011/wiki/Konferencja-warsjawa-2011">Warsjawie</a> nie miałem z tą częścią programowania styczności, zdecydowałem się zainwestować sobotę na poszerzenie moich horyzontów w tym obszarze. Jak się okazało nie tylko mnie zainteresowała ta tematyka, bo na listę uczestników załapałem się tuż przed zamknięciem rejestracji, a, jak pisali organizatorzy, na liście rezerwowej czekało na uśmiech losu ponad 50 osób! Ale jeśli weźmiemy pod uwagę fakt, że była to pierwsza w Polsce konferencja całkowicie poświęcona technologiom mobilnym to nie ma się co dziwić tak dużemu zainteresowaniu.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/10/mobilization.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/10/mobilization.png" alt="" /></a></p>
+
+<!-- more -->
+
+
+<h3>Prelekcje</h3>
+
+<p><strong>Windows Phone Mango</strong></p>
+
+<p>Konferencja rozpoczęła się od krótkiego przywitania i zaraz po tym mogliśmy wysłuchać prelekcji o programowaniu na <a href="http://mobilization.pl/schedule/programowanie-windows-phone-mango/">Windows Phone Mango</a> poprowadzonej przez Barłomieja Zassa z Microsoftu. Bartek pokazał jak za pomocą Visual Studio i Microsoft Expression Blend można szybko stworzyć prostą aplikację na telefon z systemem WP. Jakoś nigdy nie byłem fanem języków od firmy z Redmond, ale prezentacja była poprowadzona na tak wysokim poziomie, że wielu niezdecydowanych na jaką platformę zacząć pisać aplikacje na pewno zostało zaciekawionych ofertą Microsoftu. Dodatkowo widać, że firma ta intensywnie próbuje zdobyć przychylność developerów, bo nie dość ze oba narzędzia są naprawdę dopracowane i oferują wiele możliwości to w dodatku są dostępne za darmo. Jedynym zgrzytem było wydłużenie prezentacji o 15 minut przez co już na starcie rozjechała się cała agenda konferencji.</p>
+
+<p><strong>Aplikacje na system Android 3.0</strong></p>
+
+<p>Kolejnym wykładem było <a href="http://mobilization.pl/schedule/android-30/">Pisanie aplikacji na Tablety z system Android 3.0</a>, podczas którego Krzysztof Janik pokazał kilka nowości z tej wersji systemu od Google, które powinny zainteresować osoby planujące tworzenie programów na tablety. Jednak już na początku pojawiło się kilka zgrzytów: tablet, który mieliśmy zobaczyć w działaniu nie chciał współpracować z komputerem, prowadzący na pierwszym slajdzie sam zauważył dwie literówki, a na jednym z kolejnych przyznał się, że wkleił zły fragment klasy :) Więc prezentacja nie powaliła, temat trochę ciężki, bo tablety w Polsce to jednak bardzo wąska nisza i projekt napisania aplikacji na takie urządzenie pojawia się równie często co aplikacja www, która wygląda tak samo pod Firefoxem i Internet Explorerem 6.0 ;&ndash;), a w dodatku prowadzący nie przyłożył się do kilku detali, co popsuło końcowe wrażenie. Sposób prezentowania był ok, temat trudny, slajdy kiepskie, no i jeszcze nie wypalił gwóźdź prezentacji, czyli tablet live.</p>
+
+<p><strong>Aplikacje wielo-platformowe</strong></p>
+
+<p>Trzecią prelekcją, na którą się wybrałem była <a href="http://mobilization.pl/schedule/multiplatform-mobile-apps/">Multiplatform mobile apps</a>. I okazało się, że była to najlepsza i najwartościowsza prezentacja tej konferencji. Widać było, że prowadzący Konrad Hołowiński ma na ten temat dużą wiedzę, którą w bardzo przemyślany sposób zebrał, uporządkował i przedstawił na swoim wystąpieniu. Prelegent skoncentrował się na omówieniu dwóch najpopularniejszych rozwiązań służących do tworzenia wieloplatformowych aplikacji mobilnych: <a href="http://www.appcelerator.com/">Appcelerator Titanium</a> oraz <a href="http://www.phonegap.com/">PhoneGap</a>. Titanium używa języka JavaScript, oferuje wsparcie dla Androida, iOS i Blackberry (w wersji beta), ale dla każdej z tych platform zapewnia natywny wygląd komponentów. Z kolei PhoneGap wspiera aż 6 platform, a aplikacje piszemy w HTML5, CSS3 oraz JavaScripcie (jQuery Mobile lub Sencha Touch). Za wadę PhoneGapa niektórzy mogą uznać fakt, że aplikacje nie wyglądają jak natywne. Potencjał tej biblioteki dostrzegło Adobe i przejęło twórców PhoneGapa, firmę Nitobi.</p>
+
+<p><strong>Obiad</strong></p>
+
+<p>Po przerwie obiadowej kolejną prezentacją, na którą planowałem się wybrać była <a href="http://mobilization.pl/schedule/layouts/">Advanced layouts on the Android battlefield</a>, ale niestety przez kolejkę w chińczyku nie zdążyliśmy wejść na salę odpowiednio wcześniej i okazało się, że możemy jedynie stanąć na końcu wśród innych, dla których zabrakło miejsc siedzących na krzesełkach i leżących na podłodze. Dlatego z <a href="http://mstachniuk.blogspot.com/">Marcinem Stachniukiem</a> zdecydowaliśmy się na odpuszczenie tego wykładu i podyskutowanie na tematy różne, między innymi o wadach i zaletach pracy kontraktowej i etatowej oraz wyższości <a href="http://yerbamate.info.pl/">Yerba Mate</a> nad kawą i innymi dopalaczami :)</p>
+
+<p><strong>Testowanie na Androidzie</strong></p>
+
+<p>Tematem kolejnego wykładu miał być <a href="http://mobilization.pl/schedule/android-and-smart-tv/">Android and SmartTV</a> ale niestety prelegent nie dojechał i zamiast tego mieliśmy prezentację, która miała się odbyć na końcu, czyli <a href="http://mobilization.pl/schedule/testing-in-android/">Testowanie na Androidzie</a>. Temat bardzo interesujący, bo każdemu spokojniej się pracuje i refaktoruje, gdy ma kod pokryty testami, więc ciekawiło mnie jak można taki spokój ducha osiągnąć tworząc aplikacje na Androida. Prowadzący Marek Defeciński pokazał (niestety tylko teoretycznie, bo Maven nie chciał współpracować ) kilka bardzo ciekawych narzędzi, na które warto zwrócić uwagę pisząc testy na system od Google: <a href="http://code.google.com/p/robotium/">Robotium</a> (Selenium dla Androida) oraz <a href="http://pivotal.github.com/robolectric/">Robolectric</a>, czyli taki JUnit na tę platformę. Dodatkowo wspomniane zostały również <a href="http://code.google.com/p/android-mock/">Android Mock</a> oraz <a href="http://code.google.com/p/powermock/">PowerMock</a>. Prezentacja dobra, pomimo widocznej tremy u prowadzącego oraz nie działających przykładów.</p>
+
+<p><strong>Testowanie aplikacji na prototypie</strong></p>
+
+<p>Później nadszedł czas na mniej techniczne wystąpienie, czyli <a href="http://mobilization.pl/schedule/test-prototype/">Testowanie aplikacji na prototypie</a>. Damian Szczepanik w przyjemny sposób opisał różne podejścia do testowania naszych aplikacji na telefony, których nie ma jeszcze na rynku, a są dostępne tylko u producenta. Przedstawiony został łańcuch komunikacji (deweloperem &ndash; inwestor &ndash; operator sieci komórkowej &ndash; producent &ndash; tester), przez który muszą przejść wszystkie zgłoszenia błędów. Tak długa lista osób, które są zaangażowane w cały proces wymusza jak najdokładniejsze logowanie błędów (unikalne kody wyjątków, itp.) tak, aby uniknąć wielokrotnego przechodzenia tym łańcuchem z dodatkowymi pytaniami i wyjaśnieniami, co każdorazowo trwa przynajmniej kilka dni. A jeśli ktoś akurat jest na urlopie albo zwolnieniu, to zostajemy z nieprawidłowo działającą aplikacją na jeszcze dłużej.</p>
+
+<p>Prelegent nie silił się na nadętą techniczną nomenklaturę i wprowadził Product Ownera Wieśka oraz Zycha i kilka innych postaci o przyjemnych imionach. Dzięki temu prezentacja była ciekawa i łatwo przyswajalna.</p>
+
+<p><strong>Scrumo-Waterfall</strong></p>
+
+<p>Ostatnią prezentacją była przygotowana na szybko prelekcja o połączeniu Scruma z Waterfallem w firmie jednego z organizatorów konferencji. Wystąpienie było wymuszone absencją jednego z prelegentów (tego od Androida i SmartTV) i szybko zamieniło się w dyskusję na temat szacowania czasochłonności czy obchodzenia mało elastycznego podejścia szefostwa do metodyk zwinnych tak, aby programistom się dobrze pracowało, a przełożeni byli zadowoleni. Generalnie można było posłuchać i powymieniać poglądy na około-agilowe tematy.</p>
+
+<h3>Podsumowanie</h3>
+
+<p>Same prelekcje były na w miarę dobrym poziomie. Jedna prezentacja była kiepska, jedną trudno ocenić, bo była przygotowywana awaryjnie, a pozostałe były albo dobre (testowanie Androida, testowanie na prototypie telefonu) albo bardzo dobre (Windows Phone oraz Aplikacje wielo-platformowe). Patrząc z perspektywy osoby mającej niewielkie doświadczenie w programowaniu na urządzenia mobilne konferencja była ciekawa i pozwoliła mi dowiedzieć się wielu interesujących i przydatnych rzeczy.</p>
+
+<p>Organizacyjnie było w porządku, ale (jak to w przypadku konferencyjnego debiutu) nie obyło się bez kilku wpadek. Poniżej moja subiektywna lista.</p>
+
+<p><strong>Plusy</strong></p>
+
+<ul>
+<li><p>sensownie działające Wi-fi (tylko na początku były z nim problemy)</p></li>
+<li><p>ładna koszulka, co na darmowej konferencji jest rzadkością</p></li>
+<li><p>dobre sale: wygodne krzesła z podkładką i notatnikiem</p></li>
+<li><p>kanapki i jogurcik w przerwach, świetny i niedrogi patent na głodomorów</p></li>
+<li><p>aplikacja na telefon z agendą, prelegentami, itp.</p></li>
+<li><p>dużo nagród i upominków od sponsorów</p></li>
+</ul>
+
+
+<p><strong>Minusy</strong></p>
+
+<ul>
+<li><p>przesunięcia i zmiany w agendzie</p></li>
+<li><p>o niektórych konkursach dowiedziałem się dopiero na zakończeniu w momencie losowania nagród</p></li>
+<li><p>mówienie na rozpoczęciu &ldquo;mam nadzieję, że nie zapomniałem o żadnym ze sponsorów&rdquo; nie brzmiało najlepiej :)  Slajdy z logotypami i nazwami firm, dzięki którym konferencja się odbyła, pokazane na rozpoczęciu i zakończeniu rozwiązałyby problem</p></li>
+<li><p>brak oficjalnego taga na Twitterze, przez co trudno było śledzić co piszą ludzie</p></li>
+<li><p>streaming live chyba nie za bardzo działał, a nawet jeśli byłby ok, to na stronie konferencji nie widziałem wcześniej żadnej informacji, że coś takiego będzie w ogóle dostępne</p></li>
+<li><p>duża odległość od lokali gastronomicznych + kolejki  = trudno było się wyrobić z obiadem w trakcie przerwy</p></li>
+</ul>
+
+
+<p>Jak widać konferencja była udana, ale jest kilka obszarów, które niewielkim kosztem można poprawić. Zainteresowanie imprezami o tematyce mobilnej jest duże, więc myślę, że w 2012 odbędzie się kolejna edycja Mobilization. Czego sobie i Wam życzę, bo w tym roku było dobrze, więc za rok powinno być jeszcze lepiej.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Warsjawa 2011 tuż tuż]]></title>
+    <link href="http://tdziurko.github.io/blog/2011/10/warsjawa-2011-tuz-tuz/"/>
+    <updated>2011-10-09T18:36:58+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2011/10/warsjawa-2011-tuz-tuz</id>
+    <content type="html"><![CDATA[<p>Dear Reader</p>
+
+<pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
+</code></pre>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/10/warsjawa2011-logo.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/10/warsjawa2011-logo.png" alt="" /></a>Jak co roku, w październiku rusza kolejna konferencja organizowana przez <a href="https://sites.google.com/site/warszawajug/">Warszawski JUG</a>, młodsza siostra <a href="http://confitura.pl">Confitury</a>, czyli <a href="http://warsjawa.pl">Warsjawa</a>. Edycja 2011 przynosi sporo zmian i generalnie widać, że przez rok całej imprezie znacznie się przytyło, bo w porównaniu do zeszłorocznej edycji oferuje aż 4 równoległe ścieżki: trzy poświęcone w całości zgłębieniu konkretnej tematyki poprzez warsztaty oraz czwartą, która jest ścieżką mieszaną z 2,5h godzinnymi warsztatami oraz trzema prezentacjami.</p>
+
+<p>Na warsztatach będzie można:
+&ndash; poznać tajniki Google Web Toolkit
+&ndash; napisać aplikację na platformę Android
+&ndash; stworzyć projekt z użyciem Domain Driven Design oraz Command-query Responsibility Segregation
+&ndash; poćwiczyć pisanie ekstremalnie obiektowego kodu pod okiem dwóch doświadczonych programistów</p>
+
+<p>Ponieważ liczba miejsc na poszczególne warsztaty jest ograniczona, konieczna jest wcześniejsza rejestracja bezpośrednio ze strony każdego warsztatu.</p>
+
+<p>Dodatkowo będzie możliwość zobaczenia w akcji najnowszego Tomcata ze wsparciem JEE6, zapoznania się z WebSphere Application Server 8 + OSGi oraz posłuchania o tym do czego jeszcze (poza zwykłym testowaniem) można wykorzystać takie biblioteki jak TestNG czy Mockito.</p>
+
+<p>Swoją wiedzą podzielą się znani w naszej społeczności: Bartek Kuczyński, Jacek Laskowski, Krzysztof Jelski z Pawłem Lipiński i Sławomir Sobótka. Ale, co dodatkowo bardzo cieszy, nie tylko oni, ponieważ będzie okazja zobaczyć w akcji także mniej znane szerszej publiczności osoby: Pawła Szklarza, Mateusza Grzechocińskiego, Rafała Jamroza oraz  Grzegorza Abramczyka.</p>
+
+<p>Oczywiście cała impreza nie mogłaby się udać bez wsparcia Partnerów konferencji, którymi w tym roku są firmy <a href="http://outbox.pl">Outbox</a>, <a href="http://pl.sii.eu/en/">SII</a>, <a href="http://www.ej-technologies.com/products/jprofiler/overview.html">JProfiler</a>, <a href="http://www.cgi.com/">CGI</a>, <a href="http://www.javart.com.pl/">Javart</a>, <a href="http://touk.pl/">TouK</a> oraz <a href="http://www.elka.pw.edu.pl">Wydział Elektroniki i Technik Informacyjnych Politechniki Warszawskiej</a> jako gospodarz konferencji.</p>
+
+<p>Po szczegóły odsyłam na <a href="http://warsjawa.pl">stronę konferencji</a>, a także na <a href="http://twitter.com/warsjawa">Twittera</a>, gdzie na bieżąco będą pojawiały się informacje na temat Warsjawy. Zachęcamy również do promowania konferencji na Twitterze (oficjalny tag to <a href="http://twitter.com/#!/search?q=%23warsjawa">#warsjawa</a>), a także na <a href="http://www.goldenline.pl/spotkanie/warsjawa-2011">GoldenLine</a> czy <a href="http://events.linkedin.com/Warsjawa-2011/pub/818882">LinkedIn</a>. No i do zobaczenia już za tydzień, w sobotę 15 października!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Książka Czysty kod (Clean code) w promocji o 30% taniej tylko dziś w Helionie]]></title>
+    <link href="http://tdziurko.github.io/blog/2010/08/ksiazka-czysty-kod-clean-code-w-promocji-o-30-taniej-tylko-dzis-w-helionie/"/>
+    <updated>2010-08-20T22:19:25+02:00</updated>
+    <id>http://tdziurko.github.io/blog/2010/08/ksiazka-czysty-kod-clean-code-w-promocji-o-30-taniej-tylko-dzis-w-helionie</id>
+    <content type="html"><![CDATA[<p>Dear Reader</p>
+
+<pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
+</code></pre>
+
+<p>Jeśli ktoś nie śledzi <a href="http://www.facebook.com/pages/Helion/177988375567">konta Helionu</a> na Facebook'u to pragnę poinformować, że dzisiaj jest okazja kupić  rewelacyjną książkę &ldquo;Czysty Kod&rdquo; w promocyjnej cenie z 30% rabatem.</p>
+
+<p>Link do pozycji w księgarni: <a href="http://helion.pl/ksiazki/czysty_kod_podrecznik_dobrego_programisty_robert_c_martin,czykod.htm">link</a></p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2010/10/cleanCodePl.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2010/10/cleanCodePl.png" alt="Clean Code Cover" /></a>Jeśli jeszcze nie masz tej książki, to bardzo polecam, bo pozycja naprawdę warta uwagi każdego szanującego się programisty.</p>
+
+<p>PS:  Wiem, że ostatnio coś cicho i smutno na blogu, ale po zmianie stanu  cywilnego i założeniu własnej DG trochę się jeszcze nie wyrabiam  czasowo. Ale powoli widać światełko w tunelu i wkrótce coś powinno się  zacząć tutaj dziać :)</p>
+]]></content>
+  </entry>
+  
+</feed>
