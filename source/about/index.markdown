@@ -3,7 +3,7 @@ author: Tomasz Dziurko
 comments: false
 date: 2010-10-13 18:00:11+00:00
 layout: page
-slug: whoami
+slug: about
 title: Who Am I?
 wordpress_id: 12
 ---
