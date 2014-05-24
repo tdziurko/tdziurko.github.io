@@ -98,3 +98,6 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: true
+
+# Greyshade Data
+email_md5: 6748c894c49b39b48101c39c8cf0871a
