@@ -18,7 +18,7 @@ tags:
 - team spirit
 ---
 
-Some time ago, after I had written a [review of _The Clean Coder_](http://tomaszdziurko.pl/2011/11/clean-coder/), I received a tweet from [@InformIT](https://twitter.com/#!/InformIT) saying that they liked my review. And then, after a few e-mails with person from [Pearson](http://www.pearson.com/) I received three selected books to read and review. _[Individuals and Interactions: An Agile Guide](http://www.informit.com/store/product.aspx?isbn=0321714091)_ is the first of them.
+Some time ago, after I had written a [review of _The Clean Coder_](<a href="/2011/11/clean-coder/), I received a tweet from [@InformIT](https://twitter.com/#!/InformIT) saying that they liked my review. And then, after a few e-mails with person from [Pearson](http://www.pearson.com/) I received three selected books to read and review. _[Individuals and Interactions: An Agile Guide](http://www.informit.com/store/product.aspx?isbn=0321714091)_ is the first of them.
 
 
 

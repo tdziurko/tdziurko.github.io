@@ -21,7 +21,7 @@ tags:
 - Wicket
 ---
 
-Hello everyone! In the [previous](http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/) post we set up base project using Wicket for out future development of ItemDirectory web application. That post, which was intended to be mainly about Wicket, surprisingly gathered some attention amongst Spring fans and was even mentioned in [weekly summary at SpringSource.com](http://www.springsource.org/node/2994). Nice! :)
+Hello everyone! In the [previous](<a href="/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/) post we set up base project using Wicket for out future development of ItemDirectory web application. That post, which was intended to be mainly about Wicket, surprisingly gathered some attention amongst Spring fans and was even mentioned in [weekly summary at SpringSource.com](http://www.springsource.org/node/2994). Nice! :)
 
 Ok, enough about the past. Today we are going to add some nice common layout to ItemDirectory. Go go go! :)
 

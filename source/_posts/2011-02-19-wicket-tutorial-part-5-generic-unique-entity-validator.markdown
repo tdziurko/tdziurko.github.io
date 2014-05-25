@@ -19,7 +19,7 @@ tags:
 - Wicket
 ---
 
-As I promised in the [previous post](http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/), today we will focus on transforming our unique name validator in Wicket to generic one. So now, let's simply list what we are going to achieve;
+As I promised in the [previous post](<a href="/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/), today we will focus on transforming our unique name validator in Wicket to generic one. So now, let's simply list what we are going to achieve;
 
 
 

@@ -16,7 +16,7 @@ tags:
 - SCWCD
 ---
 
-Much later than planned (check [my post](http://tomaszdziurko.pl/2009/04/lets-start-preperations-to-scwcd/) when I revealed intent to pass SCWCD) I managed to get this certificate. The result (94%) is in my opinion more than good :) Preparations began fairly long time ago (over a year ago) but since this time there were some unexpected circumstances (mainly project which seems to grew and grew) and that's why SCWCD mission took me so long.
+Much later than planned (check [my post](<a href="/2009/04/lets-start-preperations-to-scwcd/) when I revealed intent to pass SCWCD) I managed to get this certificate. The result (94%) is in my opinion more than good :) Preparations began fairly long time ago (over a year ago) but since this time there were some unexpected circumstances (mainly project which seems to grew and grew) and that's why SCWCD mission took me so long.
 
 I  started preparations as usual, by downloading specifications  and adding API to Firefox bookmarks (list of links [here](../2009/04/lets-start-preperations-to-scwcd/)). Then I bought [Head First Servlets  and JSP](http://oreilly.com/catalog/9780596516680/), the most recommended book for this certificate. I had ambitiously assumed that I will be able to write more detailed posts about what I learnt but unfortunately lack of time didn't allow me to do it.<!-- more -->
 

@@ -38,4 +38,4 @@ Here are some useful links, materials and books which I am going to use while pr
 
 My aim is to pass this exam before July 2009 with result not lower than 80%.
 
-**Update**:  And how it ended can be found in my another post - [here](http://tomaszdziurko.pl/2010/01/finally-my-scwcd-mission-completed/).
+**Update**:  And how it ended can be found in my another post - [here](<a href="/2010/01/finally-my-scwcd-mission-completed/).

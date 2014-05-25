@@ -18,7 +18,7 @@ tags:
 - tips
 ---
 
-When I started thinking about writing my first plugin for IntelliJ IDEA the biggest problem was lack of good and comprehensive guides how to do it and how to do it well gathered in one place. So this post will be a written collection of my personal experiences, links and other resources I found useful and noteworthy in my road to releasing [Share with Pastie](http://tomaszdziurko.pl/2011/08/share-pastie-plugin-intellij-idea/) plugin to [public IntelliJ repository](http://plugins.intellij.net/plugin/?idea&id=6267).
+When I started thinking about writing my first plugin for IntelliJ IDEA the biggest problem was lack of good and comprehensive guides how to do it and how to do it well gathered in one place. So this post will be a written collection of my personal experiences, links and other resources I found useful and noteworthy in my road to releasing [Share with Pastie](<a href="/2011/08/share-pastie-plugin-intellij-idea/) plugin to [public IntelliJ repository](http://plugins.intellij.net/plugin/?idea&id=6267).
 
 
 ### Links

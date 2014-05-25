@@ -19,7 +19,7 @@ tags:
 - Wicket
 ---
 
-Welcome back to our [Wicket tutorial](http://tomaszdziurko.pl/category/wicket-tutorial/) series! :) As I mentioned in [previous post](http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-3-form-application/), today we will concentrate on building validator stopping user from adding item location with non-unique name. At first we will start with non-generic but working validator and then we will try to make is as flexible as possible. Ok, so let's write some code!
+Welcome back to our [Wicket tutorial](<a href="/category/wicket-tutorial/) series! :) As I mentioned in [previous post](<a href="/2011/02/wicket-tutorial-part-3-form-application/), today we will concentrate on building validator stopping user from adding item location with non-unique name. At first we will start with non-generic but working validator and then we will try to make is as flexible as possible. Ok, so let's write some code!
 
 
 ### Problem

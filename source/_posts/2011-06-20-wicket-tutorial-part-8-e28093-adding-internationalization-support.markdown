@@ -209,7 +209,7 @@ This is example application to help you manage your items hidden in many locatio
   </li>
   <li>
     <a title="Tutorial about creating this application"
-      href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/">
+      href="<a href="/2011/03/wicket-tutorial-series-building-web-application-scratch/">
       Tutorial about creating this application
     </a>
   </li>

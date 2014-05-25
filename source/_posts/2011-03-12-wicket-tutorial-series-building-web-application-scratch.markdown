@@ -31,7 +31,7 @@ This post aggregates the  series of Wicket tutorial articles from this blog. Bu
     1. 
 
 
-[Wicket Tutorial, part 1 – setting up project with Spring 3, JPA 2 and MySQL](http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/)
+[Wicket Tutorial, part 1 – setting up project with Spring 3, JPA 2 and MySQL](<a href="/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/)
 
 
 
@@ -40,7 +40,7 @@ This post aggregates the  series of Wicket tutorial articles from this blog. Bu
     2. 
 
 
-[Wicket Tutorial, part 2 – adding common layout to the project](http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/)
+[Wicket Tutorial, part 2 – adding common layout to the project](<a href="/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/)
 
 
 
@@ -49,7 +49,7 @@ This post aggregates the  series of Wicket tutorial articles from this blog. Bu
     3. 
 
 
-[Wicket Tutorial, part 3 – first form in our application](http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-3-form-application/)
+[Wicket Tutorial, part 3 – first form in our application](<a href="/2011/02/wicket-tutorial-part-3-form-application/)
 
 
 
@@ -58,7 +58,7 @@ This post aggregates the  series of Wicket tutorial articles from this blog. Bu
     4. 
 
 
-[Wicket Tutorial, part 4 – custom validator for unique entity name](http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/)
+[Wicket Tutorial, part 4 – custom validator for unique entity name](<a href="/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/)
 
 
 
@@ -67,7 +67,7 @@ This post aggregates the  series of Wicket tutorial articles from this blog. Bu
     5. 
 
 
-[Wicket tutorial, part 5 – generic unique entity validator](http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/)
+[Wicket tutorial, part 5 – generic unique entity validator](<a href="/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/)
 
 
 
@@ -76,7 +76,7 @@ This post aggregates the  series of Wicket tutorial articles from this blog. Bu
     6. 
 
 
-[Wicket Tutorial, part 6 – listing locations in a simple manner](http://tomaszdziurko.pl/2011/03/wicket-tutorial-part-6-%E2%80%93-listing-locations-simple-manner/)
+[Wicket Tutorial, part 6 – listing locations in a simple manner](<a href="/2011/03/wicket-tutorial-part-6-%E2%80%93-listing-locations-simple-manner/)
 
 
 
@@ -85,7 +85,7 @@ This post aggregates the  series of Wicket tutorial articles from this blog. Bu
     7. 
 
 
-[Wicket Tutorial, part 7 – editing and removing item locations](http://tomaszdziurko.pl/2011/05/wicket-tutorial-part-7-%E2%80%93-editing-and-removing-item-locations/)
+[Wicket Tutorial, part 7 – editing and removing item locations](<a href="/2011/05/wicket-tutorial-part-7-%E2%80%93-editing-and-removing-item-locations/)
 
 
 
@@ -100,7 +100,7 @@ This post aggregates the  series of Wicket tutorial articles from this blog. Bu
 
 
 	
-  * [Wicket Tutorial, part 8 - adding internationalization support](http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-%E2%80%93-adding-internationalization-support/)
+  * [Wicket Tutorial, part 8 - adding internationalization support](<a href="/2011/06/wicket-tutorial-part-8-%E2%80%93-adding-internationalization-support/)
 
 
 
@@ -112,9 +112,9 @@ This post aggregates the  series of Wicket tutorial articles from this blog. Bu
 
 
 	
-  * [Wicket Tutorial, part 9 – storing and loading user preferences from cookies](http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-%E2%80%93-storing-loading-user-preferences-cookies/)
+  * [Wicket Tutorial, part 9 – storing and loading user preferences from cookies](<a href="/2011/07/wicket-tutorial-part-9-%E2%80%93-storing-loading-user-preferences-cookies/)
 
 
 
 
-You might also be interested in post [Wicket – useful links](http://tomaszdziurko.pl/2010/02/wicket-useful-links/) with other good tutorials, presentations and tools I found useful while learning and using Wicket.
+You might also be interested in post [Wicket – useful links](<a href="/2010/02/wicket-useful-links/) with other good tutorials, presentations and tools I found useful while learning and using Wicket.

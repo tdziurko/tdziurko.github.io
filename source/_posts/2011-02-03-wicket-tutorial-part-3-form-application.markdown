@@ -21,7 +21,7 @@ tags:
 - Wicket
 ---
 
-Hello Visitor :) In previous posts we created [base project](http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/) and added [common layout](http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/) to ItemDirectory Wicket application. Today we are going to add first form to allow users to insert some data into our application.
+Hello Visitor :) In previous posts we created [base project](<a href="/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/) and added [common layout](<a href="/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/) to ItemDirectory Wicket application. Today we are going to add first form to allow users to insert some data into our application.
 
 As main feature of ItemDirectory is to manage information where items (books, movies, music, postage stamps) are stored in our home/work, the first data we need to know are locations where we actually can store those things. So we start with adding table, entity and form to manage locations of our precious items.
 
@@ -232,7 +232,7 @@ In **(1)** we create Wicket form with model to gather data from user. We use [Co
 
     
     Concept of models is one of the most important element of Wicket and you should understand what models do and how they work. In this tutorial I am concentrating on practical usage of Wicket, so theory isn't covered in great detail.
-    Although you can read more about models on two (<a href="https://cwiki.apache.org/WICKET/working-with-wicket-models.html">[1]</a> and <a href="https://cwiki.apache.org/WICKET/more-on-models.html">[2]</a>) Wiki pages and generally in two presentations by Mystic Coders. Links to them can by found in the "Tutorial, guides" section in <a href="http://tomaszdziurko.pl/2010/02/wicket-useful-links/">"Wicket - useful links"</a> post
+    Although you can read more about models on two (<a href="https://cwiki.apache.org/WICKET/working-with-wicket-models.html">[1]</a> and <a href="https://cwiki.apache.org/WICKET/more-on-models.html">[2]</a>) Wiki pages and generally in two presentations by Mystic Coders. Links to them can by found in the "Tutorial, guides" section in <a href="/2010/02/wicket-useful-links/">"Wicket - useful links"</a> post
 
 
 In **(2)**, **(3)** and **(4)** we create and add to our form: label for input field, input field (note that its called _name_, as property in page class) and submit button with overriden onSubmit method in which we place save logic.
