@@ -1,0 +1,290 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>GeeCON 2014 – Brain dump, Day 3 - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="GeeCON 2014 – Brain Dump, Day 3 Last, third post with my notes from GeeCON 2014 conference: Tomasz Kowalczewski - Reactive Java Something almost & &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-3/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">GeeCON 2014 – Brain Dump, Day 3</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Last, third post with my notes from GeeCON 2014 conference:</p>
+
+<p><strong>Tomasz Kowalczewski - Reactive Java</strong></p>
+
+<ul>
+<li><p>Something almost &ldquo;reactive&rdquo; is already in JDK8: Completable Future, more reading: <a href="http://www.nurkiewicz.com/2013/05/java-8-definitive-guide-to.html">&ldquo;Java 8: Definitive guide to CompletableFuture&rdquo;</a></p></li>
+<li><p><a href="https://github.com/Netflix/RxJava">RxJava</a> has nice DSL allowing to configure observables in elegant way</p></li>
+<li><p>Project has <a href="https://github.com/Netflix/RxJava/wiki">good wiki</a>, worth to dive deeper</p></li>
+<li><p>Observables can be easily converted to Iterator (good for step-by-step migrations)</p></li>
+</ul>
+
+
+<p><strong>Tom Bujok - 33 things you want to do better</strong></p>
+
+<ul>
+<li>(didn&rsquo;t attend this one), but there are very good <a href="https://speakerdeck.com/tombujok/33-things-you-want-to-do-better-3">slides available</a></li>
+</ul>
+
+
+<p><strong>Sander Mak, Paul Bakker - Modular JavaScript</strong></p>
+
+<ul>
+<li><p><a href="http://www.commonjs.org/">CommonJS</a> (preferred one) and <a href="https://github.com/amdjs/amdjs-api/blob/master/AMD.md">AMD</a></p></li>
+<li><p>Chuck Norris Stamp Of Approval &ndash; <a href="http://www.clipartbest.com/clipart-nTXEB7jTB">image</a> ;)</p></li>
+</ul>
+
+
+<p><strong>Sandro Mancuso - Crafted Design</strong></p>
+
+<ul>
+<li><p>Controller only controls the flow, usually only invokes use_cases</p></li>
+<li><p>use_cases, package for logic/features</p></li>
+<li><p>Packages by feature</p></li>
+<li><p>There were too many diagrams hard to describe in text so you should really check <a href="http://www.slideshare.net/sandromancuso/crafted-design-geecon-2014">slides</a></p></li>
+</ul>
+
+
+<p><strong>Michael Feathers - Beyond Error Handling</strong></p>
+
+<ul>
+<li><p>Book <a href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">&ldquo;Growing Object-Oriented Software, Guided by Tests&rdquo;</a></p></li>
+<li><p>We shouldn&rsquo;t pass nulls inside the application</p></li>
+<li><p>&ldquo;Do not check for stupid everywhere, check for stupid at the door&rdquo;</p></li>
+</ul>
+
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-18T23:27:30+02:00" data-updated="true" itemprop="datePublished">May 18<span>th</span>, 2014</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/conferences/'>Conferences</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2014/05/geecon-2014-brain-dump-day-2/" title="Previous: GeeCON 2014 – Brain dump, Day 2">&laquo; GeeCON 2014 – Brain dump, Day 2</a>
+		  
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,375 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Wicket Tutorial, part 4 - custom validator for unique entity name - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Wicket Tutorial, Part 4 - Custom Validator for Unique Entity Name Welcome back to our Wicket tutorial series! :) As I mentioned in previous post, &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Wicket Tutorial, Part 4 - Custom Validator for Unique Entity Name</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Welcome back to our <a href="http://tomaszdziurko.pl/category/wicket-tutorial/">Wicket tutorial</a> series! :) As I mentioned in <a href="http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-3-form-application/">previous post</a>, today we will concentrate on building validator stopping user from adding item location with non-unique name. At first we will start with non-generic but working validator and then we will try to make is as flexible as possible. Ok, so let&rsquo;s write some code!</p>
+
+<h3>Problem</h3>
+
+<p>As you might remember, currently we have Wicket form with basic validation checking existence of name field and whether its length is in proper range or not:</p>
+
+<p>[java]</p>
+
+<pre><code>    Form&lt;AddLocationPage&gt; addLocationForm = new Form&lt;AddLocationPage&gt;("addLocationForm",
+            new CompoundPropertyModel&lt;AddLocationPage&gt;(this));
+    add(addLocationForm);
+
+    Label nameLabel = new Label("nameLabel", "Location name");
+    addLocationForm.add(nameLabel);
+
+    RequiredTextField&lt;String&gt; nameField = new RequiredTextField&lt;String&gt;("name");
+    nameField.add(LengthBetweenValidator.lengthBetween(MIN_LOCATION_NAME_LENGTH, MAX_LOCATION_NAME_LENGTH));
+    addLocationForm.add(nameField);
+
+    Button submitButton = new Button("submitButton") {
+        @Override
+        public void onSubmit() {
+            Location location = new Location(name);
+            locationService.save(location);
+
+            getSession().info("Location added successfully");
+            setResponsePage(LocationsPage.class);
+        }
+    };
+    addLocationForm.add(submitButton);
+</code></pre>
+
+<p>[/java]</p>
+
+<!-- more -->
+
+
+<p>But with unique constraint on name field in locations table in our database, trying to insert new location with name equal to other existing location will, as expected, end with such error:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/02/SS-20110215205613.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/02/SS-20110215205613.png" alt="" /></a></p>
+
+<h3>Solution</h3>
+
+<p>The easiest way to prevent user from causing such exceptions is to create custom validator checking if such location is already in our database.  And as we will be validating String input we will use <a href="http://wicket.apache.org/apidocs/1.4/index.html?org/apache/wicket/validation/validator/StringValidator.html">StringValidator</a> class as base class for our own validator called UniqueLocationNameValidator:</p>
+
+<p>[java]
+public class UniqueLocationNameValidator extends StringValidator {</p>
+
+<pre><code>@SpringBean
+private LocationService locationService;    // (1)
+
+private long locationIdToIgnore;            // (2)
+
+public UniqueLocationNameValidator(long locationIdToIgnore) {
+    this();
+    this.locationIdToIgnore = locationIdToIgnore;
+}
+
+public UniqueLocationNameValidator() {
+    InjectorHolder.getInjector().inject(this);            // (3)
+}
+
+@Override
+protected void onValidate(IValidatable&lt;String&gt; validatable) {      // (4)
+    Location location = locationService.findByName(validatable.getValue());
+
+    if(location != null &amp;&amp; location.getId().longValue() != locationIdToIgnore) {
+        error(validatable);
+    }
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>So starting from the beggining of listing above:</p>
+
+<ol>
+<li><p> As we will need service object to communicate with locations database table, we are injecting LocationService</p></li>
+<li><p> In the future, we will also use this validator to validate locations while editing them. Id of currently edited object will prevent validator from firing error when found object will have the same Id as edited one. Currently we will not use this feature.</p></li>
+<li><p> @SpringBean annotation is working without any other effort only in Wicket <a href="http://wicket.apache.org/apidocs/1.4/index.html?org/apache/wicket/Component.html">Component</a> class and its children so when we want to use it in different class, we have to tell Wicket to auto inject beans here.</p></li>
+<li><p> onValidate() method is the core of validating class. We try to search for location with the same name as provided by user and if application finds one and its Id is different from edited entity object, we fire an error message.</p></li>
+</ol>
+
+
+<p>Error message can be defined in properties file and, as we will probably use our validator in more than one place, we add it in Application.properties file:</p>
+
+<p>[xml]
+applicationName = Item Directory
+applicationHeader = Manage your items easily!
+UniqueLocationNameValidator = Location with this name already exists in the database.
+[/xml]</p>
+
+<p>Of course we have to create findByName() method in LocationService. In our layered architecture (which currently could be considered as overkill but in larger project it really pays off) service calls dao method, so logic for finding location by name is in LocationDaoImpl class:</p>
+
+<p>[java]
+public Location findByName(String locationName) {</p>
+
+<pre><code>    Query findByNameQuery = entityManager.createQuery("from " + getClazz().getSimpleName()
+                + " entity where entity.name = :aName");
+    findByNameQuery.setParameter("aName", locationName);
+
+    return (Location) findByNameQuery.getSingleResult();
+
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>When we have our validator and DAO logic ready, we can modify Wicket form to make it complete and ready for the production. To use custom validator we simply create such object and add it to field we want to validate (fragment of AddLocationPage class below):</p>
+
+<p>[java]</p>
+
+<pre><code>    UniqueLocationNameValidator locationNameValidator = new UniqueLocationNameValidator();
+    nameField.add(locationNameValidator);
+</code></pre>
+
+<p>[/java]</p>
+
+<p>And when we submit this form with existing location name we will see feedback message showing that validation is working:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/02/SS-20110215220102.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/02/SS-20110215220102.png" alt="" /></a>Ok, this is a good moment for a short break. If you want to see complete changes we made so far in the code, please refer to the this <a href="https://bitbucket.org/tdziurko/item-directory/changeset/15bf0c549e64">changeset</a> in BitBucket repository. And now at this point we could end this post, as we reached our goal for today: validation is complete and running. But there is one problem&hellip;</p>
+
+<h3>We are lazy :)</h3>
+
+<p>Yeah, we are lazy, really lazy developers and we hate breaking <a href="http://pl.wikipedia.org/wiki/DRY">DRY</a> rule, so instead of writing N unique entity validators for each time we need one, we will write generic one. But more about this in the next  (almost ready) post :)</p>
+
+<p>Thank you for reading and see you next time. Please don&rsquo;t forget to leave your feedback in the comments.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-17T22:51:42+01:00" data-updated="true" itemprop="datePublished">Feb 17<span>th</span>, 2011</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2011/02/crowded-conferences-2011-calendar-poland-wicket-author-talk-33rddegree/" title="Previous: Crowded conferences 2011 calendar in Poland and Wicket author talk at 33rdDegree">&laquo; Crowded conferences 2011 calendar in Poland and Wicket author talk at 33rdDegree</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/" title="Next: Wicket tutorial, part 5 - generic unique entity validator">Wicket tutorial, part 5 - generic unique entity validator &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

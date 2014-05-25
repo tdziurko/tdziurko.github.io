@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-to | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T00:19:31+02:00</updated>
+  <updated>2014-05-25T14:36:59+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Transparently persist and retrieve encrypted data from database]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
+    <link href="http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
     <updated>2013-07-31T08:45:07+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
+    <id>http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
     <content type="html"><![CDATA[<p>It&rsquo;s over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of <a href="http://confitura.pl">Confitura</a> (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.</p>
 
 <p>In this post I will shortly describe how we can store encrypted data in our database and retrieve it as already decrypted in a simple, transparent way using <a href="http://www.jasypt.org/">Jasypt</a> library. Our use case will be to store Twitter Api credentials so they are safe in our database but still easy to retrieve and use to post updates in our timeline.</p>
@@ -163,9 +163,9 @@ public void shouldEncryptAndDecryptValue() {
   
   <entry>
     <title type="html"><![CDATA[Taking a screenshot when UI tests written in Geb fail]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
+    <link href="http://tdziurko.github.io/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
     <updated>2013-05-27T19:30:36+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
+    <id>http://tdziurko.github.io/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
     <content type="html"><![CDATA[<p>This is a second post about <a href="http://www.gebish.org/"><strong>Geb</strong></a> in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.</p>
 
 <h3>The Problem</h3>
@@ -313,9 +313,9 @@ class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
   
   <entry>
     <title type="html"><![CDATA[Reusing browser instance in Geb UI tests]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/05/reusing-browser-instance-geb-ui-tests/"/>
+    <link href="http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests/"/>
     <updated>2013-05-13T12:46:19+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/05/reusing-browser-instance-geb-ui-tests</id>
+    <id>http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests</id>
     <content type="html"><![CDATA[<h4>UPDATE</h4>
 
 <p>_When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below is valid and works, there is a much simpler solution to this problem incorporated by Geb itself and I strongly suggest using it instead of mine, home-crafted hack. All credits go to <a href="http://stackoverflow.com/users/52142/artur-gajowy">Artur Gajowy</a> for showing me better approach.</p>
@@ -451,9 +451,9 @@ driver =</p>
   
   <entry>
     <title type="html"><![CDATA[Easy Html/Javascript JSON escaping in Scalatra ]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/04/scalatra-html-js-json-escaping/"/>
+    <link href="http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping/"/>
     <updated>2013-04-30T23:59:59+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/04/scalatra-html-js-json-escaping</id>
+    <id>http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping</id>
     <content type="html"><![CDATA[<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
 <a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
 So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.</p>
@@ -622,9 +622,9 @@ Source code of this small example app is available <a href="https://github.com/t
   
   <entry>
     <title type="html"><![CDATA[XStream - XStreamely easy way to work with XML data in Java]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
+    <link href="http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
     <updated>2013-04-22T10:55:55+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
+    <id>http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
     <content type="html"><![CDATA[<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
 
 <p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif" alt="xstream" /></a></p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T00:19:31+02:00</updated>
+  <updated>2014-05-25T14:36:59+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[GeeCON 2014 – Brain dump, Day 3]]></title>
-    <link href="http://tdziurko.github.io/blog/2014/05/geecon-2014-brain-dump-day-3/"/>
+    <link href="http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-3/"/>
     <updated>2014-05-18T23:27:30+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2014/05/geecon-2014-brain-dump-day-3</id>
+    <id>http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-3</id>
     <content type="html"><![CDATA[<p>Last, third post with my notes from GeeCON 2014 conference:</p>
 
 <p><strong>Tomasz Kowalczewski - Reactive Java</strong></p>
@@ -68,9 +68,9 @@
   
   <entry>
     <title type="html"><![CDATA[GeeCON 2014 – Brain dump, Day 2]]></title>
-    <link href="http://tdziurko.github.io/blog/2014/05/geecon-2014-brain-dump-day-2/"/>
+    <link href="http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-2/"/>
     <updated>2014-05-17T23:31:25+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2014/05/geecon-2014-brain-dump-day-2</id>
+    <id>http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-2</id>
     <content type="html"><![CDATA[<p>This is the second part of my notes from GeeCON 2014 conference.</p>
 
 <p><strong>Hazem Saleh - Jasmine Automated Tests for JavaScript</strong></p>
@@ -172,9 +172,9 @@
   
   <entry>
     <title type="html"><![CDATA[GeeCON 2014 - Brain dump, Day 1]]></title>
-    <link href="http://tdziurko.github.io/blog/2014/05/geecon-2014-brain-dump-day-1/"/>
+    <link href="http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-1/"/>
     <updated>2014-05-15T21:00:10+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2014/05/geecon-2014-brain-dump-day-1</id>
+    <id>http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-1</id>
     <content type="html"><![CDATA[<p>Inspired by post <a href="http://scottberkun.com/2014/min-max-note-taking/">&ldquo;Min/max note taking for conferences&rdquo;</a> I&rsquo;ve noted down my impressions, most interesting sentences, mentioned tools/books/blogs during ongoing GeeCON 2014 conference. This is my &#8221;Brain dump&#8221; after Day 1:</p>
 
 <p><strong>Pavel Sekanina - Nothing comes for free</strong></p>
@@ -264,9 +264,9 @@
   
   <entry>
     <title type="html"><![CDATA[Deep dive into AngularJS - my review of "Mastering Web Application Development with AngularJS"]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
+    <link href="http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
     <updated>2013-11-24T23:53:30+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
+    <id>http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
     <content type="html"><![CDATA[<p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
 
 <p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover-243x300.jpg" alt="AngularJs-cover" /></a></p>
@@ -306,9 +306,9 @@
   
   <entry>
     <title type="html"><![CDATA[Recenzja "Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce", czyli o tym co każdy programista umieć powinien]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
+    <link href="http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
     <updated>2013-10-30T16:33:49+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
+    <id>http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
     <content type="html"><![CDATA[<p>Dear Reader</p>
 
 <pre><code>This post is in my native language as it is a review of book pyblished only in Poland. Please feel free to check my other posts which are mainly written in English.
@@ -344,9 +344,9 @@
   
   <entry>
     <title type="html"><![CDATA[Agile By Example 2013 - review]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/10/agile-2013-review/"/>
+    <link href="http://tdziurko.github.io/2013/10/agile-2013-review/"/>
     <updated>2013-10-18T23:11:26+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/10/agile-2013-review</id>
+    <id>http://tdziurko.github.io/2013/10/agile-2013-review</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve just returned from my trip to Warsaw to attend 3rd edition of <a href="http://agilebyexample.com">Agile By Example</a>.</p>
 
 <p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/10/abe_2013.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/10/abe_2013.jpg" alt="abe_2013" /></a></p>
@@ -474,9 +474,9 @@
   
   <entry>
     <title type="html"><![CDATA[Transparently persist and retrieve encrypted data from database]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
+    <link href="http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
     <updated>2013-07-31T08:45:07+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
+    <id>http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
     <content type="html"><![CDATA[<p>It&rsquo;s over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of <a href="http://confitura.pl">Confitura</a> (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.</p>
 
 <p>In this post I will shortly describe how we can store encrypted data in our database and retrieve it as already decrypted in a simple, transparent way using <a href="http://www.jasypt.org/">Jasypt</a> library. Our use case will be to store Twitter Api credentials so they are safe in our database but still easy to retrieve and use to post updates in our timeline.</p>
@@ -622,9 +622,9 @@ public void shouldEncryptAndDecryptValue() {
   
   <entry>
     <title type="html"><![CDATA[Taking a screenshot when UI tests written in Geb fail]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
+    <link href="http://tdziurko.github.io/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
     <updated>2013-05-27T19:30:36+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
+    <id>http://tdziurko.github.io/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
     <content type="html"><![CDATA[<p>This is a second post about <a href="http://www.gebish.org/"><strong>Geb</strong></a> in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.</p>
 
 <h3>The Problem</h3>
@@ -772,9 +772,9 @@ class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
   
   <entry>
     <title type="html"><![CDATA[Reusing browser instance in Geb UI tests]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/05/reusing-browser-instance-geb-ui-tests/"/>
+    <link href="http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests/"/>
     <updated>2013-05-13T12:46:19+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/05/reusing-browser-instance-geb-ui-tests</id>
+    <id>http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests</id>
     <content type="html"><![CDATA[<h4>UPDATE</h4>
 
 <p>_When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below is valid and works, there is a much simpler solution to this problem incorporated by Geb itself and I strongly suggest using it instead of mine, home-crafted hack. All credits go to <a href="http://stackoverflow.com/users/52142/artur-gajowy">Artur Gajowy</a> for showing me better approach.</p>
@@ -910,9 +910,9 @@ driver =</p>
   
   <entry>
     <title type="html"><![CDATA[Easy Html/Javascript JSON escaping in Scalatra ]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/04/scalatra-html-js-json-escaping/"/>
+    <link href="http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping/"/>
     <updated>2013-04-30T23:59:59+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/04/scalatra-html-js-json-escaping</id>
+    <id>http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping</id>
     <content type="html"><![CDATA[<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
 <a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
 So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.</p>
@@ -1081,9 +1081,9 @@ Source code of this small example app is available <a href="https://github.com/t
   
   <entry>
     <title type="html"><![CDATA[XStream - XStreamely easy way to work with XML data in Java]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
+    <link href="http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
     <updated>2013-04-22T10:55:55+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
+    <id>http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
     <content type="html"><![CDATA[<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
 
 <p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif" alt="xstream" /></a></p>
@@ -1465,9 +1465,9 @@ We are using &ldquo;local&rdquo; method to apply this conversion only to specifi
   
   <entry>
     <title type="html"><![CDATA[Jasmine tests reporter in TeamCity with Scala and SBT]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/"/>
+    <link href="http://tdziurko.github.io/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/"/>
     <updated>2013-03-26T23:10:57+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/03/jasmine-tests-reporter-teamcity-scala-sbt</id>
+    <id>http://tdziurko.github.io/2013/03/jasmine-tests-reporter-teamcity-scala-sbt</id>
     <content type="html"><![CDATA[<p><em>This post is basically re-post of article I have written on my company blog <a href="http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity">here</a>. But before you go there to read the full story, please check this short introduction below to decide if you are interested :)</em></p>
 
 <p>In <a href="http://SoftwareMill.com">our company</a> sandbox project called <a href="https://github.com/softwaremill/bootzooka">Bootzoooka</a> we are using pretty cool technology stack: Scala, Scalatra, SBT and AngularJS. Of course we have some JavaScript tests that are executed using <a href="https://github.com/guardian/sbt-jasmine-plugin">sbt jasmine plugin</a> from Guardian. Current 0.8 version of this plugin allows to execute these tests in TeamCity and even fails build when any JS test is not passing, but it didn&rsquo;t provide full test report for these tests. This plugin worked quite well for us, but we wanted something more and that&rsquo;s why added story saying &ldquo;<em>As a Developer I want to see jasmine tests in TeamCity report</em>&rdquo; to our Bootzooka backlog.</p>
@@ -1480,9 +1480,9 @@ We are using &ldquo;local&rdquo; method to apply this conversion only to specifi
   
   <entry>
     <title type="html"><![CDATA[Instant AngularJS Starter - book review]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/03/instant-angularjs-starter-book-review/"/>
+    <link href="http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review/"/>
     <updated>2013-03-18T22:53:16+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/03/instant-angularjs-starter-book-review</id>
+    <id>http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review</id>
     <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.
 <a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
 
@@ -1508,9 +1508,9 @@ We are using &ldquo;local&rdquo; method to apply this conversion only to specifi
   
   <entry>
     <title type="html"><![CDATA[Twitter Bootstrap Navbar as AngularJS component]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/02/twitter-bootstrap-navbar-angularjs-component/"/>
+    <link href="http://tdziurko.github.io/2013/02/twitter-bootstrap-navbar-angularjs-component/"/>
     <updated>2013-02-28T23:26:25+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/02/twitter-bootstrap-navbar-angularjs-component</id>
+    <id>http://tdziurko.github.io/2013/02/twitter-bootstrap-navbar-angularjs-component</id>
     <content type="html"><![CDATA[<p>You all know <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>, don&rsquo;t you? It&rsquo;s the awesome library to make your web application looks pretty good without spending many hours on CSS. We are using Bootstrap based design in our current project that also uses AngularJS and as we are planning to have many new pages, we decided that&rsquo;s the earlier we introduce some components to our UI the better. And, what shouldn&rsquo;t be a surprise, navigation bar natually became the first candidate.</p>
 
 <h3>Overview</h3>
@@ -1679,9 +1679,9 @@ compile: function(element, attrs) {  // (1)
   
   <entry>
     <title type="html"><![CDATA[Running unit tests and integration tests separately with Maven Failsafe and TestNG]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/01/running-unit-tests-integration-tests-separately-maven-testng/"/>
+    <link href="http://tdziurko.github.io/2013/01/running-unit-tests-integration-tests-separately-maven-testng/"/>
     <updated>2013-01-23T16:42:28+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/01/running-unit-tests-integration-tests-separately-maven-testng</id>
+    <id>http://tdziurko.github.io/2013/01/running-unit-tests-integration-tests-separately-maven-testng</id>
     <content type="html"><![CDATA[<p>Recently for my new pet project I decided that I would like to have some tests executed during standard <em>mvn test</em> and some other ones only during different phase, let&rsquo;s call it integration phase. I googled and googled and nothing seemed to work, so after struggling with making my setup work I&rsquo;ve decided to write down my findings how I was able to configure TestNG with Maven to run integration and unit tests separately.</p>
 
 <h3>Basic (not working) setup</h3>
@@ -1806,9 +1806,9 @@ public void shouldFail() {
   
   <entry>
     <title type="html"><![CDATA[Configuring SBT JSLint with TeamCity build]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/01/configuring-sbt-jslint-with-teamcity/"/>
+    <link href="http://tdziurko.github.io/2013/01/configuring-sbt-jslint-with-teamcity/"/>
     <updated>2013-01-08T22:23:39+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/01/configuring-sbt-jslint-with-teamcity</id>
+    <id>http://tdziurko.github.io/2013/01/configuring-sbt-jslint-with-teamcity</id>
     <content type="html"><![CDATA[<p>In this post I will shortly describe configuration process of JSLint SBT plugin and then TeamCity build config that reacts on errors/warnings raised by this plugin.</p>
 
 <h3>Problem</h3>
@@ -1930,9 +1930,9 @@ settings = buildSettings ++ lintCustomSettings
   
   <entry>
     <title type="html"><![CDATA[Fixing bug in Hibernate Envers]]></title>
-    <link href="http://tdziurko.github.io/blog/2012/10/fixing-bug-hibernate-envers/"/>
+    <link href="http://tdziurko.github.io/2012/10/fixing-bug-hibernate-envers/"/>
     <updated>2012-10-11T17:00:47+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2012/10/fixing-bug-hibernate-envers</id>
+    <id>http://tdziurko.github.io/2012/10/fixing-bug-hibernate-envers</id>
     <content type="html"><![CDATA[<p>Recently in our project we were reported a strange bug. In a one report where we display historical data provided by <a href="http://www.jboss.org/envers">Hibernate Envers</a>, users encountered duplicated records in dropdown used for filtering. We tried to find a source of this bug, but after spending a few hours looking at the code responsible for this functionality we had to give up and ask for a dump from production database to check what actually is stored in one table. And when we got it and started investigating, it turned out that there is a bug in Hibernate Envers 3.6 that is a cause of our problems. But luckily after some investigation and invaluable help from <a href="http://www.warski.org/blog/">Adam Warski</a> (author of Envers) we were able to fix this issue.</p>
 
 <!-- more -->
@@ -2067,9 +2067,9 @@ public void testAuditRecordsRollback() {
   
   <entry>
     <title type="html"><![CDATA[Deploying Java Web Application on Jelastic]]></title>
-    <link href="http://tdziurko.github.io/blog/2012/10/deploying-java-web-application-jelastic/"/>
+    <link href="http://tdziurko.github.io/2012/10/deploying-java-web-application-jelastic/"/>
     <updated>2012-10-09T21:44:34+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2012/10/deploying-java-web-application-jelastic</id>
+    <id>http://tdziurko.github.io/2012/10/deploying-java-web-application-jelastic</id>
     <content type="html"><![CDATA[<p>Some time ago having your own full-fledged hosting with Java, Tomcat and any database wasn&rsquo;t cheap, but luckily we live in a very interesting times and now there are many virtual hosting services in the Cloud providing an easy and affordable way to deploy your application and make it available to users.</p>
 
 <p>And what is the best in such solutions, they grow with your application or startup. Services are free or almost free when your web application doesn&rsquo;t need much memory and processors but when your web-app starts to gather more users&#8217; attention and you have more and more concurrent sessions and visits each day, you could easily enhance your setup to match your needs. Everything is a matter of a few clicks, simple and fast.</p>
@@ -2125,9 +2125,9 @@ public void testAuditRecordsRollback() {
   
   <entry>
     <title type="html"><![CDATA[Remember Me functionality in Apache Wicket]]></title>
-    <link href="http://tdziurko.github.io/blog/2012/09/remember-functionality-apache-wicket/"/>
+    <link href="http://tdziurko.github.io/2012/09/remember-functionality-apache-wicket/"/>
     <updated>2012-09-14T16:33:03+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2012/09/remember-functionality-apache-wicket</id>
+    <id>http://tdziurko.github.io/2012/09/remember-functionality-apache-wicket</id>
     <content type="html"><![CDATA[<p>It is quite common in web applications to have &ldquo;Remember Me&rdquo; functionality that allows user to be automatically logged in each time when he visits our website.</p>
 
 <p>Such feature can be implemented using <a href="http://static.springsource.org/spring-security/site/">Spring Security</a>, but in my opinion using request based authentication framework with component based web framework is not the best idea. These two worlds just do not fit well together so I prefer to use my own baked solution which I will present below.</p>
@@ -2418,9 +2418,9 @@ add(logoutLink);
   
   <entry>
     <title type="html"><![CDATA[Practical Unit Testing with TestNG and Mockito - review]]></title>
-    <link href="http://tdziurko.github.io/blog/2012/07/practical-unit-testing-testng-mockito-review/"/>
+    <link href="http://tdziurko.github.io/2012/07/practical-unit-testing-testng-mockito-review/"/>
     <updated>2012-07-20T17:14:06+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2012/07/practical-unit-testing-testng-mockito-review</id>
+    <id>http://tdziurko.github.io/2012/07/practical-unit-testing-testng-mockito-review</id>
     <content type="html"><![CDATA[<p>Book &ldquo;<em>Practical Unit Testing with TestNG and Mockito</em>&rdquo; (<a href="http://practicalunittesting.com/">website</a>) covers wide spectrum of knowledge about testing in Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get most of this title. Below you can read some of my thoughts after reading this book.</p>
 
 <p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png" alt="" /></a></p>

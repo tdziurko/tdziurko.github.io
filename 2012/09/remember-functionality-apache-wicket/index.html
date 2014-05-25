@@ -1,0 +1,532 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Remember Me functionality in Apache Wicket - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Remember Me Functionality in Apache Wicket It is quite common in web applications to have &ldquo;Remember Me&rdquo; functionality that allows user &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2012/09/remember-functionality-apache-wicket/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Remember Me Functionality in Apache Wicket</h1>
+	<div class="entry-content" itemprop="articleBody"><p>It is quite common in web applications to have &ldquo;Remember Me&rdquo; functionality that allows user to be automatically logged in each time when he visits our website.</p>
+
+<p>Such feature can be implemented using <a href="http://static.springsource.org/spring-security/site/">Spring Security</a>, but in my opinion using request based authentication framework with component based web framework is not the best idea. These two worlds just do not fit well together so I prefer to use my own baked solution which I will present below.</p>
+
+<h3>Base project</h3>
+
+<p>We start with a simple web application written using latest, still hot <a href="http://wicket.apache.org/2012/09/05/wicket-6.0.0-released.html">Apache Wicket 6</a>. You can download complete sources from <a href="https://github.com/tdziurko/wicket-rememberme">GitHub</a> and start application using <em>mvn clean compile jetty:run</em> .</p>
+
+<p>Base application consists of two pages:</p>
+
+<ul>
+<li><p>Home Page: displays welcome message for logged and not-logged users or either logout or login link.</p></li>
+<li><p>Login Page: allows user to login basing on simple in-memory collection of users. Some working login/password pairs: John/john, Lisa/lisa, Tom/tom .</p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/09/home_page1.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/09/home_page1.jpg" alt="" /></a></p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/09/login_page.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/09/login_page-1024x488.jpg" alt="" /></a></p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/09/home_page2.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/09/home_page2-1024x402.jpg" alt="" /></a></p>
+
+<h3>Remember Me functionality</h3>
+
+<p>Standard way to implement Remember Me functionality looks as follows:</p>
+
+<ol>
+<li><p> Ask user if he wants to be remembered and auto-logged in the future.</p></li>
+<li><p> If so, save cookies with login and password on his computer.</p></li>
+<li><p> For every new user coming to our website, check if cookies from step 2 are present and if so, auto login user.</p></li>
+<li><p> When he manually logs out, remove cookies so it is possible to clear data used to auto-login.</p></li>
+</ol>
+
+
+<p>Point 2 needs some explanation. In this example app we are going to save login and <strong>not hashed, not encrypted</strong> password in cookies. In real scenario this is unacceptable. Instead of it, you should consider storing hashed and salted password so even if someone  intercepts user cookie, password still will be secret and more work will be needed to decode it.
+<strong>Update:</strong> <a href="https://twitter.com/mmatloka">Michał Matłoka</a> posted two very interesting links how this could be done in real systems. Those approaches do not even use password nor password hashes. For more details please look into his comment below this post.</p>
+
+<p><strong>Step 1: As a User I want to decide if  I want to use &ldquo;Remember Me&rdquo; feature</strong>
+<a href="https://github.com/tdziurko/wicket-rememberme/commit/c5e91b39a203c9103754f8a03ab2e4151fc9e199">Link to commit with this step</a></p>
+
+<p>To allow user to notify application that he wants to use &lsquo;Remember Me&rsquo; functionality we will simply add a checkbox to login page. So we need to amend LoginPage java and html file a bit (new stuff is highlighted):</p>
+
+<p>[html highlight=&ldquo;21,22,23,24,25,26,27&rdquo; title=&ldquo;LoginPage.html fragment&rdquo;]</p>
+
+<pre><code>&lt;form wicket:id="form" class="form-horizontal"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Please login&lt;/legend&gt;
+    &lt;/fieldset&gt;
+
+    &lt;div class="control-group"&gt;
+        &lt;div wicket:id="feedback"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="control-group"&gt;
+        &lt;label class="control-label" for="login"&gt;Login&lt;/label&gt;
+        &lt;div class="controls"&gt;
+            &lt;input type="text" id="login" wicket:id="login" /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="control-group"&gt;
+        &lt;label class="control-label" for="password"&gt;Password&lt;/label&gt;
+        &lt;div class="controls"&gt;
+            &lt;input type="password" id="password" wicket:id="password" /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="control-group"&gt;
+        &lt;div class="controls"&gt;
+            &lt;label class="checkbox"&gt;
+                &lt;input type="checkbox" wicket:id="rememberMe"&gt; Remember me on this computer
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-actions"&gt;
+        &lt;input type="submit" wicket:id="submit" value="Login" title="Login" class="btn btn-primary"/&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>[/html]</p>
+
+<p>[java highlight=&ldquo;3,13&rdquo; title=&ldquo;LoginPage.java fragment&rdquo;]</p>
+
+<pre><code>private String login;
+private String password;
+private boolean rememberMe;
+
+public LoginPage() {
+
+    Form&lt;Void&gt; loginForm = new Form&lt;Void&gt;("form");
+    add(loginForm);
+
+    loginForm.add(new FeedbackPanel("feedback"));
+    loginForm.add(new RequiredTextField&lt;String&gt;("login", new PropertyModel&lt;String&gt;(this, "login")));
+    loginForm.add(new PasswordTextField("password", new PropertyModel&lt;String&gt;(this, "password")));
+    loginForm.add(new CheckBox("rememberMe", new PropertyModel&lt;Boolean&gt;(this, "rememberMe")));
+
+    Button submit = new Button("submit") {
+        // (...)
+    };
+
+    loginForm.add(submit);
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>Now we are ready for next step.</p>
+
+<p><strong>Step 2: As a System I want to save login and password in cookies</strong>
+<a href="https://github.com/tdziurko/wicket-rememberme/commit/b9a419161871b47821171790f443cf92869ac631">Link to commit with this step</a></p>
+
+<p>First we need a CookieService that will encapsulate all logic responsible for working with cookies: saving, listing and clearing cookie when needed. Code is rather simple, we work with WebResponse and WebRequest classes to modify cookies in user&rsquo;s browser.</p>
+
+<p>[java title=&ldquo;CookieService.java&rdquo;]
+public class CookieService {</p>
+
+<pre><code>public Cookie loadCookie(Request request, String cookieName) {
+
+    List&lt;Cookie&gt; cookies = ((WebRequest) request).getCookies();
+
+    if (cookies == null) {
+        return null;
+    }
+
+    for (Cookie cookie : cookies) {
+        if(cookie.getName().equals(cookieName)) {
+            return cookie;
+        }
+    }
+
+    return null;
+}
+
+public void saveCookie(Response response, String cookieName, String cookieValue, int expiryTimeInDays) {
+    Cookie cookie = new Cookie(cookieName, cookieValue);
+    cookie.setMaxAge((int) TimeUnit.DAYS.toSeconds(expiryTimeInDays));
+    ((WebResponse)response).addCookie(cookie);
+}
+
+public void removeCookieIfPresent(Request request, Response response, String cookieName) {
+    Cookie cookie = loadCookie(request, cookieName);
+
+    if(cookie != null) {
+        ((WebResponse)response).clearCookie(cookie);
+    }
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Then when user checks &lsquo;Remember Me&rsquo; on LoginPage, we have to save cookies in his browser:</p>
+
+<p>[java title=&ldquo;LoginPage.java fragment&rdquo; highlight=&ldquo;14,15,16,17,18&rdquo;]</p>
+
+<pre><code>Button submit = new Button("submit") {
+    @Override
+    public void onSubmit() {
+        UserService userService = WicketApplication.get().getUserService();
+
+        User user = userService.findByLoginAndPassword(login, password);
+
+        if(user == null) {
+            error("Invalid login and/or password. Please try again.");
+        }
+        else {
+            UserSession.get().setUser(user);
+
+            if(rememberMe) {
+                CookieService cookieService = WicketApplication.get().getCookieService();
+                cookieService.saveCookie(getResponse(), REMEMBER_ME_LOGIN_COOKIE, user.getLogin(), REMEMBER_ME_DURATION_IN_DAYS);
+                cookieService.saveCookie(getResponse(), REMEMBER_ME_PASSWORD_COOKIE, user.getPassword(), REMEMBER_ME_DURATION_IN_DAYS);
+            }
+
+            setResponsePage(HomePage.class);
+        }
+    }
+};
+</code></pre>
+
+<p>[/java]</p>
+
+<p><strong>Step 3: As a User I want to be auto-logged when I return to web application</strong>
+<a href="https://github.com/tdziurko/wicket-rememberme/commit/59cb50d433a79a73b1020b488d5a13a7355da0d3">Link to commit with this step</a></p>
+
+<p>To check if user entering our application is a &ldquo;returning user to auto-login&rdquo; we have to enrich logic responsible for creating new user session. Currently it is done in WicketApplication class which when requested, creates new WebSession instance. So every time new session is created, we have to check for cookies presence and if they are valid user/password pair, auto-login this user.</p>
+
+<p>So let&rsquo;s start with extracting session related logic into separate class called SessionProvider. It will need UserService and CookieService to check for existing users and cookies so we pass them as a references in the constructor.</p>
+
+<p>[java title=&ldquo;WicketApplication.java fragment&rdquo; highlight=&ldquo;5,9&rdquo;]
+public class WicketApplication extends WebApplication {</p>
+
+<pre><code>private UserService userService = new UserService();
+private CookieService cookieService = new CookieService();
+private SessionProvider sessionProvider = new SessionProvider(userService, cookieService);
+
+@Override
+public Session newSession(Request request, Response response) {
+    return sessionProvider.createNewSession(request);
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Role of SessionProvider is to create new UserSession, check if proper cookies are present and if so, set logged user. Additionally we add feedback message to inform user that he was auto logged. So let&rsquo;s look into the code:</p>
+
+<p>[java title=&ldquo;SessionProvider.java&rdquo;]
+public class SessionProvider {</p>
+
+<pre><code>public SessionProvider(UserService userService, CookieService cookieService) {
+    this.userService = userService;
+    this.cookieService = cookieService;
+}
+
+public WebSession createNewSession(Request request) {
+    UserSession session = new UserSession(request);
+
+    Cookie loginCookie = cookieService.loadCookie(request, REMEMBER_ME_LOGIN_COOKIE);
+    Cookie passwordCookie = cookieService.loadCookie(request, REMEMBER_ME_PASSWORD_COOKIE);
+
+    if(loginCookie != null &amp;&amp; passwordCookie != null) {
+        User user = userService.findByLoginAndPassword(loginCookie.getValue(), passwordCookie.getValue());
+
+        if(user != null) {
+            session.setUser(user);
+            session.info("You were automatically logged in.");
+        }
+    }
+
+    return session;
+}
+</code></pre>
+
+<p>}</p>
+
+<p>[/java]</p>
+
+<p>To show feedback message on HomePage.java we must add FeedbackPanel there, but for the brevity I will omit this in this post. You can read <a href="https://github.com/tdziurko/wicket-rememberme/commit/59cb50d433a79a73b1020b488d5a13a7355da0d3">commit</a> to check how to do that.</p>
+
+<p>So we after three steps we should have &lsquo;Remember Me&rsquo; working. To check it quickly please modify session timeout in web.xml file by adding:</p>
+
+<p>[xml title=&ldquo;web.xml fragment&rdquo;]</p>
+
+<pre><code>&lt;session-config&gt;
+    &lt;session-timeout&gt;1&lt;/session-timeout&gt;
+&lt;/session-config&gt;
+</code></pre>
+
+<p>[/xml]</p>
+
+<p>and then start application <em>mvn clean compile jetty:run</em>, go to login page, login, close browser and after over a 1 minute (when session expires) open it again on <a href="http://localhost:8080.">http://localhost:8080.</a> You should see something like this:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/09/auto_logged.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/09/auto_logged-1024x313.jpg" alt="" /></a></p>
+
+<p>So it works. But we still need one more thing: allow user to remove cookies and turn-off auto-login.</p>
+
+<p><strong>Step 4: As a User I want to be able to logout and clear my cookies</strong>
+<a href="https://github.com/tdziurko/wicket-rememberme/commit/d9b35803ea0321dc5e80f80d480a6af527a457fa">Link to commit with this step</a>
+In the last step we have to allow user to clear his data and disable &ldquo;Remember Me&rdquo; for his account. This will be achieved by clearing both cookies when user explicitly clicks Logout link.</p>
+
+<p>[java title=&ldquo;HomePage.java fragment&rdquo; highlight=&ldquo;4,5,6,7,8,9&rdquo;]</p>
+
+<pre><code>Link&lt;Void&gt; logoutLink = new Link&lt;Void&gt;("logout") {
+    @Override
+    public void onClick() {
+        CookieService cookieService = WicketApplication.get().getCookieService();
+        cookieService.removeCookieIfPresent(getRequest(), getResponse(), SessionProvider.REMEMBER_ME_LOGIN_COOKIE);
+        cookieService.removeCookieIfPresent(getRequest(), getResponse(), SessionProvider.REMEMBER_ME_PASSWORD_COOKIE);
+
+        UserSession.get().setUser(null);
+        UserSession.get().invalidate();
+    }
+};
+logoutLink.setVisible(UserSession.get().userLoggedIn());
+add(logoutLink);
+</code></pre>
+
+<p>[/java]</p>
+
+<h3>Summary</h3>
+
+<p>So that&rsquo;s all. In this port we have implemented simple &lsquo;Remember Me&rsquo; functionality in web application written using Apache Wicket without using any external authentication libraries.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-14T16:33:03+02:00" data-updated="true" itemprop="datePublished">Sep 14<span>th</span>, 2012</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2012/07/practical-unit-testing-testng-mockito-review/" title="Previous: Practical Unit Testing with TestNG and Mockito - review">&laquo; Practical Unit Testing with TestNG and Mockito - review</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2012/10/deploying-java-web-application-jelastic/" title="Next: Deploying Java Web Application on Jelastic">Deploying Java Web Application on Jelastic &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

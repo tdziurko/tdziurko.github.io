@@ -1,0 +1,322 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Effective Java developer, part 1 - singletons - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Effective Java Developer, Part 1 - Singletons As I said in me previous post, today I am going to start series of posts about the most interesting &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2009/07/effective-java-developer-part-1-singletons/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Effective Java Developer, Part 1 - Singletons</h1>
+	<div class="entry-content" itemprop="articleBody"><p>As I said in me previous post, today I am going to start series of posts about the most interesting things from the book &ldquo;Effective Java&rdquo;. I will try to cover  topics which every Java developer can encounter during common workday.</p>
+
+<h3>Three ways to create singleton</h3>
+
+<p>The very, very standard singleton looks like that:</p>
+
+<p>[java]
+package pl.tomaszdziurko.effectivejava;
+public class LeoMessi {
+  public static final LeoMessi INSTANCE = new LeoMessi();
+ private LeoMessi() {
+   // create only one existing instance of LeoMessi, as he is unique
+ }
+ public void doMagicWithBall() {</p>
+
+<pre><code>//do something incredible on the pitch
+</code></pre>
+
+<p>  }
+}</p>
+
+<p>[/java]</p>
+
+<!-- more -->
+
+
+<p>In the example above we can easily notice that this is a singleton: private constructor and final static filed with only one existing instance of LeoMessi are more than clear signal about it.</p>
+
+<p><strong>Second way:</strong></p>
+
+<p>[java]
+public class LeoMessi {
+  private static final LeoMessi INSTANCE = new LeoMessi();
+  private LeoMessi() {</p>
+
+<pre><code>// create only one existing instance of LeoMessi, as he is unique
+</code></pre>
+
+<p>  }
+  public LeoMessi getInstance() {</p>
+
+<pre><code>return INSTANCE;
+</code></pre>
+
+<p>  }
+  public void doMagicWithBall() {</p>
+
+<pre><code>//do something incredible on the pitch
+</code></pre>
+
+<p>  }
+ }
+[/java]</p>
+
+<p>Creating singleton as shown above gives us greater flexibility in later changes in the code. We can change internals of getInstance() without breaking our public API, for example we can modify it to return unique instance per thread or per logged user.</p>
+
+<p>Unfortunately both approaches are not reflection-safe and also are not ready for serialization. If we want our singleton remain single after serialization and deserialization we have to overload readResolve() method to return INSTANCE object. And simpe trick to avoid reflection problem is to add few lines in the constructor that throw exception when INSTANCE != null.</p>
+
+<p><strong>Third way:</strong></p>
+
+<p>The last one (and the most proper way according to the author) way of creating singleton is doing it with enums:</p>
+
+<p>[java]
+  public enum LeoMessi {
+  INSTANCE;</p>
+
+<p>  void doMagicWithBall() {
+   //do something incredible on the pitch
+  }
+ }
+[/java]</p>
+
+<p>Thanks to using enum we have seralization and reflection problems solved without any additional effort. Everything is delivered by the Java language itself and there is nothing to worry about :)</p>
+
+<p>Personally most often I used approach with private final static field and getInstance() method, but now, after reading Effective Java, I see that enum is very interesting alternative I try to use in the future.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-30T08:46:32+02:00" data-updated="true" itemprop="datePublished">Jul 30<span>th</span>, 2009</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/books/'>Books</a>, <a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2009/07/effective-java-make-your-code-better-book-review/" title="Previous: Effective Java - make your code better, book review">&laquo; Effective Java - make your code better, book review</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2009/09/ksiazka-jak-odmienic-sposob-programowania-uzywajac-refaktoryzacji-moje-wrazenia/" title="Next: Książka "Jak odmienić sposób programowania używając refaktoryzacji" - moje wrażenia">Książka "Jak odmienić sposób programowania używając refaktoryzacji" - moje wrażenia &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

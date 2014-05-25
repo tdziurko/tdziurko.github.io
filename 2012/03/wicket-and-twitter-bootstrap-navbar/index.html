@@ -1,0 +1,594 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Using Twitter Bootstrap Navbar as a Wicket component - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Using Twitter Bootstrap Navbar as a Wicket Component All of you probably heard about Twitter Bootstrap, an awesome set of components allowing to &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2012/03/wicket-and-twitter-bootstrap-navbar/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Using Twitter Bootstrap Navbar as a Wicket Component</h1>
+	<div class="entry-content" itemprop="articleBody"><p>All of you probably heard about <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>, an awesome set of components allowing to create nice looking web pages and application without diving deeply into CSS/JS hacks. If you want to see what this library is capable of, please visit <a href="http://builtwithbootstrap.com/">http://builtwithbootstrap.com/</a> and check how people use it to build their websites.</p>
+
+<p>But this post isn&rsquo;t supposed to be about Bootstrap itself. In a few next paragraphs I will present how I created reusable Wicket component containing Bootstrap top navigation bar menu. And final result using Wicket in our example web-app will look this way:</p>
+
+<p>Before styling applied:</p>
+
+<p><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/03/screenshot_0101.png" alt="" /></p>
+
+<p>After:<a href="http://tomaszdziurko.pl/wp-content/uploads/2012/03/screenshot_013.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/03/screenshot_013.png" alt="Final Twitter Bootstrap Navigation Bar with Wicket" /></a></p>
+
+<!-- more -->
+
+
+<p>And what is most important, ready component can be used without any, really any modification in HTML files, everything is defined using pure Java:</p>
+
+<p>[java]</p>
+
+<pre><code>add(new TwitterBootstrapNavBarPanel.Builder("navBar", HomePage.class, "Example Web App", getActiveMenu())
+        .withMenuItem(MenuItemEnum.CLIENTS, ClientsPage.class)
+        .withMenuItemAsDropdown(MenuItemEnum.PRODUCTS, ProductOnePage.class, "Product One")
+        .withMenuItemAsDropdown(MenuItemEnum.PRODUCTS, ProductTwoPage.class, "Product Two")
+        .withMenuItemAsDropdown(MenuItemEnum.PRODUCTS, ProductTwoPage.class, "Product Three")
+        .withMenuItemAsDropdown(MenuItemEnum.ABOUT_US, TeamPage.class, "Team")
+        .withMenuItemAsDropdown(MenuItemEnum.ABOUT_US, OurSkillsPage.class, "Our Skills")
+        .withMenuItem(MenuItemEnum.CONTACT, ContactPage.class)
+        .build());
+</code></pre>
+
+<p>[/java]</p>
+
+<p>If you are &lsquo;show-me-the-code&rsquo; kind of guy, please go directly to my <a href="https://github.com/tdziurko/wicket-bootstrap-navbar">project on Github</a> which contains working example of a web application with this navigation bar. If you want to read an explanation how this stuff works, please keep reading.</p>
+
+<h3>Step 1: Some preparations</h3>
+
+<p>NavBar component allows to display active menu item in a different way so user is able to determine where he/she is. So in our web application every web page should inform to which menu item it belongs so it could be highlighted accordingly.</p>
+
+<p>So in our BasePage class we add a method:</p>
+
+<p>[java]
+public abstract MenuItemEnum getActiveMenu();</p>
+
+<p>[/java]</p>
+
+<p>returning defined enum:</p>
+
+<p>[java]</p>
+
+<p>public enum MenuItemEnum {</p>
+
+<pre><code>CLIENTS("Clients"),
+PRODUCTS("Products"),
+ABOUT_US("About us"),
+CONTACT("Contact"),
+NONE("");
+
+private String label;
+
+private MenuItemEnum(String label) {
+    this.label = label;
+}
+
+// ...
+</code></pre>
+
+<p>}</p>
+
+<p>[/java]</p>
+
+<p><em>None</em> value is used by home page because it does not belong to any particular menu item. Other pages (product pages, client, etc.) return one of other enum values presented above.</p>
+
+<h3>Step 2: Splitting markup into reusable pieces</h3>
+
+<p>Clean markup of Bootstrap NanBar may look like that:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/03/screenshot_015.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/03/screenshot_015.png" alt="" /></a></p>
+
+<p>And if you look attentively enough you will notice  that it could be divided into smaller, reusable and independent elements:</p>
+
+<ul>
+<li><p>each of these three <li> inside red rectangle represents a single menu item and is almost the same, only active menu item has an additional class parameter.</p></li>
+<li><p><li> inside a yellow rectangle is a dropdown menu item and it contains label, some styling and two elements that are the same as a single menu items described above</p></li>
+</ul>
+
+
+<p>So basically we should have three classes:</p>
+
+<ol>
+<li><p> Panel class representing whole NavBar, that will be our <em>TwitterBootstrapNavBarPanel</em></p></li>
+<li><p> Panel class for single <li> menu item - <em>MenuLinkItem</em></p></li>
+<li><p> Panel class for single <li> dropdown menu &ndash; <em>MenuDropdownItem</em> -  that also will contain a few <em>MenuLinkItem </em>elements to represent items inside this dropdown</p></li>
+</ol>
+
+
+<p>So let&rsquo;s start with the simplest one.</p>
+
+<h3>Step 3: Single menu item element - MenuLinkItem</h3>
+
+<p>Markup of this simple element is really non-complicated, only one link.</p>
+
+<p>[html]
+&lt;wicket:panel>
+        <a href="#" wicket:id="link"/>
+&lt;/wicket:panel>
+[/html]</p>
+
+<p>Its Java class is small and easy to grasp:</p>
+
+<p>[java]</p>
+
+<p>public class MenuLinkItem extends Panel {</p>
+
+<pre><code>public MenuLinkItem(String id, BookmarkablePageLink pageLink, boolean shouldBeActive) {
+    super(id);
+    add(pageLink);
+    if (shouldBeActive) {
+        add(new AttributeAppender("class", " active "));
+    }
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>What we can see above is a simple panel accepting three parameters, standard Wicket element id, page link to place in this menu item and an indicator saying if this item should be displayed as an active. This is accomplished by adding a <em>active</em> class name to CSS class element.</p>
+
+<h3>Step 4: Dropdown menu item element - MenuDropdownItem</h3>
+
+<p>Now it&rsquo;s getting a little harder as we want to create panel for our menu item containing a dropdown. Its markup:</p>
+
+<pre><code>[html]
+&lt;wicket:panel&gt;
+    &lt;li class="dropdown" wicket:id="itemContainer"&gt;
+        &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;
+            &lt;span wicket:id="label"/&gt;
+            &lt;b class="caret"&gt;&lt;/b&gt;
+        &lt;/a&gt;
+        &lt;ul class="dropdown-menu"&gt;
+            &lt;li wicket:id="itemLinks"&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/wicket:panel&gt;
+[/html]
+</code></pre>
+
+<p>So what we have here:</p>
+
+<ul>
+<li><p>Wicket label (id=<em>label</em>) to display as a&hellip; label of this dropdown item</p></li>
+<li><p>element containing list of <li> elements represented by Wicket id=<em>itemLinks</em></p></li>
+<li><p>and finally, component wrapping everything above: id=<em>itemContainer</em></p></li>
+</ul>
+
+
+<p>And Java class for this panel:</p>
+
+<p>[java]
+public class MenuDropdownItem extends Panel {</p>
+
+<pre><code>public MenuDropdownItem(String id, MenuItemEnum currentMenuItem,
+        Collection&gt; linksInMenuItem, boolean shouldBeActive) {
+    super(id);
+
+    WebMarkupContainer itemContainer = new WebMarkupContainer("itemContainer");  // (1)
+    if (shouldBeActive) {
+        itemContainer.add(new AttributeAppender("class", " active "));   // (2)
+    }
+    itemContainer.add(new Label("label", currentMenuItem.getLabel()));   // (3)
+
+    RepeatingView repeatingView = new RepeatingView("itemLinks");   // (4)
+
+    for (BookmarkablePageLink link : linksInMenuItem) {    // (5)
+        MenuLinkItem menuLinkItem = new MenuLinkItem(repeatingView.newChildId(), link, false);
+        repeatingView.add(menuLinkItem);
+    }
+
+    itemContainer.add(repeatingView);
+    add(itemContainer);
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>You may think <em>Whoaa, this is a complicated one</em> :)  But relax, let me explain it step by step:</p>
+
+<ol>
+<li><p> Here we create a container to add label and link items. Container is necessary because sometimes we would like to add <em>active </em>styling here so it has to be a Wicket component.</p></li>
+<li><p> If this item should be active, add proper styling.</p></li>
+<li><p> Add label element.</p></li>
+<li><p> To render all item links in our dropdown we need a repeater. Wicket provides many <a href="http://www.wicket-library.com/wicket-examples/repeater/">repeater components</a> but why we use RepeatingView? Because this one does not produce any additional markup and renders only inside markup where it is located (more details in <a href="http://wicket.apache.org/apidocs/1.5/index.html?org/apache/wicket/markup/repeater/RepeatingView.html">javadoc</a>). So in our case, it renders as a few <li>..</li> elements without any additional html which is good to keep everything in line with Twitter Bootstrap styling.</p></li>
+<li><p> For every link passed to our dropdown item we create new <em>MenuLinkItem</em> (do you remember when I underlined that dropdown will contain list of menu item elements?)</p></li>
+</ol>
+
+
+<p>And that&rsquo;s all, this component is clear now, isn&rsquo;t it? :)</p>
+
+<h3>Step 5: Merging everything together</h3>
+
+<p>So we have two components ready to use in our main panel. Now it is time to introduce panel class and markup &ndash;<em> TwitterBootstrapNavBarPanel. </em>Markup luckily isn&rsquo;t complicated:</p>
+
+<pre><code>[html]
+ &lt;div class="navbar navbar-fixed-top"&gt;
+   &lt;div class="navbar-inner"&gt;
+     &lt;div class="container"&gt;// (1)
+       &lt;div class="nav-collapse"&gt;
+         &lt;ul class="nav"&gt;
+           &lt;ul class="nav"&gt;
+         &lt;li&gt;// (2)&lt;/li&gt;
+           &lt;/ul&gt;
+         &lt;/ul&gt;
+       &lt;/div&gt;
+     &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+[/html]
+</code></pre>
+
+<ol>
+<li><p> This is a link with a label to redirect user to home page of our application.</p></li>
+<li><p> This is a repeater to render all menu items (simple ones and dropdown as well)</p></li>
+</ol>
+
+
+<p>Although the markup is not difficult to understand even at first glance, Java class is different and needs more detailed explanation. Because I wanted NavBar creation process to be as seamless as possible I used fluent interface with Builder pattern. So first, let&rsquo;s concentrate on this element:</p>
+
+<p>[java]
+public static class Builder implements Serializable {</p>
+
+<pre><code>    private String id;
+    private Class homePage;
+    private String applicationName;
+    private MenuItemEnum activeMenuItem;
+
+    private Multimap&gt; linksMap = LinkedHashMultimap.create();  // (3)
+
+    public Builder(String id, Class homePage, String applicationName,   // (1)
+                   MenuItemEnum activeMenuItem) {
+        this.id = id;
+        this.homePage = homePage;
+        this.applicationName = applicationName;
+        this.activeMenuItem = activeMenuItem;
+    }
+
+    public Builder withMenuItem(MenuItemEnum menuItem, Class pageToLink) {  // (2)
+        Preconditions.checkState(linksMap.containsKey(menuItem) == false, "Builder already contains " + menuItem +
+                ". Please use withMenuItemInDropdown if you need many links in one menu item");   // (4)
+        BookmarkablePageLink link = new BookmarkablePageLink("link", pageToLink);
+        link.setBody(new Model(menuItem.getLabel()));    // (5)
+        linksMap.put(menuItem, link);   // (6)
+        return this;
+    }
+
+    // ...
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>So what&rsquo;s happening here:</p>
+
+<ol>
+<li><p> Our panel needs three mandatory things: Wicket component id, application name to render a label and home page class to create link so those trhee things will go to the Builder constructor</p></li>
+<li><p> This method is responsible for collecting data for simple menu item so we need a menu item enum and class of the page that we want link to in the navigation bar</p></li>
+<li><p> To gather all the data we use Google Guava Multimap with MeniItemEnum as a key and a Bookmarkable Links as a values. Multimap is a kind of map which allows multiple values for a single key.</p></li>
+<li><p> But for a simple menu item we don&rsquo;t want to have a more than one  menu item duplicated in the navigation bar so we prevent it with a Preconditions check.</p></li>
+<li><p> For a simple item we want to have a label equal to MenuItemEnum label so we add body to the link.</p></li>
+<li><p> And put link in our multimap.</p></li>
+</ol>
+
+
+<p>Now let me explain two last methods in the Builder class:</p>
+
+<p>[java]</p>
+
+<pre><code>    public Builder withMenuItemAsDropdown(MenuItemEnum menuItem, Class pageToLink, String label) { // (1)
+        BookmarkablePageLink link = new BookmarkablePageLink("link", pageToLink);
+        link.setBody(new Model(label));
+        linksMap.put(menuItem, link);
+        return this;
+    }
+
+    public TwitterBootstrapNavBarPanel build() {   (2)
+        return new TwitterBootstrapNavBarPanel(this);
+    }
+</code></pre>
+
+<p>[/java]</p>
+
+<ol>
+<li><p> This method is used to add elements to the dropdown menu item. Here we allow to multimple values for the same menu item (as we will render them as a dropdown under single label). Additionally in the params list we need a label to each link as enum label will be used to render menu item itself and not a links inside it.</p></li>
+<li><p> And when we&rsquo;re ready we execute build() that calls private panel constructor.</p></li>
+</ol>
+
+
+<h3>Step 6: Panel class</h3>
+
+<p>We have everything set up, Builder has all the data we need to create our panel so let&rsquo;s go to its constructor.</p>
+
+<p>[java]</p>
+
+<pre><code>private TwitterBootstrapNavBarPanel(final Builder builder) {
+    super(builder.id);
+
+    BookmarkablePageLink homePageLink = new BookmarkablePageLink("homePageLink", builder.homePage); // (1)
+    homePageLink.add(new Label("label", builder.applicationName)); // (2)
+    add(homePageLink);
+
+    RepeatingView repeatingView = new RepeatingView("menuItems");  // (3)
+
+    for (MenuItemEnum item : builder.linksMap.keySet()) {   // (4)
+        boolean shouldBeActive = item.equals(builder.activeMenuItem);
+
+        Collection&gt; linksInThisMenuItem = builder.linksMap.get(item);  // (5)
+
+        if (linksInThisMenuItem.size() == 1) { //(6)
+            BookmarkablePageLink pageLink = Iterables.get(linksInThisMenuItem, 0);
+
+            MenuLinkItem menuLinkItem = new MenuLinkItem(repeatingView.newChildId(), pageLink, shouldBeActive);
+            repeatingView.add(menuLinkItem);
+        } else {    // (7)
+            repeatingView.add(new MenuDropdownItem(repeatingView.newChildId(), item, linksInThisMenuItem,
+                    shouldBeActive));
+        }
+    }
+
+    add(repeatingView);
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<ol>
+<li><p> Create link to the home page</p></li>
+<li><p> Set its label</p></li>
+<li><p> Create empty repeater</p></li>
+<li><p> For each key from Multimap &hellip;</p></li>
+<li><p> Get collection of links to place in current menu item</p></li>
+<li><p> If there is only one link, add simple menu item (<em>MenuLinkItem</em> element)</p></li>
+<li><p> Otherwsie, create <em>MenuDropdownItem</em> with collection of links</p></li>
+</ol>
+
+
+<h3>Summary</h3>
+
+<p>And that&rsquo;s all. We went through the complete process of building reusable Wicket component based on the top of existing Twitter Bootstrap UI framework. And now it is easy to reuse it in a few next web applications we will create with Wicket.</p>
+
+<p>Of course styling (colors, fonts, etc.) might be different but when we create an internal application for an insurance company or for a bank, they don&rsquo;t expect UI to be really, really, really awesome. It just should look nice and that&rsquo;s all. If you  have such requirements, Twitter Bootstrap is the tool to choose. And when you encapsulate it with your Java web framework of choice you will get ready to use element that just works.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-28T21:19:43+02:00" data-updated="true" itemprop="datePublished">Mar 28<span>th</span>, 2012</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2012/02/google-guava/" title="Previous: Google Guava - almost everything you need to know">&laquo; Google Guava - almost everything you need to know</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2012/03/most-valuable-blogger-dzone/" title="Next: Most Valuable Blogger at DZone">Most Valuable Blogger at DZone &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

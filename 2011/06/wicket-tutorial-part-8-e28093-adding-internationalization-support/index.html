@@ -1,0 +1,497 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Wicket Tutorial, part 8 – adding internationalization support - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Wicket Tutorial, Part 8 – Adding Internationalization Support Today we will continue Wicket tutorial series with adding support to multiple &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Wicket Tutorial, Part 8 – Adding Internationalization Support</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Today we will continue Wicket tutorial series with adding support to multiple languages in web application. Ok, let&rsquo;s do it step by step.</p>
+
+<h3>Create form to change language</h3>
+
+<p>To make our changes visible and testable at the beginning we add form to change application language. To make it more reusable we will implement it as a Wicket panel.
+So first, let&rsquo;s create html and Java files:</p>
+
+<!-- more -->
+
+
+<p>LanguagePanel.html</p>
+
+<p>[html]</p>
+
+<pre><code>&lt;form wicket:id="languageForm" action=""&gt;
+        &lt;input wicket:id="polishButton" type="image" src="images/pl.png"
+               name="image" width="25" height="25" style="border-style: none;"/&gt;
+        &lt;input wicket:id="englishButton" type="image" src="images/gb.png"
+               name="image" width="25" height="25" style="border-style: none;"/&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>[/html]</p>
+
+<p>LanguagePanel.java:</p>
+
+<p>[java]
+public class LanguagePanel extends Panel {</p>
+
+<pre><code>Logger log = LoggerFactory.getLogger(LanguagePanel.class);
+
+public LanguagePanel(String id) {
+    super(id);
+
+    Form languageForm = new Form("languageForm");   // (1)
+
+    languageForm.add(createLocaleChangingButton("polishButton", "PL"));
+    languageForm.add(createLocaleChangingButton("englishButton", "GB"));
+
+    add(languageForm);
+}
+
+private Button createLocaleChangingButton(final String buttonId, final String localeString) {
+    return new Button(buttonId) {
+        @Override
+        public void onSubmit() {
+            changeUserLocaleTo(localeString);    // (2)
+        }
+    };
+}
+
+private void changeUserLocaleTo(String localeString) {
+    getSession().setLocale(new Locale(localeString));      // (3)
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>As you can see it&rsquo;s simple panel with form containing two buttons to change language to Polish and English. We just create form <strong>(1)</strong>, add two buttons which both call <strong>(2)</strong> the same method <em>changeUserLocaleTo() </em><strong>(3)</strong> with different parameter. Method does one, but very important thing: it changes locale of user Sesssion object so all localized strings will be rendered in the chosen language.</p>
+
+<p>Next thing we need to do is add just created panel somewhere to the application. I will place it in the header bar in the BasePage with some styling:</p>
+
+<p>[html]
+(&hellip;)</p>
+
+<ul>
+    <!-- MENU -->
+    <li><a>Home</a></li>
+    <li><a>Item locations</a></li>
+    <li><a href="#">About application</a></li>
+    <li style="float: right; padding-top: 20px; padding-right: 20px;">
+            <span wicket:id="languagePanel"/>
+        </li>
+    <!-- END MENU -->
+</ul>
+
+
+<p>(&hellip;)
+[/html]</p>
+
+<p>We are almost done with this point but as we would like to test if language switching is working on the main page, we must add properties file for second language. And as properties gathered in Application.properties file doesn&rsquo;t seem to work when language is changed, we will move them to BasePage.properties:</p>
+
+<p>[xml]
+applicationName=Item Directory
+applicationHeader=Manage your items easily!
+[/xml]</p>
+
+<p>and BasePage_pl.properties (for Polish language)</p>
+
+<p>[xml]
+applicationName=Item Directory
+applicationHeader=Zarządzaj swoimi przedmiotami z łatwością!
+[/xml]</p>
+
+<p>Ok, it should work and when you run jetty server <em>mvn jetty:run</em>, enter application and click flag of Poland you should see:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/06/item11.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/06/item11.png" alt="" /></a></p>
+
+<p>Small improvement can be done with titles of flag images to inform user to which locale he will switch after clicking. This is good occasion to show nice feature of wicket:message which can render not only localized text but also to localize elements in other html tags like title in input HTML element. To make it work we simply add <em>wicket:message=&ldquo;element_name:key_from_properties_bundle&rdquo;</em>. In LanguagePanel.html we want to localize title so we add <em>wicket:message=&ldquo;title:pl&rdquo;</em> to input:</p>
+
+<p>[html]
+<form wicket:id="languageForm" action=""></p>
+
+<pre><code>&lt;input wicket:id="polishButton" type="image" wicket:message="title:pl" src="images/pl.png"
+     name="image" width="25" height="25" style="border-style: none;"/&gt;
+ &lt;input wicket:id="englishButton" type="image" wicket:message="title:gb" src="images/gb.png"
+     name="image" width="25" height="25" style="border-style: none;"/&gt;
+</code></pre>
+
+<p></form>
+[/html]</p>
+
+<p>and after adding pl and gb keys to properties file we could see localized &ldquo;on hover&rdquo; title messages over both flags.</p>
+
+<h3>Localizing messages shown to the user</h3>
+
+<p>After doing some tedious job (not covered here, but visible in commits) with replacing static texts with wicket:message elements and completing properties files with new keys we could introduce another Wicket feature when it comes to localization: localizing text added or created inside the Java code.</p>
+
+<p>First example of using localization in Wicket inside Java files is welcome text on the main page. There are two ways to localize it. The worse one is getString(propertyName) method which returns localized String. But this method has one big drawback, it will work only when new instance of Page is created. When you (like in our language switching form) return to the current page, it will use old text value in previously selected language. This drawback is not present in the second way with <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/StringResourceModel.html">StringResourceModel</a> class:</p>
+
+<p>HomePage.java:</p>
+
+<p>[java]</p>
+
+<pre><code>private void initGui() {
+    add(new Label("helloLabel", new StringResourceModel("welcomeLabel", this, null)));
+    add(new Label("currentTime", new Date().toString()));
+
+    add(new Label("numberOfUsers", userService.size() +""));
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>If you are more interested in arguments of this class constructor please read <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/StringResourceModel.html">javadocs</a> where you can find detailed description how all this stuff is working.</p>
+
+<p>Another place we could use StringResourceModel is feedback message after location was deleted:</p>
+
+<p>RemoveLocationLink fragment:</p>
+
+<p>[java]</p>
+
+<pre><code>@Override
+public void onClick() {
+    locationService.remove(location);
+    getSession().info(new StringResourceModel("locationRemoved", this, null,
+        new Object[] { location.getName() }).getString());
+    setResponsePage(LocationsPage.class);
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>alongside with properties message:</p>
+
+<p>[xml]
+locationRemoved=Location {0} was removed
+[/xml]</p>
+
+<p>In the constructor of StringResourceModel we pass array of parameters which is used to prepare message. You can notice simple way of inserting passed values into text with {0} notation (like in <a href="http://download.oracle.com/javase/1.4.2/docs/api/java/text/MessageFormat.html">MessageFormat</a> class). Of course this and other constructors of SRM are explained well in javadoc mentioned above :) Also worth to notice is call of getString() method on StringResourceModel which returns String representation of this ResourceModel object.</p>
+
+<h3><strong>Localizing complete pages or panels</strong></h3>
+
+<p>Sometimes adding wicket:message isn&rsquo;t enough and we might want to localize whole page or panel. The first example which comes to my mind is page with regulations in e-shop web application. There would be large amount of text which should be translated to language chosen by the user. Of course we could use many, many wicket:message elements but there is better and faster way :)</p>
+
+<p>To show how it works we will create localized sidebar panel of our application:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/06/item2.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/06/item2.png" alt="" /></a></p>
+
+<p>First we create empty Java class for panel and move sidebar markup to corresponding panel HTML file:</p>
+
+<p>[java]
+public class RightSidebarPanel extends Panel {</p>
+
+<pre><code>public RightSidebarPanel(String id) {
+    super(id);
+}
+</code></pre>
+
+<p>}
+[/java]
+[html]</p>
+
+<!-- SIDEBAR -->
+
+
+<h4>About</h4>
+
+
+<p>This is example application to help you manage your items hidden in many locations across your home.</p>
+
+<h4>Links</h4>
+
+
+<ul class="blocklist">
+  <li>
+    <a title="Source code of this application" href="https://bitbucket.org/tdziurko/item-directory/src">
+      Source code of this application
+    </a>
+  </li>
+  <li>
+    <a title="Tutorial about creating this application"
+      href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/">
+      Tutorial about creating this application
+    </a>
+  </li>
+  <li>
+    <a title="Tomasz Dziurko" href="http://tomaszdziurko.pl/">Author</a>
+  </li>
+  <li>
+    <a title="Spyka Webmaster resources" href="http://www.spyka.net">
+      Template Created by Spyka
+    </a>
+  </li>
+</ul>
+
+
+<!-- SIDEBAR -->
+
+
+<p>[/html]</p>
+
+<p>We need to add just created panel to BasePage java class and then, if we run application, home page screen won&rsquo;t change at all. Ok, now we are ready to the final trick :) Instead of replacing static text with wicket:message elements we create RightSidebarPanel_pl.html file next to standard one and replace whole content with text in Polish language. After this, Wicket uses Polish HTML file when user choose this language and English for users visiting us from other coutries. Easy and straightforward.</p>
+
+<p>Ok, that&rsquo;s all about localization in Wicket and in ItemDirectory application. As an extra one small improvement of usability :)</p>
+
+<h3>Tweak page header and application title</h3>
+
+<p>One thing I was missing in previous versions of Item Directory was title linked to main page. As in many other web pages I was clicking it to navigate to home page but previously I had forgott to add this functionality to it didn&rsquo;t work. And now, as we are adding title in other language, it&rsquo;s good occasion to fix it. So first we embed title and header in a href elements in HTML page and then we add links to BasePage Java class:</p>
+
+<p>[html]
+  <!-- TITLE -->
+  <h1><a href="#" wicket:id="headerHomePageLink">&lt;wicket:message key=&ldquo;applicationName&rdquo;/></a></h1>
+  <h2><a href="#" wicket:id="headerHomePageLink2">&lt;wicket:message key=&ldquo;applicationHeader&rdquo;/></a></h2>
+  <!-- END TITLE -->
+[/html]
+[java]</p>
+
+<pre><code>private void addHeaderLinks() {
+    add(new BookmarkablePageLink("headerHomePageLink", Application.get().getHomePage()));
+    add(new BookmarkablePageLink("headerHomePageLink2", Application.get().getHomePage()));
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>As you can see in HTML snippet I used <em>wicket:message</em> element which provides simple and easy to use label in markup functionality without any Java code. So it&rsquo;s good to utilize this Wicket feature in places with static text which maybe will need internationalization in the future and isn&rsquo;t connected with any particular logic.</p>
+
+<p>Thank you for reading. If you have any comments or ideas, don&rsquo;t hesitate to share them with me and other reader below this post.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-20T21:52:06+02:00" data-updated="true" itemprop="datePublished">Jun 20<span>th</span>, 2011</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2011/05/wicket-tutorial-part-7-e28093-editing-and-removing-item-locations/" title="Previous: Wicket Tutorial, part 7 – editing and removing item locations">&laquo; Wicket Tutorial, part 7 – editing and removing item locations</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies/" title="Next: Wicket Tutorial, part 9 – storing and loading user preferences from cookies">Wicket Tutorial, part 9 – storing and loading user preferences from cookies &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

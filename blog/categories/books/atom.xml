@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T00:19:31+02:00</updated>
+  <updated>2014-05-25T14:36:59+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Deep dive into AngularJS - my review of "Mastering Web Application Development with AngularJS"]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
+    <link href="http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
     <updated>2013-11-24T23:53:30+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
+    <id>http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
     <content type="html"><![CDATA[<p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
 
 <p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover-243x300.jpg" alt="AngularJs-cover" /></a></p>
@@ -57,9 +57,9 @@
   
   <entry>
     <title type="html"><![CDATA[Recenzja "Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce", czyli o tym co każdy programista umieć powinien]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
+    <link href="http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
     <updated>2013-10-30T16:33:49+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
+    <id>http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
     <content type="html"><![CDATA[<p>Dear Reader</p>
 
 <pre><code>This post is in my native language as it is a review of book pyblished only in Poland. Please feel free to check my other posts which are mainly written in English.
@@ -95,9 +95,9 @@
   
   <entry>
     <title type="html"><![CDATA[Instant AngularJS Starter - book review]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/03/instant-angularjs-starter-book-review/"/>
+    <link href="http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review/"/>
     <updated>2013-03-18T22:53:16+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/03/instant-angularjs-starter-book-review</id>
+    <id>http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review</id>
     <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.
 <a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
 
@@ -123,9 +123,9 @@
   
   <entry>
     <title type="html"><![CDATA[Practical Unit Testing with TestNG and Mockito - review]]></title>
-    <link href="http://tdziurko.github.io/blog/2012/07/practical-unit-testing-testng-mockito-review/"/>
+    <link href="http://tdziurko.github.io/2012/07/practical-unit-testing-testng-mockito-review/"/>
     <updated>2012-07-20T17:14:06+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2012/07/practical-unit-testing-testng-mockito-review</id>
+    <id>http://tdziurko.github.io/2012/07/practical-unit-testing-testng-mockito-review</id>
     <content type="html"><![CDATA[<p>Book &ldquo;<em>Practical Unit Testing with TestNG and Mockito</em>&rdquo; (<a href="http://practicalunittesting.com/">website</a>) covers wide spectrum of knowledge about testing in Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get most of this title. Below you can read some of my thoughts after reading this book.</p>
 
 <p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png" alt="" /></a></p>
@@ -278,9 +278,9 @@ public void testArgument() {
   
   <entry>
     <title type="html"><![CDATA[There is so much I need to know that I didn't know that I need to know - notes after reading "Information Diet" book]]></title>
-    <link href="http://tdziurko.github.io/blog/2012/04/notes-from-information-diet-book/"/>
+    <link href="http://tdziurko.github.io/2012/04/notes-from-information-diet-book/"/>
     <updated>2012-04-29T17:05:08+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2012/04/notes-from-information-diet-book</id>
+    <id>http://tdziurko.github.io/2012/04/notes-from-information-diet-book</id>
     <content type="html"><![CDATA[<p>During <a href="http://2012.33degree.org/">33rd Degree</a> conference in Cracow O'Reilly had its stand with books in very attractive prices and similarly to previous year I couldn&rsquo;t resist to buy something. This time I decided to get <a href="http://www.amazon.com/The-Information-Diet-Conscious-Consumption/dp/1449304680">&ldquo;The Information Diet&rdquo;</a> by Clay Johnson.</p>
 
 <p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/04/infodiet.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/04/infodiet.jpg" alt="" /></a></p>

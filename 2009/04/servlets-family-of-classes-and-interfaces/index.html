@@ -1,0 +1,355 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Servlets –  family of classes and interfaces - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Servlets – Family of Classes and Interfaces Today I am going to present the most important methods, classes and interfaces in the Servlet API. &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2009/04/servlets-family-of-classes-and-interfaces/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Servlets – Family of Classes and Interfaces</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Today I am going to present the most important methods, classes and interfaces in the Servlet API.</p>
+
+<h3>public interface Servlet</h3>
+
+<p>Main interface from which all starts. It defines key methods for the life cycle of servlet:</p>
+
+<p>[java]</p>
+
+<p>public void init(ServletConfig config) throws ServletException;
+public ServletConfig getServletConfig();
+public void service(ServletRequest req, ServletResponse res) throws ServletException, java.io.IOException;</p>
+
+<p>public void destroy();</p>
+
+<p>[/java]</p>
+
+<p>and one additional method</p>
+
+<p>[java]</p>
+
+<p>public String getServletInfo();</p>
+
+<p>[/java]</p>
+
+<p>which should return information about servlet (version, author, resposibility, etc.)<!-- more --></p>
+
+<h3><strong>public abstract class GenericServlet implements Servlet, ServletConfig</strong></h3>
+
+<p>Abstract  class implementing all Servlet interface methods, except method service (), which is implemented by a class one step  lower in the hierarchy: HttpServlet. Additionally GenericServlet also provides methods from ServletConfig interface allowing developer to read init parameters of servlet</p>
+
+<p>[java]</p>
+
+<p>public String getInitParameter(java.lang.String name) { }
+public Enumeration getInitParameterNames() { }</p>
+
+<p>[/java]</p>
+
+<p>These  parameters are defined in the web.xml file by using the elements &lt;init-param> nested in the declaration of a servlet:</p>
+
+<p>[xml]</p>
+
+<p>&lt;web-app>
+  <servlet></p>
+
+<pre><code>&lt;servlet-name&gt;FirstToLoadServlet&lt;/servlet-name&gt;
+&lt;servlet-class&gt;pl.tdziurko.scwcd.servlets.FirstToLoadServlet&lt;/servlet-class&gt;
+&lt;init-param&gt;
+  &lt;param-name&gt;initParameter&lt;/param-name&gt;
+  &lt;param-value&gt;initValue&lt;/param-value&gt;
+&lt;/init-param&gt;
+&lt;init-param&gt;
+  &lt;param-name&gt;anotherInitParameter&lt;/param-name&gt;
+  &lt;param-value&gt;anotherInitValue&lt;/param-value&gt;
+&lt;/init-param&gt;
+</code></pre>
+
+<p>  </servlet>
+  &lt;servlet-mapping></p>
+
+<pre><code>&lt;servlet-name&gt;FirstToLoadServlet&lt;/servlet-name&gt;
+&lt;url-pattern&gt;/FirstToLoadServlet&lt;/url-pattern&gt;
+</code></pre>
+
+<p>  &lt;/servlet-mapping>
+&lt;/web-app></p>
+
+<p>[/xml]</p>
+
+<p>Another method of the interface ServletConfig</p>
+
+<p>[java]</p>
+
+<p>public ServletContext getServletContext () {}</p>
+
+<p>[/java]</p>
+
+<p>returns the context in which servlet is running. From this context we can get information about server version and many other things which I don&rsquo;t cover in this episode of &ldquo;Preparing to SCWCD&rdquo; series :)</p>
+
+<p>The final method in class GenericServlet worth mentioning is</p>
+
+<p>[java]public void init () throws ServletException {}</p>
+
+<p>[/java]</p>
+
+<p>This method is added for the developers convenience. Rather  than overloading the init (ServletConfig config) and remember to call  super.init (config) , we can put our init logic in servlet initialization  method init (), which is called by the init (ServletConfig config).</p>
+
+<h3>public abstract class HttpServlet extends GenericServlet</h3>
+
+<p>It&rsquo;s the class, which will be extended by all our servlets. It has methods for handling HTTP requests:</p>
+
+<p>[java]</p>
+
+<p>protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, java.io.IOException {}</p>
+
+<p>[/java]</p>
+
+<p>and its brothers working with other HTTP protocol requests: doPost, doHead, doOptions, doPut, doDelete and doTrace.</p>
+
+<p>The two most important methods in this class are:</p>
+
+<p>[java]</p>
+
+<p>public void service (ServletRequest req, ServletResponse res) throws ServletException, java.io.IOException {}
+protected void service (HttpServletRequest req, HttpServletResponse resp) {}</p>
+
+<p>[/java]</p>
+
+<p>The first one (public one) is called by the container and redirects call to second one (protected), which, depending on the type of request calls one of doXXX() method.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-30T09:03:40+02:00" data-updated="true" itemprop="datePublished">Apr 30<span>th</span>, 2009</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/certificates/'>Certificates</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2009/04/pelne-archiwum-sdj-2008-i-2007-do-zgarniecia/" title="Previous: Pełne archiwum SDJ 2008 i 2007 do zgarnięcia">&laquo; Pełne archiwum SDJ 2008 i 2007 do zgarnięcia</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2009/05/eclipse-and-problem-with-auto-generated-equals/" title="Next: Eclipse and problem with auto generated equals()">Eclipse and problem with auto generated equals() &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

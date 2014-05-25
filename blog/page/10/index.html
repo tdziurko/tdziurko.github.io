@@ -94,7 +94,7 @@
   <h4><li><a href="/">Blog</a></li></h4>
   <h4><li><a href="/blog/archives">Archives</a></li></h4>
   <h4><li><a href="/blog/categories">Categories</a></li></h4>
-  <h4><li><a href="/blog/about">About</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
 </ul>
 
 </nav>
@@ -106,23 +106,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
       </li>
     
   </ul>
@@ -174,9 +174,8 @@
 
 </div>
 		
-		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2009/04/nntp-apache-commons-and-non-us-charaters/" itemprop="url">NNTP, Apache Commons and non-US Charaters</a></h1>
+	<h1 class="title" itemprop="name"><a href="/2009/04/nntp-apache-commons-and-non-us-charaters/" itemprop="url">NNTP, Apache Commons and non-US Charaters</a></h1>
 	<div class="entry-content" itemprop="articleBody">
 		<p>Like every weekend, today I was spending time on writing application for my MSc thesis. Among few tasks I planned for today one was connected with sending messages/notifications to the internal discussion group of my dormitory using NNTP protocol.</p>
 
@@ -194,7 +193,7 @@ public class Main {</p>
  Writer postArticle = client.postArticle();</p>
 
 <p> SimpleNNTPHeader headers =
- new SimpleNNTPHeader(&ldquo;Tomasz Dziurko &lt;<a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#x74;&#x64;&#x7a;&#x69;&#x75;&#114;&#107;&#x6f;&#64;&#103;&#109;&#97;&#x69;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#x74;&#100;&#x7a;&#x69;&#x75;&#x72;&#x6b;&#111;&#x40;&#103;&#x6d;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;</a>>&rdquo;, &ldquo;Test kodowania polskich znaków&rdquo;);
+ new SimpleNNTPHeader(&ldquo;Tomasz Dziurko &lt;<a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#116;&#x64;&#x7a;&#105;&#117;&#x72;&#x6b;&#x6f;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;">&#116;&#x64;&#122;&#105;&#117;&#x72;&#107;&#x6f;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#109;</a>>&rdquo;, &ldquo;Test kodowania polskich znaków&rdquo;);
  headers.addNewsgroup(&ldquo;pw.test&rdquo;);
  headers.addHeaderField(&ldquo;Mime-Version&rdquo;, &ldquo;1.0&rdquo;);
  headers.addHeaderField(&ldquo;Content-Type&rdquo;,&ldquo;text/plain; charset=UTF-8&rdquo;);
@@ -215,7 +214,7 @@ public class Main {</p>
 <p>Everything worked as expected until I started to use Polish characters in the message. Then instead of &ldquo;ąęóśłżźćń&rdquo; I saw following picture:
 <a href="http://tomaszdziurko.pl/wp-content/uploads/2009/04/message1.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2009/04/message1-300x93.png" alt="Invalid characters encoding in NNTP class in Apache Commons Net" /></a>
 		
-		<a href="/blog/2009/04/nntp-apache-commons-and-non-us-charaters/" class="more-link">Read on &rarr;</a>
+		<a href="/2009/04/nntp-apache-commons-and-non-us-charaters/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>
@@ -244,9 +243,8 @@ public class Main {</p>
 
 </div>
 		
-		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2009/04/lets-start-preperations-to-scwcd/" itemprop="url">Let’s Start Preperations to SCWCD</a></h1>
+	<h1 class="title" itemprop="name"><a href="/2009/04/lets-start-preperations-to-scwcd/" itemprop="url">Let’s Start Preperations to SCWCD</a></h1>
 	<div class="entry-content" itemprop="articleBody">
 		<p>Here are some useful links, materials and books which I am going to use while preparing to Sun Certified Web Component Developer (SCWCD):</p>
 
@@ -293,9 +291,8 @@ public class Main {</p>
 
 </div>
 		
-		
 	</div>
-	<h1 class="title" itemprop="name"><a href="/blog/2009/04/my-impressions-after-passing-scjp/" itemprop="url">My Impressions After Passing SCJP</a></h1>
+	<h1 class="title" itemprop="name"><a href="/2009/04/my-impressions-after-passing-scjp/" itemprop="url">My Impressions After Passing SCJP</a></h1>
 	<div class="entry-content" itemprop="articleBody">
 		<p>Info for Polish readers: this post was originally written in Polish and you can read it <a href="http://codehardgopro.blogspot.com/2009/04/troche-historii-moje-wrazenia-z-nauki.html">here</a> with some additional details about taking exam in Prometric center in Poland.</p>
 

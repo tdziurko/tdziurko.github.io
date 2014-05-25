@@ -1,0 +1,507 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Wicket Tutorial, part 7 – editing and removing item locations - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Wicket Tutorial, Part 7 – Editing and Removing Item Locations Welcome back to our practical Wicket tutorial series. I apologize for long break after &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2011/05/wicket-tutorial-part-7-e28093-editing-and-removing-item-locations/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Wicket Tutorial, Part 7 – Editing and Removing Item Locations</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Welcome back to our practical Wicket tutorial series. I apologize for long break after last post (shame on me as it was published more than 1,5 month ago) but I had many unplanned things with higher priority: Wicket demo appplication  on <a href="http://33degree.org/talks.html#BOFWebFrameworks">33rdDegree</a> conference to prepare, a conference itself and most time-consuming one, I damaged knee ligament during football match and after that everyday for three weeks I was driving to the hospital for rehabilitation so day became too short to write something here. But now everything seems to be ok and I have some spare time to continue Wicket tutorial subject.</p>
+
+<p>Today we will add two new features: editing and removing locations from our application. Currently we don&rsquo;t have any items connected with locations so deleting shouldn&rsquo;t be too complicated. Later on, when we add some items, we will have to rework this functionality but now it shouldn&rsquo;t bother us too much.</p>
+
+<!-- more -->
+
+
+<h3>Editing locations</h3>
+
+<p>To edit location we should first add link to the LocationsPage redirecting user to edit page:</p>
+
+<p>[html]</p>
+
+<table>
+    <tr>
+        <th>ID</th><th>Name</th><th>Actions</th> <!-- new header column -->
+    </tr>
+    <span wicket:id="locations">
+        <tr>
+        <td><span wicket:id="id"></span></td>
+        <td><span wicket:id="name"></span></td>
+            <td><a href wicket:id="editLocationLink">Edit</a></td> <!-- this is new -->
+        </tr>
+    </span>
+</table>
+
+
+<p>[/html]</p>
+
+<p>In the corresponding Java class we add link to edit page:</p>
+
+<p>[java]
+ ListView<Location> locations = new ListView<Location>(&ldquo;locations&rdquo;, createModelForLocations()) {
+   @Override
+   protected void populateItem(final ListItem<Location> item) {</p>
+
+<pre><code> item.add(new Label("id", new PropertyModel&lt;Location&gt;(item.getModel(), "id")));
+ item.add(new Label("name", new PropertyModel&lt;Location&gt;(item.getModel(), "name")));
+
+ Link&lt;BasePage&gt; editLocationLink = new Link&lt;BasePage&gt;("editLocationLink") {
+   @Override
+   public void onClick() {
+     setResponsePage(new AddEditLocationPage(item.getModelObject().getId()));
+   }
+ };
+
+ item.add(editLocationLink);
+</code></pre>
+
+<p>   }
+ };
+[/java]</p>
+
+<p>Careful reader might notice that we have new class here, AddEditLocationPage. But it&rsquo;s just old renamed AddLocationPage after some refactoring to reuse it for both creating new and editing existing locations. As in the code listing above, we are passing Id of location to the constructor to inform which object we are going to edit.</p>
+
+<p><strong>Refactoring AddLocationPage to AddEditLocationPage</strong></p>
+
+<p>Apart from renaming both Java and HTML files we have to introduce some major changes to this Java class.</p>
+
+<p>First we add constructor taking id as a parameter:</p>
+
+<p>[java]</p>
+
+<p>public AddEditLocationPage(Long locationId) {
+  Location location = locationService.findById(locationId);
+  setDefaultModel(new Model<Location>(location));
+  initGui();
+}
+[/java]</p>
+
+<p><em>setDefaultModel</em> will enable other components from the page to use loaded location as a source of rendered data. After this, to  be consistent we change constructor for new locations too:</p>
+
+<p>[java]
+public AddEditLocationPage() {
+  setDefaultModel(new Model<Location>(new Location()));
+  initGui();
+}
+[/java]</p>
+
+<p>After these changes initGui() method needs some tweaks because it should use data from default page model and not from String name field:</p>
+
+<p>[java]</p>
+
+<p>private void initGui() {
+ Form<Location> addLocationForm = new Form<Location>(&ldquo;addLocationForm&rdquo;,
+   new CompoundPropertyModel<Location>(getDefaultModel()));  // (1)</p>
+
+<p> add(addLocationForm);</p>
+
+<p> Label nameLabel = new Label(&ldquo;nameLabel&rdquo;, &ldquo;Location name&rdquo;);
+ addLocationForm.add(nameLabel);</p>
+
+<p> addLocationForm.add(createLabelFieldWithValidation()); // (2)</p>
+
+<p> Button submitButton = new Button(&ldquo;submitButton&rdquo;) {
+   @Override
+   public void onSubmit() {</p>
+
+<pre><code> Location location = getLocationFromPageModel(); // (3)
+
+ if(location.isNew()) {              // (4)
+   locationService.save(location);
+   getSession().info("Location added successfully");
+   }
+ else {
+   locationService.update(location);
+   getSession().info("Location updated successfully");
+ }
+
+ setResponsePage(LocationsPage.class);
+</code></pre>
+
+<p>   }
+ };
+ addLocationForm.add(submitButton);
+}</p>
+
+<p>private RequiredTextField<String> createLabelFieldWithValidation() {     // (5)
+ RequiredTextField<String> nameField = new RequiredTextField<String>(&ldquo;name&rdquo;);
+ nameField.setLabel(new Model<String>(&ldquo;Name&rdquo;));
+ nameField.add(LengthBetweenValidator.lengthBetween(MIN_LOCATION_NAME_LENGTH, MAX_LOCATION_NAME_LENGTH));</p>
+
+<p> nameField.add(createUniqueLocationNameValidator());   // (6)</p>
+
+<p> return nameField;
+}</p>
+
+<p>private UniqueEntityValidator<String> createUniqueLocationNameValidator() {    // (7)
+ UniqueEntityValidator<String> locationNameValidator = null;
+ if(getLocationFromPageModel().isNew()) {
+   locationNameValidator = new UniqueEntityValidator<String>(locationDao, &ldquo;name&rdquo;);
+ }
+ else {
+   locationNameValidator = new UniqueEntityValidator<String>(locationDao, getLocationFromPageModel().getId(), &ldquo;name&rdquo;);  // (8)
+ }</p>
+
+<p> return locationNameValidator;
+}</p>
+
+<p>@SuppressWarnings(&ldquo;unchecked&rdquo;)
+private Location getLocationFromPageModel() {       // (9)
+  return (Location) getDefaultModel().getObject();
+}</p>
+
+<p>[/java]</p>
+
+<p><strong>This code listing needs some explanation:</strong></p>
+
+<p>In <strong>(1) </strong>we are changing model of Form to use default model from parent page so we could load data from existing or new (just created) location.</p>
+
+<p>Then in <strong>(2) </strong>extracted method createLabelFieldWithValidation()<strong> </strong>is invoked and inside it <strong>(5) </strong> input field component is created and (more important)  proper validator is assigned to this input field<strong> (6)</strong>.</p>
+
+<p>The way how validator is created<strong> (7) </strong>depends on whether we edit existing location and our unique name check should not create an error if the same location with the same name is found<strong> (8) </strong>or we just create new location and any existing location with the same name should prevent application from creating a new one. In this method we use helper method <strong>(9)</strong> extracting Location from page model.</p>
+
+<p>Ok. that&rsquo;s everything we have to do to add edit feature. We now can edit and add new locations as shown on the screen shot below.</p>
+
+<h3><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/05/SS-20110507141140.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/05/SS-20110507141140.png" alt="" /></a></h3>
+
+<h3>Removing locations</h3>
+
+<p>To start adding this feature we place another link in the LocationsPage HTML file (next to Edit one) and add link to Java class:</p>
+
+<p>[java]
+ListView<Location> locations = new ListView<Location>(&ldquo;locations&rdquo;, createModelForLocations()) {
+  @Override</p>
+
+<pre><code>protected void populateItem(final ListItem&lt;Location&gt; item) {
+item.add(new Label("id", new PropertyModel&lt;Location&gt;(item.getModel(), "id")));
+item.add(new Label("name", new PropertyModel&lt;Location&gt;(item.getModel(), "name")));
+
+Link&lt;BasePage&gt; editLocationLink = new Link&lt;BasePage&gt;("editLocationLink") {
+  @Override
+  public void onClick() {
+    setResponsePage(new AddEditLocationPage(item.getModelObject().getId()));
+  }
+};
+
+item.add(editLocationLink);
+item.add(new RemoveLocationLink("removeLocationLink", item.getModelObject())); // new remove link component
+</code></pre>
+
+<p>  }
+};
+[/java]</p>
+
+<p>And because we know that in the future logic for removing location will be more complicated, it will be easier to change it if we create remove location link as a separate class:</p>
+
+<p>[java]</p>
+
+<p>public class RemoveLocationLink extends Link<Void> {</p>
+
+<p>  @SpringBean
+  LocationService locationService;</p>
+
+<p>  private final Location location;</p>
+
+<p>  public RemoveLocationLink(String componentId, Location location) {</p>
+
+<pre><code>super(componentId);
+this.location = location;
+</code></pre>
+
+<p>  }</p>
+
+<p>  @Override
+  public void onClick() {</p>
+
+<pre><code>locationService.remove(location);
+
+getSession().info("Location '" + location.getName() + "' was removed");
+setResponsePage(LocationsPage.class);
+</code></pre>
+
+<p>  }</p>
+
+<p>}
+[/java]</p>
+
+<p>We are almost done. The last thing we need to change is method in service class responsible for removing entity.  Without this change we will be trying to delete detached entity so we should use removeSafely() method instead of remove():</p>
+
+<p>[java]</p>
+
+<p>public class LocationServiceImpl implements LocationService {</p>
+
+<p> @Autowired
+ private LocationDao locationDao;</p>
+
+<p> // (..)</p>
+
+<p> public void remove(Location location) {
+   locationDao.removeSafely(location);
+ }</p>
+
+<p> // (&hellip;)
+}</p>
+
+<p>[/java]</p>
+
+<p>which is implemented in AbstractDAO class:</p>
+
+<p>[java]
+public void removeSafely(EntityClass entity) {
+  getEntityManager().remove(</p>
+
+<pre><code>getEntityManager().getReference(getClazz(), entity.getId()));
+</code></pre>
+
+<p>}</p>
+
+<p>[/java]</p>
+
+<p>After this small change application is ready for tests and we can check that everything works just fine.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/05/SS-20110507202517.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/05/SS-20110507202517.png" alt="" /></a></p>
+
+<h3>Summary</h3>
+
+<p>That&rsquo;s all for today. Latest source code is available <a href="https://bitbucket.org/tdziurko/item-directory/src">here</a> next to both changesets to view and analyse  <a href="https://bitbucket.org/tdziurko/item-directory/changeset/45020512e60b">(editing location</a> and <a href="https://bitbucket.org/tdziurko/item-directory/changeset/9e6a2c58e4e7">removing location</a>).  Thank you for you time and as always, any comments, suggestions, etc are welcome :)</p>
+
+<p>Next episode will be released in a week or two maximum, so stay tuned!</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-07T20:45:32+02:00" data-updated="true" itemprop="datePublished">May 7<span>th</span>, 2011</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2011/05/why-we-dont-like-public-speeches-and-what-can-be-done-about-it/" title="Previous: Why we don't like public speeches and what can be done about it">&laquo; Why we don't like public speeches and what can be done about it</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/" title="Next: Wicket Tutorial, part 8 – adding internationalization support">Wicket Tutorial, part 8 – adding internationalization support &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

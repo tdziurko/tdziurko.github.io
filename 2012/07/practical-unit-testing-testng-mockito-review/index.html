@@ -1,0 +1,394 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Practical Unit Testing with TestNG and Mockito - review - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Practical Unit Testing With TestNG and Mockito - Review Book &ldquo;Practical Unit Testing with TestNG and Mockito&rdquo; (website) covers wide &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2012/07/practical-unit-testing-testng-mockito-review/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Practical Unit Testing With TestNG and Mockito - Review</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Book &ldquo;<em>Practical Unit Testing with TestNG and Mockito</em>&rdquo; (<a href="http://practicalunittesting.com/">website</a>) covers wide spectrum of knowledge about testing in Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get most of this title. Below you can read some of my thoughts after reading this book.</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png" alt="" /></a></p>
+
+<!-- more -->
+
+
+<h3>Quick look at content</h3>
+
+<p><a href="http://kaczanowscy.pl/tomek/">Tomek Kaczanowski</a>, author of this book, starts with describing some basic concepts needed to understand testing and classification of tests. He introduces definitions of SUT- System Under Test and DOC &ndash; Depended On Component. Then after this really short theoretical chapter we start diving deeper into gradually more and more complex testing cases.</p>
+
+<p>We start with simple class without any dependencies, easy to understand and easy to test. Then we could feel rhythm of Test-Driven Development with TestNG, learn how to use mocks, stubs and spiess from Mockito, employ matchers and checking assertions using FEST. Example after example, we are introduced to more complex features of those libraries. but luckily for those not using TestNG with Mockito, each chapter is full of general tips and suggestions abuot testing methodology, how to approach testing properly and finally how and what to test.</p>
+
+<p>Then we could learn about customizing TestNG using listeners and reporters, organizing test classes into packages and modules, organizing code in test methods (famous BDD given-when-then trio).</p>
+
+<p>Last chapters are devoted completely to most general things: maintaining tests, deciding which parts of your code base are worth testing, checking quality of your tests with static analysis tools (PMD, Coberturda and so on).</p>
+
+<h3>My opinion</h3>
+
+<p>I am using TestNG for over a year (after switching from JUnit), Mockito for more than three years so I am quite familiar with those tools. And for people with similar or greater experience this book will not surprise on each single page. This will or, at least in my opinion, will happen for those less familiar with testing and using TestNG and Mockito. For them this book is a totally must read as it gently introduces reader to world of proper unit testing using best toolbos available in Java world.</p>
+
+<p>I am far from saying that for more experienced developers this book is not a good way to spend their time. It&rsquo;s still good, I learned many interesting features of described libraries but what is most important, my knowledge about testing is now more complete and more ordered. Reading all this stuff helped me to put many stuff into &ldquo;proper shelves&rdquo; in my mind. And that&rsquo;s very good.</p>
+
+<p><strong>To sum up:</strong> The less experienced in testing you are, the more you will get from this book. And for people who are testing and using TestNG and Mockito for over a eight or more years: this book is probably not for you.</p>
+
+<p>If you place yourself in the middle, <em>Practical Unit Testing with TestNG and Mockito</em> is still a very good choice as it will help you to systematize all the stuff you already know and meanwhile you will surely learn something new about tools and, worth to note, about general efficient and painless approach to testing your code.</p>
+
+<h2>My takeaways</h2>
+
+<p>Below some of my personal notes about things I didn&rsquo;t know or didn&rsquo;t use often before reading this book.</p>
+
+<h5><strong>Enriching html test reports</strong></h5>
+
+<p>TestNG has a nice class <em>org.testng.Reporter</em> that allows developer to add some information to html reports</p>
+
+<p>[java]</p>
+
+<pre><code>@Test
+public void testSomething() {
+    Reporter.log("This is so soo important, please read it!");
+
+    //test something
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>And after running such tests in html report we will see something like presenten on the screenshot below:</p>
+
+<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/07/testng-reporter.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/07/testng-reporter.jpg" alt="" /></a></p>
+
+<p>and additionally all such messages are gathered in one, separate report.</p>
+
+<h5><strong>Clear separation between important and dummy test data</strong></h5>
+
+<p>Let&rsquo;s suppose that we are testing following method</p>
+
+<p>[java]</p>
+
+<pre><code>@Test
+public void loadByAgeRange() {
+    service.loadClientBy(1, 20, 40, null);
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>and compare it with listing below:</p>
+
+<p>[java]</p>
+
+<pre><code>@Test
+public void loadByAgeRange() {
+    int ageFrom = 20;
+    int ageTo = 40;
+
+    service.loadClientBy(ANY_TYPE, ageFrom, ageTo, ANY_REGION);
+}
+</code></pre>
+
+<p>[/java]</p>
+
+<p>Isn&rsquo;t it much clearer? We replace dummy data with constants indicating which part is important and what parameters are not critical in this method.</p>
+
+<h5><strong>Mocks auto injection</strong></h5>
+
+<p>Mockito allows us to automatically inject all mock into object we are going to test:</p>
+
+<p>[java]</p>
+
+<pre><code>@InjectMocks private ObjectUnderTest object = new ObjectUnderTest();
+</code></pre>
+
+<p>[/java]</p>
+
+<p>Of course it has some limitations (see <a href="http://docs.mockito.googlecode.com/hg/1.9.0/org/mockito/InjectMocks.html">JavaDocs</a>) but it&rsquo;s good to know that such feature is already in Mockito.</p>
+
+<h5><strong><a href="http://code.google.com/p/make-it-easy/">Make-it-easy</a> &ndash; A tiny framework that makes it easy to write Test Data Builders in Java</strong></h5>
+
+<p>This small project will help you to create builders for your test cases easily. More can be found on <a href="http://code.google.com/p/make-it-easy/wiki/GettingStarted">its wiki</a>, but below simple use case showing how it looks:</p>
+
+<p>[java]</p>
+
+<pre><code>Person nat = make(a(Person, with(name, "Tomek"), with(age, 28)));
+</code></pre>
+
+<p>[/java]</p>
+
+<h5><strong>Partial Mocking</strong></h5>
+
+<p>If there is a method we want to test but at the same time there is another method in tested object that want to mock, it is possible to do that by usinf Mockito spy():</p>
+
+<p>[java]
+@Test
+public void testCaluculationSummary() {</p>
+
+<pre><code>TestedObject object = spy(new TestedObject());
+when(object.executeHeavyCalculations()).thenReturn("resultString");
+
+int result = object.getCalculationsSummary();
+
+assertThat(result).isEqualTo(10);
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<h5><strong>Testing and capturing method arguments</strong></h5>
+
+<p>Mockito gives us another very useful feature, ability to check what arguments were passed to methods using <a href="http://docs.mockito.googlecode.com/hg/org/mockito/ArgumentCaptor.html">ArgumentCaptor</a>:</p>
+
+<p>[java]</p>
+
+<pre><code>@Test
+public void testArgument() {
+    // ...
+    CustomerService customerService = mock(CustomerService.class);
+    ArgumentCaptor argument = ArgumentCaptor.forClass(Customer.class);
+    verify(customerService).saveCustomer(argument.capture());
+
+    testedObject.executeSomeMethodCallingSaveCustomer()
+
+    assertThat(argument.getValue()).isEqualTo(expectedCustomer);
+}
+</code></pre>
+
+<p>[/java]</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-20T17:14:06+02:00" data-updated="true" itemprop="datePublished">Jul 20<span>th</span>, 2012</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/books/'>Books</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2012/07/hibernate-smoke-detector/" title="Previous: Hibernate Smoke Detector">&laquo; Hibernate Smoke Detector</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2012/09/remember-functionality-apache-wicket/" title="Next: Remember Me functionality in Apache Wicket">Remember Me functionality in Apache Wicket &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

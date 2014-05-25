@@ -1,0 +1,464 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>JCommander - parsing command line parameters with ease - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="JCommander - Parsing Command Line Parameters With Ease From time to time each of us have to create a small console application to perform a few &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2012/05/jcommander-parsing-command-line-parameters-ease/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">JCommander - Parsing Command Line Parameters With Ease</h1>
+	<div class="entry-content" itemprop="articleBody"><p>From time to time each of us have to create a small console application to perform a few tedious tasks that can be automated so we can concentrate on more creative ones instead. And every time I had to build such an app I struggled with passing options via command line parameters. Instead of concentrating on implementing logic, I had to create a parser, validator and so on. And in another console application I had to do the same&hellip; again and again. But thankfully it&rsquo;s over.</p>
+
+<p>Thanks to small library by <a href="http://beust.com/">Cédric Beust</a>, creator of well-known Java testing framework <a href="http://testng.org/">TestNG</a>. This time he created <strong>JCommander</strong> with a motto <em>Because life is too short to parse command line parameters</em>. But enough talking, let&rsquo;s sit down and write some code.</p>
+
+<!-- more -->
+
+
+<h3>A simple use case</h3>
+
+<p>At the begginning assume that we have to write an application to generate a timesheet report from a given month. So simplified use case is: connect to application where all data is stored and load what everything we need. To perform this operation we need four parameters: url to the application where data is stored, authentication token and of course number of month and year. So let&rsquo;s create a settings class where all this data will be stored.</p>
+
+<p>[java]
+public class Settings {</p>
+
+<pre><code>private String url;
+
+private String authenticationToken;
+
+private Integer month;
+
+private Integer year;
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>and our Main application class with <em>main()</em> method:</p>
+
+<p>[java]
+public class Main {</p>
+
+<pre><code>public static void main(String[] args) {
+
+    Settings settings = new Settings();
+    // somehow pass args[] to settings object
+
+    // do the logic
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>But how should we pass all stuff from command line parameters to the <em>Settings</em> class so it is automatically initialized with these values? It&rsquo;s simple!</p>
+
+<p>First we have to annotate fields in <em>Settings</em> class using <em>@Parameter</em> so JCommander will know how to map parameters from command line to fields.</p>
+
+<p>[java]
+public class Settings {</p>
+
+<pre><code>@Parameter(names = "-url", description = "Server address", required = true)
+private String url;
+
+@Parameter(names = "-token", description = "Authentication token", required = true)
+private String authenticationToken;
+
+@Parameter(names = "-month", description = "Number of month (1-12) for timesheet", required = true)
+private Integer month;
+
+@Parameter(names = "-year", description = "Year", required = true)
+private Integer year;
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>Annotation we&rsquo;ve added looks pretty straightforward. We define name of parameter and whether it is required or not. If we do not provide a token (which is required) in command line we will get something similar to:</p>
+
+<pre><code>Exception in thread "main" com.beust.jcommander.ParameterException: The following options are required: -token
+</code></pre>
+
+<p>And in next step we have to inform JCommander which object should be initialized with data extracted from command line. It&rsquo;s a simple one-liner.</p>
+
+<p>[java]
+public class Main {</p>
+
+<pre><code>public static void main(String[] args) {
+
+    Settings settings = new Settings();
+    new JCommander(settings, args); // simple one-liner
+    // do the logic
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>And that&rsquo;s all. We have simple JCommander example working and all settings passed via command line params are now initialized in Settings object.</p>
+
+<h3>Some additional options</h3>
+
+<p><strong>Multiple values</strong></p>
+
+<p>But then we receive some new feature requests. We have to generate report for a list of projects. It can be only one project but it can be more. So how can we implement it? Nothing difficult. We add <em>List<String></em> projects to our settings class and mark it as a required parameter.</p>
+
+<p>[java]</p>
+
+<pre><code>@Parameter(names = "-project", 
+    description = "Codes of projects to be included in timesheet report", required = true)
+private List&lt;String&gt; projectCodes;
+</code></pre>
+
+<p>[/java]
+Seeing a Collection JCommander will detect that it should expect multiple values for project parameter name. And if we call our console application with something like</p>
+
+<pre><code>java -jar Application.jar -project Project1 -project Project2 - project Project3
+</code></pre>
+
+<p>we will get list of these names in <em>projectCodes</em> field.</p>
+
+<p><strong>Input validation</strong></p>
+
+<p>If we want to validate that month parameter is between 1 and 12 we can do it easily with just one method from interface <em>IParameterValidator</em>. In our case it will look like show below:</p>
+
+<p>[java]
+public class MonthValidator implements IParameterValidator {</p>
+
+<pre><code>@Override
+public void validate(String name, String value) throws ParameterException {
+    int month = Integer.parseInt(value);
+
+    if(month &lt; 1 || month &gt; 12) {
+        throw new ParameterException("Parameter " + name + " should be between 1 and 12");
+    }
+}
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>and we have to declare this validator using <em>validateWith</em> from <em>@Parameter</em> annotation:</p>
+
+<p>[java]</p>
+
+<pre><code>@Parameter(names = "-month", 
+    description = "Number of month (1-12) for timesheet", required = true, validateWith = MonthValidator.class)
+private Integer month;
+</code></pre>
+
+<p>[/java]</p>
+
+<p><strong>Input conversion</strong></p>
+
+<p>Sometimes we need to have one of our options mapped to something more than a simple basic type. Let&rsquo;s say that in our example console application user should provide type of report output he/she wants to get. It could be console output, pdf or xls file. So in out <em>Settings</em> class we have a enum <em>OutputEnum</em> with three allowed values:</p>
+
+<p>[java]
+public class Settings {</p>
+
+<pre><code>// ...
+@Parameter(names = "-output", description = "Report output format", required = true)    
+private OutputEnum output;
+</code></pre>
+
+<p>}</p>
+
+<p>public enum OutputEnum {</p>
+
+<pre><code>CONSOLE,
+PDF,
+XLS;
+
+// converter that will be used later
+public static OutputEnum fromString(String code) {
+
+    for(OutputEnum output : OutputEnum.values()) {
+        if(output.toString().equalsIgnoreCase(code)) {
+            return output;
+        }
+    }
+
+    return null;
+}
+</code></pre>
+
+<p>}</p>
+
+<p>[/java]</p>
+
+<p>But now JCommander doesn&rsquo;t know how to work with our new enum class. We need to provide a converter. So let&rsquo;s create one. And again, it&rsquo;s easy :) We have to implement one method from <em>IStringConverter</em> and throw <em>ParameterException</em> when something is wrong.</p>
+
+<p>[java]
+public class OutputConverter implements IStringConverter<OutputEnum> {</p>
+
+<pre><code>@Override
+public OutputEnum convert(String value) {
+    OutputEnum convertedValue = OutputEnum.fromString(value);
+
+    if(convertedValue == null) {
+        throw new ParameterException("Value " + value + "can not be converted to OutputEnum. " +
+                "Available values are: console, pdf, xls.");
+    }
+    return convertedValue;
+}
+</code></pre>
+
+<p>}</p>
+
+<p>[/java]</p>
+
+<p>and when converter is ready, we should inform JCommander to use it on one of fields in Settings class with <em>converter</em> annotation parameter.</p>
+
+<p>[java]
+public class Settings {</p>
+
+<pre><code>// ...
+@Parameter(names = "-output", description = "Report output format", required = true, , converter = OutputConverter.class)    
+private OutputEnum output;
+</code></pre>
+
+<p>}
+[/java]</p>
+
+<p>And now settings object will be correctly initialized with OutputEnum.</p>
+
+<h3>Summary</h3>
+
+<p>That&rsquo;s all. I&rsquo;ve shown some most useful features of JCommander, an easy tool to make parsing command line paramters a breeze. If you want some more info, please check official <a href="http://jcommander.org">JCommander website</a> or even dive into its <a href="https://github.com/cbeust/jcommander">source code</a> on GitHub.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-13T08:48:54+02:00" data-updated="true" itemprop="datePublished">May 13<span>th</span>, 2012</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2012/04/notes-from-information-diet-book/" title="Previous: There is so much I need to know that I didn't know that I need to know - notes after reading "Information Diet" book">&laquo; There is so much I need to know that I didn't know that I need to know - notes after reading "Information Diet" book</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2012/05/my-numbers-of-geecon/" title="Next: My numbers of GeeCON">My numbers of GeeCON &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

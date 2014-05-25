@@ -1,0 +1,410 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Easy Html/Javascript JSON escaping in Scalatra  - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Easy Html/Javascript JSON Escaping in Scalatra Scalatra is a small web-framework that allows to easily build Rest API for web applications. We are &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Easy Html/Javascript JSON Escaping in Scalatra</h1>
+	<div class="entry-content" itemprop="articleBody"><p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
+<a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
+So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.</p>
+
+<h3>Basic Scalatra project</h3>
+
+<p>To show how it could be accomplished, we need a simple sample project using Scalatra. I didn&rsquo;t want to create it from scratch by myself so I removed some Swagger related stuff from project by my colleague Krzysztof Ciesielski (<a href="http://abstractionextraction.wordpress.com/2013/03/31/using-swagger-with-scalatra/">his post about Scalatra and Swagger</a>) and I was ready to go :) Full commit with this basic project is available <a href="https://github.com/tdziurko/scalatra-json-escaping/commit/099c7ac30fe0f63319a890e848a94390c035e801">here</a>, but the most interesting class is shown below:</p>
+
+<!-- more -->
+
+
+<p>[scala]
+class ExampleServlet() extends ScalatraServlet with JacksonJsonSupport with JValueResult {</p>
+
+<p>  protected implicit val jsonFormats: Formats = DefaultFormats</p>
+
+<p>  val messages = List(</p>
+
+<pre><code>Message(1, "&lt;script&gt;&lt;alert&gt;Script hacker&lt;/alert&gt;&lt;/script&gt;", "Johny Hacker", new Date()),
+Message(2, "Decent message", "John Smith", new Date()),
+Message(3, "Message with &lt;b&gt;bolded fragment&lt;/b&gt;", "Kate Norton", new Date())
+</code></pre>
+
+<p>  )</p>
+
+<p>  before() {</p>
+
+<pre><code>contentType = formats("json")
+</code></pre>
+
+<p>  }</p>
+
+<p>  get(&ldquo;/&rdquo;) {</p>
+
+<pre><code>messages
+</code></pre>
+
+<p>  }</p>
+
+<p>  get(&ldquo;/:id&rdquo;) {</p>
+
+<pre><code>val id = params("id").toInt;
+val messageOptional = messages.find((m: Message) =&gt; m.id == id)
+
+log("optional =" + messageOptional)
+messageOptional match {
+  case Some(e) =&gt; e
+  case _ =&gt;
+}
+</code></pre>
+
+<p>  }
+}</p>
+
+<p>case class Message(id: Int, text: String, author: String, created: Date)
+[/scala]
+Ok, so what we have here? Simple Rest service that returns JSON. Get method without any params returns list of messages and get with passed id returns single message with given id. For the sake of simplicity, I have hardcoded list of three messages with two of them containing some Html/JS elements.</p>
+
+<h3>Definition of Done</h3>
+
+<p>It is always good to have clear Definition of Done so in our case there are two things we want our methods to do:</p>
+
+<ul>
+<li><p>Get /rest/example without parameters should return list of messages with escaped content</p></li>
+<li><p>Get /rest/example/1 (with parameter) should return single messages without escaping</p></li>
+</ul>
+
+
+<h3>Implementation details</h3>
+
+<p>To add escaping we need to find place in Scalatra where objects returned from method are converted to Json. After some digging I found <em>JacksonJsonOutput</em> trait with method <em>writeJon</em>:
+[scala]
+trait JacksonJsonOutput extends JsonOutput[JValue] with jackson.JsonMethods {
+  protected def writeJson(json: JValue, writer: Writer) {</p>
+
+<pre><code>mapper.writeValue(writer, json)
+</code></pre>
+
+<p>  }
+}
+[/scala]</p>
+
+<p>So what we have to do is override method and somehow define logic to perform actual escaping for us. Luckily JValue has function <em>map</em> that allows to apply passed function to every value in JSON. So we could fire escapeHtml4 method from Apache Commons Lang on each String value in JSON:
+[scala]
+  override def writeJson(json: JValue, writer: Writer) {</p>
+
+<pre><code>val escapedJson = json.map((x: JValue) =&gt;
+  x match {     // let's check what type is this element
+    case JString(y) =&gt; JString(escapeHtml4(y))    // if it is a String, escape it
+    case _ =&gt; x        // keep value of other type as is
+  }
+)
+mapper.writeValue(writer, escapedJson)
+</code></pre>
+
+<p>  }
+[/scala]</p>
+
+<p>As you can see all logic is done by <em>map</em> function, we only need to add a few lines of code that will filter and escape String values in JSON. So far so good, but now we are escaping every methods from our Rest API. This is not exactly what we wanted to achieve. To get it done right, we need to define a mechanism to disable escaping for a specific method.</p>
+
+<h4>Wrapping marker object</h4>
+
+<p>So we need a marker &ldquo;something&rdquo; (class, interface or trait) that will tell <em>writeJson</em> method which data shouldn&rsquo;t be escaped.
+And after trying different approaches it turned out that only thing we need is to wrap value returned from method in a marker object and then in <em>writeJson</em> check if its is wrapped or not and escape only not wrapped data. So workflow looks as follows:</p>
+
+<ol>
+<li><p> If we dont&#8217; want escaping, wrap returned object in a <em>NotEscapedJsonWrapper</em></p></li>
+<li><p> In writeJson check if object to write is a wrapper. If so, only unwrap it and write. It it is not a wrapper, escape all Strings inside object and wride data after that</p></li>
+</ol>
+
+
+<p>Looks easy. We need simple wrapper class:
+[scala]
+  case class NotEscapedJsonWrapper<a href="notEscapedData:%20T">T</a>
+[/scala]</p>
+
+<p>and we need to wrap response with this object:
+[scala]
+  get(&ldquo;/:id&rdquo;) {</p>
+
+<pre><code>val id = params("id").toInt;
+val messageOptional = messages.find((m: Message) =&gt; m.id == id)
+
+log("optional =" + messageOptional)
+
+messageOptional match {
+  case Some(e) =&gt; NotEscapedJsonWrapper(e) // wrap data that we don't want to be escaped
+  case _ =&gt;
+}
+</code></pre>
+
+<p>  }
+[/scala]</p>
+
+<p>And after that we have to modify <em>writeJson</em> to check if object to be written is wrapped with &ldquo;not-escape-me&rdquo; marker object or not.
+[scala]
+  override def writeJson(json: JValue, writer: Writer) {</p>
+
+<pre><code>(json \ "notEscapedData") match {     // check if json contains field 'notEscapedData' meaning that it is wrapping object
+  case JNothing =&gt; {                  // no wrapper, so we perform escaping
+    val escapedJson = json.map((x: JValue) =&gt;
+      x match {
+        case JString(y) =&gt; JString(escapeHtml4(y))
+        case _ =&gt; x
+      }
+    )
+    mapper.writeValue(writer, escapedJson)
+  }
+  case _ =&gt; {    // field 'notEscapedData' detected, unwrap and return clean object
+    mapper.writeValue(writer, json \ "notEscapedData")
+  }
+}
+</code></pre>
+
+<p>  }
+[/scala]</p>
+
+<p>And after that we could compile and start container with our small application. When we enter /rest/example we will get list of all messages with every String properly escaped. And if we request /rest/example/1 we will get single message as not-escaped data. That&rsquo;s all, we have our escaping working.</p>
+
+<h3>Summary</h3>
+
+<p>In this short post I&rsquo;ve described how to implement Html/Js escaping in Scalatra based application in a pretty straightforward way that can be easily defined in one, common place without need to add manual escaping in every method that needs that. Thanks to this, our application is much safer and only explicitly declared methods can return potentially unsafe data.
+Source code of this small example app is available <a href="https://github.com/tdziurko/scalatra-json-escaping">on GitHub</a>.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-30T23:59:59+02:00" data-updated="true" itemprop="datePublished">Apr 30<span>th</span>, 2013</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/scala/'>Scala</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2013/04/xstream-xstreamely-easy-work-xml-data-java/" title="Previous: XStream - XStreamely easy way to work with XML data in Java">&laquo; XStream - XStreamely easy way to work with XML data in Java</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2013/05/reusing-browser-instance-geb-ui-tests/" title="Next: Reusing browser instance in Geb UI tests">Reusing browser instance in Geb UI tests &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

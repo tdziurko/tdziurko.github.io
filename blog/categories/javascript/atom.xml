@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T00:19:31+02:00</updated>
+  <updated>2014-05-25T14:36:59+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Deep dive into AngularJS - my review of "Mastering Web Application Development with AngularJS"]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
+    <link href="http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
     <updated>2013-11-24T23:53:30+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
+    <id>http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
     <content type="html"><![CDATA[<p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
 
 <p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover-243x300.jpg" alt="AngularJs-cover" /></a></p>
@@ -57,9 +57,9 @@
   
   <entry>
     <title type="html"><![CDATA[Jasmine tests reporter in TeamCity with Scala and SBT]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/"/>
+    <link href="http://tdziurko.github.io/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/"/>
     <updated>2013-03-26T23:10:57+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/03/jasmine-tests-reporter-teamcity-scala-sbt</id>
+    <id>http://tdziurko.github.io/2013/03/jasmine-tests-reporter-teamcity-scala-sbt</id>
     <content type="html"><![CDATA[<p><em>This post is basically re-post of article I have written on my company blog <a href="http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity">here</a>. But before you go there to read the full story, please check this short introduction below to decide if you are interested :)</em></p>
 
 <p>In <a href="http://SoftwareMill.com">our company</a> sandbox project called <a href="https://github.com/softwaremill/bootzooka">Bootzoooka</a> we are using pretty cool technology stack: Scala, Scalatra, SBT and AngularJS. Of course we have some JavaScript tests that are executed using <a href="https://github.com/guardian/sbt-jasmine-plugin">sbt jasmine plugin</a> from Guardian. Current 0.8 version of this plugin allows to execute these tests in TeamCity and even fails build when any JS test is not passing, but it didn&rsquo;t provide full test report for these tests. This plugin worked quite well for us, but we wanted something more and that&rsquo;s why added story saying &ldquo;<em>As a Developer I want to see jasmine tests in TeamCity report</em>&rdquo; to our Bootzooka backlog.</p>
@@ -72,9 +72,9 @@
   
   <entry>
     <title type="html"><![CDATA[Instant AngularJS Starter - book review]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/03/instant-angularjs-starter-book-review/"/>
+    <link href="http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review/"/>
     <updated>2013-03-18T22:53:16+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/03/instant-angularjs-starter-book-review</id>
+    <id>http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review</id>
     <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.
 <a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
 
@@ -100,9 +100,9 @@
   
   <entry>
     <title type="html"><![CDATA[Twitter Bootstrap Navbar as AngularJS component]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/02/twitter-bootstrap-navbar-angularjs-component/"/>
+    <link href="http://tdziurko.github.io/2013/02/twitter-bootstrap-navbar-angularjs-component/"/>
     <updated>2013-02-28T23:26:25+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/02/twitter-bootstrap-navbar-angularjs-component</id>
+    <id>http://tdziurko.github.io/2013/02/twitter-bootstrap-navbar-angularjs-component</id>
     <content type="html"><![CDATA[<p>You all know <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>, don&rsquo;t you? It&rsquo;s the awesome library to make your web application looks pretty good without spending many hours on CSS. We are using Bootstrap based design in our current project that also uses AngularJS and as we are planning to have many new pages, we decided that&rsquo;s the earlier we introduce some components to our UI the better. And, what shouldn&rsquo;t be a surprise, navigation bar natually became the first candidate.</p>
 
 <h3>Overview</h3>
@@ -271,9 +271,9 @@ compile: function(element, attrs) {  // (1)
   
   <entry>
     <title type="html"><![CDATA[Configuring SBT JSLint with TeamCity build]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/01/configuring-sbt-jslint-with-teamcity/"/>
+    <link href="http://tdziurko.github.io/2013/01/configuring-sbt-jslint-with-teamcity/"/>
     <updated>2013-01-08T22:23:39+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/01/configuring-sbt-jslint-with-teamcity</id>
+    <id>http://tdziurko.github.io/2013/01/configuring-sbt-jslint-with-teamcity</id>
     <content type="html"><![CDATA[<p>In this post I will shortly describe configuration process of JSLint SBT plugin and then TeamCity build config that reacts on errors/warnings raised by this plugin.</p>
 
 <h3>Problem</h3>

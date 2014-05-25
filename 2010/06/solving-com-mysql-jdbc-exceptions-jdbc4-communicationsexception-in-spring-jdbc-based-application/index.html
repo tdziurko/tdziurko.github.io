@@ -1,0 +1,319 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Solving com.mysql.jdbc.exceptions. jdbc4.CommunicationsException in Spring JDBC based application - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Solving com.mysql.jdbc.exceptions. jdbc4.CommunicationsException in Spring JDBC Based Application Last week after releasing first version of Wicket &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2010/06/solving-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-in-spring-jdbc-based-application/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Solving com.mysql.jdbc.exceptions. jdbc4.CommunicationsException in Spring JDBC Based Application</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Last week after releasing first version of Wicket, Spring and JDBC based  application into production I noticed strange behavior. Everyday first  attempt to enter the service caused unexpected exception. Quick glance  at Tomcat logs showed code presented below:</p>
+
+<p>[java]
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet successfully received from the server was156378 seconds ago.The last packet sent successfully to the server was 156378 seconds ago, which  is longer than the server configured value of &lsquo;wait_timeout&rsquo;. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property &lsquo;autoReconnect=true&rsquo; to avoid this problem.</p>
+
+<pre><code>    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+    at sun.reflect.NativeConstructorAccessorImpl.
+</code></pre>
+
+<p>newInstance(NativeConstructorAccessorImpl.java:39)</p>
+
+<pre><code>    at sun.reflect.DelegatingConstructorAccessorImpl.
+</code></pre>
+
+<p>newInstance(DelegatingConstructorAccessorImpl.java:27)</p>
+
+<pre><code>    at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+    at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
+    at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1074)
+    at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3246)
+    at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1917)
+    at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+    at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+    at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+    at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1383)
+    at com.mysql.jdbc.ConnectionImpl.getTransactionIsolation(ConnectionImpl.java:3117)
+    at org.apache.commons.dbcp.DelegatingConnection.
+</code></pre>
+
+<p>getTransactionIsolation(DelegatingConnection.java:313)</p>
+
+<pre><code>    at org.apache.commons.dbcp.PoolingDataSource
+</code></pre>
+
+<p>$PoolGuardConnectionWrapper.getTransactionIsolation(PoolingDataSource.java:239)</p>
+
+<pre><code>    at org.springframework.jdbc.datasource.DataSourceUtils.
+</code></pre>
+
+<p>prepareConnectionForTransaction(DataSourceUtils.java:173)</p>
+
+<pre><code>    at org.springframework.jdbc.datasource.DataSourceTransactionManager
+</code></pre>
+
+<p>.doBegin(DataSourceTransactionManager.java:210)</p>
+
+<pre><code>    ... 41 more
+</code></pre>
+
+<p>[/java]</p>
+
+<p>It looks that after few hours at night when no-one used the application,  MySQl server closed connection and first database query caused  exception. I double checked my connection url and settings in context.xml file to found nothing obviously wrong:<!-- more --></p>
+
+<p>[xml]</p>
+
+<p><Resource auth="Container" driverClassName="com.mysql.jdbc.Driver"
+ factory="org.apache.commons.dbcp.BasicDataSourceFactory"
+   logAbandoned="true" maxActive="32" maxIdle="1" name="myDB"
+   password="secret" removeAbandoned="true" removeAbandonedTimeout="300"
+   type="javax.sql.DataSource"
+   url="jdbc:mysql://mywebapp:3306/myDB?autoReconnect=true&characterEncoding=utf-8&useUnicode=true" username="user"
+ />
+[/xml]</p>
+
+<p>I had used the same settings in pure JDBC projects few times before and  never encoutered similar exception so now I wanted to ask uncle Google  for some answers :) At the beginning I dove into the MySQL manual to  check why autoReconnect isn&rsquo;t  enough in my application but found nothing relevant to my problem. After  some thinking I got the idea that maybe some settings in Commons-DBCP  are missing so I read <a href="http://commons.apache.org/dbcp/configuration.html">dbcp configuration</a> to find that connection could be validated before real usage by specifing two parameters: testOnBorrow=&ldquo;true&rdquo; validationQuery=&ldquo;select 1&rdquo;  . As written in docs:</p>
+
+<blockquote>testOnBorrow - The indication of whether objects will be validated  before being borrowed from the pool. If the object fails to validate, it  will be dropped from the pool, and we will attempt to borrow another.
+NOTE - for a true value to have any effect, the validationQuery parameter must be set to a non-null string.
+validationQuery  - The SQL query that will be used to validate connections from this  pool before returning them to the caller. If specified, this query MUST  be an SQL SELECT statement that returns at least one row.</blockquote>
+
+
+<p>After adding these two parameters to context.xml my problems dissapeared.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-28T20:31:59+02:00" data-updated="true" itemprop="datePublished">Jun 28<span>th</span>, 2010</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2010/06/simple-notification-about-errors-in-wicket-based-application/" title="Previous: Simple notification about errors in Wicket-based application">&laquo; Simple notification about errors in Wicket-based application</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2010/07/programista-i-wlasna-firma-czyli-dotacja-z-urzedu-pracy-na-zalozenie-dzialalnosci-gospodarczej/" title="Next: Programista i własna firma, czyli dotacja z Urzędu Pracy na założenie działalności gospodarczej">Programista i własna firma, czyli dotacja z Urzędu Pracy na założenie działalności gospodarczej &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

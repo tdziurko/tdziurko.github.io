@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Scala | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/scala/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T00:19:31+02:00</updated>
+  <updated>2014-05-25T14:36:59+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Easy Html/Javascript JSON escaping in Scalatra ]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/04/scalatra-html-js-json-escaping/"/>
+    <link href="http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping/"/>
     <updated>2013-04-30T23:59:59+02:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/04/scalatra-html-js-json-escaping</id>
+    <id>http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping</id>
     <content type="html"><![CDATA[<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
 <a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
 So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.</p>
@@ -186,9 +186,9 @@ Source code of this small example app is available <a href="https://github.com/t
   
   <entry>
     <title type="html"><![CDATA[Jasmine tests reporter in TeamCity with Scala and SBT]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/"/>
+    <link href="http://tdziurko.github.io/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/"/>
     <updated>2013-03-26T23:10:57+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/03/jasmine-tests-reporter-teamcity-scala-sbt</id>
+    <id>http://tdziurko.github.io/2013/03/jasmine-tests-reporter-teamcity-scala-sbt</id>
     <content type="html"><![CDATA[<p><em>This post is basically re-post of article I have written on my company blog <a href="http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity">here</a>. But before you go there to read the full story, please check this short introduction below to decide if you are interested :)</em></p>
 
 <p>In <a href="http://SoftwareMill.com">our company</a> sandbox project called <a href="https://github.com/softwaremill/bootzooka">Bootzoooka</a> we are using pretty cool technology stack: Scala, Scalatra, SBT and AngularJS. Of course we have some JavaScript tests that are executed using <a href="https://github.com/guardian/sbt-jasmine-plugin">sbt jasmine plugin</a> from Guardian. Current 0.8 version of this plugin allows to execute these tests in TeamCity and even fails build when any JS test is not passing, but it didn&rsquo;t provide full test report for these tests. This plugin worked quite well for us, but we wanted something more and that&rsquo;s why added story saying &ldquo;<em>As a Developer I want to see jasmine tests in TeamCity report</em>&rdquo; to our Bootzooka backlog.</p>
@@ -201,9 +201,9 @@ Source code of this small example app is available <a href="https://github.com/t
   
   <entry>
     <title type="html"><![CDATA[Configuring SBT JSLint with TeamCity build]]></title>
-    <link href="http://tdziurko.github.io/blog/2013/01/configuring-sbt-jslint-with-teamcity/"/>
+    <link href="http://tdziurko.github.io/2013/01/configuring-sbt-jslint-with-teamcity/"/>
     <updated>2013-01-08T22:23:39+01:00</updated>
-    <id>http://tdziurko.github.io/blog/2013/01/configuring-sbt-jslint-with-teamcity</id>
+    <id>http://tdziurko.github.io/2013/01/configuring-sbt-jslint-with-teamcity</id>
     <content type="html"><![CDATA[<p>In this post I will shortly describe configuration process of JSLint SBT plugin and then TeamCity build config that reacts on errors/warnings raised by this plugin.</p>
 
 <h3>Problem</h3>

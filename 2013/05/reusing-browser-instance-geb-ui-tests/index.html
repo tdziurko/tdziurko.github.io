@@ -1,0 +1,377 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Reusing browser instance in Geb UI tests - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+	
+	<meta name="description" content="Reusing Browser Instance in Geb UI Tests UPDATE _When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below &hellip;">
+	
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" />
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+
+	<section>
+		<form action="https://www.google.com/search" method="get">
+			<input type="hidden" name="q" value="site:tdziurko.github.io" />
+			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
+		</form>
+	<section>
+	
+
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+</ul>
+
+</nav>
+
+<nav id="sub-nav">
+<br>
+<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/">Recenzja "Oprogramowanie Szyte Na Miarę: Jak Rozmawiać Z Klientem, Który Nie Wie Czego Chce", Czyli O Tym Co Każdy Programista Umieć Powinien</a>
+      </li>
+    
+  </ul>
+</section>
+
+</nav>
+
+<nav id="sub-nav">
+
+<section class="aboutme">
+  <p style="font-style: italic;">
+    I am Java/Scala developer working remotely from small city in Poland.
+  </p>
+</section>
+
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Reusing Browser Instance in Geb UI Tests</h1>
+	<div class="entry-content" itemprop="articleBody"><h4>UPDATE</h4>
+
+<p>_When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below is valid and works, there is a much simpler solution to this problem incorporated by Geb itself and I strongly suggest using it instead of mine, home-crafted hack. All credits go to <a href="http://stackoverflow.com/users/52142/artur-gajowy">Artur Gajowy</a> for showing me better approach.</p>
+
+<p>I have added short paragraph about this simpler solution at the end of this article, probably you should go <a href="http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests/#better-solution">directly there</a> :).
+_</p>
+
+<p><a href="http://gebish.org">Geb</a> is next-generation UI testing library that frees developer from dealing with Selenium API which is in many cases not so friendly. The most important feature of Geb is its support, or I would even say, strong encouragement to use Page Objects in your UI tests. Page Objects are also present in Selenium, but they are not as intuitive and east to use as in Geb.
+But enough about Geb itself. Today I will share with you simple trick how to share one browser instance when running many Geb UI tests. This will significantly reduce time needed to execute UI tests and also reduce memory usage on test machines.</p>
+
+<!-- more -->
+
+
+<h3>The Problem</h3>
+
+<p>Assume we have many test classes (spefications) similar to this one below.</p>
+
+<p>[groovy]
+class ExampleUITest extends GebSpec {</p>
+
+<pre><code>def "Should test feature 1"() {
+    given:
+    to LoginPage
+
+    when:
+    loginWith("login", "password")
+
+    then:
+    at HomePage
+    assert loggedUserLabel == "loggedUser"
+}
+
+def "Should test feature 2"() {
+    given:
+    to LoginPage
+
+    when:
+    loginWith("login", "password")
+
+    then:
+    at HomePage
+    assert loggedUserLabel == "loggedUser"
+}
+
+// and so on...
+</code></pre>
+
+<p>[/groovy]</p>
+
+<p>What we have to do is prepare browser instance (in our case Firefox one) to click through our tests. We could to it in setup() method:</p>
+
+<p>[groovy]
+class ExampleUITest extends GebSpec {</p>
+
+<pre><code>def setup() {
+    driver = new FirefoxDriver()
+}
+
+def "Should test feature 1"() {
+    // ...
+}  
+
+def cleanup() {
+    driver.quit()
+}
+</code></pre>
+
+<p>[/groovy]</p>
+
+<p>This approach works but it has one, big drawback. We all know that UI tests tend to last quite long and creating new browser instance for each, yes, each test method will only make this situation worse as it also takes some time to start browser on your testing server.</p>
+
+<p><strong>Second approach</strong></p>
+
+<p>We also could reuse same browser in each specification (each Geb class) by using setupSpec() and cleanupSpec() methods instead. This will reduce number of new instances created but still we will have many of them, especially in large codebase with many test classes.</p>
+
+<h3>Solution</h3>
+
+<p>My solution to this issue takes from both approaches presented above. But instead of creating browser for each specification, I am reusing one created in the first executed class.</p>
+
+<p>To make it work we need to introduce common abstract class for all our UI tests:
+[groovy]
+class IntelliGebSpec extends GebSpec {</p>
+
+<pre><code>static def cachedDriver // static variable will store our single driver instance
+
+def setupSpec() {
+    if ( cachedDriver == null) { // in first Specification this will be true
+        cachedDriver = new FirefoxDriver()  // so let's create driver and put it in cachedDriver variable
+    }
+}
+
+def setup() {
+    driver = cachedDriver   // each test should use our cached browser instance
+}
+
+// as we are reusing browser, we should logout from our application after
+// each test to have clean browser state on each test run
+def cleanup() {  
+    if ($(id: "logout").isDisplayed()) {
+        $(id: "logout").click()
+        waitFor { $(id: "inputName").isDisplayed() }
+    }
+    driver.manage().deleteAllCookies()
+}
+</code></pre>
+
+<p>}  <br/>
+[/groovy]</p>
+
+<h3>Summary</h3>
+
+<p>In this post I have shown my home made solution to reusing browser in multiple tests. I strongly suggest all of you to check and try Geb, as after over a year of using Selenium I am really impressed by this library. Easy to use with really cool Page Objects support.</p>
+
+<h3>Update: the best solution</h3>
+
+<p>As explained in reference documentation <a href="http://www.gebish.org/manual/current/configuration.html#driver_caching">here</a>, Geb provides mechanism to configure and reuse single instance of browser in all our UI tests. Only thing we have to do is create GebConfig script in default package that will contain driver instantiation script, e.g.:
+[groovy]
+// complete GebConfig.groovy file:
+driver =</p>
+
+<pre><code>{
+    newDriver = new FirefoxDriver()
+    newDriver.manage().window().setSize(new Dimension(1024, 768))
+    return newDriver
+}
+</code></pre>
+
+<p>[/groovy]</p>
+
+<p>And that&rsquo;s it, no hacking, no ugly static field.</p>
+</div>
+
+
+<span class="post_end">
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-13T12:46:19+02:00" data-updated="true" itemprop="datePublished">May 13<span>th</span>, 2013</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2013/04/scalatra-html-js-json-escaping/" title="Previous: Easy Html/Javascript JSON escaping in Scalatra ">&laquo; Easy Html/Javascript JSON escaping in Scalatra </a>
+		  
+		  
+			<a class="basic-alignment right" href="/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/" title="Next: Taking a screenshot when UI tests written in Geb fail">Taking a screenshot when UI tests written in Geb fail &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>
