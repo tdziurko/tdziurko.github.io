@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T14:36:59+02:00</updated>
+  <updated>2014-05-25T17:47:31+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -18,9 +18,12 @@
     <link href="http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-3/"/>
     <updated>2014-05-18T23:27:30+02:00</updated>
     <id>http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-3</id>
-    <content type="html"><![CDATA[<p>Last, third post with my notes from GeeCON 2014 conference:</p>
+    <content type="html"><![CDATA[<p>Last, third post with my notes from <a href="http://2014.geecon.org/">GeeCON 2014</a> conference.</p>
 
-<p><strong>Tomasz Kowalczewski - Reactive Java</strong></p>
+<!-- more -->
+
+
+<h3>Tomasz Kowalczewski - Reactive Java</h3>
 
 <ul>
 <li><p>Something almost &ldquo;reactive&rdquo; is already in JDK8: Completable Future, more reading: <a href="http://www.nurkiewicz.com/2013/05/java-8-definitive-guide-to.html">&ldquo;Java 8: Definitive guide to CompletableFuture&rdquo;</a></p></li>
@@ -30,14 +33,14 @@
 </ul>
 
 
-<p><strong>Tom Bujok - 33 things you want to do better</strong></p>
+<h3>Tom Bujok - 33 things you want to do better</h3>
 
 <ul>
 <li>(didn&rsquo;t attend this one), but there are very good <a href="https://speakerdeck.com/tombujok/33-things-you-want-to-do-better-3">slides available</a></li>
 </ul>
 
 
-<p><strong>Sander Mak, Paul Bakker - Modular JavaScript</strong></p>
+<h3>Sander Mak, Paul Bakker - Modular JavaScript</h3>
 
 <ul>
 <li><p><a href="http://www.commonjs.org/">CommonJS</a> (preferred one) and <a href="https://github.com/amdjs/amdjs-api/blob/master/AMD.md">AMD</a></p></li>
@@ -45,7 +48,7 @@
 </ul>
 
 
-<p><strong>Sandro Mancuso - Crafted Design</strong></p>
+<h3>Sandro Mancuso - Crafted Design</h3>
 
 <ul>
 <li><p>Controller only controls the flow, usually only invokes use_cases</p></li>
@@ -55,7 +58,7 @@
 </ul>
 
 
-<p><strong>Michael Feathers - Beyond Error Handling</strong></p>
+<h3>Michael Feathers - Beyond Error Handling</h3>
 
 <ul>
 <li><p>Book <a href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">&ldquo;Growing Object-Oriented Software, Guided by Tests&rdquo;</a></p></li>
@@ -71,9 +74,12 @@
     <link href="http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-2/"/>
     <updated>2014-05-17T23:31:25+02:00</updated>
     <id>http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-2</id>
-    <content type="html"><![CDATA[<p>This is the second part of my notes from GeeCON 2014 conference.</p>
+    <content type="html"><![CDATA[<p>The second part of my notes from <a href="http://2014.geecon.org/">GeeCON 2014</a> conference.</p>
 
-<p><strong>Hazem Saleh - Jasmine Automated Tests for JavaScript</strong></p>
+<!-- more -->
+
+
+<h3>Hazem Saleh - Jasmine Automated Tests for JavaScript</h3>
 
 <ul>
 <li><p>Testing asynchronous code with <a href="http://jasmine.github.io/2.0/introduction.html">Jasmine</a> looks really ugly. <a href="http://michalostruszka.pl/">Michał Ostruszka</a> suggests using <a href="http://visionmedia.github.io/mocha/">Mocha</a> for such use cases.</p></li>
@@ -81,7 +87,7 @@
 </ul>
 
 
-<p><strong>Sam Newman - Deploying And Testing Microservices</strong></p>
+<h3>Sam Newman - Deploying And Testing Microservices</h3>
 
 <ul>
 <li><p><a href="http://www.thoughtworks.com/radar/#/">Technology Radar</a> from ThoughtWorks</p></li>
@@ -114,10 +120,7 @@
 </ul>
 
 
-<!-- more -->
-
-
-<p><strong>Michał Ostruszka - SRP applied &ndash; building modern web applications</strong></p>
+<h3>Michał Ostruszka - SRP applied &ndash; building modern web applications</h3>
 
 <ul>
 <li><p><a href="http://gulpjs.com/">gulp</a>, <a href="http://gruntjs.com/">grunt</a> (more popular one) &ndash; build systems for frontend/JS</p></li>
@@ -125,7 +128,7 @@
 </ul>
 
 
-<p><strong>Peter Lawrey - Micro-second latency logging, persistence, IPC and more</strong></p>
+<h3>Peter Lawrey - Micro-second latency logging, persistence, IPC and more</h3>
 
 <ul>
 <li><p><a href="http://vanillajava.blogspot.com/2013/07/openhft-java-lang-project.html">OpenHFT</a> (High Frequency Trading)</p></li>
@@ -143,7 +146,7 @@
 </ul>
 
 
-<p><strong>Kevlin Henney - Seven Ineffective Coding Habits of Many Java Programmers</strong></p>
+<h3>Kevlin Henney - Seven Ineffective Coding Habits of Many Java Programmers</h3>
 
 <ul>
 <li><p>Book <a href="https://www.goodreads.com/book/show/7003902-97-things-every-programmer-should-know">&ldquo;97 Things Every Programmer Should Know&rdquo;</a></p></li>
@@ -154,7 +157,7 @@
 </ul>
 
 
-<p><strong>Kevlin Henney - Worse Is Better, for Better or for Worse</strong></p>
+<h3>Kevlin Henney - Worse Is Better, for Better or for Worse</h3>
 
 <ul>
 <li><p>Stop over-promising</p></li>
@@ -175,9 +178,12 @@
     <link href="http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-1/"/>
     <updated>2014-05-15T21:00:10+02:00</updated>
     <id>http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-1</id>
-    <content type="html"><![CDATA[<p>Inspired by post <a href="http://scottberkun.com/2014/min-max-note-taking/">&ldquo;Min/max note taking for conferences&rdquo;</a> I&rsquo;ve noted down my impressions, most interesting sentences, mentioned tools/books/blogs during ongoing GeeCON 2014 conference. This is my &#8221;Brain dump&#8221; after Day 1:</p>
+    <content type="html"><![CDATA[<p>Inspired by post <a href="http://scottberkun.com/2014/min-max-note-taking/">&ldquo;Min/max note taking for conferences&rdquo;</a> I&rsquo;ve noted down my impressions, most interesting sentences, mentioned tools/books/blogs during ongoing <a href="http://2014.geecon.org/">GeeCON 2014</a> conference. This is my &#8221;Brain dump&#8221; after Day 1.</p>
 
-<p><strong>Pavel Sekanina - Nothing comes for free</strong></p>
+<!-- more -->
+
+
+<h3>Pavel Sekanina - Nothing comes for free</h3>
 
 <ul>
 <li><p>Be yourself, be true. It makes everything much easier.</p></li>
@@ -185,7 +191,7 @@
 </ul>
 
 
-<p><strong>Jurgen Appelo - The 7 Duties of Great Software Professionals</strong></p>
+<h3>Jurgen Appelo - The 7 Duties of Great Software Professionals</h3>
 
 <ul>
 <li><p>Won Entrepreneur of the Year 1999 in Holland &ndash; <a href="http://www.nieuwsbank.nl/inp/1999/12/1215R099.htm">details</a> in Dutch (Google Translate for English version)</p></li>
@@ -199,10 +205,7 @@
 </ul>
 
 
-<!-- more -->
-
-
-<p><strong>Jakub Jurkiewicz - Back to the Future &ndash; how to go back in time and provide better future for your agile team.</strong></p>
+<h3>Jakub Jurkiewicz - Back to the Future &ndash; how to go back in time and provide better future for your agile team</h3>
 
 <ul>
 <li><p>very often forgotten point of retrospectives: &ldquo;reflect how to become more effective&rdquo;</p></li>
@@ -219,14 +222,14 @@
 </ul>
 
 
-<p><strong>Patroklos Papapetrou - Managing your Technical Debt with SonarQube</strong></p>
+<h3>Patroklos Papapetrou - Managing your Technical Debt with SonarQube</h3>
 
 <ul>
 <li>Code quality &ndash; how fast developers can add business value to the system</li>
 </ul>
 
 
-<p><strong>Adam Warski - Keep it Simple with Scala</strong></p>
+<h3>Adam Warski - Keep it Simple with Scala</h3>
 
 <ul>
 <li><p><a href="https://github.com/scala/async">Scala Async</a> - readable lib to write asynchronous code</p></li>
@@ -236,7 +239,7 @@
 </ul>
 
 
-<p><strong>Tim Boudreau - Node.js for Java developers</strong></p>
+<h3>Tim Boudreau - Node.js for Java developers</h3>
 
 <ul>
 <li><p>speaker webpage to check - <a href="http://timboudreau.com/">http://timboudreau.com/</a></p></li>
@@ -245,7 +248,7 @@
 </ul>
 
 
-<p><strong>Olga Madejska &ndash; &lsquo;I will never deploy on Fridays&rsquo; &ndash; yeah, right&hellip;</strong></p>
+<h3>Olga Madejska &ndash; &lsquo;I will never deploy on Fridays&rsquo; &ndash; yeah, right&hellip;</h3>
 
 <ul>
 <li><p>Show your drafts/unfinished work as soon as it is possible. The quicker feedback the better final result will be.</p></li>
@@ -256,7 +259,7 @@
 
 <p>That&rsquo;s all about Day 1. Other days should appear within next week.</p>
 
-<h3>And your GeeCON?</h3>
+<h3>And what about your GeeCON?</h3>
 
 <p>What about you? Did you find anything very interesting during GeeCON? Or maybe I&rsquo;ve missed really interesting talk on Day 1?</p>
 ]]></content>
@@ -267,9 +270,12 @@
     <link href="http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
     <updated>2013-11-24T23:53:30+01:00</updated>
     <id>http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
-    <content type="html"><![CDATA[<p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
+    <content type="html"><![CDATA[<!-- more -->
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover-243x300.jpg" alt="AngularJs-cover" /></a></p>
+
+<p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
+
+<p><img class="center" src="http://tdziurko.github.io/images/blog/2013/11/AngularJs-cover-243x300.jpg"></p>
 
 <h3>Overview</h3>
 
@@ -279,7 +285,7 @@
 
 <p>After section about directives there are easier topics like internationalization, quick look at framework internals and very useful part describing how to detect and solve performance problems of your application.</p>
 
-<h4><strong>What I liked:</strong></h4>
+<h4>What I liked:</h4>
 
 <ul>
 <li><p>level of detail, this book is most complete reference guide to understand and leverage power of AngularJS</p></li>
@@ -320,7 +326,7 @@
 
 <p>I właśnie na takie problemy receptą jest lektura i stosowanie rad zawartych w książce <a href="http://helion.pl/ksiazki/oprogramowanie-szyte-na-miare-jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-michal-bartyzel,opszmi.htm">&ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo;</a> Michała Bartyzela.</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/10/bartyzel_klient.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/10/bartyzel_klient-300x300.jpg" alt="Audiobooks Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce. eBook. Pdf" /></a></p>
+<p><a href="http://tdziurko.github.io/images/blog/2013/10/bartyzel_klient.jpg"><img src="http://tdziurko.github.io/images/blog/2013/10/bartyzel_klient-300x300.jpg" alt="Audiobooks Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce. eBook. Pdf" /></a></p>
 
 <!-- more -->
 
@@ -349,7 +355,7 @@
     <id>http://tdziurko.github.io/2013/10/agile-2013-review</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve just returned from my trip to Warsaw to attend 3rd edition of <a href="http://agilebyexample.com">Agile By Example</a>.</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/10/abe_2013.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/10/abe_2013.jpg" alt="abe_2013" /></a></p>
+<p><a href="http://tdziurko.github.io/images/blog/2013/10/abe_2013.jpg"><img src="http://tdziurko.github.io/images/blog/2013/10/abe_2013.jpg" alt="abe_2013" /></a></p>
 
 <p>Here&rsquo;s my thoughts, impression and notes after this event.</p>
 
@@ -506,7 +512,7 @@ private String encryptedValue;
 
 <h3>Jasypt to the rescue</h3>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/07/jasypt-small.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/07/jasypt-small.png" alt="jasypt-small" /></a>
+<p><a href="http://tdziurko.github.io/images/blog/2013/07/jasypt-small.png"><img src="http://tdziurko.github.io/images/blog/2013/07/jasypt-small.png" alt="jasypt-small" /></a>
 <a href="http://www.jasypt.org">Jasypt</a> is a simple encryption library written in Java. It frees developer from dealing with low level configuration details and makes whole encryption process easy and straightforward. And what is most interesting now, it also has nice integration with Hibernate allowing seamless encryption/decryption of data stored in database.</p>
 
 <h4>Setup</h4>
@@ -913,7 +919,7 @@ driver =</p>
     <link href="http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping/"/>
     <updated>2013-04-30T23:59:59+02:00</updated>
     <id>http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping</id>
-    <content type="html"><![CDATA[<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
+    <content type="html"><![CDATA[<p><a href="http://tdziurko.github.io/images/blog/2013/04/logo-scalatra.png"><img src="http://tdziurko.github.io/images/blog/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
 <a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
 So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.</p>
 
@@ -1086,7 +1092,7 @@ Source code of this small example app is available <a href="https://github.com/t
     <id>http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
     <content type="html"><![CDATA[<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif" alt="xstream" /></a></p>
+<p><a href="http://tdziurko.github.io/images/blog/2013/04/xstream.gif"><img src="http://tdziurko.github.io/images/blog/2013/04/xstream.gif" alt="xstream" /></a></p>
 
 <h3>Overview</h3>
 
@@ -1484,7 +1490,7 @@ We are using &ldquo;local&rdquo; method to apply this conversion only to specifi
     <updated>2013-03-18T22:53:16+01:00</updated>
     <id>http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review</id>
     <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.
-<a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
+<a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="http://tdziurko.github.io/images/blog/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
 
 <h3>Content</h3>
 
@@ -1521,7 +1527,7 @@ We are using &ldquo;local&rdquo; method to apply this conversion only to specifi
 
 <p>To start from the basics, I&rsquo;ve prepared three pages that use the same navigation bar. These pages will soon become our super simple web application using AngularJS:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/02/twitter-bootstrap-navbar-angularjs-component/navbar_angularjs1/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/02/navbar_angularjs1.png" alt="navbar_angularjs1" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/02/twitter-bootstrap-navbar-angularjs-component/navbar_angularjs1/"><img src="http://tdziurko.github.io/images/blog/2013/02/navbar_angularjs1.png" alt="navbar_angularjs1" /></a></p>
 
 <p>Next step will be adding AngularJS and converting three pages into one small application. This is done in this <a href="https://github.com/tdziurko/twitter-bootstrap-navbar-as-angularjs-directive/commit/9d135332ef5e934920a65975f41fb06f6cc852a8">commit</a>. And after that we are ready to start working on our Navbar component.<!-- more --></p>
 
@@ -1904,19 +1910,19 @@ settings = buildSettings ++ lintCustomSettings
 
 <p>Simply go to <em>Edit Configuration Settings</em> of your build and then choose &ldquo;Build Step: Command Line&rdquo;:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step1/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step1.png" alt="tc-step1" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step1/"><img src="http://tdziurko.github.io/images/blog/2013/01/tc-step1.png" alt="tc-step1" /></a></p>
 
 <p>And in the section Additional Build Features click &ldquo;Add build feature&rdquo;, choose &ldquo;XML report processing&rdquo;, then &ldquo;JSLint&rdquo; and specify path to the report.xml file. Personally I also check &ldquo;Verbose output&rdquo; to see more details in the build log.</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step2/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step2.png" alt="tc-step2" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step2/"><img src="http://tdziurko.github.io/images/blog/2013/01/tc-step2.png" alt="tc-step2" /></a></p>
 
 <p>After saving we can go next build step named &ldquo;Build failure conditions&rdquo; and define two new rules there so we end up with something similar to screen presented below:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step3/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step3-1024x116.png" alt="tc-step3" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step3/"><img src="http://tdziurko.github.io/images/blog/2013/01/tc-step3-1024x116.png" alt="tc-step3" /></a></p>
 
 <p>And finally our build is fully configured to report and  react on problems in JavaScript files:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step4/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step4.png" alt="tc-step4" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step4/"><img src="http://tdziurko.github.io/images/blog/2013/01/tc-step4.png" alt="tc-step4" /></a></p>
 
 <p>Reference commits from my current project:</p>
 
@@ -2080,13 +2086,13 @@ public void testAuditRecordsRollback() {
 
 <p>So after creating an account and choosing a hosting in Germany (which is the closest one to Poland where I live) I am redirected to my personal administration panel where in a straightforward step-by-step wizard I am requested to choose container /server (Tomcat 6/7,  Jetty amd Glassfish are available) and then my subdomain name. After that my server is deployed and after a moment I could check that <a href="http://tomaszdziurko.jelastic.dogado.eu/">http://tomaszdziurko.jelastic.dogado.eu/</a> is live and running. User is also encouraged to try and deploy pre-defined Hello World application. The whole process is extremely easy, just one click and in a moment we could check that we&rsquo;ve just deployed our first war on Jelastic:</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/10/jelastic-demo.jpeg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/10/jelastic-demo.jpeg" alt="" /></a></p>
+<p><a href="http://tdziurko.github.io/images/blog/2012/10/jelastic-demo.jpeg"><img src="http://tdziurko.github.io/images/blog/2012/10/jelastic-demo.jpeg" alt="" /></a></p>
 
 <h3>Configuring more real application environment</h3>
 
 <p>So far everything was easy, but we didn&rsquo;t touch any real scenario so now it&rsquo;s high time to start deploying our example Wicket application. First step is to upload application war to the Jelastic. Then we have to enable and configure our database with three tables. To do that we choose &ldquo;Environment topology&rdquo; next to our only server and here we could turn on/off many interesting features: load balancers, caching solutions, multiple containers, SSL-s and what we currently need SQL and/or NoSQL database:</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/10/dbConfig.jpeg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/10/dbConfig.jpeg" alt="" /></a></p>
+<p><a href="http://tdziurko.github.io/images/blog/2012/10/dbConfig.jpeg"><img src="http://tdziurko.github.io/images/blog/2012/10/dbConfig.jpeg" alt="" /></a></p>
 
 <p>So let&rsquo;s enable MySQL 5.5 and wait some time until it is configured and started on our virtual server. When everything is ready we will receive an email with login and password to our MySQL database instance. Now we could login to myPhpAdmin web interface and create user and MySQL tables required by our Wicket application. Because database url is no longer localhost:3306 we have to modify properties file in our project, rebuild it and upload war again. After that we are ready to deploy application on Jelastic. Simply, we click &ldquo;Deploy&rdquo; icon and then choose context name where application will be accessible. After that we must wait for &ldquo;Success&rdquo; message from deployment process and now we could check if <a href="http://tomaszdziurko.jelastic.dogado.eu/item-directory">http://tomaszdziurko.jelastic.dogado.eu/item-directory</a> is working as expected.</p>
 
@@ -2147,11 +2153,11 @@ public void testAuditRecordsRollback() {
 <!-- more -->
 
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/09/home_page1.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/09/home_page1.jpg" alt="" /></a></p>
+<p><a href="http://tdziurko.github.io/images/blog/2012/09/home_page1.jpg"><img src="http://tdziurko.github.io/images/blog/2012/09/home_page1.jpg" alt="" /></a></p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/09/login_page.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/09/login_page-1024x488.jpg" alt="" /></a></p>
+<p><a href="http://tdziurko.github.io/images/blog/2012/09/login_page.jpg"><img src="http://tdziurko.github.io/images/blog/2012/09/login_page-1024x488.jpg" alt="" /></a></p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/09/home_page2.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/09/home_page2-1024x402.jpg" alt="" /></a></p>
+<p><a href="http://tdziurko.github.io/images/blog/2012/09/home_page2.jpg"><img src="http://tdziurko.github.io/images/blog/2012/09/home_page2-1024x402.jpg" alt="" /></a></p>
 
 <h3>Remember Me functionality</h3>
 
@@ -2383,7 +2389,7 @@ public WebSession createNewSession(Request request) {
 
 <p>and then start application <em>mvn clean compile jetty:run</em>, go to login page, login, close browser and after over a 1 minute (when session expires) open it again on <a href="http://localhost:8080.">http://localhost:8080.</a> You should see something like this:</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/09/auto_logged.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/09/auto_logged-1024x313.jpg" alt="" /></a></p>
+<p><a href="http://tdziurko.github.io/images/blog/2012/09/auto_logged.jpg"><img src="http://tdziurko.github.io/images/blog/2012/09/auto_logged-1024x313.jpg" alt="" /></a></p>
 
 <p>So it works. But we still need one more thing: allow user to remove cookies and turn-off auto-login.</p>
 
@@ -2423,7 +2429,7 @@ add(logoutLink);
     <id>http://tdziurko.github.io/2012/07/practical-unit-testing-testng-mockito-review</id>
     <content type="html"><![CDATA[<p>Book &ldquo;<em>Practical Unit Testing with TestNG and Mockito</em>&rdquo; (<a href="http://practicalunittesting.com/">website</a>) covers wide spectrum of knowledge about testing in Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get most of this title. Below you can read some of my thoughts after reading this book.</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png" alt="" /></a></p>
+<p><a href="http://tdziurko.github.io/images/blog/2012/07/practical_unit_testing.png"><img src="http://tdziurko.github.io/images/blog/2012/07/practical_unit_testing.png" alt="" /></a></p>
 
 <!-- more -->
 
@@ -2470,7 +2476,7 @@ public void testSomething() {
 
 <p>And after running such tests in html report we will see something like presenten on the screenshot below:</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/07/testng-reporter.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/07/testng-reporter.jpg" alt="" /></a></p>
+<p><a href="http://tdziurko.github.io/images/blog/2012/07/testng-reporter.jpg"><img src="http://tdziurko.github.io/images/blog/2012/07/testng-reporter.jpg" alt="" /></a></p>
 
 <p>and additionally all such messages are gathered in one, separate report.</p>
 

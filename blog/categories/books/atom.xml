@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T14:36:59+02:00</updated>
+  <updated>2014-05-25T17:47:31+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -18,9 +18,12 @@
     <link href="http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
     <updated>2013-11-24T23:53:30+01:00</updated>
     <id>http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
-    <content type="html"><![CDATA[<p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
+    <content type="html"><![CDATA[<!-- more -->
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover-243x300.jpg" alt="AngularJs-cover" /></a></p>
+
+<p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
+
+<p><img class="center" src="/images/blog/2013/11/AngularJs-cover-243x300.jpg"></p>
 
 <h3>Overview</h3>
 
@@ -30,7 +33,7 @@
 
 <p>After section about directives there are easier topics like internationalization, quick look at framework internals and very useful part describing how to detect and solve performance problems of your application.</p>
 
-<h4><strong>What I liked:</strong></h4>
+<h4>What I liked:</h4>
 
 <ul>
 <li><p>level of detail, this book is most complete reference guide to understand and leverage power of AngularJS</p></li>
@@ -71,7 +74,7 @@
 
 <p>I właśnie na takie problemy receptą jest lektura i stosowanie rad zawartych w książce <a href="http://helion.pl/ksiazki/oprogramowanie-szyte-na-miare-jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-michal-bartyzel,opszmi.htm">&ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo;</a> Michała Bartyzela.</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/10/bartyzel_klient.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/10/bartyzel_klient-300x300.jpg" alt="Audiobooks Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce. eBook. Pdf" /></a></p>
+<p><a href="/images/blog/2013/10/bartyzel_klient.jpg"><img src="/images/blog/2013/10/bartyzel_klient-300x300.jpg" alt="Audiobooks Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce. eBook. Pdf" /></a></p>
 
 <!-- more -->
 
@@ -99,7 +102,7 @@
     <updated>2013-03-18T22:53:16+01:00</updated>
     <id>http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review</id>
     <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.
-<a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
+<a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="/images/blog/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
 
 <h3>Content</h3>
 
@@ -128,7 +131,7 @@
     <id>http://tdziurko.github.io/2012/07/practical-unit-testing-testng-mockito-review</id>
     <content type="html"><![CDATA[<p>Book &ldquo;<em>Practical Unit Testing with TestNG and Mockito</em>&rdquo; (<a href="http://practicalunittesting.com/">website</a>) covers wide spectrum of knowledge about testing in Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get most of this title. Below you can read some of my thoughts after reading this book.</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png" alt="" /></a></p>
+<p><a href="/images/blog/2012/07/practical_unit_testing.png"><img src="/images/blog/2012/07/practical_unit_testing.png" alt="" /></a></p>
 
 <!-- more -->
 
@@ -175,7 +178,7 @@ public void testSomething() {
 
 <p>And after running such tests in html report we will see something like presenten on the screenshot below:</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/07/testng-reporter.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/07/testng-reporter.jpg" alt="" /></a></p>
+<p><a href="/images/blog/2012/07/testng-reporter.jpg"><img src="/images/blog/2012/07/testng-reporter.jpg" alt="" /></a></p>
 
 <p>and additionally all such messages are gathered in one, separate report.</p>
 
@@ -283,7 +286,7 @@ public void testArgument() {
     <id>http://tdziurko.github.io/2012/04/notes-from-information-diet-book</id>
     <content type="html"><![CDATA[<p>During <a href="http://2012.33degree.org/">33rd Degree</a> conference in Cracow O'Reilly had its stand with books in very attractive prices and similarly to previous year I couldn&rsquo;t resist to buy something. This time I decided to get <a href="http://www.amazon.com/The-Information-Diet-Conscious-Consumption/dp/1449304680">&ldquo;The Information Diet&rdquo;</a> by Clay Johnson.</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/04/infodiet.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/04/infodiet.jpg" alt="" /></a></p>
+<p><a href="/images/blog/2012/04/infodiet.jpg"><img src="/images/blog/2012/04/infodiet.jpg" alt="" /></a></p>
 
 <p>The <em>A Case for Conscious Consumption</em> subtitle looked very promising as I, as probably most of people working in IT, have problem with too many sources to read, check and analyze to extract information that are relevant and worth to spend my time on it. And I hoped that this book would help me to solve this issue.</p>
 

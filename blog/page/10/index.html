@@ -81,15 +81,6 @@
 </nav>
 
 <nav id="main-nav">
-
-	<section>
-		<form action="https://www.google.com/search" method="get">
-			<input type="hidden" name="q" value="site:tdziurko.github.io" />
-			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
-		</form>
-	<section>
-	
-
 <ul class="main-navigation">
   <h4><li><a href="/">Blog</a></li></h4>
   <h4><li><a href="/blog/archives">Archives</a></li></h4>
@@ -97,11 +88,20 @@
   <h4><li><a href="/about">About</a></li></h4>
 </ul>
 
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tdziurko.github.io" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
 </nav>
 
-<nav id="sub-nav">
-<br>
-<section>
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
   <h2 style="color:#EFEFEF">Recent Posts</h2>
   <ul id="recent_posts">
     
@@ -127,18 +127,18 @@
     
   </ul>
 </section>
+-->
+<!--</nav>-->
 
-</nav>
-
-<nav id="sub-nav">
-
-<section class="aboutme">
-  <p style="font-style: italic;">
-    I am Java/Scala developer working remotely from small city in Poland.
-  </p>
-</section>
-
-</nav>
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
 </header>				
 			</div>
 		</div>	
@@ -193,7 +193,7 @@ public class Main {</p>
  Writer postArticle = client.postArticle();</p>
 
 <p> SimpleNNTPHeader headers =
- new SimpleNNTPHeader(&ldquo;Tomasz Dziurko &lt;<a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#116;&#x64;&#x7a;&#105;&#117;&#x72;&#x6b;&#x6f;&#x40;&#103;&#109;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#109;">&#116;&#x64;&#122;&#105;&#117;&#x72;&#107;&#x6f;&#x40;&#x67;&#109;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#109;</a>>&rdquo;, &ldquo;Test kodowania polskich znaków&rdquo;);
+ new SimpleNNTPHeader(&ldquo;Tomasz Dziurko &lt;<a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x74;&#100;&#x7a;&#x69;&#117;&#x72;&#107;&#111;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#116;&#100;&#122;&#105;&#117;&#x72;&#107;&#x6f;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a>>&rdquo;, &ldquo;Test kodowania polskich znaków&rdquo;);
  headers.addNewsgroup(&ldquo;pw.test&rdquo;);
  headers.addHeaderField(&ldquo;Mime-Version&rdquo;, &ldquo;1.0&rdquo;);
  headers.addHeaderField(&ldquo;Content-Type&rdquo;,&ldquo;text/plain; charset=UTF-8&rdquo;);
@@ -212,7 +212,7 @@ public class Main {</p>
 [/java]</p>
 
 <p>Everything worked as expected until I started to use Polish characters in the message. Then instead of &ldquo;ąęóśłżźćń&rdquo; I saw following picture:
-<a href="http://tomaszdziurko.pl/wp-content/uploads/2009/04/message1.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2009/04/message1-300x93.png" alt="Invalid characters encoding in NNTP class in Apache Commons Net" /></a>
+<a href="/images/blog/2009/04/message1.png"><img src="/images/blog/2009/04/message1-300x93.png" alt="Invalid characters encoding in NNTP class in Apache Commons Net" /></a>
 		
 		<a href="/2009/04/nntp-apache-commons-and-non-us-charaters/" class="more-link">Read on &rarr;</a>
 	</div>

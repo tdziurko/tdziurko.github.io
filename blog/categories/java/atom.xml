@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T14:36:59+02:00</updated>
+  <updated>2014-05-25T17:47:31+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -47,7 +47,7 @@ private String encryptedValue;
 
 <h3>Jasypt to the rescue</h3>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/07/jasypt-small.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/07/jasypt-small.png" alt="jasypt-small" /></a>
+<p><a href="/images/blog/2013/07/jasypt-small.png"><img src="/images/blog/2013/07/jasypt-small.png" alt="jasypt-small" /></a>
 <a href="http://www.jasypt.org">Jasypt</a> is a simple encryption library written in Java. It frees developer from dealing with low level configuration details and makes whole encryption process easy and straightforward. And what is most interesting now, it also has nice integration with Hibernate allowing seamless encryption/decryption of data stored in database.</p>
 
 <h4>Setup</h4>
@@ -168,7 +168,7 @@ public void shouldEncryptAndDecryptValue() {
     <id>http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
     <content type="html"><![CDATA[<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif" alt="xstream" /></a></p>
+<p><a href="/images/blog/2013/04/xstream.gif"><img src="/images/blog/2013/04/xstream.gif" alt="xstream" /></a></p>
 
 <h3>Overview</h3>
 
@@ -824,13 +824,13 @@ public void testAuditRecordsRollback() {
 
 <p>So after creating an account and choosing a hosting in Germany (which is the closest one to Poland where I live) I am redirected to my personal administration panel where in a straightforward step-by-step wizard I am requested to choose container /server (Tomcat 6/7,  Jetty amd Glassfish are available) and then my subdomain name. After that my server is deployed and after a moment I could check that <a href="http://tomaszdziurko.jelastic.dogado.eu/">http://tomaszdziurko.jelastic.dogado.eu/</a> is live and running. User is also encouraged to try and deploy pre-defined Hello World application. The whole process is extremely easy, just one click and in a moment we could check that we&rsquo;ve just deployed our first war on Jelastic:</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/10/jelastic-demo.jpeg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/10/jelastic-demo.jpeg" alt="" /></a></p>
+<p><a href="/images/blog/2012/10/jelastic-demo.jpeg"><img src="/images/blog/2012/10/jelastic-demo.jpeg" alt="" /></a></p>
 
 <h3>Configuring more real application environment</h3>
 
 <p>So far everything was easy, but we didn&rsquo;t touch any real scenario so now it&rsquo;s high time to start deploying our example Wicket application. First step is to upload application war to the Jelastic. Then we have to enable and configure our database with three tables. To do that we choose &ldquo;Environment topology&rdquo; next to our only server and here we could turn on/off many interesting features: load balancers, caching solutions, multiple containers, SSL-s and what we currently need SQL and/or NoSQL database:</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2012/10/dbConfig.jpeg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2012/10/dbConfig.jpeg" alt="" /></a></p>
+<p><a href="/images/blog/2012/10/dbConfig.jpeg"><img src="/images/blog/2012/10/dbConfig.jpeg" alt="" /></a></p>
 
 <p>So let&rsquo;s enable MySQL 5.5 and wait some time until it is configured and started on our virtual server. When everything is ready we will receive an email with login and password to our MySQL database instance. Now we could login to myPhpAdmin web interface and create user and MySQL tables required by our Wicket application. Because database url is no longer localhost:3306 we have to modify properties file in our project, rebuild it and upload war again. After that we are ready to deploy application on Jelastic. Simply, we click &ldquo;Deploy&rdquo; icon and then choose context name where application will be accessible. After that we must wait for &ldquo;Success&rdquo; message from deployment process and now we could check if <a href="http://tomaszdziurko.jelastic.dogado.eu/item-directory">http://tomaszdziurko.jelastic.dogado.eu/item-directory</a> is working as expected.</p>
 

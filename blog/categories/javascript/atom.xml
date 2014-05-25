@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T14:36:59+02:00</updated>
+  <updated>2014-05-25T17:47:31+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -18,9 +18,12 @@
     <link href="http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
     <updated>2013-11-24T23:53:30+01:00</updated>
     <id>http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
-    <content type="html"><![CDATA[<p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
+    <content type="html"><![CDATA[<!-- more -->
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover.jpg"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover-243x300.jpg" alt="AngularJs-cover" /></a></p>
+
+<p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
+
+<p><img class="center" src="/images/blog/2013/11/AngularJs-cover-243x300.jpg"></p>
 
 <h3>Overview</h3>
 
@@ -30,7 +33,7 @@
 
 <p>After section about directives there are easier topics like internationalization, quick look at framework internals and very useful part describing how to detect and solve performance problems of your application.</p>
 
-<h4><strong>What I liked:</strong></h4>
+<h4>What I liked:</h4>
 
 <ul>
 <li><p>level of detail, this book is most complete reference guide to understand and leverage power of AngularJS</p></li>
@@ -76,7 +79,7 @@
     <updated>2013-03-18T22:53:16+01:00</updated>
     <id>http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review</id>
     <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.
-<a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
+<a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="/images/blog/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
 
 <h3>Content</h3>
 
@@ -113,7 +116,7 @@
 
 <p>To start from the basics, I&rsquo;ve prepared three pages that use the same navigation bar. These pages will soon become our super simple web application using AngularJS:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/02/twitter-bootstrap-navbar-angularjs-component/navbar_angularjs1/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/02/navbar_angularjs1.png" alt="navbar_angularjs1" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/02/twitter-bootstrap-navbar-angularjs-component/navbar_angularjs1/"><img src="/images/blog/2013/02/navbar_angularjs1.png" alt="navbar_angularjs1" /></a></p>
 
 <p>Next step will be adding AngularJS and converting three pages into one small application. This is done in this <a href="https://github.com/tdziurko/twitter-bootstrap-navbar-as-angularjs-directive/commit/9d135332ef5e934920a65975f41fb06f6cc852a8">commit</a>. And after that we are ready to start working on our Navbar component.<!-- more --></p>
 
@@ -369,19 +372,19 @@ settings = buildSettings ++ lintCustomSettings
 
 <p>Simply go to <em>Edit Configuration Settings</em> of your build and then choose &ldquo;Build Step: Command Line&rdquo;:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step1/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step1.png" alt="tc-step1" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step1/"><img src="/images/blog/2013/01/tc-step1.png" alt="tc-step1" /></a></p>
 
 <p>And in the section Additional Build Features click &ldquo;Add build feature&rdquo;, choose &ldquo;XML report processing&rdquo;, then &ldquo;JSLint&rdquo; and specify path to the report.xml file. Personally I also check &ldquo;Verbose output&rdquo; to see more details in the build log.</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step2/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step2.png" alt="tc-step2" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step2/"><img src="/images/blog/2013/01/tc-step2.png" alt="tc-step2" /></a></p>
 
 <p>After saving we can go next build step named &ldquo;Build failure conditions&rdquo; and define two new rules there so we end up with something similar to screen presented below:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step3/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step3-1024x116.png" alt="tc-step3" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step3/"><img src="/images/blog/2013/01/tc-step3-1024x116.png" alt="tc-step3" /></a></p>
 
 <p>And finally our build is fully configured to report and  react on problems in JavaScript files:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step4/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step4.png" alt="tc-step4" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step4/"><img src="/images/blog/2013/01/tc-step4.png" alt="tc-step4" /></a></p>
 
 <p>Reference commits from my current project:</p>
 

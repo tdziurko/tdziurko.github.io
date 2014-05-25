@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Scala | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/scala/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T14:36:59+02:00</updated>
+  <updated>2014-05-25T17:47:31+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -18,7 +18,7 @@
     <link href="http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping/"/>
     <updated>2013-04-30T23:59:59+02:00</updated>
     <id>http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping</id>
-    <content type="html"><![CDATA[<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
+    <content type="html"><![CDATA[<p><a href="/images/blog/2013/04/logo-scalatra.png"><img src="/images/blog/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
 <a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
 So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.</p>
 
@@ -299,19 +299,19 @@ settings = buildSettings ++ lintCustomSettings
 
 <p>Simply go to <em>Edit Configuration Settings</em> of your build and then choose &ldquo;Build Step: Command Line&rdquo;:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step1/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step1.png" alt="tc-step1" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step1/"><img src="/images/blog/2013/01/tc-step1.png" alt="tc-step1" /></a></p>
 
 <p>And in the section Additional Build Features click &ldquo;Add build feature&rdquo;, choose &ldquo;XML report processing&rdquo;, then &ldquo;JSLint&rdquo; and specify path to the report.xml file. Personally I also check &ldquo;Verbose output&rdquo; to see more details in the build log.</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step2/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step2.png" alt="tc-step2" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step2/"><img src="/images/blog/2013/01/tc-step2.png" alt="tc-step2" /></a></p>
 
 <p>After saving we can go next build step named &ldquo;Build failure conditions&rdquo; and define two new rules there so we end up with something similar to screen presented below:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step3/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step3-1024x116.png" alt="tc-step3" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step3/"><img src="/images/blog/2013/01/tc-step3-1024x116.png" alt="tc-step3" /></a></p>
 
 <p>And finally our build is fully configured to report and  react on problems in JavaScript files:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step4/"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step4.png" alt="tc-step4" /></a></p>
+<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step4/"><img src="/images/blog/2013/01/tc-step4.png" alt="tc-step4" /></a></p>
 
 <p>Reference commits from my current project:</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: News | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/news/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T14:36:59+02:00</updated>
+  <updated>2014-05-25T17:47:31+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -56,7 +56,7 @@
 <pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
 </code></pre>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/10/warsjawa2011-logo.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/10/warsjawa2011-logo.png" alt="" /></a>Jak co roku, w październiku rusza kolejna konferencja organizowana przez <a href="https://sites.google.com/site/warszawajug/">Warszawski JUG</a>, młodsza siostra <a href="http://confitura.pl">Confitury</a>, czyli <a href="http://warsjawa.pl">Warsjawa</a>. Edycja 2011 przynosi sporo zmian i generalnie widać, że przez rok całej imprezie znacznie się przytyło, bo w porównaniu do zeszłorocznej edycji oferuje aż 4 równoległe ścieżki: trzy poświęcone w całości zgłębieniu konkretnej tematyki poprzez warsztaty oraz czwartą, która jest ścieżką mieszaną z 2,5h godzinnymi warsztatami oraz trzema prezentacjami.</p>
+<p><a href="/images/blog/2011/10/warsjawa2011-logo.png"><img src="/images/blog/2011/10/warsjawa2011-logo.png" alt="" /></a>Jak co roku, w październiku rusza kolejna konferencja organizowana przez <a href="https://sites.google.com/site/warszawajug/">Warszawski JUG</a>, młodsza siostra <a href="http://confitura.pl">Confitury</a>, czyli <a href="http://warsjawa.pl">Warsjawa</a>. Edycja 2011 przynosi sporo zmian i generalnie widać, że przez rok całej imprezie znacznie się przytyło, bo w porównaniu do zeszłorocznej edycji oferuje aż 4 równoległe ścieżki: trzy poświęcone w całości zgłębieniu konkretnej tematyki poprzez warsztaty oraz czwartą, która jest ścieżką mieszaną z 2,5h godzinnymi warsztatami oraz trzema prezentacjami.</p>
 
 <p>Na warsztatach będzie można:
 &ndash; poznać tajniki Google Web Toolkit
@@ -81,7 +81,7 @@
     <link href="http://tdziurko.github.io/2010/10/slides-from-jdd-2010-available/"/>
     <updated>2010-10-19T15:49:15+02:00</updated>
     <id>http://tdziurko.github.io/2010/10/slides-from-jdd-2010-available</id>
-    <content type="html"><![CDATA[<p>I have good news for those who didn&rsquo;t attend a JDD conference this year or simply weren&rsquo;t attentive enough. You can download slides from almost all talks from <a href="http://10.jdd.org.pl/materialy">here</a>. If you are interested in slides from &ldquo;Technical Debt&rdquo; which are not yet available on JDD website you can download them from <a href="http://tomaszdziurko.pl/wp-content/uploads/2011/05/Thomas_Sundberg_TechnicalDebt.pdf">here</a> as I received straight from the author :)</p>
+    <content type="html"><![CDATA[<p>I have good news for those who didn&rsquo;t attend a JDD conference this year or simply weren&rsquo;t attentive enough. You can download slides from almost all talks from <a href="http://10.jdd.org.pl/materialy">here</a>. If you are interested in slides from &ldquo;Technical Debt&rdquo; which are not yet available on JDD website you can download them from <a href="/images/blog/2011/05/Thomas_Sundberg_TechnicalDebt.pdf">here</a> as I received straight from the author :)</p>
 ]]></content>
   </entry>
   
@@ -111,7 +111,7 @@ And when I already planned migration to the <a href="https://www.dropbox.com/hom
 
 <p>Link do pozycji w księgarni: <a href="http://helion.pl/ksiazki/czysty_kod_podrecznik_dobrego_programisty_robert_c_martin,czykod.htm">link</a></p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2010/10/cleanCodePl.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2010/10/cleanCodePl.png" alt="Clean Code Cover" /></a>Jeśli jeszcze nie masz tej książki, to bardzo polecam, bo pozycja naprawdę warta uwagi każdego szanującego się programisty.</p>
+<p><a href="/images/blog/2010/10/cleanCodePl.png"><img src="/images/blog/2010/10/cleanCodePl.png" alt="Clean Code Cover" /></a>Jeśli jeszcze nie masz tej książki, to bardzo polecam, bo pozycja naprawdę warta uwagi każdego szanującego się programisty.</p>
 
 <p>PS:  Wiem, że ostatnio coś cicho i smutno na blogu, ale po zmianie stanu  cywilnego i założeniu własnej DG trochę się jeszcze nie wyrabiam  czasowo. Ale powoli widać światełko w tunelu i wkrótce coś powinno się  zacząć tutaj dziać :)</p>
 ]]></content>

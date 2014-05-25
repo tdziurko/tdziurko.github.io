@@ -81,15 +81,6 @@
 </nav>
 
 <nav id="main-nav">
-
-	<section>
-		<form action="https://www.google.com/search" method="get">
-			<input type="hidden" name="q" value="site:tdziurko.github.io" />
-			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
-		</form>
-	<section>
-	
-
 <ul class="main-navigation">
   <h4><li><a href="/">Blog</a></li></h4>
   <h4><li><a href="/blog/archives">Archives</a></li></h4>
@@ -97,11 +88,20 @@
   <h4><li><a href="/about">About</a></li></h4>
 </ul>
 
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tdziurko.github.io" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
 </nav>
 
-<nav id="sub-nav">
-<br>
-<section>
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
   <h2 style="color:#EFEFEF">Recent Posts</h2>
   <ul id="recent_posts">
     
@@ -127,18 +127,18 @@
     
   </ul>
 </section>
+-->
+<!--</nav>-->
 
-</nav>
-
-<nav id="sub-nav">
-
-<section class="aboutme">
-  <p style="font-style: italic;">
-    I am Java/Scala developer working remotely from small city in Poland.
-  </p>
-</section>
-
-</nav>
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
 </header>				
 			</div>
 		</div>	
@@ -304,11 +304,11 @@ private LoadableDetachableModel&lt;List&lt;Location&gt;&gt; createModelForLocati
 
 <h3>Results</h3>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/03/SS-20110312191713.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/03/SS-20110312191713.png" alt="" /></a></p>
+<p><a href="/images/blog/2011/03/SS-20110312191713.png"><img src="/images/blog/2011/03/SS-20110312191713.png" alt="" /></a></p>
 
 <p>Working as expected. But if we view this page with empty database it will look rather strange:</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/03/SS-20110312192333.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/03/SS-20110312192333.png" alt="" /></a></p>
+<p><a href="/images/blog/2011/03/SS-20110312192333.png"><img src="/images/blog/2011/03/SS-20110312192333.png" alt="" /></a></p>
 
 <p>ListView component isn&rsquo;t rendered (no locations so nothing to show) but as it is placed inside table and under row with headers this part of HTML is visible.  We must fix it and additionally, we will add with information label when there are no locations.</p>
 
@@ -383,7 +383,7 @@ Now we need to make location ListView component invisible when list is empty:</p
 <p>[/java]</p>
 
 <p>After these improvements our page is ready:
-<a href="http://tomaszdziurko.pl/wp-content/uploads/2011/03/SS-20110312194653.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/03/SS-20110312194653.png" alt="" /></a>Page is ready,  you are ready to use ListView component in your projects  so we reached the end of this post. As usual latest source code is available <a href="https://bitbucket.org/tdziurko/item-directory/src">here</a> and changeset from this post (except DAO bug fix which was pushed earlier) can be viewed <a href="https://bitbucket.org/tdziurko/item-directory/changeset/2403961c4a2b">here</a>.</p>
+<a href="/images/blog/2011/03/SS-20110312194653.png"><img src="/images/blog/2011/03/SS-20110312194653.png" alt="" /></a>Page is ready,  you are ready to use ListView component in your projects  so we reached the end of this post. As usual latest source code is available <a href="https://bitbucket.org/tdziurko/item-directory/src">here</a> and changeset from this post (except DAO bug fix which was pushed earlier) can be viewed <a href="https://bitbucket.org/tdziurko/item-directory/changeset/2403961c4a2b">here</a>.</p>
 </div>
 
 

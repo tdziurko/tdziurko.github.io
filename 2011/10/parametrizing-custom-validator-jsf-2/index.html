@@ -81,15 +81,6 @@
 </nav>
 
 <nav id="main-nav">
-
-	<section>
-		<form action="https://www.google.com/search" method="get">
-			<input type="hidden" name="q" value="site:tdziurko.github.io" />
-			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
-		</form>
-	<section>
-	
-
 <ul class="main-navigation">
   <h4><li><a href="/">Blog</a></li></h4>
   <h4><li><a href="/blog/archives">Archives</a></li></h4>
@@ -97,11 +88,20 @@
   <h4><li><a href="/about">About</a></li></h4>
 </ul>
 
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tdziurko.github.io" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
 </nav>
 
-<nav id="sub-nav">
-<br>
-<section>
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
   <h2 style="color:#EFEFEF">Recent Posts</h2>
   <ul id="recent_posts">
     
@@ -127,18 +127,18 @@
     
   </ul>
 </section>
+-->
+<!--</nav>-->
 
-</nav>
-
-<nav id="sub-nav">
-
-<section class="aboutme">
-  <p style="font-style: italic;">
-    I am Java/Scala developer working remotely from small city in Poland.
-  </p>
-</section>
-
-</nav>
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
 </header>				
 			</div>
 		</div>	
@@ -209,7 +209,7 @@ return date.after(today) || date.equals(today);
 
 <p>And if we provide key value in properties file we will see something like this:</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/10/validator_1.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/10/validator_1.png" alt="" /></a></p>
+<p><a href="/images/blog/2011/10/validator_1.png"><img src="/images/blog/2011/10/validator_1.png" alt="" /></a></p>
 
 <p>So it looks that we have working and production-ready custom validator.</p>
 
@@ -217,7 +217,7 @@ return date.after(today) || date.equals(today);
 
 <p>But while our form becomes more and more complex we might encouter issue described on the screen below:</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/10/validator_21.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/10/validator_21.png" alt="" /></a></p>
+<p><a href="/images/blog/2011/10/validator_21.png"><img src="/images/blog/2011/10/validator_21.png" alt="" /></a></p>
 
 <p>So the problem is how user can determine which date is valid and which is not? Our validator uses the same property key to display both error messages.</p>
 
@@ -268,7 +268,7 @@ protected String getFieldLabel(UIComponent uiComponent) {
 
 <p>And working example should show something similar to this screen:</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2011/10/validator_3.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/10/validator_3.png" alt="" /></a></p>
+<p><a href="/images/blog/2011/10/validator_3.png"><img src="/images/blog/2011/10/validator_3.png" alt="" /></a></p>
 </div>
 
 

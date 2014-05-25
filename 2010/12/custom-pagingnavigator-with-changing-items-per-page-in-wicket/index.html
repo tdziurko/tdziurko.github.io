@@ -81,15 +81,6 @@
 </nav>
 
 <nav id="main-nav">
-
-	<section>
-		<form action="https://www.google.com/search" method="get">
-			<input type="hidden" name="q" value="site:tdziurko.github.io" />
-			<input class="search" type="search" name="q" results="0" placeholder="Search"/>
-		</form>
-	<section>
-	
-
 <ul class="main-navigation">
   <h4><li><a href="/">Blog</a></li></h4>
   <h4><li><a href="/blog/archives">Archives</a></li></h4>
@@ -97,11 +88,20 @@
   <h4><li><a href="/about">About</a></li></h4>
 </ul>
 
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tdziurko.github.io" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
 </nav>
 
-<nav id="sub-nav">
-<br>
-<section>
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
   <h2 style="color:#EFEFEF">Recent Posts</h2>
   <ul id="recent_posts">
     
@@ -127,18 +127,18 @@
     
   </ul>
 </section>
+-->
+<!--</nav>-->
 
-</nav>
-
-<nav id="sub-nav">
-
-<section class="aboutme">
-  <p style="font-style: italic;">
-    I am Java/Scala developer working remotely from small city in Poland.
-  </p>
-</section>
-
-</nav>
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
 </header>				
 			</div>
 		</div>	
@@ -154,7 +154,7 @@
 
 <p>Finished component will look like below:</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2010/12/customPaginator.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2010/12/customPaginator.png" alt="" /></a>
+<p><a href="/images/blog/2010/12/customPaginator.png"><img src="/images/blog/2010/12/customPaginator.png" alt="" /></a>
 Of course I was not going to implement this from the scratch, because most of work had been already done by Wicket authors and commiters in component <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/navigation/paging/PagingNavigator.html">PagingNavigator</a>. Source of this component as a reference to changes I made can be found <a href="http://pastebin.com/kwzBG9mH">here</a>.</p>
 
 <p><strong>The first steps in creating our component:</strong>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-to | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T14:36:59+02:00</updated>
+  <updated>2014-05-25T17:47:31+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -47,7 +47,7 @@ private String encryptedValue;
 
 <h3>Jasypt to the rescue</h3>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/07/jasypt-small.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/07/jasypt-small.png" alt="jasypt-small" /></a>
+<p><a href="/images/blog/2013/07/jasypt-small.png"><img src="/images/blog/2013/07/jasypt-small.png" alt="jasypt-small" /></a>
 <a href="http://www.jasypt.org">Jasypt</a> is a simple encryption library written in Java. It frees developer from dealing with low level configuration details and makes whole encryption process easy and straightforward. And what is most interesting now, it also has nice integration with Hibernate allowing seamless encryption/decryption of data stored in database.</p>
 
 <h4>Setup</h4>
@@ -454,7 +454,7 @@ driver =</p>
     <link href="http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping/"/>
     <updated>2013-04-30T23:59:59+02:00</updated>
     <id>http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping</id>
-    <content type="html"><![CDATA[<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
+    <content type="html"><![CDATA[<p><a href="/images/blog/2013/04/logo-scalatra.png"><img src="/images/blog/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
 <a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
 So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.</p>
 
@@ -627,7 +627,7 @@ Source code of this small example app is available <a href="https://github.com/t
     <id>http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
     <content type="html"><![CDATA[<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
 
-<p><a href="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif"><img src="http://tomaszdziurko.pl/wp-content/uploads/2013/04/xstream.gif" alt="xstream" /></a></p>
+<p><a href="/images/blog/2013/04/xstream.gif"><img src="/images/blog/2013/04/xstream.gif" alt="xstream" /></a></p>
 
 <h3>Overview</h3>
 
