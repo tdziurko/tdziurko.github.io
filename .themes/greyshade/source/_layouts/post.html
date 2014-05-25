@@ -1,0 +1,42 @@
+---
+layout: default
+single: true
+---
+
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+{% include article.html %}
+<span class="post_end">
+	  {% include post/author.html %}
+      {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
+	  <span class="categories">{% include post/categories.html %}</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  {% if page.previous.url %}
+			<a class="basic-alignment left" href="{{page.previous.url}}" title="上一篇: {{page.previous.title}}">&laquo; {{page.previous.title}}</a>
+		  {% endif %}
+		  {% if page.next.url %}
+			<a class="basic-alignment right" href="{{page.next.url}}" title="下一篇: {{page.next.title}}">{{page.next.title}} &raquo;</a>
+		  {% endif %}
+		</p>
+	</div>
+	<div class="jiathis">
+	{% unless page.sharing == false %}
+		{% include post/sharing.html %}
+	{% endunless %}
+	</div>
+</div>
+
+{% if site.disqus_short_name and page.comments == true %}
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
+</section>
+{% endif %}
+{% if site.duoshuo_short_name and site.duoshuo_comments == true and page.comments == true %}
+  <section>
+    <div id="comments" aria-live="polite">{% include post/duoshuo.html %}</div>
+  </section>
+{% endif %}
