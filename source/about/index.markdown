@@ -8,10 +8,14 @@ title: Who Am I?
 wordpress_id: 12
 ---
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2010/10/face_final_medium.jpg)](http://tomaszdziurko.pl/wp-content/uploads/2010/10/face_final_medium.jpg)My name is Tomasz Dziurko and I am a certified (SCJP, SCWCD) Java/JEE developer, freelancer, contractor with five years experience in Java development for e-commerce, startups and IT companies. Apart having few certificates I also care about [software craftsmanship](http://scmanifesto.heroku.com/), quality, [clean code](http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) and readability.
+My name is Tomasz Dziurko and I am Java/Scala developer with seven years experience in Java development for e-commerce, startups 
+and financial institutions Currently I am working remotely for [SoftwareMill](http://softwaremill.com) 
+where we create good-quality, well-tested software providing business value to our clients.  
+   
+Despite having few certificates (SCJP, SCWCD) I still care about [software craftsmanship](http://scmanifesto.heroku.com/), quality, [clean code](http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) and readability ;)
 
-You are welcome to read more about my experience and specific skills on the [LinkedIn website](http://www.linkedin.com/in/tomaszdziurko) or [GoldenLine](http://www.goldenline.pl/tomasz-dziurko) (in Polish).
+When I do not code or read books, I like to make things happen: I was co-organizer of three editions of [Confitura](http://confitura.pl) 
+(biggest free-to-attend conference for Java Developers in Europe), lead [GeeCON Train](http://www.meetup.com/geecon-train/) twice and was involved in a few other events like Warsjawa, 4Developers.  
 
-If you are looking for a freelance Java developer to hire or just want to express your opinion about one of the posts or about this blog in general you can catch me at <firstname>.<lastname> @ programatico.pl or through the comments.
 
-If you want to read more about my small (but very keen on growing ;) ) company please go directly to [programatico.pl](http://programatico.pl) but note that this site is available only in Polish.
+You can read more about me and my skills [here](http://www.linkedin.com/in/tomaszdziurko) or [here](http://www.goldenline.pl/tomasz-dziurko) (in Polish).
