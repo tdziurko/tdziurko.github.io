@@ -14,4 +14,16 @@ footer: false
 
 ---
 
-Ooops! :)
+# NullPointerException (404)
+ 
+Ooops! Looks like this page was created without applying Test-Driven Development :-(
+
+You could write a test, use debugger or just try one of these links: 
+
+* [Wicket tutorial series – building web application from scratch](/2011/03/wicket-tutorial-series-building-web-application-scratch/)
+
+* [Google Guava – almost everything you need to know](/2012/02/google-guava/)
+
+* [Google Guava EventBus – an easy and elegant way for your publisher – subscriber use cases](/2012/01/google-guava-eventbus-easy-elegant-publisher-subscriber-cases/)
+
+* [back to home page](/)
