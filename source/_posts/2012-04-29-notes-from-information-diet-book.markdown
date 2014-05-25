@@ -14,7 +14,7 @@ categories:
 During [33rd Degree](http://2012.33degree.org/) conference in Cracow O'Reilly had its stand with books in very attractive prices and similarly to previous year I couldn't resist to buy something. This time I decided to get ["The Information Diet"](http://www.amazon.com/The-Information-Diet-Conscious-Consumption/dp/1449304680) by Clay Johnson.
 
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2012/04/infodiet.jpg)](http://tomaszdziurko.pl/wp-content/uploads/2012/04/infodiet.jpg)
+[![](/images/blog/2012/04/infodiet.jpg)](/images/blog/2012/04/infodiet.jpg)
 
 
 

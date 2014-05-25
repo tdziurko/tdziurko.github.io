@@ -17,9 +17,11 @@ tags:
 - review
 ---
 
+<!-- more -->
+
 [AngularJS](http://angularjs.org/) is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to "Mastering Web Application Development with AngularJS" that is no longer the case.
 
-[![AngularJs-cover](http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover-243x300.jpg)](http://tomaszdziurko.pl/wp-content/uploads/2013/11/AngularJs-cover.jpg)
+{% img center /images/blog/2013/11/AngularJs-cover-243x300.jpg %}
 
 
 ### Overview
@@ -32,13 +34,8 @@ And when after reading this part of book  I thought "Oh man, AngularJS is easy,
 After section about directives there are easier topics like internationalization, quick look at framework internals and very useful part describing how to detect and solve performance problems of your application.
 
 
-#### **What I liked:**
+####What I liked:
 
-
-
-
-
-	
   * level of detail, this book is most complete reference guide to understand and leverage power of AngularJS
 
 	

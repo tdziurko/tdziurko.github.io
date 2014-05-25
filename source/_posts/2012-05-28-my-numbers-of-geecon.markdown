@@ -17,7 +17,7 @@ tags:
 This year is very intensive with regard to IT conferences. I've already attended three of them and at least two more are scheduled. Last event I've had a pleasure to participate in was [GeeCON 2012](http://2012.geecon.org/) in Poznań. Below some of my personal impressions after this event.
 
 
-### [![](http://tomaszdziurko.pl/wp-content/uploads/2012/05/geecon.png)](http://tomaszdziurko.pl/wp-content/uploads/2012/05/geecon.png)
+### [![](/images/blog/2012/05/geecon.png)](/images/blog/2012/05/geecon.png)
 
 
 

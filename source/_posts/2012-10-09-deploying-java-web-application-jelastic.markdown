@@ -31,7 +31,7 @@ To test how this deployment process look like, I've decided to put my [Wicket tu
 So after creating an account and choosing a hosting in Germany (which is the closest one to Poland where I live) I am redirected to my personal administration panel where in a straightforward step-by-step wizard I am requested to choose container /server (Tomcat 6/7,  Jetty amd Glassfish are available) and then my subdomain name. After that my server is deployed and after a moment I could check that [http://tomaszdziurko.jelastic.dogado.eu/](http://tomaszdziurko.jelastic.dogado.eu/) is live and running. User is also encouraged to try and deploy pre-defined Hello World application. The whole process is extremely easy, just one click and in a moment we could check that we've just deployed our first war on Jelastic:
 
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2012/10/jelastic-demo.jpeg)](http://tomaszdziurko.pl/wp-content/uploads/2012/10/jelastic-demo.jpeg)
+[![](/images/blog/2012/10/jelastic-demo.jpeg)](/images/blog/2012/10/jelastic-demo.jpeg)
 
 
 
@@ -43,7 +43,7 @@ So after creating an account and choosing a hosting in Germany (which is the clo
 So far everything was easy, but we didn't touch any real scenario so now it's high time to start deploying our example Wicket application. First step is to upload application war to the Jelastic. Then we have to enable and configure our database with three tables. To do that we choose "Environment topology" next to our only server and here we could turn on/off many interesting features: load balancers, caching solutions, multiple containers, SSL-s and what we currently need SQL and/or NoSQL database:
 
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2012/10/dbConfig.jpeg)](http://tomaszdziurko.pl/wp-content/uploads/2012/10/dbConfig.jpeg)
+[![](/images/blog/2012/10/dbConfig.jpeg)](/images/blog/2012/10/dbConfig.jpeg)
 
 
 

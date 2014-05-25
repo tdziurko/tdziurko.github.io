@@ -29,7 +29,7 @@ So in this post I am going to show how externalize Twitter Bootstrap Navbar into
 To start from the basics, I've prepared three pages that use the same navigation bar. These pages will soon become our super simple web application using AngularJS:
 
 
-[![navbar_angularjs1](http://tomaszdziurko.pl/wp-content/uploads/2013/02/navbar_angularjs1.png)](http://tomaszdziurko.pl/2013/02/twitter-bootstrap-navbar-angularjs-component/navbar_angularjs1/)
+[![navbar_angularjs1](/images/blog/2013/02/navbar_angularjs1.png)](http://tomaszdziurko.pl/2013/02/twitter-bootstrap-navbar-angularjs-component/navbar_angularjs1/)
 
 
 Next step will be adding AngularJS and converting three pages into one small application. This is done in this [commit](https://github.com/tdziurko/twitter-bootstrap-navbar-as-angularjs-directive/commit/9d135332ef5e934920a65975f41fb06f6cc852a8). And after that we are ready to start working on our Navbar component.<!-- more -->

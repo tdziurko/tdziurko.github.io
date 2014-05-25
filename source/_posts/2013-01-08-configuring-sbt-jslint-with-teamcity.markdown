@@ -106,13 +106,13 @@ Now, as we have our plugin running and generating report.xml, we could configure
 Simply go to _Edit Configuration Settings_ of your build and then choose "Build Step: Command Line":
 
 
-[![tc-step1](http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step1.png)](http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step1/)
+[![tc-step1](/images/blog/2013/01/tc-step1.png)](http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step1/)
 
 
 And in the section Additional Build Features click "Add build feature", choose "XML report processing", then "JSLint" and specify path to the report.xml file. Personally I also check "Verbose output" to see more details in the build log.
 
 
-[![tc-step2](http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step2.png)](http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step2/)
+[![tc-step2](/images/blog/2013/01/tc-step2.png)](http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step2/)
 
 
 
@@ -122,7 +122,7 @@ After saving we can go next build step named "Build failure conditions" and defi
 
 
 
-[![tc-step3](http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step3-1024x116.png)](http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step3/)
+[![tc-step3](/images/blog/2013/01/tc-step3-1024x116.png)](http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step3/)
 
 
 
@@ -132,7 +132,7 @@ And finally our build is fully configured to report and  react on problems in Ja
 
 
 
-[![tc-step4](http://tomaszdziurko.pl/wp-content/uploads/2013/01/tc-step4.png)](http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step4/)
+[![tc-step4](/images/blog/2013/01/tc-step4.png)](http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step4/)
 
 
 

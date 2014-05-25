@@ -19,7 +19,7 @@ tags:
 Book "_Practical Unit Testing with TestNG and Mockito_" ([website](http://practicalunittesting.com/)) covers wide spectrum of knowledge about testing in Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get most of this title. Below you can read some of my thoughts after reading this book.
 
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png)](http://tomaszdziurko.pl/wp-content/uploads/2012/07/practical_unit_testing.png)
+[![](/images/blog/2012/07/practical_unit_testing.png)](/images/blog/2012/07/practical_unit_testing.png)
 
 
 <!-- more -->
@@ -77,7 +77,7 @@ TestNG has a nice class _org.testng.Reporter_ that allows developer to add some 
 And after running such tests in html report we will see something like presenten on the screenshot below:
 
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2012/07/testng-reporter.jpg)](http://tomaszdziurko.pl/wp-content/uploads/2012/07/testng-reporter.jpg)
+[![](/images/blog/2012/07/testng-reporter.jpg)](/images/blog/2012/07/testng-reporter.jpg)
 
 
 

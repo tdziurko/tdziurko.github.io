@@ -88,7 +88,7 @@ in itemdirectory\itemdirectory.webapplication dir.
 
 And after a while when Maven tries to download half of the Internet, you could type [http://localhost:9090/item-directory/](http://localhost:9090/item-directory/) to see following page:
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2011/01/ItemDirectoryHello.png)](http://tomaszdziurko.pl/wp-content/uploads/2011/01/ItemDirectoryHello.png)
+[![](/images/blog/2011/01/ItemDirectoryHello.png)](/images/blog/2011/01/ItemDirectoryHello.png)
 
 
 ## First step - make this technology stack work for me

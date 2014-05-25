@@ -16,4 +16,4 @@ tags:
 - News
 ---
 
-I have good news for those who didn't attend a JDD conference this year or simply weren't attentive enough. You can download slides from almost all talks from [here](http://10.jdd.org.pl/materialy). If you are interested in slides from "Technical Debt" which are not yet available on JDD website you can download them from [here](http://tomaszdziurko.pl/wp-content/uploads/2011/05/Thomas_Sundberg_TechnicalDebt.pdf) as I received straight from the author :)
+I have good news for those who didn't attend a JDD conference this year or simply weren't attentive enough. You can download slides from almost all talks from [here](http://10.jdd.org.pl/materialy). If you are interested in slides from "Technical Debt" which are not yet available on JDD website you can download them from [here](/images/blog/2011/05/Thomas_Sundberg_TechnicalDebt.pdf) as I received straight from the author :)

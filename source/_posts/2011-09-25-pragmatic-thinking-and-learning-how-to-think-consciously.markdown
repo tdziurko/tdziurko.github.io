@@ -22,7 +22,7 @@ tags:
 I recently have finished reading one of the best non-IT books I had in my hands, ["Pragmatic Thinking and Learning" by Andy Hunt](http://pragprog.com/book/ahptl/pragmatic-thinking-and-learning). Because there are already a lot of reviews  on the Internet (e.g. [http://thoughtforge.net/2010/06/10/pragmatic-thinking-learning/](http://thoughtforge.net/2010/06/10/pragmatic-thinking-learning/), [http://www.javalinux.it/wordpress/2009/03/25/book-review-pragmatic-thinking-and-learning/](http://www.javalinux.it/wordpress/2009/03/25/book-review-pragmatic-thinking-and-learning/) ), I'll try to focus on the things I found most interesting and worth to remember.
 
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2011/09/ahptl-250x300.jpg)](http://tomaszdziurko.pl/wp-content/uploads/2011/09/ahptl.jpg)
+[![](/images/blog/2011/09/ahptl-250x300.jpg)](/images/blog/2011/09/ahptl.jpg)
 
 <!-- more -->Firstly, I think every programmer should read this book, even more, anyone whose career requires constant learning new things, skills of effective thinking and problem solving, should read this book as well. Why? Because in this publication author really carefully gathered the available scientific knowledge about how our brain works, how it processes information and how it stores the new knowledge. And more importantly, he described how we can change our behavior to make the process of learning and problem solving the most effective. And I don't think I need to convince anyone that effective learning and thinking is very useful (if not necessary) in our work :)
 
@@ -62,7 +62,7 @@ It is very important to pick a proper objectives in your life. We all have heard
 
 - **A**chievable. Its not the best idea to say "I will learn Scala in one week" because it is not specific, hard to measure and, most important, very hard or even impossible to achieve in such short amount of time. Instead you should say "I will learn how to create Console Calculator in one week using Scala". And it is definitely doable.
 
-- **R**elevant. If you don't like Microsoft and all its products, picking a C# as a new language to learn won't work. You should care about your objective. The more warm feelings you have about your objective the better. You will find impossible to motivate yourself if you hate/don't like what you are trying to achieve. In your example, you should pick a language you like or you have positive associations, maybe it is Scala (the next Java), maybe Kotlin (because it is also the name of [Ketchup producer](http://tomaszdziurko.pl/wp-content/uploads/2011/09/KOTLIN_Ketchup.jpg) in Poland ;) )
+- **R**elevant. If you don't like Microsoft and all its products, picking a C# as a new language to learn won't work. You should care about your objective. The more warm feelings you have about your objective the better. You will find impossible to motivate yourself if you hate/don't like what you are trying to achieve. In your example, you should pick a language you like or you have positive associations, maybe it is Scala (the next Java), maybe Kotlin (because it is also the name of [Ketchup producer](/images/blog/2011/09/KOTLIN_Ketchup.jpg) in Poland ;) )
 
 - **T**ime-Boxed. You should always include information about deadline in your objective. "I will pass this certificate" seems ok but when? In a three months or in a five years? And five years makes this objective almost useless.
 

@@ -32,7 +32,7 @@ You all probably know this sentence:
 "Individuals and interactions over processes and tools", but for those who don't, this is the first point of Agile Manifesto, a set of principles defining agile software development. And if I had to describe or review this book in one sentence, this one would be the best to describe content and general philosophy of this title.
 
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2012/01/individuals-interactions-book.jpg)](http://tomaszdziurko.pl/wp-content/uploads/2012/01/individuals-interactions-book.jpg)
+[![](/images/blog/2012/01/individuals-interactions-book.jpg)](/images/blog/2012/01/individuals-interactions-book.jpg)
 
 
 

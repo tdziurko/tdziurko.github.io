@@ -370,4 +370,4 @@ If yoy try with only info(...) you will get warning in the log:
 And after this we will see that everything is working as expected:
 
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2011/02/SS-20110203121714.png)](http://tomaszdziurko.pl/wp-content/uploads/2011/02/SS-20110203121714.png)Ok, we reached the end of this post. We now have working Wicket form in our application. In next episode we will create custom validator to prevent adding non-unique location names.  Of course as always you can download latest source code from [here](https://bitbucket.org/tdziurko/item-directory/src). Hope you will be here for the next part of Wicket tutorial :)
+[![](/images/blog/2011/02/SS-20110203121714.png)](/images/blog/2011/02/SS-20110203121714.png)Ok, we reached the end of this post. We now have working Wicket form in our application. In next episode we will create custom validator to prevent adding non-unique location names.  Of course as always you can download latest source code from [here](https://bitbucket.org/tdziurko/item-directory/src). Hope you will be here for the next part of Wicket tutorial :)

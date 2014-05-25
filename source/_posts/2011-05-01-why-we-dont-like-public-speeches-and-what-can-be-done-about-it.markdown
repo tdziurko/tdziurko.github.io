@@ -21,7 +21,7 @@ The first step to eliminate your weaknesses is to realise that they exist and na
 
 And that's why I recently bought an interesting book ["Confesions of a Public Speaker"](http://www.amazon.com/Confessions-Public-Speaker-Scott-Berkun/dp/0596801998) by Scott Berkun.
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2011/05/confessions-of-a-public-speaker.jpg)](http://tomaszdziurko.pl/wp-content/uploads/2011/05/confessions-of-a-public-speaker.jpg)
+[![](/images/blog/2011/05/confessions-of-a-public-speaker.jpg)](/images/blog/2011/05/confessions-of-a-public-speaker.jpg)
 
 The most important thing you should know before you even consider buying this title is that:
 

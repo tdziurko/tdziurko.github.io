@@ -29,6 +29,6 @@ Slides are available here:
 
 
 
-Source code is available on GitHub - [https://github.com/tdziurko/Guava-Lessons](https://github.com/tdziurko/Guava-Lessons) and PDF can be downloaded from [here](http://tomaszdziurko.pl/wp-content/uploads/2012/02/Google-Guava.pdf).
+Source code is available on GitHub - [https://github.com/tdziurko/Guava-Lessons](https://github.com/tdziurko/Guava-Lessons) and PDF can be downloaded from [here](/images/blog/2012/02/Google-Guava.pdf).
 
 If you have any feedback or suggestions, please share them in the comments. I am more than happy to learn something new.

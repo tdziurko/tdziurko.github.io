@@ -25,7 +25,7 @@ Ale są tematy, które można nazwać, choć to dość górnolotne słowo, ponad
 
 I właśnie na takie problemy receptą jest lektura i stosowanie rad zawartych w książce ["Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce"](http://helion.pl/ksiazki/oprogramowanie-szyte-na-miare-jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-michal-bartyzel,opszmi.htm) Michała Bartyzela.
 
-[![Audiobooks Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce. eBook. Pdf](http://tomaszdziurko.pl/wp-content/uploads/2013/10/bartyzel_klient-300x300.jpg)](http://tomaszdziurko.pl/wp-content/uploads/2013/10/bartyzel_klient.jpg)
+[![Audiobooks Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce. eBook. Pdf](/images/blog/2013/10/bartyzel_klient-300x300.jpg)](/images/blog/2013/10/bartyzel_klient.jpg)
 
 <!-- more -->
 

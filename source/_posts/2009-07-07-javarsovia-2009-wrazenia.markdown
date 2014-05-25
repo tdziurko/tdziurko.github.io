@@ -21,7 +21,7 @@ Dear Reader
     This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
 
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2010/10/javarsovia2009.png)](http://tomaszdziurko.pl/wp-content/uploads/2010/10/javarsovia2009.png)Właśnie wróciłem z konferencji [Javarsovia 2009](http://www.javarsovia.pl/). Ogólne wrażenia jak najbardziej pozytywne, dokładniejsza relacja poniżej. Najbardziej żałuję, że nie udało się mi wyciągnąć tylu znajomych ilu chciałem, no i że nie wygrałem kubka ;)
+[![](/images/blog/2010/10/javarsovia2009.png)](/images/blog/2010/10/javarsovia2009.png)Właśnie wróciłem z konferencji [Javarsovia 2009](http://www.javarsovia.pl/). Ogólne wrażenia jak najbardziej pozytywne, dokładniejsza relacja poniżej. Najbardziej żałuję, że nie udało się mi wyciągnąć tylu znajomych ilu chciałem, no i że nie wygrałem kubka ;)
 
 
 ### Godz. 9:00 - Intro

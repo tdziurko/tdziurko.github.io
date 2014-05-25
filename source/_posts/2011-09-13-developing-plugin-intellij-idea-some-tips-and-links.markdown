@@ -74,7 +74,7 @@ List of all places available in this way can be found in [DataKeys](http://grepc
 
 This kind of popup is very useful to communicate feedback messages to user. It can be info message or error/warn. Default colors are green for info, red for error and orange for warnings. In Share With Pastie I am using it to inform that selected text was successfully sent to Pastie and link is waiting in clipboard.
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2011/08/plugin_2.png)](http://tomaszdziurko.pl/wp-content/uploads/2011/08/plugin_2.png)
+[![](/images/blog/2011/08/plugin_2.png)](/images/blog/2011/08/plugin_2.png)
 
 But before we show our balloon we need to specify a place when it will be located. In my plugin it is StatusBar (the lowest element in IDEA GUI):
 
@@ -111,7 +111,7 @@ If you are planning to develop plugin with additional windows, popups, etc. plug
 When I was searching for a proper place to show my action in one of the menus available inside IntelliJ IDEA I encountered [a page ](http://keithlea.com/idea-actions/)with list of group and action IDs which could help me with configuring my plugin. But this page appeared to be really outdated so I tried to find another way to determine proper values of those IDs. And of course, solution was lying just in front of me. If we press Alt + Insert in project view we will see a menu allowing to create several new objects. And one of them is Action. After clicking it, we will see a very friendly action creator which will looks like below. And of course it contains list of available groups and actions to place our plugin menu item next to them.
 
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2011/09/actions_ids.png)](http://tomaszdziurko.pl/wp-content/uploads/2011/09/actions_ids.png)
+[![](/images/blog/2011/09/actions_ids.png)](/images/blog/2011/09/actions_ids.png)
 
 
 **Proper VM memory settings**
@@ -119,7 +119,7 @@ When I was searching for a proper place to show my action in one of the menus av
 Next thing is to configure your run/debug configuration to work properly because depending on your hardware setup (available memory mainly) and IntelliJ IDEA settings you might encounter freezes when starting your plugin in development mode (most frequently those are crashes during index rebuilding) .
 
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2011/09/run_config.png)](http://tomaszdziurko.pl/wp-content/uploads/2011/09/run_config.png)
+[![](/images/blog/2011/09/run_config.png)](/images/blog/2011/09/run_config.png)
 
 
 To prevent such problems you should configure memory settings in "Run/Debug Configurations" window and add proper Virtual Machine parameters. For me _-Xms256m -XX:PermSize=128m -XX:MaxPermSize=512m_ worked well.

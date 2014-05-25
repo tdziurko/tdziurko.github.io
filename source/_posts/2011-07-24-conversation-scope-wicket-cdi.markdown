@@ -40,7 +40,7 @@ mvn install jetty:run -P jetty
 And when you open browser you should see
 
     
-    <a href="http://tomaszdziurko.pl/wp-content/uploads/2011/07/numberguess.png"><img src="http://tomaszdziurko.pl/wp-content/uploads/2011/07/numberguess.png" title="NumberGuess example application" height="199" width="814" alt="" class="aligncenter size-full wp-image-809"></img></a>
+    <a href="/images/blog/2011/07/numberguess.png"><img src="/images/blog/2011/07/numberguess.png" title="NumberGuess example application" height="199" width="814" alt="" class="aligncenter size-full wp-image-809"></img></a>
 
 
 It is a simple game in which user must guess a number.
@@ -93,7 +93,7 @@ public class HomePage extends WebPage {
 
 When you open our application in two tabs you should see something like this:
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2011/07/conversationLabel.png)](http://tomaszdziurko.pl/wp-content/uploads/2011/07/conversationLabel.png)
+[![](/images/blog/2011/07/conversationLabel.png)](/images/blog/2011/07/conversationLabel.png)
 
 and in these two tabs you have two separate games running (and different conversation id shown). So everything looks fine. But, but... if during the game you accidentally hit refresh button (or F5) you will lose your state of game and see that conversation id has changed. WTH?! Calm down and check SeamApplication class source code. There is custom WebRequestCycleProcessor named SeamWebRequestCycleProcessor:
 
@@ -176,11 +176,11 @@ with corresponding HTML element in HomePage.html file.
 
 And when we try to guess a number and then click new link, we will see:
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2011/07/withLink.png)](http://tomaszdziurko.pl/wp-content/uploads/2011/07/withLink.png)
+[![](/images/blog/2011/07/withLink.png)](/images/blog/2011/07/withLink.png)
 
 and then
 
-[![](http://tomaszdziurko.pl/wp-content/uploads/2011/07/secondPage.png)](http://tomaszdziurko.pl/wp-content/uploads/2011/07/secondPage.png)
+[![](/images/blog/2011/07/secondPage.png)](/images/blog/2011/07/secondPage.png)
 
 So as you can see, we have the same conversation id and the same game instance. So it's working.
 
