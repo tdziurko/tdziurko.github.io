@@ -18,7 +18,7 @@ tags:
 
 I've just returned from my trip to Warsaw to attend 3rd edition of [Agile By Example](http://agilebyexample.com).
 
-[![abe_2013](/images/blog/2013/10/abe_2013.jpg)](/images/blog/2013/10/abe_2013.jpg)
+{% img center /images/blog/2013/10/abe_2013.jpg %}
 
 Here's my thoughts, impression and notes after this event.
 
