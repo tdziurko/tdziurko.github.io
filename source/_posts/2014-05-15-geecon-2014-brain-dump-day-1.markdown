@@ -13,7 +13,7 @@ tags:
 - GeeCON
 ---
 
-Inspired by post ["Min/max note taking for conferences"](http://scottberkun.com/2014/min-max-note-taking/) I've noted down my impressions, most interesting sentences, mentioned tools/books/blogs during ongoing GeeCON 2014 conference. This is my "Brain dump" after Day 1:
+Inspired by post ["Min/max note taking for conferences"](http://scottberkun.com/2014/min-max-note-taking/) I've noted down my impressions, most interesting sentences, mentioned tools/books/blogs during ongoing [GeeCON 2014](http://2014.geecon.org/) conference. This is my "Brain dump" after Day 1:
 
 **Pavel Sekanina - Nothing comes for free**
 

@@ -12,7 +12,7 @@ tags:
 - GeeCON
 ---
 
-Last, third post with my notes from GeeCON 2014 conference:
+Last, third post with my notes from [GeeCON 2014](http://2014.geecon.org/) conference:
 
 **Tomasz Kowalczewski - Reactive Java**
 

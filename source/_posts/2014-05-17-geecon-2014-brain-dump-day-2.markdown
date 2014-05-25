@@ -12,7 +12,7 @@ tags:
 - GeeCON
 ---
 
-This is the second part of my notes from GeeCON 2014 conference.
+This is the second part of my notes from [GeeCON 2014](http://2014.geecon.org/) conference.
 
 **Hazem Saleh - Jasmine Automated Tests for JavaScript**
 
