@@ -15,11 +15,13 @@ tags:
 - Jasypt
 - Java
 ---
+<!-- more -->
 
 It's over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of [Confitura](http://confitura.pl) (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.
 
 In this post I will shortly describe how we can store encrypted data in our database and retrieve it as already decrypted in a simple, transparent way using [Jasypt](http://www.jasypt.org/) library. Our use case will be to store Twitter Api credentials so they are safe in our database but still easy to retrieve and use to post updates in our timeline.
-<!-- more -->
+
+
 So what we have is a simple entity representing our settings item:
 [java]
 @Entity

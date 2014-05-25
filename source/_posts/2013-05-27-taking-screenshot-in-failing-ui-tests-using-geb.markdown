@@ -14,6 +14,8 @@ tags:
 - UI tests
 ---
 
+<!-- more -->
+
 This is a second post about [**Geb**](http://www.gebish.org/) in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.
 
 
@@ -29,7 +31,7 @@ We need a simple way to configure Geb UI tests to take a screenshot on each test
 
 
 We have to find some type of listener that waits for different test results and fires proper method when test fails. In [TestNG](http://testng.org/) we have a [TestListenerAdapter](http://testng.org/javadocs/org/testng/TestListenerAdapter.html) so probably Geb or Spock should have something similar.
-<!-- more -->
+
 After some digging I was able to locate _IRunListener_ with method I need:
 [groovy]
 public interface IRunListener {

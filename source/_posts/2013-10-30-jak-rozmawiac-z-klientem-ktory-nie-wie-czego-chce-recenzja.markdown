@@ -14,6 +14,7 @@ tags:
 - Books
 - In Polish
 ---
+<!-- more -->
 
 Dear Reader
     This post is in my native language as it is a review of book pyblished only in Poland. Please feel free to check my other posts which are mainly written in English.

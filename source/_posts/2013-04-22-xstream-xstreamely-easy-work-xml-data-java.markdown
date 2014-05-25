@@ -16,6 +16,8 @@ tags:
 - XStream
 ---
 
+<!-- more -->
+
 From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term "XML hell" describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like "use configuration written in XML file" or something similar. And in such cases, [XStream](http://xstream.codehaus.org/) comes with its very cool features that make dealing with XML really less painful.
 
 
@@ -29,7 +31,6 @@ From time to time there is a moment when we have to deal with XML data. And most
 
 
 [XStream](http://xstream.codehaus.org/) is a small library to serialize data between Java objects and XML. It's lightweight, small, has nice API and what is most important, it works with and without custom annotations that we might be not allowed to add when we are not the owner of Java classes.
-<!-- more -->
 
 
 ### First example

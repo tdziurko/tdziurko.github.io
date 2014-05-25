@@ -15,9 +15,9 @@ tags:
 - UI tests
 ---
 
+<!-- more -->
+
 #### UPDATE
-
-
 
 
 _When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below is valid and works, there is a much simpler solution to this problem incorporated by Geb itself and I strongly suggest using it instead of mine, home-crafted hack. All credits go to [Artur Gajowy](http://stackoverflow.com/users/52142/artur-gajowy) for showing me better approach.
@@ -31,8 +31,6 @@ _
  
 [Geb](http://gebish.org) is next-generation UI testing library that frees developer from dealing with Selenium API which is in many cases not so friendly. The most important feature of Geb is its support, or I would even say, strong encouragement to use Page Objects in your UI tests. Page Objects are also present in Selenium, but they are not as intuitive and east to use as in Geb.
 But enough about Geb itself. Today I will share with you simple trick how to share one browser instance when running many Geb UI tests. This will significantly reduce time needed to execute UI tests and also reduce memory usage on test machines.
-<!-- more -->
-
 
 
 ### The Problem
