@@ -12,20 +12,18 @@ tags:
 - GeeCON
 ---
 
-This is the second part of my notes from [GeeCON 2014](http://2014.geecon.org/) conference.
+The second part of my notes from [GeeCON 2014](http://2014.geecon.org/) conference.
 
-**Hazem Saleh - Jasmine Automated Tests for JavaScript**
+<!-- more -->
 
+###Hazem Saleh - Jasmine Automated Tests for JavaScript
 
-
-	
   * Testing asynchronous code with [Jasmine](http://jasmine.github.io/2.0/introduction.html) looks really ugly. [Michał Ostruszka](http://michalostruszka.pl/) suggests using [Mocha](http://visionmedia.github.io/mocha/) for such use cases.
 
-	
   * [Istanbul](https://github.com/gotwarlost/istanbul) - code coverage for Java Script
 
 
-**Sam Newman - Deploying And Testing Microservices**
+###Sam Newman - Deploying And Testing Microservices
 
 
 
@@ -92,12 +90,7 @@ This is the second part of my notes from [GeeCON 2014](http://2014.geecon.org/) 
 	
   * "It's easier to manage one service with two versions of API"
 
-
-<!-- more -->
-
-**Michał Ostruszka - SRP applied - building modern web applications**
-
-
+###Michał Ostruszka - SRP applied - building modern web applications
 
 	
   * [gulp](http://gulpjs.com/), [grunt](http://gruntjs.com/) (more popular one) - build systems for frontend/JS
@@ -106,11 +99,8 @@ This is the second part of my notes from [GeeCON 2014](http://2014.geecon.org/) 
   * [yeoman](http://yeoman.io/), [lineman](http://www.linemanjs.com/) - tools to generate bootstrap of frontend part of your application using e.g. AngularJS, Ember, Backbone, etc.
 
 
-**Peter Lawrey - Micro-second latency logging, persistence, IPC and more**
+###Peter Lawrey - Micro-second latency logging, persistence, IPC and more
 
-
-
-	
   * [OpenHFT](http://vanillajava.blogspot.com/2013/07/openhft-java-lang-project.html) (High Frequency Trading)
 
 	
@@ -138,9 +128,7 @@ This is the second part of my notes from [GeeCON 2014](http://2014.geecon.org/) 
 
 
 
-**Kevlin Henney - Seven Ineffective Coding Habits of Many Java Programmers**
-
-
+###Kevlin Henney - Seven Ineffective Coding Habits of Many Java Programmers
 
 	
   * Book ["97 Things Every Programmer Should Know"](https://www.goodreads.com/book/show/7003902-97-things-every-programmer-should-know)
@@ -158,7 +146,7 @@ This is the second part of my notes from [GeeCON 2014](http://2014.geecon.org/) 
   * Why do we add "Exception" to the exception classes? Do we add "Class" at the end of each class name?
 
 
-**Kevlin Henney - Worse Is Better, for Better or for Worse**
+###Kevlin Henney - Worse Is Better, for Better or for Worse
 
 
 

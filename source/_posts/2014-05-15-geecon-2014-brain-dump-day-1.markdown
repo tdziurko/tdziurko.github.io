@@ -13,24 +13,19 @@ tags:
 - GeeCON
 ---
 
-Inspired by post ["Min/max note taking for conferences"](http://scottberkun.com/2014/min-max-note-taking/) I've noted down my impressions, most interesting sentences, mentioned tools/books/blogs during ongoing [GeeCON 2014](http://2014.geecon.org/) conference. This is my "Brain dump" after Day 1:
+Inspired by post ["Min/max note taking for conferences"](http://scottberkun.com/2014/min-max-note-taking/) I've noted down my impressions, most interesting sentences, mentioned tools/books/blogs during ongoing [GeeCON 2014](http://2014.geecon.org/) conference. This is my "Brain dump" after Day 1.
 
-**Pavel Sekanina - Nothing comes for free**
+<!-- more -->
 
+###Pavel Sekanina - Nothing comes for free
 
-
-	
   * Be yourself, be true. It makes everything much easier.
-
 	
   * Your colleagues do not have to like you, but they should appreciate you for your skills, attitude and professionalism.
 
 
-**Jurgen Appelo - The 7 Duties of Great Software Professionals**
+###Jurgen Appelo - The 7 Duties of Great Software Professionals
 
-
-
-	
   * Won Entrepreneur of the Year 1999 in Holland - [details](http://www.nieuwsbank.nl/inp/1999/12/1215R099.htm) in Dutch (Google Translate for English version)
 
 	
@@ -54,22 +49,13 @@ Inspired by post ["Min/max note taking for conferences"](http://scottberkun.com/
 	
   * Time management: try to set aside a little bit of time each day
 
+###Jakub Jurkiewicz - Back to the Future - how to go back in time and provide better future for your agile team
 
-<!-- more -->
-
-**Jakub Jurkiewicz - Back to the Future - how to go back in time and provide better future for your agile team.**
-
-
-
-	
   * very often forgotten point of retrospectives: "reflect how to become more effective"
-
 	
   * ice breakers: Factor fiction game - everyone tells three (2 true, 1 false) sentences about himself and let other team members try to guess
-
 	
   * Worth to read and try: [40 Icebreakers for Small Groups ](http://insight.typepad.co.uk/40_icebreakers_for_small_groups.pdf)
-
 	
   * Very important rule "Do not leave the retrospective room without saying what you wanted to say"
 
@@ -95,7 +81,7 @@ Inspired by post ["Min/max note taking for conferences"](http://scottberkun.com/
   * Books to check: ["Agile retrospectives"](https://www.goodreads.com/book/show/721338.Agile_Retrospectives), ["Project retrospectives"](https://www.goodreads.com/book/show/1523368.Project_Retrospectives)
 
 
-**Patroklos Papapetrou - Managing your Technical Debt with SonarQube**
+###Patroklos Papapetrou - Managing your Technical Debt with SonarQube
 
 
 
@@ -103,9 +89,7 @@ Inspired by post ["Min/max note taking for conferences"](http://scottberkun.com/
   * Code quality - how fast developers can add business value to the system
 
 
-**Adam Warski - Keep it Simple with Scala**
-
-
+###Adam Warski - Keep it Simple with Scala
 
 	
   * [Scala Async](https://github.com/scala/async) - readable lib to write asynchronous code
@@ -120,11 +104,8 @@ Inspired by post ["Min/max note taking for conferences"](http://scottberkun.com/
   * [Macwire](https://github.com/adamw/macwire) - simple, non-invasive DI for Scala
 
 
-**Tim Boudreau - Node.js for Java developers**
+###Tim Boudreau - Node.js for Java developers
 
-
-
-	
   * speaker webpage to check - [http://timboudreau.com/](http://timboudreau.com/)
 
 	
@@ -134,13 +115,9 @@ Inspired by post ["Min/max note taking for conferences"](http://scottberkun.com/
   * [joi](https://github.com/spumko/joi) - library to JSON validation
 
 
-**Olga Madejska - 'I will never deploy on Fridays' - yeah, right...**
+###Olga Madejska - 'I will never deploy on Fridays' - yeah, right...
 
-
-
-	
   * Show your drafts/unfinished work as soon as it is possible. The quicker feedback the better final result will be.
-
 	
   * Treat project as something that you will have to work with till the end of your life. Do not cut corners.
 
@@ -151,7 +128,7 @@ Inspired by post ["Min/max note taking for conferences"](http://scottberkun.com/
 That's all about Day 1. Other days should appear within next week.
 
 
-### And your GeeCON?
+### And what about your GeeCON?
 
 
 What about you? Did you find anything very interesting during GeeCON? Or maybe I've missed really interesting talk on Day 1?
