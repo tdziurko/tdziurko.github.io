@@ -30,7 +30,7 @@ Today we will add two new features: editing and removing locations from our appl
 
 To edit location we should first add link to the LocationsPage redirecting user to edit page:
 
-[html]
+``` html
 <table>
     <tr>
         <th>ID</th><th>Name</th><th>Actions</th> <!-- new header column -->
@@ -43,11 +43,11 @@ To edit location we should first add link to the LocationsPage redirecting user 
         </tr>
     </span>
 </table>
-[/html]
+```
 
 In the corresponding Java class we add link to edit page:
 
-[java]
+``` java
  ListView<Location> locations = new ListView<Location>("locations", createModelForLocations()) {
    @Override
    protected void populateItem(final ListItem<Location> item) {
@@ -64,7 +64,7 @@ In the corresponding Java class we add link to edit page:
      item.add(editLocationLink);
    }
  };
-[/java]
+```
 
 Careful reader might notice that we have new class here, AddEditLocationPage. But it's just old renamed AddLocationPage after some refactoring to reuse it for both creating new and editing existing locations. As in the code listing above, we are passing Id of location to the constructor to inform which object we are going to edit.
 
@@ -74,27 +74,27 @@ Apart from renaming both Java and HTML files we have to introduce some major cha
 
 First we add constructor taking id as a parameter:
 
-[java]
+``` java
 
 public AddEditLocationPage(Long locationId) {
   Location location = locationService.findById(locationId);
   setDefaultModel(new Model<Location>(location));
   initGui();
 }
-[/java]
+```
 
 _setDefaultModel_ will enable other components from the page to use loaded location as a source of rendered data. After this, to  be consistent we change constructor for new locations too:
 
-[java]
+``` java
 public AddEditLocationPage() {
   setDefaultModel(new Model<Location>(new Location()));
   initGui();
 }
-[/java]
+```
 
 After these changes initGui() method needs some tweaks because it should use data from default page model and not from String name field:
 
-[java]
+``` java
 
 private void initGui() {
  Form<Location> addLocationForm = new Form<Location>("addLocationForm",
@@ -154,7 +154,7 @@ private Location getLocationFromPageModel() {       // (9)
   return (Location) getDefaultModel().getObject();
 }
 
-[/java]
+```
 
 **This code listing needs some explanation:**
 
@@ -175,7 +175,7 @@ Ok. that's everything we have to do to add edit feature. We now can edit and add
 
 To start adding this feature we place another link in the LocationsPage HTML file (next to Edit one) and add link to Java class:
 
-[java]
+``` java
 ListView<Location> locations = new ListView<Location>("locations", createModelForLocations()) {
   @Override
     protected void populateItem(final ListItem<Location> item) {
@@ -193,11 +193,11 @@ ListView<Location> locations = new ListView<Location>("locations", createModelFo
     item.add(new RemoveLocationLink("removeLocationLink", item.getModelObject())); // new remove link component
   }
 };
-[/java]
+```
 
 And because we know that in the future logic for removing location will be more complicated, it will be easier to change it if we create remove location link as a separate class:
 
-[java]
+``` java
 
 public class RemoveLocationLink extends Link<Void> {
 
@@ -220,11 +220,11 @@ public class RemoveLocationLink extends Link<Void> {
   }
 
 }
-[/java]
+```
 
 We are almost done. The last thing we need to change is method in service class responsible for removing entity.  Without this change we will be trying to delete detached entity so we should use removeSafely() method instead of remove():
 
-[java]
+``` java
 
 public class LocationServiceImpl implements LocationService {
 
@@ -240,17 +240,17 @@ public class LocationServiceImpl implements LocationService {
  // (...)
 }
 
-[/java]
+```
 
 which is implemented in AbstractDAO class:
 
-[java]
+``` java
 public void removeSafely(EntityClass entity) {
   getEntityManager().remove(
     getEntityManager().getReference(getClazz(), entity.getId()));
 }
 
-[/java]
+```
 
 After this small change application is ready for tests and we can check that everything works just fine.
 

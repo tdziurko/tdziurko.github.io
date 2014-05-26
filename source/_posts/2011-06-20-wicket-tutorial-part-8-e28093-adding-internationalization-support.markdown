@@ -33,18 +33,18 @@ So first, let's create html and Java files:
 
 LanguagePanel.html
 
-[html]
+``` html
     <form wicket:id="languageForm" action="">
             <input wicket:id="polishButton" type="image" src="images/pl.png"
                    name="image" width="25" height="25" style="border-style: none;"/>
             <input wicket:id="englishButton" type="image" src="images/gb.png"
                    name="image" width="25" height="25" style="border-style: none;"/>
     </form>
-[/html]
+```
 
 LanguagePanel.java:
 
-[java]
+``` java
 public class LanguagePanel extends Panel {
 
     Logger log = LoggerFactory.getLogger(LanguagePanel.class);
@@ -73,13 +73,13 @@ public class LanguagePanel extends Panel {
         getSession().setLocale(new Locale(localeString));      // (3)
     }
 }
-[/java]
+```
 
 As you can see it's simple panel with form containing two buttons to change language to Polish and English. We just create form **(1)**, add two buttons which both call **(2)** the same method _changeUserLocaleTo() _**(3)** with different parameter. Method does one, but very important thing: it changes locale of user Sesssion object so all localized strings will be rendered in the chosen language.
 
 Next thing we need to do is add just created panel somewhere to the application. I will place it in the header bar in the BasePage with some styling:
 
-[html]
+``` html
 (...)
 <ul>
     <!-- MENU -->
@@ -92,7 +92,7 @@ Next thing we need to do is add just created panel somewhere to the application.
     <!-- END MENU -->
 </ul>
 (...)
-[/html]
+```
 
 We are almost done with this point but as we would like to test if language switching is working on the main page, we must add properties file for second language. And as properties gathered in Application.properties file doesn't seem to work when language is changed, we will move them to BasePage.properties:
 
@@ -116,14 +116,14 @@ Ok, it should work and when you run jetty server _mvn jetty:run_, enter applicat
 
 Small improvement can be done with titles of flag images to inform user to which locale he will switch after clicking. This is good occasion to show nice feature of wicket:message which can render not only localized text but also to localize elements in other html tags like title in input HTML element. To make it work we simply add _wicket:message="element_name:key_from_properties_bundle"_. In LanguagePanel.html we want to localize title so we add _wicket:message="title:pl"_ to input:
 
-[html]
+``` html
 <form wicket:id="languageForm" action="">
     <input wicket:id="polishButton" type="image" wicket:message="title:pl" src="images/pl.png"
          name="image" width="25" height="25" style="border-style: none;"/>
      <input wicket:id="englishButton" type="image" wicket:message="title:gb" src="images/gb.png"
          name="image" width="25" height="25" style="border-style: none;"/>
 </form>
-[/html]
+```
 
 and after adding pl and gb keys to properties file we could see localized "on hover" title messages over both flags.
 
@@ -137,14 +137,14 @@ First example of using localization in Wicket inside Java files is welcome text 
 
 HomePage.java:
 
-[java]
+``` java
 	private void initGui() {
 		add(new Label("helloLabel", new StringResourceModel("welcomeLabel", this, null)));
 		add(new Label("currentTime", new Date().toString()));
 
 		add(new Label("numberOfUsers", userService.size() +""));
 	}
-[/java]
+```
 
 If you are more interested in arguments of this class constructor please read [javadocs](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/StringResourceModel.html) where you can find detailed description how all this stuff is working.
 
@@ -152,7 +152,7 @@ Another place we could use StringResourceModel is feedback message after locatio
 
 RemoveLocationLink fragment:
 
-[java]
+``` java
 	@Override
 	public void onClick() {
 		locationService.remove(location);
@@ -160,7 +160,7 @@ RemoveLocationLink fragment:
             new Object[] { location.getName() }).getString());
 		setResponsePage(LocationsPage.class);
 	}
-[/java]
+```
 
 alongside with properties message:
 
@@ -187,15 +187,15 @@ To show how it works we will create localized sidebar panel of our application:
 
 First we create empty Java class for panel and move sidebar markup to corresponding panel HTML file:
 
-[java]
+``` java
 public class RightSidebarPanel extends Panel {
 
     public RightSidebarPanel(String id) {
         super(id);
     }
 }
-[/java]
-[html]
+```
+``` html
 
 <!-- SIDEBAR -->
 <h4>About</h4>
@@ -224,7 +224,7 @@ This is example application to help you manage your items hidden in many locatio
 </ul>
 <!-- SIDEBAR -->
 
-[/html]
+```
 
 We need to add just created panel to BasePage java class and then, if we run application, home page screen won't change at all. Ok, now we are ready to the final trick :) Instead of replacing static text with wicket:message elements we create RightSidebarPanel_pl.html file next to standard one and replace whole content with text in Polish language. After this, Wicket uses Polish HTML file when user choose this language and English for users visiting us from other coutries. Easy and straightforward.
 
@@ -236,18 +236,18 @@ Ok, that's all about localization in Wicket and in ItemDirectory application. As
 
 One thing I was missing in previous versions of Item Directory was title linked to main page. As in many other web pages I was clicking it to navigate to home page but previously I had forgott to add this functionality to it didn't work. And now, as we are adding title in other language, it's good occasion to fix it. So first we embed title and header in a href elements in HTML page and then we add links to BasePage Java class:
 
-[html]
+``` html
   <!-- TITLE -->
   <h1><a href="#" wicket:id="headerHomePageLink"><wicket:message key="applicationName"/></a></h1>
   <h2><a href="#" wicket:id="headerHomePageLink2"><wicket:message key="applicationHeader"/></a></h2>
   <!-- END TITLE -->
-[/html]
-[java]
+```
+``` java
     private void addHeaderLinks() {
         add(new BookmarkablePageLink("headerHomePageLink", Application.get().getHomePage()));
 	    add(new BookmarkablePageLink("headerHomePageLink2", Application.get().getHomePage()));
     }
-[/java]
+```
 
 As you can see in HTML snippet I used _wicket:message_ element which provides simple and easy to use label in markup functionality without any Java code. So it's good to utilize this Wicket feature in places with static text which maybe will need internationalization in the future and isn't connected with any particular logic.
 

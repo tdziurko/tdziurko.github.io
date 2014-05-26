@@ -65,7 +65,7 @@ Because we are planning to use consistent layout across the whole application we
 
 So after pasting complete index.html contents into BasePage.html we delete  part responsible for green area  (everything in <div class="content"> tag) and replace it with marker <wicket:child/> which will inform Wicket that filling this area is a role of inheriting class and not a BasePage class itself. After these modifications changed part of HTML file should look like presented below:
 
-[html]
+``` html
 <div class="content">
     <!-- CONTENT -->
 
@@ -73,17 +73,17 @@ So after pasting complete index.html contents into BasePage.html we delete  par
 
     <!-- END CONTENT -->
 </div>
-[/html]
+```
 
 And last modification to  prevent our IDE from marking wicket:id elements as invalid: proper XML namespace declared in HTML file. Just make sure that beginning of your BasePage.html looks similar to this:
 
-[html]
+``` html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
 >
-[/html]
+```
 
 Declaration below informs that we are using Wicket namespace.
 
@@ -99,7 +99,7 @@ And coming back to our steps...
 
 If you want to be able to view full pages with external HTML editor you should paste complete index.html contents into HomePage.html and remember to place old content between <div class="content"> like in the listing below:
 
-[html]
+``` html
 <div class="content">
     <!-- CONTENT -->
       <wicket:extend>
@@ -111,7 +111,7 @@ Number of users in database: <span wicket:id="numberOfUsers"/>
 </wicket:extend>
     <!-- END CONTENT -->
 </div>
-[/html]
+```
 
 You don't have to worry about content outside wicket:extend element as it will be ignored by framework (except some special cases marked with other wicket tags).
 
@@ -209,7 +209,7 @@ applicationHeader = Manage your items easily!
 
 Next in BasePage.html replace application name and header text and page title with Wicket element <wicket:message key="keyName"/>. This element will tell Wicket to load text from properties file (more about this [here](https://cwiki.apache.org/WICKET/wickets-xhtml-tags.html) in Wicket Wiki)
 
-[html]
+``` html
   (...)
   <title><wicket:message key="applicationName"/></title>
   <link rel="stylesheet" href="styles.css" type="text/css" />
@@ -225,7 +225,7 @@ Next in BasePage.html replace application name and header text and page title wi
     </div>
   </div>
   (...)
-[/html]
+```
 
 When we reload page after Jetty noticed changes in the code, we could see page looking exactly the same as before adding properties file so everything seems to work correctly. But when we look at the title bar in web browser:
 
@@ -233,7 +233,7 @@ When we reload page after Jetty noticed changes in the code, we could see page l
 
 Oh no! - you might think - I screwed something up! But don't worry, it's not a bug, it's a feature :) Do you remember fragment of Application.java class?
 
-[java]
+``` java
 @Override
 	protected void init() {
 		super.init();
@@ -246,7 +246,7 @@ Oh no! - you might think - I screwed something up! But don't worry, it's not a b
 		}
 
 	}
-[/java]
+```
 
 Default Wicket behaviour is to render its tags, just to make it easier to debug and develop application. But in this code listing we said that if we deploy our application to the production, all tags should be stripped: _setStripWicketTags(true)_. So if you move this method out of the if brackets we will see that now our title renders correctly.
 

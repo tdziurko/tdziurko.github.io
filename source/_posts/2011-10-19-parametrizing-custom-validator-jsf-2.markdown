@@ -20,16 +20,16 @@ Writing a custom validator in JSF 2 is not a complicated task. You implement _Va
 
 You need custom date validator, let's say checking that date from _rich:calendar_ is not in the past. So we place calendar component with validator inside.
 
-[html]
+``` html
     <rich:calendar value="#{fieldValue}" id="dateField" datePattern="yyyy/MM/dd">
         <f:validator validatorId="dateNotInThePast"/>
     </rich:calendar>
-[/html]
+```
 
 <!-- more -->
 And our  validator could look like below:
 
-[java]
+``` java
 
 @FacesValidator("dateNotInThePast")
 public class DateNotInThePastValidator implements Validator {
@@ -57,7 +57,7 @@ public class DateNotInThePastValidator implements Validator {
   }
 }
 
-[/java]
+```
 
 And if we provide key value in properties file we will see something like this:
 
@@ -83,18 +83,18 @@ We need to somehow provide a label of validated field to our custom validator. 
 
 So in Java Server Faces we could parametrize components with attributes (_f:attribute_ tag). So we add attribute to rich:calendar and then read this passed value value inside validator assigned to this calendar field. So now our calendar components should look like that:
 
-[html]
+``` html
 
     <rich:calendar value="#{fieldValue}" id="dateField" datePattern="yyyy/MM/dd">
         <f:validator validatorId="dateNotInThePast"/>
         <f:attribute name="fieldLabel" value="Date field 2" />
     </rich:calendar>
 
-[/html]
+```
 
 And in our validator Java class we could get this value using _uiComponent.getAttributes().get("fieldLabel");_
 
-[java]
+``` java
 
     private void checkDate(Date date, UIComponent uiComponent, Locale locale) {
         if(isDateInRange(date) == false) {
@@ -115,7 +115,7 @@ And in our validator Java class we could get this value using _uiComponent.getAt
 
         return fieldLabel;
     }
-[/java]
+```
 
 Our property value for error should have value _can not be in the past_ as _Date_ or field label will be added at the beginning of error message.
 

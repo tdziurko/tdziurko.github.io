@@ -22,8 +22,8 @@ Recently for a first time  have to create in the application functionality to t
 
 If we are using Java Persistence API we can pick very useful annotations: @PrePersist and @PreUpdate. Suppose that in every class we want to gather data about who and when created database record and who and when edited it for a last time. Because such functionality is needed in every entity class we can move logic to common abstract class which will be extended by all concrete entity classes:<!-- more -->
 
-[java]
-<pre>import java.util.Date;
+``` java
+import java.util.Date;
 import javax.persistence.*;
 
 @MappedSuperclass
@@ -72,8 +72,7 @@ public abstract class BaseEntity {
   setModifiedOn(new Date());
  }
 }
-</pre>
-[/java]
+```
 
 Methods marked by annotations are called just before saving changes in database so we can add our information about user and date of operation.
 

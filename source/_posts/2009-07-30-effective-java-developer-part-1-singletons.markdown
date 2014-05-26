@@ -24,7 +24,7 @@ As I said in me previous post, today I am going to start series of posts about t
 
 The very, very standard singleton looks like that:
 
-[java]
+``` java
 package pl.tomaszdziurko.effectivejava;
 public class LeoMessi {
   public static final LeoMessi INSTANCE = new LeoMessi();
@@ -36,14 +36,14 @@ public class LeoMessi {
   }
 }
 
-[/java]
+```
 
 <!-- more -->
 In the example above we can easily notice that this is a singleton: private constructor and final static filed with only one existing instance of LeoMessi are more than clear signal about it.
 
 **Second way:**
 
-[java]
+``` java
 public class LeoMessi {
   private static final LeoMessi INSTANCE = new LeoMessi();
   private LeoMessi() {
@@ -56,7 +56,7 @@ public class LeoMessi {
     //do something incredible on the pitch
   }
  }
-[/java]
+```
 
 
 Creating singleton as shown above gives us greater flexibility in later changes in the code. We can change internals of getInstance() without breaking our public API, for example we can modify it to return unique instance per thread or per logged user.
@@ -67,7 +67,7 @@ Unfortunately both approaches are not reflection-safe and also are not ready for
 
 The last one (and the most proper way according to the author) way of creating singleton is doing it with enums:
 
-[java]
+``` java
   public enum LeoMessi {
   INSTANCE;
 
@@ -75,7 +75,7 @@ The last one (and the most proper way according to the author) way of creating s
    //do something incredible on the pitch
   }
  }
-[/java]
+```
 
 
 Thanks to using enum we have seralization and reflection problems solved without any additional effort. Everything is delivered by the Java language itself and there is nothing to worry about :)

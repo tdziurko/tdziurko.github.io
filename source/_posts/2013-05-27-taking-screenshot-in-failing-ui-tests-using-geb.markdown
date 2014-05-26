@@ -90,9 +90,9 @@ class GlobalSpecExtension implements IGlobalExtension {
 
 **Registering Spock global extension**
 Each global extension have to be registered to Spock. This can be achieved by placing text file with easy to remember name in META-INF/services directory. File must be named _org.spockframework.runtime.extension.IGlobalExtension_ and should contain full name of our implementation of IGlobalExtension interface:
-[java]
+``` java
 com.smscpl.mc5.uitests.geb_extensions.GlobalSpecExtension
-[/java]
+```
 
 **Taking a screenshot on each UI test fail**
 Now on each test fail we will see that our text message is printed to the console. This proves that our solution is going in the right direction and last thing still not implemented is taking a screenshot.

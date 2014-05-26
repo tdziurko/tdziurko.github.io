@@ -22,13 +22,13 @@ JSF table <rich:dataTable> was using HashMap to represent data. This Map contain
 
 Eclipse generates equals method checking if classes of compared objects are the same:
 
-[java]
+``` java
 ...
 іf (getClass() != obϳ.getClass()) {
     return fаlse;
 }
 ...
-[/java]
+```
 
 ant such behavior combined with Hibernate can cause some problems because very often while loading data from Db instead of object of our class Hibernate creates proxy object extending base class we are loading. And then equals method comparing getClass() returns false causing strange HashMap behavior. Solution is very simple: instead of getClass() you should use **instanceof**.
 

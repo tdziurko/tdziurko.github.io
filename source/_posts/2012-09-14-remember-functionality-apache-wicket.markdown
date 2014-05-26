@@ -78,9 +78,10 @@ Point 2 needs some explanation. In this example app we are going to save login a
 **Step 1: As a User I want to decide if  I want to use "Remember Me" feature**
 [Link to commit with this step](https://github.com/tdziurko/wicket-rememberme/commit/c5e91b39a203c9103754f8a03ab2e4151fc9e199)
 
-To allow user to notify application that he wants to use 'Remember Me' functionality we will simply add a checkbox to login page. So we need to amend LoginPage java and html file a bit (new stuff is highlighted):
+To allow user to notify application that he wants to use 'Remember Me' functionality we will simply add a checkbox to login page. 
+So we need to amend LoginPage java and html file a bit:
 
-[html highlight="21,22,23,24,25,26,27" title="LoginPage.html fragment"]
+``` html
     <form wicket:id="form" class="form-horizontal">
         <fieldset>
             <legend>Please login</legend>
@@ -101,7 +102,7 @@ To allow user to notify application that he wants to use 'Remember Me' functiona
                 <input type="password" id="password" wicket:id="password" />
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group"> <!-- this div is new -->
             <div class="controls">
                 <label class="checkbox">
                     <input type="checkbox" wicket:id="rememberMe"> Remember me on this computer
@@ -112,9 +113,9 @@ To allow user to notify application that he wants to use 'Remember Me' functiona
             <input type="submit" wicket:id="submit" value="Login" title="Login" class="btn btn-primary"/>
         </div>
     </form>
-[/html]
+``` 
 
-[java highlight="3,13" title="LoginPage.java fragment"]
+``` java 
     private String login;
     private String password;
     private boolean rememberMe;
@@ -127,7 +128,7 @@ To allow user to notify application that he wants to use 'Remember Me' functiona
         loginForm.add(new FeedbackPanel("feedback"));
         loginForm.add(new RequiredTextField<String>("login", new PropertyModel<String>(this, "login")));
         loginForm.add(new PasswordTextField("password", new PropertyModel<String>(this, "password")));
-        loginForm.add(new CheckBox("rememberMe", new PropertyModel<Boolean>(this, "rememberMe")));
+        loginForm.add(new CheckBox("rememberMe", new PropertyModel<Boolean>(this, "rememberMe"))); // this line
 
         Button submit = new Button("submit") {
             // (...)
@@ -135,7 +136,7 @@ To allow user to notify application that he wants to use 'Remember Me' functiona
 
         loginForm.add(submit);
     }
-[/java]
+```
 
 Now we are ready for next step.
 
@@ -144,7 +145,7 @@ Now we are ready for next step.
 
 First we need a CookieService that will encapsulate all logic responsible for working with cookies: saving, listing and clearing cookie when needed. Code is rather simple, we work with WebResponse and WebRequest classes to modify cookies in user's browser. 
 
-[java title="CookieService.java"]
+``` java
 public class CookieService {
 
     public Cookie loadCookie(Request request, String cookieName) {
@@ -178,11 +179,11 @@ public class CookieService {
         }
     }
 }
-[/java]
+```
 
 Then when user checks 'Remember Me' on LoginPage, we have to save cookies in his browser:
 
-[java title="LoginPage.java fragment" highlight="14,15,16,17,18"]
+``` java LoginPage.java fragment
     Button submit = new Button("submit") {
         @Override
         public void onSubmit() {
@@ -206,7 +207,7 @@ Then when user checks 'Remember Me' on LoginPage, we have to save cookies in his
             }
         }
     };
-[/java]
+```
 
 **Step 3: As a User I want to be auto-logged when I return to web application**
 [Link to commit with this step](https://github.com/tdziurko/wicket-rememberme/commit/59cb50d433a79a73b1020b488d5a13a7355da0d3)
@@ -215,7 +216,7 @@ To check if user entering our application is a "returning user to auto-login" we
 
 So let's start with extracting session related logic into separate class called SessionProvider. It will need UserService and CookieService to check for existing users and cookies so we pass them as a references in the constructor.
 
-[java title="WicketApplication.java fragment" highlight="5,9"]
+``` java
 public class WicketApplication extends WebApplication {
 
     private UserService userService = new UserService();
@@ -227,11 +228,11 @@ public class WicketApplication extends WebApplication {
         return sessionProvider.createNewSession(request);
     }
 }
-[/java]
+```
 
 Role of SessionProvider is to create new UserSession, check if proper cookies are present and if so, set logged user. Additionally we add feedback message to inform user that he was auto logged. So let's look into the code:
 
-[java title="SessionProvider.java"]
+``` java
 public class SessionProvider {
 
     public SessionProvider(UserService userService, CookieService cookieService) {
@@ -258,17 +259,17 @@ public class SessionProvider {
     }
 }
 
-[/java]
+```
 
 To show feedback message on HomePage.java we must add FeedbackPanel there, but for the brevity I will omit this in this post. You can read [commit](https://github.com/tdziurko/wicket-rememberme/commit/59cb50d433a79a73b1020b488d5a13a7355da0d3) to check how to do that.
 
 So we after three steps we should have 'Remember Me' working. To check it quickly please modify session timeout in web.xml file by adding:
 
-[xml title="web.xml fragment"]
+``` xml web.xml fragment
     <session-config>
         <session-timeout>1</session-timeout>
     </session-config>
-[/xml]
+```
 
 and then start application _mvn clean compile jetty:run_, go to login page, login, close browser and after over a 1 minute (when session expires) open it again on http://localhost:8080. You should see something like this:
 
@@ -280,7 +281,7 @@ So it works. But we still need one more thing: allow user to remove cookies and 
 [Link to commit with this step](https://github.com/tdziurko/wicket-rememberme/commit/d9b35803ea0321dc5e80f80d480a6af527a457fa)
 In the last step we have to allow user to clear his data and disable "Remember Me" for his account. This will be achieved by clearing both cookies when user explicitly clicks Logout link.
 
-[java title="HomePage.java fragment" highlight="4,5,6,7,8,9"]
+``` java HomePage.java fragment
     Link<Void> logoutLink = new Link<Void>("logout") {
         @Override
         public void onClick() {
@@ -294,7 +295,7 @@ In the last step we have to allow user to clear his data and disable "Remember M
     };
     logoutLink.setVisible(UserSession.get().userLoggedIn());
     add(logoutLink);
-[/java]
+```
 
 
 

@@ -60,13 +60,13 @@ There are a few elements which probably exists in source code of almost every pl
 
 Your plugin action should extend AnAction abstract class from IntelliJ OpenAPI. The only parameter passed to actionPerformed method is AnActionEvent. And from this object you can access various places:
 
-[java]
+``` java
 Project currentProject = DataKeys.PROJECT.getData(actionEvent.getDataContext());
 VirtualFile currentFile = DataKeys.VIRTUAL_FILE.getData(actionEvent.getDataContext());
 Editor editor = DataKeys.EDITOR.getData(actionEvent.getDataContext());
 
 // and so on...
-[/java]
+```
 
 List of all places available in this way can be found in [DataKeys](http://grepcode.com/file/repository.grepcode.com/java/ext/com.jetbrains/intellij-idea/10.0/com/intellij/openapi/actionSystem/DataKeys.java) class (and its parents) constants list.
 
@@ -78,21 +78,21 @@ This kind of popup is very useful to communicate feedback messages to user. It c
 
 But before we show our balloon we need to specify a place when it will be located. In my plugin it is StatusBar (the lowest element in IDEA GUI):
 
-[java]
+``` java
 StatusBar statusBar = WindowManager.getInstance()
                         .getStatusBar(DataKeys.PROJECT.getData(actionEvent.getDataContext()));
-[/java]
+```
 
 and then we can prepare balloon and display it:
 
-[java]
+``` java
 JBPopupFactory.getInstance()
                 .createHtmlTextBalloonBuilder(htmlText, messageType, null)
                 .setFadeoutTime(7500)
                 .createBalloon()
                 .show(RelativePoint.getCenterOf(statusBar.getComponent()),
                                                  Balloon.Position.atRight);
-[/java]
+```
 
 
 ### A few trivias

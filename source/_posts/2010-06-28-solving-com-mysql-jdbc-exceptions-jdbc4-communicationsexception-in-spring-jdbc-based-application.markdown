@@ -21,7 +21,7 @@ tags:
 
 Last week after releasing first version of Wicket, Spring and JDBC based  application into production I noticed strange behavior. Everyday first  attempt to enter the service caused unexpected exception. Quick glance  at Tomcat logs showed code presented below:
 
-[java]
+``` java
 Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet successfully received from the server was156378 seconds ago.The last packet sent successfully to the server was 156378 seconds ago, which  is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.
         at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
         at sun.reflect.NativeConstructorAccessorImpl.
@@ -47,7 +47,7 @@ prepareConnectionForTransaction(DataSourceUtils.java:173)
         at org.springframework.jdbc.datasource.DataSourceTransactionManager
 .doBegin(DataSourceTransactionManager.java:210)
         ... 41 more
-[/java]
+```
 
 It looks that after few hours at night when no-one used the application,  MySQl server closed connection and first database query caused  exception. I double checked my connection url and settings in context.xml file to found nothing obviously wrong:<!-- more -->
 

@@ -29,7 +29,7 @@ In our ItemDirectory web application we don't have (yet!) any sophisticated mech
 
 So first thing we need to do is store which language user wants to use. So we must modify changeUserLocaleTo() method in LanguagePanel class:
 
-[java]
+``` java
 public class LanguagePanel extends Panel {
 
   // (...)
@@ -42,7 +42,7 @@ public class LanguagePanel extends Panel {
     ((WebResponse)getResponse()).addCookie(languageCookie);
   }
 }
-[/java]
+```
 
 This mechanism is rather easy to understand. Besides setting session locale we also create and put language cookie with name and age defined as static fields in our Application class. We just have to remember to add our new or modified cookie to response so it will be send back to the browser.
 After this we can run jetty with deployed application and check that after clicking there is a cookie with information about selected language.
@@ -53,7 +53,7 @@ After this we can run jetty with deployed application and check that after click
 
 Now we have some information in cookie waiting for our application to use it. The best moment to utilize such information is while creating new session so application could load preferences from cookie and store it in user session object. So lets play with method in WebApplication class which creates new user session:
 
-[java]
+``` java
 public class Application extends WebApplication {
 
   // (...)
@@ -67,11 +67,11 @@ public class Application extends WebApplication {
     return session;
   }
 }
-[/java]
+```
 
 So far so good, but the most important things happen in trySetLanguageFromCookie() method
 
-[java]
+``` java
 private Session trySetLanguageFromCookie(Session session, Request request, Response response) {
 
   Cookie[] cookies = ((WebRequest) request).getCookies();
@@ -92,7 +92,7 @@ private Session trySetLanguageFromCookie(Session session, Request request, Respo
 
   return session;
 }
-[/java]
+```
 
 In this method we first try to find **(1)** cookie named LANGUAGE_COOKIE_NAME and if we find it, we modify **(2)** session locale according to data loaded from the cookie. And another thing we could do is refresh **(4)** just loaded cookie so if user won't click flag for a long time (as he doesn't have to because we automatically set proper locale basing on cookie), he won't lose his preference.
 

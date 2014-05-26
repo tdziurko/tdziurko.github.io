@@ -26,14 +26,12 @@ Jedną z takich pozycji jest e-book pod tytułem "Jak całkowicie odmienić spos
 
 Autor na wstępnie  przedstawia myśl, która na początku nauki programowania nie była obca  chyba nikomu: "Obym nie musiał w tym kodzie nic zmieniać". Niestety  okazuje się, że kod aplikacji jest częściej czytany i modyfikowany po  wdrożeniu niż zdajemy sobie sprawę, dlatego tak duży nacisk powinniśmy  kłaść na jakość i przejrzystość tego co tworzymy. Nasze sprytne  rozwiązanie problemu, które wymyśliliśmy dzisiaj za pół roku może być  dla nas równie trudne do zrozumienia co kod napisany przez kogoś innego.
 
-[java]
-<pre>//
-
+``` java
+//
 //When I wrote this, only God and I understood what I was doing
 //Now, God only knows
 //
-</pre>
-[/java]
+```
 
 Źródło: [StackOverflow](http://stackoverflow.com/questions/184618/what-is-the-best-comment-in-source-code-you-have-ever-encountered)
 

@@ -22,7 +22,7 @@ However, in this post I will focus on the most interesting thing, Test-Driven De
 
 Unfortunately at the beginning of this training it appeared that my lovely IDE (NetBeans) isn't a natural-born IDE for TDD. And what's the problem? NB isn't smart enough when we are coding and trying to generate code by intention. For example, let's compare process of creating testing method and how two IDEs: Eclipse and NetBeans are helping us in the following scenario:<!-- more -->
 
-[java]
+``` java
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -38,7 +38,7 @@ public class UserServiceTest {
         assertEquals(user, userService.getCurrentUser());
     }
 }
-[/java]
+```
 
 
 After placing cursor over the user variable and pressing Alt+Enter (NetBeans) or Ctrl+1 (Eclipse) we will see (Eclipse at the bottom, NetBeans fragment at the top):
@@ -50,7 +50,7 @@ Even at this early stage of comparison we can see that Eclipse gives us more fle
 
 Ok, but lets keep going. Suppose we have a yet undefined variable userService:
 
-[java]
+``` java
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -66,13 +66,13 @@ public class UserServiceTest {
         assertEquals(user, userService.getCurrentUser());
     }
 }
-[/java]
+```
 
 and we want to continue writing our test. Ctrl+Space on userService variable in NetBeans will gives us only option to generate UserService class. Whereas Eclipse will return following options: generate class, generate interface, generate enum and additionally convert our class into two strange forms that I didn't cover here :) But in short, Eclipse gives us many more options to choose from. In our scenario we choose interface. If we choose class, Netbeans would create it in the same package (and we don't want concrete classes lying next to test classes) and Eclipse would ask us where to place new class.
 
 Going furher with our TDD we mock service and create default user. Now we need to add method getCurrentUser().
 
-[java]
+``` java
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -91,13 +91,13 @@ public class UserServiceTest {
         assertEquals(user, userService.getCurrentUser());
     }
 }
-[/java]
+```
 
 And here let me introduce a nail in NetBeans' coffin as a TDD-friendly IDE. It's a missing ability to code by intention. When we place cursor over missing method and use hint short-cut NetBeans will generally fail and will not suggest any solution. And even TDD newbie like me knows that similar situations in red-green-refactor cycle are very, very common. Of course we could help NetBeans with moving this method out of assertEquals:
 
-[java]
+``` java
 User userFromService = userService.getCurrentUser();
-[/java]
+```
 
 And only then we can see "create method" hint. In Eclipse we are not forced to use such tricks and it is possible to create method from the inside of assertions right after we press Ctrl+1. Moreover comparing what both IDEs offer in automatic refactoring area gives us another reason to abandon NetBeans and use Eclipse in our everyday work because the amount of refactor options this IDE has is pretty impressive.
 

@@ -23,7 +23,7 @@ Google Guava in version number 10 introduced new package [eventbus](http://docs.
 
 To listen to some events we need a listener class. Such class created in _google-guava-way_ doesn't have to implement any particular interface or extend any specified class. It can be any class with just one required element: a method marked with _@Subscribe_ annotation:
 
-[java]
+``` java
 public class EventListener {
 
     public int lastMessage = 0;
@@ -37,13 +37,13 @@ public class EventListener {
         return lastMessage;
     }
 }
-[/java]
+```
 
 _lastMessage_ property is used in tests below to check if events were received successfully.
 
 And of course we need an event class to send it around:
 
-[java]
+``` java
 public class OurTestEvent {
 
     private final int message;
@@ -56,7 +56,7 @@ public class OurTestEvent {
         return message;
     }
 }
-[/java]
+```
 
 
 #### How it works
@@ -66,7 +66,7 @@ The best way to show something in action is to write some tests, so let's see ho
 
 <!-- more -->
 
-[java]
+``` java
     @Test
     public void shouldReceiveEvent() throws Exception {
 
@@ -82,7 +82,7 @@ The best way to show something in action is to write some tests, so let's see ho
         // then
         assertThat(listener.getLastMessage()).isEqualTo(200);
     }
-[/java]
+```
 
 This test can not be simpler :) We create EventBus instance and listener class instance, then register listener and post new event. And of course this test passes :)
 
@@ -92,7 +92,7 @@ This test can not be simpler :) We create EventBus instance and listener class i
 
 Guava also allows to create listener that is reacting for many different events. We just need to annotate many methods with @Subscribe and that's all:
 
-[java]
+``` java
 public class MultipleListener {
 
     public Integer lastInteger;
@@ -116,11 +116,11 @@ public class MultipleListener {
         return lastLong;
     }
 }
-[/java]
+```
 
 and a simple example:
 
-[java]
+``` java
     @Test
     public void shouldReceiveMultipleEvents() throws Exception {
 
@@ -138,7 +138,7 @@ and a simple example:
         assertThat(multiListener.getLastInteger()).isEqualTo(100);
         assertThat(multiListener.getLastLong()).isEqualTo(800L);
     }
-[/java]
+```
 
 We don't have to implement multiple interfaces, Guava provides a nice and clean solution with one annotation.
 
@@ -159,7 +159,7 @@ Now let's analyze some more interesting features of EventBus.
 
 First unusal thing is a [DeadEvent](http://docs.guava-libraries.googlecode.com/git-history/v11.0.1/javadoc/com/google/common/eventbus/DeadEvent.html) class, predefined event which is fired when we've posted any type of event but no one was there to receive it. To see how it works let's create listener waiting for dead events:
 
-[java]
+``` java
 /**
  * Listener waiting for the event that any message was posted but not delivered to anyone
  */
@@ -176,11 +176,11 @@ public class DeadEventListener {
         return notDelivered;
     }
 }
-[/java]
+```
 
 and test case showing how it works:
 
-[java]
+``` java
     @Test
     public void shouldDetectEventWithoutListeners() throws Exception {
 
@@ -195,7 +195,7 @@ and test case showing how it works:
 
         assertThat(deadEventListener.isNotDelivered()).isTrue();
     }
-[/java]
+```
 
 So if there was no listener waiting for event which was posted, EventBus fires DeadEvent so we could do something or at least add info to log files to be aware that such situation occured.
 
@@ -205,7 +205,7 @@ So if there was no listener waiting for event which was posted, EventBus fires D
 
 Another interesting feature is that listeners can leverage existing events hierarchy. So if Listener A is waiting for events A, and event A has a subclass named B, this listener will receive both type of events: A and B. This can be presented with short example. Let's create two listeners, one listening for Number class events and second one for Integer (which in case you didn't know is a subclass of Number :) ):
 
-[java]
+``` java
 
 public class NumberListener {
 
@@ -221,8 +221,8 @@ public class NumberListener {
     }
 }
 
-[/java]
-[java]
+```
+``` java
 public class IntegerListener {
 
     private Integer lastMessage;
@@ -237,11 +237,11 @@ public class IntegerListener {
     }
 }
 
-[/java]
+```
 
 And a test method showing this feauture:
 
-[java]
+``` java
     @Test
     public void shouldGetEventsFromSubclass() throws Exception {
 
@@ -267,7 +267,7 @@ And a test method showing this feauture:
         assertThat(integerListener.getLastMessage()).isEqualTo(100);
         assertThat(numberListener.getLastMessage()).isEqualTo(200L);
     }
-[/java]
+```
 
 In this method we see that first event (_new Integer(100)_) is received by both listeners, but second one (_new Long(200L)_) reaches only NumberListener as Integer one isn't created for this type of events.
 

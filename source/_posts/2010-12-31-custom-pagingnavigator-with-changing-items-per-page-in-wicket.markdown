@@ -34,7 +34,7 @@ Of course I was not going to implement this from the scratch, because most of wo
 
 Below we can see changes in class fields and constructors:
 
-[java]
+``` java
 public class CustomPagingNavigator extends Panel {
 
 	public static final String NAVIGATION_ID = "navigation";
@@ -71,11 +71,11 @@ public class CustomPagingNavigator extends Panel {
 	}
     (...)
 }
-[/java]
+```
 
 First new method is _addContainerWithPagingLinks_ based mainly of _onBeforeRender_ from [PagingNavigator](http://pastebin.com/kwzBG9mH). This method adds paging links to the component to allow user to change number of viewed page. One small addition is an overriden _isVisible_ which will hide paging fragment when there is only one page to show.
 
-[java]
+``` java
 private void addContainerWithPagingLinks() {
 
 		pagingLinksContainer = new WebMarkupContainer("pagingLinksContainer") {
@@ -100,20 +100,20 @@ private void addContainerWithPagingLinks() {
 
 		add(pagingLinksContainer);
 	}
-[/java]
+```
 
 Next step is to override _isVisible_ method in our component which will hide it completely when DataView has no items to render:
 
-[java]
+``` java
 	@Override
 	public boolean isVisible() {
 		return dataView.getItemCount() > 0;
 	}
-[/java]
+```
 
 And now it's time to create the core of our component: a place where items per page can be changed. This is done in method:
 
-[java]
+``` java
 	private void addLinksChangingItemsPerPageNumber() {
 		ListView<Integer> itemsPerPageList = new ListView<Integer>("itemsPerPage", itemsPerPageValues) {
 			@Override
@@ -127,13 +127,13 @@ And now it's time to create the core of our component: a place where items per p
 
 		add(itemsPerPageList);
 	}
-[/java]
+```
 
 In the above method we create ListView for Integers from _itemsPerPageValues_ and for each number we add link (new class _ItemPerPageLink_ explained below) which will change _DataView_ itemsPerPage property. Except reference to DataView we also give to our link reference to pagingLinksContainer to hide it after user changes itemsPerPage and there will be only one page to show.
 
 Complete class ItemPerPageLink source code:
 
-[java]
+``` java
 public class ItemPerPageLink<T> extends Link<T> {
 
 	private final int itemsPerPage;
@@ -162,7 +162,7 @@ public class ItemPerPageLink<T> extends Link<T> {
 	}
 
 }
-[/java]
+```
 
 In this class we:
 1. Disable link for number which is current dataView.itemsPerPage value.
@@ -172,7 +172,7 @@ In this class we:
 
 And that's all. For those who want complete solution in one place there is complete source of the class CustomPagingNavigator with its markup:
 
-[java]
+``` java
 import java.util.Arrays;
 import java.util.List;
 
@@ -304,11 +304,11 @@ public class CustomPagingNavigator extends Panel {
 	}
 }
 
-[/java]
+```
 
 And its markup:
 
-[html]
+``` html
 <?xml version="1.0" encoding="UTF-8" ?>
 <html xmlns:wicket>
 <body>
@@ -360,7 +360,7 @@ And its markup:
 </body>
 </html>
 
-[/html]
+```
 
 
 ### Usage of the component
@@ -368,7 +368,7 @@ And its markup:
 
 Our newly created component can be used in a very similar way to the standard Wicket PagingNavigator:
 
-[java]
+``` java
 public class DataViewPanel extends Panel {
 
 	public DataViewPanel(String id) {
@@ -382,4 +382,4 @@ public class DataViewPanel extends Panel {
 	}
 }
 
-[/java]
+```

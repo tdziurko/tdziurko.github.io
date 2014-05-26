@@ -41,7 +41,7 @@ As I promised in the [previous post](<a href="/2011/02/wicket-tutorial-part-4-cu
 
 First thing we need is common query to load any entity with chosen property name and value. So we start with adding findByProperty method to DAO interface:
 
-[java]
+``` java
 public interface DAO<EntityClass extends IEntity> {
 
 	List<EntityClass> findAll();
@@ -52,11 +52,11 @@ public interface DAO<EntityClass extends IEntity> {
 
 	// (...)
 }
-[/java]
+```
 
 Next we implement this method in base DAO class named AbstractDAO:
 
-[java]
+``` java
 public abstract class AbstractDAO<EntityClass extends AbstractEntity>
         implements DAO<EntityClass> {
 
@@ -80,7 +80,7 @@ public abstract class AbstractDAO<EntityClass extends AbstractEntity>
     }
 
 }
-[/java]
+```
 
 Little explanation to the code above: we are using JPA2 Criteria Api which is one of the coolest new feature in the second edition of Java Persistence Api. As it's not a main topic of this post, don't expect detailed information about JPA2 here. I will just try to provide short description of each step:
 
@@ -112,15 +112,15 @@ Little explanation to the code above: we are using JPA2 Criteria Api which is on
 
 First step to create flexible validator is to rename it to more proper form. So now our class UniqueLocationNameValidator is UniqueEntityValidator. And since we are going to use classes other than only String for a validated property, we now can't extend [StringValidator](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/validation/validator/StringValidator.html). Instead of it, we will use  [AbstractValidator](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/validation/validator/AbstractValidator.html). But as it's generic we must introduce generic parameter too and signature of new class will look like this:
 
-[java]
+``` java
 
 public class UniqueEntityValidator<PropertyClass> extends AbstractValidator<PropertyClass>
 
-[/java]
+```
 
 Then, as we are going to use any provided DAO instance, now we don't inject LocationService to the validator but pass  DAO implementing class for validated entity with the constructor. Another thing needed when constructing validator object is property name which will be used in validation process and also by the DAO to try to load existing entity.
 
-[java]
+``` java
 
 public class UniqueEntityValidator<PropertyClass> extends AbstractValidator<PropertyClass> {
 
@@ -140,11 +140,11 @@ public class UniqueEntityValidator<PropertyClass> extends AbstractValidator<Prop
 
     // (...)
 }
-[/java]
+```
 
 Ok, we are almost there. Let's see how the most important method in our validator look like:
 
-[java]
+``` java
 
 @Override
 protected void onValidate(IValidatable<PropertyClass> validatable) {
@@ -156,7 +156,7 @@ protected void onValidate(IValidatable<PropertyClass> validatable) {
 
 }
 
-[/java]
+```
 
 When I started writing this generic validator, I thought that onValidate will be more complicated. But it appeared that it's very clean and simple solution (like most things in Wicket :) ). We just use findByProperty method from passed with constructor DAO and that's all.
 
@@ -176,7 +176,7 @@ Here we can see how label and input elements are used. Wicket in a runtime repla
 
 Of course this message can be changed in a simple way, we must only override method resourceKey() to return not validator class name but our new validator message key which will be used to find corresponding error message:
 
-[java]
+``` java
 		UniqueEntityValidator<String> locationNameValidator = new UniqueEntityValidator<String>(locationDao, "name") {
 			@Override
 			protected String resourceKey() {
@@ -184,13 +184,13 @@ Of course this message can be changed in a simple way, we must only override met
 			}
 		};
                 nameField.add(locationNameValidator);
-[/java]
+```
 
 New message (key CustomValidator with our custom error message value) should be placed in proper properties file: PageClass.properties or Application.properties in most cases.
 
 And, because we reached end of this post, we could see how new validator is uded in AddLocationPage:
 
-[java]
+``` java
 public class AddLocationPage extends BasePage {
 
 	private static final int MIN_LOCATION_NAME_LENGTH = 5;
@@ -240,7 +240,7 @@ public class AddLocationPage extends BasePage {
 		addLocationForm.add(submitButton);
 	}
 }
-[/java]
+```
 
 Generic String property allows validator to know that validatable.getValue() in UniqueEntityValidator should return String object and no casting is necessary. This rule applies to any validator we use in this way: unique Integer value, unique Date, etc.
 

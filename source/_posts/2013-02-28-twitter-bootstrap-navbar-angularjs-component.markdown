@@ -40,7 +40,7 @@ Next step will be adding AngularJS and converting three pages into one small app
 
 On each page we have very similar html fragment rendering navbar element.
 
-[html highlight="8"]
+``` html
     <div class="navbar navbar-inverse">
         <div class="navbar-inner">
             <div class="container">
@@ -56,7 +56,7 @@ On each page we have very similar html fragment rendering navbar element.
             </div>
         </div>
     </div>
-[/html]
+```
 
 The only difference is in where class _active_ which highlights link is located. And every time we see such repetition, our DRY detector should start ringing and don't stop until we do something about it.
 
@@ -102,14 +102,16 @@ What happens here:
 
 After that we should replace navbar html markup on every page with something like:
 
-[html]
+``` html
 <bootstrap-navbar></bootstrap-navbar>
-[/html]
+```
 
 Now it's high time to test it. Unfortunately there is one problem. Security policy does not allow browser to execute XHR(Ajax) calls from html file stored on our disk. So we have to setup lightweight httpServer to serve our files to browser. You can do it using Jetty or anything similar. I tried one from Python and it worked without issues. So basically navigate to directory where all files are stored, execute:
-[python]
+
+``` python
 python -m SimpleHTTPServer 9000
-[/python]
+```
+
 and then open your browser using address [http://localhost:9000/home.html](http://localhost:9000/home.html). You should see the same page as before, but now it is using our directive.
 
 
@@ -120,15 +122,15 @@ and then open your browser using address [http://localhost:9000/home.html](http:
 So we have our first directive, yay! But its IQ is not that high. If you navigate to Second and Third Page, you will notice that it always renders link to Home Page as active, which is not exactly true for all pages. And in this paragraph we will try to make it smarter.
 
 At first, let's add attribute _current-tab_ to our directive usages:
-[html]
+``` html
   <bootstrap-navbar current-tab="Second"></bootstrap-navbar>
-[/html]
+```
 
 Passed value must be the same as link name in the navbar, so in our example app it should be either: Home, Second or Third.
 
 Next step is to prepare our template file for easy modification. Because we will use jQuery selectors to find link to activate, we will remove active class and also add an id attribute to _ul_ element to make it easier to locate with selector:
 
-[html]
+``` html
 <div class="navbar navbar-inverse">
     <div class="navbar-inner">
         <div class="container">
@@ -144,14 +146,14 @@ Next step is to prepare our template file for easy modification. Because we will
         </div>
     </div>
 </div>
-[/html]
+```
 
 **Core logic**
 Now the last thing we have to do is some jQuery selector magic with little addition of AngularJS magic :)
 
 Angular directives have function _compile_ which allows to alter directive template markup, so we will use it here. What this function receives is value of parameters defined on the component usage in our pages, so basically we have an access to all attributes that are declared where our navbar component is used, specifically our _current-tab_ attribute (again transformed to _currentTab_ inside JS file).
 So when we know which link should be highlighted, jQuery selectors come to do the actual job:
-[js]
+``` js
 angular.module("navbarapp", ["controllers"])
   .directive("bootstrapNavbar", function() {
   return {
@@ -171,7 +173,7 @@ angular.module("navbarapp", ["controllers"])
     }
   }});
 ;
-[/js]
+```
 
 So what we do here:
 

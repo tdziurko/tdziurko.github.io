@@ -27,7 +27,7 @@ Welcome back to our [Wicket tutorial](<a href="/category/wicket-tutorial/) serie
 
 As you might remember, currently we have Wicket form with basic validation checking existence of name field and whether its length is in proper range or not:
 
-[java]
+``` java
 		Form<AddLocationPage> addLocationForm = new Form<AddLocationPage>("addLocationForm",
 				new CompoundPropertyModel<AddLocationPage>(this));
 		add(addLocationForm);
@@ -50,7 +50,7 @@ As you might remember, currently we have Wicket form with basic validation check
 			}
 		};
 		addLocationForm.add(submitButton);
-[/java]
+```
 
 
 <!-- more -->
@@ -70,7 +70,7 @@ But with unique constraint on name field in locations table in our database, try
 
 The easiest way to prevent user from causing such exceptions is to create custom validator checking if such location is already in our database.  And as we will be validating String input we will use [StringValidator](http://wicket.apache.org/apidocs/1.4/index.html?org/apache/wicket/validation/validator/StringValidator.html) class as base class for our own validator called UniqueLocationNameValidator:
 
-[java]
+``` java
 public class UniqueLocationNameValidator extends StringValidator {
 
 	@SpringBean
@@ -96,7 +96,7 @@ public class UniqueLocationNameValidator extends StringValidator {
 		}
 	}
 }
-[/java]
+```
 
 So starting from the beggining of listing above:
 
@@ -125,7 +125,7 @@ UniqueLocationNameValidator = Location with this name already exists in the data
 
 Of course we have to create findByName() method in LocationService. In our layered architecture (which currently could be considered as overkill but in larger project it really pays off) service calls dao method, so logic for finding location by name is in LocationDaoImpl class:
 
-[java]
+``` java
 public Location findByName(String locationName) {
 		Query findByNameQuery = entityManager.createQuery("from " + getClazz().getSimpleName()
                     + " entity where entity.name = :aName");
@@ -134,14 +134,14 @@ public Location findByName(String locationName) {
 		return (Location) findByNameQuery.getSingleResult();
 
 	}
-[/java]
+```
 
 When we have our validator and DAO logic ready, we can modify Wicket form to make it complete and ready for the production. To use custom validator we simply create such object and add it to field we want to validate (fragment of AddLocationPage class below):
 
-[java]
+``` java
 		UniqueLocationNameValidator locationNameValidator = new UniqueLocationNameValidator();
 		nameField.add(locationNameValidator);
-[/java]
+```
 
 
 And when we submit this form with existing location name we will see feedback message showing that validation is working:

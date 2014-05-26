@@ -63,7 +63,7 @@ Below some of my personal notes about things I didn't know or didn't use often b
 
 TestNG has a nice class _org.testng.Reporter_ that allows developer to add some information to html reports
 
-[java]
+``` java
 
     @Test
     public void testSomething() {
@@ -72,7 +72,7 @@ TestNG has a nice class _org.testng.Reporter_ that allows developer to add some 
         //test something
     }
 
-[/java]
+```
 
 And after running such tests in html report we will see something like presenten on the screenshot below:
 
@@ -98,16 +98,16 @@ Let's suppose that we are testing following method
 
 
 
-[java]
+``` java
     @Test
     public void loadByAgeRange() {
         service.loadClientBy(1, 20, 40, null);
     }
-[/java]
+```
 
 and compare it with listing below:
 
-[java]
+``` java
 
     @Test
     public void loadByAgeRange() {
@@ -117,7 +117,7 @@ and compare it with listing below:
         service.loadClientBy(ANY_TYPE, ageFrom, ageTo, ANY_REGION);
     }
 
-[/java]
+```
 
 Isn't it much clearer? We replace dummy data with constants indicating which part is important and what parameters are not critical in this method.
   
@@ -129,9 +129,9 @@ Isn't it much clearer? We replace dummy data with constants indicating which par
 
 Mockito allows us to automatically inject all mock into object we are going to test:
 
-[java]
+``` java
     @InjectMocks private ObjectUnderTest object = new ObjectUnderTest();
-[/java]
+```
 
 Of course it has some limitations (see [JavaDocs](http://docs.mockito.googlecode.com/hg/1.9.0/org/mockito/InjectMocks.html)) but it's good to know that such feature is already in Mockito.
   
@@ -143,9 +143,9 @@ Of course it has some limitations (see [JavaDocs](http://docs.mockito.googlecode
 
 This small project will help you to create builders for your test cases easily. More can be found on [its wiki](http://code.google.com/p/make-it-easy/wiki/GettingStarted), but below simple use case showing how it looks:
 
-[java]
+``` java
     Person nat = make(a(Person, with(name, "Tomek"), with(age, 28)));
-[/java]
+```
   
 
 
@@ -155,7 +155,7 @@ This small project will help you to create builders for your test cases easily. 
 
 If there is a method we want to test but at the same time there is another method in tested object that want to mock, it is possible to do that by usinf Mockito spy():
 
-[java]
+``` java
 @Test
 public void testCaluculationSummary() {
     TestedObject object = spy(new TestedObject());
@@ -165,7 +165,7 @@ public void testCaluculationSummary() {
 
     assertThat(result).isEqualTo(10);
 }
-[/java]
+```
   
 
 
@@ -175,7 +175,7 @@ public void testCaluculationSummary() {
 
 Mockito gives us another very useful feature, ability to check what arguments were passed to methods using [ArgumentCaptor](http://docs.mockito.googlecode.com/hg/org/mockito/ArgumentCaptor.html):
 
-[java]
+``` java
     @Test
     public void testArgument() {
         // ...
@@ -187,4 +187,4 @@ Mockito gives us another very useful feature, ability to check what arguments we
 
         assertThat(argument.getValue()).isEqualTo(expectedCustomer);
     }
-[/java]
+```

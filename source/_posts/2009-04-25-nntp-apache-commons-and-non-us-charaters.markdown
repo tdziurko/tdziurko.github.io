@@ -22,7 +22,7 @@ Like every weekend, today I was spending time on writing application for my MSc 
 
 Short research showed that this should be a piece of cake. Below small code snippet showing how to send message using library [Apache Commons Net](http://commons.apache.org/net/).
 
-[java]
+``` java
 public class Main {
 
  public static void main(String[] args) throws Exception {
@@ -50,7 +50,7 @@ public class Main {
  }
 
 }
-[/java]
+```
 
 Everything worked as expected until I started to use Polish characters in the message. Then instead of "ąęóśłżźćń" I saw following picture:
 
@@ -58,7 +58,7 @@ Everything worked as expected until I started to use Polish characters in the me
 
 <!-- more -->To solve this problem I tried many things: changing encoding in the header, changing encoding in the NetBeans project or even changing encoding in my newsreader (yes, yes, I even started to blame poor Thunderbird ;) ) but nothing helped. Then I decided to look into source code of Apache Commons Net library and after a short investigation I found source of all my problems: org.apache.commons.net.nntp.NNTP class:
 
-[java]
+``` java
 public class NNTP extends SocketClient
 {
  /*** The default NNTP port.  Its value is 119 according to RFC 977. ***/
@@ -96,7 +96,7 @@ public class NNTP extends SocketClient
  ...
 
 }
-[/java]
+```
 
 As you can see the creation of both Reader and Writer uses ISO-8859-1 encoding which do not support Polish characters. And when I began to wonder how to build library after changing ___DEFAULT_ENCODING_ to "UTF-8" I noticed pom.xml in the source file. Hallelujah! - I thought - Maven to the rescue :)
 

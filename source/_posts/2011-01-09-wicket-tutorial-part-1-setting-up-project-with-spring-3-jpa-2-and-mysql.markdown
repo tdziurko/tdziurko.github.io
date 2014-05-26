@@ -185,7 +185,7 @@ First, some Spring-related configuration: _Open Session In View_ filter (or _Ope
 
 Next very important file is class _Application.java_, the heart of every Wicket application. From here we can change every aspect of both Wicket and our application configuration:
 
-[java]
+``` java
 @Component(value = "wicketApplication")
 public class Application extends WebApplication {
 
@@ -229,7 +229,7 @@ public class Application extends WebApplication {
 	}
 
 }
-[/java]
+```
 
 Interesting places in this class are:
 
@@ -255,7 +255,7 @@ Interesting places in this class are:
 
 Every web application should have at least one web page to present some information to the user. We will start with two  classes: _BasePage_ will be a skeleton of every page in ItemDirectory application. This class in the future will contain common layout, top and left menu which in most cases will be the same for every page in our web app. In HTML file for this class there is one interesting element: _wicket-child_ a place-holder for content added by pages extending BasePage class:
 
-[html]
+``` html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
@@ -268,11 +268,11 @@ Every web application should have at least one web page to present some informat
 
 </body>
 </html>
-[/html]
+```
 
 With this abstract page our only one concrete web page HomePage.html can look like that:
 
-[html]
+``` html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
@@ -292,13 +292,13 @@ With this abstract page our only one concrete web page HomePage.html can look li
 	</wicket:extend>
 </body>
 </html>
-[/html]
+```
 
 Wicket while rendering this web page will omit everything placed outside _wicket-extend_ tags except some places marked with other Wicket tags (like _ wicket:head_ which allow to add some data from concrete class to web page header). Framework in render phase will place all elements between _wicket-extend_ from HomePage.html in BasePage.html file replacing _wicket:child_ tag. This works like simple inheritance: child page tells its parent what content to render in the defined place in parent's content.
 
 And as you should already know, like in every Wicket application our _HomePage.html_ file needs accompanying Java class _HomePage.java_:
 
-[java]
+``` java
 import java.util.Date;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -322,7 +322,7 @@ public class HomePage extends BasePage {
 	}
 
 }
-[/java]
+```
 
 In this class @SpringBean annotation is responsible for providing access to beans (UserService bean in this case) and method _initGui()_ contains three labels to render something to the user. The last label confirms that our access to the database through service layer, domain layer to MySQL is working properly.
 

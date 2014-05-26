@@ -54,7 +54,7 @@ Suppose we have a requirement to load configuration from xml file:
 [/xml]
 
 And we want to load it into Configuration object:
-[java]
+``` java
 public class Configuration {
 
     private String inputFile;
@@ -68,9 +68,9 @@ public class Configuration {
 
     // getters, setters, etc.
 }
-[/java]
+```
 So basically what we have to do is:
-[java]
+``` java
     
     FileReader fileReader = new FileReader("config.xml");  // load our xml file  
     XStream xstream = new XStream();     // init XStream
@@ -78,7 +78,7 @@ So basically what we have to do is:
     xstream.alias("config", Configuration.class);    
     Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
 
-[/java]
+```
 
 And that's all, easy peasy :)
 
@@ -122,7 +122,7 @@ Ok, but previous example is very basic so now let's do something more complicate
 [/xml]
 
 What we have here is simple list of bans written in XML. We want to load it into collection of Ban objects. So let's prepare some classes (getters/setters/toString omitted):
-[java]
+``` java
 public class Data {
     private List bans = new ArrayList(); 
 }
@@ -138,7 +138,7 @@ public class Person {
     private int age;
     private String documentNumber;
 }
-[/java]
+```
 
 As you can see there is some naming and type mismatch between XML and Java classes (e.g. field name1->firstName, dateOfUpdate is String not a Date), but it's here for some example purposes.
 
@@ -151,7 +151,7 @@ So the goal here is to parse XML and get Data object with populated collection o
 
 First, easier way is to use annotations. And that's the suggested approach in situation when we can modify Java classes to which XML will be mapped. 
 So we have:
-[java]
+``` java
 @XStreamAlias("DATA") // maps DATA element in XML to this class
 public class Data {
 
@@ -192,11 +192,11 @@ public class Person {
 
     @XStreamAlias("NUMBER")
     private String documentNumber;
-[/java]
+```
 
 And actual parsing logic is very short:
 
-[java]
+``` java
     FileReader reader = new FileReader("file.xml");  // load file
 
     XStream xstream = new XStream();
@@ -209,7 +209,7 @@ And actual parsing logic is very short:
     System.out.println("Number of bans = " + data.getBans().size());
     Ban firstBan = data.getBans().get(0);
     System.out.println("First ban = " + firstBan.toString()); 
-[/java]
+```
 
 As you can see annotations are very easy to use and as a result final code is very concise. But what to do in situation when we can't modify mapping classes? We can use different approach that doesn't require any modifications in Java classes representing XML data.
 
@@ -220,7 +220,7 @@ As you can see annotations are very easy to use and as a result final code is ve
 
 When we can't enrich our model classes with annotations, there is another solution. We can define all mapping details using methods from XStream object:
 
-[java]
+``` java
     FileReader reader = new FileReader("file.xml");  // three first lines are easy, 
     XStream xstream = new XStream();                 // same initialisation as in the 
     xstream.alias("DATA", Data.class);               // basic example above
@@ -249,7 +249,7 @@ When we can't enrich our model classes with annotations, there is another soluti
     System.out.println("Number of bans = " + data.getBans().size());
     Ban firstBan = data.getBans().get(0);
     System.out.println("First ban = " + firstBan.toString());
-[/java]
+```
 
 As you can see XStream allows to easily convert more complicated XML structures into Java objects, it also gives a possibility to tune results by using different names if this from XML doesn't suit our needs.
 But there is one thing should catch your attention: we are converting XML representing a Date into raw String which isn't quite what we would like to get as a result. That's why we will add converter to do some job for us.
@@ -260,17 +260,17 @@ But there is one thing should catch your attention: we are converting XML repres
 
 
 XStream library comes with set of built converters for most common use cases. We will use DateConverter. So now our class for Ban looks like that:
-[java]
+``` java
 public class Ban {
 
     private Date dateOfUpdate;
     private Person person;
 }
-[/java]
+```
 And to use DateConverter we simply have to register it with date format that we expect to appear in XML data:
-[java]
+``` java
    xstream.registerConverter(new DateConverter("yyyy-MM-dd", new String[] {}));
-[/java]
+```
 
 and that's it. Now instead of String our object is populated with Date instance. Cool and easy! But what about classes and situations that aren't covered by existing converters? We could write our own.
 
@@ -280,14 +280,14 @@ and that's it. Now instead of String our object is populated with Date instance.
 
 
 Assume that instead of dateOfUpdate we want to know how many days ago update was done:
-[java]
+``` java
 public class Ban {
     private int daysAgo;
     private Person person;
 }
-[/java]
+```
 Of course we could calculate it manually for each Ban object but using converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement [Converter](http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/Converter.html) interface so we have to implement three methods with signatures looking a little bit scary:
-[java]
+``` java
 public class DaysAgoConverter implements Converter {
     @Override
     public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
@@ -302,9 +302,9 @@ public class DaysAgoConverter implements Converter {
         return false;
     }
 }
-[/java]
+```
 Last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using [AbstractSingleValueConverter](http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/basic/AbstractSingleValueConverter.html)that shields us from so low level mechanisms. And now our class looks much better:
-[java]
+``` java
 public class DaysAgoConverter extends AbstractSingleValueConverter {
 
     @Override
@@ -321,13 +321,13 @@ public class DaysAgoConverter extends AbstractSingleValueConverter {
         return null;
     }
 }
-[/java]
+```
 Additionally we must override method toString(Object obj) defined in AbstractSingleValueConverter as we want to store Date in XML calculated from Integer, not a simple _Object.toString_ value which would be returned from default _toString_ defined in abstract parent. 
 
 **Implementation**
 
 Code below is pretty straightforward, but most interesting lines are commented. I've skipped all validation stuff to make this example shorter.
-[java]
+``` java
 public class DaysAgoConverter extends AbstractSingleValueConverter {
 
     private final static String FORMAT = "yyyy-MM-dd"; // default Date format that will be used in conversion
@@ -357,13 +357,13 @@ public class DaysAgoConverter extends AbstractSingleValueConverter {
         return now.minusDays(daysAgo).toString(FORMAT); // here we subtract days from now and return formatted date string
     }
 }
-[/java] 
+``` 
 
 **Usage**
 To use our custom converter for a specific field we have to inform about it XStream object using registerLocalConverter:
-[java]
+``` java
     xstream.registerLocalConverter(Ban.class, "daysAgo", new DaysAgoConverter());
-[/java]
+```
 We are using "local" method to apply this conversion only to specific field and not to every Integer field in XML file. And after that we will get our Ban objects populated with number of days instead of Date.
 
 

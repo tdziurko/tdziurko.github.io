@@ -42,7 +42,7 @@ But when we check audit tables for entities that were created and then rolled ba
 
 The simplest test cases already present in Envers are located in Simple.java class and they look quite straightforward:
 
-[java]
+``` java
 public class Simple extends AbstractEntityTest {
     private Integer id1;
 
@@ -79,11 +79,11 @@ public class Simple extends AbstractEntityTest {
         assert getAuditReader().find(IntTestEntity.class, id1, 2).equals(ver2);
     }
 }
-[/java]
+```
 
 so preparing my failing test executing scenario described above wasn't a rocket science:
 
-[java]
+``` java
 /**
  * @author Tomasz Dziurko (tdziurko at gmail dot com)
  */
@@ -119,7 +119,7 @@ public class TransactionRollbackBehaviour  extends AbstractEntityTest {
     }
 }
 
-[/java]
+```
 
 Now I could verify that tests is failing on forked [3.6 branch](https://github.com/hibernate/hibernate-orm/tree/3.6) and check if fix that we had is making this test green.
 

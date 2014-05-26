@@ -77,7 +77,7 @@ Of course my modifications of this example won't be very sophisticated. I just w
 
 Ok, so let's start with something simple. As you already know Game class which holds state of user game is @SessionScoped bean so if user opens new browser tab with NumberGuess web application, he will see state of the game he started in his first tab. That is not ok as he might want to run many games simultaneously. So we replace session annotation with @ConversationScoped and add label showing current conversation id to show what conversation is currently running.
 
-[java]
+``` java
 public class HomePage extends WebPage {
     @Inject
     private Conversation conversation;
@@ -89,7 +89,7 @@ public class HomePage extends WebPage {
         // (...)
     }
 }
-[/java]
+```
 
 When you open our application in two tabs you should see something like this:
 
@@ -97,7 +97,7 @@ When you open our application in two tabs you should see something like this:
 
 and in these two tabs you have two separate games running (and different conversation id shown). So everything looks fine. But, but... if during the game you accidentally hit refresh button (or F5) you will lose your state of game and see that conversation id has changed. WTH?! Calm down and check SeamApplication class source code. There is custom WebRequestCycleProcessor named SeamWebRequestCycleProcessor:
 
-[java]
+``` java
 public class SeamWebRequestCycleProcessor extends WebRequestCycleProcessor {
     @Inject
     Conversation conversation;
@@ -118,7 +118,7 @@ public class SeamWebRequestCycleProcessor extends WebRequestCycleProcessor {
 
     }
 }
-[/java]
+```
 
 And what is most important here is that conversation id is saved between requests. I repeat, **requests**. And if you check what type GuessButton in HomePage.java is, you will see AjaxButton so there is no new HTTP request fired when it is clicked. And as a result no information about conversation is saved. Such behavior can be considered as limitation but in most cases you won't need conversation scope until you change page, so HTTP request is used and problem with missing information about conversation id disappears.
 
@@ -130,7 +130,7 @@ Ok, so if I change button to non-ajax, everything will work as expected. I also 
 
 So far so good. But how conversation scope is working when we try to redirect to another page? Let's find out. First we should create SecondPage java and html files:
 
-[java]
+``` java
 public class SecondPage extends WebPage {
 
     @Inject
@@ -147,11 +147,11 @@ public class SecondPage extends WebPage {
         add(guessesLeft);
     }
 }
-[/java]
+```
 
 
 
-[html]
+``` html
 
     Second Page</pre>
 <h1>Second page</h1>
@@ -159,18 +159,18 @@ public class SecondPage extends WebPage {
 <div>Guesses left:</div>
 <pre>
 
-[/html]
+```
 
 with information about conversation id and number of remaining guesses. Because Wicket propagates conversation between requests, we should get the same conversation id and the same game instance injected into both pages sharing the same conversation. But to test it we need a link from HomePage to SecondPage, so let's add a simple one:
 
-[java]
+``` java
 Link secondPageLink = new Link("secondPageLink") {
     @Override
     public void onClick() {
         setResponsePage(new SecondPage());
     }
 };
-[/java]
+```
 
 with corresponding HTML element in HomePage.html file.
 
@@ -186,14 +186,14 @@ So as you can see, we have the same conversation id and the same game instance. 
 **Bookmarkable pages**
 Now we will try with link not pointing to the specific page instance (created in onClick() method) but to SecondPage class in general, so when user clicks, Wicket creates page of class passed to setResponsePage() method. This kind of link redirects to bookmarkable page because it doesn't hold a state. Application knows what to render basing only on information stored in the url.
 
-[java]
+``` java
 Link secondPageLink = new Link("secondPageLink") {
     @Override
     public void onClick() {
         setResponsePage(SecondPage.class);
     }
 };
-[/java]
+```
 
 And when we click this link, everything seems to be the same. We see the same page with correct conversation id, etc., but one thing has changed, the url. Now it looks like that
 
@@ -206,13 +206,13 @@ The most interesting part is the last parameter "cid" (conversationId) which all
 
 Ok, so default bookmarkable pages are supported. But as you probably noticed, our last url contains package name so it is far from being elegant and SEO friendly. That's why we will try to mount it with some short, pretty url name "second-page". To achieve it, we must add one line to init method in our NumberGuessApplication class:
 
-[java]
+``` java
     @Override
     protected void init() {
         super.init();
         mountBookmarkablePage("second-page", SecondPage.class);
     }
-[/java]
+```
 
 and when we click the same link we will land on page with address
 
@@ -228,7 +228,7 @@ And we could expect that the same conversation is active. But unfortunately it's
 
 All we need is to look into source code of SeamRequestCycle and make some small improvements
 
-[java]
+``` java
 public class SeamRequestCycle extends WebRequestCycle {
     @Override
     protected void onRequestTargetSet(IRequestTarget target) {
@@ -283,7 +283,7 @@ public class SeamRequestCycle extends WebRequestCycle {
 
     // (...)
 }
-[/java]
+```
 
 So what we can see here is:
 1. Getting cid from request parameters or from page metadata.
@@ -293,18 +293,18 @@ So what we can see here is:
 
 And most critical part of code which needs small tuning is:
 
-[java]
+``` java
 String cid = null;
 if (page != null) {
     cid = page.getMetaData(SeamMetaData.CID);
 } else {
      cid = request.getParameter("cid");
 }
-[/java]
+```
 
 We just must find the way how to extract cid parameter from the url. After some research I found that request.getURL() method returns part of address which contains cid parameter name and value. So simple regex magic and here we are:
 
-[java]
+``` java
     String cid = null;
     if (page != null) {
         cid = page.getMetaData(SeamMetaData.CID);
@@ -321,18 +321,18 @@ We just must find the way how to extract cid parameter from the url. After some 
             System.out.println("cid = " + cid);
         }
     }
-[/java]
+```
 
 When none of standard ways of extracting cid work, application tries to extract it from url. Of course in more complicated project this pattern might need some additional tweaks but for us it is enough.
 
 And to use our modification we copy content of SeamRequestCycle into our CustomSeamRequestCycle class, apply our small patch and then configure NumberGuessApplication to use our implementation:
 
-[java]
+``` java
     @Override
     public RequestCycle newRequestCycle(final Request request, final Response response) {
         return new CustomSeamRequestCycle(this, (WebRequest) request, (WebResponse) response);
     }
-[/java]
+```
 
 And when we restart jetty and use link to the SecondPage, we will see correct conversation and game object injected! :)
 

@@ -23,7 +23,7 @@ In this post I will shortly describe how we can store encrypted data in our data
 
 
 So what we have is a simple entity representing our settings item:
-[java]
+``` java SettingsItem entity
 @Entity
 public class SettingsItem implements Serializable {
 
@@ -34,7 +34,7 @@ public class SettingsItem implements Serializable {
     private String name;
     private String encryptedValue;
 }
-[/java]
+```
 
 In such table we will store values for Twitter Consumer Key, Twitter Access Token and so on.
 
@@ -55,7 +55,7 @@ What we would like to achieve is that when we create SettingItem object with val
 
 
 To use Jasypt and its Hibernate integration module we have to add two items to our pom:
-[xml]
+``` xml
     <dependency>
         <groupId>org.jasypt</groupId>
         <artifactId>jasypt</artifactId>
@@ -66,7 +66,7 @@ To use Jasypt and its Hibernate integration module we have to add two items to o
         <artifactId>jasypt-hibernate4</artifactId>
         <version>1.9.0</version>
     </dependency>
-[/xml]
+```
 
 
 
@@ -75,7 +75,7 @@ To use Jasypt and its Hibernate integration module we have to add two items to o
 
 Then we have to declare custom Hibernate type (@TypeDef) in our entity:
 
-[java]
+``` java
 @TypeDef(
         name="encryptedString",
         typeClass=EncryptedStringType.class,
@@ -88,14 +88,14 @@ Then we have to declare custom Hibernate type (@TypeDef) in our entity:
 public class SettingsItem implements Serializable {
    // (...)
 }
-[/java]
+```
 
 and after that in the same class we can mark our encryptedValue field to use this custom type:
 
-[java]
+``` java
     @Type(type="encryptedString")
     private String encryptedValue;
-[/java]
+```
 
 
 
@@ -104,7 +104,7 @@ and after that in the same class we can mark our encryptedValue field to use thi
 
 We are almost done. Last thing we have to do is register encryptor in HibernatePBEEncryptorRegistry class. This can be done in  initialization class of our application, e.g. ServletContext or simply in class with main(String[] args) method: 
 
-[java]
+``` java
     String password = System.getProperty("jasypt.password");
 
     StandardPBEStringEncryptor strongEncryptor = new StandardPBEStringEncryptor();
@@ -112,7 +112,7 @@ We are almost done. Last thing we have to do is register encryptor in HibernateP
     HibernatePBEEncryptorRegistry registry =
             HibernatePBEEncryptorRegistry.getInstance();
     registry.registerPBEStringEncryptor("STRING_ENCRYPTOR", strongEncryptor);
-[/java] 
+``` 
 
 One important thing here is that by using System.getProperty() or System.getenv() we can safely configure our encryption mechanism, password is provided at runtime by setting proper value on server machine.
 
@@ -123,7 +123,7 @@ One important thing here is that by using System.getProperty() or System.getenv(
 
 As as a summary, one short passing test showing that our solution works:
 
-[java]
+``` java
 public class SettingsItemRepositoryShould extends IntegrationTest {
 
     @Autowired
@@ -154,4 +154,4 @@ public class SettingsItemRepositoryShould extends IntegrationTest {
         assertThat(settingsItem.getEncryptedValue()).isEqualTo(value);
     }
 }
-[/java]
+```

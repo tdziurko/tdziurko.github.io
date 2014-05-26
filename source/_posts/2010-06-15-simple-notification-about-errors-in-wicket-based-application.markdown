@@ -20,7 +20,7 @@ Today I am going to to describe a simple and quick trick in Apache Wicket which 
 
 Adding some method when exception appears in Wicket-based application is very easy task. In class extending WebApplication we should create our own implementation of method creating custom RequestCycle object where we override onRuntimeException method:
 
-[java]
+``` java
 @Override
 public RequestCycle newRequestCycle(Request request, Response response) {
   return new WebRequestCycle(this, (WebRequest)request, (WebResponse)response) {
@@ -35,7 +35,7 @@ public RequestCycle newRequestCycle(Request request, Response response) {
     }
   };
 }
-[/java]
+```
 
 <!-- more -->
 
@@ -70,7 +70,7 @@ Second bean is a simple messages factory which builds emails with content. Its c
 
 b) WebApplication class fragment:
 
-[java]
+``` java
 public class ClientNotifierApplication extends WebApplication {
 
   private JavaMailSenderImpl mailSender;
@@ -102,7 +102,7 @@ public class ClientNotifierApplication extends WebApplication {
     };
   }
 }
-[/java]
+```
 
 Because we passed Page object to the method prepareWicketExceptionMessage, we have access to more detailed data about application state when error appeared. We could read application name (useful when we use this mechanism in many projects), page parameters and through Session object also info about logged user. It's good to know to who every error happened in case we would like to contact him and ask some questions about what he did, etc.
 

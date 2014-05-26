@@ -45,7 +45,7 @@ After:
 
 And what is most important, ready component can be used without any, really any modification in HTML files, everything is defined using pure Java:
 
-[java]
+``` java
     add(new TwitterBootstrapNavBarPanel.Builder("navBar", HomePage.class, "Example Web App", getActiveMenu())
             .withMenuItem(MenuItemEnum.CLIENTS, ClientsPage.class)
             .withMenuItemAsDropdown(MenuItemEnum.PRODUCTS, ProductOnePage.class, "Product One")
@@ -55,7 +55,7 @@ And what is most important, ready component can be used without any, really any 
             .withMenuItemAsDropdown(MenuItemEnum.ABOUT_US, OurSkillsPage.class, "Our Skills")
             .withMenuItem(MenuItemEnum.CONTACT, ContactPage.class)
             .build());
-[/java]
+```
 
 If you are 'show-me-the-code' kind of guy, please go directly to my [project on Github](https://github.com/tdziurko/wicket-bootstrap-navbar) which contains working example of a web application with this navigation bar. If you want to read an explanation how this stuff works, please keep reading.
 
@@ -67,14 +67,14 @@ NavBar component allows to display active menu item in a different way so user i
 
 So in our BasePage class we add a method:
 
-[java]
+``` java
 public abstract MenuItemEnum getActiveMenu();
 
-[/java]
+```
 
 returning defined enum:
 
-[java]
+``` java
 
 public enum MenuItemEnum {
     CLIENTS("Clients"),
@@ -92,7 +92,7 @@ public enum MenuItemEnum {
     // ...
 }
 
-[/java]
+```
 
 _None_ value is used by home page because it does not belong to any particular menu item. Other pages (product pages, client, etc.) return one of other enum values presented above.
 
@@ -145,15 +145,15 @@ So let's start with the simplest one.
 
 Markup of this simple element is really non-complicated, only one link.
 
-[html]
+``` html
 <wicket:panel>
         <a href="#" wicket:id="link"/>
 </wicket:panel>
-[/html]
+```
 
 Its Java class is small and easy to grasp:
 
-[java]
+``` java
 
 public class MenuLinkItem extends Panel {
 
@@ -165,7 +165,7 @@ public class MenuLinkItem extends Panel {
 		}
 	}
 }
-[/java]
+```
 
 What we can see above is a simple panel accepting three parameters, standard Wicket element id, page link to place in this menu item and an indicator saying if this item should be displayed as an active. This is accomplished by adding a _active_ class name to CSS class element.
 
@@ -177,7 +177,7 @@ Now it's getting a little harder as we want to create panel for our menu item co
 
     
     
-    [html]
+    ``` html
     <wicket:panel>
         <li class="dropdown" wicket:id="itemContainer">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -189,7 +189,7 @@ Now it's getting a little harder as we want to create panel for our menu item co
             </ul>
         </li>
     </wicket:panel>
-    [/html]
+    ```
     
 
 
@@ -210,7 +210,7 @@ So what we have here:
 
 And Java class for this panel:
 
-[java]
+``` java
 public class MenuDropdownItem extends Panel {
 
 	public MenuDropdownItem(String id, MenuItemEnum currentMenuItem,
@@ -234,7 +234,7 @@ public class MenuDropdownItem extends Panel {
 		add(itemContainer);
 	}
 }
-[/java]
+```
 
 You may think _Whoaa, this is a complicated one_ :)  But relax, let me explain it step by step:
 
@@ -266,7 +266,7 @@ So we have two components ready to use in our main panel. Now it is time to intr
 
     
     
-    [html]
+    ``` html
      <div class="navbar navbar-fixed-top">
        <div class="navbar-inner">
          <div class="container">// (1)
@@ -280,7 +280,7 @@ So we have two components ready to use in our main panel. Now it is time to intr
          </div>
         </div>
       </div>
-    [/html]
+    ```
     
 
 
@@ -296,7 +296,7 @@ So we have two components ready to use in our main panel. Now it is time to intr
 
 Although the markup is not difficult to understand even at first glance, Java class is different and needs more detailed explanation. Because I wanted NavBar creation process to be as seamless as possible I used fluent interface with Builder pattern. So first, let's concentrate on this element:
 
-[java]
+``` java
 public static class Builder implements Serializable {
 
         private String id;
@@ -325,7 +325,7 @@ public static class Builder implements Serializable {
 
         // ...
     }
-[/java]
+```
 
 So what's happening here:
 
@@ -350,7 +350,7 @@ So what's happening here:
 
 Now let me explain two last methods in the Builder class:
 
-[java]
+``` java
         public Builder withMenuItemAsDropdown(MenuItemEnum menuItem, Class pageToLink, String label) { // (1)
             BookmarkablePageLink link = new BookmarkablePageLink("link", pageToLink);
             link.setBody(new Model(label));
@@ -361,7 +361,7 @@ Now let me explain two last methods in the Builder class:
         public TwitterBootstrapNavBarPanel build() {   (2)
             return new TwitterBootstrapNavBarPanel(this);
         }
-[/java]
+```
 
 	
   1. This method is used to add elements to the dropdown menu item. Here we allow to multimple values for the same menu item (as we will render them as a dropdown under single label). Additionally in the params list we need a label to each link as enum label will be used to render menu item itself and not a links inside it.
@@ -377,7 +377,7 @@ Now let me explain two last methods in the Builder class:
 
 We have everything set up, Builder has all the data we need to create our panel so let's go to its constructor.
 
-[java]
+``` java
     private TwitterBootstrapNavBarPanel(final Builder builder) {
         super(builder.id);
 
@@ -405,7 +405,7 @@ We have everything set up, Builder has all the data we need to create our panel 
 
         add(repeatingView);
     }
-[/java]
+```
 
 
 

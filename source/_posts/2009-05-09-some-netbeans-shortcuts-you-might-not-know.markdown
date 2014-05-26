@@ -30,18 +30,22 @@ One of the most often used shortcuts. In the project, when you don't want to add
 
 Moreover, there is another variant of this shortcut allowing to easily create command like System.out.println("value = " + value); Suppose we have following code:
 
-[java]counter = countAllActiveAccounts();[/java]
+``` java
+counter = countAllActiveAccounts();
+```
 
 Then we place cursor in the line below and type **soutv** and press **<Tab>**. What we get is:
 
-[java]counter = countAllActiveAccounts();
+``` java
+counter = countAllActiveAccounts();
 System.out.println("counter = " + + counter);
-[/java]
+```
 
 NetBeans found the closest variable and generated proper println method. And, last extra add-on here. if we start typing something just after this command we can end with something like this (I used sequence **soutv + <Tab> + anotherVariable**):
 
-[java]
-System.out.println("anotherVariable = " + anotherVariable)[/java]
+``` java
+System.out.println("anotherVariable = " + anotherVariable)
+```
 
 
 ### Fast commenting and uncommenting many lines of code

@@ -29,7 +29,7 @@ Problem occurs when we try to sort list of users using something like "_from Use
 
 Let's say we have three entities: User, City and Country. User has a City and also has a Country. City and Country are not connected in any way to make this example less complicated.
 
-[java]
+``` java
 @Entity
 @Table(name = "users")
 public class User {
@@ -53,11 +53,11 @@ public class User {
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
     private City city;
 }
-[/java]
+```
 
 
 
-[java]
+``` java
 @Entity
 @Table(name = "city")
 public class City {
@@ -69,11 +69,11 @@ public class City {
     @Column(name = "name", length = 255, nullable = false)
     private String name;
 }
-[/java]
+```
 
 
 
-[java]
+``` java
 @Entity
 @Table(name = "country")
 public class Country {
@@ -88,11 +88,11 @@ public class Country {
     @Column(name = "population", nullable = false)
     private Long population;
 }
-[/java]
+```
 
 What we want to achieve is to load all users and display their details in the datatable. We want to show user name, surname and also some data from city (its name) and  country (name as well and population). User can fill this data in his profile page but it is not mandatory so we might have user without city and/or country in our database. Of course this datatable on the web page should be sortable using all displayed properties. For  such functionality we need a service class:
 
-[java]
+``` java
 @Transactional
 public class UserService {
 
@@ -106,11 +106,11 @@ public class UserService {
         return entityManager.createQuery(queryString).getResultList();
     }
 }
-[/java]
+```
 
 and enum defining available _order by_ options
 
-[java]
+``` java
 public enum UserSortField {
 
     ID("id"),
@@ -130,13 +130,13 @@ public enum UserSortField {
         return field;
     }
 }
-[/java]
+```
 
 So far everything looks just fine. So let's write some tests. As we are using JEE6, tests will be written using Arquillian and utility class AbstractDBTest from [softwaremill-common](https://github.com/softwaremill/softwaremill-common). More about this class and how to use it can be found in [Adam Warski's blog](http://www.warski.org/blog/2010/11/db-test-run-tests-with-a-database-using-arquillian/). And believe me, it makes testing with Arquillian so, so much easier.
 
 Our test class looks like that:
 
-[java]
+``` java
 public class UserServiceTest extends AbstractDBTest {
 
     @Inject
@@ -180,11 +180,11 @@ public class UserServiceTest extends AbstractDBTest {
                 "name_07", "name_08", "name_09", "name_10");
     }
 }
-[/java]
+```
 
 These both tests will pass. But let's add another one with order by country name:
 
-[java]
+``` java
     @Test
     public void shouldOrderByCountryName() throws Exception {
         List<User> allUsers = userService.loadAll(UserSortField.COUNTRY_NAME, true);
@@ -193,7 +193,7 @@ These both tests will pass. But let's add another one with order by country name
                 "Belgium", "Poland", "Poland", "Poland", "Poland", "South Africa",
                 "Spain", "Togo", null, null);
     }
-[/java]
+```
 
 And when we re-run, we will see that this one is failing with error saying that expected number elements was 10 but actual is 8.
 
@@ -205,7 +205,7 @@ Ok, so we have a problem now. We have a query that should work just fine but app
 
 To solve this problem we have to approach it from a different side. Instead of returning a list of users with countries and cities we could return a descriptor containing all the data we need to display in the database. So let's create this class:
 
-[java]
+``` java
 public class UserDescriptor {
 
     private String name;
@@ -224,11 +224,11 @@ public class UserDescriptor {
 
     // getters
 }
-[/java]
+```
 
 and then adjust method in UserService:
 
-[java]
+``` java
 public List<UserDescriptor> loadAllUserDescriptors(UserSortField sortField, boolean ascending) {
 
     String queryString = "select new pl.tomaszdziurko.UserDescriptor(u.name, u.surname, " +
@@ -237,7 +237,7 @@ public List<UserDescriptor> loadAllUserDescriptors(UserSortField sortField, bool
             " order by " + sortField.getField() + (ascending ? " asc " : " desc ");
     return entityManager.createQuery(queryString).getResultList();
 }
-[/java]
+```
 
 This code fragment needs longer explanation. So basically for each returned row we create new object, the UserDescriptor. It consists of all data we need to display in our datatable. But instead of writing "_u.country.name, u.country.population_" we type "_country.name, country.population_" and add proper joins to the query. Of course our SortFieldEnum needs little attention too as we must tune sort fields a bit to be in line with modified query.
 
@@ -254,7 +254,7 @@ So now we have 10 items in our list so there are no ommited ones but another pro
 
 If we want to have nulls at the end of our result list, we must add new rule in_ order by _clause. So our query needs some tweaking:
 
-[java]
+``` java
 public List<UserDescriptor> loadAllUserDescriptors(UserSortField sortField, boolean ascending) {
 
     String queryString = "select new pl.tomaszdziurko.UserDescriptor(u.name, u.surname, " +
@@ -266,11 +266,11 @@ public List<UserDescriptor> loadAllUserDescriptors(UserSortField sortField, bool
 
     return entityManager.createQuery(queryString).getResultList();
 }
-[/java]
+```
 
 The first thing worth to notice is that we've added _case when " + sortField.getEntity() + " is null then 2 else 1 end_ _as nullOrderer_. And we use _nullOrderer_ as a first element in _order by_ clause. Thanks to this, our records are sorted first by not null and then using requested field. Moreover as you can see, our sort enum was enhanced with new property, an _entity_, which is used to define on which object we want to check nullability. For fields from User entity it will be User alias _u_, for Country _country _and for City _city._ So now enum looks like that:
 
-[java]
+``` java
 public enum UserSortField {
 
     ID("u", "u.id"),
@@ -296,11 +296,11 @@ public enum UserSortField {
         return field;
     }
 }
-[/java]
+```
 
 And when we run our failing test, everything looks just perfect and green. But to make sure that we didn't omit anything, let's add a few more testing methods:
 
-[java]
+``` java
 @Test
 public void shouldOrderByCityName() throws Exception {
     List<UserDescriptor> allUsers = userService.loadAllUserDescriptors(UserSortField.CITY_NAME, true);
@@ -315,7 +315,7 @@ public void shouldOrderByCountryPopulation() throws Exception {
     assertThat(allUsers).onProperty("countryPopulation").containsExactly(
             null, null, 51L, 46L, 38L, 38L, 38L, 38L, 11L, 6L);
 }
-[/java]
+```
 
 **Summary**
 

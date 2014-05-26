@@ -23,15 +23,15 @@ Today we will add simple listing view for locations added to the database in pre
 
 <!-- more -->But first small bug I found in our DAO layer. In class AbstractDAO we created method findByProperty and there is one line there:
 
-[java]
+``` java
 
 return getEntityManager().createQuery(findEntityQuery).getSingleResult();
 
-[/java]
+```
 
 At first everything  seems to be ok, but what will happen when query returns no result? An ugly exception is thrown. So we have to fix it with following code:
 
-[java]
+``` java
 TypedQuery<EntityClass> query = getEntityManager().createQuery(findEntityQuery);
 		List<EntityClass> entities = query.setMaxResults(1).getResultList();
 
@@ -41,7 +41,7 @@ TypedQuery<EntityClass> query = getEntityManager().createQuery(findEntityQuery);
 		else {
 			return entities.get(0);
 		}
-[/java]
+```
 
 After this one, we could return to main topic of this post.
 
@@ -51,7 +51,7 @@ After this one, we could return to main topic of this post.
 
 As we need list of all locations we must add one method to ListingService interface and class:
 
-[java]
+``` java
 public class LocationServiceImpl implements LocationService {
 
 	@Autowired
@@ -64,7 +64,7 @@ public class LocationServiceImpl implements LocationService {
 	}
 
 }
-[/java]
+```
 
 LocationDao uses generic method findAll from AbstractDAO to load all objects from db.
 
@@ -79,7 +79,7 @@ First we add placeholders for Wicket objects in HTML:
 - _id_: a label **inside** locations to render ID of each entity object
 - _name_: a label **inside** locations to show name of each location
 
-[html]
+``` html
 <body>
 	<wicket:extend>
 		<h3>Locations</h3>
@@ -98,11 +98,11 @@ First we add placeholders for Wicket objects in HTML:
 		</div>
 	</wicket:extend>
 </body>
-[/html]
+```
 
 Then we modify wicket page class:
 
-[java]
+``` java
 public class LocationsPage extends BasePage {
 
 	//   (...)
@@ -136,7 +136,7 @@ public class LocationsPage extends BasePage {
 	}
 
 }
-[/java]
+```
 
 So what is happening in the code above? Let me explain it in more detail. In **(1)** we add new method to initGui(), in** (2)** we create [ListView](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/list/ListView.html) component which renders list of object in a selected way. In **(2)** you can also notice a createModelForLocations() method invocation, but this method will be covered a little later. ListView class has one method we have to implement: populateItem **(3)** which is called for each object from collections or collection model passed to ListView.
 
@@ -146,7 +146,7 @@ In **(4)** we are using [PropertyModel](http://wicket.apache.org/apidocs/1.4/org
 
 Now, it's time to talk about mysterious method creating model for our ListView component **(5)**:
 
-[java]
+``` java
 	private LoadableDetachableModel<List<Location>> createModelForLocations() {
 
 		return new LoadableDetachableModel<List<Location>>() {
@@ -157,7 +157,7 @@ Now, it's time to talk about mysterious method creating model for our ListView c
 			}
 		};
 	}
-[/java]
+```
 
 In this method we are using [LoadableDetachableModel](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/LoadableDetachableModel.html), another feature which you should use often if you want your applications to be memory efficient. This model (more detailed info can be found [here](https://cwiki.apache.org/WICKET/detachable-models.html)) has one nice feature, it nullifies model object at the end of each request and loads it when needed. So no risk to have your 100000 entity objects serialized when page is saved on the server.
 
@@ -194,7 +194,7 @@ The simplest way of hiding component is to call setVisible(false) method but as 
 
 
 
-[html]
+``` html
 		<wicket:enclosure child="locations">
 			<table>
 				<tr><th>ID</th><th>Name</th></tr>
@@ -206,18 +206,18 @@ The simplest way of hiding component is to call setVisible(false) method but as 
 				</span>
 			</table>
 		</wicket:enclosure>
-[/html]
+```
 
 We simply surround table with wicket:enclosure and define its child component as locations. So when locations.getVisible() returns false, no code inside enclosure is rendered.
 Now we need to make location ListView component invisible when list is empty:
 
-[java]
+``` java
         locations.setVisible(!locations.getList().isEmpty());
-[/java]
+```
 
 Moreover we want to show information when there are no locations, so we add label:
 
-[html]
+``` html
 <body>
 	<wicket:extend>
 		<h3>Locations</h3>
@@ -240,15 +240,15 @@ Moreover we want to show information when there are no locations, so we add labe
 		</div>
 	</wicket:extend>
 </body>
-[/html]
+```
 
 and in Java page class we create Label which is visible when ListView is not:
 
-[java]
+``` java
 		Label noLocationsLabel = new Label("noLocationsLabel", "There are no locations in the database. Maybe you can add one?");
 		noLocationsLabel.setVisible(!locations.isVisible());
 		add(noLocationsLabel);
-[/java]
+```
 
 After these improvements our page is ready:
 

@@ -39,7 +39,7 @@ Ja z dostępnych prezentacji wybrałem następujące:<!-- more -->
 
 Wykład fajnie przeprowadzony i ciekawy. Ogólnie o testach, jak je pisać, żeby się później nie wstydzić :) Szczepan zaprezentował szablon testów, który w dużym uproszczeniu wygląda następująco:
 
-[java]
+``` java
 @Test
 public void shouldDoSomethingWeWantToTest() throws Exception {
  // given
@@ -52,7 +52,7 @@ public void shouldDoSomethingWeWantToTest() throws Exception {
  // tutaj sprawdzamy czy wynik jest zgodny z oczekiwaniami
 
 }
-[/java]
+```
 
 Dzięki zastosowaniu takiego szablonu każda metoda testująca ma określony cel i jest łatwa do zrozumienia nawet po pobieżnym spojrzeniu w kod.
 

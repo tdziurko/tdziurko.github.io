@@ -44,7 +44,7 @@ create table locations (
 
 - entity class listing:
 
-[java]
+``` java
 @javax.persistence.Entity
 @Table(name = "locations")
 public class Location extends AbstractEntity {
@@ -62,7 +62,7 @@ public class Location extends AbstractEntity {
 	}
 	// getters, setters omitted
 }
-[/java]
+```
 
 As you can see, Location class is very simple: only one field, but the only thing we want at the moment from this entity is a name describing where item is stored. Is it "Bookcase in living room, second drawer from the top" or "Cabinet in the saloon, top bookshelf".
 
@@ -78,7 +78,7 @@ We start with LocationsPage which will, in the future, show listing with all loc
 
 Listings of LocationsPage java and HTML files:
 
-[html]
+``` html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
 	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
@@ -95,9 +95,9 @@ Listings of LocationsPage java and HTML files:
 	</wicket:extend>
 </body>
 </html>
-[/html]
+```
 
-[java]
+``` java
 public class LocationsPage extends BasePage {
 	@SpringBean
 	private LocationService locationService;
@@ -114,13 +114,13 @@ public class LocationsPage extends BasePage {
 		});
 	}
 }
-[/java]
+```
 
 If you were cautious enough you probably noticed a link I didn't mentioned earlier.  It's a simple link redirecting user to AddLocationPage when clicked (see overriden method onClick()).
 
 Next we add link to LocationsPage in the BasePage to appear on the topbar. In BasePage.html we add Wicket placeholder for this link:
 
-[html]
+``` html
 		<div class="nav">
 			<ul>
 				<!-- MENU -->
@@ -130,16 +130,16 @@ Next we add link to LocationsPage in the BasePage to appear on the topbar. In Ba
 				<!-- END MENU -->
 			</ul>
 		</div>
-[/html]
+```
 
 and in corresponding Java class add line:
 
-[java]
+``` java
 private void addTopMenuLinks() {
 		add(new BookmarkablePageLink<BasePage>("homePageLink", Application.get().getHomePage()));
 		add(new BookmarkablePageLink<BasePage>("locationsPageLink", LocationsPage.class));   // this one is new : )
 	}
-[/java]
+```
 
 Everything seems to be ok, you can do mvn jetty:run to see the results, but one thing could be easily improved, the URL address of LocationsPage. Instead of ugly one:
 
@@ -147,11 +147,11 @@ http://localhost:9090/item-directory/?wicket:bookmarkablePage=:pl.tomaszdziurko.
 
 after adding one line to Application class:
 
-[java]
+``` java
 private void mountBookmarkablePages() {
 		mountBookmarkablePage("locations", LocationsPage.class);
 	}
-[/java]
+```
 
 we configure Wicket to:
 
@@ -174,7 +174,7 @@ Changes from this part can be viewed in these two changesets: [[1]](https://bitb
 
 Now it's time to start with main part of this post: html form to add new location. First step is to add placeholders in AddLocationsPAge.html:
 
-[html]
+``` html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
 	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
@@ -197,11 +197,11 @@ Now it's time to start with main part of this post: html form to add new locatio
 	</wicket:extend>
 </body>
 </html>
-[/html]
+```
 
 Second step is to create components in Java class:
 
-[java]
+``` java
 public class AddLocationPage extends BasePage {
 	private String name;
 	public AddLocationPage() {
@@ -224,7 +224,7 @@ public class AddLocationPage extends BasePage {
 		addLocationForm.add(submitButton);
 	}
 }
-[/java]
+```
 
 HTML file is rather self-explanatory: simple form with one input field and submit button. But java page class needs more elaborate explanation:
 
@@ -267,7 +267,7 @@ There are two ways to make field required: you can call _TextField.setRequired(t
 
 Adding length validation in Wicket is very, very easy. We use [StringValidator](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/validation/validator/StringValidator.html) and one of its nested classes: ExactLengthValidator, LengthBetweenValidator, MaximumLengthValidator or MinimumLengthValidator. In our case java code looks like that:
 
-[java]
+``` java
 
 // (...), final constants for lengths are defined here
 
@@ -275,7 +275,7 @@ RequiredTextField<String> nameField = new RequiredTextField<String>("name");
 nameField.add(LengthBetweenValidator.lengthBetween(MIN_LOCATION_NAME_LENGTH, MAX_LOCATION_NAME_LENGTH));
 addLocationForm.add(nameField);
 
-[/java]
+```
 
 **Unique location name validator**
 
@@ -287,7 +287,7 @@ This validator needs longer explanation as it will be our first custom validator
 
 Now, when we have some validation it would be cool to be able to tell user what he did wrong or when his action performed successfully. In Wicket there is component dedicated to showing feedback to user: [FeedbackPanel](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/panel/FeedbackPanel.html). And as we will be potentially used in every page we will add it in BasePage class:
 
-[java]
+``` java
 
 public abstract class BasePage extends WebPage {
 
@@ -298,9 +298,9 @@ public abstract class BasePage extends WebPage {
 		add(new FeedbackPanel("feedbackPanel"));
 	}
 }
-[/java]
+```
 
-[html]
+``` html
 		<div class="content">
 			<!-- CONTENT -->
 
@@ -311,11 +311,11 @@ public abstract class BasePage extends WebPage {
 			<!-- END CONTENT -->
 
 		</div>
-[/html]
+```
 
 And how is it working? When validation fails on any validator, it adds message to feedback panel and rerenders page. Then, on rerender, messages are flushed and showed to the user on Error level (there are three levels: Info, Warn, Error which render in different css styles so their look can be customized). Ok, so far so good but what if we want to add such info manually? No problem, we will do this when succesfull save of Location object occurs. In this step we also add call to LocationService.save method to actually save new Location object in database.
 
-[java]
+``` java
 public class AddLocationPage extends BasePage {
 
 	private static final int MIN_LOCATION_NAME_LENGTH = 5;
@@ -356,7 +356,7 @@ public class AddLocationPage extends BasePage {
 		addLocationForm.add(submitButton);
 	}
 }
-[/java]
+```
 
 Every Wicket component has three methods info(String message), warn(...), error(...) which add feedback message for component and they are very useful for validating data, etc. However, if we want to redirect user to another page and show message there, we must use another way of adding feedback messages, based on user session and not on current component as component messages won't be rendered after redirect to other page. That's why we use getSession().info(...);
 If yoy try with only info(...) you will get warning in the log:

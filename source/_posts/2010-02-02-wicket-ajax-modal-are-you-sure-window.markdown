@@ -22,7 +22,7 @@ While developing web application with Wicket I sometimes need to check  whether 
 
 So we have HomePage.html:
 
-[html]
+``` html
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -42,11 +42,11 @@ So we have HomePage.html:
 
     </body>
 </html>
-[/html]
+```
 
 and corresponding Java class:
 
-[java]
+``` java
 package pl.tdziurko.ajaxmodalwindowapp;
 
 // imports omitted
@@ -75,7 +75,7 @@ public class HomePage extends WebPage {
     }
 
 }
-[/java]
+```
 
 Finally, we can see how it looks:
 
@@ -85,7 +85,7 @@ So let's try with creating reusable 'Are you sure?' ajax modal window with Wicke
 
 At the beginning we must prepare panel which will be displayed in our modal window. Let's name it YesNoPanel.
 
-[html]
+``` html
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -113,11 +113,11 @@ At the beginning we must prepare panel which will be displayed in our modal wind
         </wicket:panel>
     </body>
 </html>
-[/html]
+```
 
 and Java class:
 
-[java]
+``` java
 package pl.tdziurko.ajaxmodalwindowapp.areyousuremodal;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -170,14 +170,14 @@ public class YesNoPanel extends Panel {
     }
 
 }
-[/java]
+```
 
 Everything looks pretty straightforward. We pass to the constructor text  which will be displayed as a confirmation question, references to  ModalWindow object in which YesNoPanel is placed and to  ConfirmationAnswer object.
 ConfirmationAnswer class will be created  in the next paragraph and will be used to store information whether user  pressed 'Yes' or 'No' button in our panel.
 
 Now it's time to  prepare wrapping form to our YesNoPanel. We could simply achieve it by  creating panel with form and one button in it. In our example it will be  AreYouSurePanel class:
 
-[html]
+``` html
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -196,11 +196,11 @@ Now it's time to  prepare wrapping form to our YesNoPanel. We could simply achie
         </wicket:panel>
     </body>
 </html>
-[/html]
+```
 
 and in Java:
 
-[java]
+``` java
 package pl.tdziurko.ajaxmodalwindowapp.areyousuremodal;
 
 import java.io.Serializable;
@@ -286,7 +286,7 @@ public abstract class AreYouSurePanel extends Panel {
     }
 
 }
-[/java]
+```
 
 Here we do following steps:
 
@@ -304,7 +304,7 @@ Here we do following steps:
 
 That's it, we are done. To test how it's working we must change a bit our page class and html file:
 
-[html]
+``` html
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -328,11 +328,11 @@ That's it, we are done. To test how it's working we must change a bit our page c
 
     </body>
 </html>
-[/html]
+```
 
 and
 
-[java]
+``` java
 package pl.tdziurko.ajaxmodalwindowapp;
 
 // imports omitted
@@ -374,7 +374,7 @@ public class HomePage extends WebPage {
     }
 
 }
-[/java]
+```
 
 And after clicking 'Ajax Action!' we could see that it's working as intended:
 

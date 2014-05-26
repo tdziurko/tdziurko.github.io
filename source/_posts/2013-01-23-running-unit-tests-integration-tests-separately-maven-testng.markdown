@@ -32,7 +32,7 @@ Let's look at basic setup that should work:
 
 We have two test classes, one with IT postfix that will indicate that this is our integration test:
 
-[java]
+``` java
 import org.testng.annotations.Test;
 
 import static org.fest.assertions.Assertions.assertThat;
@@ -44,11 +44,11 @@ public class ExampleUnitTest {
         assertThat(false).isFalse();
     }
 }
-[/java]
+```
 
 and
 
-[java]
+``` java
 import org.testng.annotations.Test;
 
 import static org.fest.assertions.Assertions.assertThat;
@@ -60,7 +60,7 @@ public class StatusTestIT {
         assertThat("aaa").isEqualTo("");
     }
 }
-[/java]
+```
 
 and now let's declare plugin mentioned above in our pom.xml:
 
