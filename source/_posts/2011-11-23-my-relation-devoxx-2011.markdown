@@ -23,11 +23,11 @@ Last week I had a pleasure to attend [Devoxx](http://devoxx.com) conference, the
 ### Devoxx conference
 
 
-[![](/images/blog/2011/11/devoxx-2011-banner.png)](/images/blog/2011/11/devoxx-2011-banner.png)
+->![](/images/blog/2011/11/devoxx-2011-banner.png)<-
 
 Devoxx (few years ago named JavaPolis) is a conference organized in Antwerp. The whole event takes place in a large cinema center allowing attendess to seat in a very comfortable conditions and choose from seven (!) simultaneous sessions, each held in a separate hall. What is more interesting, key notes were run in one hall and life-streamed to other ones so everyone could watch them like a movie on the cinema's screen. Between sessions, also on the screens, we could read live tweet stream ([#devoxx](http://twitter.com/#!/search/%23devoxx) ) so sometimes when WiFi was not working we could still see what people write about conference and presentations, check example photo below or [live site ](http://wall.devoxx.com/)which were displayed on the screens:
 
-[![](/images/blog/2011/11/IMG_8043-300x225.jpg)](/images/blog/2011/11/IMG_8043.jpg)
+->![](/images/blog/2011/11/IMG_8043-300x225.jpg)<-
 
 <!-- more -->
 

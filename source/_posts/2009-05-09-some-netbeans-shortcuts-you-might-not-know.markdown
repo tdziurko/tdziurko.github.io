@@ -52,13 +52,13 @@ If we want comment many lines of code we can use /* ... */ but NetBeans gives us
 Method before we mark it and use the shortcut:
 
 
-[![](/images/blog/2009/05/uncommented1.png)](/images/blog/2009/05/uncommented1.png)
+->![](/images/blog/2009/05/uncommented1.png)<-
 
 
 Method after:
 
 
-[![](/images/blog/2009/05/commented1.png)](/images/blog/2009/05/commented1.png)
+->![](/images/blog/2009/05/commented1.png)<-
 
 
 
@@ -70,7 +70,7 @@ East navigating to proper class, interface
 
 In the large project with many packages, classes and interfaces looking for the one we need might be cumbersone. One of the solutions is **<Ctrl> + o** which opens window when you can start typing name of the type you are looking for. The more you type, the more narrow results will be:
 
-[![](/images/blog/2009/05/ctrlO.png)](/images/blog/2009/05/ctrlO.png)
+->![](/images/blog/2009/05/ctrlO.png)<-
 
 
 ### Go to the source with one click

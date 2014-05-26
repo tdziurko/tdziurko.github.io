@@ -17,9 +17,7 @@ tags:
 This year is very intensive with regard to IT conferences. I've already attended three of them and at least two more are scheduled. Last event I've had a pleasure to participate in was [GeeCON 2012](http://2012.geecon.org/) in Poznań. Below some of my personal impressions after this event.
 
 
-### [![](/images/blog/2012/05/geecon.png)](/images/blog/2012/05/geecon.png)
-
-
+->![](/images/blog/2012/05/geecon.png)<-
 
 
 ### **0 **
@@ -39,7 +37,7 @@ Zero is also a number of changing rooms. Unfortunately there was no place to dro
 ### **1**
 
 
-**Only one key-note as good as GeeCON talk by Kevlin Henney **during other conferences in this year****
+**Only one key-note as good as GeeCON talk by Kevlin Henney **during other conferences in this year**
 
 I didn't expect that at all. Closing key-notes are rarely really good. People are tired after those sleepless nights during conference, speakers are tired too, we all feel dull and often you can feel it during last talks. But sometimes it's otherwise. And that was the case at GeeCON. Not that I wasn't tired but _Cool Code_ by [Kevlin Henney](http://2012.geecon.org/speakers/kevlin-henney) was really great. This year only [Jurgen Appelo](http://www.jurgenappelo.com/) key-note during [33rdDegree](http://2012.33degree.org/) was as good as _Cool Code_. Even talk by _Uncle Bob_ wasn't as good as Kevlin's one so if you miss it, regret it and then regret it again and then... wait until GeeCON organizers publish videos :)
 

@@ -17,7 +17,7 @@ tags:
 - teamcity
 ---
 
-_This post is basically re-post of article I have written on my company blog [here](http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity). But before you go there to read the full story, please check this short introduction below to decide if you are interested :)_
+<blockquote>This post is basically re-post of article I have written on my company blog [here](http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity). But before you go there to read the full story, please check this short introduction below to decide if you are interested :)</blockquote>
 
 In [our company](http://SoftwareMill.com) sandbox project called [Bootzoooka](https://github.com/softwaremill/bootzooka) we are using pretty cool technology stack: Scala, Scalatra, SBT and AngularJS. Of course we have some JavaScript tests that are executed using [sbt jasmine plugin](https://github.com/guardian/sbt-jasmine-plugin) from Guardian. Current 0.8 version of this plugin allows to execute these tests in TeamCity and even fails build when any JS test is not passing, but it didn't provide full test report for these tests. This plugin worked quite well for us, but we wanted something more and that's why added story saying "_As a Developer I want to see jasmine tests in TeamCity report_" to our Bootzooka backlog.
 

@@ -21,7 +21,7 @@ tags:
 [
 ](/images/blog/2011/10/clean-coder1.jpg)Some time ago I found very interesting InformIT page with [eBook Deal of the Day](http://www.informit.com/deals/index.aspx), where you can buy IT ebook for only 9,99$. Every 24h (or sometimes a bit longer) they change a title you can get for this amazing price so it is worth to check it from time to time or [follow them on Twitter](http://twitter.com/informit). And one day I noticed that they were selling last Robert C. Martin's book titled "The Clean Coder". It was so cheap and I was already impressed by "The Clean Code" so without the slightest hesitation I ordered one electronic copy and started reading.
 
-[![](/images/blog/2011/10/clean-coder1.jpg)](/images/blog/2011/10/clean-coder1.jpg)
+->![](/images/blog/2011/10/clean-coder1.jpg)<-
 
 
 ### My opinion

@@ -28,7 +28,9 @@ Im my diploma thesis which  involves comparison between Struts 2 and Wicket, I n
 
 
 
-[![SMS gateway site](/images/blog/2010/10/smsgateway.png)](/images/blog/2010/10/smsgateway.png)**Example site:** [http://ebramka.ath.cx/](http://ebramka.ath.cx/) - polish free sms gateway
+->![SMS gateway site](/images/blog/2010/10/smsgateway.png)<-
+
+**Example site:** [http://ebramka.ath.cx/](http://ebramka.ath.cx/) - polish free sms gateway
 **Use case:** login user and then check if main page rendered properly.
 
 
@@ -38,7 +40,7 @@ This one is pretty simple. No HTTPS protocol, no SSL, just pure post data sent t
 2. Add sampler which will send HTTP request to the server, right click on your Thread Grup, Add -> Sampler -> HttpRequest.
 3.  Populate HttpRequest sampler with data from your web application  (submit URL, all parameter names and values needed to submit form). If  you are not sure about some values use [Firebug](http://getfirebug.com/) (Firefox browser plugin) or something similar to analyze HTML form element and find all hidden and non-hidden inputs.
 
-[![JMeter](/images/blog/2010/10/jMeter1.png)](/images/blog/2010/10/jMeter1.png)
+->![JMeter](/images/blog/2010/10/jMeter1.png)<-
 
 4. Most applications use cookies heavily so we need to add module which  manages them. Just right click on your Thread Group and Add -> Config  Element -> Http Cookie Manager. Don't forget to change cookie policy  to use "compatibility" mode as I experienced some problems when  different mode was selected.
 5. To check whether JMeter logged-in  successfully to the web application we could use two modules: Response  Assertion (Add -> Assertions -> Response Assertion) and configure  what text should be found on the page after proper login (you must also  add Listener -> Assertion Results ) or just view response page after  login using element View Results Tree (Add -> Listener -> View  Results Tree) as I did in this example.
@@ -79,9 +81,7 @@ Sometimes  tested application uses encryption, SSL and HTTPS protocol. Lately  J
 3. In the main screen there is browser-like area, and on the left you can see some menus and panels.
 
 
-[![BadBoy](/images/blog/2010/08/BadBoy.png)](/images/blog/2010/08/BadBoy.png)
-
-
+->![BadBoy](/images/blog/2010/08/BadBoy.png)<-
 
 
 4. When application opens, recording is already started, stop it (top menu, button on the right from red circle).

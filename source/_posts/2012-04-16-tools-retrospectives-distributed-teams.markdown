@@ -26,9 +26,7 @@ Standard retrospective is easy , you sit next to other people from your project 
 
 
 
-[![](/images/blog/2012/04/cosketch.png)](/images/blog/2012/04/cosketch.png)
-
-
+->![](/images/blog/2012/04/cosketch.png)
 
 
 **Pros:**
@@ -79,7 +77,7 @@ Standard retrospective is easy , you sit next to other people from your project 
 
 
 
-[![](/images/blog/2012/04/corkboard1.png)](/images/blog/2012/04/corkboard1.png)
+->![](/images/blog/2012/04/corkboard1.png)<-
 
 
 **Pros:**
@@ -124,7 +122,7 @@ Standard retrospective is easy , you sit next to other people from your project 
 
 
 
-[![](/images/blog/2012/04/screenshot_005-1024x743.png)](/images/blog/2012/04/screenshot_005.png)
+->![](/images/blog/2012/04/screenshot_005-1024x743.png)<-
 
 
 **Pros:**

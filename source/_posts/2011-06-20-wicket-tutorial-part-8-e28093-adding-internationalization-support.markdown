@@ -111,7 +111,7 @@ applicationHeader=Zarządzaj swoimi przedmiotami z łatwością!
 Ok, it should work and when you run jetty server _mvn jetty:run_, enter application and click flag of Poland you should see:
 
 
-[![](/images/blog/2011/06/item11.png)](/images/blog/2011/06/item11.png)
+->![](/images/blog/2011/06/item11.png)<-
 
 
 Small improvement can be done with titles of flag images to inform user to which locale he will switch after clicking. This is good occasion to show nice feature of wicket:message which can render not only localized text but also to localize elements in other html tags like title in input HTML element. To make it work we simply add _wicket:message="element_name:key_from_properties_bundle"_. In LanguagePanel.html we want to localize title so we add _wicket:message="title:pl"_ to input:
@@ -182,7 +182,7 @@ To show how it works we will create localized sidebar panel of our application:
 
 
 
-[![](/images/blog/2011/06/item2.png)](/images/blog/2011/06/item2.png)
+->![](/images/blog/2011/06/item2.png)<-
 
 
 First we create empty Java class for panel and move sidebar markup to corresponding panel HTML file:

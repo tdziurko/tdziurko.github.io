@@ -79,8 +79,8 @@ public class HomePage extends WebPage {
 
 Finally, we can see how it looks:
 
-[![](/images/blog/2010/11/javaScriptWindow.png)](/images/blog/2010/11/javaScriptWindow.png)It solves our problem but in the era of Web2.0, rounded corners and  shiny looks it isn't enough. Why can't we use ajax modal window to ask  user for confirmation? It would make our application look good and our  css magician could make it look even better.<!-- more -->
-
+->![](/images/blog/2010/11/javaScriptWindow.png)<-
+It solves our problem but in the era of Web2.0, rounded corners and  shiny looks it isn't enough. Why can't we use ajax modal window to ask  user for confirmation? It would make our application look good and our  css magician could make it look even better.<!-- more -->
 So let's try with creating reusable 'Are you sure?' ajax modal window with Wicket.
 
 At the beginning we must prepare panel which will be displayed in our modal window. Let's name it YesNoPanel.
@@ -378,4 +378,4 @@ public class HomePage extends WebPage {
 
 And after clicking 'Ajax Action!' we could see that it's working as intended:
 
-[![](/images/blog/2010/11/ajaxModalWindow.png)](/images/blog/2010/11/ajaxModalWindow.png)
+->![](/images/blog/2010/11/ajaxModalWindow.png)<-

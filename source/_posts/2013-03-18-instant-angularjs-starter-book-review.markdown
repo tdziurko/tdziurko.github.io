@@ -16,7 +16,9 @@ tags:
 ---
 
 Some time ago I have received an offer from [Packt Publishing](http://www.packtpub.com/) to write a review of their new small book about AngularJS framework "[Instant AngularJS Starter](http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book)". And because I still consider myself as a AngularJS beginner, I decided to give it a go.
-[![angular_cover](/images/blog/2013/03/angular_cover.png)](<a href="/2013/03/instant-angularjs-starter-book-review/angular_cover/)
+
+
+->![angular_cover](/images/blog/2013/03/angular_cover.png)<-
 
 
 ### Content

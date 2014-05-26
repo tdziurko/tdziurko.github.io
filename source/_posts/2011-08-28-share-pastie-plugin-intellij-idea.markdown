@@ -24,7 +24,7 @@ But this is not a post about greatness of JetBrains product. Since we all are wo
 
 
 
-[![](/images/blog/2011/08/pastie_home.png)](/images/blog/2011/08/pastie_home.png)
+->![](/images/blog/2011/08/pastie_home.png)<-
 
 
 
@@ -95,7 +95,7 @@ As we are all using IntelliJ IDEA and most of the code we want to share is viewe
 2. Press Ctrl+Shift+P or right mouse click and choose "Share with Pastie.org" (one click)
 
 
-[![](/images/blog/2011/08/plugin_1.png)](/images/blog/2011/08/plugin_1.png)
+->![](/images/blog/2011/08/plugin_1.png)<-
 
 
 
@@ -110,7 +110,7 @@ As we are all using IntelliJ IDEA and most of the code we want to share is viewe
 
 
 
-[![](/images/blog/2011/08/plugin_2.png)](/images/blog/2011/08/plugin_2.png)
+->![](/images/blog/2011/08/plugin_2.png)<-
 
 
 
@@ -136,7 +136,7 @@ There are some additional features which were not planned at the begginning but 
 While developing application you might need to copy and share something not only from the opened file but from console output (or log) your application produced. So since version 0.4 plugin allows you to share code directly from the console view:
 
 
-[![](/images/blog/2011/08/plugin_31.png)](/images/blog/2011/08/plugin_31.png)
+->![](/images/blog/2011/08/plugin_31.png)<-
 
 
 
@@ -151,7 +151,7 @@ Sometimes you might share something with plugin and then, without thinking, copy
 
 
 
-[![](/images/blog/2011/08/plugin_4.png)](/images/blog/2011/08/plugin_4.png)
+->![](/images/blog/2011/08/plugin_4.png)<-
 
 
 

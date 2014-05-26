@@ -29,14 +29,14 @@ Before styling applied:
 
 
 
-![](/images/blog/2012/03/screenshot_0101.png)
+->![](/images/blog/2012/03/screenshot_0101.png)<-
 
 
 
 
-After:[![Final Twitter Bootstrap Navigation Bar with Wicket](/images/blog/2012/03/screenshot_013.png)](/images/blog/2012/03/screenshot_013.png)
+After:
 
-
+->![Final Twitter Bootstrap Navigation Bar with Wicket](/images/blog/2012/03/screenshot_013.png)<-
 
 
 
@@ -102,7 +102,7 @@ _None_ value is used by home page because it does not belong to any particular m
 
 Clean markup of Bootstrap NanBar may look like that:
 
-[![](/images/blog/2012/03/screenshot_015.png)](/images/blog/2012/03/screenshot_015.png)
+->![](/images/blog/2012/03/screenshot_015.png)<-
 
 And if you look attentively enough you will notice  that it could be divided into smaller, reusable and independent elements:
 

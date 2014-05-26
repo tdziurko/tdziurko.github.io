@@ -36,17 +36,17 @@ Base application consists of two pages:
 <!-- more -->
 
 
-[![](/images/blog/2012/09/home_page1.jpg)](/images/blog/2012/09/home_page1.jpg)
+->![](/images/blog/2012/09/home_page1.jpg)<-
 
 
 
 
-[![](/images/blog/2012/09/login_page-1024x488.jpg)](/images/blog/2012/09/login_page.jpg)
+->![](/images/blog/2012/09/login_page-1024x488.jpg)<-
 
 
 
 
-[![](/images/blog/2012/09/home_page2-1024x402.jpg)](/images/blog/2012/09/home_page2.jpg)
+->![](/images/blog/2012/09/home_page2-1024x402.jpg)<-
 
 
 
@@ -272,7 +272,7 @@ So we after three steps we should have 'Remember Me' working. To check it quickl
 
 and then start application _mvn clean compile jetty:run_, go to login page, login, close browser and after over a 1 minute (when session expires) open it again on http://localhost:8080. You should see something like this:
 
-[![](/images/blog/2012/09/auto_logged-1024x313.jpg)](/images/blog/2012/09/auto_logged.jpg)
+->![](/images/blog/2012/09/auto_logged-1024x313.jpg)<-
 
 So it works. But we still need one more thing: allow user to remove cookies and turn-off auto-login.
 

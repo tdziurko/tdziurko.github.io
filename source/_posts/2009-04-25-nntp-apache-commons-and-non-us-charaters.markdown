@@ -53,7 +53,10 @@ public class Main {
 [/java]
 
 Everything worked as expected until I started to use Polish characters in the message. Then instead of "ąęóśłżźćń" I saw following picture:
-[![Invalid characters encoding in NNTP class in Apache Commons Net](/images/blog/2009/04/message1-300x93.png)](/images/blog/2009/04/message1.png)<!-- more -->To solve this problem I tried many things: changing encoding in the header, changing encoding in the NetBeans project or even changing encoding in my newsreader (yes, yes, I even started to blame poor Thunderbird ;) ) but nothing helped. Then I decided to look into source code of Apache Commons Net library and after a short investigation I found source of all my problems: org.apache.commons.net.nntp.NNTP class:
+
+->![Invalid characters encoding in NNTP class in Apache Commons Net](/images/blog/2009/04/message1-300x93.png)<-
+
+<!-- more -->To solve this problem I tried many things: changing encoding in the header, changing encoding in the NetBeans project or even changing encoding in my newsreader (yes, yes, I even started to blame poor Thunderbird ;) ) but nothing helped. Then I decided to look into source code of Apache Commons Net library and after a short investigation I found source of all my problems: org.apache.commons.net.nntp.NNTP class:
 
 [java]
 public class NNTP extends SocketClient
@@ -101,4 +104,4 @@ With Netbeans Maven plugin onboard I fixed encoding and ran all tests. To my sur
 
 Below you can see effects, all Polish character are properly sent to discussion group.
 
-[![Properly encoded Polish character using Apache Commons Net](/images/blog/2009/04/message2-300x104.png)](/images/blog/2009/04/message2.png)
+->![Properly encoded Polish character using Apache Commons Net](/images/blog/2009/04/message2-300x104.png)<-

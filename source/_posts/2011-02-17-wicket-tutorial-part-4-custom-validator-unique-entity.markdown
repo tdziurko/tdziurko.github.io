@@ -59,7 +59,7 @@ As you might remember, currently we have Wicket form with basic validation check
 But with unique constraint on name field in locations table in our database, trying to insert new location with name equal to other existing location will, as expected, end with such error:
 
 
-[![](/images/blog/2011/02/SS-20110215205613.png)](/images/blog/2011/02/SS-20110215205613.png)
+->![](/images/blog/2011/02/SS-20110215205613.png)<-
 
 
 
@@ -149,7 +149,9 @@ And when we submit this form with existing location name we will see feedback me
 
 
 
-[![](/images/blog/2011/02/SS-20110215220102.png)](/images/blog/2011/02/SS-20110215220102.png)Ok, this is a good moment for a short break. If you want to see complete changes we made so far in the code, please refer to the this [changeset](https://bitbucket.org/tdziurko/item-directory/changeset/15bf0c549e64) in BitBucket repository. And now at this point we could end this post, as we reached our goal for today: validation is complete and running. But there is one problem...
+->![](/images/blog/2011/02/SS-20110215220102.png)<-
+
+Ok, this is a good moment for a short break. If you want to see complete changes we made so far in the code, please refer to the this [changeset](https://bitbucket.org/tdziurko/item-directory/changeset/15bf0c549e64) in BitBucket repository. And now at this point we could end this post, as we reached our goal for today: validation is complete and running. But there is one problem...
 
 
 

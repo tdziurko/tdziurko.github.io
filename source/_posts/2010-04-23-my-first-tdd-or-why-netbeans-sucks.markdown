@@ -41,7 +41,9 @@ public class UserServiceTest {
 [/java]
 
 
-After placing cursor over the user variable and pressing Alt+Enter (NetBeans) or Ctrl+1 (Eclipse) we will see (Eclipse at the bottom, NetBeans fragment at the top):[![](/images/blog/2010/11/compare1.jpg)](/images/blog/2010/11/compare1.jpg)
+After placing cursor over the user variable and pressing Alt+Enter (NetBeans) or Ctrl+1 (Eclipse) we will see (Eclipse at the bottom, NetBeans fragment at the top):
+
+->![](/images/blog/2010/11/compare1.jpg)<-
 
 
 Even at this early stage of comparison we can see that Eclipse gives us more flexibility in the process of generating code, it allows to create local variable what will be our most often intention. NetBeans only tries to help us with proposing new class field or even new class what is rather strange idea.

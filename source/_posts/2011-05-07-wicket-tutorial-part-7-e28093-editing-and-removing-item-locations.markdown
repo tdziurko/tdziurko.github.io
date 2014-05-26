@@ -167,9 +167,7 @@ The way how validator is created** (7) **depends on whether we edit existing loc
 Ok. that's everything we have to do to add edit feature. We now can edit and add new locations as shown on the screen shot below.
 
 
-### [![](/images/blog/2011/05/SS-20110507141140.png)](/images/blog/2011/05/SS-20110507141140.png)
-
-
+->![](/images/blog/2011/05/SS-20110507141140.png)<-
 
 
 ### Removing locations
@@ -256,7 +254,7 @@ public void removeSafely(EntityClass entity) {
 
 After this small change application is ready for tests and we can check that everything works just fine.
 
-[![](/images/blog/2011/05/SS-20110507202517.png)](/images/blog/2011/05/SS-20110507202517.png)
+->![](/images/blog/2011/05/SS-20110507202517.png)<-
 
 
 ### Summary

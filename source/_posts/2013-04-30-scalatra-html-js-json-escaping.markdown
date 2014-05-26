@@ -15,7 +15,8 @@ tags:
 - Scalatra
 ---
 <!-- more -->
-[![logo-scalatra](/images/blog/2013/04/logo-scalatra.png)](/images/blog/2013/04/logo-scalatra.png)
+->![logo-scalatra](/images/blog/2013/04/logo-scalatra.png)<-
+
 [Scalatra](http://www.scalatra.org/) is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
 So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.
 

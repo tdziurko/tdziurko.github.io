@@ -45,7 +45,8 @@ What we would like to achieve is that when we create SettingItem object with val
 ### Jasypt to the rescue
 
 
-[![jasypt-small](/images/blog/2013/07/jasypt-small.png)](/images/blog/2013/07/jasypt-small.png)
+->![jasypt-small](/images/blog/2013/07/jasypt-small.png)<-
+
 [Jasypt](http://www.jasypt.org) is a simple encryption library written in Java. It frees developer from dealing with low level configuration details and makes whole encryption process easy and straightforward. And what is most interesting now, it also has nice integration with Hibernate allowing seamless encryption/decryption of data stored in database.
 
 

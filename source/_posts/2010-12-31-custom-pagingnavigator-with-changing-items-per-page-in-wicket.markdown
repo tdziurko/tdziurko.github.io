@@ -22,7 +22,7 @@ In one of my recent projects I had to create Wicket pagination component with on
 
 Finished component will look like below:
 
-[![](/images/blog/2010/12/customPaginator.png)](/images/blog/2010/12/customPaginator.png)
+->![](/images/blog/2010/12/customPaginator.png)<-
 Of course I was not going to implement this from the scratch, because most of work had been already done by Wicket authors and commiters in component [PagingNavigator](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/navigation/paging/PagingNavigator.html). Source of this component as a reference to changes I made can be found [here](http://pastebin.com/kwzBG9mH).
 
 **The first steps in creating our component:**

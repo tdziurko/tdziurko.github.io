@@ -16,8 +16,8 @@ tags:
 ---
 <!-- more -->
 
-Dear Reader
-    This post is in my native language as it is a review of book pyblished only in Poland. Please feel free to check my other posts which are mainly written in English.
+<blockquote>Dear Reader
+This post is in my native language as it is a review of book published only in Poland. Please feel free to check my other posts which are mainly written in English.</blockquote>
 
 
 Dość rzadko sięgam po książki informatyczne wydane w naszym ojczystym języku. Powód jest dość prozaiczny: z reguły w momencie, gdy wychodzi polskie tłumaczenie "JavaAwesomeWebFramework 1.2 w Akcji" po angielsku jest już  dostępna "JavaAwesomeWebFramework 2.0 in Action" i cała wiedza zawarta w polskiej wersji jest, delikatnie mówiąc, lekko nieaktualna.
@@ -26,9 +26,7 @@ Ale są tematy, które można nazwać, choć to dość górnolotne słowo, ponad
 
 I właśnie na takie problemy receptą jest lektura i stosowanie rad zawartych w książce ["Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce"](http://helion.pl/ksiazki/oprogramowanie-szyte-na-miare-jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-michal-bartyzel,opszmi.htm) Michała Bartyzela.
 
-[![Audiobooks Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce. eBook. Pdf](/images/blog/2013/10/bartyzel_klient-300x300.jpg)](/images/blog/2013/10/bartyzel_klient.jpg)
-
-<!-- more -->
+->![Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce](/images/blog/2013/10/bartyzel_klient-300x300.jpg)<-
 
 
 <blockquote>Klient wie, czego chce, ale nie wie czego potrzebuje</blockquote>

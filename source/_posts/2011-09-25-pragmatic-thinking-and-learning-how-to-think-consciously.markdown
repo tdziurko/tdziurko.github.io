@@ -22,7 +22,7 @@ tags:
 I recently have finished reading one of the best non-IT books I had in my hands, ["Pragmatic Thinking and Learning" by Andy Hunt](http://pragprog.com/book/ahptl/pragmatic-thinking-and-learning). Because there are already a lot of reviews  on the Internet (e.g. [http://thoughtforge.net/2010/06/10/pragmatic-thinking-learning/](http://thoughtforge.net/2010/06/10/pragmatic-thinking-learning/), [http://www.javalinux.it/wordpress/2009/03/25/book-review-pragmatic-thinking-and-learning/](http://www.javalinux.it/wordpress/2009/03/25/book-review-pragmatic-thinking-and-learning/) ), I'll try to focus on the things I found most interesting and worth to remember.
 
 
-[![](/images/blog/2011/09/ahptl-250x300.jpg)](/images/blog/2011/09/ahptl.jpg)
+->![](/images/blog/2011/09/ahptl-250x300.jpg)<-
 
 <!-- more -->Firstly, I think every programmer should read this book, even more, anyone whose career requires constant learning new things, skills of effective thinking and problem solving, should read this book as well. Why? Because in this publication author really carefully gathered the available scientific knowledge about how our brain works, how it processes information and how it stores the new knowledge. And more importantly, he described how we can change our behavior to make the process of learning and problem solving the most effective. And I don't think I need to convince anyone that effective learning and thinking is very useful (if not necessary) in our work :)
 

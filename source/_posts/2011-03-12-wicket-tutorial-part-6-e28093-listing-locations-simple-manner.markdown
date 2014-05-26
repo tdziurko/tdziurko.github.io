@@ -167,7 +167,7 @@ In this method we are using [LoadableDetachableModel](http://wicket.apache.org/a
 
 
 
-[![](/images/blog/2011/03/SS-20110312191713.png)](/images/blog/2011/03/SS-20110312191713.png)
+->![](/images/blog/2011/03/SS-20110312191713.png)<-
 
 
 
@@ -180,7 +180,7 @@ Working as expected. But if we view this page with empty database it will look r
 
 
 
-[![](/images/blog/2011/03/SS-20110312192333.png)](/images/blog/2011/03/SS-20110312192333.png)
+->![](/images/blog/2011/03/SS-20110312192333.png)<-
 
 
 
@@ -251,4 +251,7 @@ and in Java page class we create Label which is visible when ListView is not:
 [/java]
 
 After these improvements our page is ready:
-[![](/images/blog/2011/03/SS-20110312194653.png)](/images/blog/2011/03/SS-20110312194653.png)Page is ready,  you are ready to use ListView component in your projects  so we reached the end of this post. As usual latest source code is available [here](https://bitbucket.org/tdziurko/item-directory/src) and changeset from this post (except DAO bug fix which was pushed earlier) can be viewed [here](https://bitbucket.org/tdziurko/item-directory/changeset/2403961c4a2b).
+
+->![](/images/blog/2011/03/SS-20110312194653.png)<-
+
+Page is ready, you are ready to use ListView component in your projects  so we reached the end of this post. As usual latest source code is available [here](https://bitbucket.org/tdziurko/item-directory/src) and changeset from this post (except DAO bug fix which was pushed earlier) can be viewed [here](https://bitbucket.org/tdziurko/item-directory/changeset/2403961c4a2b).

@@ -44,20 +44,14 @@ Presentation by one of the fathers of Scrum. Evangelistic, as expected, but too 
 
 **Pawel Brodzinki - Building Teams**
 
-****Really controversial with saying that we should hire women even if their technical skills is below the level we look for. It was said that woman will increase cognitive intelligence in team and will recompensate lower skills with increasing diversity and mentioned type of intelligence.
+  * Really controversial with saying that we should hire women even if their technical skills is below the level we look for. It was said that woman will increase cognitive intelligence in team and will recompensate lower skills with increasing diversity and mentioned type of intelligence.
 
-
-
-	
   * From conversation with Pawel during the break, my question: What should be accepted difference between skill of hired woman and the rest of the team. Answer: "Level that won't cause woman to hate you that you hired her and level that won't cause team to hate her and you". Pretty obvious, but thought provoking.
 
 
 **Tomek Włodarek - Are we agile yet
-**
 
 
-
-	
   * Scrumpede - 1. Sudden frenzied rush of (panic–stricken) organizations to do Scrum because it is the next best thing. 2. To flee in a headlong rush back to prescriptive ways of doing things because Scrum is difficult and hard work.
 
 	
@@ -137,7 +131,7 @@ Very interesting analogy between planning a family car trip and planning a relea
 
 **Michał Ostruszka - Code Reviews**
 
-This one is hard to judge as Michał,like me, is one of [twenty CEOs](https://softwaremill.com/20-ceos-in-one-company/) in [SoftwareMill](https://softwaremill.com/) :) Code reviews are very important part of our development process and Michał told about experiences, problems and solutions that should help when introducing or struggling with code reviews in your organization.
+This one is hard to judge as Michał, like me, is one of [twenty CEOs](https://softwaremill.com/20-ceos-in-one-company/) in [SoftwareMill](https://softwaremill.com/) :) Code reviews are very important part of our development process and Michał told about experiences, problems and solutions that should help when introducing or struggling with code reviews in your organization.
 
 **Tomasz Borowski - Spaceship Commander**
 

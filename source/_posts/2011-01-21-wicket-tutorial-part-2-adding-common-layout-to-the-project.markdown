@@ -32,7 +32,7 @@ Ok, enough about the past. Today we are going to add some nice common layout to 
 As winning "The best designed web application ever" award is not the purpose of this tutorial, I didn't want to spend a lot of time on creating beautiful layout. After a short search in Google results I found nice free template which seems to suit well to our tutorial needs:
 
 
-[![](/images/blog/2011/01/template.png)](/images/blog/2011/01/template.png)
+->![](/images/blog/2011/01/template.png)<-
 
 
 
@@ -61,7 +61,7 @@ After downloading template we need to take following steps in order to make Item
 
 Because we are planning to use consistent layout across the whole application we will put common elements (marked as **blue, transparent area** on the image below) in BasePage.html and elements changing in each page (marked as **green area**) in corresponding page class. Using this technique will allow us to place logic responsible for repeating layout things in one place (BasePage class) and logic responsible for generating page-specific data in each page class inheriting from BasePage.
 
-[![](/images/blog/2011/01/layout.png)](/images/blog/2011/01/layout.png)
+->![](/images/blog/2011/01/layout.png)<-
 
 So after pasting complete index.html contents into BasePage.html we delete  part responsible for green area  (everything in <div class="content"> tag) and replace it with marker <wicket:child/> which will inform Wicket that filling this area is a role of inheriting class and not a BasePage class itself. After these modifications changed part of HTML file should look like presented below:
 
@@ -118,7 +118,7 @@ You don't have to worry about content outside wicket:extend element as it will b
 OK, we are done with template adding. If you wane to view changes in repository, here's the link: [https://bitbucket.org/tdziurko/item-directory/changeset/59ffdc84d325](https://bitbucket.org/tdziurko/item-directory/changeset/59ffdc84d325). Result should be like that:
 
 
-[![](/images/blog/2011/01/SS-20110121083415.png)](/images/blog/2011/01/SS-20110121083415.png)
+->![](/images/blog/2011/01/SS-20110121083415.png)<-
 
 
 
@@ -128,7 +128,7 @@ Isn't it much better than previous one? :)
 
 
 
-[![](/images/blog/2011/01/ItemDirectoryHello.png)](/images/blog/2011/01/ItemDirectoryHello.png)
+->![](/images/blog/2011/01/ItemDirectoryHello.png)<-
 
 
 
@@ -165,7 +165,7 @@ Now we have pretty good layout, but we need to remove some elements that aren't 
 So currently we don't need most of these links in the layout. I leave empty places to (maybe) fill them with additional requested features in the future. After cleaning main page looks like that:
 
 
-[![](/images/blog/2011/01/SS-20110121090414.png)](/images/blog/2011/01/SS-20110121090414.png)
+->![](/images/blog/2011/01/SS-20110121090414.png)<-
 
 
 
@@ -229,7 +229,9 @@ Next in BasePage.html replace application name and header text and page title wi
 
 When we reload page after Jetty noticed changes in the code, we could see page looking exactly the same as before adding properties file so everything seems to work correctly. But when we look at the title bar in web browser:
 
-[![](/images/blog/2011/01/SS-20110121093821.png)](/images/blog/2011/01/SS-20110121093821.png)Oh no! - you might think - I screwed something up! But don't worry, it's not a bug, it's a feature :) Do you remember fragment of Application.java class?
+->![](/images/blog/2011/01/SS-20110121093821.png)<-
+
+Oh no! - you might think - I screwed something up! But don't worry, it's not a bug, it's a feature :) Do you remember fragment of Application.java class?
 
 [java]
 @Override
