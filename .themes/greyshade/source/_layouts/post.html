@@ -6,6 +6,7 @@ single: true
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 {% include article.html %}
 <span class="post_end">
+    <br/>
 	  {% include post/author.html %}
       {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
 	  <span class="categories">{% include post/categories.html %}</span>
