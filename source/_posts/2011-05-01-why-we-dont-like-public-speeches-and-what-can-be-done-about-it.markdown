@@ -40,23 +40,8 @@ But this book will tell you why you should practice, what you should practice an
 Scott Berkun writes that our brain from thousands of years was learnt that:
 
 
-<blockquote>Four things very bad for our survival are:
-
-> 
-> 
-	
->   * Standing alone
-> 
-	
->   * In open territory with no place to hide
-> 
-	
->   * Without a weapon
-> 
-	
->   * In front of large crowd of creatures staring at you
-> 
-
+<blockquote>Four things very bad for our survival are: 1. Standing alone 2. In open territory with no place to hide 
+3. Without a weapon 4. In front of large crowd of creatures staring at you
 </blockquote>
 
 

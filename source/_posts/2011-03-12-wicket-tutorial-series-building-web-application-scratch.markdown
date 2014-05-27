@@ -22,99 +22,23 @@ This post aggregates the  series of Wicket tutorial articles from this blog. Bu
 
 ### Wicket tutorial series
 
+1. [Wicket Tutorial, part 1 – setting up project with Spring 3, JPA 2 and MySQL](/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/)
 
+2. [Wicket Tutorial, part 2 – adding common layout to the project](/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/)
 
+3. [Wicket Tutorial, part 3 – first form in our application](/2011/02/wicket-tutorial-part-3-form-application/)
 
+4. [Wicket Tutorial, part 4 – custom validator for unique entity name](/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/)
 
+5. [Wicket tutorial, part 5 – generic unique entity validator](/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/)
 
-	
-    1. 
+6. [Wicket Tutorial, part 6 – listing locations in a simple manner](/2011/03/wicket-tutorial-part-6-%E2%80%93-listing-locations-simple-manner/)
 
+7. [Wicket Tutorial, part 7 – editing and removing item locations](/2011/05/wicket-tutorial-part-7-%E2%80%93-editing-and-removing-item-locations/)
 
-[Wicket Tutorial, part 1 – setting up project with Spring 3, JPA 2 and MySQL](<a href="/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/)
+8. [Wicket Tutorial, part 8 - adding internationalization support](/2011/06/wicket-tutorial-part-8-%E2%80%93-adding-internationalization-support/)
 
+9. [Wicket Tutorial, part 9 – storing and loading user preferences from cookies](/2011/07/wicket-tutorial-part-9-%E2%80%93-storing-loading-user-preferences-cookies/)
 
 
-
-	
-    2. 
-
-
-[Wicket Tutorial, part 2 – adding common layout to the project](<a href="/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/)
-
-
-
-
-	
-    3. 
-
-
-[Wicket Tutorial, part 3 – first form in our application](<a href="/2011/02/wicket-tutorial-part-3-form-application/)
-
-
-
-
-	
-    4. 
-
-
-[Wicket Tutorial, part 4 – custom validator for unique entity name](<a href="/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/)
-
-
-
-
-	
-    5. 
-
-
-[Wicket tutorial, part 5 – generic unique entity validator](<a href="/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/)
-
-
-
-
-	
-    6. 
-
-
-[Wicket Tutorial, part 6 – listing locations in a simple manner](<a href="/2011/03/wicket-tutorial-part-6-%E2%80%93-listing-locations-simple-manner/)
-
-
-
-
-	
-    7. 
-
-
-[Wicket Tutorial, part 7 – editing and removing item locations](<a href="/2011/05/wicket-tutorial-part-7-%E2%80%93-editing-and-removing-item-locations/)
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-  * [Wicket Tutorial, part 8 - adding internationalization support](<a href="/2011/06/wicket-tutorial-part-8-%E2%80%93-adding-internationalization-support/)
-
-
-
-
-
-
-
-
-
-
-	
-  * [Wicket Tutorial, part 9 – storing and loading user preferences from cookies](<a href="/2011/07/wicket-tutorial-part-9-%E2%80%93-storing-loading-user-preferences-cookies/)
-
-
-
-
-You might also be interested in post [Wicket – useful links](<a href="/2010/02/wicket-useful-links/) with other good tutorials, presentations and tools I found useful while learning and using Wicket.
+You might also be interested in post [Wicket – useful links](/2010/02/wicket-useful-links/) with other good tutorials, presentations and tools I found useful while learning and using Wicket.

@@ -22,13 +22,18 @@ In one of my recent projects I had to create Wicket pagination component with on
 
 Finished component will look like below:
 
-->![](/images/blog/2010/12/customPaginator.png)<-
+->![custom paginator](/images/blog/2010/12/customPaginator.png)<-
+
 Of course I was not going to implement this from the scratch, because most of work had been already done by Wicket authors and commiters in component [PagingNavigator](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/navigation/paging/PagingNavigator.html). Source of this component as a reference to changes I made can be found [here](http://pastebin.com/kwzBG9mH).
 
 **The first steps in creating our component:**
+
 - add List _itemsPerPageValues_ holding numbers for 'items per page' which will be shown to the user allowing him to click and change this value.
+
 - provide default List _DEFAULT_ITEMS_PER_PAGE_VALUES_, which will be used (what a surprise!) as a default :)
+
 - give our component reference to the _DataView_ object on which we will execute change items per page method.
+
 
 <!-- more -->
 

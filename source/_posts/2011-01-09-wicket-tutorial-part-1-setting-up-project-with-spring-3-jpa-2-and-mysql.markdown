@@ -54,35 +54,34 @@ My initial commit is mainly based on **WicketCool** because I like its Maven mod
 
 Source code for this post can be downloaded from Bitbucket: [https://bitbucket.org/tdziurko/item-directory/get/a61e7cf66cc3.tar.gz](https://bitbucket.org/tdziurko/item-directory/get/a61e7cf66cc3.tar.gz)[ ](https://bitbucket.org/tdziurko/item-directory/src/a61e7cf66cc3)or pulled with Mercurial using command:
 
-    
+```   
     hg clone https://bitbucket.org/tdziurko/item-directory -r "Base Project"
-    
+```    
 
 
 Latest application version is always available at [https://bitbucket.org/tdziurko/item-directory/overview](https://bitbucket.org/tdziurko/item-directory/overview) or with command:
 
+```
     
     hg clone https://bitbucket.org/tdziurko/item-directory
-    
-
-
-
+```    
 
 ## Project Overview
 
 
 ItemDirectory is a Maven project consisting of three child projects: domain, service and webapplication. These three names are self-explanatory so it should be clear what will be located in each of these sub-projects. After downloading it you must first prepare MySQL (two scripts located in itemdirectory/itemdirectory.domain/src/main/resources/sql and then execute two Maven commands to run  application locally:
 
+```
     
     mvn clean install
-    
+```    
 
 
 in itemdirectory dir and:
 
-    
+```    
     mvn jetty:run
-
+```
 
 in itemdirectory\itemdirectory.webapplication dir.
 
@@ -99,8 +98,6 @@ Note: this part should be read with downloaded source code as in some cases I w
 In domain project we have few elements worth noting:
 
 
-
-	
   1. Directory src/main/resources/sql with two SQL scripts to create database and create first table.
 
 	
@@ -125,7 +122,7 @@ And now, the most important part of this post: webapplication project and its co
 
 **Web.xml, deployment descriptor:**
 
-[xml]
+``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://java.sun.com/xml/ns/j2ee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -175,7 +172,7 @@ And now, the most important part of this post: webapplication project and its co
 
 
 </web-app>
-[/xml]
+```
 
 What do we have here?
 

@@ -21,7 +21,7 @@ At this moment I know that:
 
 
 	
-  * [Allegro](http://allegro.pl) (Polish e-Bay) is uding Symfony, PHP framework.
+  * [Allegro](http://allegro.pl) (Polish e-Bay) is using Symfony, PHP framework.
 
 	
   * Grono.net: Django and Python
@@ -33,4 +33,4 @@ At this moment I know that:
   * shop Merlin.pl is written in Java.
 
 
-And when we consider foreign portals I read that Twitter was written in Ruby on Rails and later on there were some rumours that after having performance  problems they were thinking about living RoR but how it finally ended, I don't know. All I know for sure that mobile version of MalMart is in Wicket (([link](http://www.breakitdownblog.com/apache-wicket-powers-mobile-walmart-com/)).
+And when we consider foreign portals I read that Twitter was written in Ruby on Rails and later on there were some rumours that after having performance  problems they were thinking about living RoR but how it finally ended, I don't know. All I know for sure that mobile version of MalMart is in Wicket [article](http://www.breakitdownblog.com/apache-wicket-powers-mobile-walmart-com/).

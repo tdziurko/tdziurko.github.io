@@ -21,7 +21,7 @@ tags:
 - Wicket
 ---
 
-Hello Visitor :) In previous posts we created [base project](<a href="/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/) and added [common layout](<a href="/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/) to ItemDirectory Wicket application. Today we are going to add first form to allow users to insert some data into our application.
+Hello Visitor :) In previous posts we created [base project](/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/) and added [common layout](/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/) to ItemDirectory Wicket application. Today we are going to add first form to allow users to insert some data into our application.
 
 As main feature of ItemDirectory is to manage information where items (books, movies, music, postage stamps) are stored in our home/work, the first data we need to know are locations where we actually can store those things. So we start with adding table, entity and form to manage locations of our precious items.
 
@@ -31,16 +31,15 @@ As main feature of ItemDirectory is to manage information where items (books, mo
 
 First thing we need is locations table in database and entity mapping class:
 
-- sql create table script listing:
+```sql Create table script listing:
 
-[sql]
 create table locations (
 	id bigint(20) not null auto_increment,
 	name varchar(255) not null,
         PRIMARY KEY (id),
 	UNIQUE KEY unique_name (name)
 );
-[/sql]
+```
 
 - entity class listing:
 
@@ -155,9 +154,6 @@ private void mountBookmarkablePages() {
 
 we configure Wicket to:
 
-
-
-	
   * redirect all requests coming from http://localhost:9090/item-directory/locations url to LocationsPage
 
 	
@@ -230,9 +226,10 @@ HTML file is rather self-explanatory: simple form with one input field and submi
 
 In **(1)** we create Wicket form with model to gather data from user. We use [CompoundPropertyModel](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/CompoundPropertyModel.html) which automatically connects components with properties of model object with the same id/name. In our page model object is AddLocationPage itself and its _name_ field (with usage of Compound model) works as a model for TextField component with id _name_.
 
-    
-    Concept of models is one of the most important element of Wicket and you should understand what models do and how they work. In this tutorial I am concentrating on practical usage of Wicket, so theory isn't covered in great detail.
-    Although you can read more about models on two (<a href="https://cwiki.apache.org/WICKET/working-with-wicket-models.html">[1]</a> and <a href="https://cwiki.apache.org/WICKET/more-on-models.html">[2]</a>) Wiki pages and generally in two presentations by Mystic Coders. Links to them can by found in the "Tutorial, guides" section in <a href="/2010/02/wicket-useful-links/">"Wicket - useful links"</a> post
+<blockquote>    
+Concept of models is one of the most important element of Wicket and you should understand what models do and how they work. In this tutorial I am concentrating on practical usage of Wicket, so theory isn't covered in great detail.
+Although you can read more about models on two [[1]](https://cwiki.apache.org/WICKET/working-with-wicket-models.html) and [[2]](https://cwiki.apache.org/WICKET/more-on-models.html). Wiki pages and generally in two presentations by Mystic Coders. Links to them can by found in the "Tutorial, guides" section in [Wicket - useful links](/2010/02/wicket-useful-links/) post
+</blockquote>
 
 
 In **(2)**, **(3)** and **(4)** we create and add to our form: label for input field, input field (note that its called _name_, as property in page class) and submit button with overriden onSubmit method in which we place save logic.
@@ -361,11 +358,11 @@ public class AddLocationPage extends BasePage {
 Every Wicket component has three methods info(String message), warn(...), error(...) which add feedback message for component and they are very useful for validating data, etc. However, if we want to redirect user to another page and show message there, we must use another way of adding feedback messages, based on user session and not on current component as component messages won't be rendered after redirect to other page. That's why we use getSession().info(...);
 If yoy try with only info(...) you will get warning in the log:
 
-    
+```    
     WARN  - WebSession                 - Component-targetted feedback message was left unrendered. This
     could be because you are missing a FeedbackPanel on the page.  Message: [FeedbackMessage message = "
     Location added successfully", reporter = submitButton, level = INFO]
-
+```
 
 And after this we will see that everything is working as expected:
 

@@ -27,7 +27,6 @@ public RequestCycle newRequestCycle(Request request, Response response) {
 
     @Override
     public Page onRuntimeException(Page page, RuntimeException exception) {
-
       //
       // do something with this exception
       //
@@ -46,8 +45,7 @@ In this example to send emails I will use Spring framework module which can be c
 
 a) applicationContext.xml fragment:
 
-[xml]
-<!-- ... -->
+``` xml
 
 <context:property-placeholder location="classpath*:application.properties" />
 
@@ -64,7 +62,7 @@ a) applicationContext.xml fragment:
   <constructor-arg value="${mail.fromAddress}"/>
   <constructor-arg value="${mail.defaultToAddress}"/>
 </bean>
-[/xml]
+``` 
 
 Second bean is a simple messages factory which builds emails with content. Its constructor need some variables from properties file.
 
@@ -105,5 +103,3 @@ public class ClientNotifierApplication extends WebApplication {
 ```
 
 Because we passed Page object to the method prepareWicketExceptionMessage, we have access to more detailed data about application state when error appeared. We could read application name (useful when we use this mechanism in many projects), page parameters and through Session object also info about logged user. It's good to know to who every error happened in case we would like to contact him and ask some questions about what he did, etc.
-
-﻿﻿

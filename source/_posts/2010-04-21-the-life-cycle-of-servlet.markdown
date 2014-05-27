@@ -24,7 +24,7 @@ tags:
 
 Code below presents fragment of web.xml file allowing to define order in which servlets are loaded when the containter starts:
 
-[xml]
+``` xml
 <web-app>
     ...
     <servlet>
@@ -39,7 +39,7 @@ Code below presents fragment of web.xml file allowing to define order in which s
     </servlet>
     ...
 </web-app>
-[/xml]
+```
 
 <!-- more -->
 

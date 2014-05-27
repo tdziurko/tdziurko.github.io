@@ -19,7 +19,7 @@ tags:
 - Wicket
 ---
 
-As I promised in the [previous post](<a href="/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/), today we will focus on transforming our unique name validator in Wicket to generic one. So now, let's simply list what we are going to achieve;
+As I promised in the [previous post](/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/), today we will focus on transforming our unique name validator in Wicket to generic one. So now, let's simply list what we are going to achieve;
 
 
 
@@ -166,11 +166,10 @@ When I started writing this generic validator, I thought that onValidate will be
 
 Every Wicket validator provides two elements that can be shown with error message:  label of validated component and user input. So in our example we create UniqueEntityValidator.properties file and place it next to validator class with one message inside:
 
-[xml]
-
+``` xml
 UniqueEntityValidator = Item with ${label} equal to '${input}' already exists.
 
-[/xml]
+```
 
 Here we can see how label and input elements are used. Wicket in a runtime replaces these placeholders with proper data. Label as a default is a Wicket componentId value, but it can be customized with component.setLabel(new Model<String>("customLabel");
 
@@ -247,12 +246,3 @@ Generic String property allows validator to know that validatable.getValue() in 
 We're done for today. Source code from this post can be viewed in [this changeset](https://bitbucket.org/tdziurko/item-directory/changeset/b92757c92ac2) in BitBucket repository and complete tutorial source is available [here](https://bitbucket.org/tdziurko/item-directory/src). At this moment I haven't made a decision what will be the topic of next post. Maybe you can suggest something what you find most interesting in Wicket and I will try to implement such feature in ItemDirectory application :)
 
 Thank you for your time!
-
-
-
-
-    
-    // (here!)
-
-
-

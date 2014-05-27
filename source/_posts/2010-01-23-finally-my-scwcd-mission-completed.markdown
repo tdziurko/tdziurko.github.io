@@ -16,9 +16,9 @@ tags:
 - SCWCD
 ---
 
-Much later than planned (check [my post](<a href="/2009/04/lets-start-preperations-to-scwcd/) when I revealed intent to pass SCWCD) I managed to get this certificate. The result (94%) is in my opinion more than good :) Preparations began fairly long time ago (over a year ago) but since this time there were some unexpected circumstances (mainly project which seems to grew and grew) and that's why SCWCD mission took me so long.
+Much later than planned (check [my post](/2009/04/lets-start-preperations-to-scwcd/) when I revealed intent to pass SCWCD) I managed to get this certificate. The result (94%) is in my opinion more than good :) Preparations began fairly long time ago (over a year ago) but since this time there were some unexpected circumstances (mainly project which seems to grew and grew) and that's why SCWCD mission took me so long.
 
-I  started preparations as usual, by downloading specifications  and adding API to Firefox bookmarks (list of links [here](../2009/04/lets-start-preperations-to-scwcd/)). Then I bought [Head First Servlets  and JSP](http://oreilly.com/catalog/9780596516680/), the most recommended book for this certificate. I had ambitiously assumed that I will be able to write more detailed posts about what I learnt but unfortunately lack of time didn't allow me to do it.<!-- more -->
+I  started preparations as usual, by downloading specifications  and adding API to Firefox bookmarks (list of links [here](/2009/04/lets-start-preperations-to-scwcd/)). Then I bought [Head First Servlets  and JSP](http://oreilly.com/catalog/9780596516680/), the most recommended book for this certificate. I had ambitiously assumed that I will be able to write more detailed posts about what I learnt but unfortunately lack of time didn't allow me to do it.<!-- more -->
 
 I  read the book twice in a fairly considerable period of time. First reading was to revise servlets and read about areas I hadn't met before  (mainly Custom Tags). This time I didn't concentrate on details, it was the purpose of the second reading. Simultaneously with reading I started experimenting with NetBeans and writing simple JSP's, creating web.xml manually, etc.
 

@@ -32,7 +32,7 @@ A few days ago I attended a  [Java Developers' Day 2010](http://10.jdd.org.pl/)
 ### **What was good**
 
 
-1. Quality of presentations (no sponsored talks included) was good and sometimes even very good. The best I attended was Scala Workshop and functional language introduction, both by <a href="http://10.jdd.org.pl/prelegenci/ted-neward">Ted Neward</a>. Scala seems interesting and for a complete newbie like me that was time well spent. Talk held by <a href="http://10.jdd.org.pl/prelegenci/linda-rising">Linda Rising</a> about changes and convincing other people to your ideas was also good and highlighted some very interesting solutions.
+1. Quality of presentations (no sponsored talks included) was good and sometimes even very good. The best I attended was Scala Workshop and functional language introduction, both by [Ted Neward](http://10.jdd.org.pl/prelegenci/ted-neward). Scala seems interesting and for a complete newbie like me that was time well spent. Talk held by [Linda Rising](http://10.jdd.org.pl/prelegenci/linda-rising) about changes and convincing other people to your ideas was also good and highlighted some very interesting solutions.
 2. Conference lasted for two days which means more knowledge and more occasions to meet and talk with interesting people. This is large plus.
 3. Conference party/meeting in the evening which allowed me to relax and talk about technical and no-technical stuff. Some people played Wii Sports and other console games, there was dance floor, some drinks and a lot of socializing. Definitely a good idea!
 4. Food, traditionally for conferences by Proidea, was very good.

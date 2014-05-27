@@ -29,5 +29,6 @@ Dzisiaj otrzymałem od SDJ następującą wiadomość:
 Wersja pdf do pobrania [stąd](http://sdjournal.org/magazine/1065-rewolucja-on-line)
 
 **Kilka słów komentarza:**
-Bardzo  fajna inicjatywa, zwłaszcza dla studentów i osób dopiero zaczynających  swoją karierę w sektorze IT. Ciekawe jaki model biznesowy będzie miało  to przedsięwzięcie, żeby dalej przynosiło zyski. Być może autorzy liczą  na większe wpływy z reklam związane ze zwiększoną ilością czytelników  czasopisma w takim formacie albo zostaną objęci patronatem jakiejś dużej  firmy IT, która pokryje większość kosztów w zamian za propagowanie  własnej marki?
+
+Bardzo  fajna inicjatywa, zwłaszcza dla studentów i osób dopiero zaczynających swoją karierę w sektorze IT. Ciekawe jaki model biznesowy będzie miało  to przedsięwzięcie, żeby dalej przynosiło zyski. Być może autorzy liczą  na większe wpływy z reklam związane ze zwiększoną ilością czytelników  czasopisma w takim formacie albo zostaną objęci patronatem jakiejś dużej  firmy IT, która pokryje większość kosztów w zamian za propagowanie  własnej marki?
 Jest to faktycznie pionierski krok i z  niecierpliwością czekam, czy w ciągu najbliższych lat inni pójdą podobną  drogą czy też papierowe wydania wytrzymają konkurencję Internetu i  dostępu do wiedzy online. Zapowiedzi odnośnie wersji elektronicznej, co  prawda płatnej, już prawie dwa lata temu publikowała "Piłka Nożna", ale  od tego czasu temat zupełnie ucichł i cały czas gromadzę wersje  papierowe :)

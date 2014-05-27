@@ -51,8 +51,7 @@ prepareConnectionForTransaction(DataSourceUtils.java:173)
 
 It looks that after few hours at night when no-one used the application,  MySQl server closed connection and first database query caused  exception. I double checked my connection url and settings in context.xml file to found nothing obviously wrong:<!-- more -->
 
-[xml]
-
+``` xml
 <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver"
  factory="org.apache.commons.dbcp.BasicDataSourceFactory"
    logAbandoned="true" maxActive="32" maxIdle="1" name="myDB"
@@ -60,7 +59,7 @@ It looks that after few hours at night when no-one used the application,  MySQl 
    type="javax.sql.DataSource"
    url="jdbc:mysql://mywebapp:3306/myDB?autoReconnect=true&characterEncoding=utf-8&useUnicode=true" username="user"
  />
-[/xml]
+```
 
 I had used the same settings in pure JDBC projects few times before and  never encoutered similar exception so now I wanted to ask uncle Google  for some answers :) At the beginning I dove into the MySQL manual to  check why autoReconnect isn't  enough in my application but found nothing relevant to my problem. After  some thinking I got the idea that maybe some settings in Commons-DBCP  are missing so I read [dbcp configuration](http://commons.apache.org/dbcp/configuration.html) to find that connection could be validated before real usage by specifing two parameters: testOnBorrow="true" validationQuery="select 1"  . As written in docs:
 

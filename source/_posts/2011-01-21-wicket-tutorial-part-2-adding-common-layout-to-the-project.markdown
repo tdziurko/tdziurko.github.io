@@ -21,7 +21,7 @@ tags:
 - Wicket
 ---
 
-Hello everyone! In the [previous](<a href="/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/) post we set up base project using Wicket for out future development of ItemDirectory web application. That post, which was intended to be mainly about Wicket, surprisingly gathered some attention amongst Spring fans and was even mentioned in [weekly summary at SpringSource.com](http://www.springsource.org/node/2994). Nice! :)
+Hello everyone! In the [previous](/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/) post we set up base project using Wicket for out future development of ItemDirectory web application. That post, which was intended to be mainly about Wicket, surprisingly gathered some attention amongst Spring fans and was even mentioned in [weekly summary at SpringSource.com](http://www.springsource.org/node/2994). Nice! :)
 
 Ok, enough about the past. Today we are going to add some nice common layout to ItemDirectory. Go go go! :)
 
@@ -102,13 +102,13 @@ If you want to be able to view full pages with external HTML editor you should p
 ``` html
 <div class="content">
     <!-- CONTENT -->
-      <wicket:extend>
-<h3 wicket:id="helloLabel"></h3>
-<span wicket:id="currentTime"></span>
-<br/>
-<br/>
-Number of users in database: <span wicket:id="numberOfUsers"/>
-</wicket:extend>
+        <wicket:extend>
+        <h3 wicket:id="helloLabel"></h3>
+        <span wicket:id="currentTime"></span>
+        <br/>
+        <br/>
+        Number of users in database: <span wicket:id="numberOfUsers"/>
+        </wicket:extend>
     <!-- END CONTENT -->
 </div>
 ```
@@ -200,12 +200,12 @@ As we plan to make our application available to users across the globe, we will 
 
 First, we create file Application.properties next to Application.java file in pl.tomadzdziurko.itemdirectory.web package with following key-value pairs:
 
-[xml]
+``` xml
 
 applicationName = Item Directory
 applicationHeader = Manage your items easily!
 
-[/xml]
+```
 
 Next in BasePage.html replace application name and header text and page title with Wicket element <wicket:message key="keyName"/>. This element will tell Wicket to load text from properties file (more about this [here](https://cwiki.apache.org/WICKET/wickets-xhtml-tags.html) in Wicket Wiki)
 
@@ -213,8 +213,8 @@ Next in BasePage.html replace application name and header text and page title wi
   (...)
   <title><wicket:message key="applicationName"/></title>
   <link rel="stylesheet" href="styles.css" type="text/css" />
-</head>
-<body>
+  </head>
+  <body>
 
   <div class="header-wrapper">
     <div class="header pagewidth">
@@ -255,12 +255,3 @@ And what now? While developing application, we will leave this ugly title for no
 All changes in this step are available in this changeset - [link](https://bitbucket.org/tdziurko/item-directory/changeset/5223e46bc7d0).
 
 Ok, that's all for today. I planned to add the first form to the project but this post is long enough without it, so Wicket form will be a main topic of next post. Thank you for your patience. All comments and suggestions are welcome!
-
-
-
-
-    
-    <div class="content">
-
-
-

@@ -19,7 +19,7 @@ tags:
 - Wicket
 ---
 
-Welcome back to our [Wicket tutorial](<a href="/category/wicket-tutorial/) series! :) As I mentioned in [previous post](<a href="/2011/02/wicket-tutorial-part-3-form-application/), today we will concentrate on building validator stopping user from adding item location with non-unique name. At first we will start with non-generic but working validator and then we will try to make is as flexible as possible. Ok, so let's write some code!
+Welcome back to our [Wicket tutorial]("/categories/wicket-tutorial/) series! :) As I mentioned in [previous post](/2011/02/wicket-tutorial-part-3-form-application/), today we will concentrate on building validator stopping user from adding item location with non-unique name. At first we will start with non-generic but working validator and then we will try to make is as flexible as possible. Ok, so let's write some code!
 
 
 ### Problem
@@ -117,11 +117,11 @@ So starting from the beggining of listing above:
 
 Error message can be defined in properties file and, as we will probably use our validator in more than one place, we add it in Application.properties file:
 
-[xml]
+``` xml
 applicationName = Item Directory
 applicationHeader = Manage your items easily!
 UniqueLocationNameValidator = Location with this name already exists in the database.
-[/xml]
+```
 
 Of course we have to create findByName() method in LocationService. In our layered architecture (which currently could be considered as overkill but in larger project it really pays off) service calls dao method, so logic for finding location by name is in LocationDaoImpl class:
 
@@ -139,8 +139,8 @@ public Location findByName(String locationName) {
 When we have our validator and DAO logic ready, we can modify Wicket form to make it complete and ready for the production. To use custom validator we simply create such object and add it to field we want to validate (fragment of AddLocationPage class below):
 
 ``` java
-		UniqueLocationNameValidator locationNameValidator = new UniqueLocationNameValidator();
-		nameField.add(locationNameValidator);
+    UniqueLocationNameValidator locationNameValidator = new UniqueLocationNameValidator();
+    nameField.add(locationNameValidator);
 ```
 
 

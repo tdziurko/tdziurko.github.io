@@ -80,6 +80,7 @@ public class HomePage extends WebPage {
 Finally, we can see how it looks:
 
 ->![](/images/blog/2010/11/javaScriptWindow.png)<-
+
 It solves our problem but in the era of Web2.0, rounded corners and  shiny looks it isn't enough. Why can't we use ajax modal window to ask  user for confirmation? It would make our application look good and our  css magician could make it look even better.<!-- more -->
 So let's try with creating reusable 'Are you sure?' ajax modal window with Wicket.
 
@@ -142,7 +143,6 @@ public class YesNoPanel extends Panel {
         modalWindow.setInitialWidth(350);
 
         AjaxButton yesButton = new AjaxButton("yesButton", yesNoForm) {
-
             @Override
             protected void onSubmit(AjaxRequestTarget target, Form form) {
                 if (target != null) {
@@ -153,7 +153,6 @@ public class YesNoPanel extends Panel {
         };
 
         AjaxButton noButton = new AjaxButton("noButton", yesNoForm) {
-
             @Override
             protected void onSubmit(AjaxRequestTarget target, Form form) {
                 if (target != null) {
@@ -182,7 +181,7 @@ Now it's time to  prepare wrapping form to our YesNoPanel. We could simply achie
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:wicket>
+    <html xmlns:wicket>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title></title>
@@ -232,7 +231,6 @@ public abstract class AreYouSurePanel extends Panel {
         add(form);
 
         AjaxButton confirmButton = new AjaxButton("confirmButton", new Model(buttonName)) {
-
             @Override
             protected void onSubmit(AjaxRequestTarget target, Form form) {
                 confirmModal.show(target);
@@ -254,7 +252,6 @@ public abstract class AreYouSurePanel extends Panel {
         modalWindow.setCookieName(id);
         modalWindow.setContent(new YesNoPanel(modalWindow.getContentId(), modalMessageText, modalWindow, answer));
         modalWindow.setWindowClosedCallback(new ModalWindow.WindowClosedCallback() {
-
             @Override
             public void onClose(AjaxRequestTarget target) {
                 if (answer.isAnswer()) {
@@ -308,12 +305,11 @@ That's it, we are done. To test how it's working we must change a bit our page c
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" >
+    <html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" >
     <head>
         <title>Wicket Ajax 'Are you sure?' Modal Window</title>
     </head>
     <body>
-
         <div align="center">
             <strong>Wicket Ajax 'Are you sure?' Modal Window</strong>
 
@@ -325,7 +321,6 @@ That's it, we are done. To test how it's working we must change a bit our page c
         <div align="center">
             <span wicket:id="yesNoPanel"/>
         </div>
-
     </body>
 </html>
 ```
@@ -346,7 +341,6 @@ public class HomePage extends WebPage {
         Form formWithJavaScript = new Form("formWithJavaScript");
 
         Button buttonWithJavaScript = new Button("buttonWithJavaScript") {
-
             @Override
             public void onSubmit() {
                 System.out.println("Doing my job");
@@ -359,7 +353,6 @@ public class HomePage extends WebPage {
         add(formWithJavaScript);
 
         AreYouSurePanel yesNoPanel = new AreYouSurePanel("yesNoPanel", "Ajax Action!", "Do you really want to perform this action?") {
-
             @Override
             protected void onConfirm(AjaxRequestTarget target) {
                 System.out.println("Doing my job after ajax modal");
@@ -379,3 +372,5 @@ public class HomePage extends WebPage {
 And after clicking 'Ajax Action!' we could see that it's working as intended:
 
 ->![](/images/blog/2010/11/ajaxModalWindow.png)<-
+
+
