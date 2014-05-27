@@ -16,8 +16,9 @@ tags:
 ---
 <!-- more -->
 
-<blockquote>Dear Reader
-This post is in my native language as it is a review of book published only in Poland. Please feel free to check my other posts which are mainly written in English.</blockquote>
+<blockquote>
+Dear Reader, this post is in my native language as it is a review of book published only in Poland. Please feel free to check my other posts which are mainly written in English.
+</blockquote>
 
 
 Dość rzadko sięgam po książki informatyczne wydane w naszym ojczystym języku. Powód jest dość prozaiczny: z reguły w momencie, gdy wychodzi polskie tłumaczenie "JavaAwesomeWebFramework 1.2 w Akcji" po angielsku jest już  dostępna "JavaAwesomeWebFramework 2.0 in Action" i cała wiedza zawarta w polskiej wersji jest, delikatnie mówiąc, lekko nieaktualna.

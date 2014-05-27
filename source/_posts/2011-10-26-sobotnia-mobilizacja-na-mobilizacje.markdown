@@ -16,8 +16,9 @@ tags:
 - Łódź
 ---
 
-Dear Reader
-    This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
+<blockquote>
+Dear Reader, this post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
+</blockquote>
 
 
 W sobotę w Łodzi odbyła się pierwsza edycja konferencji [Mobilization](http://mobilization.pl/) organizowanej przez JUG z tego miasta. Ponieważ w tematyce technologii mobilnych czuję się mocno zielony i poza warsztatami z Androida na ostatniej [Warsjawie](https://github.com/warszawajug/warsjawa2011/wiki/Konferencja-warsjawa-2011) nie miałem z tą częścią programowania styczności, zdecydowałem się zainwestować sobotę na poszerzenie moich horyzontów w tym obszarze. Jak się okazało nie tylko mnie zainteresowała ta tematyka, bo na listę uczestników załapałem się tuż przed zamknięciem rejestracji, a, jak pisali organizatorzy, na liście rezerwowej czekało na uśmiech losu ponad 50 osób! Ale jeśli weźmiemy pod uwagę fakt, że była to pierwsza w Polsce konferencja całkowicie poświęcona technologiom mobilnym to nie ma się co dziwić tak dużemu zainteresowaniu.

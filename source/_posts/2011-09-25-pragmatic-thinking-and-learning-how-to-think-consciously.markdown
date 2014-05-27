@@ -30,7 +30,7 @@ The book itself covers various areas of how our brain works, how we learn and so
 
 **Dreyfus skill model**
 
-****Skill level, according to Dreyfus, is divided into five levels:
+Skill level, according to Dreyfus, is divided into five levels:
 
 - Novice, when you need step by step instructions (this new Hello World application using new language/web framework you have done recently?) to get things done. You have problems with troubleshooting or doing something what is not described in "recipe"
 
@@ -91,14 +91,24 @@ You should have a place to gather your knowledge and things you think might be u
 And for the end, some quotes from the book I found really intriguing:
 
 
-<blockquote>- You got to be careful if you don’t know where you’re going, because you might not get there.
+<blockquote>
+- You got to be careful if you don’t know where you’re going, because you might not get there.
+</blockquote>
+<blockquote>
 - Time can't be created or destroyed, only allocated.
+</blockquote>
+<blockquote>
 - Give yourself permission to fail; it’s the path to success.
+</blockquote>
+<blockquote>
 - Inaction is the enemy, not error.
+</blockquote>
+<blockquote>
 - Remember the danger doesn’t lie in doing something wrong; it lies in doing nothing at all. Don’t be afraid to make mistakes.</blockquote>
+</blockquote>
 
 
-Summary
+### Summary
 
 As I wrote in the beginning, this books is really, really worth reading if you want to squeeze more out of your brain. It will help you to optimize learning and thinking process so you could be more effective at your day-to-day work without spending more on hardware, software or more comfortable furniture.
 

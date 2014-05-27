@@ -67,7 +67,7 @@ The only difference is in where class _active_ which highlights link is located.
 For a start, we will move this code fragment into a AngularJS directive. At first, it will be only a "dumb" piece of code that just renders the same html in different places. All html from the listing above is now located in the components/bootstrapNavbar.html file.
 
 Next thing we need is a directive declaration in JS file:
-[js]
+``` js
 angular.module("navbarapp", ["controllers"])
   .directive("bootstrapNavbar", function() { // (1)
   return {
@@ -77,7 +77,7 @@ angular.module("navbarapp", ["controllers"])
     templateUrl: "bootstrapNavbar.html"    // (5)
   }});
 ;
-[/js]
+```
 
 What happens here:
 
@@ -153,6 +153,7 @@ Now the last thing we have to do is some jQuery selector magic with little addit
 
 Angular directives have function _compile_ which allows to alter directive template markup, so we will use it here. What this function receives is value of parameters defined on the component usage in our pages, so basically we have an access to all attributes that are declared where our navbar component is used, specifically our _current-tab_ attribute (again transformed to _currentTab_ inside JS file).
 So when we know which link should be highlighted, jQuery selectors come to do the actual job:
+
 ``` js
 angular.module("navbarapp", ["controllers"])
   .directive("bootstrapNavbar", function() {

@@ -23,17 +23,17 @@ Some time ago I was asked to do some research about integrating Wicket with conv
 
 To make things easier we will base on existing example web application showing how to integrate Wicket with Weld (CDI) from project [Seam-Wicket](http://seamframework.org/Seam3/WicketModule) (formerly named [weld-wicket](http://weld-development-discussions.46994.n3.nabble.com/Move-weld-wicket-to-seam-wicket-td724181.html)). So first let's pull latest version of Seam-Wicket project from Git:
 
-[xml]
+``` xml
 git clone git://github.com/seam/wicket.git
 cd wicket
 mvn clean install
-[/xml]
+```
 
 and in examples directory there is numberguess Maven project. Just import it into your favourite IDE and execute
 
-[xml]
+``` xml
 mvn install jetty:run -P jetty
-[/xml]
+```
 
 <!-- more -->
 
@@ -93,7 +93,7 @@ public class HomePage extends WebPage {
 
 When you open our application in two tabs you should see something like this:
 
-->![](/images/blog/2011/07/conversationLabel.png)<-
+->[](/images/blog/2011/07/conversationLabel.png)<-
 
 and in these two tabs you have two separate games running (and different conversation id shown). So everything looks fine. But, but... if during the game you accidentally hit refresh button (or F5) you will lose your state of game and see that conversation id has changed. WTH?! Calm down and check SeamApplication class source code. There is custom WebRequestCycleProcessor named SeamWebRequestCycleProcessor:
 
@@ -153,11 +153,9 @@ public class SecondPage extends WebPage {
 
 ``` html
 
-    Second Page</pre>
 <h1>Second page</h1>
 <div>Conversation id:</div>
 <div>Guesses left:</div>
-<pre>
 
 ```
 
@@ -175,6 +173,8 @@ Link secondPageLink = new Link("secondPageLink") {
 with corresponding HTML element in HomePage.html file.
 
 And when we try to guess a number and then click new link, we will see:
+
+
 ->![](/images/blog/2011/07/withLink.png)<-
 
 and then
@@ -197,10 +197,10 @@ Link secondPageLink = new Link("secondPageLink") {
 
 And when we click this link, everything seems to be the same. We see the same page with correct conversation id, etc., but one thing has changed, the url. Now it looks like that
 
-[xml]
+``` xml
 http://localhost:9090/wicket-numberguess/?wicket:bookmarkablePage=:
     org.jboss.seam.wicket.examples.numberguess.SecondPage&cid=1
-[/xml]
+```
 
 The most interesting part is the last parameter "cid" (conversationId) which allows Wicket to inject proper conversation into newly created page. The reason why we see this parameter is that our url points to bookmarkable page, so application must be able to create complete and configured page basing only on data stored in this url. Of course our conversation can expire before someone clicks this link so we should be prepared to recover from such situation (for example by simply overriding handleMissingConversation from SeamRequestCycle class).
 
@@ -216,9 +216,9 @@ Ok, so default bookmarkable pages are supported. But as you probably noticed, ou
 
 and when we click the same link we will land on page with address
 
-[xml]
+``` xml
 http://localhost:9090/wicket-numberguess/second-page/cid/1
-[/xml]
+```
 
 And we could expect that the same conversation is active. But unfortunately it's not. Custom SeamRequestCycle is not able to automatically extract conversation id from url unless it is specified in a standard way as ?cid=X . To make sure that this is the problem I've done some tests and different url coding strategies (classes extending [AbstractRequestTargetUrlCodingStrategy](http://wicket.apache.org/apidocs/1.4/index.html?org/apache/wicket/request/target/coding/AbstractRequestTargetUrlCodingStrategy.html) ) are working or not depending on the fact how they append parameters. Those appending them as /paramName/paramValue are failing but those appending parameters as ?paramName=paramValue are working fine. Ok, you may think that we are stuck now. But remember, this is SPARTA!... uhm.. open source so if we need different behavior we could write it.
 

@@ -17,7 +17,7 @@ tags:
 - SoftwareMill
 ---
 
-Some time ago at  [SoftwareMill](http://softwaremill.com) during our weekly Friday meeting to share knowledge I've presented Google Guava API. And as it ended with quite long presentation and quite many lines of code I thought that this might be interesting for some Java Developers outside our company.
+Some time ago at [SoftwareMill](http://softwaremill.com) during our weekly Friday meeting to share knowledge I've presented Google Guava API. And as it ended with quite long presentation and quite many lines of code I thought that this might be interesting for some Java Developers outside our company.
 
 So below there are slides presenting most useful and interesting features of [Google Guava](http://guava-libraries.googlecode.com) (v.11). I didn't cover every class from this library, there are no examples from cache and concurrent packages as I don't find this part of Guava as a really, really useful for every Java Programmer. If you need caching or concurrency support, there are some interesting stuff for you in packages I mentioned earlier.
 
@@ -25,7 +25,7 @@ Slides are available here:
 
 
 
-**[Google guava - almost everything you need to know](http://www.slideshare.net/tomaszdziurko/google-guava-almost-everything-you-need-to-know)**
+->**[![Google guava - almost everything you need to know](/images/blog/2012/02/guava_slideshare.png)](http://www.slideshare.net/tomaszdziurko/google-guava-almost-everything-you-need-to-know)**<-
 
 
 

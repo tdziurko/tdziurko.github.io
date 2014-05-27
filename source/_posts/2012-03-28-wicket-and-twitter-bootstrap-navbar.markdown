@@ -174,10 +174,8 @@ What we can see above is a simple panel accepting three parameters, standard Wic
 
 
 Now it's getting a little harder as we want to create panel for our menu item containing a dropdown. Its markup:
-
     
-    
-    ``` html
+``` html
     <wicket:panel>
         <li class="dropdown" wicket:id="itemContainer">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -189,7 +187,7 @@ Now it's getting a little harder as we want to create panel for our menu item co
             </ul>
         </li>
     </wicket:panel>
-    ```
+```
     
 
 
@@ -266,21 +264,21 @@ So we have two components ready to use in our main panel. Now it is time to intr
 
     
     
-    ``` html
-     <div class="navbar navbar-fixed-top">
-       <div class="navbar-inner">
-         <div class="container">// (1)
-           <div class="nav-collapse">
-             <ul class="nav">
-               <ul class="nav">
-    	     <li>// (2)</li>
-               </ul>
-             </ul>
-           </div>
-         </div>
-        </div>
-      </div>
-    ```
+``` html
+ <div class="navbar navbar-fixed-top">
+   <div class="navbar-inner">
+     <div class="container">// (1)
+       <div class="nav-collapse">
+         <ul class="nav">
+           <ul class="nav">
+         <li>// (2)</li>
+           </ul>
+         </ul>
+       </div>
+     </div>
+    </div>
+  </div>
+```
     
 
 

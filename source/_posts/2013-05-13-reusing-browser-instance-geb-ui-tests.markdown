@@ -17,16 +17,10 @@ tags:
 
 <!-- more -->
 
-#### UPDATE
-
-
-_When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below is valid and works, there is a much simpler solution to this problem incorporated by Geb itself and I strongly suggest using it instead of mine, home-crafted hack. All credits go to [Artur Gajowy](http://stackoverflow.com/users/52142/artur-gajowy) for showing me better approach.
-
-I have added short paragraph about this simpler solution at the end of this article, probably you should go [directly there](<a href="/2013/05/reusing-browser-instance-geb-ui-tests/#better-solution) :).
-_
-
-
-
+**UPDATE**
+<blockquote>
+When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below is valid and works, there is a much simpler solution to this problem incorporated by Geb itself and I strongly suggest using it instead of mine, home-crafted hack. All credits go to Artur Gajowy for showing me better approach. I have added short paragraph about this simpler solution at the end of this article, probably you should scroll down to the paragraph named "Better solution" :).*
+</blockquote>
 
  
 [Geb](http://gebish.org) is next-generation UI testing library that frees developer from dealing with Selenium API which is in many cases not so friendly. The most important feature of Geb is its support, or I would even say, strong encouragement to use Page Objects in your UI tests. Page Objects are also present in Selenium, but they are not as intuitive and east to use as in Geb.

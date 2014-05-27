@@ -96,17 +96,17 @@ Next thing we need to do is add just created panel somewhere to the application.
 
 We are almost done with this point but as we would like to test if language switching is working on the main page, we must add properties file for second language. And as properties gathered in Application.properties file doesn't seem to work when language is changed, we will move them to BasePage.properties:
 
-[xml]
+``` xml
 applicationName=Item Directory
 applicationHeader=Manage your items easily!
-[/xml]
+```
 
 and BasePage_pl.properties (for Polish language)
 
-[xml]
+``` xml
 applicationName=Item Directory
 applicationHeader=Zarządzaj swoimi przedmiotami z łatwością!
-[/xml]
+```
 
 Ok, it should work and when you run jetty server _mvn jetty:run_, enter application and click flag of Poland you should see:
 
@@ -164,9 +164,9 @@ RemoveLocationLink fragment:
 
 alongside with properties message:
 
-[xml]
+``` xml
 locationRemoved=Location {0} was removed
-[/xml]
+```
 
 In the constructor of StringResourceModel we pass array of parameters which is used to prepare message. You can notice simple way of inserting passed values into text with {0} notation (like in [MessageFormat](http://download.oracle.com/javase/1.4.2/docs/api/java/text/MessageFormat.html) class). Of course this and other constructors of SRM are explained well in javadoc mentioned above :) Also worth to notice is call of getString() method on StringResourceModel which returns String representation of this ResourceModel object.
 

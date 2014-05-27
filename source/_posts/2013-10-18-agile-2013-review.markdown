@@ -23,13 +23,13 @@ I've just returned from my trip to Warsaw to attend 3rd edition of [Agile By Exa
 Here's my thoughts, impression and notes after this event.
 
 
-#### Overview
+### Overview
 
 
 This year's Agile By Example (or simply ABE) was my 2nd visit to this conference, I've missed only the first edition. Last year I felt really refreshed by the conference built not only around code, coding, testing and developing software. This edition was bigger and had more famous speakers, also venue was really much more impressive. Cinema (as everyone who attended [Devoxx](http://www.devoxx.be/) can confirm) is a great place to held any event of this type and Kino Praha was no different. Enormous screen, climatic rooms and cozy seats are things that really improve perception of the conference.
 
 
-#### Day One - notes
+### Day One - notes
 
 
 **Jeff Sutherland, opening key**
@@ -49,7 +49,7 @@ Presentation by one of the fathers of Scrum. Evangelistic, as expected, but too 
   * From conversation with Pawel during the break, my question: What should be accepted difference between skill of hired woman and the rest of the team. Answer: "Level that won't cause woman to hate you that you hired her and level that won't cause team to hate her and you". Pretty obvious, but thought provoking.
 
 
-**Tomek Włodarek - Are we agile yet
+**Tomek Włodarek - Are we agile yet**
 
 
   * Scrumpede - 1. Sudden frenzied rush of (panic–stricken) organizations to do Scrum because it is the next best thing. 2. To flee in a headlong rush back to prescriptive ways of doing things because Scrum is difficult and hard work.
@@ -90,7 +90,7 @@ Most entertaining presentation during first day. There were some "shits", many l
 
 
 
-#### Day Two - notes
+### Day Two - notes
 
 
 **Jurgen Appelo - keynote**
@@ -169,7 +169,7 @@ Speaker and topic of this talks weren't revealed earlier and many people stayed 
 Most inspiring presentation of the conference. Iwona told us about introducing agile practices (stand-up meetings, pomodoro, agile manifesto) in here job which is not IT-related at all. She's a scientist in a Lab conducting various biology researches.  She also presented a history about how she started a movement that forces Parlament in Poland to change wrong law that affects every scientist in our country (vote will take place in a few weeks, fingers crossed).
 
 
-#### Summary
+### Summary
 
 
-After first day of ABE 2013 I felt a little bit disappointed, there were no "wow" effect, I've made some notes but during breaks we shared similar thought with a few colleagues that maybe we are too agile-aware to learn anything new during this event. But then, 2nd day came by and everything changed. Topics were more interesting, talks more engaging and solutions more inspiring so at the and I can tell that even for someone who works in an agile environment for about 3 years it was well spent time. Some new stuff, some inspirations and of course, a great occasion to share and discuss our problems and approaches with people from different companies and with different experiences.
+After first day of ABE 2013 I felt a little bit disappointed, there were no "wow" effect, I've made some notes but during breaks we shared similar thought with a few colleagues that maybe we are too agile-aware to learn anything new during this event. But then, 2nd day came by and everything changed. Topics were more interesting, talks more engaging and solutions more inspiring so at the end I can tell that even for someone who works in an agile environment for about 3 years it was well spent time. Some new stuff, some inspirations and of course, a great occasion to share and discuss our problems and approaches with people from different companies and with different experiences.

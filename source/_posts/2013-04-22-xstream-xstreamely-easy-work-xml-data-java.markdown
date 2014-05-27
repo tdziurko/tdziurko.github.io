@@ -37,7 +37,7 @@ From time to time there is a moment when we have to deal with XML data. And most
 
 
 Suppose we have a requirement to load configuration from xml file:
-[xml]
+``` xml
 <config>
     <inputFile>/Users/tomek/work/mystuff/input.csv</inputFile>
     <truststoreFile>/Users/tomek/work/mystuff/truststore.ts</truststoreFile>
@@ -51,7 +51,7 @@ Suppose we have a requirement to load configuration from xml file:
     <user>user</user>
     <password>secret</password>
 </config>
-[/xml]
+```
 
 And we want to load it into Configuration object:
 ``` java
@@ -89,7 +89,7 @@ And that's all, easy peasy :)
 
 Ok, but previous example is very basic so now let's do something more complicated: real XML returned by real WebService.
 
-[xml]
+``` xml
 <DATA xmlns="">
     <BAN>
         <UPDATED_AT>2013-03-09</UPDATED_AT>
@@ -119,7 +119,7 @@ Ok, but previous example is very basic so now let's do something more complicate
         </TROUBLEMAKER>
     </BAN>
 </DATA>
-[/xml]
+```
 
 What we have here is simple list of bans written in XML. We want to load it into collection of Ban objects. So let's prepare some classes (getters/setters/toString omitted):
 ``` java

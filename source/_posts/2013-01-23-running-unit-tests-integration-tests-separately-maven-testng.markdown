@@ -64,7 +64,7 @@ public class StatusTestIT {
 
 and now let's declare plugin mentioned above in our pom.xml:
 
-[xml]
+``` xml
 <project>
     
     <!-- ... -->
@@ -90,7 +90,7 @@ and now let's declare plugin mentioned above in our pom.xml:
         </plugins>
     </build>
 </project>
-[/xml]
+```
 
 After that we should see two things. _mvn test_ should pass as we have a one green test in ExampleUnitTest class, but _mvn failsafe:integration-test_ should fail with StatusTestIT red. But as I said before, this does not work. _mvn test_ looks as expected, but second Maven execution is passing as well showing that no test were run. Plugin seems to omit our completely valid test...
 
@@ -102,7 +102,7 @@ After that we should see two things. _mvn test_ should pass as we have a one gre
 
 After testing different approaches I found out that all we need to make this setup work is to add plugin execution to an integration-test phase of maven life cycle. So tiny change, but now our integration tests are executed only when we call _mvn integration-test_.
 
-[xml]
+``` xml
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-failsafe-plugin</artifactId>
@@ -122,7 +122,7 @@ After testing different approaches I found out that all we need to make this set
         </execution>
     </executions>
 </plugin>
-[/xml]
+```
 
 And that's all, we could execute integration tests only when we really want to. Of course there are some things to remember when adopting setup described above:
 

@@ -50,7 +50,7 @@ I am far from saying that for more experienced developers this book is not a goo
 If you place yourself in the middle, _Practical Unit Testing with TestNG and Mockito_ is still a very good choice as it will help you to systematize all the stuff you already know and meanwhile you will surely learn something new about tools and, worth to note, about general efficient and painless approach to testing your code. 
 
 
-## My takeaways
+### My takeaways
 
 
 Below some of my personal notes about things I didn't know or didn't use often before reading this book.

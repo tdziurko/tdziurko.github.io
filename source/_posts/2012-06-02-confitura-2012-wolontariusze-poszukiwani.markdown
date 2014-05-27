@@ -15,8 +15,10 @@ tags:
 - In Polish
 ---
 
-Dear Reader
-    This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
+<blockquote>
+Dear Reader, this post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
+</blockquote>
+
 
 
 W związku z dynamicznym rozwojem naszej konferencji aktualnie poszukujemy osób na stanowisko Wolontariusz oraz Fotograf. Poniżej opis stanowisk oraz wymagania.
