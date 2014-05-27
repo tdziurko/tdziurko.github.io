@@ -33,7 +33,7 @@ We need a simple way to configure Geb UI tests to take a screenshot on each test
 We have to find some type of listener that waits for different test results and fires proper method when test fails. In [TestNG](http://testng.org/) we have a [TestListenerAdapter](http://testng.org/javadocs/org/testng/TestListenerAdapter.html) so probably Geb or Spock should have something similar.
 
 After some digging I was able to locate _IRunListener_ with method I need:
-[groovy]
+``` groovy
 public interface IRunListener {
     void beforeSpec(org.spockframework.runtime.model.SpecInfo specInfo);
 
@@ -53,32 +53,32 @@ public interface IRunListener {
 
     void featureSkipped(org.spockframework.runtime.model.FeatureInfo featureInfo);
 }
-[/groovy]
+```
 
 **Simple version of test failure listener**
 Luckily this interface comes with abstract class named _AbstractRunListener_ that allows us to implement only methods we want instead of fulfilling the whole contract specified by IRunListener.
 
 So our first step will be to print something to the console every time our test fails:
 
-[groovy]
+``` groovy
 class TakeScreenshotOnTestFailureListener extends AbstractRunListener {
 
    def void error(ErrorInfo error) {
        System.out.println("Error in method " + error.method.name);
    }
 }
-[/groovy]
+```
 
 **Adding custom listener to all tests with Spock extension**
 But except implementation of a listener, we have to add this listener to our tests. Currently in Spock this is possible only with extensions. Again, I had to find proper extension to use and ended with interface IGlobalExtension which has only one method visiting each spec (test method) in our codebase:
-[groovy]
+``` groovy
 public interface IGlobalExtension {
   void visitSpec(SpecInfo spec);
 }
-[/groovy]
+```
 
 So extension implementation looks as follows, to each visited spec we add our TakeScreenshotOnTestFailureListener listener:
-[groovy]
+``` groovy
 class GlobalSpecExtension implements IGlobalExtension {
 
     @Override
@@ -86,7 +86,7 @@ class GlobalSpecExtension implements IGlobalExtension {
         specInfo.addListener(new TakeScreenshotOnTestFailureListener())
     }
 }
-[/groovy]
+```
 
 **Registering Spock global extension**
 Each global extension have to be registered to Spock. This can be achieved by placing text file with easy to remember name in META-INF/services directory. File must be named _org.spockframework.runtime.extension.IGlobalExtension_ and should contain full name of our implementation of IGlobalExtension interface:
@@ -99,26 +99,26 @@ Now on each test fail we will see that our text message is printed to the consol
 
 Taking a screenshot using Selenium driver is quite easy, it is one method call, but before that we have to acquire driver instance in our listener class. Directly it is impossible to access driver directly from the listener so we need to store it in globally accessible object. Simplest solution is to save reference to the driver when we create it in our GebConfig file. So let's create a singleton that will hold our browser:
 
-[groovy]
+``` groovy
 @Singleton
 class BrowserInstance {
     def FirefoxDriver browser;
 }
-[/groovy]
+```
 
 and initialise it in GebConfig.groovy script located in root package of our project:
 
-[groovy]
+``` groovy
 driver =
     {
         newDriver = new FirefoxDriver()
         BrowserInstance.instance.browser = newDriver
         return newDriver
     }
-[/groovy]
+```
 
 Now we can access driver from our listener object, so final taking screenshot logic is pretty straightforward:
-[groovy]
+``` groovy
 class TakeScreenshotOnTestFailureListener extends AbstractRunListener {
 
    def void error(ErrorInfo error) {
@@ -139,7 +139,7 @@ class TakeScreenshotOnTestFailureListener extends AbstractRunListener {
         fileName
     }
 }
-[/groovy]
+```
 
 And that's all. Each test fail will now appear with corresponding screenshot from browser.
  

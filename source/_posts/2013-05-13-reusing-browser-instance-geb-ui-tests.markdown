@@ -38,7 +38,7 @@ But enough about Geb itself. Today I will share with you simple trick how to sha
 
 Assume we have many test classes (spefications) similar to this one below.
 
-[groovy]
+``` groovy
 class ExampleUITest extends GebSpec {
 
     def "Should test feature 1"() {
@@ -66,11 +66,11 @@ class ExampleUITest extends GebSpec {
     }
    
     // and so on...
-[/groovy]
+```
 
 What we have to do is prepare browser instance (in our case Firefox one) to click through our tests. We could to it in setup() method:
 
-[groovy]
+``` groovy
 class ExampleUITest extends GebSpec {
 
     def setup() {
@@ -84,7 +84,7 @@ class ExampleUITest extends GebSpec {
     def cleanup() {
         driver.quit()
     }
-[/groovy]
+```
 
 This approach works but it has one, big drawback. We all know that UI tests tend to last quite long and creating new browser instance for each, yes, each test method will only make this situation worse as it also takes some time to start browser on your testing server.
 
@@ -100,7 +100,7 @@ We also could reuse same browser in each specification (each Geb class) by using
 My solution to this issue takes from both approaches presented above. But instead of creating browser for each specification, I am reusing one created in the first executed class.
 
 To make it work we need to introduce common abstract class for all our UI tests:
-[groovy]
+``` groovy
 class IntelliGebSpec extends GebSpec {
 
     static def cachedDriver // static variable will store our single driver instance
@@ -125,7 +125,7 @@ class IntelliGebSpec extends GebSpec {
         driver.manage().deleteAllCookies()
     }
 }    
-[/groovy]  
+```  
 
 
 
@@ -140,7 +140,7 @@ In this post I have shown my home made solution to reusing browser in multiple t
 
 
 As explained in reference documentation [here](http://www.gebish.org/manual/current/configuration.html#driver_caching), Geb provides mechanism to configure and reuse single instance of browser in all our UI tests. Only thing we have to do is create GebConfig script in default package that will contain driver instantiation script, e.g.:
-[groovy]
+``` groovy
 // complete GebConfig.groovy file:
 driver =
     {
@@ -148,6 +148,6 @@ driver =
         newDriver.manage().window().setSize(new Dimension(1024, 768))
         return newDriver
     }
-[/groovy]
+```
 
 And that's it, no hacking, no ugly static field.
