@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: How-to | Tomasz Dziurko]]></title>
-  <link href="http://tomaszdziurko.pl/blog/categories/how-to/atom.xml" rel="self"/>
-  <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-05-27T16:29:46+02:00</updated>
-  <id>http://tomaszdziurko.pl/</id>
+  <link href="http://tdziurko.github.io/blog/categories/how-to/atom.xml" rel="self"/>
+  <link href="http://tdziurko.github.io/"/>
+  <updated>2014-05-27T17:48:21+02:00</updated>
+  <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Transparently persist and retrieve encrypted data from database]]></title>
-    <link href="http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
+    <link href="http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
     <updated>2013-07-31T08:45:07+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
+    <id>http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -164,9 +164,9 @@ public void shouldEncryptAndDecryptValue() {
   
   <entry>
     <title type="html"><![CDATA[Taking a screenshot when UI tests written in Geb fail]]></title>
-    <link href="http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
+    <link href="http://tdziurko.github.io/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
     <updated>2013-05-27T19:30:36+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
+    <id>http://tdziurko.github.io/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -314,9 +314,9 @@ class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
   
   <entry>
     <title type="html"><![CDATA[Reusing browser instance in Geb UI tests]]></title>
-    <link href="http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests/"/>
+    <link href="http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests/"/>
     <updated>2013-05-13T12:46:19+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests</id>
+    <id>http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -452,9 +452,9 @@ driver =</p>
   
   <entry>
     <title type="html"><![CDATA[Easy Html/Javascript JSON escaping in Scalatra ]]></title>
-    <link href="http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping/"/>
+    <link href="http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping/"/>
     <updated>2013-04-30T23:59:59+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping</id>
+    <id>http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -628,9 +628,9 @@ Source code of this small example app is available <a href="https://github.com/t
   
   <entry>
     <title type="html"><![CDATA[XStream - XStreamely easy way to work with XML data in Java]]></title>
-    <link href="http://tomaszdziurko.pl/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
+    <link href="http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
     <updated>2013-04-22T10:55:55+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
+    <id>http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
     <content type="html"><![CDATA[<!-- more -->
 
 

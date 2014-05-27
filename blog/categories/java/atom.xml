@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Java | Tomasz Dziurko]]></title>
-  <link href="http://tomaszdziurko.pl/blog/categories/java/atom.xml" rel="self"/>
-  <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-05-27T16:29:46+02:00</updated>
-  <id>http://tomaszdziurko.pl/</id>
+  <link href="http://tdziurko.github.io/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://tdziurko.github.io/"/>
+  <updated>2014-05-27T17:48:21+02:00</updated>
+  <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Transparently persist and retrieve encrypted data from database]]></title>
-    <link href="http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
+    <link href="http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
     <updated>2013-07-31T08:45:07+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
+    <id>http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -164,9 +164,9 @@ public void shouldEncryptAndDecryptValue() {
   
   <entry>
     <title type="html"><![CDATA[XStream - XStreamely easy way to work with XML data in Java]]></title>
-    <link href="http://tomaszdziurko.pl/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
+    <link href="http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
     <updated>2013-04-22T10:55:55+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
+    <id>http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -548,9 +548,9 @@ We are using &ldquo;local&rdquo; method to apply this conversion only to specifi
   
   <entry>
     <title type="html"><![CDATA[Running unit tests and integration tests separately with Maven Failsafe and TestNG]]></title>
-    <link href="http://tomaszdziurko.pl/2013/01/running-unit-tests-integration-tests-separately-maven-testng/"/>
+    <link href="http://tdziurko.github.io/2013/01/running-unit-tests-integration-tests-separately-maven-testng/"/>
     <updated>2013-01-23T16:42:28+01:00</updated>
-    <id>http://tomaszdziurko.pl/2013/01/running-unit-tests-integration-tests-separately-maven-testng</id>
+    <id>http://tdziurko.github.io/2013/01/running-unit-tests-integration-tests-separately-maven-testng</id>
     <content type="html"><![CDATA[<p>Recently for my new pet project I decided that I would like to have some tests executed during standard <em>mvn test</em> and some other ones only during different phase, let&rsquo;s call it integration phase. I googled and googled and nothing seemed to work, so after struggling with making my setup work I&rsquo;ve decided to write down my findings how I was able to configure TestNG with Maven to run integration and unit tests separately.</p>
 
 <h3>Basic (not working) setup</h3>
@@ -675,9 +675,9 @@ public void shouldFail() {
   
   <entry>
     <title type="html"><![CDATA[Fixing bug in Hibernate Envers]]></title>
-    <link href="http://tomaszdziurko.pl/2012/10/fixing-bug-hibernate-envers/"/>
+    <link href="http://tdziurko.github.io/2012/10/fixing-bug-hibernate-envers/"/>
     <updated>2012-10-11T17:00:47+02:00</updated>
-    <id>http://tomaszdziurko.pl/2012/10/fixing-bug-hibernate-envers</id>
+    <id>http://tdziurko.github.io/2012/10/fixing-bug-hibernate-envers</id>
     <content type="html"><![CDATA[<p>Recently in our project we were reported a strange bug. In a one report where we display historical data provided by <a href="http://www.jboss.org/envers">Hibernate Envers</a>, users encountered duplicated records in dropdown used for filtering. We tried to find a source of this bug, but after spending a few hours looking at the code responsible for this functionality we had to give up and ask for a dump from production database to check what actually is stored in one table. And when we got it and started investigating, it turned out that there is a bug in Hibernate Envers 3.6 that is a cause of our problems. But luckily after some investigation and invaluable help from <a href="http://www.warski.org/blog/">Adam Warski</a> (author of Envers) we were able to fix this issue.</p>
 
 <!-- more -->
@@ -812,14 +812,14 @@ public void testAuditRecordsRollback() {
   
   <entry>
     <title type="html"><![CDATA[Deploying Java Web Application on Jelastic]]></title>
-    <link href="http://tomaszdziurko.pl/2012/10/deploying-java-web-application-jelastic/"/>
+    <link href="http://tdziurko.github.io/2012/10/deploying-java-web-application-jelastic/"/>
     <updated>2012-10-09T21:44:34+02:00</updated>
-    <id>http://tomaszdziurko.pl/2012/10/deploying-java-web-application-jelastic</id>
+    <id>http://tdziurko.github.io/2012/10/deploying-java-web-application-jelastic</id>
     <content type="html"><![CDATA[<p>Some time ago having your own full-fledged hosting with Java, Tomcat and any database wasn&rsquo;t cheap, but luckily we live in a very interesting times and now there are many virtual hosting services in the Cloud providing an easy and affordable way to deploy your application and make it available to users.</p>
 
 <p>And what is the best in such solutions, they grow with your application or startup. Services are free or almost free when your web application doesn&rsquo;t need much memory and processors but when your web-app starts to gather more users' attention and you have more and more concurrent sessions and visits each day, you could easily enhance your setup to match your needs. Everything is a matter of a few clicks, simple and fast.</p>
 
-<p>To test how this deployment process look like, I&rsquo;ve decided to put my [Wicket tutorial](<a href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/) web application online. It consist of three pages and two tables in database so I think it shouldn't be a too complicated process to deploy it online. And as a Java hosting service I've chosen [Jelastic](http://jelastic.com), recent winner of [2012 Duke's Choice Awards](http://www.java.net/dukeschoice) announced during JavaOne conference this year. Duke's Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
+<p>To test how this deployment process look like, I&rsquo;ve decided to put my [Wicket tutorial](<a href="http://tdziurko.github.io/2011/03/wicket-tutorial-series-building-web-application-scratch/) web application online. It consist of three pages and two tables in database so I think it shouldn't be a too complicated process to deploy it online. And as a Java hosting service I've chosen [Jelastic](http://jelastic.com), recent winner of [2012 Duke's Choice Awards](http://www.java.net/dukeschoice) announced during JavaOne conference this year. Duke's Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
 
 <h3>First steps</h3>
 

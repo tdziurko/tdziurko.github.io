@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Books | Tomasz Dziurko]]></title>
-  <link href="http://tomaszdziurko.pl/blog/categories/books/atom.xml" rel="self"/>
-  <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-05-27T16:29:46+02:00</updated>
-  <id>http://tomaszdziurko.pl/</id>
+  <link href="http://tdziurko.github.io/blog/categories/books/atom.xml" rel="self"/>
+  <link href="http://tdziurko.github.io/"/>
+  <updated>2014-05-27T17:48:21+02:00</updated>
+  <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Deep dive into AngularJS - my review of "Mastering Web Application Development with AngularJS"]]></title>
-    <link href="http://tomaszdziurko.pl/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
+    <link href="http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
     <updated>2013-11-24T23:53:30+01:00</updated>
-    <id>http://tomaszdziurko.pl/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
+    <id>http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -60,9 +60,9 @@
   
   <entry>
     <title type="html"><![CDATA[Recenzja "Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce", czyli o tym co każdy programista umieć powinien]]></title>
-    <link href="http://tomaszdziurko.pl/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
+    <link href="http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
     <updated>2013-10-30T16:33:49+01:00</updated>
-    <id>http://tomaszdziurko.pl/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
+    <id>http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -98,9 +98,9 @@ Dear Reader, this post is in my native language as it is a review of book publis
   
   <entry>
     <title type="html"><![CDATA[Instant AngularJS Starter - book review]]></title>
-    <link href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/"/>
+    <link href="http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review/"/>
     <updated>2013-03-18T22:53:16+01:00</updated>
-    <id>http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review</id>
+    <id>http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review</id>
     <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.</p>
 
 <p style="text-align:center;"><img src="/images/blog/2013/03/angular_cover.png" alt="angular_cover" /></p>
@@ -127,9 +127,9 @@ Dear Reader, this post is in my native language as it is a review of book publis
   
   <entry>
     <title type="html"><![CDATA[Practical Unit Testing with TestNG and Mockito - review]]></title>
-    <link href="http://tomaszdziurko.pl/2012/07/practical-unit-testing-testng-mockito-review/"/>
+    <link href="http://tdziurko.github.io/2012/07/practical-unit-testing-testng-mockito-review/"/>
     <updated>2012-07-20T17:14:06+02:00</updated>
-    <id>http://tomaszdziurko.pl/2012/07/practical-unit-testing-testng-mockito-review</id>
+    <id>http://tdziurko.github.io/2012/07/practical-unit-testing-testng-mockito-review</id>
     <content type="html"><![CDATA[<p>Book &ldquo;<em>Practical Unit Testing with TestNG and Mockito</em>&rdquo; (<a href="http://practicalunittesting.com/">website</a>) covers wide spectrum of knowledge about testing in Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get most of this title. Below you can read some of my thoughts after reading this book.</p>
 
 <p style="text-align:center;"><img src="/images/blog/2012/07/practical_unit_testing.png" alt="" /></p>
@@ -282,9 +282,9 @@ public void testArgument() {
   
   <entry>
     <title type="html"><![CDATA[There is so much I need to know that I didn't know that I need to know - notes after reading "Information Diet" book]]></title>
-    <link href="http://tomaszdziurko.pl/2012/04/notes-from-information-diet-book/"/>
+    <link href="http://tdziurko.github.io/2012/04/notes-from-information-diet-book/"/>
     <updated>2012-04-29T17:05:08+02:00</updated>
-    <id>http://tomaszdziurko.pl/2012/04/notes-from-information-diet-book</id>
+    <id>http://tdziurko.github.io/2012/04/notes-from-information-diet-book</id>
     <content type="html"><![CDATA[<p>During <a href="http://2012.33degree.org/">33rd Degree</a> conference in Cracow O'Reilly had its stand with books in very attractive prices and similarly to previous year I couldn&rsquo;t resist to buy something. This time I decided to get <a href="http://www.amazon.com/The-Information-Diet-Conscious-Consumption/dp/1449304680">&ldquo;The Information Diet&rdquo;</a> by Clay Johnson.</p>
 
 <p style="text-align:center;"><img src="/images/blog/2012/04/infodiet.jpg" alt="" />]</p>

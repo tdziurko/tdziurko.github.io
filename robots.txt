@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://tomaszdziurko.pl/sitemap.xml 
+Sitemap: http://tdziurko.github.io/sitemap.xml 
