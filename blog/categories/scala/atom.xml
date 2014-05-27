@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Scala | Tomasz Dziurko]]></title>
-  <link href="http://tdziurko.github.io/blog/categories/scala/atom.xml" rel="self"/>
-  <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-27T17:48:21+02:00</updated>
-  <id>http://tdziurko.github.io/</id>
+  <link href="http://tomaszdziurko.pl/blog/categories/scala/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2014-05-27T17:57:00+02:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Easy Html/Javascript JSON escaping in Scalatra ]]></title>
-    <link href="http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping/"/>
+    <link href="http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping/"/>
     <updated>2013-04-30T23:59:59+02:00</updated>
-    <id>http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping</id>
+    <id>http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -191,9 +191,9 @@ Source code of this small example app is available <a href="https://github.com/t
   
   <entry>
     <title type="html"><![CDATA[Jasmine tests reporter in TeamCity with Scala and SBT]]></title>
-    <link href="http://tdziurko.github.io/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/"/>
+    <link href="http://tomaszdziurko.pl/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/"/>
     <updated>2013-03-26T23:10:57+01:00</updated>
-    <id>http://tdziurko.github.io/2013/03/jasmine-tests-reporter-teamcity-scala-sbt</id>
+    <id>http://tomaszdziurko.pl/2013/03/jasmine-tests-reporter-teamcity-scala-sbt</id>
     <content type="html"><![CDATA[<blockquote>This post is basically re-post of article I have written on my company blog [here](http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity). But before you go there to read the full story, please check this short introduction below to decide if you are interested :)</blockquote>
 
 
@@ -207,9 +207,9 @@ Source code of this small example app is available <a href="https://github.com/t
   
   <entry>
     <title type="html"><![CDATA[Configuring SBT JSLint with TeamCity build]]></title>
-    <link href="http://tdziurko.github.io/2013/01/configuring-sbt-jslint-with-teamcity/"/>
+    <link href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/"/>
     <updated>2013-01-08T22:23:39+01:00</updated>
-    <id>http://tdziurko.github.io/2013/01/configuring-sbt-jslint-with-teamcity</id>
+    <id>http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity</id>
     <content type="html"><![CDATA[<p>In this post I will shortly describe configuration process of JSLint SBT plugin and then TeamCity build config that reacts on errors/warnings raised by this plugin.</p>
 
 <h3>Problem</h3>

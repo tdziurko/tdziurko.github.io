@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Wicket Tutorial | Tomasz Dziurko]]></title>
-  <link href="http://tdziurko.github.io/blog/categories/wicket-tutorial/atom.xml" rel="self"/>
-  <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-27T17:48:21+02:00</updated>
-  <id>http://tdziurko.github.io/</id>
+  <link href="http://tomaszdziurko.pl/blog/categories/wicket-tutorial/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2014-05-27T17:57:00+02:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
     
@@ -15,14 +15,14 @@
   
   <entry>
     <title type="html"><![CDATA[Deploying Java Web Application on Jelastic]]></title>
-    <link href="http://tdziurko.github.io/2012/10/deploying-java-web-application-jelastic/"/>
+    <link href="http://tomaszdziurko.pl/2012/10/deploying-java-web-application-jelastic/"/>
     <updated>2012-10-09T21:44:34+02:00</updated>
-    <id>http://tdziurko.github.io/2012/10/deploying-java-web-application-jelastic</id>
+    <id>http://tomaszdziurko.pl/2012/10/deploying-java-web-application-jelastic</id>
     <content type="html"><![CDATA[<p>Some time ago having your own full-fledged hosting with Java, Tomcat and any database wasn&rsquo;t cheap, but luckily we live in a very interesting times and now there are many virtual hosting services in the Cloud providing an easy and affordable way to deploy your application and make it available to users.</p>
 
 <p>And what is the best in such solutions, they grow with your application or startup. Services are free or almost free when your web application doesn&rsquo;t need much memory and processors but when your web-app starts to gather more users' attention and you have more and more concurrent sessions and visits each day, you could easily enhance your setup to match your needs. Everything is a matter of a few clicks, simple and fast.</p>
 
-<p>To test how this deployment process look like, I&rsquo;ve decided to put my [Wicket tutorial](<a href="http://tdziurko.github.io/2011/03/wicket-tutorial-series-building-web-application-scratch/) web application online. It consist of three pages and two tables in database so I think it shouldn't be a too complicated process to deploy it online. And as a Java hosting service I've chosen [Jelastic](http://jelastic.com), recent winner of [2012 Duke's Choice Awards](http://www.java.net/dukeschoice) announced during JavaOne conference this year. Duke's Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
+<p>To test how this deployment process look like, I&rsquo;ve decided to put my [Wicket tutorial](<a href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/) web application online. It consist of three pages and two tables in database so I think it shouldn't be a too complicated process to deploy it online. And as a Java hosting service I've chosen [Jelastic](http://jelastic.com), recent winner of [2012 Duke's Choice Awards](http://www.java.net/dukeschoice) announced during JavaOne conference this year. Duke's Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
 
 <h3>First steps</h3>
 
@@ -73,9 +73,9 @@
   
   <entry>
     <title type="html"><![CDATA[Wicket Tutorial, part 9 – storing and loading user preferences from cookies]]></title>
-    <link href="http://tdziurko.github.io/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies/"/>
+    <link href="http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies/"/>
     <updated>2011-07-16T00:05:09+02:00</updated>
-    <id>http://tdziurko.github.io/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies</id>
+    <id>http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies</id>
     <content type="html"><![CDATA[<p>In the previous post we learnt a few tricks regarding internationalization features in Wicket. Today we will go further and will let application to remember some user preferences using HTTP Cookies. Storing some basic data in cookies is an easy and popular way of letting user customize look and feel of web application he uses very often. Some portals use cookies to render modules in order chosen by user so that most interesting information are in the top.</p>
 
 <p>In our ItemDirectory web application we don&rsquo;t have (yet!) any sophisticated mechanism which could rely on cookies so we will show how it can be used to store and load language selected by the user.</p>
@@ -169,9 +169,9 @@ private Session trySetLanguageFromCookie(Session session, Request request, Respo
   
   <entry>
     <title type="html"><![CDATA[Wicket Tutorial, part 8 – adding internationalization support]]></title>
-    <link href="http://tdziurko.github.io/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/"/>
+    <link href="http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/"/>
     <updated>2011-06-20T21:52:06+02:00</updated>
-    <id>http://tdziurko.github.io/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support</id>
+    <id>http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support</id>
     <content type="html"><![CDATA[<p>Today we will continue Wicket tutorial series with adding support to multiple languages in web application. Ok, let&rsquo;s do it step by step.</p>
 
 <h3>Create form to change language</h3>
@@ -375,7 +375,7 @@ public class RightSidebarPanel extends Panel {</p>
   </li>
   <li>
     <a title="Tutorial about creating this application"
-      href="<a href="http://tdziurko.github.io/2011/03/wicket-tutorial-series-building-web-application-scratch/">
+      href="<a href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/">
       Tutorial about creating this application
     </a>
   </li>
@@ -427,9 +427,9 @@ public class RightSidebarPanel extends Panel {</p>
   
   <entry>
     <title type="html"><![CDATA[Wicket Tutorial, part 7 – editing and removing item locations]]></title>
-    <link href="http://tdziurko.github.io/2011/05/wicket-tutorial-part-7-e28093-editing-and-removing-item-locations/"/>
+    <link href="http://tomaszdziurko.pl/2011/05/wicket-tutorial-part-7-e28093-editing-and-removing-item-locations/"/>
     <updated>2011-05-07T20:45:32+02:00</updated>
-    <id>http://tdziurko.github.io/2011/05/wicket-tutorial-part-7-e28093-editing-and-removing-item-locations</id>
+    <id>http://tomaszdziurko.pl/2011/05/wicket-tutorial-part-7-e28093-editing-and-removing-item-locations</id>
     <content type="html"><![CDATA[<p>Welcome back to our practical Wicket tutorial series. I apologize for long break after last post (shame on me as it was published more than 1,5 month ago) but I had many unplanned things with higher priority: Wicket demo appplication  on <a href="http://33degree.org/talks.html#BOFWebFrameworks">33rdDegree</a> conference to prepare, a conference itself and most time-consuming one, I damaged knee ligament during football match and after that everyday for three weeks I was driving to the hospital for rehabilitation so day became too short to write something here. But now everything seems to be ok and I have some spare time to continue Wicket tutorial subject.</p>
 
 <p>Today we will add two new features: editing and removing locations from our application. Currently we don&rsquo;t have any items connected with locations so deleting shouldn&rsquo;t be too complicated. Later on, when we add some items, we will have to rework this functionality but now it shouldn&rsquo;t bother us too much.</p>
@@ -695,9 +695,9 @@ public void removeSafely(EntityClass entity) {
   
   <entry>
     <title type="html"><![CDATA[Wicket tutorial series - building web application from scratch]]></title>
-    <link href="http://tdziurko.github.io/2011/03/wicket-tutorial-series-building-web-application-scratch/"/>
+    <link href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/"/>
     <updated>2011-03-12T21:53:55+01:00</updated>
-    <id>http://tdziurko.github.io/2011/03/wicket-tutorial-series-building-web-application-scratch</id>
+    <id>http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch</id>
     <content type="html"><![CDATA[<p>This post aggregates the  series of Wicket tutorial articles from this blog. But as this tutorial is still not finished and new posts will be published in the near future, please return here again to find new parts or (simpler) just add my <a href="http://www.tomaszdziurko.pl/feed">RSS</a> to your reader.</p>
 
 <h3>Wicket tutorial series</h3>

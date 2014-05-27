@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: News | Tomasz Dziurko]]></title>
-  <link href="http://tdziurko.github.io/blog/categories/news/atom.xml" rel="self"/>
-  <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-27T17:48:21+02:00</updated>
-  <id>http://tdziurko.github.io/</id>
+  <link href="http://tomaszdziurko.pl/blog/categories/news/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2014-05-27T17:57:00+02:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Most Valuable Blogger at DZone]]></title>
-    <link href="http://tdziurko.github.io/2012/03/most-valuable-blogger-dzone/"/>
+    <link href="http://tomaszdziurko.pl/2012/03/most-valuable-blogger-dzone/"/>
     <updated>2012-03-29T18:21:21+02:00</updated>
-    <id>http://tdziurko.github.io/2012/03/most-valuable-blogger-dzone</id>
+    <id>http://tomaszdziurko.pl/2012/03/most-valuable-blogger-dzone</id>
     <content type="html"><![CDATA[<p>A few days ago it turned out that somewhere on the Internet there is a person or maybe two who think that my blog posts are a little bit above <em>pathetic, boring, useless</em> level and maybe if they re-post them on their website, their click ratio and number of visitors will increase. Pretty naive thinking but who knows :)</p>
 
 <p>So they&rsquo;ve contacted me and asked if I want to join their <em>DZone Most Valuable Blogger (MVB) Program </em>(more details <a href="http://www.dzone.com/aboutmvb">here</a>)<em>. Why not, </em>I thought. And after a few e-mails I can officially  announce:</p>
@@ -48,9 +48,9 @@
   
   <entry>
     <title type="html"><![CDATA[Warsjawa 2011 tuż tuż]]></title>
-    <link href="http://tdziurko.github.io/2011/10/warsjawa-2011-tuz-tuz/"/>
+    <link href="http://tomaszdziurko.pl/2011/10/warsjawa-2011-tuz-tuz/"/>
     <updated>2011-10-09T18:36:58+02:00</updated>
-    <id>http://tdziurko.github.io/2011/10/warsjawa-2011-tuz-tuz</id>
+    <id>http://tomaszdziurko.pl/2011/10/warsjawa-2011-tuz-tuz</id>
     <content type="html"><![CDATA[<blockquote>
 Dear Reader, this post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
 </blockquote>
@@ -80,18 +80,18 @@ Dear Reader, this post is in my native language as it applies only to developers
   
   <entry>
     <title type="html"><![CDATA[Slides from JDD 2010 available]]></title>
-    <link href="http://tdziurko.github.io/2010/10/slides-from-jdd-2010-available/"/>
+    <link href="http://tomaszdziurko.pl/2010/10/slides-from-jdd-2010-available/"/>
     <updated>2010-10-19T15:49:15+02:00</updated>
-    <id>http://tdziurko.github.io/2010/10/slides-from-jdd-2010-available</id>
+    <id>http://tomaszdziurko.pl/2010/10/slides-from-jdd-2010-available</id>
     <content type="html"><![CDATA[<p>I have good news for those who didn&rsquo;t attend a JDD conference this year or simply weren&rsquo;t attentive enough. You can download slides from almost all talks from <a href="http://10.jdd.org.pl/materialy">here</a>. If you are interested in slides from &ldquo;Technical Debt&rdquo; which are not yet available on JDD website you can download them from <a href="/images/blog/2011/05/Thomas_Sundberg_TechnicalDebt.pdf">here</a> as I received straight from the author :)</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Better free Mercurial repository as Bitbucket joins Atlassian]]></title>
-    <link href="http://tdziurko.github.io/2010/09/better-free-mercurial-repository-as-bitbucket-joins-atlassian/"/>
+    <link href="http://tomaszdziurko.pl/2010/09/better-free-mercurial-repository-as-bitbucket-joins-atlassian/"/>
     <updated>2010-09-29T21:45:24+02:00</updated>
-    <id>http://tdziurko.github.io/2010/09/better-free-mercurial-repository-as-bitbucket-joins-atlassian</id>
+    <id>http://tomaszdziurko.pl/2010/09/better-free-mercurial-repository-as-bitbucket-joins-atlassian</id>
     <content type="html"><![CDATA[<p>So  far, for those who want to use Mercurial for private projects and in a small development teams it was hard to find a good and free place to host source code. <a href="http://bitbucket.org/">Bitbucket</a>, one of  the most interesting sites of this type which additionally offers very clear web  interface, had a restriction allowing only <strong>one</strong> private project. Others, unfortunately, had to be public. This is not what I was looking for.
 And when I already planned migration to the <a href="https://www.dropbox.com/home">Dropbox</a>-Mercurial combo as it is described <a href="http://www.h4ck3r.net/2010/05/11/mercurial-hg-with-dropbox/">in  this post</a>, this morning in my inbox I found the information about the merge BitBucket with <a href="http://www.atlassian.com/">Atlassian</a>.</p>
 
@@ -103,9 +103,9 @@ And when I already planned migration to the <a href="https://www.dropbox.com/hom
   
   <entry>
     <title type="html"><![CDATA[Książka Czysty kod (Clean code) w promocji o 30% taniej tylko dziś w Helionie]]></title>
-    <link href="http://tdziurko.github.io/2010/08/ksiazka-czysty-kod-clean-code-w-promocji-o-30-taniej-tylko-dzis-w-helionie/"/>
+    <link href="http://tomaszdziurko.pl/2010/08/ksiazka-czysty-kod-clean-code-w-promocji-o-30-taniej-tylko-dzis-w-helionie/"/>
     <updated>2010-08-20T22:19:25+02:00</updated>
-    <id>http://tdziurko.github.io/2010/08/ksiazka-czysty-kod-clean-code-w-promocji-o-30-taniej-tylko-dzis-w-helionie</id>
+    <id>http://tomaszdziurko.pl/2010/08/ksiazka-czysty-kod-clean-code-w-promocji-o-30-taniej-tylko-dzis-w-helionie</id>
     <content type="html"><![CDATA[<p>Dear Reader</p>
 
 <pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
