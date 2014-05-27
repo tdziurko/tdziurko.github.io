@@ -216,12 +216,12 @@ end
 
 
 # Feed files other than atom.xml that needed to be compatible with previous blog
-feed_files = ["index.html"]
+feed_files = ["feed/index.html"]
 
 desc "copy atom.xml to feed_files"
 task :copyfeeds do
   feed_files.each do |filename|
-    cp("#{public_dir}/atom.xml","#{public_dir}/feed/#{filename}")
+    cp("#{public_dir}/atom.xml","#{public_dir}/#{filename}")
   end
 end
 
