@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://tomaszdziurko.pl
+url: http://tdziurko.github.io
 title: Tomasz Dziurko
 subtitle: Code Hard Go Pro
 author: Tomasz Dziurko
@@ -16,7 +16,7 @@ description: I am Java/Scala developer working remotely from small city in Polan
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /atom.xml
+subscribe_rss: /feed
 subscribe_email:
 # RSS feeds can list your email address if you like
 email:

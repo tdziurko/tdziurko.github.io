@@ -214,6 +214,18 @@ end
 # Deploying  #
 ##############
 
+
+# Feed files other than atom.xml that needed to be compatible with previous blog
+feed_files = ["index.html"]
+
+desc "copy atom.xml to feed_files"
+task :copyfeeds do
+  feed_files.each do |filename|
+    cp("#{public_dir}/atom.xml","#{public_dir}/feed/#{filename}")
+  end
+end
+
+
 desc "Default deploy task"
 task :deploy do
   # Check if preview posts exist, which should not be published
@@ -224,6 +236,7 @@ task :deploy do
   end
 
   Rake::Task[:copydot].invoke(source_dir, public_dir)
+  Rake::Task[:copyfeeds].invoke
   Rake::Task["#{deploy_default}"].execute
 end
 
