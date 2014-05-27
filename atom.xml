@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-27T12:54:29+02:00</updated>
+  <updated>2014-05-27T12:57:12+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -701,69 +701,99 @@ This post is in my native language as it is a review of book published only in P
 
 <p>We have to find some type of listener that waits for different test results and fires proper method when test fails. In <a href="http://testng.org/">TestNG</a> we have a <a href="http://testng.org/javadocs/org/testng/TestListenerAdapter.html">TestListenerAdapter</a> so probably Geb or Spock should have something similar.</p>
 
-<p>After some digging I was able to locate <em>IRunListener</em> with method I need:
-[groovy]
-public interface IRunListener {</p>
+<p>After some digging I was able to locate <em>IRunListener</em> with method I need:</p>
 
-<pre><code>void beforeSpec(org.spockframework.runtime.model.SpecInfo specInfo);
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IRunListener</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">beforeSpec</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">SpecInfo</span> <span class="n">specInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">beforeFeature</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">FeatureInfo</span> <span class="n">featureInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">beforeIteration</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">IterationInfo</span> <span class="n">iterationInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">afterIteration</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">IterationInfo</span> <span class="n">iterationInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">afterFeature</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">FeatureInfo</span> <span class="n">featureInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">afterSpec</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">SpecInfo</span> <span class="n">specInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">ErrorInfo</span> <span class="n">errorInfo</span><span class="o">);</span> <span class="c1">// &lt; -- this is it</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">specSkipped</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">SpecInfo</span> <span class="n">specInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">featureSkipped</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">FeatureInfo</span> <span class="n">featureInfo</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-void beforeFeature(org.spockframework.runtime.model.FeatureInfo featureInfo);
-
-void beforeIteration(org.spockframework.runtime.model.IterationInfo iterationInfo);
-
-void afterIteration(org.spockframework.runtime.model.IterationInfo iterationInfo);
-
-void afterFeature(org.spockframework.runtime.model.FeatureInfo featureInfo);
-
-void afterSpec(org.spockframework.runtime.model.SpecInfo specInfo);
-
-void error(org.spockframework.runtime.model.ErrorInfo errorInfo); // &lt; -- this is it
-
-void specSkipped(org.spockframework.runtime.model.SpecInfo specInfo);
-
-void featureSkipped(org.spockframework.runtime.model.FeatureInfo featureInfo);
-</code></pre>
-
-<p>}
-[/groovy]</p>
 
 <p><strong>Simple version of test failure listener</strong>
 Luckily this interface comes with abstract class named <em>AbstractRunListener</em> that allows us to implement only methods we want instead of fulfilling the whole contract specified by IRunListener.</p>
 
 <p>So our first step will be to print something to the console every time our test fails:</p>
 
-<p>[groovy]
-class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">TakeScreenshotOnTestFailureListener</span> <span class="kd">extends</span> <span class="n">AbstractRunListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="kt">def</span> <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">ErrorInfo</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;Error in method &quot;</span> <span class="o">+</span> <span class="n">error</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+</span><span class='line'>   <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>   def void error(ErrorInfo error) {</p>
-
-<pre><code>   System.out.println("Error in method " + error.method.name);
-</code></pre>
-
-<p>   }
-}
-[/groovy]</p>
 
 <p><strong>Adding custom listener to all tests with Spock extension</strong>
-But except implementation of a listener, we have to add this listener to our tests. Currently in Spock this is possible only with extensions. Again, I had to find proper extension to use and ended with interface IGlobalExtension which has only one method visiting each spec (test method) in our codebase:
-[groovy]
-public interface IGlobalExtension {
-  void visitSpec(SpecInfo spec);
-}
-[/groovy]</p>
+But except implementation of a listener, we have to add this listener to our tests. Currently in Spock this is possible only with extensions. Again, I had to find proper extension to use and ended with interface IGlobalExtension which has only one method visiting each spec (test method) in our codebase:</p>
 
-<p>So extension implementation looks as follows, to each visited spec we add our TakeScreenshotOnTestFailureListener listener:
-[groovy]
-class GlobalSpecExtension implements IGlobalExtension {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IGlobalExtension</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="nf">visitSpec</span><span class="o">(</span><span class="n">SpecInfo</span> <span class="n">spec</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-void visitSpec(SpecInfo specInfo) {
-    specInfo.addListener(new TakeScreenshotOnTestFailureListener())
-}
-</code></pre>
 
-<p>}
-[/groovy]</p>
+<p>So extension implementation looks as follows, to each visited spec we add our TakeScreenshotOnTestFailureListener listener:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">GlobalSpecExtension</span> <span class="kd">implements</span> <span class="n">IGlobalExtension</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">visitSpec</span><span class="o">(</span><span class="n">SpecInfo</span> <span class="n">specInfo</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">specInfo</span><span class="o">.</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="n">TakeScreenshotOnTestFailureListener</span><span class="o">())</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p><strong>Registering Spock global extension</strong>
 Each global extension have to be registered to Spock. This can be achieved by placing text file with easy to remember name in META-INF/services directory. File must be named <em>org.spockframework.runtime.extension.IGlobalExtension</em> and should contain full name of our implementation of IGlobalExtension interface:</p>
@@ -778,58 +808,78 @@ Now on each test fail we will see that our text message is printed to the consol
 
 <p>Taking a screenshot using Selenium driver is quite easy, it is one method call, but before that we have to acquire driver instance in our listener class. Directly it is impossible to access driver directly from the listener so we need to store it in globally accessible object. Simplest solution is to save reference to the driver when we create it in our GebConfig file. So let&rsquo;s create a singleton that will hold our browser:</p>
 
-<p>[groovy]
-@Singleton
-class BrowserInstance {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="nd">@Singleton</span>
+</span><span class='line'><span class="kd">class</span> <span class="nc">BrowserInstance</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">def</span> <span class="n">FirefoxDriver</span> <span class="n">browser</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>def FirefoxDriver browser;
-</code></pre>
-
-<p>}
-[/groovy]</p>
 
 <p>and initialise it in GebConfig.groovy script located in root package of our project:</p>
 
-<p>[groovy]
-driver =</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">driver</span> <span class="o">=</span>
+</span><span class='line'>    <span class="o">{</span>
+</span><span class='line'>        <span class="n">newDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">()</span>
+</span><span class='line'>        <span class="n">BrowserInstance</span><span class="o">.</span><span class="na">instance</span><span class="o">.</span><span class="na">browser</span> <span class="o">=</span> <span class="n">newDriver</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">newDriver</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>{
-    newDriver = new FirefoxDriver()
-    BrowserInstance.instance.browser = newDriver
-    return newDriver
-}
-</code></pre>
 
-<p>[/groovy]</p>
+<p>Now we can access driver from our listener object, so final taking screenshot logic is pretty straightforward:</p>
 
-<p>Now we can access driver from our listener object, so final taking screenshot logic is pretty straightforward:
-[groovy]
-class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">TakeScreenshotOnTestFailureListener</span> <span class="kd">extends</span> <span class="n">AbstractRunListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="kt">def</span> <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">ErrorInfo</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>       <span class="n">File</span> <span class="n">screenFile</span> <span class="o">=</span> <span class="n">BrowserInstance</span><span class="o">.</span><span class="na">instance</span><span class="o">.</span><span class="na">browser</span><span class="o">.</span><span class="na">getScreenshotAs</span><span class="o">(</span><span class="n">OutputType</span><span class="o">.</span><span class="na">FILE</span><span class="o">);</span> <span class="c1">// take a screenshot</span>
+</span><span class='line'>
+</span><span class='line'>       <span class="n">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">createFileName</span><span class="o">(</span><span class="n">error</span><span class="o">)</span> <span class="c1">// generate file name based on test class and method names</span>
+</span><span class='line'>       <span class="n">File</span> <span class="n">destinationFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s2">&quot;java.io.tmpdir&quot;</span><span class="o">)</span> <span class="o">+</span> <span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s2">&quot;file.separator&quot;</span><span class="o">)</span> <span class="o">+</span> <span class="n">fileName</span><span class="o">)</span>
+</span><span class='line'>       <span class="n">Files</span><span class="o">.</span><span class="na">copy</span><span class="o">(</span><span class="n">screenFile</span><span class="o">,</span> <span class="n">destinationFile</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;##teamcity[publishArtifacts &#39;&quot;</span> <span class="o">+</span> <span class="n">destinationFile</span><span class="o">.</span><span class="na">getAbsolutePath</span><span class="o">()</span> <span class="o">+</span> <span class="s2">&quot;&#39;]&quot;</span><span class="o">);</span> <span class="c1">// publish as artifact in TeamCity</span>
+</span><span class='line'>   <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="kd">private</span> <span class="n">String</span> <span class="nf">createFileName</span><span class="o">(</span><span class="n">ErrorInfo</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">specName</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">parent</span><span class="o">.</span><span class="na">name</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">testName</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">name</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">milliseconds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">()</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">specName</span> <span class="o">+</span> <span class="s2">&quot;: &#39;&quot;</span> <span class="o">+</span> <span class="n">testName</span> <span class="o">+</span> <span class="s2">&quot;&#39; &quot;</span> <span class="o">+</span> <span class="n">milliseconds</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
+</span><span class='line'>        <span class="n">fileName</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>   def void error(ErrorInfo error) {</p>
-
-<pre><code>   File screenFile = BrowserInstance.instance.browser.getScreenshotAs(OutputType.FILE); // take a screenshot
-
-   String fileName = createFileName(error) // generate file name based on test class and method names
-   File destinationFile = new File(System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + fileName)
-   Files.copy(screenFile, destinationFile)
-
-   System.out.println("##teamcity[publishArtifacts '" + destinationFile.getAbsolutePath() + "']"); // publish as artifact in TeamCity
-</code></pre>
-
-<p>   }</p>
-
-<pre><code>def private String createFileName(ErrorInfo error) {
-    String specName = error.method.parent.name
-    String testName = error.method.name
-    String milliseconds = new Date().getTime()
-    String fileName = specName + ": '" + testName + "' " + milliseconds + ".png"
-    fileName
-}
-</code></pre>
-
-<p>}
-[/groovy]</p>
 
 <p>And that&rsquo;s all. Each test fail will now appear with corresponding screenshot from browser.</p>
 ]]></content>
@@ -857,57 +907,93 @@ But enough about Geb itself. Today I will share with you simple trick how to sha
 
 <p>Assume we have many test classes (spefications) similar to this one below.</p>
 
-<p>[groovy]
-class ExampleUITest extends GebSpec {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">ExampleUITest</span> <span class="kd">extends</span> <span class="n">GebSpec</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="s2">&quot;Should test feature 1&quot;</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="nl">given:</span>
+</span><span class='line'>        <span class="n">to</span> <span class="n">LoginPage</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nl">when:</span>
+</span><span class='line'>        <span class="n">loginWith</span><span class="o">(</span><span class="s2">&quot;login&quot;</span><span class="o">,</span> <span class="s2">&quot;password&quot;</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nl">then:</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">HomePage</span>
+</span><span class='line'>        <span class="k">assert</span> <span class="n">loggedUserLabel</span> <span class="o">==</span> <span class="s2">&quot;loggedUser&quot;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="s2">&quot;Should test feature 2&quot;</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="nl">given:</span>
+</span><span class='line'>        <span class="n">to</span> <span class="n">LoginPage</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nl">when:</span>
+</span><span class='line'>        <span class="n">loginWith</span><span class="o">(</span><span class="s2">&quot;login&quot;</span><span class="o">,</span> <span class="s2">&quot;password&quot;</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nl">then:</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">HomePage</span>
+</span><span class='line'>        <span class="k">assert</span> <span class="n">loggedUserLabel</span> <span class="o">==</span> <span class="s2">&quot;loggedUser&quot;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// and so on...</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>def "Should test feature 1"() {
-    given:
-    to LoginPage
-
-    when:
-    loginWith("login", "password")
-
-    then:
-    at HomePage
-    assert loggedUserLabel == "loggedUser"
-}
-
-def "Should test feature 2"() {
-    given:
-    to LoginPage
-
-    when:
-    loginWith("login", "password")
-
-    then:
-    at HomePage
-    assert loggedUserLabel == "loggedUser"
-}
-
-// and so on...
-</code></pre>
-
-<p>[/groovy]</p>
 
 <p>What we have to do is prepare browser instance (in our case Firefox one) to click through our tests. We could to it in setup() method:</p>
 
-<p>[groovy]
-class ExampleUITest extends GebSpec {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">ExampleUITest</span> <span class="kd">extends</span> <span class="n">GebSpec</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="nf">setup</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">()</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="s2">&quot;Should test feature 1&quot;</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// ...</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="nf">cleanup</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">driver</span><span class="o">.</span><span class="na">quit</span><span class="o">()</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>def setup() {
-    driver = new FirefoxDriver()
-}
-
-def "Should test feature 1"() {
-    // ...
-}  
-
-def cleanup() {
-    driver.quit()
-}
-</code></pre>
-
-<p>[/groovy]</p>
 
 <p>This approach works but it has one, big drawback. We all know that UI tests tend to last quite long and creating new browser instance for each, yes, each test method will only make this situation worse as it also takes some time to start browser on your testing server.</p>
 
@@ -919,35 +1005,60 @@ def cleanup() {
 
 <p>My solution to this issue takes from both approaches presented above. But instead of creating browser for each specification, I am reusing one created in the first executed class.</p>
 
-<p>To make it work we need to introduce common abstract class for all our UI tests:
-[groovy]
-class IntelliGebSpec extends GebSpec {</p>
+<p>To make it work we need to introduce common abstract class for all our UI tests:</p>
 
-<pre><code>static def cachedDriver // static variable will store our single driver instance
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">IntelliGebSpec</span> <span class="kd">extends</span> <span class="n">GebSpec</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">static</span> <span class="kt">def</span> <span class="n">cachedDriver</span> <span class="c1">// static variable will store our single driver instance</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="nf">setupSpec</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(</span> <span class="n">cachedDriver</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// in first Specification this will be true</span>
+</span><span class='line'>            <span class="n">cachedDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">()</span>  <span class="c1">// so let&#39;s create driver and put it in cachedDriver variable</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="nf">setup</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">driver</span> <span class="o">=</span> <span class="n">cachedDriver</span>   <span class="c1">// each test should use our cached browser instance</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// as we are reusing browser, we should logout from our application after</span>
+</span><span class='line'>    <span class="c1">// each test to have clean browser state on each test run</span>
+</span><span class='line'>    <span class="kt">def</span> <span class="nf">cleanup</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">$</span><span class="o">(</span><span class="nl">id:</span> <span class="s2">&quot;logout&quot;</span><span class="o">).</span><span class="na">isDisplayed</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">$</span><span class="o">(</span><span class="nl">id:</span> <span class="s2">&quot;logout&quot;</span><span class="o">).</span><span class="na">click</span><span class="o">()</span>
+</span><span class='line'>            <span class="n">waitFor</span> <span class="o">{</span> <span class="n">$</span><span class="o">(</span><span class="nl">id:</span> <span class="s2">&quot;inputName&quot;</span><span class="o">).</span><span class="na">isDisplayed</span><span class="o">()</span> <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">deleteAllCookies</span><span class="o">()</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-def setupSpec() {
-    if ( cachedDriver == null) { // in first Specification this will be true
-        cachedDriver = new FirefoxDriver()  // so let's create driver and put it in cachedDriver variable
-    }
-}
 
-def setup() {
-    driver = cachedDriver   // each test should use our cached browser instance
-}
-
-// as we are reusing browser, we should logout from our application after
-// each test to have clean browser state on each test run
-def cleanup() {  
-    if ($(id: "logout").isDisplayed()) {
-        $(id: "logout").click()
-        waitFor { $(id: "inputName").isDisplayed() }
-    }
-    driver.manage().deleteAllCookies()
-}
-</code></pre>
-
-<p>}  <br/>
-[/groovy]</p>
+<p></p>
 
 <h3>Summary</h3>
 
@@ -955,19 +1066,24 @@ def cleanup() {
 
 <h3>Update: the best solution</h3>
 
-<p>As explained in reference documentation <a href="http://www.gebish.org/manual/current/configuration.html#driver_caching">here</a>, Geb provides mechanism to configure and reuse single instance of browser in all our UI tests. Only thing we have to do is create GebConfig script in default package that will contain driver instantiation script, e.g.:
-[groovy]
-// complete GebConfig.groovy file:
-driver =</p>
+<p>As explained in reference documentation <a href="http://www.gebish.org/manual/current/configuration.html#driver_caching">here</a>, Geb provides mechanism to configure and reuse single instance of browser in all our UI tests. Only thing we have to do is create GebConfig script in default package that will contain driver instantiation script, e.g.:</p>
 
-<pre><code>{
-    newDriver = new FirefoxDriver()
-    newDriver.manage().window().setSize(new Dimension(1024, 768))
-    return newDriver
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="c1">// complete GebConfig.groovy file:</span>
+</span><span class='line'><span class="n">driver</span> <span class="o">=</span>
+</span><span class='line'>    <span class="o">{</span>
+</span><span class='line'>        <span class="n">newDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">()</span>
+</span><span class='line'>        <span class="n">newDriver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">window</span><span class="o">().</span><span class="na">setSize</span><span class="o">(</span><span class="k">new</span> <span class="n">Dimension</span><span class="o">(</span><span class="mi">1024</span><span class="o">,</span> <span class="mi">768</span><span class="o">))</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">newDriver</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>[/groovy]</p>
 
 <p>And that&rsquo;s it, no hacking, no ugly static field.</p>
 ]]></content>

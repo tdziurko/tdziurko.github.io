@@ -167,57 +167,93 @@ But enough about Geb itself. Today I will share with you simple trick how to sha
 
 <p>Assume we have many test classes (spefications) similar to this one below.</p>
 
-<p>[groovy]
-class ExampleUITest extends GebSpec {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">ExampleUITest</span> <span class="kd">extends</span> <span class="n">GebSpec</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="s2">&quot;Should test feature 1&quot;</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="nl">given:</span>
+</span><span class='line'>        <span class="n">to</span> <span class="n">LoginPage</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nl">when:</span>
+</span><span class='line'>        <span class="n">loginWith</span><span class="o">(</span><span class="s2">&quot;login&quot;</span><span class="o">,</span> <span class="s2">&quot;password&quot;</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nl">then:</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">HomePage</span>
+</span><span class='line'>        <span class="k">assert</span> <span class="n">loggedUserLabel</span> <span class="o">==</span> <span class="s2">&quot;loggedUser&quot;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="s2">&quot;Should test feature 2&quot;</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="nl">given:</span>
+</span><span class='line'>        <span class="n">to</span> <span class="n">LoginPage</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nl">when:</span>
+</span><span class='line'>        <span class="n">loginWith</span><span class="o">(</span><span class="s2">&quot;login&quot;</span><span class="o">,</span> <span class="s2">&quot;password&quot;</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nl">then:</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">HomePage</span>
+</span><span class='line'>        <span class="k">assert</span> <span class="n">loggedUserLabel</span> <span class="o">==</span> <span class="s2">&quot;loggedUser&quot;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// and so on...</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>def "Should test feature 1"() {
-    given:
-    to LoginPage
-
-    when:
-    loginWith("login", "password")
-
-    then:
-    at HomePage
-    assert loggedUserLabel == "loggedUser"
-}
-
-def "Should test feature 2"() {
-    given:
-    to LoginPage
-
-    when:
-    loginWith("login", "password")
-
-    then:
-    at HomePage
-    assert loggedUserLabel == "loggedUser"
-}
-
-// and so on...
-</code></pre>
-
-<p>[/groovy]</p>
 
 <p>What we have to do is prepare browser instance (in our case Firefox one) to click through our tests. We could to it in setup() method:</p>
 
-<p>[groovy]
-class ExampleUITest extends GebSpec {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">ExampleUITest</span> <span class="kd">extends</span> <span class="n">GebSpec</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="nf">setup</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">()</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="s2">&quot;Should test feature 1&quot;</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// ...</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="nf">cleanup</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">driver</span><span class="o">.</span><span class="na">quit</span><span class="o">()</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>def setup() {
-    driver = new FirefoxDriver()
-}
-
-def "Should test feature 1"() {
-    // ...
-}  
-
-def cleanup() {
-    driver.quit()
-}
-</code></pre>
-
-<p>[/groovy]</p>
 
 <p>This approach works but it has one, big drawback. We all know that UI tests tend to last quite long and creating new browser instance for each, yes, each test method will only make this situation worse as it also takes some time to start browser on your testing server.</p>
 
@@ -229,35 +265,60 @@ def cleanup() {
 
 <p>My solution to this issue takes from both approaches presented above. But instead of creating browser for each specification, I am reusing one created in the first executed class.</p>
 
-<p>To make it work we need to introduce common abstract class for all our UI tests:
-[groovy]
-class IntelliGebSpec extends GebSpec {</p>
+<p>To make it work we need to introduce common abstract class for all our UI tests:</p>
 
-<pre><code>static def cachedDriver // static variable will store our single driver instance
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">IntelliGebSpec</span> <span class="kd">extends</span> <span class="n">GebSpec</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">static</span> <span class="kt">def</span> <span class="n">cachedDriver</span> <span class="c1">// static variable will store our single driver instance</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="nf">setupSpec</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(</span> <span class="n">cachedDriver</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// in first Specification this will be true</span>
+</span><span class='line'>            <span class="n">cachedDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">()</span>  <span class="c1">// so let&#39;s create driver and put it in cachedDriver variable</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="nf">setup</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">driver</span> <span class="o">=</span> <span class="n">cachedDriver</span>   <span class="c1">// each test should use our cached browser instance</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// as we are reusing browser, we should logout from our application after</span>
+</span><span class='line'>    <span class="c1">// each test to have clean browser state on each test run</span>
+</span><span class='line'>    <span class="kt">def</span> <span class="nf">cleanup</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">$</span><span class="o">(</span><span class="nl">id:</span> <span class="s2">&quot;logout&quot;</span><span class="o">).</span><span class="na">isDisplayed</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">$</span><span class="o">(</span><span class="nl">id:</span> <span class="s2">&quot;logout&quot;</span><span class="o">).</span><span class="na">click</span><span class="o">()</span>
+</span><span class='line'>            <span class="n">waitFor</span> <span class="o">{</span> <span class="n">$</span><span class="o">(</span><span class="nl">id:</span> <span class="s2">&quot;inputName&quot;</span><span class="o">).</span><span class="na">isDisplayed</span><span class="o">()</span> <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">driver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">deleteAllCookies</span><span class="o">()</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-def setupSpec() {
-    if ( cachedDriver == null) { // in first Specification this will be true
-        cachedDriver = new FirefoxDriver()  // so let's create driver and put it in cachedDriver variable
-    }
-}
 
-def setup() {
-    driver = cachedDriver   // each test should use our cached browser instance
-}
-
-// as we are reusing browser, we should logout from our application after
-// each test to have clean browser state on each test run
-def cleanup() {  
-    if ($(id: "logout").isDisplayed()) {
-        $(id: "logout").click()
-        waitFor { $(id: "inputName").isDisplayed() }
-    }
-    driver.manage().deleteAllCookies()
-}
-</code></pre>
-
-<p>}  <br/>
-[/groovy]</p>
+<p></p>
 
 <h3>Summary</h3>
 
@@ -265,19 +326,24 @@ def cleanup() {
 
 <h3>Update: the best solution</h3>
 
-<p>As explained in reference documentation <a href="http://www.gebish.org/manual/current/configuration.html#driver_caching">here</a>, Geb provides mechanism to configure and reuse single instance of browser in all our UI tests. Only thing we have to do is create GebConfig script in default package that will contain driver instantiation script, e.g.:
-[groovy]
-// complete GebConfig.groovy file:
-driver =</p>
+<p>As explained in reference documentation <a href="http://www.gebish.org/manual/current/configuration.html#driver_caching">here</a>, Geb provides mechanism to configure and reuse single instance of browser in all our UI tests. Only thing we have to do is create GebConfig script in default package that will contain driver instantiation script, e.g.:</p>
 
-<pre><code>{
-    newDriver = new FirefoxDriver()
-    newDriver.manage().window().setSize(new Dimension(1024, 768))
-    return newDriver
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="c1">// complete GebConfig.groovy file:</span>
+</span><span class='line'><span class="n">driver</span> <span class="o">=</span>
+</span><span class='line'>    <span class="o">{</span>
+</span><span class='line'>        <span class="n">newDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">()</span>
+</span><span class='line'>        <span class="n">newDriver</span><span class="o">.</span><span class="na">manage</span><span class="o">().</span><span class="na">window</span><span class="o">().</span><span class="na">setSize</span><span class="o">(</span><span class="k">new</span> <span class="n">Dimension</span><span class="o">(</span><span class="mi">1024</span><span class="o">,</span> <span class="mi">768</span><span class="o">))</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">newDriver</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>[/groovy]</p>
 
 <p>And that&rsquo;s it, no hacking, no ugly static field.</p>
 </div>

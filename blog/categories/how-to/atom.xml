@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-to | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-27T12:54:29+02:00</updated>
+  <updated>2014-05-27T12:57:12+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -181,7 +181,7 @@ public void shouldEncryptAndDecryptValue() {
 <p>We have to find some type of listener that waits for different test results and fires proper method when test fails. In <a href="http://testng.org/">TestNG</a> we have a <a href="http://testng.org/javadocs/org/testng/TestListenerAdapter.html">TestListenerAdapter</a> so probably Geb or Spock should have something similar.</p>
 
 <p>After some digging I was able to locate <em>IRunListener</em> with method I need:
-[groovy]
+``` groovy
 public interface IRunListener {</p>
 
 <pre><code>void beforeSpec(org.spockframework.runtime.model.SpecInfo specInfo);
@@ -204,14 +204,14 @@ void featureSkipped(org.spockframework.runtime.model.FeatureInfo featureInfo);
 </code></pre>
 
 <p>}
-[/groovy]</p>
+```</p>
 
 <p><strong>Simple version of test failure listener</strong>
 Luckily this interface comes with abstract class named <em>AbstractRunListener</em> that allows us to implement only methods we want instead of fulfilling the whole contract specified by IRunListener.</p>
 
 <p>So our first step will be to print something to the console every time our test fails:</p>
 
-<p>[groovy]
+<p>``` groovy
 class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
 
 <p>   def void error(ErrorInfo error) {</p>
@@ -221,18 +221,18 @@ class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
 
 <p>   }
 }
-[/groovy]</p>
+```</p>
 
 <p><strong>Adding custom listener to all tests with Spock extension</strong>
 But except implementation of a listener, we have to add this listener to our tests. Currently in Spock this is possible only with extensions. Again, I had to find proper extension to use and ended with interface IGlobalExtension which has only one method visiting each spec (test method) in our codebase:
-[groovy]
+<code>groovy
 public interface IGlobalExtension {
   void visitSpec(SpecInfo spec);
 }
-[/groovy]</p>
+</code></p>
 
 <p>So extension implementation looks as follows, to each visited spec we add our TakeScreenshotOnTestFailureListener listener:
-[groovy]
+``` groovy
 class GlobalSpecExtension implements IGlobalExtension {</p>
 
 <pre><code>@Override
@@ -242,7 +242,7 @@ void visitSpec(SpecInfo specInfo) {
 </code></pre>
 
 <p>}
-[/groovy]</p>
+```</p>
 
 <p><strong>Registering Spock global extension</strong>
 Each global extension have to be registered to Spock. This can be achieved by placing text file with easy to remember name in META-INF/services directory. File must be named <em>org.spockframework.runtime.extension.IGlobalExtension</em> and should contain full name of our implementation of IGlobalExtension interface:
@@ -255,7 +255,7 @@ Now on each test fail we will see that our text message is printed to the consol
 
 <p>Taking a screenshot using Selenium driver is quite easy, it is one method call, but before that we have to acquire driver instance in our listener class. Directly it is impossible to access driver directly from the listener so we need to store it in globally accessible object. Simplest solution is to save reference to the driver when we create it in our GebConfig file. So let&rsquo;s create a singleton that will hold our browser:</p>
 
-<p>[groovy]
+<p>``` groovy
 @Singleton
 class BrowserInstance {</p>
 
@@ -263,11 +263,11 @@ class BrowserInstance {</p>
 </code></pre>
 
 <p>}
-[/groovy]</p>
+```</p>
 
 <p>and initialise it in GebConfig.groovy script located in root package of our project:</p>
 
-<p>[groovy]
+<p>``` groovy
 driver =</p>
 
 <pre><code>{
@@ -277,10 +277,10 @@ driver =</p>
 }
 </code></pre>
 
-<p>[/groovy]</p>
+<p>```</p>
 
 <p>Now we can access driver from our listener object, so final taking screenshot logic is pretty straightforward:
-[groovy]
+``` groovy
 class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
 
 <p>   def void error(ErrorInfo error) {</p>
@@ -306,7 +306,7 @@ class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
 </code></pre>
 
 <p>}
-[/groovy]</p>
+```</p>
 
 <p>And that&rsquo;s all. Each test fail will now appear with corresponding screenshot from browser.</p>
 ]]></content>
@@ -334,7 +334,7 @@ But enough about Geb itself. Today I will share with you simple trick how to sha
 
 <p>Assume we have many test classes (spefications) similar to this one below.</p>
 
-<p>[groovy]
+<p>``` groovy
 class ExampleUITest extends GebSpec {</p>
 
 <pre><code>def "Should test feature 1"() {
@@ -364,11 +364,11 @@ def "Should test feature 2"() {
 // and so on...
 </code></pre>
 
-<p>[/groovy]</p>
+<p>```</p>
 
 <p>What we have to do is prepare browser instance (in our case Firefox one) to click through our tests. We could to it in setup() method:</p>
 
-<p>[groovy]
+<p>``` groovy
 class ExampleUITest extends GebSpec {</p>
 
 <pre><code>def setup() {
@@ -384,7 +384,7 @@ def cleanup() {
 }
 </code></pre>
 
-<p>[/groovy]</p>
+<p>```</p>
 
 <p>This approach works but it has one, big drawback. We all know that UI tests tend to last quite long and creating new browser instance for each, yes, each test method will only make this situation worse as it also takes some time to start browser on your testing server.</p>
 
@@ -397,7 +397,7 @@ def cleanup() {
 <p>My solution to this issue takes from both approaches presented above. But instead of creating browser for each specification, I am reusing one created in the first executed class.</p>
 
 <p>To make it work we need to introduce common abstract class for all our UI tests:
-[groovy]
+``` groovy
 class IntelliGebSpec extends GebSpec {</p>
 
 <pre><code>static def cachedDriver // static variable will store our single driver instance
@@ -424,7 +424,7 @@ def cleanup() {
 </code></pre>
 
 <p>}  <br/>
-[/groovy]</p>
+```</p>
 
 <h3>Summary</h3>
 
@@ -433,7 +433,7 @@ def cleanup() {
 <h3>Update: the best solution</h3>
 
 <p>As explained in reference documentation <a href="http://www.gebish.org/manual/current/configuration.html#driver_caching">here</a>, Geb provides mechanism to configure and reuse single instance of browser in all our UI tests. Only thing we have to do is create GebConfig script in default package that will contain driver instantiation script, e.g.:
-[groovy]
+``` groovy
 // complete GebConfig.groovy file:
 driver =</p>
 
@@ -444,7 +444,7 @@ driver =</p>
 }
 </code></pre>
 
-<p>[/groovy]</p>
+<p>```</p>
 
 <p>And that&rsquo;s it, no hacking, no ugly static field.</p>
 ]]></content>

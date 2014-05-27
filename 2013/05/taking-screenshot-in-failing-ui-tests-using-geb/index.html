@@ -163,69 +163,99 @@
 
 <p>We have to find some type of listener that waits for different test results and fires proper method when test fails. In <a href="http://testng.org/">TestNG</a> we have a <a href="http://testng.org/javadocs/org/testng/TestListenerAdapter.html">TestListenerAdapter</a> so probably Geb or Spock should have something similar.</p>
 
-<p>After some digging I was able to locate <em>IRunListener</em> with method I need:
-[groovy]
-public interface IRunListener {</p>
+<p>After some digging I was able to locate <em>IRunListener</em> with method I need:</p>
 
-<pre><code>void beforeSpec(org.spockframework.runtime.model.SpecInfo specInfo);
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IRunListener</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">beforeSpec</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">SpecInfo</span> <span class="n">specInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">beforeFeature</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">FeatureInfo</span> <span class="n">featureInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">beforeIteration</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">IterationInfo</span> <span class="n">iterationInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">afterIteration</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">IterationInfo</span> <span class="n">iterationInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">afterFeature</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">FeatureInfo</span> <span class="n">featureInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">afterSpec</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">SpecInfo</span> <span class="n">specInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">ErrorInfo</span> <span class="n">errorInfo</span><span class="o">);</span> <span class="c1">// &lt; -- this is it</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">specSkipped</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">SpecInfo</span> <span class="n">specInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">featureSkipped</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">FeatureInfo</span> <span class="n">featureInfo</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-void beforeFeature(org.spockframework.runtime.model.FeatureInfo featureInfo);
-
-void beforeIteration(org.spockframework.runtime.model.IterationInfo iterationInfo);
-
-void afterIteration(org.spockframework.runtime.model.IterationInfo iterationInfo);
-
-void afterFeature(org.spockframework.runtime.model.FeatureInfo featureInfo);
-
-void afterSpec(org.spockframework.runtime.model.SpecInfo specInfo);
-
-void error(org.spockframework.runtime.model.ErrorInfo errorInfo); // &lt; -- this is it
-
-void specSkipped(org.spockframework.runtime.model.SpecInfo specInfo);
-
-void featureSkipped(org.spockframework.runtime.model.FeatureInfo featureInfo);
-</code></pre>
-
-<p>}
-[/groovy]</p>
 
 <p><strong>Simple version of test failure listener</strong>
 Luckily this interface comes with abstract class named <em>AbstractRunListener</em> that allows us to implement only methods we want instead of fulfilling the whole contract specified by IRunListener.</p>
 
 <p>So our first step will be to print something to the console every time our test fails:</p>
 
-<p>[groovy]
-class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">TakeScreenshotOnTestFailureListener</span> <span class="kd">extends</span> <span class="n">AbstractRunListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="kt">def</span> <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">ErrorInfo</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;Error in method &quot;</span> <span class="o">+</span> <span class="n">error</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+</span><span class='line'>   <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>   def void error(ErrorInfo error) {</p>
-
-<pre><code>   System.out.println("Error in method " + error.method.name);
-</code></pre>
-
-<p>   }
-}
-[/groovy]</p>
 
 <p><strong>Adding custom listener to all tests with Spock extension</strong>
-But except implementation of a listener, we have to add this listener to our tests. Currently in Spock this is possible only with extensions. Again, I had to find proper extension to use and ended with interface IGlobalExtension which has only one method visiting each spec (test method) in our codebase:
-[groovy]
-public interface IGlobalExtension {
-  void visitSpec(SpecInfo spec);
-}
-[/groovy]</p>
+But except implementation of a listener, we have to add this listener to our tests. Currently in Spock this is possible only with extensions. Again, I had to find proper extension to use and ended with interface IGlobalExtension which has only one method visiting each spec (test method) in our codebase:</p>
 
-<p>So extension implementation looks as follows, to each visited spec we add our TakeScreenshotOnTestFailureListener listener:
-[groovy]
-class GlobalSpecExtension implements IGlobalExtension {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IGlobalExtension</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="nf">visitSpec</span><span class="o">(</span><span class="n">SpecInfo</span> <span class="n">spec</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-void visitSpec(SpecInfo specInfo) {
-    specInfo.addListener(new TakeScreenshotOnTestFailureListener())
-}
-</code></pre>
 
-<p>}
-[/groovy]</p>
+<p>So extension implementation looks as follows, to each visited spec we add our TakeScreenshotOnTestFailureListener listener:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">GlobalSpecExtension</span> <span class="kd">implements</span> <span class="n">IGlobalExtension</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">visitSpec</span><span class="o">(</span><span class="n">SpecInfo</span> <span class="n">specInfo</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">specInfo</span><span class="o">.</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="n">TakeScreenshotOnTestFailureListener</span><span class="o">())</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p><strong>Registering Spock global extension</strong>
 Each global extension have to be registered to Spock. This can be achieved by placing text file with easy to remember name in META-INF/services directory. File must be named <em>org.spockframework.runtime.extension.IGlobalExtension</em> and should contain full name of our implementation of IGlobalExtension interface:</p>
@@ -240,58 +270,78 @@ Now on each test fail we will see that our text message is printed to the consol
 
 <p>Taking a screenshot using Selenium driver is quite easy, it is one method call, but before that we have to acquire driver instance in our listener class. Directly it is impossible to access driver directly from the listener so we need to store it in globally accessible object. Simplest solution is to save reference to the driver when we create it in our GebConfig file. So let&rsquo;s create a singleton that will hold our browser:</p>
 
-<p>[groovy]
-@Singleton
-class BrowserInstance {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="nd">@Singleton</span>
+</span><span class='line'><span class="kd">class</span> <span class="nc">BrowserInstance</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">def</span> <span class="n">FirefoxDriver</span> <span class="n">browser</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>def FirefoxDriver browser;
-</code></pre>
-
-<p>}
-[/groovy]</p>
 
 <p>and initialise it in GebConfig.groovy script located in root package of our project:</p>
 
-<p>[groovy]
-driver =</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">driver</span> <span class="o">=</span>
+</span><span class='line'>    <span class="o">{</span>
+</span><span class='line'>        <span class="n">newDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">()</span>
+</span><span class='line'>        <span class="n">BrowserInstance</span><span class="o">.</span><span class="na">instance</span><span class="o">.</span><span class="na">browser</span> <span class="o">=</span> <span class="n">newDriver</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">newDriver</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>{
-    newDriver = new FirefoxDriver()
-    BrowserInstance.instance.browser = newDriver
-    return newDriver
-}
-</code></pre>
 
-<p>[/groovy]</p>
+<p>Now we can access driver from our listener object, so final taking screenshot logic is pretty straightforward:</p>
 
-<p>Now we can access driver from our listener object, so final taking screenshot logic is pretty straightforward:
-[groovy]
-class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">TakeScreenshotOnTestFailureListener</span> <span class="kd">extends</span> <span class="n">AbstractRunListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="kt">def</span> <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">ErrorInfo</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>       <span class="n">File</span> <span class="n">screenFile</span> <span class="o">=</span> <span class="n">BrowserInstance</span><span class="o">.</span><span class="na">instance</span><span class="o">.</span><span class="na">browser</span><span class="o">.</span><span class="na">getScreenshotAs</span><span class="o">(</span><span class="n">OutputType</span><span class="o">.</span><span class="na">FILE</span><span class="o">);</span> <span class="c1">// take a screenshot</span>
+</span><span class='line'>
+</span><span class='line'>       <span class="n">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">createFileName</span><span class="o">(</span><span class="n">error</span><span class="o">)</span> <span class="c1">// generate file name based on test class and method names</span>
+</span><span class='line'>       <span class="n">File</span> <span class="n">destinationFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s2">&quot;java.io.tmpdir&quot;</span><span class="o">)</span> <span class="o">+</span> <span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s2">&quot;file.separator&quot;</span><span class="o">)</span> <span class="o">+</span> <span class="n">fileName</span><span class="o">)</span>
+</span><span class='line'>       <span class="n">Files</span><span class="o">.</span><span class="na">copy</span><span class="o">(</span><span class="n">screenFile</span><span class="o">,</span> <span class="n">destinationFile</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;##teamcity[publishArtifacts &#39;&quot;</span> <span class="o">+</span> <span class="n">destinationFile</span><span class="o">.</span><span class="na">getAbsolutePath</span><span class="o">()</span> <span class="o">+</span> <span class="s2">&quot;&#39;]&quot;</span><span class="o">);</span> <span class="c1">// publish as artifact in TeamCity</span>
+</span><span class='line'>   <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="kd">private</span> <span class="n">String</span> <span class="nf">createFileName</span><span class="o">(</span><span class="n">ErrorInfo</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">specName</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">parent</span><span class="o">.</span><span class="na">name</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">testName</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">name</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">milliseconds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">()</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">specName</span> <span class="o">+</span> <span class="s2">&quot;: &#39;&quot;</span> <span class="o">+</span> <span class="n">testName</span> <span class="o">+</span> <span class="s2">&quot;&#39; &quot;</span> <span class="o">+</span> <span class="n">milliseconds</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
+</span><span class='line'>        <span class="n">fileName</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>   def void error(ErrorInfo error) {</p>
-
-<pre><code>   File screenFile = BrowserInstance.instance.browser.getScreenshotAs(OutputType.FILE); // take a screenshot
-
-   String fileName = createFileName(error) // generate file name based on test class and method names
-   File destinationFile = new File(System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + fileName)
-   Files.copy(screenFile, destinationFile)
-
-   System.out.println("##teamcity[publishArtifacts '" + destinationFile.getAbsolutePath() + "']"); // publish as artifact in TeamCity
-</code></pre>
-
-<p>   }</p>
-
-<pre><code>def private String createFileName(ErrorInfo error) {
-    String specName = error.method.parent.name
-    String testName = error.method.name
-    String milliseconds = new Date().getTime()
-    String fileName = specName + ": '" + testName + "' " + milliseconds + ".png"
-    fileName
-}
-</code></pre>
-
-<p>}
-[/groovy]</p>
 
 <p>And that&rsquo;s all. Each test fail will now appear with corresponding screenshot from browser.</p>
 </div>
