@@ -1,483 +1,479 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://tdziurko.github.io/2009/04/my-impressions-after-passing-scjp/</loc>
+        <loc>http://tomaszdziurko.pl/2009/04/my-impressions-after-passing-scjp/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2009/04/lets-start-preperations-to-scwcd/</loc>
+        <loc>http://tomaszdziurko.pl/2009/04/lets-start-preperations-to-scwcd/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2009/04/nntp-apache-commons-and-non-us-charaters/</loc>
+        <loc>http://tomaszdziurko.pl/2009/04/nntp-apache-commons-and-non-us-charaters/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2009/04/pelne-archiwum-sdj-2008-i-2007-do-zgarniecia/</loc>
+        <loc>http://tomaszdziurko.pl/2009/04/pelne-archiwum-sdj-2008-i-2007-do-zgarniecia/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2009/04/servlets-family-of-classes-and-interfaces/</loc>
+        <loc>http://tomaszdziurko.pl/2009/04/servlets-family-of-classes-and-interfaces/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://tdziurko.github.io/2009/05/eclipse-and-problem-with-auto-generated-equals/
-        </loc>
+        <loc>http://tomaszdziurko.pl/2009/05/eclipse-and-problem-with-auto-generated-equals/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2009/05/some-netbeans-shortcuts-you-might-not-know/</loc>
+        <loc>http://tomaszdziurko.pl/2009/05/some-netbeans-shortcuts-you-might-not-know/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2009/05/java-persistence-api-and-simple-audit/</loc>
+        <loc>http://tomaszdziurko.pl/2009/05/java-persistence-api-and-simple-audit/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2009/05/chuck-norris-and-java/</loc>
+        <loc>http://tomaszdziurko.pl/2009/05/chuck-norris-and-java/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2009/07/javarsovia-2009-wrazenia/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://tdziurko.github.io/2009/07/effective-java-make-your-code-better-book-review/
-        </loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2009/07/effective-java-developer-part-1-singletons/</loc>
+        <loc>http://tomaszdziurko.pl/2009/07/javarsovia-2009-wrazenia/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2009/09/ksiazka-jak-odmienic-sposob-programowania-uzywajac-refaktoryzacji-moje-wrazenia/
+            http://tomaszdziurko.pl/2009/07/effective-java-make-your-code-better-book-review/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2009/10/java-developers-day-2009-moimi-oczami/</loc>
+        <loc>http://tomaszdziurko.pl/2009/07/effective-java-developer-part-1-singletons/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2009/12/java-i-programowanie-jak-zaczac-i-z-czego-sie-uczyc/
+            http://tomaszdziurko.pl/2009/09/ksiazka-jak-odmienic-sposob-programowania-uzywajac-refaktoryzacji-moje-wrazenia/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2010/01/finally-my-scwcd-mission-completed/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2010/02/wicket-ajax-modal-are-you-sure-window/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2010/02/wicket-useful-links/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2010/03/clean-code-po-polsku-juz-jest/</loc>
+        <loc>http://tomaszdziurko.pl/2009/10/java-developers-day-2009-moimi-oczami/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2010/03/konferencja-z-koziolkami-w-tle-czyli-4developers-w-poznaniu/
+            http://tomaszdziurko.pl/2009/12/java-i-programowanie-jak-zaczac-i-z-czego-sie-uczyc/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
+        <loc>http://tomaszdziurko.pl/2010/01/finally-my-scwcd-mission-completed/</loc>
+        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2010/02/wicket-ajax-modal-are-you-sure-window/</loc>
+        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2010/02/wicket-useful-links/</loc>
+        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2010/03/clean-code-po-polsku-juz-jest/</loc>
+        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
+    </url>
+    <url>
         <loc>
-            http://tdziurko.github.io/2010/04/scjp-to-certyfikowany-programista-java-a-scjd/
+            http://tomaszdziurko.pl/2010/03/konferencja-z-koziolkami-w-tle-czyli-4developers-w-poznaniu/
         </loc>
+        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2010/04/scjp-to-certyfikowany-programista-java-a-scjd/</loc>
         <lastmod>2014-05-26T23:11:13+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2010/04/the-life-cycle-of-servlet/</loc>
+        <loc>http://tomaszdziurko.pl/2010/04/the-life-cycle-of-servlet/</loc>
         <lastmod>2014-05-26T23:11:44+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2010/04/swiatowy-dzien-ksiazki-i-promocja-helionu/</loc>
+        <loc>http://tomaszdziurko.pl/2010/04/swiatowy-dzien-ksiazki-i-promocja-helionu/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2010/04/my-first-tdd-or-why-netbeans-sucks/</loc>
+        <loc>http://tomaszdziurko.pl/2010/04/my-first-tdd-or-why-netbeans-sucks/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2010/04/where-we-can-find-java-under-the-hood/</loc>
+        <loc>http://tomaszdziurko.pl/2010/04/where-we-can-find-java-under-the-hood/</loc>
         <lastmod>2014-05-26T23:12:58+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2010/05/od-teraz-software-developers-journal-za-darmo-i-w-formacie-pdf/
+            http://tomaszdziurko.pl/2010/05/od-teraz-software-developers-journal-za-darmo-i-w-formacie-pdf/
         </loc>
         <lastmod>2014-05-26T23:13:29+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2010/06/simple-notification-about-errors-in-wicket-based-application/
+            http://tomaszdziurko.pl/2010/06/simple-notification-about-errors-in-wicket-based-application/
         </loc>
         <lastmod>2014-05-26T23:15:22+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2010/06/solving-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-in-spring-jdbc-based-application/
+            http://tomaszdziurko.pl/2010/06/solving-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-in-spring-jdbc-based-application/
         </loc>
         <lastmod>2014-05-26T23:16:07+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2010/07/programista-i-wlasna-firma-czyli-dotacja-z-urzedu-pracy-na-zalozenie-dzialalnosci-gospodarczej/
+            http://tomaszdziurko.pl/2010/07/programista-i-wlasna-firma-czyli-dotacja-z-urzedu-pracy-na-zalozenie-dzialalnosci-gospodarczej/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2010/08/ksiazka-czysty-kod-clean-code-w-promocji-o-30-taniej-tylko-dzis-w-helionie/
+            http://tomaszdziurko.pl/2010/08/ksiazka-czysty-kod-clean-code-w-promocji-o-30-taniej-tylko-dzis-w-helionie/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2010/08/submitting-ssl-and-no-ssl-html-forms-using-jmeter/
+            http://tomaszdziurko.pl/2010/08/submitting-ssl-and-no-ssl-html-forms-using-jmeter/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2010/09/mercurial-some-useful-links-when-you-are-about-to-start/
+            http://tomaszdziurko.pl/2010/09/mercurial-some-useful-links-when-you-are-about-to-start/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2010/09/better-free-mercurial-repository-as-bitbucket-joins-atlassian/
+            http://tomaszdziurko.pl/2010/09/better-free-mercurial-repository-as-bitbucket-joins-atlassian/
         </loc>
         <lastmod>2014-05-26T23:18:58+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2010/10/programming-books-in-english-with-free-worldwide-delivery-repost/
+            http://tomaszdziurko.pl/2010/10/programming-books-in-english-with-free-worldwide-delivery-repost/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2010/10/jdd-2010-from-my-perspective/</loc>
+        <loc>http://tomaszdziurko.pl/2010/10/jdd-2010-from-my-perspective/</loc>
         <lastmod>2014-05-26T23:50:46+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2010/10/slides-from-jdd-2010-available/</loc>
+        <loc>http://tomaszdziurko.pl/2010/10/slides-from-jdd-2010-available/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2010/12/what-would-you-do-if-your-boss-give-you-one-week-for-self-education/
+            http://tomaszdziurko.pl/2010/12/what-would-you-do-if-your-boss-give-you-one-week-for-self-education/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2010/12/custom-pagingnavigator-with-changing-items-per-page-in-wicket/
+            http://tomaszdziurko.pl/2010/12/custom-pagingnavigator-with-changing-items-per-page-in-wicket/
         </loc>
         <lastmod>2014-05-26T23:20:37+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/
+            http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/
         </loc>
         <lastmod>2014-05-26T23:23:19+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/
+            http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/
         </loc>
         <lastmod>2014-05-26T23:50:46+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2011/02/wicket-tutorial-part-3-form-application/</loc>
+        <loc>http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-3-form-application/</loc>
         <lastmod>2014-05-26T23:50:46+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/02/crowded-conferences-2011-calendar-poland-wicket-author-talk-33rddegree/
+            http://tomaszdziurko.pl/2011/02/crowded-conferences-2011-calendar-poland-wicket-author-talk-33rddegree/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/
+            http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/
         </loc>
         <lastmod>2014-05-26T23:36:42+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/
+            http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/
         </loc>
         <lastmod>2014-05-26T23:37:52+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2011/02/who-the-heck-is-corey-haines/</loc>
+        <loc>http://tomaszdziurko.pl/2011/02/who-the-heck-is-corey-haines/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/03/wicket-tutorial-part-6-e28093-listing-locations-simple-manner/
+            http://tomaszdziurko.pl/2011/03/wicket-tutorial-part-6-e28093-listing-locations-simple-manner/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/03/wicket-tutorial-series-building-web-application-scratch/
+            http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/
         </loc>
         <lastmod>2014-05-26T23:41:18+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/04/short-wicket-talk-web-frameworks-shootout-33rddegree-conference/
+            http://tomaszdziurko.pl/2011/04/short-wicket-talk-web-frameworks-shootout-33rddegree-conference/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/05/why-we-dont-like-public-speeches-and-what-can-be-done-about-it/
+            http://tomaszdziurko.pl/2011/05/why-we-dont-like-public-speeches-and-what-can-be-done-about-it/
         </loc>
         <lastmod>2014-05-26T23:43:30+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/05/wicket-tutorial-part-7-e28093-editing-and-removing-item-locations/
+            http://tomaszdziurko.pl/2011/05/wicket-tutorial-part-7-e28093-editing-and-removing-item-locations/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/
+            http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/
+        </loc>
+        <lastmod>2014-05-27T13:52:49+02:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies/
+        </loc>
+        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2011/07/conversation-scope-wicket-cdi/</loc>
+        <lastmod>2014-05-27T14:44:22+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2011/08/share-pastie-plugin-intellij-idea/</loc>
+        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://tomaszdziurko.pl/2011/09/developing-plugin-intellij-idea-some-tips-and-links/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies/
+            http://tomaszdziurko.pl/2011/09/pragmatic-thinking-and-learning-how-to-think-consciously/
         </loc>
+        <lastmod>2014-05-27T14:30:32+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2011/10/warsjawa-2011-tuz-tuz/</loc>
+        <lastmod>2014-05-27T14:28:35+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2011/10/parametrizing-custom-validator-jsf-2/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2011/07/conversation-scope-wicket-cdi/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
+        <loc>http://tomaszdziurko.pl/2011/10/sobotnia-mobilizacja-na-mobilizacje/</loc>
+        <lastmod>2014-05-27T14:28:05+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2011/08/share-pastie-plugin-intellij-idea/</loc>
+        <loc>http://tomaszdziurko.pl/2011/11/clean-coder/</loc>
+        <lastmod>2014-05-27T14:23:37+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2011/11/my-relation-devoxx-2011/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2011/09/developing-plugin-intellij-idea-some-tips-and-links/
-        </loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://tdziurko.github.io/2011/09/pragmatic-thinking-and-learning-how-to-think-consciously/
-        </loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2011/10/warsjawa-2011-tuz-tuz/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2011/10/parametrizing-custom-validator-jsf-2/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2011/10/sobotnia-mobilizacja-na-mobilizacje/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2011/11/clean-coder/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2011/11/my-relation-devoxx-2011/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://tdziurko.github.io/2011/12/problem-withjpa-join-column-null-values-and-orderby/
+            http://tomaszdziurko.pl/2011/12/problem-withjpa-join-column-null-values-and-orderby/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2012/01/human-side-agile-methodology-review-individuals-interactions-agile-guide/
+            http://tomaszdziurko.pl/2012/01/human-side-agile-methodology-review-individuals-interactions-agile-guide/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2012/01/google-guava-eventbus-easy-elegant-publisher-subscriber-cases/
+            http://tomaszdziurko.pl/2012/01/google-guava-eventbus-easy-elegant-publisher-subscriber-cases/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2012/02/google-guava/</loc>
+        <loc>http://tomaszdziurko.pl/2012/02/google-guava/</loc>
+        <lastmod>2014-05-27T14:16:16+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2012/03/wicket-and-twitter-bootstrap-navbar/</loc>
+        <lastmod>2014-05-27T14:07:22+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2012/03/most-valuable-blogger-dzone/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2012/03/wicket-and-twitter-bootstrap-navbar/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
+        <loc>http://tomaszdziurko.pl/2012/04/tools-retrospectives-distributed-teams/</loc>
+        <lastmod>2014-05-27T14:06:21+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2012/03/most-valuable-blogger-dzone/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2012/04/tools-retrospectives-distributed-teams/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2012/04/notes-from-information-diet-book/</loc>
+        <loc>http://tomaszdziurko.pl/2012/04/notes-from-information-diet-book/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2012/05/jcommander-parsing-command-line-parameters-ease/
+            http://tomaszdziurko.pl/2012/05/jcommander-parsing-command-line-parameters-ease/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2012/05/my-numbers-of-geecon/</loc>
+        <loc>http://tomaszdziurko.pl/2012/05/my-numbers-of-geecon/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2012/06/confitura-2012-wolontariusze-poszukiwani/</loc>
+        <loc>http://tomaszdziurko.pl/2012/06/confitura-2012-wolontariusze-poszukiwani/</loc>
+        <lastmod>2014-05-27T14:04:21+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2012/07/hibernate-smoke-detector/</loc>
+        <lastmod>2014-05-27T14:01:34+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2012/07/practical-unit-testing-testng-mockito-review/</loc>
+        <lastmod>2014-05-27T14:00:48+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2012/09/remember-functionality-apache-wicket/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2012/07/hibernate-smoke-detector/</loc>
+        <loc>http://tomaszdziurko.pl/2012/10/deploying-java-web-application-jelastic/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2012/07/practical-unit-testing-testng-mockito-review/</loc>
+        <loc>http://tomaszdziurko.pl/2012/10/fixing-bug-hibernate-envers/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2012/09/remember-functionality-apache-wicket/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2012/10/deploying-java-web-application-jelastic/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2012/10/fixing-bug-hibernate-envers/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2013/01/configuring-sbt-jslint-with-teamcity/</loc>
+        <loc>http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/</loc>
         <lastmod>2014-05-27T12:53:16+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2013/01/running-unit-tests-integration-tests-separately-maven-testng/
+            http://tomaszdziurko.pl/2013/01/running-unit-tests-integration-tests-separately-maven-testng/
         </loc>
+        <lastmod>2014-05-27T13:52:49+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2013/02/twitter-bootstrap-navbar-angularjs-component/</loc>
+        <lastmod>2014-05-27T13:54:58+02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2013/02/twitter-bootstrap-navbar-angularjs-component/</loc>
+        <loc>http://tomaszdziurko.pl/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
+        <loc>http://tomaszdziurko.pl/2013/04/xstream-xstreamely-easy-work-xml-data-java/</loc>
+        <lastmod>2014-05-27T13:52:49+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping/</loc>
+        <loc>http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping/</loc>
         <lastmod>2014-05-27T12:53:16+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests/</loc>
-        <lastmod>2014-05-27T12:57:02+02:00</lastmod>
+        <loc>http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests/</loc>
+        <lastmod>2014-05-27T13:49:42+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/
+            http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/
         </loc>
         <lastmod>2014-05-27T12:57:02+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database/
+            http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2013/10/agile-2013-review/</loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
+        <loc>http://tomaszdziurko.pl/2013/10/agile-2013-review/</loc>
+        <lastmod>2014-05-27T13:44:46+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/
+            http://tomaszdziurko.pl/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/
         </loc>
-        <lastmod>2014-05-26T23:06:28+02:00</lastmod>
+        <lastmod>2014-05-27T14:04:00+02:00</lastmod>
     </url>
     <url>
         <loc>
-            http://tdziurko.github.io/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/
+            http://tomaszdziurko.pl/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/
         </loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-1/</loc>
+        <loc>http://tomaszdziurko.pl/2014/05/geecon-2014-brain-dump-day-1/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-2/</loc>
+        <loc>http://tomaszdziurko.pl/2014/05/geecon-2014-brain-dump-day-2/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/2014/05/geecon-2014-brain-dump-day-3/</loc>
+        <loc>http://tomaszdziurko.pl/2014/05/geecon-2014-brain-dump-day-3/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/404.html</loc>
+        <loc>http://tomaszdziurko.pl/404.html</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/about/</loc>
+        <loc>http://tomaszdziurko.pl/about/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/blog/archives/</loc>
-        <lastmod>2014-05-27T12:57:02+02:00</lastmod>
+        <loc>http://tomaszdziurko.pl/blog/archives/</loc>
+        <lastmod>2014-05-27T14:44:22+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/blog/categories/</loc>
+        <loc>http://tomaszdziurko.pl/blog/categories/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/</loc>
-        <lastmod>2014-05-27T12:57:02+02:00</lastmod>
+        <loc>http://tomaszdziurko.pl/</loc>
+        <lastmod>2014-05-27T14:44:22+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/my-bookshelf/</loc>
+        <loc>http://tomaszdziurko.pl/my-bookshelf/</loc>
         <lastmod>2014-05-26T23:06:28+02:00</lastmod>
     </url>
     <url>
-        <loc>http://tdziurko.github.io/robots.txt</loc>
+        <loc>http://tomaszdziurko.pl/robots.txt</loc>
         <lastmod>2014-05-24T23:32:55+02:00</lastmod>
     </url>
 </urlset>

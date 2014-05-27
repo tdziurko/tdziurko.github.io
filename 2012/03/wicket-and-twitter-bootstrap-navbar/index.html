@@ -19,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://tdziurko.github.io/2012/03/wicket-and-twitter-bootstrap-navbar/">
+	<link rel="canonical" href="http://tomaszdziurko.pl/2012/03/wicket-and-twitter-bootstrap-navbar/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -32,6 +32,18 @@
 -->
 
   
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
 
 </head>
 
@@ -92,7 +104,7 @@
 
     <section>
         <form action="https://www.google.com/search" method="get">
-            <input type="hidden" name="q" value="site:tdziurko.github.io" />
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
             <input class="search" type="search" name="q" results="0" placeholder="Search"/>
         </form>
     <section>
@@ -307,20 +319,30 @@
 
 <p>Now it&rsquo;s getting a little harder as we want to create panel for our menu item containing a dropdown. Its markup:</p>
 
-<pre><code>``` html
-&lt;wicket:panel&gt;
-    &lt;li class="dropdown" wicket:id="itemContainer"&gt;
-        &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;
-            &lt;span wicket:id="label"/&gt;
-            &lt;b class="caret"&gt;&lt;/b&gt;
-        &lt;/a&gt;
-        &lt;ul class="dropdown-menu"&gt;
-            &lt;li wicket:id="itemLinks"&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/li&gt;
-&lt;/wicket:panel&gt;
-```
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;wicket:panel&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;dropdown&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;itemContainer&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">class=</span><span class="s">&quot;dropdown-toggle&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;dropdown&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;label&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;b</span> <span class="na">class=</span><span class="s">&quot;caret&quot;</span><span class="nt">&gt;&lt;/b&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;dropdown-menu&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;li</span> <span class="na">wicket:id=</span><span class="s">&quot;itemLinks&quot;</span><span class="nt">&gt;&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/wicket:panel&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>So what we have here:</p>
 
@@ -399,22 +421,34 @@
 
 <p>So we have two components ready to use in our main panel. Now it is time to introduce panel class and markup &ndash;<em> TwitterBootstrapNavBarPanel. </em>Markup luckily isn&rsquo;t complicated:</p>
 
-<pre><code>``` html
- &lt;div class="navbar navbar-fixed-top"&gt;
-   &lt;div class="navbar-inner"&gt;
-     &lt;div class="container"&gt;// (1)
-       &lt;div class="nav-collapse"&gt;
-         &lt;ul class="nav"&gt;
-           &lt;ul class="nav"&gt;
-         &lt;li&gt;// (2)&lt;/li&gt;
-           &lt;/ul&gt;
-         &lt;/ul&gt;
-       &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-```
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;navbar navbar-fixed-top&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;navbar-inner&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>// (1)
+</span><span class='line'>       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav-collapse&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>         <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>           <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>         <span class="nt">&lt;li&gt;</span>// (2)<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>           <span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>         <span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>       <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <ol>
 <li><p> This is a link with a label to redirect user to home page of our application.</p></li>
@@ -648,6 +682,12 @@
 	</div>
 </div>
 
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>
@@ -657,6 +697,22 @@
 
 Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
 			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2012/03/wicket-and-twitter-bootstrap-navbar/';
+        var disqus_url = 'http://tomaszdziurko.pl/2012/03/wicket-and-twitter-bootstrap-navbar/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

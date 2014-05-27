@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: In Polish | Tomasz Dziurko]]></title>
-  <link href="http://tdziurko.github.io/blog/categories/in-polish/atom.xml" rel="self"/>
-  <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-27T12:57:12+02:00</updated>
-  <id>http://tdziurko.github.io/</id>
+  <link href="http://tomaszdziurko.pl/blog/categories/in-polish/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2014-05-27T16:26:55+02:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
     
@@ -15,16 +15,17 @@
   
   <entry>
     <title type="html"><![CDATA[Recenzja "Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce", czyli o tym co każdy programista umieć powinien]]></title>
-    <link href="http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
+    <link href="http://tomaszdziurko.pl/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
     <updated>2013-10-30T16:33:49+01:00</updated>
-    <id>http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
+    <id>http://tomaszdziurko.pl/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
 
 
-<blockquote>Dear Reader
-This post is in my native language as it is a review of book published only in Poland. Please feel free to check my other posts which are mainly written in English.</blockquote>
+<blockquote>
+Dear Reader, this post is in my native language as it is a review of book published only in Poland. Please feel free to check my other posts which are mainly written in English.
+</blockquote>
 
 
 <p>Dość rzadko sięgam po książki informatyczne wydane w naszym ojczystym języku. Powód jest dość prozaiczny: z reguły w momencie, gdy wychodzi polskie tłumaczenie &ldquo;JavaAwesomeWebFramework 1.2 w Akcji&rdquo; po angielsku jest już  dostępna &ldquo;JavaAwesomeWebFramework 2.0 in Action&rdquo; i cała wiedza zawarta w polskiej wersji jest, delikatnie mówiąc, lekko nieaktualna.</p>
@@ -52,13 +53,13 @@ This post is in my native language as it is a review of book published only in P
   
   <entry>
     <title type="html"><![CDATA[Confitura 2012 - wolontariusze poszukiwani!]]></title>
-    <link href="http://tdziurko.github.io/2012/06/confitura-2012-wolontariusze-poszukiwani/"/>
+    <link href="http://tomaszdziurko.pl/2012/06/confitura-2012-wolontariusze-poszukiwani/"/>
     <updated>2012-06-02T14:56:33+02:00</updated>
-    <id>http://tdziurko.github.io/2012/06/confitura-2012-wolontariusze-poszukiwani</id>
-    <content type="html"><![CDATA[<p>Dear Reader</p>
+    <id>http://tomaszdziurko.pl/2012/06/confitura-2012-wolontariusze-poszukiwani</id>
+    <content type="html"><![CDATA[<blockquote>
+Dear Reader, this post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
+</blockquote>
 
-<pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
-</code></pre>
 
 <p>W związku z dynamicznym rozwojem naszej konferencji aktualnie poszukujemy osób na stanowisko Wolontariusz oraz Fotograf. Poniżej opis stanowisk oraz wymagania.</p>
 
@@ -117,13 +118,13 @@ This post is in my native language as it is a review of book published only in P
   
   <entry>
     <title type="html"><![CDATA[Sobotnia mobilizacja na Mobilizację]]></title>
-    <link href="http://tdziurko.github.io/2011/10/sobotnia-mobilizacja-na-mobilizacje/"/>
+    <link href="http://tomaszdziurko.pl/2011/10/sobotnia-mobilizacja-na-mobilizacje/"/>
     <updated>2011-10-26T22:34:32+02:00</updated>
-    <id>http://tdziurko.github.io/2011/10/sobotnia-mobilizacja-na-mobilizacje</id>
-    <content type="html"><![CDATA[<p>Dear Reader</p>
+    <id>http://tomaszdziurko.pl/2011/10/sobotnia-mobilizacja-na-mobilizacje</id>
+    <content type="html"><![CDATA[<blockquote>
+Dear Reader, this post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
+</blockquote>
 
-<pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
-</code></pre>
 
 <p>W sobotę w Łodzi odbyła się pierwsza edycja konferencji <a href="http://mobilization.pl/">Mobilization</a> organizowanej przez JUG z tego miasta. Ponieważ w tematyce technologii mobilnych czuję się mocno zielony i poza warsztatami z Androida na ostatniej <a href="https://github.com/warszawajug/warsjawa2011/wiki/Konferencja-warsjawa-2011">Warsjawie</a> nie miałem z tą częścią programowania styczności, zdecydowałem się zainwestować sobotę na poszerzenie moich horyzontów w tym obszarze. Jak się okazało nie tylko mnie zainteresowała ta tematyka, bo na listę uczestników załapałem się tuż przed zamknięciem rejestracji, a, jak pisali organizatorzy, na liście rezerwowej czekało na uśmiech losu ponad 50 osób! Ale jeśli weźmiemy pod uwagę fakt, że była to pierwsza w Polsce konferencja całkowicie poświęcona technologiom mobilnym to nie ma się co dziwić tak dużemu zainteresowaniu.</p>
 
@@ -200,13 +201,13 @@ This post is in my native language as it is a review of book published only in P
   
   <entry>
     <title type="html"><![CDATA[Warsjawa 2011 tuż tuż]]></title>
-    <link href="http://tdziurko.github.io/2011/10/warsjawa-2011-tuz-tuz/"/>
+    <link href="http://tomaszdziurko.pl/2011/10/warsjawa-2011-tuz-tuz/"/>
     <updated>2011-10-09T18:36:58+02:00</updated>
-    <id>http://tdziurko.github.io/2011/10/warsjawa-2011-tuz-tuz</id>
-    <content type="html"><![CDATA[<p>Dear Reader</p>
+    <id>http://tomaszdziurko.pl/2011/10/warsjawa-2011-tuz-tuz</id>
+    <content type="html"><![CDATA[<blockquote>
+Dear Reader, this post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
+</blockquote>
 
-<pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
-</code></pre>
 
 <p style="text-align:center;"><img src="/images/blog/2011/10/warsjawa2011-logo.png" alt="" /></p>
 
@@ -232,9 +233,9 @@ This post is in my native language as it is a review of book published only in P
   
   <entry>
     <title type="html"><![CDATA[Książka Czysty kod (Clean code) w promocji o 30% taniej tylko dziś w Helionie]]></title>
-    <link href="http://tdziurko.github.io/2010/08/ksiazka-czysty-kod-clean-code-w-promocji-o-30-taniej-tylko-dzis-w-helionie/"/>
+    <link href="http://tomaszdziurko.pl/2010/08/ksiazka-czysty-kod-clean-code-w-promocji-o-30-taniej-tylko-dzis-w-helionie/"/>
     <updated>2010-08-20T22:19:25+02:00</updated>
-    <id>http://tdziurko.github.io/2010/08/ksiazka-czysty-kod-clean-code-w-promocji-o-30-taniej-tylko-dzis-w-helionie</id>
+    <id>http://tomaszdziurko.pl/2010/08/ksiazka-czysty-kod-clean-code-w-promocji-o-30-taniej-tylko-dzis-w-helionie</id>
     <content type="html"><![CDATA[<p>Dear Reader</p>
 
 <pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.

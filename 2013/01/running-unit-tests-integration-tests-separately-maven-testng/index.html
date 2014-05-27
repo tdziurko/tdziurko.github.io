@@ -19,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://tdziurko.github.io/2013/01/running-unit-tests-integration-tests-separately-maven-testng/">
+	<link rel="canonical" href="http://tomaszdziurko.pl/2013/01/running-unit-tests-integration-tests-separately-maven-testng/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -32,6 +32,18 @@
 -->
 
   
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
 
 </head>
 
@@ -92,7 +104,7 @@
 
     <section>
         <form action="https://www.google.com/search" method="get">
-            <input type="hidden" name="q" value="site:tdziurko.github.io" />
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
             <input class="search" type="search" name="q" results="0" placeholder="Search"/>
         </form>
     <section>
@@ -217,35 +229,58 @@
 
 <p>and now let&rsquo;s declare plugin mentioned above in our pom.xml:</p>
 
-<p>[xml]
-<project></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;project&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c">&lt;!-- ... --&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;build&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;plugins&gt;</span>
+</span><span class='line'>            <span class="c">&lt;!-- ... --&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;plugin&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;artifactId&gt;</span>maven-surefire-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;version&gt;</span>2.9<span class="nt">&lt;/version&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/plugin&gt;</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nt">&lt;plugin&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;artifactId&gt;</span>maven-failsafe-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;version&gt;</span>2.13<span class="nt">&lt;/version&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;configuration&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;includes&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;include&gt;</span>**/*IT.java<span class="nt">&lt;/include&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;/includes&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;/configuration&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/plugin&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/plugins&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/build&gt;</span>
+</span><span class='line'><span class="nt">&lt;/project&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>&lt;!-- ... --&gt;
-&lt;build&gt;
-    &lt;plugins&gt;
-        &lt;!-- ... --&gt;
-        &lt;plugin&gt;
-            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-            &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
-            &lt;version&gt;2.9&lt;/version&gt;
-        &lt;/plugin&gt;
-
-        &lt;plugin&gt;
-            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-            &lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
-            &lt;version&gt;2.13&lt;/version&gt;
-            &lt;configuration&gt;
-                &lt;includes&gt;
-                    &lt;include&gt;**/*IT.java&lt;/include&gt;
-                &lt;/includes&gt;
-            &lt;/configuration&gt;
-        &lt;/plugin&gt;
-    &lt;/plugins&gt;
-&lt;/build&gt;
-</code></pre>
-
-<p></project>
-[/xml]</p>
 
 <p>After that we should see two things. <em>mvn test</em> should pass as we have a one green test in ExampleUnitTest class, but <em>mvn failsafe:integration-test</em> should fail with StatusTestIT red. But as I said before, this does not work. <em>mvn test</em> looks as expected, but second Maven execution is passing as well showing that no test were run. Plugin seems to omit our completely valid test&hellip;</p>
 
@@ -253,30 +288,46 @@
 
 <p>After testing different approaches I found out that all we need to make this setup work is to add plugin execution to an integration-test phase of maven life cycle. So tiny change, but now our integration tests are executed only when we call <em>mvn integration-test</em>.</p>
 
-<p>[xml]
-<plugin></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;plugin&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;artifactId&gt;</span>maven-failsafe-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;version&gt;</span>2.13<span class="nt">&lt;/version&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;configuration&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;includes&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;include&gt;</span>**/*IT.java<span class="nt">&lt;/include&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/includes&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/configuration&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;executions&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;execution&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;id&gt;</span>failsafe-integration-tests<span class="nt">&lt;/id&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;phase&gt;</span>integration-test<span class="nt">&lt;/phase&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;goals&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;goal&gt;</span>integration-test<span class="nt">&lt;/goal&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/goals&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/execution&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/executions&gt;</span>
+</span><span class='line'><span class="nt">&lt;/plugin&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-&lt;artifactId&gt;maven-failsafe-plugin&lt;/artifactId&gt;
-&lt;version&gt;2.13&lt;/version&gt;
-&lt;configuration&gt;
-    &lt;includes&gt;
-        &lt;include&gt;**/*IT.java&lt;/include&gt;
-    &lt;/includes&gt;
-&lt;/configuration&gt;
-&lt;executions&gt;
-    &lt;execution&gt;
-        &lt;id&gt;failsafe-integration-tests&lt;/id&gt;
-        &lt;phase&gt;integration-test&lt;/phase&gt;
-        &lt;goals&gt;
-            &lt;goal&gt;integration-test&lt;/goal&gt;
-        &lt;/goals&gt;
-    &lt;/execution&gt;
-&lt;/executions&gt;
-</code></pre>
-
-<p></plugin>
-[/xml]</p>
 
 <p>And that&rsquo;s all, we could execute integration tests only when we really want to. Of course there are some things to remember when adopting setup described above:</p>
 
@@ -332,6 +383,12 @@
 	</div>
 </div>
 
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>
@@ -341,6 +398,22 @@
 
 Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
 			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2013/01/running-unit-tests-integration-tests-separately-maven-testng/';
+        var disqus_url = 'http://tomaszdziurko.pl/2013/01/running-unit-tests-integration-tests-separately-maven-testng/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

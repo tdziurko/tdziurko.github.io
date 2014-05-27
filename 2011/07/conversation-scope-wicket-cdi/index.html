@@ -19,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://tdziurko.github.io/2011/07/conversation-scope-wicket-cdi/">
+	<link rel="canonical" href="http://tomaszdziurko.pl/2011/07/conversation-scope-wicket-cdi/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -32,6 +32,18 @@
 -->
 
   
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
 
 </head>
 
@@ -92,7 +104,7 @@
 
     <section>
         <form action="https://www.google.com/search" method="get">
-            <input type="hidden" name="q" value="site:tdziurko.github.io" />
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
             <input class="search" type="search" name="q" results="0" placeholder="Search"/>
         </form>
     <section>
@@ -156,17 +168,23 @@
 
 <p>To make things easier we will base on existing example web application showing how to integrate Wicket with Weld (CDI) from project <a href="http://seamframework.org/Seam3/WicketModule">Seam-Wicket</a> (formerly named <a href="http://weld-development-discussions.46994.n3.nabble.com/Move-weld-wicket-to-seam-wicket-td724181.html">weld-wicket</a>). So first let&rsquo;s pull latest version of Seam-Wicket project from Git:</p>
 
-<p>[xml]
-git clone git://github.com/seam/wicket.git
-cd wicket
-mvn clean install
-[/xml]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>git clone git://github.com/seam/wicket.git
+</span><span class='line'>cd wicket
+</span><span class='line'>mvn clean install
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>and in examples directory there is numberguess Maven project. Just import it into your favourite IDE and execute</p>
 
-<p>[xml]
-mvn install jetty:run -P jetty
-[/xml]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>mvn install jetty:run -P jetty
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 <!-- more -->
 
@@ -230,7 +248,7 @@ mvn install jetty:run -P jetty
 
 <p>When you open our application in two tabs you should see something like this:</p>
 
-<p style="text-align:center;"><img src="/images/blog/2011/07/conversationLabel.png" alt="" /></p>
+<p style="text-align:center;"><a href="/images/blog/2011/07/conversationLabel.png"></a></p>
 
 <p>and in these two tabs you have two separate games running (and different conversation id shown). So everything looks fine. But, but&hellip; if during the game you accidentally hit refresh button (or F5) you will lose your state of game and see that conversation id has changed. WTH?! Calm down and check SeamApplication class source code. There is custom WebRequestCycleProcessor named SeamWebRequestCycleProcessor:</p>
 
@@ -325,13 +343,9 @@ mvn install jetty:run -P jetty
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'>    Second Page<span class="nt">&lt;/pre&gt;</span>
-</span><span class='line'><span class="nt">&lt;h1&gt;</span>Second page<span class="nt">&lt;/h1&gt;</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h1&gt;</span>Second page<span class="nt">&lt;/h1&gt;</span>
 </span><span class='line'><span class="nt">&lt;div&gt;</span>Conversation id:<span class="nt">&lt;/div&gt;</span>
 </span><span class='line'><span class="nt">&lt;div&gt;</span>Guesses left:<span class="nt">&lt;/div&gt;</span>
-</span><span class='line'><span class="nt">&lt;pre&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -354,8 +368,9 @@ mvn install jetty:run -P jetty
 
 <p>with corresponding HTML element in HomePage.html file.</p>
 
-<p>And when we try to guess a number and then click new link, we will see:
-&ndash;><img src="/images/blog/2011/07/withLink.png" alt="" />&lt;&ndash;</p>
+<p>And when we try to guess a number and then click new link, we will see:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2011/07/withLink.png" alt="" /></p>
 
 <p>and then</p>
 
@@ -383,13 +398,12 @@ Now we will try with link not pointing to the specific page instance (created in
 
 <p>And when we click this link, everything seems to be the same. We see the same page with correct conversation id, etc., but one thing has changed, the url. Now it looks like that</p>
 
-<p>[xml]
-<a href="http://localhost:9090/wicket-numberguess/?wicket:bookmarkablePage=:">http://localhost:9090/wicket-numberguess/?wicket:bookmarkablePage=:</a></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>http://localhost:9090/wicket-numberguess/?wicket:bookmarkablePage=:
+</span><span class='line'>    org.jboss.seam.wicket.examples.numberguess.SecondPage<span class="err">&amp;</span>cid=1
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>org.jboss.seam.wicket.examples.numberguess.SecondPage&amp;cid=1
-</code></pre>
-
-<p>[/xml]</p>
 
 <p>The most interesting part is the last parameter &ldquo;cid&rdquo; (conversationId) which allows Wicket to inject proper conversation into newly created page. The reason why we see this parameter is that our url points to bookmarkable page, so application must be able to create complete and configured page basing only on data stored in this url. Of course our conversation can expire before someone clicks this link so we should be prepared to recover from such situation (for example by simply overriding handleMissingConversation from SeamRequestCycle class).</p>
 
@@ -410,9 +424,10 @@ Now we will try with link not pointing to the specific page instance (created in
 
 <p>and when we click the same link we will land on page with address</p>
 
-<p>[xml]
-<a href="http://localhost:9090/wicket-numberguess/second-page/cid/1">http://localhost:9090/wicket-numberguess/second-page/cid/1</a>
-[/xml]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>http://localhost:9090/wicket-numberguess/second-page/cid/1
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>And we could expect that the same conversation is active. But unfortunately it&rsquo;s not. Custom SeamRequestCycle is not able to automatically extract conversation id from url unless it is specified in a standard way as ?cid=X . To make sure that this is the problem I&rsquo;ve done some tests and different url coding strategies (classes extending <a href="http://wicket.apache.org/apidocs/1.4/index.html?org/apache/wicket/request/target/coding/AbstractRequestTargetUrlCodingStrategy.html">AbstractRequestTargetUrlCodingStrategy</a> ) are working or not depending on the fact how they append parameters. Those appending them as /paramName/paramValue are failing but those appending parameters as ?paramName=paramValue are working fine. Ok, you may think that we are stuck now. But remember, this is SPARTA!&hellip; uhm.. open source so if we need different behavior we could write it.</p>
 
@@ -658,6 +673,12 @@ Now we will try with link not pointing to the specific page instance (created in
 	</div>
 </div>
 
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>
@@ -667,6 +688,22 @@ Now we will try with link not pointing to the specific page instance (created in
 
 Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
 			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2011/07/conversation-scope-wicket-cdi/';
+        var disqus_url = 'http://tomaszdziurko.pl/2011/07/conversation-scope-wicket-cdi/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

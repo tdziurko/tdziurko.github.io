@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: How-to | Tomasz Dziurko]]></title>
-  <link href="http://tdziurko.github.io/blog/categories/how-to/atom.xml" rel="self"/>
-  <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-27T12:57:12+02:00</updated>
-  <id>http://tdziurko.github.io/</id>
+  <link href="http://tomaszdziurko.pl/blog/categories/how-to/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2014-05-27T16:26:55+02:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Transparently persist and retrieve encrypted data from database]]></title>
-    <link href="http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
+    <link href="http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
     <updated>2013-07-31T08:45:07+02:00</updated>
-    <id>http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
+    <id>http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -164,9 +164,9 @@ public void shouldEncryptAndDecryptValue() {
   
   <entry>
     <title type="html"><![CDATA[Taking a screenshot when UI tests written in Geb fail]]></title>
-    <link href="http://tdziurko.github.io/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
+    <link href="http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
     <updated>2013-05-27T19:30:36+02:00</updated>
-    <id>http://tdziurko.github.io/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
+    <id>http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -314,18 +314,18 @@ class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
   
   <entry>
     <title type="html"><![CDATA[Reusing browser instance in Geb UI tests]]></title>
-    <link href="http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests/"/>
+    <link href="http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests/"/>
     <updated>2013-05-13T12:46:19+02:00</updated>
-    <id>http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests</id>
+    <id>http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
-<h4>UPDATE</h4>
+<p><strong>UPDATE</strong></p>
 
-<p>_When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below is valid and works, there is a much simpler solution to this problem incorporated by Geb itself and I strongly suggest using it instead of mine, home-crafted hack. All credits go to <a href="http://stackoverflow.com/users/52142/artur-gajowy">Artur Gajowy</a> for showing me better approach.</p>
+<blockquote>
+When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below is valid and works, there is a much simpler solution to this problem incorporated by Geb itself and I strongly suggest using it instead of mine, home-crafted hack. All credits go to Artur Gajowy for showing me better approach. I have added short paragraph about this simpler solution at the end of this article, probably you should scroll down to the paragraph named "Better solution" :).*
+</blockquote>
 
-<p>I have added short paragraph about this simpler solution at the end of this article, probably you should go [directly there](&lt;a href=&ldquo;<a href="http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests/#better-solution">http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests/#better-solution</a>) :).
-_</p>
 
 <p><a href="http://gebish.org">Geb</a> is next-generation UI testing library that frees developer from dealing with Selenium API which is in many cases not so friendly. The most important feature of Geb is its support, or I would even say, strong encouragement to use Page Objects in your UI tests. Page Objects are also present in Selenium, but they are not as intuitive and east to use as in Geb.
 But enough about Geb itself. Today I will share with you simple trick how to share one browser instance when running many Geb UI tests. This will significantly reduce time needed to execute UI tests and also reduce memory usage on test machines.</p>
@@ -452,9 +452,9 @@ driver =</p>
   
   <entry>
     <title type="html"><![CDATA[Easy Html/Javascript JSON escaping in Scalatra ]]></title>
-    <link href="http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping/"/>
+    <link href="http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping/"/>
     <updated>2013-04-30T23:59:59+02:00</updated>
-    <id>http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping</id>
+    <id>http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -628,9 +628,9 @@ Source code of this small example app is available <a href="https://github.com/t
   
   <entry>
     <title type="html"><![CDATA[XStream - XStreamely easy way to work with XML data in Java]]></title>
-    <link href="http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
+    <link href="http://tomaszdziurko.pl/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
     <updated>2013-04-22T10:55:55+02:00</updated>
-    <id>http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
+    <id>http://tomaszdziurko.pl/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
     <content type="html"><![CDATA[<!-- more -->
 
 
@@ -645,7 +645,7 @@ Source code of this small example app is available <a href="https://github.com/t
 <h3>First example</h3>
 
 <p>Suppose we have a requirement to load configuration from xml file:
-[xml]
+``` xml
 <config></p>
 
 <pre><code>&lt;inputFile&gt;/Users/tomek/work/mystuff/input.csv&lt;/inputFile&gt;
@@ -662,7 +662,7 @@ Source code of this small example app is available <a href="https://github.com/t
 </code></pre>
 
 <p></config>
-[/xml]</p>
+```</p>
 
 <p>And we want to load it into Configuration object:
 ``` java
@@ -700,7 +700,7 @@ Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
 
 <p>Ok, but previous example is very basic so now let&rsquo;s do something more complicated: real XML returned by real WebService.</p>
 
-<p>[xml]
+<p>``` xml
 <DATA xmlns=""></p>
 
 <pre><code>&lt;BAN&gt;
@@ -733,7 +733,7 @@ Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
 </code></pre>
 
 <p></DATA>
-[/xml]</p>
+```</p>
 
 <p>What we have here is simple list of bans written in XML. We want to load it into collection of Ban objects. So let&rsquo;s prepare some classes (getters/setters/toString omitted):
 ``` java

@@ -19,7 +19,7 @@
 
 	<link href="/atom.xml" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://tdziurko.github.io/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/">
+	<link rel="canonical" href="http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -32,6 +32,18 @@
 -->
 
   
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
 
 </head>
 
@@ -92,7 +104,7 @@
 
     <section>
         <form action="https://www.google.com/search" method="get">
-            <input type="hidden" name="q" value="site:tdziurko.github.io" />
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
             <input class="search" type="search" name="q" results="0" placeholder="Search"/>
         </form>
     <section>
@@ -271,17 +283,21 @@ So first, let&rsquo;s create html and Java files:</p>
 
 <p>We are almost done with this point but as we would like to test if language switching is working on the main page, we must add properties file for second language. And as properties gathered in Application.properties file doesn&rsquo;t seem to work when language is changed, we will move them to BasePage.properties:</p>
 
-<p>[xml]
-applicationName=Item Directory
-applicationHeader=Manage your items easily!
-[/xml]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>applicationName=Item Directory
+</span><span class='line'>applicationHeader=Manage your items easily!
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>and BasePage_pl.properties (for Polish language)</p>
 
-<p>[xml]
-applicationName=Item Directory
-applicationHeader=Zarządzaj swoimi przedmiotami z łatwością!
-[/xml]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>applicationName=Item Directory
+</span><span class='line'>applicationHeader=Zarządzaj swoimi przedmiotami z łatwością!
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Ok, it should work and when you run jetty server <em>mvn jetty:run</em>, enter application and click flag of Poland you should see:</p>
 
@@ -354,9 +370,10 @@ applicationHeader=Zarządzaj swoimi przedmiotami z łatwością!
 
 <p>alongside with properties message:</p>
 
-<p>[xml]
-locationRemoved=Location {0} was removed
-[/xml]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>locationRemoved=Location {0} was removed
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>In the constructor of StringResourceModel we pass array of parameters which is used to prepare message. You can notice simple way of inserting passed values into text with {0} notation (like in <a href="http://download.oracle.com/javase/1.4.2/docs/api/java/text/MessageFormat.html">MessageFormat</a> class). Of course this and other constructors of SRM are explained well in javadoc mentioned above :) Also worth to notice is call of getString() method on StringResourceModel which returns String representation of this ResourceModel object.</p>
 
@@ -518,6 +535,12 @@ locationRemoved=Location {0} was removed
 	</div>
 </div>
 
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
 </div>
 			</div>
 			<footer id="footer" class="inner"><p>
@@ -527,6 +550,22 @@ locationRemoved=Location {0} was removed
 
 Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
 			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/';
+        var disqus_url = 'http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

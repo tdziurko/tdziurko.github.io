@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Wicket | Tomasz Dziurko]]></title>
-  <link href="http://tdziurko.github.io/blog/categories/wicket/atom.xml" rel="self"/>
-  <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-27T12:57:12+02:00</updated>
-  <id>http://tdziurko.github.io/</id>
+  <link href="http://tomaszdziurko.pl/blog/categories/wicket/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2014-05-27T16:26:55+02:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
     
@@ -15,14 +15,14 @@
   
   <entry>
     <title type="html"><![CDATA[Deploying Java Web Application on Jelastic]]></title>
-    <link href="http://tdziurko.github.io/2012/10/deploying-java-web-application-jelastic/"/>
+    <link href="http://tomaszdziurko.pl/2012/10/deploying-java-web-application-jelastic/"/>
     <updated>2012-10-09T21:44:34+02:00</updated>
-    <id>http://tdziurko.github.io/2012/10/deploying-java-web-application-jelastic</id>
+    <id>http://tomaszdziurko.pl/2012/10/deploying-java-web-application-jelastic</id>
     <content type="html"><![CDATA[<p>Some time ago having your own full-fledged hosting with Java, Tomcat and any database wasn&rsquo;t cheap, but luckily we live in a very interesting times and now there are many virtual hosting services in the Cloud providing an easy and affordable way to deploy your application and make it available to users.</p>
 
 <p>And what is the best in such solutions, they grow with your application or startup. Services are free or almost free when your web application doesn&rsquo;t need much memory and processors but when your web-app starts to gather more users' attention and you have more and more concurrent sessions and visits each day, you could easily enhance your setup to match your needs. Everything is a matter of a few clicks, simple and fast.</p>
 
-<p>To test how this deployment process look like, I&rsquo;ve decided to put my [Wicket tutorial](<a href="http://tdziurko.github.io/2011/03/wicket-tutorial-series-building-web-application-scratch/) web application online. It consist of three pages and two tables in database so I think it shouldn't be a too complicated process to deploy it online. And as a Java hosting service I've chosen [Jelastic](http://jelastic.com), recent winner of [2012 Duke's Choice Awards](http://www.java.net/dukeschoice) announced during JavaOne conference this year. Duke's Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
+<p>To test how this deployment process look like, I&rsquo;ve decided to put my [Wicket tutorial](<a href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/) web application online. It consist of three pages and two tables in database so I think it shouldn't be a too complicated process to deploy it online. And as a Java hosting service I've chosen [Jelastic](http://jelastic.com), recent winner of [2012 Duke's Choice Awards](http://www.java.net/dukeschoice) announced during JavaOne conference this year. Duke's Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
 
 <h3>First steps</h3>
 
@@ -73,9 +73,9 @@
   
   <entry>
     <title type="html"><![CDATA[Remember Me functionality in Apache Wicket]]></title>
-    <link href="http://tdziurko.github.io/2012/09/remember-functionality-apache-wicket/"/>
+    <link href="http://tomaszdziurko.pl/2012/09/remember-functionality-apache-wicket/"/>
     <updated>2012-09-14T16:33:03+02:00</updated>
-    <id>http://tdziurko.github.io/2012/09/remember-functionality-apache-wicket</id>
+    <id>http://tomaszdziurko.pl/2012/09/remember-functionality-apache-wicket</id>
     <content type="html"><![CDATA[<p>It is quite common in web applications to have &ldquo;Remember Me&rdquo; functionality that allows user to be automatically logged in each time when he visits our website.</p>
 
 <p>Such feature can be implemented using <a href="http://static.springsource.org/spring-security/site/">Spring Security</a>, but in my opinion using request based authentication framework with component based web framework is not the best idea. These two worlds just do not fit well together so I prefer to use my own baked solution which I will present below.</p>
@@ -367,9 +367,9 @@ add(logoutLink);
   
   <entry>
     <title type="html"><![CDATA[Using Twitter Bootstrap Navbar as a Wicket component]]></title>
-    <link href="http://tdziurko.github.io/2012/03/wicket-and-twitter-bootstrap-navbar/"/>
+    <link href="http://tomaszdziurko.pl/2012/03/wicket-and-twitter-bootstrap-navbar/"/>
     <updated>2012-03-28T21:19:43+02:00</updated>
-    <id>http://tdziurko.github.io/2012/03/wicket-and-twitter-bootstrap-navbar</id>
+    <id>http://tomaszdziurko.pl/2012/03/wicket-and-twitter-bootstrap-navbar</id>
     <content type="html"><![CDATA[<p>All of you probably heard about <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>, an awesome set of components allowing to create nice looking web pages and application without diving deeply into CSS/JS hacks. If you want to see what this library is capable of, please visit <a href="http://builtwithbootstrap.com/">http://builtwithbootstrap.com/</a> and check how people use it to build their websites.</p>
 
 <p>But this post isn&rsquo;t supposed to be about Bootstrap itself. In a few next paragraphs I will present how I created reusable Wicket component containing Bootstrap top navigation bar menu. And final result using Wicket in our example web-app will look this way:</p>
@@ -501,8 +501,9 @@ private MenuItemEnum(String label) {
 
 <p>Now it&rsquo;s getting a little harder as we want to create panel for our menu item containing a dropdown. Its markup:</p>
 
-<pre><code>``` html
-&lt;wicket:panel&gt;
+<p>``` html</p>
+
+<pre><code>&lt;wicket:panel&gt;
     &lt;li class="dropdown" wicket:id="itemContainer"&gt;
         &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;
             &lt;span wicket:id="label"/&gt;
@@ -513,8 +514,9 @@ private MenuItemEnum(String label) {
         &lt;/ul&gt;
     &lt;/li&gt;
 &lt;/wicket:panel&gt;
-```
 </code></pre>
+
+<p>```</p>
 
 <p>So what we have here:</p>
 
@@ -572,22 +574,24 @@ public class MenuDropdownItem extends Panel {</p>
 
 <p>So we have two components ready to use in our main panel. Now it is time to introduce panel class and markup &ndash;<em> TwitterBootstrapNavBarPanel. </em>Markup luckily isn&rsquo;t complicated:</p>
 
-<pre><code>``` html
- &lt;div class="navbar navbar-fixed-top"&gt;
-   &lt;div class="navbar-inner"&gt;
-     &lt;div class="container"&gt;// (1)
-       &lt;div class="nav-collapse"&gt;
-         &lt;ul class="nav"&gt;
-           &lt;ul class="nav"&gt;
-         &lt;li&gt;// (2)&lt;/li&gt;
-           &lt;/ul&gt;
-         &lt;/ul&gt;
-       &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-```
+<p>``` html
+ <div class="navbar navbar-fixed-top">
+   <div class="navbar-inner"></p>
+
+<pre><code> &lt;div class="container"&gt;// (1)
+   &lt;div class="nav-collapse"&gt;
+     &lt;ul class="nav"&gt;
+       &lt;ul class="nav"&gt;
+     &lt;li&gt;// (2)&lt;/li&gt;
+       &lt;/ul&gt;
+     &lt;/ul&gt;
+   &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
 </code></pre>
+
+<p>  </div>
+```</p>
 
 <ol>
 <li><p> This is a link with a label to redirect user to home page of our application.</p></li>
@@ -724,33 +728,33 @@ public static class Builder implements Serializable {</p>
   
   <entry>
     <title type="html"><![CDATA[Conversation scope in Wicket using CDI]]></title>
-    <link href="http://tdziurko.github.io/2011/07/conversation-scope-wicket-cdi/"/>
+    <link href="http://tomaszdziurko.pl/2011/07/conversation-scope-wicket-cdi/"/>
     <updated>2011-07-24T15:17:37+02:00</updated>
-    <id>http://tdziurko.github.io/2011/07/conversation-scope-wicket-cdi</id>
+    <id>http://tomaszdziurko.pl/2011/07/conversation-scope-wicket-cdi</id>
     <content type="html"><![CDATA[<p>Some time ago I was asked to do some research about integrating Wicket with conversation scope from Context and Dependency Injection (CDI) from JEE6 specification. And as not everything was clear and easy to run, I decided to post my findings in this blog.</p>
 
 <h3>Project setup</h3>
 
 <p>To make things easier we will base on existing example web application showing how to integrate Wicket with Weld (CDI) from project <a href="http://seamframework.org/Seam3/WicketModule">Seam-Wicket</a> (formerly named <a href="http://weld-development-discussions.46994.n3.nabble.com/Move-weld-wicket-to-seam-wicket-td724181.html">weld-wicket</a>). So first let&rsquo;s pull latest version of Seam-Wicket project from Git:</p>
 
-<p>[xml]
+<p><code>xml
 git clone git://github.com/seam/wicket.git
 cd wicket
 mvn clean install
-[/xml]</p>
+</code></p>
 
 <p>and in examples directory there is numberguess Maven project. Just import it into your favourite IDE and execute</p>
 
-<p>[xml]
+<p><code>xml
 mvn install jetty:run -P jetty
-[/xml]</p>
+</code></p>
 
 <!-- more -->
 
 
 <p>And when you open browser you should see</p>
 
-<pre><code>&lt;a href="http://tdziurko.github.io/images/blog/2011/07/numberguess.png"&gt;&lt;img src="http://tdziurko.github.io/images/blog/2011/07/numberguess.png" title="NumberGuess example application" height="199" width="814" alt="" class="aligncenter size-full wp-image-809"&gt;&lt;/img&gt;&lt;/a&gt;
+<pre><code>&lt;a href="http://tomaszdziurko.pl/images/blog/2011/07/numberguess.png"&gt;&lt;img src="http://tomaszdziurko.pl/images/blog/2011/07/numberguess.png" title="NumberGuess example application" height="199" width="814" alt="" class="aligncenter size-full wp-image-809"&gt;&lt;/img&gt;&lt;/a&gt;
 </code></pre>
 
 <p>It is a simple game in which user must guess a number.</p>
@@ -799,7 +803,7 @@ private Conversation conversation;
 
 <p>When you open our application in two tabs you should see something like this:</p>
 
-<p style="text-align:center;"><img src="/images/blog/2011/07/conversationLabel.png" alt="" /></p>
+<p style="text-align:center;"><a href="/images/blog/2011/07/conversationLabel.png"></a></p>
 
 <p>and in these two tabs you have two separate games running (and different conversation id shown). So everything looks fine. But, but&hellip; if during the game you accidentally hit refresh button (or F5) you will lose your state of game and see that conversation id has changed. WTH?! Calm down and check SeamApplication class source code. There is custom WebRequestCycleProcessor named SeamWebRequestCycleProcessor:</p>
 
@@ -860,9 +864,6 @@ public SecondPage() {
 
 <p>``` html</p>
 
-<pre><code>Second Page&lt;/pre&gt;
-</code></pre>
-
 <h1>Second page</h1>
 
 
@@ -871,8 +872,6 @@ public SecondPage() {
 
 <div>Guesses left:</div>
 
-
-<p><pre></p>
 
 <p>```</p>
 
@@ -892,8 +891,9 @@ public void onClick() {
 
 <p>with corresponding HTML element in HomePage.html file.</p>
 
-<p>And when we try to guess a number and then click new link, we will see:
-&ndash;><img src="/images/blog/2011/07/withLink.png" alt="" />&lt;&ndash;</p>
+<p>And when we try to guess a number and then click new link, we will see:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2011/07/withLink.png" alt="" /></p>
 
 <p>and then</p>
 
@@ -918,13 +918,13 @@ public void onClick() {
 
 <p>And when we click this link, everything seems to be the same. We see the same page with correct conversation id, etc., but one thing has changed, the url. Now it looks like that</p>
 
-<p>[xml]
+<p>``` xml
 <a href="http://localhost:9090/wicket-numberguess/?wicket:bookmarkablePage=:">http://localhost:9090/wicket-numberguess/?wicket:bookmarkablePage=:</a></p>
 
 <pre><code>org.jboss.seam.wicket.examples.numberguess.SecondPage&amp;cid=1
 </code></pre>
 
-<p>[/xml]</p>
+<p>```</p>
 
 <p>The most interesting part is the last parameter &ldquo;cid&rdquo; (conversationId) which allows Wicket to inject proper conversation into newly created page. The reason why we see this parameter is that our url points to bookmarkable page, so application must be able to create complete and configured page basing only on data stored in this url. Of course our conversation can expire before someone clicks this link so we should be prepared to recover from such situation (for example by simply overriding handleMissingConversation from SeamRequestCycle class).</p>
 
@@ -943,9 +943,9 @@ protected void init() {
 
 <p>and when we click the same link we will land on page with address</p>
 
-<p>[xml]
-<a href="http://localhost:9090/wicket-numberguess/second-page/cid/1">http://localhost:9090/wicket-numberguess/second-page/cid/1</a>
-[/xml]</p>
+<p><code>xml
+http://localhost:9090/wicket-numberguess/second-page/cid/1
+</code></p>
 
 <p>And we could expect that the same conversation is active. But unfortunately it&rsquo;s not. Custom SeamRequestCycle is not able to automatically extract conversation id from url unless it is specified in a standard way as ?cid=X . To make sure that this is the problem I&rsquo;ve done some tests and different url coding strategies (classes extending <a href="http://wicket.apache.org/apidocs/1.4/index.html?org/apache/wicket/request/target/coding/AbstractRequestTargetUrlCodingStrategy.html">AbstractRequestTargetUrlCodingStrategy</a> ) are working or not depending on the fact how they append parameters. Those appending them as /paramName/paramValue are failing but those appending parameters as ?paramName=paramValue are working fine. Ok, you may think that we are stuck now. But remember, this is SPARTA!&hellip; uhm.. open source so if we need different behavior we could write it.</p>
 
@@ -1086,9 +1086,9 @@ public RequestCycle newRequestCycle(final Request request, final Response respon
   
   <entry>
     <title type="html"><![CDATA[Wicket Tutorial, part 9 – storing and loading user preferences from cookies]]></title>
-    <link href="http://tdziurko.github.io/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies/"/>
+    <link href="http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies/"/>
     <updated>2011-07-16T00:05:09+02:00</updated>
-    <id>http://tdziurko.github.io/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies</id>
+    <id>http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies</id>
     <content type="html"><![CDATA[<p>In the previous post we learnt a few tricks regarding internationalization features in Wicket. Today we will go further and will let application to remember some user preferences using HTTP Cookies. Storing some basic data in cookies is an easy and popular way of letting user customize look and feel of web application he uses very often. Some portals use cookies to render modules in order chosen by user so that most interesting information are in the top.</p>
 
 <p>In our ItemDirectory web application we don&rsquo;t have (yet!) any sophisticated mechanism which could rely on cookies so we will show how it can be used to store and load language selected by the user.</p>
