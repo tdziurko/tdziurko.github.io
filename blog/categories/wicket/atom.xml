@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Wicket | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/wicket/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T17:47:31+02:00</updated>
+  <updated>2014-05-27T12:54:29+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -22,19 +22,19 @@
 
 <p>And what is the best in such solutions, they grow with your application or startup. Services are free or almost free when your web application doesn&rsquo;t need much memory and processors but when your web-app starts to gather more users' attention and you have more and more concurrent sessions and visits each day, you could easily enhance your setup to match your needs. Everything is a matter of a few clicks, simple and fast.</p>
 
-<p>To test how this deployment process look like, I&rsquo;ve decided to put my <a href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/">Wicket tutorial</a> web application online. It consist of three pages and two tables in database so I think it shouldn&rsquo;t be a too complicated process to deploy it online. And as a Java hosting service I&rsquo;ve chosen <a href="http://jelastic.com">Jelastic</a>, recent winner of <a href="http://www.java.net/dukeschoice">2012 Duke&rsquo;s Choice Awards</a> announced during JavaOne conference this year. Duke&rsquo;s Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
+<p>To test how this deployment process look like, I&rsquo;ve decided to put my [Wicket tutorial](<a href="http://tdziurko.github.io/2011/03/wicket-tutorial-series-building-web-application-scratch/) web application online. It consist of three pages and two tables in database so I think it shouldn't be a too complicated process to deploy it online. And as a Java hosting service I've chosen [Jelastic](http://jelastic.com), recent winner of [2012 Duke's Choice Awards](http://www.java.net/dukeschoice) announced during JavaOne conference this year. Duke's Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
 
 <h3>First steps</h3>
 
 <p>So after creating an account and choosing a hosting in Germany (which is the closest one to Poland where I live) I am redirected to my personal administration panel where in a straightforward step-by-step wizard I am requested to choose container /server (Tomcat 6/7,  Jetty amd Glassfish are available) and then my subdomain name. After that my server is deployed and after a moment I could check that <a href="http://tomaszdziurko.jelastic.dogado.eu/">http://tomaszdziurko.jelastic.dogado.eu/</a> is live and running. User is also encouraged to try and deploy pre-defined Hello World application. The whole process is extremely easy, just one click and in a moment we could check that we&rsquo;ve just deployed our first war on Jelastic:</p>
 
-<p><a href="/images/blog/2012/10/jelastic-demo.jpeg"><img src="/images/blog/2012/10/jelastic-demo.jpeg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/10/jelastic-demo.jpeg" alt="" /></p>
 
 <h3>Configuring more real application environment</h3>
 
 <p>So far everything was easy, but we didn&rsquo;t touch any real scenario so now it&rsquo;s high time to start deploying our example Wicket application. First step is to upload application war to the Jelastic. Then we have to enable and configure our database with three tables. To do that we choose &ldquo;Environment topology&rdquo; next to our only server and here we could turn on/off many interesting features: load balancers, caching solutions, multiple containers, SSL-s and what we currently need SQL and/or NoSQL database:</p>
 
-<p><a href="/images/blog/2012/10/dbConfig.jpeg"><img src="/images/blog/2012/10/dbConfig.jpeg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/10/dbConfig.jpeg" alt="" /></p>
 
 <p>So let&rsquo;s enable MySQL 5.5 and wait some time until it is configured and started on our virtual server. When everything is ready we will receive an email with login and password to our MySQL database instance. Now we could login to myPhpAdmin web interface and create user and MySQL tables required by our Wicket application. Because database url is no longer localhost:3306 we have to modify properties file in our project, rebuild it and upload war again. After that we are ready to deploy application on Jelastic. Simply, we click &ldquo;Deploy&rdquo; icon and then choose context name where application will be accessible. After that we must wait for &ldquo;Success&rdquo; message from deployment process and now we could check if <a href="http://tomaszdziurko.jelastic.dogado.eu/item-directory">http://tomaszdziurko.jelastic.dogado.eu/item-directory</a> is working as expected.</p>
 
@@ -95,11 +95,11 @@
 <!-- more -->
 
 
-<p><a href="/images/blog/2012/09/home_page1.jpg"><img src="/images/blog/2012/09/home_page1.jpg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/09/home_page1.jpg" alt="" /></p>
 
-<p><a href="/images/blog/2012/09/login_page.jpg"><img src="/images/blog/2012/09/login_page-1024x488.jpg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/09/login_page-1024x488.jpg" alt="" /></p>
 
-<p><a href="/images/blog/2012/09/home_page2.jpg"><img src="/images/blog/2012/09/home_page2-1024x402.jpg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/09/home_page2-1024x402.jpg" alt="" /></p>
 
 <h3>Remember Me functionality</h3>
 
@@ -119,9 +119,10 @@
 <p><strong>Step 1: As a User I want to decide if  I want to use &ldquo;Remember Me&rdquo; feature</strong>
 <a href="https://github.com/tdziurko/wicket-rememberme/commit/c5e91b39a203c9103754f8a03ab2e4151fc9e199">Link to commit with this step</a></p>
 
-<p>To allow user to notify application that he wants to use &lsquo;Remember Me&rsquo; functionality we will simply add a checkbox to login page. So we need to amend LoginPage java and html file a bit (new stuff is highlighted):</p>
+<p>To allow user to notify application that he wants to use &lsquo;Remember Me&rsquo; functionality we will simply add a checkbox to login page.
+So we need to amend LoginPage java and html file a bit:</p>
 
-<p>[html highlight=&ldquo;21,22,23,24,25,26,27&rdquo; title=&ldquo;LoginPage.html fragment&rdquo;]</p>
+<p>``` html</p>
 
 <pre><code>&lt;form wicket:id="form" class="form-horizontal"&gt;
     &lt;fieldset&gt;
@@ -143,7 +144,7 @@
             &lt;input type="password" id="password" wicket:id="password" /&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="control-group"&gt;
+    &lt;div class="control-group"&gt; &lt;!-- this div is new --&gt;
         &lt;div class="controls"&gt;
             &lt;label class="checkbox"&gt;
                 &lt;input type="checkbox" wicket:id="rememberMe"&gt; Remember me on this computer
@@ -156,9 +157,9 @@
 &lt;/form&gt;
 </code></pre>
 
-<p>[/html]</p>
+<p>```</p>
 
-<p>[java highlight=&ldquo;3,13&rdquo; title=&ldquo;LoginPage.java fragment&rdquo;]</p>
+<p>``` java</p>
 
 <pre><code>private String login;
 private String password;
@@ -172,7 +173,7 @@ public LoginPage() {
     loginForm.add(new FeedbackPanel("feedback"));
     loginForm.add(new RequiredTextField&lt;String&gt;("login", new PropertyModel&lt;String&gt;(this, "login")));
     loginForm.add(new PasswordTextField("password", new PropertyModel&lt;String&gt;(this, "password")));
-    loginForm.add(new CheckBox("rememberMe", new PropertyModel&lt;Boolean&gt;(this, "rememberMe")));
+    loginForm.add(new CheckBox("rememberMe", new PropertyModel&lt;Boolean&gt;(this, "rememberMe"))); // this line
 
     Button submit = new Button("submit") {
         // (...)
@@ -182,7 +183,7 @@ public LoginPage() {
 }
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>Now we are ready for next step.</p>
 
@@ -191,7 +192,7 @@ public LoginPage() {
 
 <p>First we need a CookieService that will encapsulate all logic responsible for working with cookies: saving, listing and clearing cookie when needed. Code is rather simple, we work with WebResponse and WebRequest classes to modify cookies in user&rsquo;s browser.</p>
 
-<p>[java title=&ldquo;CookieService.java&rdquo;]
+<p>``` java
 public class CookieService {</p>
 
 <pre><code>public Cookie loadCookie(Request request, String cookieName) {
@@ -227,11 +228,11 @@ public void removeCookieIfPresent(Request request, Response response, String coo
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>Then when user checks &lsquo;Remember Me&rsquo; on LoginPage, we have to save cookies in his browser:</p>
 
-<p>[java title=&ldquo;LoginPage.java fragment&rdquo; highlight=&ldquo;14,15,16,17,18&rdquo;]</p>
+<p>``` java LoginPage.java fragment</p>
 
 <pre><code>Button submit = new Button("submit") {
     @Override
@@ -258,7 +259,7 @@ public void removeCookieIfPresent(Request request, Response response, String coo
 };
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p><strong>Step 3: As a User I want to be auto-logged when I return to web application</strong>
 <a href="https://github.com/tdziurko/wicket-rememberme/commit/59cb50d433a79a73b1020b488d5a13a7355da0d3">Link to commit with this step</a></p>
@@ -267,7 +268,7 @@ public void removeCookieIfPresent(Request request, Response response, String coo
 
 <p>So let&rsquo;s start with extracting session related logic into separate class called SessionProvider. It will need UserService and CookieService to check for existing users and cookies so we pass them as a references in the constructor.</p>
 
-<p>[java title=&ldquo;WicketApplication.java fragment&rdquo; highlight=&ldquo;5,9&rdquo;]
+<p>``` java
 public class WicketApplication extends WebApplication {</p>
 
 <pre><code>private UserService userService = new UserService();
@@ -281,11 +282,11 @@ public Session newSession(Request request, Response response) {
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>Role of SessionProvider is to create new UserSession, check if proper cookies are present and if so, set logged user. Additionally we add feedback message to inform user that he was auto logged. So let&rsquo;s look into the code:</p>
 
-<p>[java title=&ldquo;SessionProvider.java&rdquo;]
+<p>``` java
 public class SessionProvider {</p>
 
 <pre><code>public SessionProvider(UserService userService, CookieService cookieService) {
@@ -314,24 +315,24 @@ public WebSession createNewSession(Request request) {
 
 <p>}</p>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>To show feedback message on HomePage.java we must add FeedbackPanel there, but for the brevity I will omit this in this post. You can read <a href="https://github.com/tdziurko/wicket-rememberme/commit/59cb50d433a79a73b1020b488d5a13a7355da0d3">commit</a> to check how to do that.</p>
 
 <p>So we after three steps we should have &lsquo;Remember Me&rsquo; working. To check it quickly please modify session timeout in web.xml file by adding:</p>
 
-<p>[xml title=&ldquo;web.xml fragment&rdquo;]</p>
+<p>``` xml web.xml fragment</p>
 
 <pre><code>&lt;session-config&gt;
     &lt;session-timeout&gt;1&lt;/session-timeout&gt;
 &lt;/session-config&gt;
 </code></pre>
 
-<p>[/xml]</p>
+<p>```</p>
 
 <p>and then start application <em>mvn clean compile jetty:run</em>, go to login page, login, close browser and after over a 1 minute (when session expires) open it again on <a href="http://localhost:8080.">http://localhost:8080.</a> You should see something like this:</p>
 
-<p><a href="/images/blog/2012/09/auto_logged.jpg"><img src="/images/blog/2012/09/auto_logged-1024x313.jpg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/09/auto_logged-1024x313.jpg" alt="" /></p>
 
 <p>So it works. But we still need one more thing: allow user to remove cookies and turn-off auto-login.</p>
 
@@ -339,7 +340,7 @@ public WebSession createNewSession(Request request) {
 <a href="https://github.com/tdziurko/wicket-rememberme/commit/d9b35803ea0321dc5e80f80d480a6af527a457fa">Link to commit with this step</a>
 In the last step we have to allow user to clear his data and disable &ldquo;Remember Me&rdquo; for his account. This will be achieved by clearing both cookies when user explicitly clicks Logout link.</p>
 
-<p>[java title=&ldquo;HomePage.java fragment&rdquo; highlight=&ldquo;4,5,6,7,8,9&rdquo;]</p>
+<p>``` java HomePage.java fragment</p>
 
 <pre><code>Link&lt;Void&gt; logoutLink = new Link&lt;Void&gt;("logout") {
     @Override
@@ -356,7 +357,7 @@ logoutLink.setVisible(UserSession.get().userLoggedIn());
 add(logoutLink);
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <h3>Summary</h3>
 
@@ -375,16 +376,18 @@ add(logoutLink);
 
 <p>Before styling applied:</p>
 
-<p><img src="/images/blog/2012/03/screenshot_0101.png" alt="" /></p>
+<p style="text-align:center;"><img src="/images/blog/2012/03/screenshot_0101.png" alt="" /></p>
 
-<p>After:<a href="/images/blog/2012/03/screenshot_013.png"><img src="/images/blog/2012/03/screenshot_013.png" alt="Final Twitter Bootstrap Navigation Bar with Wicket" /></a></p>
+<p>After:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2012/03/screenshot_013.png" alt="Final Twitter Bootstrap Navigation Bar with Wicket" /></p>
 
 <!-- more -->
 
 
 <p>And what is most important, ready component can be used without any, really any modification in HTML files, everything is defined using pure Java:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>add(new TwitterBootstrapNavBarPanel.Builder("navBar", HomePage.class, "Example Web App", getActiveMenu())
         .withMenuItem(MenuItemEnum.CLIENTS, ClientsPage.class)
@@ -397,7 +400,7 @@ add(logoutLink);
         .build());
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>If you are &lsquo;show-me-the-code&rsquo; kind of guy, please go directly to my <a href="https://github.com/tdziurko/wicket-bootstrap-navbar">project on Github</a> which contains working example of a web application with this navigation bar. If you want to read an explanation how this stuff works, please keep reading.</p>
 
@@ -407,14 +410,14 @@ add(logoutLink);
 
 <p>So in our BasePage class we add a method:</p>
 
-<p>[java]
+<p>``` java
 public abstract MenuItemEnum getActiveMenu();</p>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>returning defined enum:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <p>public enum MenuItemEnum {</p>
 
@@ -435,7 +438,7 @@ private MenuItemEnum(String label) {
 
 <p>}</p>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p><em>None</em> value is used by home page because it does not belong to any particular menu item. Other pages (product pages, client, etc.) return one of other enum values presented above.</p>
 
@@ -443,7 +446,7 @@ private MenuItemEnum(String label) {
 
 <p>Clean markup of Bootstrap NanBar may look like that:</p>
 
-<p><a href="/images/blog/2012/03/screenshot_015.png"><img src="/images/blog/2012/03/screenshot_015.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/03/screenshot_015.png" alt="" /></p>
 
 <p>And if you look attentively enough you will notice  that it could be divided into smaller, reusable and independent elements:</p>
 
@@ -468,15 +471,15 @@ private MenuItemEnum(String label) {
 
 <p>Markup of this simple element is really non-complicated, only one link.</p>
 
-<p>[html]
-&lt;wicket:panel>
-        <a href="#" wicket:id="link"/>
-&lt;/wicket:panel>
-[/html]</p>
+<p><code>html
+&lt;wicket:panel&gt;
+        &lt;a href="#" wicket:id="link"/&gt;
+&lt;/wicket:panel&gt;
+</code></p>
 
 <p>Its Java class is small and easy to grasp:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <p>public class MenuLinkItem extends Panel {</p>
 
@@ -490,7 +493,7 @@ private MenuItemEnum(String label) {
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>What we can see above is a simple panel accepting three parameters, standard Wicket element id, page link to place in this menu item and an indicator saying if this item should be displayed as an active. This is accomplished by adding a <em>active</em> class name to CSS class element.</p>
 
@@ -498,7 +501,7 @@ private MenuItemEnum(String label) {
 
 <p>Now it&rsquo;s getting a little harder as we want to create panel for our menu item containing a dropdown. Its markup:</p>
 
-<pre><code>[html]
+<pre><code>``` html
 &lt;wicket:panel&gt;
     &lt;li class="dropdown" wicket:id="itemContainer"&gt;
         &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;
@@ -510,7 +513,7 @@ private MenuItemEnum(String label) {
         &lt;/ul&gt;
     &lt;/li&gt;
 &lt;/wicket:panel&gt;
-[/html]
+```
 </code></pre>
 
 <p>So what we have here:</p>
@@ -524,7 +527,7 @@ private MenuItemEnum(String label) {
 
 <p>And Java class for this panel:</p>
 
-<p>[java]
+<p>``` java
 public class MenuDropdownItem extends Panel {</p>
 
 <pre><code>public MenuDropdownItem(String id, MenuItemEnum currentMenuItem,
@@ -550,7 +553,7 @@ public class MenuDropdownItem extends Panel {</p>
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>You may think <em>Whoaa, this is a complicated one</em> :)  But relax, let me explain it step by step:</p>
 
@@ -569,7 +572,7 @@ public class MenuDropdownItem extends Panel {</p>
 
 <p>So we have two components ready to use in our main panel. Now it is time to introduce panel class and markup &ndash;<em> TwitterBootstrapNavBarPanel. </em>Markup luckily isn&rsquo;t complicated:</p>
 
-<pre><code>[html]
+<pre><code>``` html
  &lt;div class="navbar navbar-fixed-top"&gt;
    &lt;div class="navbar-inner"&gt;
      &lt;div class="container"&gt;// (1)
@@ -583,7 +586,7 @@ public class MenuDropdownItem extends Panel {</p>
      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-[/html]
+```
 </code></pre>
 
 <ol>
@@ -594,7 +597,7 @@ public class MenuDropdownItem extends Panel {</p>
 
 <p>Although the markup is not difficult to understand even at first glance, Java class is different and needs more detailed explanation. Because I wanted NavBar creation process to be as seamless as possible I used fluent interface with Builder pattern. So first, let&rsquo;s concentrate on this element:</p>
 
-<p>[java]
+<p>``` java
 public static class Builder implements Serializable {</p>
 
 <pre><code>    private String id;
@@ -625,7 +628,7 @@ public static class Builder implements Serializable {</p>
 }
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>So what&rsquo;s happening here:</p>
 
@@ -641,7 +644,7 @@ public static class Builder implements Serializable {</p>
 
 <p>Now let me explain two last methods in the Builder class:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>    public Builder withMenuItemAsDropdown(MenuItemEnum menuItem, Class pageToLink, String label) { // (1)
         BookmarkablePageLink link = new BookmarkablePageLink("link", pageToLink);
@@ -655,7 +658,7 @@ public static class Builder implements Serializable {</p>
     }
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <ol>
 <li><p> This method is used to add elements to the dropdown menu item. Here we allow to multimple values for the same menu item (as we will render them as a dropdown under single label). Additionally in the params list we need a label to each link as enum label will be used to render menu item itself and not a links inside it.</p></li>
@@ -667,7 +670,7 @@ public static class Builder implements Serializable {</p>
 
 <p>We have everything set up, Builder has all the data we need to create our panel so let&rsquo;s go to its constructor.</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>private TwitterBootstrapNavBarPanel(final Builder builder) {
     super(builder.id);
@@ -698,7 +701,7 @@ public static class Builder implements Serializable {</p>
 }
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <ol>
 <li><p> Create link to the home page</p></li>
@@ -777,7 +780,7 @@ mvn install jetty:run -P jetty
 
 <p>Ok, so let&rsquo;s start with something simple. As you already know Game class which holds state of user game is @SessionScoped bean so if user opens new browser tab with NumberGuess web application, he will see state of the game he started in his first tab. That is not ok as he might want to run many games simultaneously. So we replace session annotation with @ConversationScoped and add label showing current conversation id to show what conversation is currently running.</p>
 
-<p>[java]
+<p>``` java
 public class HomePage extends WebPage {</p>
 
 <pre><code>@Inject
@@ -792,15 +795,15 @@ private Conversation conversation;
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>When you open our application in two tabs you should see something like this:</p>
 
-<p><a href="/images/blog/2011/07/conversationLabel.png"><img src="/images/blog/2011/07/conversationLabel.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/07/conversationLabel.png" alt="" /></p>
 
 <p>and in these two tabs you have two separate games running (and different conversation id shown). So everything looks fine. But, but&hellip; if during the game you accidentally hit refresh button (or F5) you will lose your state of game and see that conversation id has changed. WTH?! Calm down and check SeamApplication class source code. There is custom WebRequestCycleProcessor named SeamWebRequestCycleProcessor:</p>
 
-<p>[java]
+<p>``` java
 public class SeamWebRequestCycleProcessor extends WebRequestCycleProcessor {</p>
 
 <pre><code>@Inject
@@ -824,7 +827,7 @@ public void respond(RequestCycle requestCycle) {
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>And what is most important here is that conversation id is saved between requests. I repeat, <strong>requests</strong>. And if you check what type GuessButton in HomePage.java is, you will see AjaxButton so there is no new HTTP request fired when it is clicked. And as a result no information about conversation is saved. Such behavior can be considered as limitation but in most cases you won&rsquo;t need conversation scope until you change page, so HTTP request is used and problem with missing information about conversation id disappears.</p>
 
@@ -834,7 +837,7 @@ public void respond(RequestCycle requestCycle) {
 
 <p>So far so good. But how conversation scope is working when we try to redirect to another page? Let&rsquo;s find out. First we should create SecondPage java and html files:</p>
 
-<p>[java]
+<p>``` java
 public class SecondPage extends WebPage {</p>
 
 <pre><code>@Inject
@@ -853,9 +856,9 @@ public SecondPage() {
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
-<p>[html]</p>
+<p>``` html</p>
 
 <pre><code>Second Page&lt;/pre&gt;
 </code></pre>
@@ -871,11 +874,11 @@ public SecondPage() {
 
 <p><pre></p>
 
-<p>[/html]</p>
+<p>```</p>
 
 <p>with information about conversation id and number of remaining guesses. Because Wicket propagates conversation between requests, we should get the same conversation id and the same game instance injected into both pages sharing the same conversation. But to test it we need a link from HomePage to SecondPage, so let&rsquo;s add a simple one:</p>
 
-<p>[java]
+<p>``` java
 Link secondPageLink = new Link(&ldquo;secondPageLink&rdquo;) {</p>
 
 <pre><code>@Override
@@ -885,24 +888,23 @@ public void onClick() {
 </code></pre>
 
 <p>};
-[/java]</p>
+```</p>
 
 <p>with corresponding HTML element in HomePage.html file.</p>
 
-<p>And when we try to guess a number and then click new link, we will see:</p>
-
-<p><a href="/images/blog/2011/07/withLink.png"><img src="/images/blog/2011/07/withLink.png" alt="" /></a></p>
+<p>And when we try to guess a number and then click new link, we will see:
+&ndash;><img src="/images/blog/2011/07/withLink.png" alt="" />&lt;&ndash;</p>
 
 <p>and then</p>
 
-<p><a href="/images/blog/2011/07/secondPage.png"><img src="/images/blog/2011/07/secondPage.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/07/secondPage.png" alt="" /></p>
 
 <p>So as you can see, we have the same conversation id and the same game instance. So it&rsquo;s working.</p>
 
 <p><strong>Bookmarkable pages</strong>
 Now we will try with link not pointing to the specific page instance (created in onClick() method) but to SecondPage class in general, so when user clicks, Wicket creates page of class passed to setResponsePage() method. This kind of link redirects to bookmarkable page because it doesn&rsquo;t hold a state. Application knows what to render basing only on information stored in the url.</p>
 
-<p>[java]
+<p>``` java
 Link secondPageLink = new Link(&ldquo;secondPageLink&rdquo;) {</p>
 
 <pre><code>@Override
@@ -912,7 +914,7 @@ public void onClick() {
 </code></pre>
 
 <p>};
-[/java]</p>
+```</p>
 
 <p>And when we click this link, everything seems to be the same. We see the same page with correct conversation id, etc., but one thing has changed, the url. Now it looks like that</p>
 
@@ -928,7 +930,7 @@ public void onClick() {
 
 <p>Ok, so default bookmarkable pages are supported. But as you probably noticed, our last url contains package name so it is far from being elegant and SEO friendly. That&rsquo;s why we will try to mount it with some short, pretty url name &ldquo;second-page&rdquo;. To achieve it, we must add one line to init method in our NumberGuessApplication class:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>@Override
 protected void init() {
@@ -937,7 +939,7 @@ protected void init() {
 }
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>and when we click the same link we will land on page with address</p>
 
@@ -951,7 +953,7 @@ protected void init() {
 
 <p>All we need is to look into source code of SeamRequestCycle and make some small improvements</p>
 
-<p>[java]
+<p>``` java
 public class SeamRequestCycle extends WebRequestCycle {</p>
 
 <pre><code>@Override
@@ -1009,7 +1011,7 @@ protected void onRequestTargetSet(IRequestTarget target) {
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>So what we can see here is:
 1. Getting cid from request parameters or from page metadata.
@@ -1019,7 +1021,7 @@ protected void onRequestTargetSet(IRequestTarget target) {
 
 <p>And most critical part of code which needs small tuning is:</p>
 
-<p>[java]
+<p>``` java
 String cid = null;
 if (page != null) {</p>
 
@@ -1032,11 +1034,11 @@ if (page != null) {</p>
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>We just must find the way how to extract cid parameter from the url. After some research I found that request.getURL() method returns part of address which contains cid parameter name and value. So simple regex magic and here we are:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>String cid = null;
 if (page != null) {
@@ -1056,13 +1058,13 @@ if (cid == null) {
 }
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>When none of standard ways of extracting cid work, application tries to extract it from url. Of course in more complicated project this pattern might need some additional tweaks but for us it is enough.</p>
 
 <p>And to use our modification we copy content of SeamRequestCycle into our CustomSeamRequestCycle class, apply our small patch and then configure NumberGuessApplication to use our implementation:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>@Override
 public RequestCycle newRequestCycle(final Request request, final Response response) {
@@ -1070,7 +1072,7 @@ public RequestCycle newRequestCycle(final Request request, final Response respon
 }
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>And when we restart jetty and use link to the SecondPage, we will see correct conversation and game object injected! :)</p>
 
@@ -1098,7 +1100,7 @@ public RequestCycle newRequestCycle(final Request request, final Response respon
 
 <p>So first thing we need to do is store which language user wants to use. So we must modify changeUserLocaleTo() method in LanguagePanel class:</p>
 
-<p>[java]
+<p>``` java
 public class LanguagePanel extends Panel {</p>
 
 <p>  // (&hellip;)</p>
@@ -1114,7 +1116,7 @@ languageCookie.setMaxAge(Application.LANGUAGE_COOKIE_AGE);
 
 <p>  }
 }
-[/java]</p>
+```</p>
 
 <p>This mechanism is rather easy to understand. Besides setting session locale we also create and put language cookie with name and age defined as static fields in our Application class. We just have to remember to add our new or modified cookie to response so it will be send back to the browser.
 After this we can run jetty with deployed application and check that after clicking there is a cookie with information about selected language.</p>
@@ -1123,7 +1125,7 @@ After this we can run jetty with deployed application and check that after click
 
 <p>Now we have some information in cookie waiting for our application to use it. The best moment to utilize such information is while creating new session so application could load preferences from cookie and store it in user session object. So lets play with method in WebApplication class which creates new user session:</p>
 
-<p>[java]
+<p>``` java
 public class Application extends WebApplication {</p>
 
 <p>  // (&hellip;)</p>
@@ -1139,11 +1141,11 @@ return session;
 
 <p>  }
 }
-[/java]</p>
+```</p>
 
 <p>So far so good, but the most important things happen in trySetLanguageFromCookie() method</p>
 
-<p>[java]
+<p>``` java
 private Session trySetLanguageFromCookie(Session session, Request request, Response response) {</p>
 
 <p>  Cookie[] cookies = ((WebRequest) request).getCookies();</p>
@@ -1170,7 +1172,7 @@ private Session trySetLanguageFromCookie(Session session, Request request, Respo
 
 <p>  return session;
 }
-[/java]</p>
+```</p>
 
 <p>In this method we first try to find <strong>(1)</strong> cookie named LANGUAGE_COOKIE_NAME and if we find it, we modify <strong>(2)</strong> session locale according to data loaded from the cookie. And another thing we could do is refresh <strong>(4)</strong> just loaded cookie so if user won&rsquo;t click flag for a long time (as he doesn&rsquo;t have to because we automatically set proper locale basing on cookie), he won&rsquo;t lose his preference.</p>
 

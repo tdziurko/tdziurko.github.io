@@ -155,7 +155,9 @@
 <pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
 </code></pre>
 
-<p><a href="/images/blog/2010/10/javarsovia2009.png"><img src="/images/blog/2010/10/javarsovia2009.png" alt="" /></a>Właśnie wróciłem z konferencji <a href="http://www.javarsovia.pl/">Javarsovia 2009</a>. Ogólne wrażenia jak najbardziej pozytywne, dokładniejsza relacja poniżej. Najbardziej żałuję, że nie udało się mi wyciągnąć tylu znajomych ilu chciałem, no i że nie wygrałem kubka ;)</p>
+<p style="text-align:center;"><img src="/images/blog/2010/10/javarsovia2009.png" alt="" /></p>
+
+<p>Właśnie wróciłem z konferencji <a href="http://www.javarsovia.pl/">Javarsovia 2009</a>. Ogólne wrażenia jak najbardziej pozytywne, dokładniejsza relacja poniżej. Najbardziej żałuję, że nie udało się mi wyciągnąć tylu znajomych ilu chciałem, no i że nie wygrałem kubka ;)</p>
 
 <h3>Godz. 9:00 &ndash; Intro</h3>
 
@@ -167,20 +169,32 @@
 
 <p>Wykład fajnie przeprowadzony i ciekawy. Ogólnie o testach, jak je pisać, żeby się później nie wstydzić :) Szczepan zaprezentował szablon testów, który w dużym uproszczeniu wygląda następująco:</p>
 
-<p>[java]
-@Test
-public void shouldDoSomethingWeWantToTest() throws Exception {
- // given
- // tutaj przygotowujemy dane to wykonania metody, którą chcemy przetestować</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Test</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldDoSomethingWeWantToTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'> <span class="c1">// given</span>
+</span><span class='line'> <span class="c1">// tutaj przygotowujemy dane to wykonania metody, którą chcemy przetestować</span>
+</span><span class='line'>
+</span><span class='line'> <span class="c1">// when</span>
+</span><span class='line'> <span class="c1">// tutaj wykonujemy metodę, którą chcemy przetestować</span>
+</span><span class='line'>
+</span><span class='line'> <span class="c1">// then</span>
+</span><span class='line'> <span class="c1">// tutaj sprawdzamy czy wynik jest zgodny z oczekiwaniami</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p> // when
- // tutaj wykonujemy metodę, którą chcemy przetestować</p>
-
-<p> // then
- // tutaj sprawdzamy czy wynik jest zgodny z oczekiwaniami</p>
-
-<p>}
-[/java]</p>
 
 <p>Dzięki zastosowaniu takiego szablonu każda metoda testująca ma określony cel i jest łatwa do zrozumienia nawet po pobieżnym spojrzeniu w kod.</p>
 
@@ -277,6 +291,7 @@ Całość została przeprowadzona na dobrym poziomie, ale w odróżnieniu od pre
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

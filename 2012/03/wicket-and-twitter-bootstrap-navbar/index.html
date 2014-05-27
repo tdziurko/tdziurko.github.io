@@ -156,29 +156,37 @@
 
 <p>Before styling applied:</p>
 
-<p><img src="/images/blog/2012/03/screenshot_0101.png" alt="" /></p>
+<p style="text-align:center;"><img src="/images/blog/2012/03/screenshot_0101.png" alt="" /></p>
 
-<p>After:<a href="/images/blog/2012/03/screenshot_013.png"><img src="/images/blog/2012/03/screenshot_013.png" alt="Final Twitter Bootstrap Navigation Bar with Wicket" /></a></p>
+<p>After:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2012/03/screenshot_013.png" alt="Final Twitter Bootstrap Navigation Bar with Wicket" /></p>
 
 <!-- more -->
 
 
 <p>And what is most important, ready component can be used without any, really any modification in HTML files, everything is defined using pure Java:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">TwitterBootstrapNavBarPanel</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="s">&quot;navBar&quot;</span><span class="o">,</span> <span class="n">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;Example Web App&quot;</span><span class="o">,</span> <span class="n">getActiveMenu</span><span class="o">())</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">withMenuItem</span><span class="o">(</span><span class="n">MenuItemEnum</span><span class="o">.</span><span class="na">CLIENTS</span><span class="o">,</span> <span class="n">ClientsPage</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">withMenuItemAsDropdown</span><span class="o">(</span><span class="n">MenuItemEnum</span><span class="o">.</span><span class="na">PRODUCTS</span><span class="o">,</span> <span class="n">ProductOnePage</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;Product One&quot;</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">withMenuItemAsDropdown</span><span class="o">(</span><span class="n">MenuItemEnum</span><span class="o">.</span><span class="na">PRODUCTS</span><span class="o">,</span> <span class="n">ProductTwoPage</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;Product Two&quot;</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">withMenuItemAsDropdown</span><span class="o">(</span><span class="n">MenuItemEnum</span><span class="o">.</span><span class="na">PRODUCTS</span><span class="o">,</span> <span class="n">ProductTwoPage</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;Product Three&quot;</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">withMenuItemAsDropdown</span><span class="o">(</span><span class="n">MenuItemEnum</span><span class="o">.</span><span class="na">ABOUT_US</span><span class="o">,</span> <span class="n">TeamPage</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;Team&quot;</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">withMenuItemAsDropdown</span><span class="o">(</span><span class="n">MenuItemEnum</span><span class="o">.</span><span class="na">ABOUT_US</span><span class="o">,</span> <span class="n">OurSkillsPage</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;Our Skills&quot;</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">withMenuItem</span><span class="o">(</span><span class="n">MenuItemEnum</span><span class="o">.</span><span class="na">CONTACT</span><span class="o">,</span> <span class="n">ContactPage</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">build</span><span class="o">());</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>add(new TwitterBootstrapNavBarPanel.Builder("navBar", HomePage.class, "Example Web App", getActiveMenu())
-        .withMenuItem(MenuItemEnum.CLIENTS, ClientsPage.class)
-        .withMenuItemAsDropdown(MenuItemEnum.PRODUCTS, ProductOnePage.class, "Product One")
-        .withMenuItemAsDropdown(MenuItemEnum.PRODUCTS, ProductTwoPage.class, "Product Two")
-        .withMenuItemAsDropdown(MenuItemEnum.PRODUCTS, ProductTwoPage.class, "Product Three")
-        .withMenuItemAsDropdown(MenuItemEnum.ABOUT_US, TeamPage.class, "Team")
-        .withMenuItemAsDropdown(MenuItemEnum.ABOUT_US, OurSkillsPage.class, "Our Skills")
-        .withMenuItem(MenuItemEnum.CONTACT, ContactPage.class)
-        .build());
-</code></pre>
-
-<p>[/java]</p>
 
 <p>If you are &lsquo;show-me-the-code&rsquo; kind of guy, please go directly to my <a href="https://github.com/tdziurko/wicket-bootstrap-navbar">project on Github</a> which contains working example of a web application with this navigation bar. If you want to read an explanation how this stuff works, please keep reading.</p>
 
@@ -188,35 +196,45 @@
 
 <p>So in our BasePage class we add a method:</p>
 
-<p>[java]
-public abstract MenuItemEnum getActiveMenu();</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">abstract</span> <span class="n">MenuItemEnum</span> <span class="nf">getActiveMenu</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>[/java]</p>
 
 <p>returning defined enum:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">enum</span> <span class="n">MenuItemEnum</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">CLIENTS</span><span class="o">(</span><span class="s">&quot;Clients&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">PRODUCTS</span><span class="o">(</span><span class="s">&quot;Products&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">ABOUT_US</span><span class="o">(</span><span class="s">&quot;About us&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">CONTACT</span><span class="o">(</span><span class="s">&quot;Contact&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">NONE</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">label</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="nf">MenuItemEnum</span><span class="o">(</span><span class="n">String</span> <span class="n">label</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">label</span> <span class="o">=</span> <span class="n">label</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// ...</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public enum MenuItemEnum {</p>
-
-<pre><code>CLIENTS("Clients"),
-PRODUCTS("Products"),
-ABOUT_US("About us"),
-CONTACT("Contact"),
-NONE("");
-
-private String label;
-
-private MenuItemEnum(String label) {
-    this.label = label;
-}
-
-// ...
-</code></pre>
-
-<p>}</p>
-
-<p>[/java]</p>
 
 <p><em>None</em> value is used by home page because it does not belong to any particular menu item. Other pages (product pages, client, etc.) return one of other enum values presented above.</p>
 
@@ -224,7 +242,7 @@ private MenuItemEnum(String label) {
 
 <p>Clean markup of Bootstrap NanBar may look like that:</p>
 
-<p><a href="/images/blog/2012/03/screenshot_015.png"><img src="/images/blog/2012/03/screenshot_015.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/03/screenshot_015.png" alt="" /></p>
 
 <p>And if you look attentively enough you will notice  that it could be divided into smaller, reusable and independent elements:</p>
 
@@ -249,29 +267,39 @@ private MenuItemEnum(String label) {
 
 <p>Markup of this simple element is really non-complicated, only one link.</p>
 
-<p>[html]
-&lt;wicket:panel>
-        <a href="#" wicket:id="link"/>
-&lt;/wicket:panel>
-[/html]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;wicket:panel&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;link&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/wicket:panel&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Its Java class is small and easy to grasp:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MenuLinkItem</span> <span class="kd">extends</span> <span class="n">Panel</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">MenuLinkItem</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">BookmarkablePageLink</span> <span class="n">pageLink</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">shouldBeActive</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="n">pageLink</span><span class="o">);</span>
+</span><span class='line'>      <span class="k">if</span> <span class="o">(</span><span class="n">shouldBeActive</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AttributeAppender</span><span class="o">(</span><span class="s">&quot;class&quot;</span><span class="o">,</span> <span class="s">&quot; active &quot;</span><span class="o">));</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public class MenuLinkItem extends Panel {</p>
-
-<pre><code>public MenuLinkItem(String id, BookmarkablePageLink pageLink, boolean shouldBeActive) {
-    super(id);
-    add(pageLink);
-    if (shouldBeActive) {
-        add(new AttributeAppender("class", " active "));
-    }
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>What we can see above is a simple panel accepting three parameters, standard Wicket element id, page link to place in this menu item and an indicator saying if this item should be displayed as an active. This is accomplished by adding a <em>active</em> class name to CSS class element.</p>
 
@@ -279,7 +307,7 @@ private MenuItemEnum(String label) {
 
 <p>Now it&rsquo;s getting a little harder as we want to create panel for our menu item containing a dropdown. Its markup:</p>
 
-<pre><code>[html]
+<pre><code>``` html
 &lt;wicket:panel&gt;
     &lt;li class="dropdown" wicket:id="itemContainer"&gt;
         &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;
@@ -291,7 +319,7 @@ private MenuItemEnum(String label) {
         &lt;/ul&gt;
     &lt;/li&gt;
 &lt;/wicket:panel&gt;
-[/html]
+```
 </code></pre>
 
 <p>So what we have here:</p>
@@ -305,33 +333,54 @@ private MenuItemEnum(String label) {
 
 <p>And Java class for this panel:</p>
 
-<p>[java]
-public class MenuDropdownItem extends Panel {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MenuDropdownItem</span> <span class="kd">extends</span> <span class="n">Panel</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">MenuDropdownItem</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">MenuItemEnum</span> <span class="n">currentMenuItem</span><span class="o">,</span>
+</span><span class='line'>          <span class="n">Collection</span><span class="o">&gt;</span> <span class="n">linksInMenuItem</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">shouldBeActive</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">WebMarkupContainer</span> <span class="n">itemContainer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebMarkupContainer</span><span class="o">(</span><span class="s">&quot;itemContainer&quot;</span><span class="o">);</span>  <span class="c1">// (1)</span>
+</span><span class='line'>      <span class="k">if</span> <span class="o">(</span><span class="n">shouldBeActive</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">itemContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">AttributeAppender</span><span class="o">(</span><span class="s">&quot;class&quot;</span><span class="o">,</span> <span class="s">&quot; active &quot;</span><span class="o">));</span>   <span class="c1">// (2)</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="n">itemContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;label&quot;</span><span class="o">,</span> <span class="n">currentMenuItem</span><span class="o">.</span><span class="na">getLabel</span><span class="o">()));</span>   <span class="c1">// (3)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">RepeatingView</span> <span class="n">repeatingView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatingView</span><span class="o">(</span><span class="s">&quot;itemLinks&quot;</span><span class="o">);</span>   <span class="c1">// (4)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">for</span> <span class="o">(</span><span class="n">BookmarkablePageLink</span> <span class="n">link</span> <span class="o">:</span> <span class="n">linksInMenuItem</span><span class="o">)</span> <span class="o">{</span>    <span class="c1">// (5)</span>
+</span><span class='line'>          <span class="n">MenuLinkItem</span> <span class="n">menuLinkItem</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MenuLinkItem</span><span class="o">(</span><span class="n">repeatingView</span><span class="o">.</span><span class="na">newChildId</span><span class="o">(),</span> <span class="n">link</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">repeatingView</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">menuLinkItem</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">itemContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">repeatingView</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="n">itemContainer</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>public MenuDropdownItem(String id, MenuItemEnum currentMenuItem,
-        Collection&gt; linksInMenuItem, boolean shouldBeActive) {
-    super(id);
-
-    WebMarkupContainer itemContainer = new WebMarkupContainer("itemContainer");  // (1)
-    if (shouldBeActive) {
-        itemContainer.add(new AttributeAppender("class", " active "));   // (2)
-    }
-    itemContainer.add(new Label("label", currentMenuItem.getLabel()));   // (3)
-
-    RepeatingView repeatingView = new RepeatingView("itemLinks");   // (4)
-
-    for (BookmarkablePageLink link : linksInMenuItem) {    // (5)
-        MenuLinkItem menuLinkItem = new MenuLinkItem(repeatingView.newChildId(), link, false);
-        repeatingView.add(menuLinkItem);
-    }
-
-    itemContainer.add(repeatingView);
-    add(itemContainer);
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>You may think <em>Whoaa, this is a complicated one</em> :)  But relax, let me explain it step by step:</p>
 
@@ -350,7 +399,7 @@ public class MenuDropdownItem extends Panel {</p>
 
 <p>So we have two components ready to use in our main panel. Now it is time to introduce panel class and markup &ndash;<em> TwitterBootstrapNavBarPanel. </em>Markup luckily isn&rsquo;t complicated:</p>
 
-<pre><code>[html]
+<pre><code>``` html
  &lt;div class="navbar navbar-fixed-top"&gt;
    &lt;div class="navbar-inner"&gt;
      &lt;div class="container"&gt;// (1)
@@ -364,7 +413,7 @@ public class MenuDropdownItem extends Panel {</p>
      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-[/html]
+```
 </code></pre>
 
 <ol>
@@ -375,38 +424,64 @@ public class MenuDropdownItem extends Panel {</p>
 
 <p>Although the markup is not difficult to understand even at first glance, Java class is different and needs more detailed explanation. Because I wanted NavBar creation process to be as seamless as possible I used fluent interface with Builder pattern. So first, let&rsquo;s concentrate on this element:</p>
 
-<p>[java]
-public static class Builder implements Serializable {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Builder</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+</span><span class='line'>        <span class="kd">private</span> <span class="n">Class</span> <span class="n">homePage</span><span class="o">;</span>
+</span><span class='line'>        <span class="kd">private</span> <span class="n">String</span> <span class="n">applicationName</span><span class="o">;</span>
+</span><span class='line'>        <span class="kd">private</span> <span class="n">MenuItemEnum</span> <span class="n">activeMenuItem</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kd">private</span> <span class="n">Multimap</span><span class="o">&gt;</span> <span class="n">linksMap</span> <span class="o">=</span> <span class="n">LinkedHashMultimap</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>  <span class="c1">// (3)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kd">public</span> <span class="nf">Builder</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">Class</span> <span class="n">homePage</span><span class="o">,</span> <span class="n">String</span> <span class="n">applicationName</span><span class="o">,</span>   <span class="c1">// (1)</span>
+</span><span class='line'>                       <span class="n">MenuItemEnum</span> <span class="n">activeMenuItem</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+</span><span class='line'>            <span class="k">this</span><span class="o">.</span><span class="na">homePage</span> <span class="o">=</span> <span class="n">homePage</span><span class="o">;</span>
+</span><span class='line'>            <span class="k">this</span><span class="o">.</span><span class="na">applicationName</span> <span class="o">=</span> <span class="n">applicationName</span><span class="o">;</span>
+</span><span class='line'>            <span class="k">this</span><span class="o">.</span><span class="na">activeMenuItem</span> <span class="o">=</span> <span class="n">activeMenuItem</span><span class="o">;</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="kd">public</span> <span class="n">Builder</span> <span class="nf">withMenuItem</span><span class="o">(</span><span class="n">MenuItemEnum</span> <span class="n">menuItem</span><span class="o">,</span> <span class="n">Class</span> <span class="n">pageToLink</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">// (2)</span>
+</span><span class='line'>            <span class="n">Preconditions</span><span class="o">.</span><span class="na">checkState</span><span class="o">(</span><span class="n">linksMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">menuItem</span><span class="o">)</span> <span class="o">==</span> <span class="kc">false</span><span class="o">,</span> <span class="s">&quot;Builder already contains &quot;</span> <span class="o">+</span> <span class="n">menuItem</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="s">&quot;. Please use withMenuItemInDropdown if you need many links in one menu item&quot;</span><span class="o">);</span>   <span class="c1">// (4)</span>
+</span><span class='line'>            <span class="n">BookmarkablePageLink</span> <span class="n">link</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BookmarkablePageLink</span><span class="o">(</span><span class="s">&quot;link&quot;</span><span class="o">,</span> <span class="n">pageToLink</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">link</span><span class="o">.</span><span class="na">setBody</span><span class="o">(</span><span class="k">new</span> <span class="n">Model</span><span class="o">(</span><span class="n">menuItem</span><span class="o">.</span><span class="na">getLabel</span><span class="o">()));</span>    <span class="c1">// (5)</span>
+</span><span class='line'>            <span class="n">linksMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">menuItem</span><span class="o">,</span> <span class="n">link</span><span class="o">);</span>   <span class="c1">// (6)</span>
+</span><span class='line'>            <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// ...</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>    private String id;
-    private Class homePage;
-    private String applicationName;
-    private MenuItemEnum activeMenuItem;
-
-    private Multimap&gt; linksMap = LinkedHashMultimap.create();  // (3)
-
-    public Builder(String id, Class homePage, String applicationName,   // (1)
-                   MenuItemEnum activeMenuItem) {
-        this.id = id;
-        this.homePage = homePage;
-        this.applicationName = applicationName;
-        this.activeMenuItem = activeMenuItem;
-    }
-
-    public Builder withMenuItem(MenuItemEnum menuItem, Class pageToLink) {  // (2)
-        Preconditions.checkState(linksMap.containsKey(menuItem) == false, "Builder already contains " + menuItem +
-                ". Please use withMenuItemInDropdown if you need many links in one menu item");   // (4)
-        BookmarkablePageLink link = new BookmarkablePageLink("link", pageToLink);
-        link.setBody(new Model(menuItem.getLabel()));    // (5)
-        linksMap.put(menuItem, link);   // (6)
-        return this;
-    }
-
-    // ...
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>So what&rsquo;s happening here:</p>
 
@@ -422,21 +497,28 @@ public static class Builder implements Serializable {</p>
 
 <p>Now let me explain two last methods in the Builder class:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>    <span class="kd">public</span> <span class="n">Builder</span> <span class="nf">withMenuItemAsDropdown</span><span class="o">(</span><span class="n">MenuItemEnum</span> <span class="n">menuItem</span><span class="o">,</span> <span class="n">Class</span> <span class="n">pageToLink</span><span class="o">,</span> <span class="n">String</span> <span class="n">label</span><span class="o">)</span> <span class="o">{</span> <span class="c1">// (1)</span>
+</span><span class='line'>        <span class="n">BookmarkablePageLink</span> <span class="n">link</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BookmarkablePageLink</span><span class="o">(</span><span class="s">&quot;link&quot;</span><span class="o">,</span> <span class="n">pageToLink</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">link</span><span class="o">.</span><span class="na">setBody</span><span class="o">(</span><span class="k">new</span> <span class="n">Model</span><span class="o">(</span><span class="n">label</span><span class="o">));</span>
+</span><span class='line'>        <span class="n">linksMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">menuItem</span><span class="o">,</span> <span class="n">link</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">TwitterBootstrapNavBarPanel</span> <span class="nf">build</span><span class="o">()</span> <span class="o">{</span>   <span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">new</span> <span class="nf">TwitterBootstrapNavBarPanel</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>    public Builder withMenuItemAsDropdown(MenuItemEnum menuItem, Class pageToLink, String label) { // (1)
-        BookmarkablePageLink link = new BookmarkablePageLink("link", pageToLink);
-        link.setBody(new Model(label));
-        linksMap.put(menuItem, link);
-        return this;
-    }
-
-    public TwitterBootstrapNavBarPanel build() {   (2)
-        return new TwitterBootstrapNavBarPanel(this);
-    }
-</code></pre>
-
-<p>[/java]</p>
 
 <ol>
 <li><p> This method is used to add elements to the dropdown menu item. Here we allow to multimple values for the same menu item (as we will render them as a dropdown under single label). Additionally in the params list we need a label to each link as enum label will be used to render menu item itself and not a links inside it.</p></li>
@@ -448,38 +530,62 @@ public static class Builder implements Serializable {</p>
 
 <p>We have everything set up, Builder has all the data we need to create our panel so let&rsquo;s go to its constructor.</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="nf">TwitterBootstrapNavBarPanel</span><span class="o">(</span><span class="kd">final</span> <span class="n">Builder</span> <span class="n">builder</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">super</span><span class="o">(</span><span class="n">builder</span><span class="o">.</span><span class="na">id</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">BookmarkablePageLink</span> <span class="n">homePageLink</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BookmarkablePageLink</span><span class="o">(</span><span class="s">&quot;homePageLink&quot;</span><span class="o">,</span> <span class="n">builder</span><span class="o">.</span><span class="na">homePage</span><span class="o">);</span> <span class="c1">// (1)</span>
+</span><span class='line'>    <span class="n">homePageLink</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;label&quot;</span><span class="o">,</span> <span class="n">builder</span><span class="o">.</span><span class="na">applicationName</span><span class="o">));</span> <span class="c1">// (2)</span>
+</span><span class='line'>    <span class="n">add</span><span class="o">(</span><span class="n">homePageLink</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">RepeatingView</span> <span class="n">repeatingView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RepeatingView</span><span class="o">(</span><span class="s">&quot;menuItems&quot;</span><span class="o">);</span>  <span class="c1">// (3)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="o">(</span><span class="n">MenuItemEnum</span> <span class="n">item</span> <span class="o">:</span> <span class="n">builder</span><span class="o">.</span><span class="na">linksMap</span><span class="o">.</span><span class="na">keySet</span><span class="o">())</span> <span class="o">{</span>   <span class="c1">// (4)</span>
+</span><span class='line'>        <span class="kt">boolean</span> <span class="n">shouldBeActive</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">builder</span><span class="o">.</span><span class="na">activeMenuItem</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Collection</span><span class="o">&gt;</span> <span class="n">linksInThisMenuItem</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">linksMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>  <span class="c1">// (5)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">linksInThisMenuItem</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//(6)</span>
+</span><span class='line'>            <span class="n">BookmarkablePageLink</span> <span class="n">pageLink</span> <span class="o">=</span> <span class="n">Iterables</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">linksInThisMenuItem</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">MenuLinkItem</span> <span class="n">menuLinkItem</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MenuLinkItem</span><span class="o">(</span><span class="n">repeatingView</span><span class="o">.</span><span class="na">newChildId</span><span class="o">(),</span> <span class="n">pageLink</span><span class="o">,</span> <span class="n">shouldBeActive</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">repeatingView</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">menuLinkItem</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>    <span class="c1">// (7)</span>
+</span><span class='line'>            <span class="n">repeatingView</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">MenuDropdownItem</span><span class="o">(</span><span class="n">repeatingView</span><span class="o">.</span><span class="na">newChildId</span><span class="o">(),</span> <span class="n">item</span><span class="o">,</span> <span class="n">linksInThisMenuItem</span><span class="o">,</span>
+</span><span class='line'>                    <span class="n">shouldBeActive</span><span class="o">));</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">add</span><span class="o">(</span><span class="n">repeatingView</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private TwitterBootstrapNavBarPanel(final Builder builder) {
-    super(builder.id);
-
-    BookmarkablePageLink homePageLink = new BookmarkablePageLink("homePageLink", builder.homePage); // (1)
-    homePageLink.add(new Label("label", builder.applicationName)); // (2)
-    add(homePageLink);
-
-    RepeatingView repeatingView = new RepeatingView("menuItems");  // (3)
-
-    for (MenuItemEnum item : builder.linksMap.keySet()) {   // (4)
-        boolean shouldBeActive = item.equals(builder.activeMenuItem);
-
-        Collection&gt; linksInThisMenuItem = builder.linksMap.get(item);  // (5)
-
-        if (linksInThisMenuItem.size() == 1) { //(6)
-            BookmarkablePageLink pageLink = Iterables.get(linksInThisMenuItem, 0);
-
-            MenuLinkItem menuLinkItem = new MenuLinkItem(repeatingView.newChildId(), pageLink, shouldBeActive);
-            repeatingView.add(menuLinkItem);
-        } else {    // (7)
-            repeatingView.add(new MenuDropdownItem(repeatingView.newChildId(), item, linksInThisMenuItem,
-                    shouldBeActive));
-        }
-    }
-
-    add(repeatingView);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <ol>
 <li><p> Create link to the home page</p></li>
@@ -501,6 +607,7 @@ public static class Builder implements Serializable {</p>
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

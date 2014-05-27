@@ -150,7 +150,7 @@
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 	<h1 class="title" itemprop="name">Wicket Tutorial, Part 2 - Adding Common Layout to the Project</h1>
-	<div class="entry-content" itemprop="articleBody"><p>Hello everyone! In the <a href="http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">previous</a> post we set up base project using Wicket for out future development of ItemDirectory web application. That post, which was intended to be mainly about Wicket, surprisingly gathered some attention amongst Spring fans and was even mentioned in <a href="http://www.springsource.org/node/2994">weekly summary at SpringSource.com</a>. Nice! :)</p>
+	<div class="entry-content" itemprop="articleBody"><p>Hello everyone! In the <a href="/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">previous</a> post we set up base project using Wicket for out future development of ItemDirectory web application. That post, which was intended to be mainly about Wicket, surprisingly gathered some attention amongst Spring fans and was even mentioned in <a href="http://www.springsource.org/node/2994">weekly summary at SpringSource.com</a>. Nice! :)</p>
 
 <p>Ok, enough about the past. Today we are going to add some nice common layout to ItemDirectory. Go go go! :)</p>
 
@@ -158,7 +158,7 @@
 
 <p>As winning &ldquo;The best designed web application ever&rdquo; award is not the purpose of this tutorial, I didn&rsquo;t want to spend a lot of time on creating beautiful layout. After a short search in Google results I found nice free template which seems to suit well to our tutorial needs:</p>
 
-<p><a href="/images/blog/2011/01/template.png"><img src="/images/blog/2011/01/template.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/01/template.png" alt="" /></p>
 
 <p>Author of this free template is <a href="http://www.spyka.net/">Spyka</a> and you can download it from <a href="http://www.spyka.net/web-templates/static/">here</a>. There you can find two other colour variations of our template ( if you don&rsquo;t like orange :) ) and many others to choose from if you want to choose completely different one.</p>
 
@@ -178,37 +178,41 @@
 
 <p>Because we are planning to use consistent layout across the whole application we will put common elements (marked as <strong>blue, transparent area</strong> on the image below) in BasePage.html and elements changing in each page (marked as <strong>green area</strong>) in corresponding page class. Using this technique will allow us to place logic responsible for repeating layout things in one place (BasePage class) and logic responsible for generating page-specific data in each page class inheriting from BasePage.</p>
 
-<p><a href="/images/blog/2011/01/layout.png"><img src="/images/blog/2011/01/layout.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/01/layout.png" alt="" /></p>
 
 <p>So after pasting complete index.html contents into BasePage.html we delete  part responsible for green area  (everything in <div class="content"> tag) and replace it with marker &lt;wicket:child/> which will inform Wicket that filling this area is a role of inheriting class and not a BasePage class itself. After these modifications changed part of HTML file should look like presented below:</p>
 
-<p>[html]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="c">&lt;!-- CONTENT --&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;wicket:child/&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c">&lt;!-- END CONTENT --&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="content">
-    <!-- CONTENT -->
-
-    <wicket:child/>
-
-    <!-- END CONTENT -->
-</div>
-
-
-<p>[/html]</p>
 
 <p>And last modification to  prevent our IDE from marking wicket:id elements as invalid: proper XML namespace declared in HTML file. Just make sure that beginning of your BasePage.html looks similar to this:</p>
 
-<p>[html]
-&lt;!DOCTYPE html PUBLIC &ldquo;&ndash;//W3C//DTD XHTML 1.0 Strict//EN&rdquo;</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;</span>
+</span><span class='line'><span class="cp">    &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span>
+</span><span class='line'>    <span class="na">xmlns:wicket=</span><span class="s">&quot;http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd&quot;</span>
+</span><span class='line'><span class="nt">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
-</code></pre>
-
-<p>&lt;html xmlns=&ldquo;<a href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</a>&rdquo;</p>
-
-<pre><code>xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
-</code></pre>
-
-<blockquote><p>[/html]</p></blockquote>
 
 <p>Declaration below informs that we are using Wicket namespace.</p>
 
@@ -224,32 +228,40 @@
 
 <p>If you want to be able to view full pages with external HTML editor you should paste complete index.html contents into HomePage.html and remember to place old content between <div class="content"> like in the listing below:</p>
 
-<p>[html]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="c">&lt;!-- CONTENT --&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;wicket:extend&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;h3</span> <span class="na">wicket:id=</span><span class="s">&quot;helloLabel&quot;</span><span class="nt">&gt;&lt;/h3&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;currentTime&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;br/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;br/&gt;</span>
+</span><span class='line'>        Number of users in database: <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;numberOfUsers&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/wicket:extend&gt;</span>
+</span><span class='line'>    <span class="c">&lt;!-- END CONTENT --&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="content">
-    <!-- CONTENT -->
-      <wicket:extend>
-<h3 wicket:id="helloLabel"></h3>
-<span wicket:id="currentTime"></span>
-<br/>
-<br/>
-Number of users in database: <span wicket:id="numberOfUsers"/>
-</wicket:extend>
-    <!-- END CONTENT -->
-</div>
-
-
-<p>[/html]</p>
 
 <p>You don&rsquo;t have to worry about content outside wicket:extend element as it will be ignored by framework (except some special cases marked with other wicket tags).</p>
 
 <p>OK, we are done with template adding. If you wane to view changes in repository, here&rsquo;s the link: <a href="https://bitbucket.org/tdziurko/item-directory/changeset/59ffdc84d325">https://bitbucket.org/tdziurko/item-directory/changeset/59ffdc84d325</a>. Result should be like that:</p>
 
-<p><a href="/images/blog/2011/01/SS-20110121083415.png"><img src="/images/blog/2011/01/SS-20110121083415.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/01/SS-20110121083415.png" alt="" /></p>
 
 <p>Isn&rsquo;t it much better than previous one? :)</p>
 
-<p><a href="/images/blog/2011/01/ItemDirectoryHello.png"><img src="/images/blog/2011/01/ItemDirectoryHello.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/01/ItemDirectoryHello.png" alt="" /></p>
 
 <h3>Cleaning out the layout</h3>
 
@@ -267,7 +279,7 @@ Number of users in database: <span wicket:id="numberOfUsers"/>
 
 <p>So currently we don&rsquo;t need most of these links in the layout. I leave empty places to (maybe) fill them with additional requested features in the future. After cleaning main page looks like that:</p>
 
-<p><a href="/images/blog/2011/01/SS-20110121090414.png"><img src="/images/blog/2011/01/SS-20110121090414.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/01/SS-20110121090414.png" alt="" /></p>
 
 <p>List of changes (can be viewed <a href="https://bitbucket.org/tdziurko/item-directory/changeset/06241676bd08">here</a>):</p>
 
@@ -287,57 +299,80 @@ Number of users in database: <span wicket:id="numberOfUsers"/>
 
 <p>First, we create file Application.properties next to Application.java file in pl.tomadzdziurko.itemdirectory.web package with following key-value pairs:</p>
 
-<p>[xml]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>applicationName = Item Directory
+</span><span class='line'>applicationHeader = Manage your items easily!
+</span></code></pre></td></tr></table></div></figure>
 
-<p>applicationName = Item Directory
-applicationHeader = Manage your items easily!</p>
-
-<p>[/xml]</p>
 
 <p>Next in BasePage.html replace application name and header text and page title with Wicket element &lt;wicket:message key=&ldquo;keyName&rdquo;/>. This element will tell Wicket to load text from properties file (more about this <a href="https://cwiki.apache.org/WICKET/wickets-xhtml-tags.html">here</a> in Wicket Wiki)</p>
 
-<p>[html]
-  (&hellip;)
-  <title>&lt;wicket:message key=&ldquo;applicationName&rdquo;/></title>
-  <link rel="stylesheet" href="styles.css" type="text/css" />
-</head>
-<body></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>  (...)
+</span><span class='line'>  <span class="nt">&lt;title&gt;&lt;wicket:message</span> <span class="na">key=</span><span class="s">&quot;applicationName&quot;</span><span class="nt">/&gt;&lt;/title&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;styles.css&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;header-wrapper&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;header pagewidth&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="c">&lt;!-- TITLE --&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;h1&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;&lt;wicket:message</span> <span class="na">key=</span><span class="s">&quot;applicationName&quot;</span><span class="nt">/&gt;&lt;/a&gt;&lt;/h1&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;h2&gt;&lt;wicket:message</span> <span class="na">key=</span><span class="s">&quot;applicationHeader&quot;</span><span class="nt">/&gt;&lt;/h2&gt;</span>
+</span><span class='line'>      <span class="c">&lt;!-- END TITLE --&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  (...)
+</span></code></pre></td></tr></table></div></figure>
 
-<p>  <div class="header-wrapper"></p>
-
-<pre><code>&lt;div class="header pagewidth"&gt;
-  &lt;!-- TITLE --&gt;
-  &lt;h1&gt;&lt;a href="#"&gt;&lt;wicket:message key="applicationName"/&gt;&lt;/a&gt;&lt;/h1&gt;
-  &lt;h2&gt;&lt;wicket:message key="applicationHeader"/&gt;&lt;/h2&gt;
-  &lt;!-- END TITLE --&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>  </div>
-  (&hellip;)
-[/html]</p>
 
 <p>When we reload page after Jetty noticed changes in the code, we could see page looking exactly the same as before adding properties file so everything seems to work correctly. But when we look at the title bar in web browser:</p>
 
-<p><a href="/images/blog/2011/01/SS-20110121093821.png"><img src="/images/blog/2011/01/SS-20110121093821.png" alt="" /></a>Oh no! &ndash; you might think &ndash; I screwed something up! But don&rsquo;t worry, it&rsquo;s not a bug, it&rsquo;s a feature :) Do you remember fragment of Application.java class?</p>
+<p style="text-align:center;"><img src="/images/blog/2011/01/SS-20110121093821.png" alt="" /></p>
 
-<p>[java]
-@Override</p>
+<p>Oh no! &ndash; you might think &ndash; I screwed something up! But don&rsquo;t worry, it&rsquo;s not a bug, it&rsquo;s a feature :) Do you remember fragment of Application.java class?</p>
 
-<pre><code>protected void init() {
-    super.init();
-    // (...)
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+</span><span class='line'>      <span class="c1">// (...)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">if</span> <span class="o">(</span><span class="n">getConfigurationType</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">WebApplication</span><span class="o">.</span><span class="na">DEPLOYMENT</span><span class="o">))</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">getMarkupSettings</span><span class="o">().</span><span class="na">setStripWicketTags</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">getMarkupSettings</span><span class="o">().</span><span class="na">setStripComments</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">getMarkupSettings</span><span class="o">().</span><span class="na">setCompressWhitespace</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    if (getConfigurationType().equals(WebApplication.DEPLOYMENT)) {
-        getMarkupSettings().setStripWicketTags(true);
-        getMarkupSettings().setStripComments(true);
-        getMarkupSettings().setCompressWhitespace(true);
-    }
-
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>Default Wicket behaviour is to render its tags, just to make it easier to debug and develop application. But in this code listing we said that if we deploy our application to the production, all tags should be stripped: <em>setStripWicketTags(true)</em>. So if you move this method out of the if brackets we will see that now our title renders correctly.</p>
 
@@ -346,13 +381,11 @@ applicationHeader = Manage your items easily!</p>
 <p>All changes in this step are available in this changeset &ndash; <a href="https://bitbucket.org/tdziurko/item-directory/changeset/5223e46bc7d0">link</a>.</p>
 
 <p>Ok, that&rsquo;s all for today. I planned to add the first form to the project but this post is long enough without it, so Wicket form will be a main topic of next post. Thank you for your patience. All comments and suggestions are welcome!</p>
-
-<pre><code>&lt;div class="content"&gt;
-</code></pre>
 </div>
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

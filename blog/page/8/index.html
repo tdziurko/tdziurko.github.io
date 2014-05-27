@@ -229,25 +229,38 @@
 
 <p>Code below presents fragment of web.xml file allowing to define order in which servlets are loaded when the containter starts:</p>
 
-<p>[xml]
-&lt;web-app></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;web-app&gt;</span>
+</span><span class='line'>    ...
+</span><span class='line'>    <span class="nt">&lt;servlet&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;servlet-name&gt;</span>FirstToLoadServlet<span class="nt">&lt;/servlet-name&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;servlet-class&gt;</span>pl.tdziurko.scwcd.servlets.FirstToLoadServlet<span class="nt">&lt;/servlet-class&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;load-on-startup&gt;</span>0<span class="nt">&lt;/load-on-startup&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/servlet&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;servlet&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;servlet-name&gt;</span>SecondToLoadServlet<span class="nt">&lt;/servlet-name&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;servlet-class&gt;</span>pl.tdziurko.scwcd.servlets.SecondToLoadServlet<span class="nt">&lt;/servlet-class&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/servlet&gt;</span>
+</span><span class='line'>    ...
+</span><span class='line'><span class="nt">&lt;/web-app&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>...
-&lt;servlet&gt;
-    &lt;servlet-name&gt;FirstToLoadServlet&lt;/servlet-name&gt;
-    &lt;servlet-class&gt;pl.tdziurko.scwcd.servlets.FirstToLoadServlet&lt;/servlet-class&gt;
-    &lt;load-on-startup&gt;0&lt;/load-on-startup&gt;
-&lt;/servlet&gt;
-&lt;servlet&gt;
-    &lt;servlet-name&gt;SecondToLoadServlet&lt;/servlet-name&gt;
-    &lt;servlet-class&gt;pl.tdziurko.scwcd.servlets.SecondToLoadServlet&lt;/servlet-class&gt;
-    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-&lt;/servlet&gt;
-...
-</code></pre>
 
-<p>&lt;/web-app>
-[/xml]</p>
+
 
 
 		
@@ -288,15 +301,26 @@
 <pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
 </code></pre>
 
-<p>Pewnie nie uwierzycie, ale istnieją miejsca na Ziemi, w których nie chcą  od ręki uznać dyplomu SCJP ;) i potrzebują tłumaczenia na język  ojczysty. Tak właśnie jest w polskich urzędach, gdzie bardzo miła pani  powiedziała, że wierzy mi, iż jest to certyfikat potwierdzający jakieś  kwalifikacje, ale żeby mogła wprowadzić go do bazy musi mieć tłumaczenie  i to przysięgłe. Rozpocząłem więc pielgrzymkę po biurach tłumaczeń,  które jak się okazało tłumaczą od ręki, ale nie zawsze pod przysięgą. W  końcu dotarłem do miłego pana, który wziął moje oba certyfikaty i  powiedział, że tłumaczenie będzie gotowe w ciągu dwóch dni.
-Gdy  pojawiłem się po odbiór okazało się, że tłumaczenie nie jest jeszcze w  pełni gotowe, bo tłumacz chciał ze mną skonsultować dwie kwestie:  tłumaczenie &ldquo;Sun Certified Programmer&rdquo; oraz &ldquo;Sun Certified Web Component  Developer&rdquo;. Po krótkiej dyskusji ustaliliśmy następujące brzmienie tych  nazw:
-&ndash; Certyfikowany Programista w języku programowania Java Standard Edition 5.0
-&ndash; Certyfikowany Programista Komponentów Internetowych w języku programowania Java Enterprise Edition 5
-Nazwy  nie są na pewno idealne, bo tłumacz nie mógł po prostu pominąć  niektórych fragmentów po angielsku, ale moim zdaniem dobrze oddają sens.  Zadowolony wróciłem do domu po czym naszła mnie taka oto myśl:
-Co  zrobiłby tłumacz, gdybym razem z certyfikatem SCJP przyniósł mu również  SCJD (Sun Certified Java Developer)? Jak poradziłby sobie ze słowem developer, które w języku polskim ma w sumie takie samo znaczenie jak programmer?  Myślałem nad tą kwestią sporo czasu i stwierdziłem, że chyba jedynym  dobrym rozwiązaniem byłoby wprowadzenie jakiegoś przymiotnika  określającego wyższy poziom umiejętności developera od programmera, czyli na przykład:
-a) Certyfikowany Programista w języku programowania Java Standard Edition 5.0 na poziomie zaawansowanym
-b) Certyfikowany Starszy Programista &hellip;
-Jednak żadne z tych tłumaczeń nie jest w pełni udane. Może Wy macie lepsze pomysły?</p>
+<p>Pewnie nie uwierzycie, ale istnieją miejsca na Ziemi, w których nie chcą  od ręki uznać dyplomu SCJP ;) i potrzebują tłumaczenia na język  ojczysty.</p>
+
+<p>Tak właśnie jest w polskich urzędach, gdzie bardzo miła pani  powiedziała, że wierzy mi, iż jest to certyfikat potwierdzający jakieś  kwalifikacje, ale żeby mogła wprowadzić go do bazy musi mieć tłumaczenie  i to przysięgłe. Rozpocząłem więc pielgrzymkę po biurach tłumaczeń,  które jak się okazało tłumaczą od ręki, ale nie zawsze pod przysięgą. W  końcu dotarłem do miłego pana, który wziął moje oba certyfikaty i  powiedział, że tłumaczenie będzie gotowe w ciągu dwóch dni.</p>
+
+<p>Gdy  pojawiłem się po odbiór okazało się, że tłumaczenie nie jest jeszcze w  pełni gotowe, bo tłumacz chciał ze mną skonsultować dwie kwestie:  tłumaczenie &ldquo;Sun Certified Programmer&rdquo; oraz &ldquo;Sun Certified Web Component  Developer&rdquo;. Po krótkiej dyskusji ustaliliśmy następujące brzmienie tych  nazw:</p>
+
+<ul>
+<li><p>Certyfikowany Programista w języku programowania Java Standard Edition 5.0</p></li>
+<li><p>Certyfikowany Programista Komponentów Internetowych w języku programowania Java Enterprise Edition 5</p></li>
+</ul>
+
+
+<p>Nazwy  nie są na pewno idealne, bo tłumacz nie mógł po prostu pominąć  niektórych fragmentów po angielsku, ale moim zdaniem dobrze oddają sens.  Zadowolony wróciłem do domu po czym naszła mnie taka oto myśl:
+Co  zrobiłby tłumacz, gdybym razem z certyfikatem SCJP przyniósł mu również  SCJD (Sun Certified Java Developer)? Jak poradziłby sobie ze słowem developer, które w języku polskim ma w sumie takie samo znaczenie jak programmer?  Myślałem nad tą kwestią sporo czasu i stwierdziłem, że chyba jedynym  dobrym rozwiązaniem byłoby wprowadzenie jakiegoś przymiotnika  określającego wyższy poziom umiejętności developera od programmera, czyli na przykład:</p>
+
+<p>a) Certyfikowany Programista w języku programowania Java Standard Edition 5.0 na poziomie zaawansowanym</p>
+
+<p>b) Certyfikowany Starszy Programista &hellip;</p>
+
+<p>Jednak żadne z tych tłumaczeń nie jest w pełni udane. Może Wy macie lepsze pomysły?</p>
 
 		
 		
@@ -382,7 +406,9 @@ Na  początku wrażenia estetyczne: okładka polskiego wydania jest dużo  ładn
 
 <p>Bądź przygotowany na ciężką pracę przy czytaniu tej  książki. To nie jest książka &ldquo;łatwa i przyjemna&rdquo;, którą można  przeczytać w samolocie i skończyć przed lądowaniem. (&hellip;) Będziesz  czytał kod &ndash; wiele kodu. Będziesz proszony o śledzenie zmian podczas  rozdzielania modułów na części i ponownego ich składania. To będzie  wymagało czasu i pracy.</p>
 
-<p><a href="/images/blog/2010/11/clean_code.jpg"><img src="/images/blog/2010/11/clean_code.jpg" alt="" /></a>Więcej o samej książce i jej treści można przeczytać na <a href="http://pawelzubkiewicz.blogspot.com/2008/11/clean-code.html">blogu Pawła Zubkiewicza</a> oraz w <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/product-reviews/0132350882/ref=dp_top_cm_cr_acr_txt?ie=UTF8&amp;showViewpoints=1">recenzjach na Amazon.com</a>.  Chociaż książkę mam od prawie 2 tygodni, przeczytałem może 30%. Nie  jest to książka lekka, trzeba się nad nią skoncentrować, by w pełni  zrozumieć co to chcieli przekazać nam autorzy. Sami zresztą piszą w  niej:</p>
+<p style="text-align:center;"><img src="/images/blog/2010/11/clean_code.jpg" alt="" /></p>
+
+<p>Więcej o samej książce i jej treści można przeczytać na <a href="http://pawelzubkiewicz.blogspot.com/2008/11/clean-code.html">blogu Pawła Zubkiewicza</a> oraz w <a href="http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/product-reviews/0132350882/ref=dp_top_cm_cr_acr_txt?ie=UTF8&amp;showViewpoints=1">recenzjach na Amazon.com</a>.  Chociaż książkę mam od prawie 2 tygodni, przeczytałem może 30%. Nie  jest to książka lekka, trzeba się nad nią skoncentrować, by w pełni  zrozumieć co to chcieli przekazać nam autorzy. Sami zresztą piszą w  niej:</p>
 
 <blockquote>Bądź przygotowany na ciężką pracę przy czytaniu tej książki. To nie jest  książka &#8220;łatwa i przyjemna&#8221;, którą można przeczytać w samolocie i  skończyć przed lądowaniem. (&#8230;) Będziesz czytał kod - wiele kodu.  Będziesz proszony o śledzenie zmian podczas rozdzielania modułów na  części i ponownego ich składania. To będzie wymagało czasu i pracy.</blockquote>
 
@@ -517,71 +543,113 @@ Na  początku wrażenia estetyczne: okładka polskiego wydania jest dużo  ładn
 
 <p>So we have HomePage.html:</p>
 
-<p>[html]
-&lt;!DOCTYPE html</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html</span>
+</span><span class='line'><span class="cp">    PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;</span>
+</span><span class='line'><span class="cp">    &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">&quot;http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd&quot;</span> <span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;head&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;title&gt;</span>Wicket Ajax &#39;Are you sure?&#39; Modal Window<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/head&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;strong&gt;</span>Wicket Ajax &#39;Are you sure?&#39; Modal Window<span class="nt">&lt;/strong&gt;</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;formWithJavaScript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;buttonWithJavaScript&quot;</span> <span class="na">value=</span><span class="s">&quot;Action!&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/form&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
-</code></pre>
-
-<p><html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd" ></p>
-
-<pre><code>&lt;head&gt;
-    &lt;title&gt;Wicket Ajax 'Are you sure?' Modal Window&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-    &lt;div align="center"&gt;
-        &lt;strong&gt;Wicket Ajax 'Are you sure?' Modal Window&lt;/strong&gt;
-
-        &lt;form action="" wicket:id="formWithJavaScript"&gt;
-            &lt;input type="submit" wicket:id="buttonWithJavaScript" value="Action!"/&gt;
-        &lt;/form&gt;
-    &lt;/div&gt;
-
-&lt;/body&gt;
-</code></pre>
-
-<p></html>
-[/html]</p>
 
 <p>and corresponding Java class:</p>
 
-<p>[java]
-package pl.tdziurko.ajaxmodalwindowapp;</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">pl</span><span class="o">.</span><span class="na">tdziurko</span><span class="o">.</span><span class="na">ajaxmodalwindowapp</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// imports omitted</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">(</span><span class="kd">final</span> <span class="n">PageParameters</span> <span class="n">parameters</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Form</span> <span class="n">formWithJavaScript</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Form</span><span class="o">(</span><span class="s">&quot;formWithJavaScript&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Button</span> <span class="n">buttonWithJavaScript</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="s">&quot;buttonWithJavaScript&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nd">@Override</span>
+</span><span class='line'>            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Doing my job&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">};</span>
+</span><span class='line'>        <span class="n">buttonWithJavaScript</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleAttributeModifier</span><span class="o">(</span>
+</span><span class='line'>                <span class="s">&quot;onclick&quot;</span><span class="o">,</span> <span class="s">&quot;if(!confirm(&#39;Do you really want to perform this action?&#39;)) return false;&quot;</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">formWithJavaScript</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">buttonWithJavaScript</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">add</span><span class="o">(</span><span class="n">formWithJavaScript</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>// imports omitted</p>
-
-<p>public class HomePage extends WebPage {</p>
-
-<pre><code>private static final long serialVersionUID = 1L;
-
-public HomePage(final PageParameters parameters) {
-
-    Form formWithJavaScript = new Form("formWithJavaScript");
-
-    Button buttonWithJavaScript = new Button("buttonWithJavaScript") {
-
-        @Override
-        public void onSubmit() {
-            System.out.println("Doing my job");
-        }
-    };
-    buttonWithJavaScript.add(new SimpleAttributeModifier(
-            "onclick", "if(!confirm('Do you really want to perform this action?')) return false;"));
-
-    formWithJavaScript.add(buttonWithJavaScript);
-    add(formWithJavaScript);
-
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>Finally, we can see how it looks:</p>
 
-<p><a href="/images/blog/2010/11/javaScriptWindow.png"><img src="/images/blog/2010/11/javaScriptWindow.png" alt="" /></a>It solves our problem but in the era of Web2.0, rounded corners and  shiny looks it isn&rsquo;t enough. Why can&rsquo;t we use ajax modal window to ask  user for confirmation? It would make our application look good and our  css magician could make it look even better.
+<p style="text-align:center;"><img src="/images/blog/2010/11/javaScriptWindow.png" alt="" /></p>
+
+<p>It solves our problem but in the era of Web2.0, rounded corners and  shiny looks it isn&rsquo;t enough. Why can&rsquo;t we use ajax modal window to ask  user for confirmation? It would make our application look good and our  css magician could make it look even better.
 		
 		<a href="/2010/02/wicket-ajax-modal-are-you-sure-window/" class="more-link">Read on &rarr;</a>
 	</div>
@@ -615,9 +683,9 @@ public HomePage(final PageParameters parameters) {
 	</div>
 	<h1 class="title" itemprop="name"><a href="/2010/01/finally-my-scwcd-mission-completed/" itemprop="url">Finally My SCWCD Mission Completed</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>Much later than planned (check <a href="http://tomaszdziurko.pl/2009/04/lets-start-preperations-to-scwcd/">my post</a> when I revealed intent to pass SCWCD) I managed to get this certificate. The result (94%) is in my opinion more than good :) Preparations began fairly long time ago (over a year ago) but since this time there were some unexpected circumstances (mainly project which seems to grew and grew) and that&rsquo;s why SCWCD mission took me so long.</p>
+		<p>Much later than planned (check <a href="/2009/04/lets-start-preperations-to-scwcd/">my post</a> when I revealed intent to pass SCWCD) I managed to get this certificate. The result (94%) is in my opinion more than good :) Preparations began fairly long time ago (over a year ago) but since this time there were some unexpected circumstances (mainly project which seems to grew and grew) and that&rsquo;s why SCWCD mission took me so long.</p>
 
-<p>I  started preparations as usual, by downloading specifications  and adding API to Firefox bookmarks (list of links <a href="../2009/04/lets-start-preperations-to-scwcd/">here</a>). Then I bought <a href="http://oreilly.com/catalog/9780596516680/">Head First Servlets  and JSP</a>, the most recommended book for this certificate. I had ambitiously assumed that I will be able to write more detailed posts about what I learnt but unfortunately lack of time didn&rsquo;t allow me to do it.
+<p>I  started preparations as usual, by downloading specifications  and adding API to Firefox bookmarks (list of links <a href="/2009/04/lets-start-preperations-to-scwcd/">here</a>). Then I bought <a href="http://oreilly.com/catalog/9780596516680/">Head First Servlets  and JSP</a>, the most recommended book for this certificate. I had ambitiously assumed that I will be able to write more detailed posts about what I learnt but unfortunately lack of time didn&rsquo;t allow me to do it.
 		
 		<a href="/2010/01/finally-my-scwcd-mission-completed/" class="more-link">Read on &rarr;</a>
 	</div>

@@ -161,23 +161,32 @@
 
 <p>So first thing we need to do is store which language user wants to use. So we must modify changeUserLocaleTo() method in LanguagePanel class:</p>
 
-<p>[java]
-public class LanguagePanel extends Panel {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LanguagePanel</span> <span class="kd">extends</span> <span class="n">Panel</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// (...)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">changeUserLocaleTo</span><span class="o">(</span><span class="n">String</span> <span class="n">localeString</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">getSession</span><span class="o">().</span><span class="na">setLocale</span><span class="o">(</span><span class="k">new</span> <span class="n">Locale</span><span class="o">(</span><span class="n">localeString</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">Cookie</span> <span class="n">languageCookie</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cookie</span><span class="o">(</span><span class="n">Application</span><span class="o">.</span><span class="na">LANGUAGE_COOKIE_NAME</span><span class="o">,</span> <span class="n">localeString</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">languageCookie</span><span class="o">.</span><span class="na">setMaxAge</span><span class="o">(</span><span class="n">Application</span><span class="o">.</span><span class="na">LANGUAGE_COOKIE_AGE</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">((</span><span class="n">WebResponse</span><span class="o">)</span><span class="n">getResponse</span><span class="o">()).</span><span class="na">addCookie</span><span class="o">(</span><span class="n">languageCookie</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>  // (&hellip;)</p>
-
-<p>  private void changeUserLocaleTo(String localeString) {</p>
-
-<pre><code>getSession().setLocale(new Locale(localeString));
-
-Cookie languageCookie = new Cookie(Application.LANGUAGE_COOKIE_NAME, localeString);
-languageCookie.setMaxAge(Application.LANGUAGE_COOKIE_AGE);
-((WebResponse)getResponse()).addCookie(languageCookie);
-</code></pre>
-
-<p>  }
-}
-[/java]</p>
 
 <p>This mechanism is rather easy to understand. Besides setting session locale we also create and put language cookie with name and age defined as static fields in our Application class. We just have to remember to add our new or modified cookie to response so it will be send back to the browser.
 After this we can run jetty with deployed application and check that after clicking there is a cookie with information about selected language.</p>
@@ -186,54 +195,79 @@ After this we can run jetty with deployed application and check that after click
 
 <p>Now we have some information in cookie waiting for our application to use it. The best moment to utilize such information is while creating new session so application could load preferences from cookie and store it in user session object. So lets play with method in WebApplication class which creates new user session:</p>
 
-<p>[java]
-public class Application extends WebApplication {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="kd">extends</span> <span class="n">WebApplication</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// (...)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">Session</span> <span class="nf">newSession</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">Session</span> <span class="n">session</span> <span class="o">=</span> <span class="kd">super</span><span class="o">.</span><span class="na">newSession</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">session</span> <span class="o">=</span> <span class="n">trySetLanguageFromCookie</span><span class="o">(</span><span class="n">session</span><span class="o">,</span> <span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="n">session</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>  // (&hellip;)</p>
-
-<p>  @Override
-  public Session newSession(Request request, Response response) {</p>
-
-<pre><code>Session session = super.newSession(request, response);
-session = trySetLanguageFromCookie(session, request, response);
-
-return session;
-</code></pre>
-
-<p>  }
-}
-[/java]</p>
 
 <p>So far so good, but the most important things happen in trySetLanguageFromCookie() method</p>
 
-<p>[java]
-private Session trySetLanguageFromCookie(Session session, Request request, Response response) {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="n">Session</span> <span class="nf">trySetLanguageFromCookie</span><span class="o">(</span><span class="n">Session</span> <span class="n">session</span><span class="o">,</span> <span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">Cookie</span><span class="o">[]</span> <span class="n">cookies</span> <span class="o">=</span> <span class="o">((</span><span class="n">WebRequest</span><span class="o">)</span> <span class="n">request</span><span class="o">).</span><span class="na">getCookies</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">if</span> <span class="o">(</span><span class="n">cookies</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">cookies</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">session</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">for</span> <span class="o">(</span><span class="n">Cookie</span> <span class="n">cookie</span> <span class="o">:</span> <span class="n">cookies</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">LANGUAGE_COOKIE_NAME</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">cookie</span><span class="o">.</span><span class="na">getName</span><span class="o">()))</span> <span class="o">{</span>  <span class="c1">// (1)</span>
+</span><span class='line'>      <span class="n">session</span><span class="o">.</span><span class="na">setLocale</span><span class="o">(</span><span class="k">new</span> <span class="n">Locale</span><span class="o">(</span><span class="n">cookie</span><span class="o">.</span><span class="na">getValue</span><span class="o">()));</span>   <span class="c1">// (2)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">cookie</span><span class="o">.</span><span class="na">setMaxAge</span><span class="o">(</span><span class="n">LANGUAGE_COOKIE_AGE</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">((</span><span class="n">WebResponse</span><span class="o">)</span><span class="n">response</span><span class="o">).</span><span class="na">addCookie</span><span class="o">(</span><span class="n">cookie</span><span class="o">);</span>          <span class="c1">// (4)</span>
+</span><span class='line'>      <span class="k">break</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">return</span> <span class="n">session</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>  Cookie[] cookies = ((WebRequest) request).getCookies();</p>
-
-<p>  if (cookies == null || cookies.length == 0) {</p>
-
-<pre><code>return session;
-</code></pre>
-
-<p>  }</p>
-
-<p>  for (Cookie cookie : cookies) {</p>
-
-<pre><code>if (LANGUAGE_COOKIE_NAME.equals(cookie.getName())) {  // (1)
-  session.setLocale(new Locale(cookie.getValue()));   // (2)
-
-  cookie.setMaxAge(LANGUAGE_COOKIE_AGE);
-  ((WebResponse)response).addCookie(cookie);          // (4)
-  break;
-}
-</code></pre>
-
-<p>  }</p>
-
-<p>  return session;
-}
-[/java]</p>
 
 <p>In this method we first try to find <strong>(1)</strong> cookie named LANGUAGE_COOKIE_NAME and if we find it, we modify <strong>(2)</strong> session locale according to data loaded from the cookie. And another thing we could do is refresh <strong>(4)</strong> just loaded cookie so if user won&rsquo;t click flag for a long time (as he doesn&rsquo;t have to because we automatically set proper locale basing on cookie), he won&rsquo;t lose his preference.</p>
 
@@ -242,6 +276,7 @@ private Session trySetLanguageFromCookie(Session session, Request request, Respo
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: In Polish | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/in-polish/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T17:47:31+02:00</updated>
+  <updated>2014-05-27T12:54:29+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -18,10 +18,14 @@
     <link href="http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
     <updated>2013-10-30T16:33:49+01:00</updated>
     <id>http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
-    <content type="html"><![CDATA[<p>Dear Reader</p>
+    <content type="html"><![CDATA[<!-- more -->
 
-<pre><code>This post is in my native language as it is a review of book pyblished only in Poland. Please feel free to check my other posts which are mainly written in English.
-</code></pre>
+
+
+
+<blockquote>Dear Reader
+This post is in my native language as it is a review of book published only in Poland. Please feel free to check my other posts which are mainly written in English.</blockquote>
+
 
 <p>Dość rzadko sięgam po książki informatyczne wydane w naszym ojczystym języku. Powód jest dość prozaiczny: z reguły w momencie, gdy wychodzi polskie tłumaczenie &ldquo;JavaAwesomeWebFramework 1.2 w Akcji&rdquo; po angielsku jest już  dostępna &ldquo;JavaAwesomeWebFramework 2.0 in Action&rdquo; i cała wiedza zawarta w polskiej wersji jest, delikatnie mówiąc, lekko nieaktualna.</p>
 
@@ -29,12 +33,7 @@
 
 <p>I właśnie na takie problemy receptą jest lektura i stosowanie rad zawartych w książce <a href="http://helion.pl/ksiazki/oprogramowanie-szyte-na-miare-jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-michal-bartyzel,opszmi.htm">&ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo;</a> Michała Bartyzela.</p>
 
-<p><a href="/images/blog/2013/10/bartyzel_klient.jpg"><img src="/images/blog/2013/10/bartyzel_klient-300x300.jpg" alt="Audiobooks Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce. eBook. Pdf" /></a></p>
-
-<!-- more -->
-
-
-
+<p style="text-align:center;"><img src="/images/blog/2013/10/bartyzel_klient-300x300.jpg" alt="Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce" /></p>
 
 <blockquote>Klient wie, czego chce, ale nie wie czego potrzebuje</blockquote>
 
@@ -128,7 +127,7 @@
 
 <p>W sobotę w Łodzi odbyła się pierwsza edycja konferencji <a href="http://mobilization.pl/">Mobilization</a> organizowanej przez JUG z tego miasta. Ponieważ w tematyce technologii mobilnych czuję się mocno zielony i poza warsztatami z Androida na ostatniej <a href="https://github.com/warszawajug/warsjawa2011/wiki/Konferencja-warsjawa-2011">Warsjawie</a> nie miałem z tą częścią programowania styczności, zdecydowałem się zainwestować sobotę na poszerzenie moich horyzontów w tym obszarze. Jak się okazało nie tylko mnie zainteresowała ta tematyka, bo na listę uczestników załapałem się tuż przed zamknięciem rejestracji, a, jak pisali organizatorzy, na liście rezerwowej czekało na uśmiech losu ponad 50 osób! Ale jeśli weźmiemy pod uwagę fakt, że była to pierwsza w Polsce konferencja całkowicie poświęcona technologiom mobilnym to nie ma się co dziwić tak dużemu zainteresowaniu.</p>
 
-<p><a href="/images/blog/2011/10/mobilization.png"><img src="/images/blog/2011/10/mobilization.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/10/mobilization.png" alt="" /></p>
 
 <!-- more -->
 
@@ -209,7 +208,9 @@
 <pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
 </code></pre>
 
-<p><a href="/images/blog/2011/10/warsjawa2011-logo.png"><img src="/images/blog/2011/10/warsjawa2011-logo.png" alt="" /></a>Jak co roku, w październiku rusza kolejna konferencja organizowana przez <a href="https://sites.google.com/site/warszawajug/">Warszawski JUG</a>, młodsza siostra <a href="http://confitura.pl">Confitury</a>, czyli <a href="http://warsjawa.pl">Warsjawa</a>. Edycja 2011 przynosi sporo zmian i generalnie widać, że przez rok całej imprezie znacznie się przytyło, bo w porównaniu do zeszłorocznej edycji oferuje aż 4 równoległe ścieżki: trzy poświęcone w całości zgłębieniu konkretnej tematyki poprzez warsztaty oraz czwartą, która jest ścieżką mieszaną z 2,5h godzinnymi warsztatami oraz trzema prezentacjami.</p>
+<p style="text-align:center;"><img src="/images/blog/2011/10/warsjawa2011-logo.png" alt="" /></p>
+
+<p>Jak co roku, w październiku rusza kolejna konferencja organizowana przez <a href="https://sites.google.com/site/warszawajug/">Warszawski JUG</a>, młodsza siostra <a href="http://confitura.pl">Confitury</a>, czyli <a href="http://warsjawa.pl">Warsjawa</a>. Edycja 2011 przynosi sporo zmian i generalnie widać, że przez rok całej imprezie znacznie się przytyło, bo w porównaniu do zeszłorocznej edycji oferuje aż 4 równoległe ścieżki: trzy poświęcone w całości zgłębieniu konkretnej tematyki poprzez warsztaty oraz czwartą, która jest ścieżką mieszaną z 2,5h godzinnymi warsztatami oraz trzema prezentacjami.</p>
 
 <p>Na warsztatach będzie można:
 &ndash; poznać tajniki Google Web Toolkit
@@ -243,7 +244,9 @@
 
 <p>Link do pozycji w księgarni: <a href="http://helion.pl/ksiazki/czysty_kod_podrecznik_dobrego_programisty_robert_c_martin,czykod.htm">link</a></p>
 
-<p><a href="/images/blog/2010/10/cleanCodePl.png"><img src="/images/blog/2010/10/cleanCodePl.png" alt="Clean Code Cover" /></a>Jeśli jeszcze nie masz tej książki, to bardzo polecam, bo pozycja naprawdę warta uwagi każdego szanującego się programisty.</p>
+<p style="text-align:center;"><img src="/images/blog/2010/10/cleanCodePl.png" alt="Clean Code Cover" /></p>
+
+<p>Jeśli jeszcze nie masz tej książki, to bardzo polecam, bo pozycja naprawdę warta uwagi każdego szanującego się programisty.</p>
 
 <p>PS:  Wiem, że ostatnio coś cicho i smutno na blogu, ale po zmianie stanu  cywilnego i założeniu własnej DG trochę się jeszcze nie wyrabiam  czasowo. Ale powoli widać światełko w tunelu i wkrótce coś powinno się  zacząć tutaj dziać :)</p>
 ]]></content>

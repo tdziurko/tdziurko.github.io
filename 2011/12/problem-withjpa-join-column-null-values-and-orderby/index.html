@@ -161,182 +161,302 @@
 
 <p>Let&rsquo;s say we have three entities: User, City and Country. User has a City and also has a Country. City and Country are not connected in any way to make this example less complicated.</p>
 
-<p>[java]
-@Entity
-@Table(name = &ldquo;users&rdquo;)
-public class User {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Entity</span>
+</span><span class='line'><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;users&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Id</span>
+</span><span class='line'>    <span class="nd">@GeneratedValue</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;login&quot;</span><span class="o">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">255</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">login</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">255</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;surname&quot;</span><span class="o">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">255</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">surname</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@ManyToOne</span><span class="o">(</span><span class="n">optional</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">cascade</span> <span class="o">=</span> <span class="n">CascadeType</span><span class="o">.</span><span class="na">ALL</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Country</span> <span class="n">country</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@ManyToOne</span><span class="o">(</span><span class="n">optional</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">cascade</span> <span class="o">=</span> <span class="n">CascadeType</span><span class="o">.</span><span class="na">ALL</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">City</span> <span class="n">city</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Id
-@GeneratedValue
-private Long id;
 
-@Column(name = "login", length = 255, nullable = false)
-private String login;
 
-@Column(name = "name", length = 255, nullable = false)
-private String name;
 
-@Column(name = "surname", length = 255, nullable = false)
-private String surname;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Entity</span>
+</span><span class='line'><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;city&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">City</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Id</span>
+</span><span class='line'>    <span class="nd">@GeneratedValue</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">255</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-@ManyToOne(optional = true, cascade = CascadeType.ALL)
-private Country country;
 
-@ManyToOne(optional = true, cascade = CascadeType.ALL)
-private City city;
-</code></pre>
 
-<p>}
-[/java]</p>
 
-<p>[java]
-@Entity
-@Table(name = &ldquo;city&rdquo;)
-public class City {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Entity</span>
+</span><span class='line'><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;country&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Country</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Id</span>
+</span><span class='line'>    <span class="nd">@GeneratedValue</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">255</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;population&quot;</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Long</span> <span class="n">population</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Id
-@GeneratedValue
-private Long id;
-
-@Column(name = "name", length = 255, nullable = false)
-private String name;
-</code></pre>
-
-<p>}
-[/java]</p>
-
-<p>[java]
-@Entity
-@Table(name = &ldquo;country&rdquo;)
-public class Country {</p>
-
-<pre><code>@Id
-@GeneratedValue
-private Long id;
-
-@Column(name = "name", length = 255, nullable = false)
-private String name;
-
-@Column(name = "population", nullable = false)
-private Long population;
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>What we want to achieve is to load all users and display their details in the datatable. We want to show user name, surname and also some data from city (its name) and  country (name as well and population). User can fill this data in his profile page but it is not mandatory so we might have user without city and/or country in our database. Of course this datatable on the web page should be sortable using all displayed properties. For  such functionality we need a service class:</p>
 
-<p>[java]
-@Transactional
-public class UserService {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Transactional</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserService</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Writeable</span>
+</span><span class='line'>    <span class="nd">@Inject</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">EntityManager</span> <span class="n">entityManager</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="nf">loadAll</span><span class="o">(</span><span class="n">UserSortField</span> <span class="n">sortField</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">ascending</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">String</span> <span class="n">queryString</span> <span class="o">=</span> <span class="s">&quot;from User u order by u.&quot;</span> <span class="o">+</span> <span class="n">sortField</span><span class="o">.</span><span class="na">getField</span><span class="o">()</span> <span class="o">+</span> <span class="o">(</span><span class="n">ascending</span> <span class="o">?</span> <span class="s">&quot; asc &quot;</span> <span class="o">:</span> <span class="s">&quot; desc &quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">entityManager</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">queryString</span><span class="o">).</span><span class="na">getResultList</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Writeable
-@Inject
-private EntityManager entityManager;
-
-public List&lt;User&gt; loadAll(UserSortField sortField, boolean ascending) {
-
-    String queryString = "from User u order by u." + sortField.getField() + (ascending ? " asc " : " desc ");
-    return entityManager.createQuery(queryString).getResultList();
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>and enum defining available <em>order by</em> options</p>
 
-<p>[java]
-public enum UserSortField {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">enum</span> <span class="n">UserSortField</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">ID</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">NAME</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">SURNAME</span><span class="o">(</span><span class="s">&quot;surname&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">COUNTRY_POPULATION</span><span class="o">(</span><span class="s">&quot;country.population&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">COUNTRY_NAME</span><span class="o">(</span><span class="s">&quot;country.name&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">CITY_NAME</span><span class="o">(</span><span class="s">&quot;city.name&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">field</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="nf">UserSortField</span><span class="o">(</span><span class="n">String</span> <span class="n">field</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">field</span> <span class="o">=</span> <span class="n">field</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getField</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">field</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>ID("id"),
-NAME("name"),
-SURNAME("surname"),
-COUNTRY_POPULATION("country.population"),
-COUNTRY_NAME("country.name"),
-CITY_NAME("city.name");
-
-private String field;
-
-private UserSortField(String field) {
-    this.field = field;
-}
-
-public String getField() {
-    return field;
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>So far everything looks just fine. So let&rsquo;s write some tests. As we are using JEE6, tests will be written using Arquillian and utility class AbstractDBTest from <a href="https://github.com/softwaremill/softwaremill-common">softwaremill-common</a>. More about this class and how to use it can be found in <a href="http://www.warski.org/blog/2010/11/db-test-run-tests-with-a-database-using-arquillian/">Adam Warski&rsquo;s blog</a>. And believe me, it makes testing with Arquillian so, so much easier.</p>
 
 <p>Our test class looks like that:</p>
 
-<p>[java]
-public class UserServiceTest extends AbstractDBTest {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserServiceTest</span> <span class="kd">extends</span> <span class="n">AbstractDBTest</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Inject</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">UserService</span> <span class="n">userService</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Deployment</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">JavaArchive</span> <span class="nf">createTestArchive</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">new</span> <span class="nf">ArchiveConfigurator</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>            <span class="nd">@Override</span>
+</span><span class='line'>            <span class="kd">protected</span> <span class="n">JavaArchive</span> <span class="nf">configureBeans</span><span class="o">(</span><span class="n">JavaArchive</span> <span class="n">ar</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="n">ar</span><span class="o">.</span><span class="na">addPackage</span><span class="o">(</span><span class="n">UserService</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getPackage</span><span class="o">());</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}.</span><span class="na">createTestArchive</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">configureEntities</span><span class="o">(</span><span class="n">Ejb3Configuration</span> <span class="n">cfg</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">cfg</span><span class="o">.</span><span class="na">addAnnotatedClass</span><span class="o">(</span><span class="n">User</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">cfg</span><span class="o">.</span><span class="na">addAnnotatedClass</span><span class="o">(</span><span class="n">City</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">cfg</span><span class="o">.</span><span class="na">addAnnotatedClass</span><span class="o">(</span><span class="n">Country</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">loadTestData</span><span class="o">(</span><span class="n">EntityManager</span> <span class="n">entityManager</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// here we prepare test data with 10 users.</span>
+</span><span class='line'>        <span class="c1">// Some of them have city and country defined, some of them don&#39;t</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldLoadAllUsers</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">assertThat</span><span class="o">(</span><span class="n">userService</span><span class="o">.</span><span class="na">loadAll</span><span class="o">(</span><span class="n">UserSortField</span><span class="o">.</span><span class="na">ID</span><span class="o">,</span> <span class="kc">true</span><span class="o">).</span><span class="na">size</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldOrderByUserName</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">allUsers</span> <span class="o">=</span> <span class="n">userService</span><span class="o">.</span><span class="na">loadAll</span><span class="o">(</span><span class="n">UserSortField</span><span class="o">.</span><span class="na">NAME</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">assertThat</span><span class="o">(</span><span class="n">allUsers</span><span class="o">.</span><span class="na">size</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">assertThat</span><span class="o">(</span><span class="n">allUsers</span><span class="o">).</span><span class="na">onProperty</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">).</span><span class="na">containsSequence</span><span class="o">(</span>
+</span><span class='line'>                <span class="s">&quot;name_01&quot;</span><span class="o">,</span> <span class="s">&quot;name_02&quot;</span><span class="o">,</span> <span class="s">&quot;name_03&quot;</span><span class="o">,</span> <span class="s">&quot;name_04&quot;</span><span class="o">,</span> <span class="s">&quot;name_05&quot;</span><span class="o">,</span> <span class="s">&quot;name_06&quot;</span><span class="o">,</span>
+</span><span class='line'>                <span class="s">&quot;name_07&quot;</span><span class="o">,</span> <span class="s">&quot;name_08&quot;</span><span class="o">,</span> <span class="s">&quot;name_09&quot;</span><span class="o">,</span> <span class="s">&quot;name_10&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Inject
-private UserService userService;
-
-@Deployment
-public static JavaArchive createTestArchive() {
-    return new ArchiveConfigurator() {
-        @Override
-        protected JavaArchive configureBeans(JavaArchive ar) {
-            return ar.addPackage(UserService.class.getPackage());
-        }
-    }.createTestArchive();
-}
-
-@Override
-protected void configureEntities(Ejb3Configuration cfg) {
-    cfg.addAnnotatedClass(User.class);
-    cfg.addAnnotatedClass(City.class);
-    cfg.addAnnotatedClass(Country.class);
-}
-
-@Override
-protected void loadTestData(EntityManager entityManager) {
-
-    // here we prepare test data with 10 users.
-    // Some of them have city and country defined, some of them don't
-}
-
-@Test
-public void shouldLoadAllUsers() throws Exception {
-    assertThat(userService.loadAll(UserSortField.ID, true).size()).isEqualTo(10);
-}
-
-@Test
-public void shouldOrderByUserName() throws Exception {
-    List&lt;User&gt; allUsers = userService.loadAll(UserSortField.NAME, true);
-    assertThat(allUsers.size()).isEqualTo(10);
-    assertThat(allUsers).onProperty("name").containsSequence(
-            "name_01", "name_02", "name_03", "name_04", "name_05", "name_06",
-            "name_07", "name_08", "name_09", "name_10");
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>These both tests will pass. But let&rsquo;s add another one with order by country name:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Test</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldOrderByCountryName</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">allUsers</span> <span class="o">=</span> <span class="n">userService</span><span class="o">.</span><span class="na">loadAll</span><span class="o">(</span><span class="n">UserSortField</span><span class="o">.</span><span class="na">COUNTRY_NAME</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">allUsers</span><span class="o">.</span><span class="na">size</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">allUsers</span><span class="o">).</span><span class="na">onProperty</span><span class="o">(</span><span class="s">&quot;country.name&quot;</span><span class="o">).</span><span class="na">containsSequence</span><span class="o">(</span>
+</span><span class='line'>            <span class="s">&quot;Belgium&quot;</span><span class="o">,</span> <span class="s">&quot;Poland&quot;</span><span class="o">,</span> <span class="s">&quot;Poland&quot;</span><span class="o">,</span> <span class="s">&quot;Poland&quot;</span><span class="o">,</span> <span class="s">&quot;Poland&quot;</span><span class="o">,</span> <span class="s">&quot;South Africa&quot;</span><span class="o">,</span>
+</span><span class='line'>            <span class="s">&quot;Spain&quot;</span><span class="o">,</span> <span class="s">&quot;Togo&quot;</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Test
-public void shouldOrderByCountryName() throws Exception {
-    List&lt;User&gt; allUsers = userService.loadAll(UserSortField.COUNTRY_NAME, true);
-    assertThat(allUsers.size()).isEqualTo(10);
-    assertThat(allUsers).onProperty("country.name").containsSequence(
-            "Belgium", "Poland", "Poland", "Poland", "Poland", "South Africa",
-            "Spain", "Togo", null, null);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>And when we re-run, we will see that this one is failing with error saying that expected number elements was 10 but actual is 8.</p>
 
@@ -346,43 +466,65 @@ public void shouldOrderByCountryName() throws Exception {
 
 <p>To solve this problem we have to approach it from a different side. Instead of returning a list of users with countries and cities we could return a descriptor containing all the data we need to display in the database. So let&rsquo;s create this class:</p>
 
-<p>[java]
-public class UserDescriptor {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserDescriptor</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">surname</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">countryName</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Long</span> <span class="n">countryPopulation</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">cityName</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">UserDescriptor</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">surname</span><span class="o">,</span> <span class="n">String</span> <span class="n">countryName</span><span class="o">,</span> <span class="n">Long</span> <span class="n">countryPopulation</span><span class="o">,</span> <span class="n">String</span> <span class="n">cityName</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">surname</span> <span class="o">=</span> <span class="n">surname</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">countryName</span> <span class="o">=</span> <span class="n">countryName</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">countryPopulation</span> <span class="o">=</span> <span class="n">countryPopulation</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">cityName</span> <span class="o">=</span> <span class="n">cityName</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// getters</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private String name;
-private String surname;
-private String countryName;
-private Long countryPopulation;
-private String cityName;
-
-public UserDescriptor(String name, String surname, String countryName, Long countryPopulation, String cityName) {
-    this.name = name;
-    this.surname = surname;
-    this.countryName = countryName;
-    this.countryPopulation = countryPopulation;
-    this.cityName = cityName;
-}
-
-// getters
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>and then adjust method in UserService:</p>
 
-<p>[java]
-public List<UserDescriptor> loadAllUserDescriptors(UserSortField sortField, boolean ascending) {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">UserDescriptor</span><span class="o">&gt;</span> <span class="nf">loadAllUserDescriptors</span><span class="o">(</span><span class="n">UserSortField</span> <span class="n">sortField</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">ascending</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">String</span> <span class="n">queryString</span> <span class="o">=</span> <span class="s">&quot;select new pl.tomaszdziurko.UserDescriptor(u.name, u.surname, &quot;</span> <span class="o">+</span>
+</span><span class='line'>            <span class="s">&quot; country.name, country.population, &quot;</span> <span class="o">+</span>
+</span><span class='line'>            <span class="s">&quot; city.name) from User u left join u.city as city left join u.country as country &quot;</span> <span class="o">+</span>
+</span><span class='line'>            <span class="s">&quot; order by &quot;</span> <span class="o">+</span> <span class="n">sortField</span><span class="o">.</span><span class="na">getField</span><span class="o">()</span> <span class="o">+</span> <span class="o">(</span><span class="n">ascending</span> <span class="o">?</span> <span class="s">&quot; asc &quot;</span> <span class="o">:</span> <span class="s">&quot; desc &quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">entityManager</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">queryString</span><span class="o">).</span><span class="na">getResultList</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>String queryString = "select new pl.tomaszdziurko.UserDescriptor(u.name, u.surname, " +
-        " country.name, country.population, " +
-        " city.name) from User u left join u.city as city left join u.country as country " +
-        " order by " + sortField.getField() + (ascending ? " asc " : " desc ");
-return entityManager.createQuery(queryString).getResultList();
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>This code fragment needs longer explanation. So basically for each returned row we create new object, the UserDescriptor. It consists of all data we need to display in our datatable. But instead of writing &ldquo;<em>u.country.name, u.country.population</em>&rdquo; we type &ldquo;<em>country.name, country.population</em>&rdquo; and add proper joins to the query. Of course our SortFieldEnum needs little attention too as we must tune sort fields a bit to be in line with modified query.</p>
 
@@ -398,78 +540,118 @@ does not contain the sequence: &lt;['Belgium', 'Poland', 'Poland', 'Poland', 'Po
 
 <p>If we want to have nulls at the end of our result list, we must add new rule in<em> order by </em>clause. So our query needs some tweaking:</p>
 
-<p>[java]
-public List<UserDescriptor> loadAllUserDescriptors(UserSortField sortField, boolean ascending) {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">UserDescriptor</span><span class="o">&gt;</span> <span class="nf">loadAllUserDescriptors</span><span class="o">(</span><span class="n">UserSortField</span> <span class="n">sortField</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">ascending</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">String</span> <span class="n">queryString</span> <span class="o">=</span> <span class="s">&quot;select new pl.tomaszdziurko.UserDescriptor(u.name, u.surname, &quot;</span> <span class="o">+</span>
+</span><span class='line'>            <span class="s">&quot; country.name, country.population,  city.name, &quot;</span> <span class="o">+</span>
+</span><span class='line'>            <span class="s">&quot; case when &quot;</span> <span class="o">+</span> <span class="n">sortField</span><span class="o">.</span><span class="na">getEntity</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; is null then 2 else 1 end as nullOrderer) from User u &quot;</span> <span class="o">+</span>
+</span><span class='line'>            <span class="s">&quot; left join u.city as city left join u.country as country &quot;</span> <span class="o">+</span>
+</span><span class='line'>            <span class="s">&quot; order by nullOrderer &quot;</span> <span class="o">+</span> <span class="o">(</span><span class="n">ascending</span> <span class="o">?</span> <span class="s">&quot; asc &quot;</span> <span class="o">:</span> <span class="s">&quot; desc &quot;</span><span class="o">)</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span>
+</span><span class='line'>            <span class="n">sortField</span><span class="o">.</span><span class="na">getField</span><span class="o">()</span> <span class="o">+</span> <span class="o">(</span><span class="n">ascending</span> <span class="o">?</span> <span class="s">&quot; asc &quot;</span> <span class="o">:</span> <span class="s">&quot; desc &quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="n">entityManager</span><span class="o">.</span><span class="na">createQuery</span><span class="o">(</span><span class="n">queryString</span><span class="o">).</span><span class="na">getResultList</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>String queryString = "select new pl.tomaszdziurko.UserDescriptor(u.name, u.surname, " +
-        " country.name, country.population,  city.name, " +
-        " case when " + sortField.getEntity() + " is null then 2 else 1 end as nullOrderer) from User u " +
-        " left join u.city as city left join u.country as country " +
-        " order by nullOrderer " + (ascending ? " asc " : " desc ") + ", " +
-        sortField.getField() + (ascending ? " asc " : " desc ");
-
-return entityManager.createQuery(queryString).getResultList();
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>The first thing worth to notice is that we&rsquo;ve added <em>case when &ldquo; + sortField.getEntity() + &rdquo; is null then 2 else 1 end</em> <em>as nullOrderer</em>. And we use <em>nullOrderer</em> as a first element in <em>order by</em> clause. Thanks to this, our records are sorted first by not null and then using requested field. Moreover as you can see, our sort enum was enhanced with new property, an <em>entity</em>, which is used to define on which object we want to check nullability. For fields from User entity it will be User alias <em>u</em>, for Country <em>country </em>and for City <em>city.</em> So now enum looks like that:</p>
 
-<p>[java]
-public enum UserSortField {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">enum</span> <span class="n">UserSortField</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">ID</span><span class="o">(</span><span class="s">&quot;u&quot;</span><span class="o">,</span> <span class="s">&quot;u.id&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">NAME</span><span class="o">(</span><span class="s">&quot;u&quot;</span><span class="o">,</span> <span class="s">&quot;u.name&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">SURNAME</span><span class="o">(</span><span class="s">&quot;u&quot;</span><span class="o">,</span> <span class="s">&quot;u.surname&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">COUNTRY_POPULATION</span><span class="o">(</span><span class="s">&quot;country&quot;</span><span class="o">,</span> <span class="s">&quot;country.population&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">COUNTRY_NAME</span><span class="o">(</span><span class="s">&quot;country&quot;</span><span class="o">,</span> <span class="s">&quot;country.name&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">CITY_NAME</span><span class="o">(</span><span class="s">&quot;city&quot;</span><span class="o">,</span> <span class="s">&quot;city.name&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">entity</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">field</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="nf">UserSortField</span><span class="o">(</span><span class="n">String</span> <span class="n">entity</span><span class="o">,</span> <span class="n">String</span> <span class="n">field</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">entity</span> <span class="o">=</span> <span class="n">entity</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">field</span> <span class="o">=</span> <span class="n">field</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getEntity</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">entity</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getField</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">field</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>ID("u", "u.id"),
-NAME("u", "u.name"),
-SURNAME("u", "u.surname"),
-COUNTRY_POPULATION("country", "country.population"),
-COUNTRY_NAME("country", "country.name"),
-CITY_NAME("city", "city.name");
-
-private String entity;
-private String field;
-
-private UserSortField(String entity, String field) {
-    this.entity = entity;
-    this.field = field;
-}
-
-public String getEntity() {
-    return entity;
-}
-
-public String getField() {
-    return field;
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>And when we run our failing test, everything looks just perfect and green. But to make sure that we didn&rsquo;t omit anything, let&rsquo;s add a few more testing methods:</p>
 
-<p>[java]
-@Test
-public void shouldOrderByCityName() throws Exception {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Test</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldOrderByCityName</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">List</span><span class="o">&lt;</span><span class="n">UserDescriptor</span><span class="o">&gt;</span> <span class="n">allUsers</span> <span class="o">=</span> <span class="n">userService</span><span class="o">.</span><span class="na">loadAllUserDescriptors</span><span class="o">(</span><span class="n">UserSortField</span><span class="o">.</span><span class="na">CITY_NAME</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">allUsers</span><span class="o">).</span><span class="na">onProperty</span><span class="o">(</span><span class="s">&quot;cityName&quot;</span><span class="o">).</span><span class="na">containsExactly</span><span class="o">(</span>
+</span><span class='line'>            <span class="s">&quot;Antwerp&quot;</span><span class="o">,</span> <span class="s">&quot;Cracow&quot;</span><span class="o">,</span> <span class="s">&quot;Madrid&quot;</span><span class="o">,</span> <span class="s">&quot;Pretoria&quot;</span><span class="o">,</span> <span class="s">&quot;Warsaw&quot;</span><span class="o">,</span> <span class="s">&quot;Warsaw&quot;</span><span class="o">,</span>
+</span><span class='line'>             <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@Test</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldOrderByCountryPopulation</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">List</span><span class="o">&lt;</span><span class="n">UserDescriptor</span><span class="o">&gt;</span> <span class="n">allUsers</span> <span class="o">=</span> <span class="n">userService</span><span class="o">.</span><span class="na">loadAllUserDescriptors</span><span class="o">(</span><span class="n">UserSortField</span><span class="o">.</span><span class="na">COUNTRY_POPULATION</span><span class="o">,</span> <span class="kc">false</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">allUsers</span><span class="o">).</span><span class="na">onProperty</span><span class="o">(</span><span class="s">&quot;countryPopulation&quot;</span><span class="o">).</span><span class="na">containsExactly</span><span class="o">(</span>
+</span><span class='line'>            <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="mi">51L</span><span class="o">,</span> <span class="mi">46L</span><span class="o">,</span> <span class="mi">38L</span><span class="o">,</span> <span class="mi">38L</span><span class="o">,</span> <span class="mi">38L</span><span class="o">,</span> <span class="mi">38L</span><span class="o">,</span> <span class="mi">11L</span><span class="o">,</span> <span class="mi">6L</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>List&lt;UserDescriptor&gt; allUsers = userService.loadAllUserDescriptors(UserSortField.CITY_NAME, true);
-assertThat(allUsers).onProperty("cityName").containsExactly(
-        "Antwerp", "Cracow", "Madrid", "Pretoria", "Warsaw", "Warsaw",
-         null, null, null, null);
-</code></pre>
-
-<p>}</p>
-
-<p>@Test
-public void shouldOrderByCountryPopulation() throws Exception {</p>
-
-<pre><code>List&lt;UserDescriptor&gt; allUsers = userService.loadAllUserDescriptors(UserSortField.COUNTRY_POPULATION, false);
-assertThat(allUsers).onProperty("countryPopulation").containsExactly(
-        null, null, 51L, 46L, 38L, 38L, 38L, 38L, 11L, 6L);
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p><strong>Summary</strong></p>
 
@@ -480,6 +662,7 @@ assertThat(allUsers).onProperty("countryPopulation").containsExactly(
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

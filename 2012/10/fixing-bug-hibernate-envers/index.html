@@ -172,89 +172,153 @@
 
 <p>The simplest test cases already present in Envers are located in Simple.java class and they look quite straightforward:</p>
 
-<p>[java]
-public class Simple extends AbstractEntityTest {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Simple</span> <span class="kd">extends</span> <span class="n">AbstractEntityTest</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id1</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">Ejb3Configuration</span> <span class="n">cfg</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">cfg</span><span class="o">.</span><span class="na">addAnnotatedClass</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initData</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">EntityManager</span> <span class="n">em</span> <span class="o">=</span> <span class="n">getEntityManager</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">begin</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">IntTestEntity</span> <span class="n">ite</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntTestEntity</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">ite</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">id1</span> <span class="o">=</span> <span class="n">ite</span><span class="o">.</span><span class="na">getId</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">begin</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">ite</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">id1</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">ite</span><span class="o">.</span><span class="na">setNumber</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span><span class="o">(</span><span class="n">dependsOnMethods</span> <span class="o">=</span> <span class="s">&quot;initData&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testRevisionsCounts</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">assert</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">getAuditReader</span><span class="o">().</span><span class="na">getRevisions</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">id1</span><span class="o">));</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span><span class="o">(</span><span class="n">dependsOnMethods</span> <span class="o">=</span> <span class="s">&quot;initData&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testHistoryOfId1</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">IntTestEntity</span> <span class="n">ver1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntTestEntity</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="n">id1</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">IntTestEntity</span> <span class="n">ver2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntTestEntity</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="n">id1</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">assert</span> <span class="nf">getAuditReader</span><span class="o">().</span><span class="na">find</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">id1</span><span class="o">,</span> <span class="mi">1</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">ver1</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">assert</span> <span class="nf">getAuditReader</span><span class="o">().</span><span class="na">find</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">id1</span><span class="o">,</span> <span class="mi">2</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">ver2</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private Integer id1;
-
-public void configure(Ejb3Configuration cfg) {
-    cfg.addAnnotatedClass(IntTestEntity.class);
-}
-
-@Test
-public void initData() {
-    EntityManager em = getEntityManager();
-    em.getTransaction().begin();
-    IntTestEntity ite = new IntTestEntity(10);
-    em.persist(ite);
-    id1 = ite.getId();
-    em.getTransaction().commit();
-
-    em.getTransaction().begin();
-    ite = em.find(IntTestEntity.class, id1);
-    ite.setNumber(20);
-    em.getTransaction().commit();
-}
-
-@Test(dependsOnMethods = "initData")
-public void testRevisionsCounts() {
-    assert Arrays.asList(1, 2).equals(getAuditReader().getRevisions(IntTestEntity.class, id1));
-}
-
-@Test(dependsOnMethods = "initData")
-public void testHistoryOfId1() {
-    IntTestEntity ver1 = new IntTestEntity(10, id1);
-    IntTestEntity ver2 = new IntTestEntity(20, id1);
-
-    assert getAuditReader().find(IntTestEntity.class, id1, 1).equals(ver1);
-    assert getAuditReader().find(IntTestEntity.class, id1, 2).equals(ver2);
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>so preparing my failing test executing scenario described above wasn&rsquo;t a rocket science:</p>
 
-<p>[java]
-/<em>*
- * @author Tomasz Dziurko (tdziurko at gmail dot com)
- </em>/
-public class TransactionRollbackBehaviour  extends AbstractEntityTest {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * @author Tomasz Dziurko (tdziurko at gmail dot com)</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TransactionRollbackBehaviour</span>  <span class="kd">extends</span> <span class="n">AbstractEntityTest</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">Ejb3Configuration</span> <span class="n">cfg</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">cfg</span><span class="o">.</span><span class="na">addAnnotatedClass</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testAuditRecordsRollback</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// Given</span>
+</span><span class='line'>        <span class="n">EntityManager</span> <span class="n">em</span> <span class="o">=</span> <span class="n">getEntityManager</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">begin</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">IntTestEntity</span> <span class="n">iteToRollback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntTestEntity</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">iteToRollback</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">Integer</span> <span class="n">rollbackedIteId</span> <span class="o">=</span> <span class="n">iteToRollback</span><span class="o">.</span><span class="na">getId</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">rollback</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// When</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">begin</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">IntTestEntity</span> <span class="n">ite2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntTestEntity</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">ite2</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">Integer</span> <span class="n">ite2Id</span> <span class="o">=</span> <span class="n">ite2</span><span class="o">.</span><span class="na">getId</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Then</span>
+</span><span class='line'>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Number</span><span class="o">&gt;</span> <span class="n">revisionsForSavedClass</span> <span class="o">=</span> <span class="n">getAuditReader</span><span class="o">().</span><span class="na">getRevisions</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">ite2Id</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">assertEquals</span><span class="o">(</span><span class="n">revisionsForSavedClass</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">1</span><span class="o">,</span> <span class="s">&quot;There should be one revision for inserted entity&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Number</span><span class="o">&gt;</span> <span class="n">revisionsForRolledbackClass</span> <span class="o">=</span> <span class="n">getAuditReader</span><span class="o">().</span><span class="na">getRevisions</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">rollbackedIteId</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">assertEquals</span><span class="o">(</span><span class="n">revisionsForRolledbackClass</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">0</span><span class="o">,</span> <span class="s">&quot;There should be no revisions for insert that was rolled back&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>public void configure(Ejb3Configuration cfg) {
-    cfg.addAnnotatedClass(IntTestEntity.class);
-}
-
-@Test
-public void testAuditRecordsRollback() {
-    // Given
-    EntityManager em = getEntityManager();
-    em.getTransaction().begin();
-    IntTestEntity iteToRollback = new IntTestEntity(30);
-    em.persist(iteToRollback);
-    Integer rollbackedIteId = iteToRollback.getId();
-    em.getTransaction().rollback();
-
-    // When
-    em.getTransaction().begin();
-    IntTestEntity ite2 = new IntTestEntity(50);
-    em.persist(ite2);
-    Integer ite2Id = ite2.getId();
-    em.getTransaction().commit();
-
-    // Then
-    List&lt;Number&gt; revisionsForSavedClass = getAuditReader().getRevisions(IntTestEntity.class, ite2Id);
-    assertEquals(revisionsForSavedClass.size(), 1, "There should be one revision for inserted entity");
-
-    List&lt;Number&gt; revisionsForRolledbackClass = getAuditReader().getRevisions(IntTestEntity.class, rollbackedIteId);
-    assertEquals(revisionsForRolledbackClass.size(), 0, "There should be no revisions for insert that was rolled back");
-}
-</code></pre>
-
-<p>}</p>
-
-<p>[/java]</p>
 
 <p>Now I could verify that tests is failing on forked <a href="https://github.com/hibernate/hibernate-orm/tree/3.6">3.6 branch</a> and check if fix that we had is making this test green.</p>
 
@@ -283,6 +347,7 @@ public void testAuditRecordsRollback() {
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

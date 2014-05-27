@@ -177,39 +177,60 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/" itemprop="url">Wicket Tutorial, Part 4 - Custom Validator for Unique Entity Name</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>Welcome back to our <a href="http://tomaszdziurko.pl/category/wicket-tutorial/">Wicket tutorial</a> series! :) As I mentioned in <a href="http://tomaszdziurko.pl/2011/02/wicket-tutorial-part-3-form-application/">previous post</a>, today we will concentrate on building validator stopping user from adding item location with non-unique name. At first we will start with non-generic but working validator and then we will try to make is as flexible as possible. Ok, so let&rsquo;s write some code!</p>
+		<p>Welcome back to our <a href="%22/categories/wicket-tutorial/">Wicket tutorial</a> series! :) As I mentioned in <a href="/2011/02/wicket-tutorial-part-3-form-application/">previous post</a>, today we will concentrate on building validator stopping user from adding item location with non-unique name. At first we will start with non-generic but working validator and then we will try to make is as flexible as possible. Ok, so let&rsquo;s write some code!</p>
 
 <h3>Problem</h3>
 
 <p>As you might remember, currently we have Wicket form with basic validation checking existence of name field and whether its length is in proper range or not:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'> <span class="n">Form</span><span class="o">&lt;</span><span class="n">AddLocationPage</span><span class="o">&gt;</span> <span class="n">addLocationForm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">AddLocationPage</span><span class="o">&gt;(</span><span class="s">&quot;addLocationForm&quot;</span><span class="o">,</span>
+</span><span class='line'>          <span class="k">new</span> <span class="n">CompoundPropertyModel</span><span class="o">&lt;</span><span class="n">AddLocationPage</span><span class="o">&gt;(</span><span class="k">this</span><span class="o">));</span>
+</span><span class='line'>  <span class="n">add</span><span class="o">(</span><span class="n">addLocationForm</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">Label</span> <span class="n">nameLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;nameLabel&quot;</span><span class="o">,</span> <span class="s">&quot;Location name&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nameLabel</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">RequiredTextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">nameField</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RequiredTextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">&quot;name&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">nameField</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">LengthBetweenValidator</span><span class="o">.</span><span class="na">lengthBetween</span><span class="o">(</span><span class="n">MIN_LOCATION_NAME_LENGTH</span><span class="o">,</span> <span class="n">MAX_LOCATION_NAME_LENGTH</span><span class="o">));</span>
+</span><span class='line'>  <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nameField</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">Button</span> <span class="n">submitButton</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="s">&quot;submitButton&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="nd">@Override</span>
+</span><span class='line'>      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">Location</span> <span class="n">location</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Location</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">locationService</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="n">getSession</span><span class="o">().</span><span class="na">info</span><span class="o">(</span><span class="s">&quot;Location added successfully&quot;</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">setResponsePage</span><span class="o">(</span><span class="n">LocationsPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">};</span>
+</span><span class='line'>  <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">submitButton</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>    Form&lt;AddLocationPage&gt; addLocationForm = new Form&lt;AddLocationPage&gt;("addLocationForm",
-            new CompoundPropertyModel&lt;AddLocationPage&gt;(this));
-    add(addLocationForm);
 
-    Label nameLabel = new Label("nameLabel", "Location name");
-    addLocationForm.add(nameLabel);
 
-    RequiredTextField&lt;String&gt; nameField = new RequiredTextField&lt;String&gt;("name");
-    nameField.add(LengthBetweenValidator.lengthBetween(MIN_LOCATION_NAME_LENGTH, MAX_LOCATION_NAME_LENGTH));
-    addLocationForm.add(nameField);
-
-    Button submitButton = new Button("submitButton") {
-        @Override
-        public void onSubmit() {
-            Location location = new Location(name);
-            locationService.save(location);
-
-            getSession().info("Location added successfully");
-            setResponsePage(LocationsPage.class);
-        }
-    };
-    addLocationForm.add(submitButton);
-</code></pre>
-
-<p>[/java]</p>
 
 
 		
@@ -295,7 +316,7 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="/2011/02/wicket-tutorial-part-3-form-application/" itemprop="url">Wicket Tutorial, Part 3 - First Form in Our Application</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>Hello Visitor :) In previous posts we created <a href="http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">base project</a> and added <a href="http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/">common layout</a> to ItemDirectory Wicket application. Today we are going to add first form to allow users to insert some data into our application.</p>
+		<p>Hello Visitor :) In previous posts we created <a href="/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">base project</a> and added <a href="/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/">common layout</a> to ItemDirectory Wicket application. Today we are going to add first form to allow users to insert some data into our application.</p>
 
 <p>As main feature of ItemDirectory is to manage information where items (books, movies, music, postage stamps) are stored in our home/work, the first data we need to know are locations where we actually can store those things. So we start with adding table, entity and form to manage locations of our precious items.</p>
 
@@ -303,53 +324,62 @@
 
 <p>First thing we need is locations table in database and entity mapping class:</p>
 
-<ul>
-<li>sql create table script listing:</li>
-</ul>
+<figure class='code'><figcaption><span>Create table script listing:</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">create</span> <span class="k">table</span> <span class="n">locations</span> <span class="p">(</span>
+</span><span class='line'>  <span class="n">id</span> <span class="nb">bigint</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+</span><span class='line'>        <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">),</span>
+</span><span class='line'>  <span class="k">UNIQUE</span> <span class="k">KEY</span> <span class="n">unique_name</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span class='line'><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-
-<p>[sql]
-create table locations (</p>
-
-<pre><code>id bigint(20) not null auto_increment,
-name varchar(255) not null,
-    PRIMARY KEY (id),
-UNIQUE KEY unique_name (name)
-</code></pre>
-
-<p>);
-[/sql]</p>
 
 <ul>
 <li>entity class listing:</li>
 </ul>
 
 
-<p>[java]
-@javax.persistence.Entity
-@Table(name = &ldquo;locations&rdquo;)
-public class Location extends AbstractEntity {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@javax.persistence.Entity</span>
+</span><span class='line'><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;locations&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Location</span> <span class="kd">extends</span> <span class="n">AbstractEntity</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Id</span>
+</span><span class='line'>    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+</span><span class='line'>   <span class="nd">@Column</span><span class="o">(</span><span class="n">length</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">false</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>        <span class="kd">protected</span> <span class="nf">Location</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">Location</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">();</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="c1">// getters, setters omitted</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
-</code></pre>
-
-<p>   @Column(length=255, nullable=false)</p>
-
-<pre><code>private String name;
-    protected Location() {
-    super();
-}
-public Location(String name) {
-    super();
-    this.name = name;
-}
-// getters, setters omitted
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>As you can see, Location class is very simple: only one field, but the only thing we want at the moment from this entity is a name describing where item is stored. Is it &ldquo;Bookcase in living room, second drawer from the top&rdquo; or &ldquo;Cabinet in the saloon, top bookshelf&rdquo;.</p>
 
@@ -387,7 +417,7 @@ public Location(String name) {
 	</div>
 	<h1 class="title" itemprop="name"><a href="/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/" itemprop="url">Wicket Tutorial, Part 2 - Adding Common Layout to the Project</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>Hello everyone! In the <a href="http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">previous</a> post we set up base project using Wicket for out future development of ItemDirectory web application. That post, which was intended to be mainly about Wicket, surprisingly gathered some attention amongst Spring fans and was even mentioned in <a href="http://www.springsource.org/node/2994">weekly summary at SpringSource.com</a>. Nice! :)</p>
+		<p>Hello everyone! In the <a href="/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">previous</a> post we set up base project using Wicket for out future development of ItemDirectory web application. That post, which was intended to be mainly about Wicket, surprisingly gathered some attention amongst Spring fans and was even mentioned in <a href="http://www.springsource.org/node/2994">weekly summary at SpringSource.com</a>. Nice! :)</p>
 
 <p>Ok, enough about the past. Today we are going to add some nice common layout to ItemDirectory. Go go go! :)</p>
 
@@ -395,7 +425,7 @@ public Location(String name) {
 
 <p>As winning &ldquo;The best designed web application ever&rdquo; award is not the purpose of this tutorial, I didn&rsquo;t want to spend a lot of time on creating beautiful layout. After a short search in Google results I found nice free template which seems to suit well to our tutorial needs:</p>
 
-<p><a href="/images/blog/2011/01/template.png"><img src="/images/blog/2011/01/template.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/01/template.png" alt="" /></p>
 
 <p>Author of this free template is <a href="http://www.spyka.net/">Spyka</a> and you can download it from <a href="http://www.spyka.net/web-templates/static/">here</a>. There you can find two other colour variations of our template ( if you don&rsquo;t like orange :) ) and many others to choose from if you want to choose completely different one.</p>
 
@@ -481,13 +511,18 @@ public Location(String name) {
 
 <p>Finished component will look like below:</p>
 
-<p><a href="/images/blog/2010/12/customPaginator.png"><img src="/images/blog/2010/12/customPaginator.png" alt="" /></a>
-Of course I was not going to implement this from the scratch, because most of work had been already done by Wicket authors and commiters in component <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/navigation/paging/PagingNavigator.html">PagingNavigator</a>. Source of this component as a reference to changes I made can be found <a href="http://pastebin.com/kwzBG9mH">here</a>.</p>
+<p style="text-align:center;"><img src="/images/blog/2010/12/customPaginator.png" alt="custom paginator" /></p>
 
-<p><strong>The first steps in creating our component:</strong>
-&ndash; add List <em>itemsPerPageValues</em> holding numbers for &lsquo;items per page&rsquo; which will be shown to the user allowing him to click and change this value.
-&ndash; provide default List <em>DEFAULT_ITEMS_PER_PAGE_VALUES</em>, which will be used (what a surprise!) as a default :)
-&ndash; give our component reference to the <em>DataView</em> object on which we will execute change items per page method.</p>
+<p>Of course I was not going to implement this from the scratch, because most of work had been already done by Wicket authors and commiters in component <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/navigation/paging/PagingNavigator.html">PagingNavigator</a>. Source of this component as a reference to changes I made can be found <a href="http://pastebin.com/kwzBG9mH">here</a>.</p>
+
+<p><strong>The first steps in creating our component:</strong></p>
+
+<ul>
+<li><p>add List <em>itemsPerPageValues</em> holding numbers for &lsquo;items per page&rsquo; which will be shown to the user allowing him to click and change this value.</p></li>
+<li><p>provide default List <em>DEFAULT_ITEMS_PER_PAGE_VALUES</em>, which will be used (what a surprise!) as a default :)</p></li>
+<li><p>give our component reference to the <em>DataView</em> object on which we will execute change items per page method.</p></li>
+</ul>
+
 
 
 		

@@ -156,22 +156,30 @@
 
 <p>The very, very standard singleton looks like that:</p>
 
-<p>[java]
-package pl.tomaszdziurko.effectivejava;
-public class LeoMessi {
-  public static final LeoMessi INSTANCE = new LeoMessi();
- private LeoMessi() {
-   // create only one existing instance of LeoMessi, as he is unique
- }
- public void doMagicWithBall() {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">pl</span><span class="o">.</span><span class="na">tomaszdziurko</span><span class="o">.</span><span class="na">effectivejava</span><span class="o">;</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LeoMessi</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">LeoMessi</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LeoMessi</span><span class="o">();</span>
+</span><span class='line'> <span class="kd">private</span> <span class="nf">LeoMessi</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>   <span class="c1">// create only one existing instance of LeoMessi, as he is unique</span>
+</span><span class='line'> <span class="o">}</span>
+</span><span class='line'> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doMagicWithBall</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">//do something incredible on the pitch</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>//do something incredible on the pitch
-</code></pre>
 
-<p>  }
-}</p>
 
-<p>[/java]</p>
 
 <!-- more -->
 
@@ -180,29 +188,32 @@ public class LeoMessi {
 
 <p><strong>Second way:</strong></p>
 
-<p>[java]
-public class LeoMessi {
-  private static final LeoMessi INSTANCE = new LeoMessi();
-  private LeoMessi() {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LeoMessi</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">LeoMessi</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LeoMessi</span><span class="o">();</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="nf">LeoMessi</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// create only one existing instance of LeoMessi, as he is unique</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">LeoMessi</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">INSTANCE</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doMagicWithBall</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">//do something incredible on the pitch</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'> <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>// create only one existing instance of LeoMessi, as he is unique
-</code></pre>
-
-<p>  }
-  public LeoMessi getInstance() {</p>
-
-<pre><code>return INSTANCE;
-</code></pre>
-
-<p>  }
-  public void doMagicWithBall() {</p>
-
-<pre><code>//do something incredible on the pitch
-</code></pre>
-
-<p>  }
- }
-[/java]</p>
 
 <p>Creating singleton as shown above gives us greater flexibility in later changes in the code. We can change internals of getInstance() without breaking our public API, for example we can modify it to return unique instance per thread or per logged user.</p>
 
@@ -212,15 +223,22 @@ public class LeoMessi {
 
 <p>The last one (and the most proper way according to the author) way of creating singleton is doing it with enums:</p>
 
-<p>[java]
-  public enum LeoMessi {
-  INSTANCE;</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>  <span class="kd">public</span> <span class="kd">enum</span> <span class="n">LeoMessi</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">INSTANCE</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kt">void</span> <span class="nf">doMagicWithBall</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>   <span class="c1">//do something incredible on the pitch</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'> <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>  void doMagicWithBall() {
-   //do something incredible on the pitch
-  }
- }
-[/java]</p>
 
 <p>Thanks to using enum we have seralization and reflection problems solved without any additional effort. Everything is delivered by the Java language itself and there is nothing to worry about :)</p>
 
@@ -229,6 +247,7 @@ public class LeoMessi {
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

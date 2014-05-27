@@ -156,16 +156,18 @@
 
 <p>Eclipse generates equals method checking if classes of compared objects are the same:</p>
 
-<p>[java]
-&hellip;
-іf (getClass() != obϳ.getClass()) {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">...</span>
+</span><span class='line'><span class="err">і</span><span class="n">f</span> <span class="o">(</span><span class="n">getClass</span><span class="o">()</span> <span class="o">!=</span> <span class="n">ob</span><span class="err">ϳ</span><span class="o">.</span><span class="na">getClass</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">f</span><span class="err">а</span><span class="n">lse</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">...</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>return fаlse;
-</code></pre>
-
-<p>}
-&hellip;
-[/java]</p>
 
 <p>ant such behavior combined with Hibernate can cause some problems because very often while loading data from Db instead of object of our class Hibernate creates proxy object extending base class we are loading. And then equals method comparing getClass() returns false causing strange HashMap behavior. Solution is very simple: instead of getClass() you should use <strong>instanceof</strong>.</p>
 
@@ -174,6 +176,7 @@
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

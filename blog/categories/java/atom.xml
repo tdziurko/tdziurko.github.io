@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T17:47:31+02:00</updated>
+  <updated>2014-05-27T12:54:29+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -18,15 +18,15 @@
     <link href="http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
     <updated>2013-07-31T08:45:07+02:00</updated>
     <id>http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
-    <content type="html"><![CDATA[<p>It&rsquo;s over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of <a href="http://confitura.pl">Confitura</a> (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.</p>
+    <content type="html"><![CDATA[<!-- more -->
+
+
+<p>It&rsquo;s over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of <a href="http://confitura.pl">Confitura</a> (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.</p>
 
 <p>In this post I will shortly describe how we can store encrypted data in our database and retrieve it as already decrypted in a simple, transparent way using <a href="http://www.jasypt.org/">Jasypt</a> library. Our use case will be to store Twitter Api credentials so they are safe in our database but still easy to retrieve and use to post updates in our timeline.</p>
 
-<!-- more -->
-
-
 <p>So what we have is a simple entity representing our settings item:
-[java]
+``` java SettingsItem entity
 @Entity
 public class SettingsItem implements Serializable {</p>
 
@@ -39,7 +39,7 @@ private String encryptedValue;
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>In such table we will store values for Twitter Consumer Key, Twitter Access Token and so on.</p>
 
@@ -47,13 +47,14 @@ private String encryptedValue;
 
 <h3>Jasypt to the rescue</h3>
 
-<p><a href="/images/blog/2013/07/jasypt-small.png"><img src="/images/blog/2013/07/jasypt-small.png" alt="jasypt-small" /></a>
-<a href="http://www.jasypt.org">Jasypt</a> is a simple encryption library written in Java. It frees developer from dealing with low level configuration details and makes whole encryption process easy and straightforward. And what is most interesting now, it also has nice integration with Hibernate allowing seamless encryption/decryption of data stored in database.</p>
+<p style="text-align:center;"><img src="/images/blog/2013/07/jasypt-small.png" alt="jasypt-small" /></p>
+
+<p><a href="http://www.jasypt.org">Jasypt</a> is a simple encryption library written in Java. It frees developer from dealing with low level configuration details and makes whole encryption process easy and straightforward. And what is most interesting now, it also has nice integration with Hibernate allowing seamless encryption/decryption of data stored in database.</p>
 
 <h4>Setup</h4>
 
 <p>To use Jasypt and its Hibernate integration module we have to add two items to our pom:
-[xml]</p>
+``` xml</p>
 
 <pre><code>&lt;dependency&gt;
     &lt;groupId&gt;org.jasypt&lt;/groupId&gt;
@@ -67,13 +68,13 @@ private String encryptedValue;
 &lt;/dependency&gt;
 </code></pre>
 
-<p>[/xml]</p>
+<p>```</p>
 
 <h4>Custom type</h4>
 
 <p>Then we have to declare custom Hibernate type (@TypeDef) in our entity:</p>
 
-<p>[java]
+<p>``` java
 @TypeDef(</p>
 
 <pre><code>    name="encryptedString",
@@ -89,23 +90,23 @@ private String encryptedValue;
 public class SettingsItem implements Serializable {
    // (&hellip;)
 }
-[/java]</p>
+```</p>
 
 <p>and after that in the same class we can mark our encryptedValue field to use this custom type:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>@Type(type="encryptedString")
 private String encryptedValue;
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <h4>Registering encryptor</h4>
 
 <p>We are almost done. Last thing we have to do is register encryptor in HibernatePBEEncryptorRegistry class. This can be done in  initialization class of our application, e.g. ServletContext or simply in class with main(String[] args) method:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>String password = System.getProperty("jasypt.password");
 
@@ -116,7 +117,7 @@ HibernatePBEEncryptorRegistry registry =
 registry.registerPBEStringEncryptor("STRING_ENCRYPTOR", strongEncryptor);
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>One important thing here is that by using System.getProperty() or System.getenv() we can safely configure our encryption mechanism, password is provided at runtime by setting proper value on server machine.</p>
 
@@ -124,7 +125,7 @@ registry.registerPBEStringEncryptor("STRING_ENCRYPTOR", strongEncryptor);
 
 <p>As as a summary, one short passing test showing that our solution works:</p>
 
-<p>[java]
+<p>``` java
 public class SettingsItemRepositoryShould extends IntegrationTest {</p>
 
 <pre><code>@Autowired
@@ -157,7 +158,7 @@ public void shouldEncryptAndDecryptValue() {
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 ]]></content>
   </entry>
   
@@ -166,16 +167,16 @@ public void shouldEncryptAndDecryptValue() {
     <link href="http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
     <updated>2013-04-22T10:55:55+02:00</updated>
     <id>http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
-    <content type="html"><![CDATA[<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
+    <content type="html"><![CDATA[<!-- more -->
 
-<p><a href="/images/blog/2013/04/xstream.gif"><img src="/images/blog/2013/04/xstream.gif" alt="xstream" /></a></p>
+
+<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
+
+<p style="text-align:center;"><a href="/images/blog/2013/04/xstream.gif"><img src="/images/blog/2013/04/xstream.gif" alt="xstream" /></a></p>
 
 <h3>Overview</h3>
 
 <p><a href="http://xstream.codehaus.org/">XStream</a> is a small library to serialize data between Java objects and XML. It&rsquo;s lightweight, small, has nice API and what is most important, it works with and without custom annotations that we might be not allowed to add when we are not the owner of Java classes.</p>
-
-<!-- more -->
-
 
 <h3>First example</h3>
 
@@ -200,7 +201,7 @@ public void shouldEncryptAndDecryptValue() {
 [/xml]</p>
 
 <p>And we want to load it into Configuration object:
-[java]
+``` java
 public class Configuration {</p>
 
 <pre><code>private String inputFile;
@@ -216,9 +217,9 @@ private String truststorePassword;
 </code></pre>
 
 <p>}
-[/java]
+<code>
 So basically what we have to do is:
-[java]</p>
+</code> java</p>
 
 <pre><code>FileReader fileReader = new FileReader("config.xml");  // load our xml file  
 XStream xstream = new XStream();     // init XStream
@@ -227,7 +228,7 @@ xstream.alias("config", Configuration.class);
 Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>And that&rsquo;s all, easy peasy :)</p>
 
@@ -271,7 +272,7 @@ Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
 [/xml]</p>
 
 <p>What we have here is simple list of bans written in XML. We want to load it into collection of Ban objects. So let&rsquo;s prepare some classes (getters/setters/toString omitted):
-[java]
+``` java
 public class Data {</p>
 
 <pre><code>private List bans = new ArrayList(); 
@@ -296,7 +297,7 @@ private String documentNumber;
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>As you can see there is some naming and type mismatch between XML and Java classes (e.g. field name1->firstName, dateOfUpdate is String not a Date), but it&rsquo;s here for some example purposes.</p>
 
@@ -306,7 +307,7 @@ private String documentNumber;
 
 <p>First, easier way is to use annotations. And that&rsquo;s the suggested approach in situation when we can modify Java classes to which XML will be mapped.
 So we have:
-[java]
+``` java
 @XStreamAlias(&ldquo;DATA&rdquo;) // maps DATA element in XML to this class
 public class Data {</p>
 
@@ -353,11 +354,11 @@ private int age;
 private String documentNumber;
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>And actual parsing logic is very short:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>FileReader reader = new FileReader("file.xml");  // load file
 
@@ -373,7 +374,7 @@ Ban firstBan = data.getBans().get(0);
 System.out.println("First ban = " + firstBan.toString()); 
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>As you can see annotations are very easy to use and as a result final code is very concise. But what to do in situation when we can&rsquo;t modify mapping classes? We can use different approach that doesn&rsquo;t require any modifications in Java classes representing XML data.</p>
 
@@ -381,7 +382,7 @@ System.out.println("First ban = " + firstBan.toString());
 
 <p>When we can&rsquo;t enrich our model classes with annotations, there is another solution. We can define all mapping details using methods from XStream object:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>FileReader reader = new FileReader("file.xml");  // three first lines are easy, 
 XStream xstream = new XStream();                 // same initialisation as in the 
@@ -413,7 +414,7 @@ Ban firstBan = data.getBans().get(0);
 System.out.println("First ban = " + firstBan.toString());
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>As you can see XStream allows to easily convert more complicated XML structures into Java objects, it also gives a possibility to tune results by using different names if this from XML doesn&rsquo;t suit our needs.
 But there is one thing should catch your attention: we are converting XML representing a Date into raw String which isn&rsquo;t quite what we would like to get as a result. That&rsquo;s why we will add converter to do some job for us.</p>
@@ -421,7 +422,7 @@ But there is one thing should catch your attention: we are converting XML repres
 <h3>Using existing custom type converter</h3>
 
 <p>XStream library comes with set of built converters for most common use cases. We will use DateConverter. So now our class for Ban looks like that:
-[java]
+``` java
 public class Ban {</p>
 
 <pre><code>private Date dateOfUpdate;
@@ -429,18 +430,18 @@ private Person person;
 </code></pre>
 
 <p>}
-[/java]
+<code>
 And to use DateConverter we simply have to register it with date format that we expect to appear in XML data:
-[java]
+</code> java
    xstream.registerConverter(new DateConverter(&ldquo;yyyy-MM-dd&rdquo;, new String[] {}));
-[/java]</p>
+```</p>
 
 <p>and that&rsquo;s it. Now instead of String our object is populated with Date instance. Cool and easy! But what about classes and situations that aren&rsquo;t covered by existing converters? We could write our own.</p>
 
 <h3>Writing custom converter from scratch</h3>
 
 <p>Assume that instead of dateOfUpdate we want to know how many days ago update was done:
-[java]
+``` java
 public class Ban {</p>
 
 <pre><code>private int daysAgo;
@@ -448,9 +449,9 @@ private Person person;
 </code></pre>
 
 <p>}
-[/java]
-Of course we could calculate it manually for each Ban object but using converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/Converter.html">Converter</a> interface so we have to implement three methods with signatures looking a little bit scary:
-[java]
+<code>
+Of course we could calculate it manually for each Ban object but using converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement [Converter](http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/Converter.html) interface so we have to implement three methods with signatures looking a little bit scary:
+</code> java
 public class DaysAgoConverter implements Converter {</p>
 
 <pre><code>@Override
@@ -468,9 +469,9 @@ public boolean canConvert(Class type) {
 </code></pre>
 
 <p>}
-[/java]
-Last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/basic/AbstractSingleValueConverter.html">AbstractSingleValueConverter</a>that shields us from so low level mechanisms. And now our class looks much better:
-[java]
+<code>
+Last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using [AbstractSingleValueConverter](http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/basic/AbstractSingleValueConverter.html)that shields us from so low level mechanisms. And now our class looks much better:
+</code> java
 public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
 
 <pre><code>@Override
@@ -489,13 +490,13 @@ public String toString(Object obj) {
 </code></pre>
 
 <p>}
-[/java]
+```
 Additionally we must override method toString(Object obj) defined in AbstractSingleValueConverter as we want to store Date in XML calculated from Integer, not a simple <em>Object.toString</em> value which would be returned from default <em>toString</em> defined in abstract parent.</p>
 
 <p><strong>Implementation</strong></p>
 
 <p>Code below is pretty straightforward, but most interesting lines are commented. I&rsquo;ve skipped all validation stuff to make this example shorter.
-[java]
+``` java
 public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
 
 <pre><code>private final static String FORMAT = "yyyy-MM-dd"; // default Date format that will be used in conversion
@@ -527,16 +528,16 @@ public String toString(Object obj) {
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p><strong>Usage</strong>
 To use our custom converter for a specific field we have to inform about it XStream object using registerLocalConverter:
-[java]</p>
+``` java</p>
 
 <pre><code>xstream.registerLocalConverter(Ban.class, "daysAgo", new DaysAgoConverter());
 </code></pre>
 
-<p>[/java]
+<p>```
 We are using &ldquo;local&rdquo; method to apply this conversion only to specific field and not to every Integer field in XML file. And after that we will get our Ban objects populated with number of days instead of Date.</p>
 
 <h3>Summary</h3>
@@ -563,7 +564,7 @@ We are using &ldquo;local&rdquo; method to apply this conversion only to specifi
 
 <p>We have two test classes, one with IT postfix that will indicate that this is our integration test:</p>
 
-<p>[java]
+<p>``` java
 import org.testng.annotations.Test;</p>
 
 <p>import static org.fest.assertions.Assertions.assertThat;</p>
@@ -577,11 +578,11 @@ public void shouldPass() {
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>and</p>
 
-<p>[java]
+<p>``` java
 import org.testng.annotations.Test;</p>
 
 <p>import static org.fest.assertions.Assertions.assertThat;</p>
@@ -595,7 +596,7 @@ public void shouldFail() {
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>and now let&rsquo;s declare plugin mentioned above in our pom.xml:</p>
 
@@ -699,7 +700,7 @@ public void shouldFail() {
 
 <p>The simplest test cases already present in Envers are located in Simple.java class and they look quite straightforward:</p>
 
-<p>[java]
+<p>``` java
 public class Simple extends AbstractEntityTest {</p>
 
 <pre><code>private Integer id1;
@@ -739,11 +740,11 @@ public void testHistoryOfId1() {
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>so preparing my failing test executing scenario described above wasn&rsquo;t a rocket science:</p>
 
-<p>[java]
+<p>``` java
 /<em>*
  * @author Tomasz Dziurko (tdziurko at gmail dot com)
  </em>/
@@ -781,7 +782,7 @@ public void testAuditRecordsRollback() {
 
 <p>}</p>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>Now I could verify that tests is failing on forked <a href="https://github.com/hibernate/hibernate-orm/tree/3.6">3.6 branch</a> and check if fix that we had is making this test green.</p>
 
@@ -818,19 +819,19 @@ public void testAuditRecordsRollback() {
 
 <p>And what is the best in such solutions, they grow with your application or startup. Services are free or almost free when your web application doesn&rsquo;t need much memory and processors but when your web-app starts to gather more users' attention and you have more and more concurrent sessions and visits each day, you could easily enhance your setup to match your needs. Everything is a matter of a few clicks, simple and fast.</p>
 
-<p>To test how this deployment process look like, I&rsquo;ve decided to put my <a href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/">Wicket tutorial</a> web application online. It consist of three pages and two tables in database so I think it shouldn&rsquo;t be a too complicated process to deploy it online. And as a Java hosting service I&rsquo;ve chosen <a href="http://jelastic.com">Jelastic</a>, recent winner of <a href="http://www.java.net/dukeschoice">2012 Duke&rsquo;s Choice Awards</a> announced during JavaOne conference this year. Duke&rsquo;s Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
+<p>To test how this deployment process look like, I&rsquo;ve decided to put my [Wicket tutorial](<a href="http://tdziurko.github.io/2011/03/wicket-tutorial-series-building-web-application-scratch/) web application online. It consist of three pages and two tables in database so I think it shouldn't be a too complicated process to deploy it online. And as a Java hosting service I've chosen [Jelastic](http://jelastic.com), recent winner of [2012 Duke's Choice Awards](http://www.java.net/dukeschoice) announced during JavaOne conference this year. Duke's Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
 
 <h3>First steps</h3>
 
 <p>So after creating an account and choosing a hosting in Germany (which is the closest one to Poland where I live) I am redirected to my personal administration panel where in a straightforward step-by-step wizard I am requested to choose container /server (Tomcat 6/7,  Jetty amd Glassfish are available) and then my subdomain name. After that my server is deployed and after a moment I could check that <a href="http://tomaszdziurko.jelastic.dogado.eu/">http://tomaszdziurko.jelastic.dogado.eu/</a> is live and running. User is also encouraged to try and deploy pre-defined Hello World application. The whole process is extremely easy, just one click and in a moment we could check that we&rsquo;ve just deployed our first war on Jelastic:</p>
 
-<p><a href="/images/blog/2012/10/jelastic-demo.jpeg"><img src="/images/blog/2012/10/jelastic-demo.jpeg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/10/jelastic-demo.jpeg" alt="" /></p>
 
 <h3>Configuring more real application environment</h3>
 
 <p>So far everything was easy, but we didn&rsquo;t touch any real scenario so now it&rsquo;s high time to start deploying our example Wicket application. First step is to upload application war to the Jelastic. Then we have to enable and configure our database with three tables. To do that we choose &ldquo;Environment topology&rdquo; next to our only server and here we could turn on/off many interesting features: load balancers, caching solutions, multiple containers, SSL-s and what we currently need SQL and/or NoSQL database:</p>
 
-<p><a href="/images/blog/2012/10/dbConfig.jpeg"><img src="/images/blog/2012/10/dbConfig.jpeg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/10/dbConfig.jpeg" alt="" /></p>
 
 <p>So let&rsquo;s enable MySQL 5.5 and wait some time until it is configured and started on our virtual server. When everything is ready we will receive an email with login and password to our MySQL database instance. Now we could login to myPhpAdmin web interface and create user and MySQL tables required by our Wicket application. Because database url is no longer localhost:3306 we have to modify properties file in our project, rebuild it and upload war again. After that we are ready to deploy application on Jelastic. Simply, we click &ldquo;Deploy&rdquo; icon and then choose context name where application will be accessible. After that we must wait for &ldquo;Success&rdquo; message from deployment process and now we could check if <a href="http://tomaszdziurko.jelastic.dogado.eu/item-directory">http://tomaszdziurko.jelastic.dogado.eu/item-directory</a> is working as expected.</p>
 

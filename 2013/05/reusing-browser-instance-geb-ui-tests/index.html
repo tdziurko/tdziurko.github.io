@@ -150,18 +150,18 @@
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 	<h1 class="title" itemprop="name">Reusing Browser Instance in Geb UI Tests</h1>
-	<div class="entry-content" itemprop="articleBody"><h4>UPDATE</h4>
+	<div class="entry-content" itemprop="articleBody"><!-- more -->
+
+
+<h4>UPDATE</h4>
 
 <p>_When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below is valid and works, there is a much simpler solution to this problem incorporated by Geb itself and I strongly suggest using it instead of mine, home-crafted hack. All credits go to <a href="http://stackoverflow.com/users/52142/artur-gajowy">Artur Gajowy</a> for showing me better approach.</p>
 
-<p>I have added short paragraph about this simpler solution at the end of this article, probably you should go <a href="http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests/#better-solution">directly there</a> :).
+<p>I have added short paragraph about this simpler solution at the end of this article, probably you should go [directly there](&lt;a href=&ldquo;/2013/05/reusing-browser-instance-geb-ui-tests/#better-solution) :).
 _</p>
 
 <p><a href="http://gebish.org">Geb</a> is next-generation UI testing library that frees developer from dealing with Selenium API which is in many cases not so friendly. The most important feature of Geb is its support, or I would even say, strong encouragement to use Page Objects in your UI tests. Page Objects are also present in Selenium, but they are not as intuitive and east to use as in Geb.
 But enough about Geb itself. Today I will share with you simple trick how to share one browser instance when running many Geb UI tests. This will significantly reduce time needed to execute UI tests and also reduce memory usage on test machines.</p>
-
-<!-- more -->
-
 
 <h3>The Problem</h3>
 
@@ -284,6 +284,7 @@ driver =</p>
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

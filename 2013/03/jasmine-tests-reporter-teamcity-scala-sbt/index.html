@@ -9,7 +9,7 @@
 	<meta name="author" content="Tomasz Dziurko">
 
 	
-	<meta name="description" content="Jasmine Tests Reporter in TeamCity With Scala and SBT This post is basically re-post of article I have written on my company blog here. But before &hellip;">
+	<meta name="description" content="Jasmine Tests Reporter in TeamCity With Scala and SBT This post is basically re-post of article I have written on my company blog [here](http:// &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -150,7 +150,8 @@
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 	<h1 class="title" itemprop="name">Jasmine Tests Reporter in TeamCity With Scala and SBT</h1>
-	<div class="entry-content" itemprop="articleBody"><p><em>This post is basically re-post of article I have written on my company blog <a href="http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity">here</a>. But before you go there to read the full story, please check this short introduction below to decide if you are interested :)</em></p>
+	<div class="entry-content" itemprop="articleBody"><blockquote>This post is basically re-post of article I have written on my company blog [here](http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity). But before you go there to read the full story, please check this short introduction below to decide if you are interested :)</blockquote>
+
 
 <p>In <a href="http://SoftwareMill.com">our company</a> sandbox project called <a href="https://github.com/softwaremill/bootzooka">Bootzoooka</a> we are using pretty cool technology stack: Scala, Scalatra, SBT and AngularJS. Of course we have some JavaScript tests that are executed using <a href="https://github.com/guardian/sbt-jasmine-plugin">sbt jasmine plugin</a> from Guardian. Current 0.8 version of this plugin allows to execute these tests in TeamCity and even fails build when any JS test is not passing, but it didn&rsquo;t provide full test report for these tests. This plugin worked quite well for us, but we wanted something more and that&rsquo;s why added story saying &ldquo;<em>As a Developer I want to see jasmine tests in TeamCity report</em>&rdquo; to our Bootzooka backlog.</p>
 
@@ -161,6 +162,7 @@
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

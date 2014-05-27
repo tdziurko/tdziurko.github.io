@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T17:47:31+02:00</updated>
+  <updated>2014-05-27T12:54:29+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -63,7 +63,8 @@
     <link href="http://tdziurko.github.io/2013/03/jasmine-tests-reporter-teamcity-scala-sbt/"/>
     <updated>2013-03-26T23:10:57+01:00</updated>
     <id>http://tdziurko.github.io/2013/03/jasmine-tests-reporter-teamcity-scala-sbt</id>
-    <content type="html"><![CDATA[<p><em>This post is basically re-post of article I have written on my company blog <a href="http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity">here</a>. But before you go there to read the full story, please check this short introduction below to decide if you are interested :)</em></p>
+    <content type="html"><![CDATA[<blockquote>This post is basically re-post of article I have written on my company blog [here](http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity). But before you go there to read the full story, please check this short introduction below to decide if you are interested :)</blockquote>
+
 
 <p>In <a href="http://SoftwareMill.com">our company</a> sandbox project called <a href="https://github.com/softwaremill/bootzooka">Bootzoooka</a> we are using pretty cool technology stack: Scala, Scalatra, SBT and AngularJS. Of course we have some JavaScript tests that are executed using <a href="https://github.com/guardian/sbt-jasmine-plugin">sbt jasmine plugin</a> from Guardian. Current 0.8 version of this plugin allows to execute these tests in TeamCity and even fails build when any JS test is not passing, but it didn&rsquo;t provide full test report for these tests. This plugin worked quite well for us, but we wanted something more and that&rsquo;s why added story saying &ldquo;<em>As a Developer I want to see jasmine tests in TeamCity report</em>&rdquo; to our Bootzooka backlog.</p>
 
@@ -78,8 +79,9 @@
     <link href="http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review/"/>
     <updated>2013-03-18T22:53:16+01:00</updated>
     <id>http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review</id>
-    <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.
-<a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="/images/blog/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
+    <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.</p>
+
+<p style="text-align:center;"><img src="/images/blog/2013/03/angular_cover.png" alt="angular_cover" /></p>
 
 <h3>Content</h3>
 
@@ -116,7 +118,7 @@
 
 <p>To start from the basics, I&rsquo;ve prepared three pages that use the same navigation bar. These pages will soon become our super simple web application using AngularJS:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/02/twitter-bootstrap-navbar-angularjs-component/navbar_angularjs1/"><img src="/images/blog/2013/02/navbar_angularjs1.png" alt="navbar_angularjs1" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2013/02/navbar_angularjs1.png" alt="navbar_angularjs1" /></p>
 
 <p>Next step will be adding AngularJS and converting three pages into one small application. This is done in this <a href="https://github.com/tdziurko/twitter-bootstrap-navbar-as-angularjs-directive/commit/9d135332ef5e934920a65975f41fb06f6cc852a8">commit</a>. And after that we are ready to start working on our Navbar component.<!-- more --></p>
 
@@ -124,7 +126,7 @@
 
 <p>On each page we have very similar html fragment rendering navbar element.</p>
 
-<p>[html highlight=&ldquo;8&rdquo;]</p>
+<p>``` html</p>
 
 <pre><code>&lt;div class="navbar navbar-inverse"&gt;
     &lt;div class="navbar-inner"&gt;
@@ -143,7 +145,7 @@
 &lt;/div&gt;
 </code></pre>
 
-<p>[/html]</p>
+<p>```</p>
 
 <p>The only difference is in where class <em>active</em> which highlights link is located. And every time we see such repetition, our DRY detector should start ringing and don&rsquo;t stop until we do something about it.</p>
 
@@ -180,30 +182,32 @@ templateUrl: "bootstrapNavbar.html"    // (5)
 
 <p>After that we should replace navbar html markup on every page with something like:</p>
 
-<p>[html]
-&lt;bootstrap-navbar>&lt;/bootstrap-navbar>
-[/html]</p>
+<p><code>html
+&lt;bootstrap-navbar&gt;&lt;/bootstrap-navbar&gt;
+</code></p>
 
-<p>Now it&rsquo;s high time to test it. Unfortunately there is one problem. Security policy does not allow browser to execute XHR(Ajax) calls from html file stored on our disk. So we have to setup lightweight httpServer to serve our files to browser. You can do it using Jetty or anything similar. I tried one from Python and it worked without issues. So basically navigate to directory where all files are stored, execute:
-[python]
+<p>Now it&rsquo;s high time to test it. Unfortunately there is one problem. Security policy does not allow browser to execute XHR(Ajax) calls from html file stored on our disk. So we have to setup lightweight httpServer to serve our files to browser. You can do it using Jetty or anything similar. I tried one from Python and it worked without issues. So basically navigate to directory where all files are stored, execute:</p>
+
+<p><code>python
 python -m SimpleHTTPServer 9000
-[/python]
-and then open your browser using address <a href="http://localhost:9000/home.html">http://localhost:9000/home.html</a>. You should see the same page as before, but now it is using our directive.</p>
+</code></p>
+
+<p>and then open your browser using address <a href="http://localhost:9000/home.html">http://localhost:9000/home.html</a>. You should see the same page as before, but now it is using our directive.</p>
 
 <h3>Flexibility++</h3>
 
 <p>So we have our first directive, yay! But its IQ is not that high. If you navigate to Second and Third Page, you will notice that it always renders link to Home Page as active, which is not exactly true for all pages. And in this paragraph we will try to make it smarter.</p>
 
 <p>At first, let&rsquo;s add attribute <em>current-tab</em> to our directive usages:
-[html]
-  &lt;bootstrap-navbar current-tab=&ldquo;Second&rdquo;>&lt;/bootstrap-navbar>
-[/html]</p>
+<code>html
+  &lt;bootstrap-navbar current-tab="Second"&gt;&lt;/bootstrap-navbar&gt;
+</code></p>
 
 <p>Passed value must be the same as link name in the navbar, so in our example app it should be either: Home, Second or Third.</p>
 
 <p>Next step is to prepare our template file for easy modification. Because we will use jQuery selectors to find link to activate, we will remove active class and also add an id attribute to <em>ul</em> element to make it easier to locate with selector:</p>
 
-<p>[html]</p>
+<p>``` html</p>
 
 <div class="navbar navbar-inverse">
     <div class="navbar-inner">
@@ -222,14 +226,14 @@ and then open your browser using address <a href="http://localhost:9000/home.htm
 </div>
 
 
-<p>[/html]</p>
+<p>```</p>
 
 <p><strong>Core logic</strong>
 Now the last thing we have to do is some jQuery selector magic with little addition of AngularJS magic :)</p>
 
 <p>Angular directives have function <em>compile</em> which allows to alter directive template markup, so we will use it here. What this function receives is value of parameters defined on the component usage in our pages, so basically we have an access to all attributes that are declared where our navbar component is used, specifically our <em>current-tab</em> attribute (again transformed to <em>currentTab</em> inside JS file).
 So when we know which link should be highlighted, jQuery selectors come to do the actual job:
-[js]
+``` js
 angular.module(&ldquo;navbarapp&rdquo;, [&ldquo;controllers&rdquo;])
   .directive(&ldquo;bootstrapNavbar&rdquo;, function() {
   return {</p>
@@ -252,7 +256,7 @@ compile: function(element, attrs) {  // (1)
 
 <p>  }});
 ;
-[/js]</p>
+```</p>
 
 <p>So what we do here:</p>
 
@@ -301,7 +305,7 @@ compile: function(element, attrs) {  // (1)
 </ol>
 
 
-<p>[scala]
+<p>``` scala
 object Plugins extends Build {
   lazy val plugins = Project(</p>
 
@@ -313,14 +317,14 @@ settings = Defaults.defaultSettings ++
 
 <p>  )
 }
-[/scala]</p>
+```</p>
 
 <ol>
 <li>Include plugin settings in Build.scala:</li>
 </ol>
 
 
-<p>[scala]
+<p>``` scala
 import sbtjslint.Plugin.<em>
 import sbtjslint.Plugin.LintKeys.</em></p>
 
@@ -333,11 +337,11 @@ settings = buildSettings ++ lintSettings
 </code></pre>
 
 <p>  )
-[/scala]</p>
+```</p>
 
 <p>But as usual these steps are not enough. First of all, when we run <em>sbt jslint</em> we will see that it scans some default directory looking for JS files to analyse. And of course our JavaScript lies in a completely different place. Secondly, we want to add <em>jslint</em> step to build process so it is executed every time. So simply, we need lintCustomSettings with declared custom JS location and jslint step process added to test step in our build:</p>
 
-<p>[scala]
+<p>``` scala
   val lintCustomSettings = lintSettings ++ inConfig(Test)(Seq(</p>
 
 <pre><code>sourceDirectory in jslint &lt;&lt;= (baseDirectory)(_ / "src/main/webapp/app"),
@@ -354,15 +358,15 @@ settings = buildSettings ++ lintCustomSettings
 </code></pre>
 
 <p>  )
-[/scala]</p>
+```</p>
 
 <p>Now after running <em>sbt test</em> we will see that JavaScript code is checked and report is printed to the console and also written in target/jslint/results.xml file.</p>
 
 <p>When you analyse report.xml you might be overwhelmed by the number of warnings raised by the plugin. Some of them are quite useful, but some might be ignored or, even better, disabled by custom flags. In our project we use something like:</p>
 
-<p>[scala]
-  flags in jslint ++= Seq(&ldquo;undef&rdquo;, &ldquo;vars&rdquo;, &ldquo;browser&rdquo;)
-[/scala]</p>
+<p><code>scala
+  flags in jslint ++= Seq("undef", "vars", "browser")
+</code></p>
 
 <p>added to lintCustomSettings. For more flags and their descriptions please visit <a href="https://github.com/philcali/sbt-jslint/blob/master/README.md#some-notes">plugin documentation</a>.</p>
 
@@ -372,19 +376,19 @@ settings = buildSettings ++ lintCustomSettings
 
 <p>Simply go to <em>Edit Configuration Settings</em> of your build and then choose &ldquo;Build Step: Command Line&rdquo;:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step1/"><img src="/images/blog/2013/01/tc-step1.png" alt="tc-step1" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2013/01/tc-step1.png" alt="tc-step1" /></p>
 
 <p>And in the section Additional Build Features click &ldquo;Add build feature&rdquo;, choose &ldquo;XML report processing&rdquo;, then &ldquo;JSLint&rdquo; and specify path to the report.xml file. Personally I also check &ldquo;Verbose output&rdquo; to see more details in the build log.</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step2/"><img src="/images/blog/2013/01/tc-step2.png" alt="tc-step2" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2013/01/tc-step2.png" alt="tc-step2" /></p>
 
 <p>After saving we can go next build step named &ldquo;Build failure conditions&rdquo; and define two new rules there so we end up with something similar to screen presented below:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step3/"><img src="/images/blog/2013/01/tc-step3-1024x116.png" alt="tc-step3" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2013/01/tc-step3-1024x116.png" alt="tc-step3" /></p>
 
 <p>And finally our build is fully configured to report and  react on problems in JavaScript files:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step4/"><img src="/images/blog/2013/01/tc-step4.png" alt="tc-step4" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2013/01/tc-step4.png" alt="tc-step4" /></p>
 
 <p>Reference commits from my current project:</p>
 

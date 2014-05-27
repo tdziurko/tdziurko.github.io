@@ -162,18 +162,26 @@
 
 <p>Moreover, there is another variant of this shortcut allowing to easily create command like System.out.println(&ldquo;value = &rdquo; + value); Suppose we have following code:</p>
 
-<p>[java]counter = countAllActiveAccounts();[/java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">counter</span> <span class="o">=</span> <span class="n">countAllActiveAccounts</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>Then we place cursor in the line below and type <strong>soutv</strong> and press <strong><Tab></strong>. What we get is:</p>
 
-<p>[java]counter = countAllActiveAccounts();
-System.out.println(&ldquo;counter = &rdquo; + + counter);
-[/java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">counter</span> <span class="o">=</span> <span class="n">countAllActiveAccounts</span><span class="o">();</span>
+</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;counter = &quot;</span> <span class="o">+</span> <span class="o">+</span> <span class="n">counter</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>NetBeans found the closest variable and generated proper println method. And, last extra add-on here. if we start typing something just after this command we can end with something like this (I used sequence <strong>soutv + <Tab> + anotherVariable</strong>):</p>
 
-<p>[java]
-System.out.println(&ldquo;anotherVariable = &rdquo; + anotherVariable)[/java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;anotherVariable = &quot;</span> <span class="o">+</span> <span class="n">anotherVariable</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h3>Fast commenting and uncommenting many lines of code</h3>
 
@@ -181,11 +189,11 @@ System.out.println(&ldquo;anotherVariable = &rdquo; + anotherVariable)[/java]</p
 
 <p>Method before we mark it and use the shortcut:</p>
 
-<p><a href="/images/blog/2009/05/uncommented1.png"><img src="/images/blog/2009/05/uncommented1.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2009/05/uncommented1.png" alt="" /></p>
 
 <p>Method after:</p>
 
-<p><a href="/images/blog/2009/05/commented1.png"><img src="/images/blog/2009/05/commented1.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2009/05/commented1.png" alt="" /></p>
 
 <p>And of course using the same shortcut second time uncomment selected part of code.</p>
 
@@ -193,7 +201,7 @@ System.out.println(&ldquo;anotherVariable = &rdquo; + anotherVariable)[/java]</p
 
 <p>In the large project with many packages, classes and interfaces looking for the one we need might be cumbersone. One of the solutions is <strong><Ctrl> + o</strong> which opens window when you can start typing name of the type you are looking for. The more you type, the more narrow results will be:</p>
 
-<p><a href="/images/blog/2009/05/ctrlO.png"><img src="/images/blog/2009/05/ctrlO.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2009/05/ctrlO.png" alt="" /></p>
 
 <h3>Go to the source with one click</h3>
 
@@ -229,6 +237,7 @@ System.out.println(&ldquo;anotherVariable = &rdquo; + anotherVariable)[/java]</p
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

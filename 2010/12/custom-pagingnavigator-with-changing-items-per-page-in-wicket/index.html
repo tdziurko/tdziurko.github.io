@@ -154,159 +154,258 @@
 
 <p>Finished component will look like below:</p>
 
-<p><a href="/images/blog/2010/12/customPaginator.png"><img src="/images/blog/2010/12/customPaginator.png" alt="" /></a>
-Of course I was not going to implement this from the scratch, because most of work had been already done by Wicket authors and commiters in component <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/navigation/paging/PagingNavigator.html">PagingNavigator</a>. Source of this component as a reference to changes I made can be found <a href="http://pastebin.com/kwzBG9mH">here</a>.</p>
+<p style="text-align:center;"><img src="/images/blog/2010/12/customPaginator.png" alt="custom paginator" /></p>
 
-<p><strong>The first steps in creating our component:</strong>
-&ndash; add List <em>itemsPerPageValues</em> holding numbers for &lsquo;items per page&rsquo; which will be shown to the user allowing him to click and change this value.
-&ndash; provide default List <em>DEFAULT_ITEMS_PER_PAGE_VALUES</em>, which will be used (what a surprise!) as a default :)
-&ndash; give our component reference to the <em>DataView</em> object on which we will execute change items per page method.</p>
+<p>Of course I was not going to implement this from the scratch, because most of work had been already done by Wicket authors and commiters in component <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/navigation/paging/PagingNavigator.html">PagingNavigator</a>. Source of this component as a reference to changes I made can be found <a href="http://pastebin.com/kwzBG9mH">here</a>.</p>
+
+<p><strong>The first steps in creating our component:</strong></p>
+
+<ul>
+<li><p>add List <em>itemsPerPageValues</em> holding numbers for &lsquo;items per page&rsquo; which will be shown to the user allowing him to click and change this value.</p></li>
+<li><p>provide default List <em>DEFAULT_ITEMS_PER_PAGE_VALUES</em>, which will be used (what a surprise!) as a default :)</p></li>
+<li><p>give our component reference to the <em>DataView</em> object on which we will execute change items per page method.</p></li>
+</ul>
+
 
 <!-- more -->
 
 
 <p>Below we can see changes in class fields and constructors:</p>
 
-<p>[java]
-public class CustomPagingNavigator extends Panel {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomPagingNavigator</span> <span class="kd">extends</span> <span class="n">Panel</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">NAVIGATION_ID</span> <span class="o">=</span> <span class="s">&quot;navigation&quot;</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">DEFAULT_ITEMS_PER_PAGE_VALUES</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">PagingNavigation</span> <span class="n">pagingNavigation</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">DataView</span><span class="o">&lt;?&gt;</span> <span class="n">dataView</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">IPagingLabelProvider</span> <span class="n">labelProvider</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">itemsPerPageValues</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">WebMarkupContainer</span> <span class="n">pagingLinksContainer</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">CustomPagingNavigator</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="kd">final</span> <span class="n">DataView</span><span class="o">&lt;?&gt;</span> <span class="n">dataView</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">DEFAULT_ITEMS_PER_PAGE_VALUES</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">CustomPagingNavigator</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="kd">final</span> <span class="n">DataView</span><span class="o">&lt;?&gt;</span> <span class="n">dataView</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">itemsPerPageValues</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">itemsPerPageValues</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">CustomPagingNavigator</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="kd">final</span> <span class="n">DataView</span><span class="o">&lt;?&gt;</span> <span class="n">dataView</span><span class="o">,</span> <span class="kd">final</span> <span class="n">IPagingLabelProvider</span> <span class="n">labelProvider</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="n">labelProvider</span><span class="o">,</span> <span class="n">DEFAULT_ITEMS_PER_PAGE_VALUES</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">CustomPagingNavigator</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="kd">final</span> <span class="n">DataView</span><span class="o">&lt;?&gt;</span> <span class="n">dataView</span><span class="o">,</span> <span class="kd">final</span> <span class="n">IPagingLabelProvider</span> <span class="n">labelProvider</span><span class="o">,</span>
+</span><span class='line'>          <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">itemsPerPageValues</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">dataView</span> <span class="o">=</span> <span class="n">dataView</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">labelProvider</span> <span class="o">=</span> <span class="n">labelProvider</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">itemsPerPageValues</span> <span class="o">=</span> <span class="n">itemsPerPageValues</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// these methods will be described later in this post</span>
+</span><span class='line'>      <span class="n">addContainerWithPagingLinks</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">addLinksChangingItemsPerPageNumber</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>    <span class="o">(...)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>public static final String NAVIGATION_ID = "navigation";
-public static final List&lt;Integer&gt; DEFAULT_ITEMS_PER_PAGE_VALUES = Arrays.asList(5, 10, 50);
-
-private PagingNavigation pagingNavigation;
-private final DataView&lt;?&gt; dataView;
-private final IPagingLabelProvider labelProvider;
-private final List&lt;Integer&gt; itemsPerPageValues;
-private WebMarkupContainer pagingLinksContainer;
-
-public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView) {
-    this(id, dataView, null, DEFAULT_ITEMS_PER_PAGE_VALUES);
-}
-
-public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView, List&lt;Integer&gt; itemsPerPageValues) {
-    this(id, dataView, null, itemsPerPageValues);
-}
-
-public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView, final IPagingLabelProvider labelProvider) {
-    this(id, dataView, labelProvider, DEFAULT_ITEMS_PER_PAGE_VALUES);
-}
-
-public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView, final IPagingLabelProvider labelProvider,
-        List&lt;Integer&gt; itemsPerPageValues) {
-    super(id);
-    this.dataView = dataView;
-    this.labelProvider = labelProvider;
-    this.itemsPerPageValues = itemsPerPageValues;
-
-    // these methods will be described later in this post
-    addContainerWithPagingLinks();
-    addLinksChangingItemsPerPageNumber();
-}
-(...)
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>First new method is <em>addContainerWithPagingLinks</em> based mainly of <em>onBeforeRender</em> from <a href="http://pastebin.com/kwzBG9mH">PagingNavigator</a>. This method adds paging links to the component to allow user to change number of viewed page. One small addition is an overriden <em>isVisible</em> which will hide paging fragment when there is only one page to show.</p>
 
-<p>[java]
-private void addContainerWithPagingLinks() {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">addContainerWithPagingLinks</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebMarkupContainer</span><span class="o">(</span><span class="s">&quot;pagingLinksContainer&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="nd">@Override</span>
+</span><span class='line'>          <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isVisible</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>              <span class="k">return</span> <span class="n">dataView</span><span class="o">.</span><span class="na">getPageCount</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">pagingNavigation</span> <span class="o">=</span> <span class="n">newNavigation</span><span class="o">(</span><span class="n">dataView</span><span class="o">,</span> <span class="n">labelProvider</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pagingNavigation</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// Add additional page links</span>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">newPagingNavigationLink</span><span class="o">(</span><span class="s">&quot;first&quot;</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="mi">0</span><span class="o">).</span><span class="na">add</span><span class="o">(</span>
+</span><span class='line'>              <span class="k">new</span> <span class="nf">TitleAppender</span><span class="o">(</span><span class="s">&quot;PagingNavigator.first&quot;</span><span class="o">)));</span>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">newPagingNavigationIncrementLink</span><span class="o">(</span><span class="s">&quot;prev&quot;</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">).</span><span class="na">add</span><span class="o">(</span>
+</span><span class='line'>              <span class="k">new</span> <span class="nf">TitleAppender</span><span class="o">(</span><span class="s">&quot;PagingNavigator.previous&quot;</span><span class="o">)));</span>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">newPagingNavigationIncrementLink</span><span class="o">(</span><span class="s">&quot;next&quot;</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="mi">1</span><span class="o">).</span><span class="na">add</span><span class="o">(</span>
+</span><span class='line'>              <span class="k">new</span> <span class="nf">TitleAppender</span><span class="o">(</span><span class="s">&quot;PagingNavigator.next&quot;</span><span class="o">)));</span>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">newPagingNavigationLink</span><span class="o">(</span><span class="s">&quot;last&quot;</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">).</span><span class="na">add</span><span class="o">(</span>
+</span><span class='line'>              <span class="k">new</span> <span class="nf">TitleAppender</span><span class="o">(</span><span class="s">&quot;PagingNavigator.last&quot;</span><span class="o">)));</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="n">pagingLinksContainer</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>    pagingLinksContainer = new WebMarkupContainer("pagingLinksContainer") {
-        @Override
-        public boolean isVisible() {
-            return dataView.getPageCount() &gt; 1;
-        }
-    }
-
-    pagingNavigation = newNavigation(dataView, labelProvider);
-    pagingLinksContainer.add(pagingNavigation);
-
-    // Add additional page links
-    pagingLinksContainer.add(newPagingNavigationLink("first", dataView, 0).add(
-            new TitleAppender("PagingNavigator.first")));
-    pagingLinksContainer.add(newPagingNavigationIncrementLink("prev", dataView, -1).add(
-            new TitleAppender("PagingNavigator.previous")));
-    pagingLinksContainer.add(newPagingNavigationIncrementLink("next", dataView, 1).add(
-            new TitleAppender("PagingNavigator.next")));
-    pagingLinksContainer.add(newPagingNavigationLink("last", dataView, -1).add(
-            new TitleAppender("PagingNavigator.last")));
-
-    add(pagingLinksContainer);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>Next step is to override <em>isVisible</em> method in our component which will hide it completely when DataView has no items to render:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Override</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isVisible</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">dataView</span><span class="o">.</span><span class="na">getItemCount</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-public boolean isVisible() {
-    return dataView.getItemCount() &gt; 0;
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>And now it&rsquo;s time to create the core of our component: a place where items per page can be changed. This is done in method:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">addLinksChangingItemsPerPageNumber</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">itemsPerPageList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">&quot;itemsPerPage&quot;</span><span class="o">,</span> <span class="n">itemsPerPageValues</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="nd">@Override</span>
+</span><span class='line'>      <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="n">ListItem</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">Link</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="n">itemPerPageLink</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ItemPerPageLink</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;(</span><span class="s">&quot;itemPerPageLink&quot;</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span>
+</span><span class='line'>                  <span class="n">pagingLinksContainer</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">getModelObject</span><span class="o">());</span>
+</span><span class='line'>          <span class="n">itemPerPageLink</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;itemsValue&quot;</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">()));</span>
+</span><span class='line'>          <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">itemPerPageLink</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">add</span><span class="o">(</span><span class="n">itemsPerPageList</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private void addLinksChangingItemsPerPageNumber() {
-    ListView&lt;Integer&gt; itemsPerPageList = new ListView&lt;Integer&gt;("itemsPerPage", itemsPerPageValues) {
-        @Override
-        protected void populateItem(ListItem&lt;Integer&gt; item) {
-            Link&lt;Void&gt; itemPerPageLink = new ItemPerPageLink&lt;Void&gt;("itemPerPageLink", dataView,
-                    pagingLinksContainer, item.getModelObject());
-            itemPerPageLink.add(new Label("itemsValue", item.getModel()));
-            item.add(itemPerPageLink);
-        }
-    };
-
-    add(itemsPerPageList);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>In the above method we create ListView for Integers from <em>itemsPerPageValues</em> and for each number we add link (new class <em>ItemPerPageLink</em> explained below) which will change <em>DataView</em> itemsPerPage property. Except reference to DataView we also give to our link reference to pagingLinksContainer to hide it after user changes itemsPerPage and there will be only one page to show.</p>
 
 <p>Complete class ItemPerPageLink source code:</p>
 
-<p>[java]
-public class ItemPerPageLink<T> extends Link<T> {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ItemPerPageLink</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">Link</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">itemsPerPage</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">DataView</span><span class="o">&lt;?&gt;</span> <span class="n">dataView</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">WebMarkupContainer</span> <span class="n">pagingLinksContainer</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">ItemPerPageLink</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="kd">final</span> <span class="n">DataView</span><span class="o">&lt;?&gt;</span> <span class="n">dataView</span><span class="o">,</span> <span class="n">WebMarkupContainer</span> <span class="n">pagingLinksContainer</span><span class="o">,</span> <span class="kt">int</span> <span class="n">itemsPerPageValue</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">dataView</span> <span class="o">=</span> <span class="n">dataView</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">pagingLinksContainer</span> <span class="o">=</span> <span class="n">pagingLinksContainer</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">itemsPerPage</span> <span class="o">=</span> <span class="n">itemsPerPageValue</span><span class="o">;</span>
+</span><span class='line'>      <span class="n">setEnabled</span><span class="o">(</span><span class="n">itemsPerPageValue</span> <span class="o">!=</span> <span class="n">dataView</span><span class="o">.</span><span class="na">getItemsPerPage</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">dataView</span><span class="o">.</span><span class="na">setItemsPerPage</span><span class="o">(</span><span class="n">itemsPerPage</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="n">dataView</span><span class="o">.</span><span class="na">getPageCount</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onComponentTag</span><span class="o">(</span><span class="n">ComponentTag</span> <span class="n">tag</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">.</span><span class="na">onComponentTag</span><span class="o">(</span><span class="n">tag</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">tag</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;title&quot;</span><span class="o">,</span> <span class="n">itemsPerPage</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private final int itemsPerPage;
-private final DataView&lt;?&gt; dataView;
-private final WebMarkupContainer pagingLinksContainer;
-
-public ItemPerPageLink(final String id, final DataView&lt;?&gt; dataView, WebMarkupContainer pagingLinksContainer, int itemsPerPageValue) {
-    super(id);
-    this.dataView = dataView;
-    this.pagingLinksContainer = pagingLinksContainer;
-    this.itemsPerPage = itemsPerPageValue;
-    setEnabled(itemsPerPageValue != dataView.getItemsPerPage());
-
-}
-
-@Override
-public void onClick() {
-    dataView.setItemsPerPage(itemsPerPage);
-    pagingLinksContainer.setVisible(dataView.getPageCount() &gt; 1);
-}
-
-@Override
-protected void onComponentTag(ComponentTag tag) {
-    super.onComponentTag(tag);
-    tag.put("title", itemsPerPage);
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>In this class we:
 1. Disable link for number which is current dataView.itemsPerPage value.
@@ -316,224 +415,409 @@ protected void onComponentTag(ComponentTag tag) {
 
 <p>And that&rsquo;s all. For those who want complete solution in one place there is complete source of the class CustomPagingNavigator with its markup:</p>
 
-<p>[java]
-import java.util.Arrays;
-import java.util.List;</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+<span class='line-number'>119</span>
+<span class='line-number'>120</span>
+<span class='line-number'>121</span>
+<span class='line-number'>122</span>
+<span class='line-number'>123</span>
+<span class='line-number'>124</span>
+<span class='line-number'>125</span>
+<span class='line-number'>126</span>
+<span class='line-number'>127</span>
+<span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.Component</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.behavior.AbstractBehavior</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.ComponentTag</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.WebMarkupContainer</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.basic.Label</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.link.AbstractLink</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.link.Link</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.list.ListItem</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.list.ListView</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.navigation.paging.IPageable</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.navigation.paging.IPagingLabelProvider</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.navigation.paging.PagingNavigation</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.navigation.paging.PagingNavigationIncrementLink</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.navigation.paging.PagingNavigationLink</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.navigation.paging.PagingNavigator</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.panel.Panel</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.repeater.data.DataView</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomPagingNavigator</span> <span class="kd">extends</span> <span class="n">Panel</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">NAVIGATION_ID</span> <span class="o">=</span> <span class="s">&quot;navigation&quot;</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">DEFAULT_ITEMS_PER_PAGE_VALUES</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">25</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">PagingNavigation</span> <span class="n">pagingNavigation</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">DataView</span><span class="o">&lt;?&gt;</span> <span class="n">dataView</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">IPagingLabelProvider</span> <span class="n">labelProvider</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">itemsPerPageValues</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">WebMarkupContainer</span> <span class="n">pagingLinksContainer</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">CustomPagingNavigator</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="kd">final</span> <span class="n">DataView</span><span class="o">&lt;?&gt;</span> <span class="n">dataView</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">DEFAULT_ITEMS_PER_PAGE_VALUES</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">CustomPagingNavigator</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="kd">final</span> <span class="n">DataView</span><span class="o">&lt;?&gt;</span> <span class="n">dataView</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">itemsPerPageValues</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">itemsPerPageValues</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">CustomPagingNavigator</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="kd">final</span> <span class="n">DataView</span><span class="o">&lt;?&gt;</span> <span class="n">dataView</span><span class="o">,</span> <span class="kd">final</span> <span class="n">IPagingLabelProvider</span> <span class="n">labelProvider</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">(</span><span class="n">id</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="n">labelProvider</span><span class="o">,</span> <span class="n">DEFAULT_ITEMS_PER_PAGE_VALUES</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">CustomPagingNavigator</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="kd">final</span> <span class="n">DataView</span><span class="o">&lt;?&gt;</span> <span class="n">dataView</span><span class="o">,</span> <span class="kd">final</span> <span class="n">IPagingLabelProvider</span> <span class="n">labelProvider</span><span class="o">,</span>
+</span><span class='line'>          <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">itemsPerPageValues</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">dataView</span> <span class="o">=</span> <span class="n">dataView</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">labelProvider</span> <span class="o">=</span> <span class="n">labelProvider</span><span class="o">;</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">itemsPerPageValues</span> <span class="o">=</span> <span class="n">itemsPerPageValues</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">addContainerWithPagingLinks</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">addLinksChangingItemsPerPageNumber</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isVisible</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">dataView</span><span class="o">.</span><span class="na">getItemCount</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">addContainerWithPagingLinks</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WebMarkupContainer</span><span class="o">(</span><span class="s">&quot;pagingLinksContainer&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="nd">@Override</span>
+</span><span class='line'>          <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isVisible</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>              <span class="k">return</span> <span class="n">dataView</span><span class="o">.</span><span class="na">getPageCount</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>      <span class="o">};</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">pagingNavigation</span> <span class="o">=</span> <span class="n">newNavigation</span><span class="o">(</span><span class="n">dataView</span><span class="o">,</span> <span class="n">labelProvider</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pagingNavigation</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// Add additional page links</span>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">newPagingNavigationLink</span><span class="o">(</span><span class="s">&quot;first&quot;</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="mi">0</span><span class="o">).</span><span class="na">add</span><span class="o">(</span>
+</span><span class='line'>              <span class="k">new</span> <span class="nf">TitleAppender</span><span class="o">(</span><span class="s">&quot;PagingNavigator.first&quot;</span><span class="o">)));</span>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">newPagingNavigationIncrementLink</span><span class="o">(</span><span class="s">&quot;prev&quot;</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">).</span><span class="na">add</span><span class="o">(</span>
+</span><span class='line'>              <span class="k">new</span> <span class="nf">TitleAppender</span><span class="o">(</span><span class="s">&quot;PagingNavigator.previous&quot;</span><span class="o">)));</span>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">newPagingNavigationIncrementLink</span><span class="o">(</span><span class="s">&quot;next&quot;</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="mi">1</span><span class="o">).</span><span class="na">add</span><span class="o">(</span>
+</span><span class='line'>              <span class="k">new</span> <span class="nf">TitleAppender</span><span class="o">(</span><span class="s">&quot;PagingNavigator.next&quot;</span><span class="o">)));</span>
+</span><span class='line'>      <span class="n">pagingLinksContainer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">newPagingNavigationLink</span><span class="o">(</span><span class="s">&quot;last&quot;</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">).</span><span class="na">add</span><span class="o">(</span>
+</span><span class='line'>              <span class="k">new</span> <span class="nf">TitleAppender</span><span class="o">(</span><span class="s">&quot;PagingNavigator.last&quot;</span><span class="o">)));</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="n">pagingLinksContainer</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">protected</span> <span class="n">PagingNavigation</span> <span class="nf">newNavigation</span><span class="o">(</span><span class="kd">final</span> <span class="n">IPageable</span> <span class="n">pageable</span><span class="o">,</span> <span class="kd">final</span> <span class="n">IPagingLabelProvider</span> <span class="n">labelProvider</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">new</span> <span class="nf">PagingNavigation</span><span class="o">(</span><span class="n">NAVIGATION_ID</span><span class="o">,</span> <span class="n">pageable</span><span class="o">,</span> <span class="n">labelProvider</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">protected</span> <span class="n">AbstractLink</span> <span class="nf">newPagingNavigationIncrementLink</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">IPageable</span> <span class="n">pageable</span><span class="o">,</span> <span class="kt">int</span> <span class="n">increment</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">new</span> <span class="n">PagingNavigationIncrementLink</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;(</span><span class="n">id</span><span class="o">,</span> <span class="n">pageable</span><span class="o">,</span> <span class="n">increment</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">protected</span> <span class="n">AbstractLink</span> <span class="nf">newPagingNavigationLink</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">,</span> <span class="n">IPageable</span> <span class="n">pageable</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageNumber</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">new</span> <span class="n">PagingNavigationLink</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;(</span><span class="n">id</span><span class="o">,</span> <span class="n">pageable</span><span class="o">,</span> <span class="n">pageNumber</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">addLinksChangingItemsPerPageNumber</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">itemsPerPageList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;(</span><span class="s">&quot;itemsPerPage&quot;</span><span class="o">,</span> <span class="n">itemsPerPageValues</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="nd">@Override</span>
+</span><span class='line'>          <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="n">ListItem</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>              <span class="n">Link</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="n">itemPerPageLink</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ItemPerPageLink</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;(</span><span class="s">&quot;itemPerPageLink&quot;</span><span class="o">,</span> <span class="n">dataView</span><span class="o">,</span>
+</span><span class='line'>                      <span class="n">pagingLinksContainer</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">getModelObject</span><span class="o">());</span>
+</span><span class='line'>              <span class="n">itemPerPageLink</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;itemsValue&quot;</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">()));</span>
+</span><span class='line'>              <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">itemPerPageLink</span><span class="o">);</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>      <span class="o">};</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="n">itemsPerPageList</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">final</span> <span class="n">PagingNavigation</span> <span class="nf">getPagingNavigation</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">pagingNavigation</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">TitleAppender</span> <span class="kd">extends</span> <span class="n">AbstractBehavior</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">resourceKey</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kd">public</span> <span class="nf">TitleAppender</span><span class="o">(</span><span class="n">String</span> <span class="n">resourceKey</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="k">this</span><span class="o">.</span><span class="na">resourceKey</span> <span class="o">=</span> <span class="n">resourceKey</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nd">@Override</span>
+</span><span class='line'>      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onComponentTag</span><span class="o">(</span><span class="n">Component</span> <span class="n">component</span><span class="o">,</span> <span class="n">ComponentTag</span> <span class="n">tag</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">tag</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;title&quot;</span><span class="o">,</span> <span class="n">CustomPagingNavigator</span><span class="o">.</span><span class="na">this</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">resourceKey</span><span class="o">));</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>import org.apache.wicket.Component;
-import org.apache.wicket.behavior.AbstractBehavior;
-import org.apache.wicket.markup.ComponentTag;
-import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.link.AbstractLink;
-import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
-import org.apache.wicket.markup.html.navigation.paging.IPageable;
-import org.apache.wicket.markup.html.navigation.paging.IPagingLabelProvider;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigation;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigationIncrementLink;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigationLink;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
-import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.markup.repeater.data.DataView;</p>
-
-<p>public class CustomPagingNavigator extends Panel {</p>
-
-<pre><code>public static final String NAVIGATION_ID = "navigation";
-public static final List&lt;Integer&gt; DEFAULT_ITEMS_PER_PAGE_VALUES = Arrays.asList(5, 25, 50);
-
-private PagingNavigation pagingNavigation;
-private final DataView&lt;?&gt; dataView;
-private final IPagingLabelProvider labelProvider;
-private final List&lt;Integer&gt; itemsPerPageValues;
-private WebMarkupContainer pagingLinksContainer;
-
-public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView) {
-    this(id, dataView, null, DEFAULT_ITEMS_PER_PAGE_VALUES);
-}
-
-public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView, List&lt;Integer&gt; itemsPerPageValues) {
-    this(id, dataView, null, itemsPerPageValues);
-}
-
-public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView, final IPagingLabelProvider labelProvider) {
-    this(id, dataView, labelProvider, DEFAULT_ITEMS_PER_PAGE_VALUES);
-}
-
-public CustomPagingNavigator(final String id, final DataView&lt;?&gt; dataView, final IPagingLabelProvider labelProvider,
-        List&lt;Integer&gt; itemsPerPageValues) {
-    super(id);
-    this.dataView = dataView;
-    this.labelProvider = labelProvider;
-    this.itemsPerPageValues = itemsPerPageValues;
-
-    addContainerWithPagingLinks();
-    addLinksChangingItemsPerPageNumber();
-}
-
-@Override
-public boolean isVisible() {
-    return dataView.getItemCount() &gt; 0;
-}
-
-private void addContainerWithPagingLinks() {
-
-    pagingLinksContainer = new WebMarkupContainer("pagingLinksContainer") {
-        @Override
-        public boolean isVisible() {
-            return dataView.getPageCount() &gt; 1;
-        }
-    };
-
-    pagingNavigation = newNavigation(dataView, labelProvider);
-    pagingLinksContainer.add(pagingNavigation);
-
-    // Add additional page links
-    pagingLinksContainer.add(newPagingNavigationLink("first", dataView, 0).add(
-            new TitleAppender("PagingNavigator.first")));
-    pagingLinksContainer.add(newPagingNavigationIncrementLink("prev", dataView, -1).add(
-            new TitleAppender("PagingNavigator.previous")));
-    pagingLinksContainer.add(newPagingNavigationIncrementLink("next", dataView, 1).add(
-            new TitleAppender("PagingNavigator.next")));
-    pagingLinksContainer.add(newPagingNavigationLink("last", dataView, -1).add(
-            new TitleAppender("PagingNavigator.last")));
-
-    add(pagingLinksContainer);
-}
-
-protected PagingNavigation newNavigation(final IPageable pageable, final IPagingLabelProvider labelProvider) {
-    return new PagingNavigation(NAVIGATION_ID, pageable, labelProvider);
-}
-
-protected AbstractLink newPagingNavigationIncrementLink(String id, IPageable pageable, int increment) {
-    return new PagingNavigationIncrementLink&lt;Void&gt;(id, pageable, increment);
-}
-
-protected AbstractLink newPagingNavigationLink(String id, IPageable pageable, int pageNumber) {
-    return new PagingNavigationLink&lt;Void&gt;(id, pageable, pageNumber);
-}
-
-private void addLinksChangingItemsPerPageNumber() {
-    ListView&lt;Integer&gt; itemsPerPageList = new ListView&lt;Integer&gt;("itemsPerPage", itemsPerPageValues) {
-        @Override
-        protected void populateItem(ListItem&lt;Integer&gt; item) {
-            Link&lt;Void&gt; itemPerPageLink = new ItemPerPageLink&lt;Void&gt;("itemPerPageLink", dataView,
-                    pagingLinksContainer, item.getModelObject());
-            itemPerPageLink.add(new Label("itemsValue", item.getModel()));
-            item.add(itemPerPageLink);
-        }
-    };
-
-    add(itemsPerPageList);
-}
-
-public final PagingNavigation getPagingNavigation() {
-    return pagingNavigation;
-}
-
-private final class TitleAppender extends AbstractBehavior {
-    private static final long serialVersionUID = 1L;
-
-    private final String resourceKey;
-
-    public TitleAppender(String resourceKey) {
-        this.resourceKey = resourceKey;
-    }
-
-    @Override
-    public void onComponentTag(Component component, ComponentTag tag) {
-        tag.put("title", CustomPagingNavigator.this.getString(resourceKey));
-    }
-}
-</code></pre>
-
-<p>}</p>
-
-<p>[/java]</p>
 
 <p>And its markup:</p>
 
-<p>[html]
-&lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;UTF-8&rdquo; ?>
-<html xmlns:wicket>
-<body>
-&lt;wicket:panel></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns:wicket</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'><span class="nt">&lt;wicket:panel&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div&gt;</span>
+</span><span class='line'>            Items per page:
+</span><span class='line'>        <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;itemsPerPage&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">&quot;itemPerPageLink&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;itemsValue&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/a&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">wicket:id=</span><span class="s">&quot;pagingLinksContainer&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;table&gt;</span>
+</span><span class='line'>
+</span><span class='line'>                <span class="nt">&lt;tbody&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;tr</span> <span class="na">valign=</span><span class="s">&quot;top&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;td&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">&quot;first&quot;</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                            <span class="nt">&lt;span&gt;</span>First<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;td&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">&quot;prev&quot;</span>  <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                            <span class="nt">&lt;span&gt;</span>Previous<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;td</span> <span class="na">wicket:id=</span><span class="s">&quot;navigation&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">&quot;pageLink&quot;</span><span class="nt">&gt;&lt;span</span>
+</span><span class='line'>                                <span class="na">wicket:id=</span><span class="s">&quot;pageNumber&quot;</span><span class="nt">&gt;</span>5<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>
+</span><span class='line'>                    <span class="nt">&lt;td&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">&quot;next&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                            <span class="nt">&lt;span&gt;</span>Next<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;td&gt;</span>
+</span><span class='line'>                        <span class="nt">&lt;a</span> <span class="na">wicket:id=</span><span class="s">&quot;last&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                            <span class="nt">&lt;span&gt;</span>Last<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+</span><span class='line'>                    <span class="nt">&lt;/td&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;/tbody&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/table&gt;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/wicket:panel&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>&lt;div&gt;
-    &lt;div&gt;
-        Items per page:
-    &lt;span wicket:id="itemsPerPage"&gt;
-        &lt;a wicket:id="itemPerPageLink"&gt;&lt;span wicket:id="itemsValue"&gt;&lt;/span&gt;&lt;/a&gt;
-    &lt;/span&gt;
-    &lt;/div&gt;
-    &lt;div wicket:id="pagingLinksContainer"&gt;
-        &lt;table&gt;
-
-            &lt;tbody&gt;
-            &lt;tr valign="top"&gt;
-                &lt;td&gt;
-                    &lt;a wicket:id="first" href=""&gt;
-                        &lt;span&gt;First&lt;/span&gt;
-                    &lt;/a&gt;
-                &lt;/td&gt;
-                &lt;td&gt;
-                    &lt;a wicket:id="prev"  href=""&gt;
-                        &lt;span&gt;Previous&lt;/span&gt;
-                    &lt;/a&gt;
-                &lt;/td&gt;
-                &lt;td wicket:id="navigation"&gt;
-                    &lt;a wicket:id="pageLink"&gt;&lt;span
-                            wicket:id="pageNumber"&gt;5&lt;/span&gt;&lt;/a&gt;
-                &lt;/td&gt;
-
-                &lt;td&gt;
-                    &lt;a wicket:id="next" href="#"&gt;
-                        &lt;span&gt;Next&lt;/span&gt;&lt;/a&gt;
-                &lt;/td&gt;
-                &lt;td&gt;
-                    &lt;a wicket:id="last" href="#"&gt;
-                        &lt;span&gt;Last&lt;/span&gt;&lt;/a&gt;
-                &lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;/tbody&gt;
-        &lt;/table&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-
-<p>&lt;/wicket:panel>
-</body>
-</html></p>
-
-<p>[/html]</p>
 
 <h3>Usage of the component</h3>
 
 <p>Our newly created component can be used in a very similar way to the standard Wicket PagingNavigator:</p>
 
-<p>[java]
-public class DataViewPanel extends Panel {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DataViewPanel</span> <span class="kd">extends</span> <span class="n">Panel</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">DataViewPanel</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">DataView</span> <span class="n">dataView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DataView</span><span class="o">(</span><span class="s">&quot;dataView&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">CustomDataProvider</span><span class="o">());</span>
+</span><span class='line'>      <span class="n">dataView</span><span class="o">.</span><span class="na">setItemsPerPage</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="n">dataView</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">CustomPagingNavigator</span> <span class="n">customPagingNavigator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CustomPagingNavigator</span><span class="o">(</span><span class="s">&quot;paginator&quot;</span><span class="o">,</span> <span class="n">dataView</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="n">customPagingNavigator</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>public DataViewPanel(String id) {
-    super(id);
-    DataView dataView = new DataView("dataView", new CustomDataProvider());
-    dataView.setItemsPerPage(5);
-    add(dataView);
-
-    CustomPagingNavigator customPagingNavigator = new CustomPagingNavigator("paginator", dataView);
-    add(customPagingNavigator);
-}
-</code></pre>
-
-<p>}</p>
-
-<p>[/java]</p>
 </div>
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

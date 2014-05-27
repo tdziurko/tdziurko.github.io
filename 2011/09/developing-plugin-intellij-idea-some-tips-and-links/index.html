@@ -150,7 +150,7 @@
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 	<h1 class="title" itemprop="name">Developing a Plugin for IntelliJ IDEA - Some Useful Tips and Links</h1>
-	<div class="entry-content" itemprop="articleBody"><p>When I started thinking about writing my first plugin for IntelliJ IDEA the biggest problem was lack of good and comprehensive guides how to do it and how to do it well gathered in one place. So this post will be a written collection of my personal experiences, links and other resources I found useful and noteworthy in my road to releasing <a href="http://tomaszdziurko.pl/2011/08/share-pastie-plugin-intellij-idea/">Share with Pastie</a> plugin to <a href="http://plugins.intellij.net/plugin/?idea&amp;id=6267">public IntelliJ repository</a>.</p>
+	<div class="entry-content" itemprop="articleBody"><p>When I started thinking about writing my first plugin for IntelliJ IDEA the biggest problem was lack of good and comprehensive guides how to do it and how to do it well gathered in one place. So this post will be a written collection of my personal experiences, links and other resources I found useful and noteworthy in my road to releasing [Share with Pastie](&lt;a href=&ldquo;/2011/08/share-pastie-plugin-intellij-idea/) plugin to <a href="http://plugins.intellij.net/plugin/?idea&amp;id=6267">public IntelliJ repository</a>.</p>
 
 <h3>Links</h3>
 
@@ -186,13 +186,18 @@
 
 <p>Your plugin action should extend AnAction abstract class from IntelliJ OpenAPI. The only parameter passed to actionPerformed method is AnActionEvent. And from this object you can access various places:</p>
 
-<p>[java]
-Project currentProject = DataKeys.PROJECT.getData(actionEvent.getDataContext());
-VirtualFile currentFile = DataKeys.VIRTUAL_FILE.getData(actionEvent.getDataContext());
-Editor editor = DataKeys.EDITOR.getData(actionEvent.getDataContext());</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Project</span> <span class="n">currentProject</span> <span class="o">=</span> <span class="n">DataKeys</span><span class="o">.</span><span class="na">PROJECT</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">actionEvent</span><span class="o">.</span><span class="na">getDataContext</span><span class="o">());</span>
+</span><span class='line'><span class="n">VirtualFile</span> <span class="n">currentFile</span> <span class="o">=</span> <span class="n">DataKeys</span><span class="o">.</span><span class="na">VIRTUAL_FILE</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">actionEvent</span><span class="o">.</span><span class="na">getDataContext</span><span class="o">());</span>
+</span><span class='line'><span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">DataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">actionEvent</span><span class="o">.</span><span class="na">getDataContext</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// and so on...</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>// and so on&hellip;
-[/java]</p>
 
 <p>List of all places available in this way can be found in <a href="http://grepcode.com/file/repository.grepcode.com/java/ext/com.jetbrains/intellij-idea/10.0/com/intellij/openapi/actionSystem/DataKeys.java">DataKeys</a> class (and its parents) constants list.</p>
 
@@ -200,31 +205,33 @@ Editor editor = DataKeys.EDITOR.getData(actionEvent.getDataContext());</p>
 
 <p>This kind of popup is very useful to communicate feedback messages to user. It can be info message or error/warn. Default colors are green for info, red for error and orange for warnings. In Share With Pastie I am using it to inform that selected text was successfully sent to Pastie and link is waiting in clipboard.</p>
 
-<p><a href="/images/blog/2011/08/plugin_2.png"><img src="/images/blog/2011/08/plugin_2.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/08/plugin_2.png" alt="" /></p>
 
 <p>But before we show our balloon we need to specify a place when it will be located. In my plugin it is StatusBar (the lowest element in IDEA GUI):</p>
 
-<p>[java]
-StatusBar statusBar = WindowManager.getInstance()</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">StatusBar</span> <span class="n">statusBar</span> <span class="o">=</span> <span class="n">WindowManager</span><span class="o">.</span><span class="na">getInstance</span><span class="o">()</span>
+</span><span class='line'>                        <span class="o">.</span><span class="na">getStatusBar</span><span class="o">(</span><span class="n">DataKeys</span><span class="o">.</span><span class="na">PROJECT</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">actionEvent</span><span class="o">.</span><span class="na">getDataContext</span><span class="o">()));</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>                    .getStatusBar(DataKeys.PROJECT.getData(actionEvent.getDataContext()));
-</code></pre>
-
-<p>[/java]</p>
 
 <p>and then we can prepare balloon and display it:</p>
 
-<p>[java]
-JBPopupFactory.getInstance()</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">JBPopupFactory</span><span class="o">.</span><span class="na">getInstance</span><span class="o">()</span>
+</span><span class='line'>                <span class="o">.</span><span class="na">createHtmlTextBalloonBuilder</span><span class="o">(</span><span class="n">htmlText</span><span class="o">,</span> <span class="n">messageType</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
+</span><span class='line'>                <span class="o">.</span><span class="na">setFadeoutTime</span><span class="o">(</span><span class="mi">7500</span><span class="o">)</span>
+</span><span class='line'>                <span class="o">.</span><span class="na">createBalloon</span><span class="o">()</span>
+</span><span class='line'>                <span class="o">.</span><span class="na">show</span><span class="o">(</span><span class="n">RelativePoint</span><span class="o">.</span><span class="na">getCenterOf</span><span class="o">(</span><span class="n">statusBar</span><span class="o">.</span><span class="na">getComponent</span><span class="o">()),</span>
+</span><span class='line'>                                                 <span class="n">Balloon</span><span class="o">.</span><span class="na">Position</span><span class="o">.</span><span class="na">atRight</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>            .createHtmlTextBalloonBuilder(htmlText, messageType, null)
-            .setFadeoutTime(7500)
-            .createBalloon()
-            .show(RelativePoint.getCenterOf(statusBar.getComponent()),
-                                             Balloon.Position.atRight);
-</code></pre>
-
-<p>[/java]</p>
 
 <h3>A few trivias</h3>
 
@@ -240,13 +247,13 @@ JBPopupFactory.getInstance()</p>
 
 <p>When I was searching for a proper place to show my action in one of the menus available inside IntelliJ IDEA I encountered <a href="http://keithlea.com/idea-actions/">a page </a>with list of group and action IDs which could help me with configuring my plugin. But this page appeared to be really outdated so I tried to find another way to determine proper values of those IDs. And of course, solution was lying just in front of me. If we press Alt + Insert in project view we will see a menu allowing to create several new objects. And one of them is Action. After clicking it, we will see a very friendly action creator which will looks like below. And of course it contains list of available groups and actions to place our plugin menu item next to them.</p>
 
-<p><a href="/images/blog/2011/09/actions_ids.png"><img src="/images/blog/2011/09/actions_ids.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/09/actions_ids.png" alt="" /></p>
 
 <p><strong>Proper VM memory settings</strong></p>
 
 <p>Next thing is to configure your run/debug configuration to work properly because depending on your hardware setup (available memory mainly) and IntelliJ IDEA settings you might encounter freezes when starting your plugin in development mode (most frequently those are crashes during index rebuilding) .</p>
 
-<p><a href="/images/blog/2011/09/run_config.png"><img src="/images/blog/2011/09/run_config.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/09/run_config.png" alt="" /></p>
 
 <p>To prevent such problems you should configure memory settings in &ldquo;Run/Debug Configurations&rdquo; window and add proper Virtual Machine parameters. For me <em>-Xms256m -XX:PermSize=128m -XX:MaxPermSize=512m</em> worked well.</p>
 
@@ -260,6 +267,7 @@ JBPopupFactory.getInstance()</p>
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

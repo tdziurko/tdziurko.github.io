@@ -161,60 +161,92 @@
 
 <p>At the begginning assume that we have to write an application to generate a timesheet report from a given month. So simplified use case is: connect to application where all data is stored and load what everything we need. To perform this operation we need four parameters: url to the application where data is stored, authentication token and of course number of month and year. So let&rsquo;s create a settings class where all this data will be stored.</p>
 
-<p>[java]
-public class Settings {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Settings</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">url</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">authenticationToken</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">month</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">year</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private String url;
-
-private String authenticationToken;
-
-private Integer month;
-
-private Integer year;
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>and our Main application class with <em>main()</em> method:</p>
 
-<p>[java]
-public class Main {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Settings</span> <span class="n">settings</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Settings</span><span class="o">();</span>
+</span><span class='line'>        <span class="c1">// somehow pass args[] to settings object</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// do the logic</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>public static void main(String[] args) {
-
-    Settings settings = new Settings();
-    // somehow pass args[] to settings object
-
-    // do the logic
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>But how should we pass all stuff from command line parameters to the <em>Settings</em> class so it is automatically initialized with these values? It&rsquo;s simple!</p>
 
 <p>First we have to annotate fields in <em>Settings</em> class using <em>@Parameter</em> so JCommander will know how to map parameters from command line to fields.</p>
 
-<p>[java]
-public class Settings {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Settings</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Parameter</span><span class="o">(</span><span class="n">names</span> <span class="o">=</span> <span class="s">&quot;-url&quot;</span><span class="o">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Server address&quot;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">url</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Parameter</span><span class="o">(</span><span class="n">names</span> <span class="o">=</span> <span class="s">&quot;-token&quot;</span><span class="o">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Authentication token&quot;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">authenticationToken</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Parameter</span><span class="o">(</span><span class="n">names</span> <span class="o">=</span> <span class="s">&quot;-month&quot;</span><span class="o">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Number of month (1-12) for timesheet&quot;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">month</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Parameter</span><span class="o">(</span><span class="n">names</span> <span class="o">=</span> <span class="s">&quot;-year&quot;</span><span class="o">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Year&quot;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">year</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Parameter(names = "-url", description = "Server address", required = true)
-private String url;
-
-@Parameter(names = "-token", description = "Authentication token", required = true)
-private String authenticationToken;
-
-@Parameter(names = "-month", description = "Number of month (1-12) for timesheet", required = true)
-private Integer month;
-
-@Parameter(names = "-year", description = "Year", required = true)
-private Integer year;
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>Annotation we&rsquo;ve added looks pretty straightforward. We define name of parameter and whether it is required or not. If we do not provide a token (which is required) in command line we will get something similar to:</p>
 
@@ -223,19 +255,26 @@ private Integer year;
 
 <p>And in next step we have to inform JCommander which object should be initialized with data extracted from command line. It&rsquo;s a simple one-liner.</p>
 
-<p>[java]
-public class Main {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Settings</span> <span class="n">settings</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Settings</span><span class="o">();</span>
+</span><span class='line'>        <span class="k">new</span> <span class="nf">JCommander</span><span class="o">(</span><span class="n">settings</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span> <span class="c1">// simple one-liner</span>
+</span><span class='line'>        <span class="c1">// do the logic</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>public static void main(String[] args) {
-
-    Settings settings = new Settings();
-    new JCommander(settings, args); // simple one-liner
-    // do the logic
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>And that&rsquo;s all. We have simple JCommander example working and all settings passed via command line params are now initialized in Settings object.</p>
 
@@ -245,15 +284,16 @@ public class Main {</p>
 
 <p>But then we receive some new feature requests. We have to generate report for a list of projects. It can be only one project but it can be more. So how can we implement it? Nothing difficult. We add <em>List<String></em> projects to our settings class and mark it as a required parameter.</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>    <span class="nd">@Parameter</span><span class="o">(</span><span class="n">names</span> <span class="o">=</span> <span class="s">&quot;-project&quot;</span><span class="o">,</span>
+</span><span class='line'>        <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Codes of projects to be included in timesheet report&quot;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">projectCodes</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Parameter(names = "-project", 
-    description = "Codes of projects to be included in timesheet report", required = true)
-private List&lt;String&gt; projectCodes;
-</code></pre>
 
-<p>[/java]
-Seeing a Collection JCommander will detect that it should expect multiple values for project parameter name. And if we call our console application with something like</p>
+<p>Seeing a Collection JCommander will detect that it should expect multiple values for project parameter name. And if we call our console application with something like</p>
 
 <pre><code>java -jar Application.jar -project Project1 -project Project2 - project Project3
 </code></pre>
@@ -264,103 +304,150 @@ Seeing a Collection JCommander will detect that it should expect multiple values
 
 <p>If we want to validate that month parameter is between 1 and 12 we can do it easily with just one method from interface <em>IParameterValidator</em>. In our case it will look like show below:</p>
 
-<p>[java]
-public class MonthValidator implements IParameterValidator {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MonthValidator</span> <span class="kd">implements</span> <span class="n">IParameterValidator</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">validate</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">String</span> <span class="n">value</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ParameterException</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">month</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span><span class="o">(</span><span class="n">month</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">month</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">throw</span> <span class="k">new</span> <span class="nf">ParameterException</span><span class="o">(</span><span class="s">&quot;Parameter &quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&quot; should be between 1 and 12&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-public void validate(String name, String value) throws ParameterException {
-    int month = Integer.parseInt(value);
-
-    if(month &lt; 1 || month &gt; 12) {
-        throw new ParameterException("Parameter " + name + " should be between 1 and 12");
-    }
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>and we have to declare this validator using <em>validateWith</em> from <em>@Parameter</em> annotation:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Parameter</span><span class="o">(</span><span class="n">names</span> <span class="o">=</span> <span class="s">&quot;-month&quot;</span><span class="o">,</span>
+</span><span class='line'>    <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Number of month (1-12) for timesheet&quot;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="n">validateWith</span> <span class="o">=</span> <span class="n">MonthValidator</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">Integer</span> <span class="n">month</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Parameter(names = "-month", 
-    description = "Number of month (1-12) for timesheet", required = true, validateWith = MonthValidator.class)
-private Integer month;
-</code></pre>
-
-<p>[/java]</p>
 
 <p><strong>Input conversion</strong></p>
 
 <p>Sometimes we need to have one of our options mapped to something more than a simple basic type. Let&rsquo;s say that in our example console application user should provide type of report output he/she wants to get. It could be console output, pdf or xls file. So in out <em>Settings</em> class we have a enum <em>OutputEnum</em> with three allowed values:</p>
 
-<p>[java]
-public class Settings {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Settings</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// ...</span>
+</span><span class='line'>    <span class="nd">@Parameter</span><span class="o">(</span><span class="n">names</span> <span class="o">=</span> <span class="s">&quot;-output&quot;</span><span class="o">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Report output format&quot;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">OutputEnum</span> <span class="n">output</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">enum</span> <span class="n">OutputEnum</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">CONSOLE</span><span class="o">,</span>
+</span><span class='line'>    <span class="n">PDF</span><span class="o">,</span>
+</span><span class='line'>    <span class="n">XLS</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// converter that will be used later</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">OutputEnum</span> <span class="nf">fromString</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="n">OutputEnum</span> <span class="n">output</span> <span class="o">:</span> <span class="n">OutputEnum</span><span class="o">.</span><span class="na">values</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">if</span><span class="o">(</span><span class="n">output</span><span class="o">.</span><span class="na">toString</span><span class="o">().</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">code</span><span class="o">))</span> <span class="o">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="n">output</span><span class="o">;</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>// ...
-@Parameter(names = "-output", description = "Report output format", required = true)    
-private OutputEnum output;
-</code></pre>
-
-<p>}</p>
-
-<p>public enum OutputEnum {</p>
-
-<pre><code>CONSOLE,
-PDF,
-XLS;
-
-// converter that will be used later
-public static OutputEnum fromString(String code) {
-
-    for(OutputEnum output : OutputEnum.values()) {
-        if(output.toString().equalsIgnoreCase(code)) {
-            return output;
-        }
-    }
-
-    return null;
-}
-</code></pre>
-
-<p>}</p>
-
-<p>[/java]</p>
 
 <p>But now JCommander doesn&rsquo;t know how to work with our new enum class. We need to provide a converter. So let&rsquo;s create one. And again, it&rsquo;s easy :) We have to implement one method from <em>IStringConverter</em> and throw <em>ParameterException</em> when something is wrong.</p>
 
-<p>[java]
-public class OutputConverter implements IStringConverter<OutputEnum> {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OutputConverter</span> <span class="kd">implements</span> <span class="n">IStringConverter</span><span class="o">&lt;</span><span class="n">OutputEnum</span><span class="o">&gt;</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">OutputEnum</span> <span class="nf">convert</span><span class="o">(</span><span class="n">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">OutputEnum</span> <span class="n">convertedValue</span> <span class="o">=</span> <span class="n">OutputEnum</span><span class="o">.</span><span class="na">fromString</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span><span class="o">(</span><span class="n">convertedValue</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">throw</span> <span class="k">new</span> <span class="nf">ParameterException</span><span class="o">(</span><span class="s">&quot;Value &quot;</span> <span class="o">+</span> <span class="n">value</span> <span class="o">+</span> <span class="s">&quot;can not be converted to OutputEnum. &quot;</span> <span class="o">+</span>
+</span><span class='line'>                    <span class="s">&quot;Available values are: console, pdf, xls.&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">convertedValue</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-public OutputEnum convert(String value) {
-    OutputEnum convertedValue = OutputEnum.fromString(value);
-
-    if(convertedValue == null) {
-        throw new ParameterException("Value " + value + "can not be converted to OutputEnum. " +
-                "Available values are: console, pdf, xls.");
-    }
-    return convertedValue;
-}
-</code></pre>
-
-<p>}</p>
-
-<p>[/java]</p>
 
 <p>and when converter is ready, we should inform JCommander to use it on one of fields in Settings class with <em>converter</em> annotation parameter.</p>
 
-<p>[java]
-public class Settings {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Settings</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// ...</span>
+</span><span class='line'>    <span class="nd">@Parameter</span><span class="o">(</span><span class="n">names</span> <span class="o">=</span> <span class="s">&quot;-output&quot;</span><span class="o">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Report output format&quot;</span><span class="o">,</span> <span class="n">required</span> <span class="o">=</span> <span class="kc">true</span><span class="o">,</span> <span class="o">,</span> <span class="n">converter</span> <span class="o">=</span> <span class="n">OutputConverter</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">OutputEnum</span> <span class="n">output</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>// ...
-@Parameter(names = "-output", description = "Report output format", required = true, , converter = OutputConverter.class)    
-private OutputEnum output;
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>And now settings object will be correctly initialized with OutputEnum.</p>
 
@@ -371,6 +458,7 @@ private OutputEnum output;
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

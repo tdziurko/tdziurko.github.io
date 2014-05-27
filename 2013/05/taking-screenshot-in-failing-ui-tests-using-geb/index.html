@@ -150,7 +150,10 @@
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 	<h1 class="title" itemprop="name">Taking a Screenshot When UI Tests Written in Geb Fail</h1>
-	<div class="entry-content" itemprop="articleBody"><p>This is a second post about <a href="http://www.gebish.org/"><strong>Geb</strong></a> in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.</p>
+	<div class="entry-content" itemprop="articleBody"><!-- more -->
+
+
+<p>This is a second post about <a href="http://www.gebish.org/"><strong>Geb</strong></a> in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.</p>
 
 <h3>The Problem</h3>
 
@@ -159,9 +162,6 @@
 <h3>Solution</h3>
 
 <p>We have to find some type of listener that waits for different test results and fires proper method when test fails. In <a href="http://testng.org/">TestNG</a> we have a <a href="http://testng.org/javadocs/org/testng/TestListenerAdapter.html">TestListenerAdapter</a> so probably Geb or Spock should have something similar.</p>
-
-<!-- more -->
-
 
 <p>After some digging I was able to locate <em>IRunListener</em> with method I need:
 [groovy]
@@ -228,10 +228,12 @@ void visitSpec(SpecInfo specInfo) {
 [/groovy]</p>
 
 <p><strong>Registering Spock global extension</strong>
-Each global extension have to be registered to Spock. This can be achieved by placing text file with easy to remember name in META-INF/services directory. File must be named <em>org.spockframework.runtime.extension.IGlobalExtension</em> and should contain full name of our implementation of IGlobalExtension interface:
-[java]
-com.smscpl.mc5.uitests.geb_extensions.GlobalSpecExtension
-[/java]</p>
+Each global extension have to be registered to Spock. This can be achieved by placing text file with easy to remember name in META-INF/services directory. File must be named <em>org.spockframework.runtime.extension.IGlobalExtension</em> and should contain full name of our implementation of IGlobalExtension interface:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">com</span><span class="o">.</span><span class="na">smscpl</span><span class="o">.</span><span class="na">mc5</span><span class="o">.</span><span class="na">uitests</span><span class="o">.</span><span class="na">geb_extensions</span><span class="o">.</span><span class="na">GlobalSpecExtension</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p><strong>Taking a screenshot on each UI test fail</strong>
 Now on each test fail we will see that our text message is printed to the console. This proves that our solution is going in the right direction and last thing still not implemented is taking a screenshot.</p>
@@ -296,6 +298,7 @@ class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

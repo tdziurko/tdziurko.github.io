@@ -156,44 +156,65 @@
 
 <p>To listen to some events we need a listener class. Such class created in <em>google-guava-way</em> doesn&rsquo;t have to implement any particular interface or extend any specified class. It can be any class with just one required element: a method marked with <em>@Subscribe</em> annotation:</p>
 
-<p>[java]
-public class EventListener {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EventListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="n">lastMessage</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Subscribe</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">listen</span><span class="o">(</span><span class="n">OurTestEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">lastMessage</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getMessage</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getLastMessage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">lastMessage</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>public int lastMessage = 0;
-
-@Subscribe
-public void listen(OurTestEvent event) {
-    lastMessage = event.getMessage();
-}
-
-public int getLastMessage() {
-    return lastMessage;
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p><em>lastMessage</em> property is used in tests below to check if events were received successfully.</p>
 
 <p>And of course we need an event class to send it around:</p>
 
-<p>[java]
-public class OurTestEvent {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OurTestEvent</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">message</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">OurTestEvent</span><span class="o">(</span><span class="kt">int</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMessage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">message</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private final int message;
-
-public OurTestEvent(int message) {
-    this.message = message;
-}
-
-public int getMessage() {
-    return message;
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <h4>How it works</h4>
 
@@ -202,26 +223,40 @@ public int getMessage() {
 <!-- more -->
 
 
-<p>[java]</p>
 
-<pre><code>@Test
-public void shouldReceiveEvent() throws Exception {
 
-    // given
-    EventBus eventBus = new EventBus("test");
-    EventListener listener = new EventListener();
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Test</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldReceiveEvent</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// given</span>
+</span><span class='line'>    <span class="n">EventBus</span> <span class="n">eventBus</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventBus</span><span class="o">(</span><span class="s">&quot;test&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">EventListener</span> <span class="n">listener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventListener</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">eventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">listener</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// when</span>
+</span><span class='line'>    <span class="n">eventBus</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="k">new</span> <span class="n">OurTestEvent</span><span class="o">(</span><span class="mi">200</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// then</span>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">listener</span><span class="o">.</span><span class="na">getLastMessage</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">200</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-    eventBus.register(listener);
-
-    // when
-    eventBus.post(new OurTestEvent(200));
-
-    // then
-    assertThat(listener.getLastMessage()).isEqualTo(200);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>This test can not be simpler :) We create EventBus instance and listener class instance, then register listener and post new event. And of course this test passes :)</p>
 
@@ -229,58 +264,93 @@ public void shouldReceiveEvent() throws Exception {
 
 <p>Guava also allows to create listener that is reacting for many different events. We just need to annotate many methods with @Subscribe and that&rsquo;s all:</p>
 
-<p>[java]
-public class MultipleListener {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MultipleListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Integer</span> <span class="n">lastInteger</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Long</span> <span class="n">lastLong</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Subscribe</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">listenInteger</span><span class="o">(</span><span class="n">Integer</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">lastInteger</span> <span class="o">=</span> <span class="n">event</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Subscribe</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">listenLong</span><span class="o">(</span><span class="n">Long</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">lastLong</span> <span class="o">=</span> <span class="n">event</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getLastInteger</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">lastInteger</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">getLastLong</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">lastLong</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>public Integer lastInteger;
-public Long lastLong;
-
-@Subscribe
-public void listenInteger(Integer event) {
-    lastInteger = event;
-}
-
-@Subscribe
-public void listenLong(Long event) {
-    lastLong = event;
-}
-
-public Integer getLastInteger() {
-    return lastInteger;
-}
-
-public Long getLastLong() {
-    return lastLong;
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>and a simple example:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Test</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldReceiveMultipleEvents</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// given</span>
+</span><span class='line'>    <span class="n">EventBus</span> <span class="n">eventBus</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventBus</span><span class="o">(</span><span class="s">&quot;test&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">MultipleListener</span> <span class="n">multiListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MultipleListener</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">eventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">multiListener</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// when</span>
+</span><span class='line'>    <span class="n">eventBus</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">));</span>
+</span><span class='line'>    <span class="n">eventBus</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="k">new</span> <span class="n">Long</span><span class="o">(</span><span class="mi">800</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// then</span>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">multiListener</span><span class="o">.</span><span class="na">getLastInteger</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">multiListener</span><span class="o">.</span><span class="na">getLastLong</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">800L</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Test
-public void shouldReceiveMultipleEvents() throws Exception {
-
-    // given
-    EventBus eventBus = new EventBus("test");
-    MultipleListener multiListener = new MultipleListener();
-
-    eventBus.register(multiListener);
-
-    // when
-    eventBus.post(new Integer(100));
-    eventBus.post(new Long(800));
-
-    // then
-    assertThat(multiListener.getLastInteger()).isEqualTo(100);
-    assertThat(multiListener.getLastLong()).isEqualTo(800L);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>We don&rsquo;t have to implement multiple interfaces, Guava provides a nice and clean solution with one annotation.</p>
 
@@ -294,48 +364,73 @@ public void shouldReceiveMultipleEvents() throws Exception {
 
 <p>First unusal thing is a <a href="http://docs.guava-libraries.googlecode.com/git-history/v11.0.1/javadoc/com/google/common/eventbus/DeadEvent.html">DeadEvent</a> class, predefined event which is fired when we&rsquo;ve posted any type of event but no one was there to receive it. To see how it works let&rsquo;s create listener waiting for dead events:</p>
 
-<p>[java]
-/<em>*
- * Listener waiting for the event that any message was posted but not delivered to anyone
- </em>/
-public class DeadEventListener {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * Listener waiting for the event that any message was posted but not delivered to anyone</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DeadEventListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">boolean</span> <span class="n">notDelivered</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Subscribe</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">listen</span><span class="o">(</span><span class="n">DeadEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">notDelivered</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isNotDelivered</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">notDelivered</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>boolean notDelivered = false;
-
-@Subscribe
-public void listen(DeadEvent event) {
-    notDelivered = true;
-}
-
-public boolean isNotDelivered() {
-    return notDelivered;
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>and test case showing how it works:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Test</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldDetectEventWithoutListeners</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// given</span>
+</span><span class='line'>    <span class="n">EventBus</span> <span class="n">eventBus</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventBus</span><span class="o">(</span><span class="s">&quot;test&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">DeadEventListener</span> <span class="n">deadEventListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DeadEventListener</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">eventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">deadEventListener</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// when</span>
+</span><span class='line'>    <span class="n">eventBus</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="k">new</span> <span class="n">OurTestEvent</span><span class="o">(</span><span class="mi">200</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">deadEventListener</span><span class="o">.</span><span class="na">isNotDelivered</span><span class="o">()).</span><span class="na">isTrue</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Test
-public void shouldDetectEventWithoutListeners() throws Exception {
-
-    // given
-    EventBus eventBus = new EventBus("test");
-
-    DeadEventListener deadEventListener = new DeadEventListener();
-    eventBus.register(deadEventListener);
-
-    // when
-    eventBus.post(new OurTestEvent(200));
-
-    assertThat(deadEventListener.isNotDelivered()).isTrue();
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>So if there was no listener waiting for event which was posted, EventBus fires DeadEvent so we could do something or at least add info to log files to be aware that such situation occured.</p>
 
@@ -343,76 +438,118 @@ public void shouldDetectEventWithoutListeners() throws Exception {
 
 <p>Another interesting feature is that listeners can leverage existing events hierarchy. So if Listener A is waiting for events A, and event A has a subclass named B, this listener will receive both type of events: A and B. This can be presented with short example. Let&rsquo;s create two listeners, one listening for Number class events and second one for Integer (which in case you didn&rsquo;t know is a subclass of Number :) ):</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NumberListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Number</span> <span class="n">lastMessage</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Subscribe</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">listen</span><span class="o">(</span><span class="n">Number</span> <span class="n">integer</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">lastMessage</span> <span class="o">=</span> <span class="n">integer</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Number</span> <span class="nf">getLastMessage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">lastMessage</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public class NumberListener {</p>
 
-<pre><code>private Number lastMessage;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">IntegerListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">lastMessage</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Subscribe</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">listen</span><span class="o">(</span><span class="n">Integer</span> <span class="n">integer</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">lastMessage</span> <span class="o">=</span> <span class="n">integer</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">getLastMessage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">lastMessage</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-@Subscribe
-public void listen(Number integer) {
-    lastMessage = integer;
-}
-
-public Number getLastMessage() {
-    return lastMessage;
-}
-</code></pre>
-
-<p>}</p>
-
-<p>[/java]
-[java]
-public class IntegerListener {</p>
-
-<pre><code>private Integer lastMessage;
-
-@Subscribe
-public void listen(Integer integer) {
-    lastMessage = integer;
-}
-
-public Integer getLastMessage() {
-    return lastMessage;
-}
-</code></pre>
-
-<p>}</p>
-
-<p>[/java]</p>
 
 <p>And a test method showing this feauture:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Test</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldGetEventsFromSubclass</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// given</span>
+</span><span class='line'>    <span class="n">EventBus</span> <span class="n">eventBus</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventBus</span><span class="o">(</span><span class="s">&quot;test&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">IntegerListener</span> <span class="n">integerListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntegerListener</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">NumberListener</span> <span class="n">numberListener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NumberListener</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">eventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">integerListener</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">eventBus</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">numberListener</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// when</span>
+</span><span class='line'>    <span class="n">eventBus</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">(</span><span class="mi">100</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// then</span>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">integerListener</span><span class="o">.</span><span class="na">getLastMessage</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">numberListener</span><span class="o">.</span><span class="na">getLastMessage</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//when</span>
+</span><span class='line'>    <span class="n">eventBus</span><span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="k">new</span> <span class="n">Long</span><span class="o">(</span><span class="mi">200L</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// then</span>
+</span><span class='line'>    <span class="c1">// this one should has the old value as it listens only for Integers</span>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">integerListener</span><span class="o">.</span><span class="na">getLastMessage</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">numberListener</span><span class="o">.</span><span class="na">getLastMessage</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">200L</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Test
-public void shouldGetEventsFromSubclass() throws Exception {
-
-    // given
-    EventBus eventBus = new EventBus("test");
-    IntegerListener integerListener = new IntegerListener();
-    NumberListener numberListener = new NumberListener();
-    eventBus.register(integerListener);
-    eventBus.register(numberListener);
-
-    // when
-    eventBus.post(new Integer(100));
-
-    // then
-    assertThat(integerListener.getLastMessage()).isEqualTo(100);
-    assertThat(numberListener.getLastMessage()).isEqualTo(100);
-
-    //when
-    eventBus.post(new Long(200L));
-
-    // then
-    // this one should has the old value as it listens only for Integers
-    assertThat(integerListener.getLastMessage()).isEqualTo(100);
-    assertThat(numberListener.getLastMessage()).isEqualTo(200L);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>In this method we see that first event (<em>new Integer(100)</em>) is received by both listeners, but second one (<em>new Long(200L)</em>) reaches only NumberListener as Integer one isn&rsquo;t created for this type of events.</p>
 
@@ -425,6 +562,7 @@ public void shouldGetEventsFromSubclass() throws Exception {
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

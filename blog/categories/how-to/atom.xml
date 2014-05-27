@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-to | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T17:47:31+02:00</updated>
+  <updated>2014-05-27T12:54:29+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -18,15 +18,15 @@
     <link href="http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
     <updated>2013-07-31T08:45:07+02:00</updated>
     <id>http://tdziurko.github.io/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
-    <content type="html"><![CDATA[<p>It&rsquo;s over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of <a href="http://confitura.pl">Confitura</a> (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.</p>
+    <content type="html"><![CDATA[<!-- more -->
+
+
+<p>It&rsquo;s over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of <a href="http://confitura.pl">Confitura</a> (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.</p>
 
 <p>In this post I will shortly describe how we can store encrypted data in our database and retrieve it as already decrypted in a simple, transparent way using <a href="http://www.jasypt.org/">Jasypt</a> library. Our use case will be to store Twitter Api credentials so they are safe in our database but still easy to retrieve and use to post updates in our timeline.</p>
 
-<!-- more -->
-
-
 <p>So what we have is a simple entity representing our settings item:
-[java]
+``` java SettingsItem entity
 @Entity
 public class SettingsItem implements Serializable {</p>
 
@@ -39,7 +39,7 @@ private String encryptedValue;
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>In such table we will store values for Twitter Consumer Key, Twitter Access Token and so on.</p>
 
@@ -47,13 +47,14 @@ private String encryptedValue;
 
 <h3>Jasypt to the rescue</h3>
 
-<p><a href="/images/blog/2013/07/jasypt-small.png"><img src="/images/blog/2013/07/jasypt-small.png" alt="jasypt-small" /></a>
-<a href="http://www.jasypt.org">Jasypt</a> is a simple encryption library written in Java. It frees developer from dealing with low level configuration details and makes whole encryption process easy and straightforward. And what is most interesting now, it also has nice integration with Hibernate allowing seamless encryption/decryption of data stored in database.</p>
+<p style="text-align:center;"><img src="/images/blog/2013/07/jasypt-small.png" alt="jasypt-small" /></p>
+
+<p><a href="http://www.jasypt.org">Jasypt</a> is a simple encryption library written in Java. It frees developer from dealing with low level configuration details and makes whole encryption process easy and straightforward. And what is most interesting now, it also has nice integration with Hibernate allowing seamless encryption/decryption of data stored in database.</p>
 
 <h4>Setup</h4>
 
 <p>To use Jasypt and its Hibernate integration module we have to add two items to our pom:
-[xml]</p>
+``` xml</p>
 
 <pre><code>&lt;dependency&gt;
     &lt;groupId&gt;org.jasypt&lt;/groupId&gt;
@@ -67,13 +68,13 @@ private String encryptedValue;
 &lt;/dependency&gt;
 </code></pre>
 
-<p>[/xml]</p>
+<p>```</p>
 
 <h4>Custom type</h4>
 
 <p>Then we have to declare custom Hibernate type (@TypeDef) in our entity:</p>
 
-<p>[java]
+<p>``` java
 @TypeDef(</p>
 
 <pre><code>    name="encryptedString",
@@ -89,23 +90,23 @@ private String encryptedValue;
 public class SettingsItem implements Serializable {
    // (&hellip;)
 }
-[/java]</p>
+```</p>
 
 <p>and after that in the same class we can mark our encryptedValue field to use this custom type:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>@Type(type="encryptedString")
 private String encryptedValue;
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <h4>Registering encryptor</h4>
 
 <p>We are almost done. Last thing we have to do is register encryptor in HibernatePBEEncryptorRegistry class. This can be done in  initialization class of our application, e.g. ServletContext or simply in class with main(String[] args) method:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>String password = System.getProperty("jasypt.password");
 
@@ -116,7 +117,7 @@ HibernatePBEEncryptorRegistry registry =
 registry.registerPBEStringEncryptor("STRING_ENCRYPTOR", strongEncryptor);
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>One important thing here is that by using System.getProperty() or System.getenv() we can safely configure our encryption mechanism, password is provided at runtime by setting proper value on server machine.</p>
 
@@ -124,7 +125,7 @@ registry.registerPBEStringEncryptor("STRING_ENCRYPTOR", strongEncryptor);
 
 <p>As as a summary, one short passing test showing that our solution works:</p>
 
-<p>[java]
+<p>``` java
 public class SettingsItemRepositoryShould extends IntegrationTest {</p>
 
 <pre><code>@Autowired
@@ -157,7 +158,7 @@ public void shouldEncryptAndDecryptValue() {
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 ]]></content>
   </entry>
   
@@ -166,7 +167,10 @@ public void shouldEncryptAndDecryptValue() {
     <link href="http://tdziurko.github.io/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
     <updated>2013-05-27T19:30:36+02:00</updated>
     <id>http://tdziurko.github.io/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
-    <content type="html"><![CDATA[<p>This is a second post about <a href="http://www.gebish.org/"><strong>Geb</strong></a> in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.</p>
+    <content type="html"><![CDATA[<!-- more -->
+
+
+<p>This is a second post about <a href="http://www.gebish.org/"><strong>Geb</strong></a> in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.</p>
 
 <h3>The Problem</h3>
 
@@ -175,9 +179,6 @@ public void shouldEncryptAndDecryptValue() {
 <h3>Solution</h3>
 
 <p>We have to find some type of listener that waits for different test results and fires proper method when test fails. In <a href="http://testng.org/">TestNG</a> we have a <a href="http://testng.org/javadocs/org/testng/TestListenerAdapter.html">TestListenerAdapter</a> so probably Geb or Spock should have something similar.</p>
-
-<!-- more -->
-
 
 <p>After some digging I was able to locate <em>IRunListener</em> with method I need:
 [groovy]
@@ -245,9 +246,9 @@ void visitSpec(SpecInfo specInfo) {
 
 <p><strong>Registering Spock global extension</strong>
 Each global extension have to be registered to Spock. This can be achieved by placing text file with easy to remember name in META-INF/services directory. File must be named <em>org.spockframework.runtime.extension.IGlobalExtension</em> and should contain full name of our implementation of IGlobalExtension interface:
-[java]
+<code>java
 com.smscpl.mc5.uitests.geb_extensions.GlobalSpecExtension
-[/java]</p>
+</code></p>
 
 <p><strong>Taking a screenshot on each UI test fail</strong>
 Now on each test fail we will see that our text message is printed to the console. This proves that our solution is going in the right direction and last thing still not implemented is taking a screenshot.</p>
@@ -316,18 +317,18 @@ class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
     <link href="http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests/"/>
     <updated>2013-05-13T12:46:19+02:00</updated>
     <id>http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests</id>
-    <content type="html"><![CDATA[<h4>UPDATE</h4>
+    <content type="html"><![CDATA[<!-- more -->
+
+
+<h4>UPDATE</h4>
 
 <p>_When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below is valid and works, there is a much simpler solution to this problem incorporated by Geb itself and I strongly suggest using it instead of mine, home-crafted hack. All credits go to <a href="http://stackoverflow.com/users/52142/artur-gajowy">Artur Gajowy</a> for showing me better approach.</p>
 
-<p>I have added short paragraph about this simpler solution at the end of this article, probably you should go <a href="http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests/#better-solution">directly there</a> :).
+<p>I have added short paragraph about this simpler solution at the end of this article, probably you should go [directly there](&lt;a href=&ldquo;<a href="http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests/#better-solution">http://tdziurko.github.io/2013/05/reusing-browser-instance-geb-ui-tests/#better-solution</a>) :).
 _</p>
 
 <p><a href="http://gebish.org">Geb</a> is next-generation UI testing library that frees developer from dealing with Selenium API which is in many cases not so friendly. The most important feature of Geb is its support, or I would even say, strong encouragement to use Page Objects in your UI tests. Page Objects are also present in Selenium, but they are not as intuitive and east to use as in Geb.
 But enough about Geb itself. Today I will share with you simple trick how to share one browser instance when running many Geb UI tests. This will significantly reduce time needed to execute UI tests and also reduce memory usage on test machines.</p>
-
-<!-- more -->
-
 
 <h3>The Problem</h3>
 
@@ -454,18 +455,19 @@ driver =</p>
     <link href="http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping/"/>
     <updated>2013-04-30T23:59:59+02:00</updated>
     <id>http://tdziurko.github.io/2013/04/scalatra-html-js-json-escaping</id>
-    <content type="html"><![CDATA[<p><a href="/images/blog/2013/04/logo-scalatra.png"><img src="/images/blog/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
-<a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
+    <content type="html"><![CDATA[<!-- more -->
+
+
+<p style="text-align:center;"><img src="/images/blog/2013/04/logo-scalatra.png" alt="logo-scalatra" /></p>
+
+<p><a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
 So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.</p>
 
 <h3>Basic Scalatra project</h3>
 
 <p>To show how it could be accomplished, we need a simple sample project using Scalatra. I didn&rsquo;t want to create it from scratch by myself so I removed some Swagger related stuff from project by my colleague Krzysztof Ciesielski (<a href="http://abstractionextraction.wordpress.com/2013/03/31/using-swagger-with-scalatra/">his post about Scalatra and Swagger</a>) and I was ready to go :) Full commit with this basic project is available <a href="https://github.com/tdziurko/scalatra-json-escaping/commit/099c7ac30fe0f63319a890e848a94390c035e801">here</a>, but the most interesting class is shown below:</p>
 
-<!-- more -->
-
-
-<p>[scala]
+<p>``` scala
 class ExampleServlet() extends ScalatraServlet with JacksonJsonSupport with JValueResult {</p>
 
 <p>  protected implicit val jsonFormats: Formats = DefaultFormats</p>
@@ -509,8 +511,9 @@ messageOptional match {
 }</p>
 
 <p>case class Message(id: Int, text: String, author: String, created: Date)
-[/scala]
-Ok, so what we have here? Simple Rest service that returns JSON. Get method without any params returns list of messages and get with passed id returns single message with given id. For the sake of simplicity, I have hardcoded list of three messages with two of them containing some Html/JS elements.</p>
+```</p>
+
+<p>Ok, so what we have here? Simple Rest service that returns JSON. Get method without any params returns list of messages and get with passed id returns single message with given id. For the sake of simplicity, I have hardcoded list of three messages with two of them containing some Html/JS elements.</p>
 
 <h3>Definition of Done</h3>
 
@@ -524,8 +527,9 @@ Ok, so what we have here? Simple Rest service that returns JSON. Get method with
 
 <h3>Implementation details</h3>
 
-<p>To add escaping we need to find place in Scalatra where objects returned from method are converted to Json. After some digging I found <em>JacksonJsonOutput</em> trait with method <em>writeJon</em>:
-[scala]
+<p>To add escaping we need to find place in Scalatra where objects returned from method are converted to Json. After some digging I found <em>JacksonJsonOutput</em> trait with method <em>writeJon</em>:</p>
+
+<p>``` scala
 trait JacksonJsonOutput extends JsonOutput[JValue] with jackson.JsonMethods {
   protected def writeJson(json: JValue, writer: Writer) {</p>
 
@@ -534,10 +538,11 @@ trait JacksonJsonOutput extends JsonOutput[JValue] with jackson.JsonMethods {
 
 <p>  }
 }
-[/scala]</p>
+```</p>
 
-<p>So what we have to do is override method and somehow define logic to perform actual escaping for us. Luckily JValue has function <em>map</em> that allows to apply passed function to every value in JSON. So we could fire escapeHtml4 method from Apache Commons Lang on each String value in JSON:
-[scala]
+<p>So what we have to do is override method and somehow define logic to perform actual escaping for us. Luckily JValue has function <em>map</em> that allows to apply passed function to every value in JSON. So we could fire escapeHtml4 method from Apache Commons Lang on each String value in JSON:</p>
+
+<p>``` scala
   override def writeJson(json: JValue, writer: Writer) {</p>
 
 <pre><code>val escapedJson = json.map((x: JValue) =&gt;
@@ -550,7 +555,7 @@ mapper.writeValue(writer, escapedJson)
 </code></pre>
 
 <p>  }
-[/scala]</p>
+```</p>
 
 <p>As you can see all logic is done by <em>map</em> function, we only need to add a few lines of code that will filter and escape String values in JSON. So far so good, but now we are escaping every methods from our Rest API. This is not exactly what we wanted to achieve. To get it done right, we need to define a mechanism to disable escaping for a specific method.</p>
 
@@ -565,13 +570,14 @@ And after trying different approaches it turned out that only thing we need is t
 </ol>
 
 
-<p>Looks easy. We need simple wrapper class:
-[scala]
-  case class NotEscapedJsonWrapper<a href="notEscapedData:%20T">T</a>
-[/scala]</p>
+<p>Looks easy. We need simple wrapper class:</p>
+
+<p><code>scala
+  case class NotEscapedJsonWrapper[T](notEscapedData: T)
+</code></p>
 
 <p>and we need to wrap response with this object:
-[scala]
+``` scala
   get(&ldquo;/:id&rdquo;) {</p>
 
 <pre><code>val id = params("id").toInt;
@@ -586,10 +592,10 @@ messageOptional match {
 </code></pre>
 
 <p>  }
-[/scala]</p>
+```</p>
 
 <p>And after that we have to modify <em>writeJson</em> to check if object to be written is wrapped with &ldquo;not-escape-me&rdquo; marker object or not.
-[scala]
+``` scala
   override def writeJson(json: JValue, writer: Writer) {</p>
 
 <pre><code>(json \ "notEscapedData") match {     // check if json contains field 'notEscapedData' meaning that it is wrapping object
@@ -609,7 +615,7 @@ messageOptional match {
 </code></pre>
 
 <p>  }
-[/scala]</p>
+```</p>
 
 <p>And after that we could compile and start container with our small application. When we enter /rest/example we will get list of all messages with every String properly escaped. And if we request /rest/example/1 we will get single message as not-escaped data. That&rsquo;s all, we have our escaping working.</p>
 
@@ -625,16 +631,16 @@ Source code of this small example app is available <a href="https://github.com/t
     <link href="http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
     <updated>2013-04-22T10:55:55+02:00</updated>
     <id>http://tdziurko.github.io/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
-    <content type="html"><![CDATA[<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
+    <content type="html"><![CDATA[<!-- more -->
 
-<p><a href="/images/blog/2013/04/xstream.gif"><img src="/images/blog/2013/04/xstream.gif" alt="xstream" /></a></p>
+
+<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
+
+<p style="text-align:center;"><a href="/images/blog/2013/04/xstream.gif"><img src="/images/blog/2013/04/xstream.gif" alt="xstream" /></a></p>
 
 <h3>Overview</h3>
 
 <p><a href="http://xstream.codehaus.org/">XStream</a> is a small library to serialize data between Java objects and XML. It&rsquo;s lightweight, small, has nice API and what is most important, it works with and without custom annotations that we might be not allowed to add when we are not the owner of Java classes.</p>
-
-<!-- more -->
-
 
 <h3>First example</h3>
 
@@ -659,7 +665,7 @@ Source code of this small example app is available <a href="https://github.com/t
 [/xml]</p>
 
 <p>And we want to load it into Configuration object:
-[java]
+``` java
 public class Configuration {</p>
 
 <pre><code>private String inputFile;
@@ -675,9 +681,9 @@ private String truststorePassword;
 </code></pre>
 
 <p>}
-[/java]
+<code>
 So basically what we have to do is:
-[java]</p>
+</code> java</p>
 
 <pre><code>FileReader fileReader = new FileReader("config.xml");  // load our xml file  
 XStream xstream = new XStream();     // init XStream
@@ -686,7 +692,7 @@ xstream.alias("config", Configuration.class);
 Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>And that&rsquo;s all, easy peasy :)</p>
 
@@ -730,7 +736,7 @@ Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
 [/xml]</p>
 
 <p>What we have here is simple list of bans written in XML. We want to load it into collection of Ban objects. So let&rsquo;s prepare some classes (getters/setters/toString omitted):
-[java]
+``` java
 public class Data {</p>
 
 <pre><code>private List bans = new ArrayList(); 
@@ -755,7 +761,7 @@ private String documentNumber;
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p>As you can see there is some naming and type mismatch between XML and Java classes (e.g. field name1->firstName, dateOfUpdate is String not a Date), but it&rsquo;s here for some example purposes.</p>
 
@@ -765,7 +771,7 @@ private String documentNumber;
 
 <p>First, easier way is to use annotations. And that&rsquo;s the suggested approach in situation when we can modify Java classes to which XML will be mapped.
 So we have:
-[java]
+``` java
 @XStreamAlias(&ldquo;DATA&rdquo;) // maps DATA element in XML to this class
 public class Data {</p>
 
@@ -812,11 +818,11 @@ private int age;
 private String documentNumber;
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>And actual parsing logic is very short:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>FileReader reader = new FileReader("file.xml");  // load file
 
@@ -832,7 +838,7 @@ Ban firstBan = data.getBans().get(0);
 System.out.println("First ban = " + firstBan.toString()); 
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>As you can see annotations are very easy to use and as a result final code is very concise. But what to do in situation when we can&rsquo;t modify mapping classes? We can use different approach that doesn&rsquo;t require any modifications in Java classes representing XML data.</p>
 
@@ -840,7 +846,7 @@ System.out.println("First ban = " + firstBan.toString());
 
 <p>When we can&rsquo;t enrich our model classes with annotations, there is another solution. We can define all mapping details using methods from XStream object:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>FileReader reader = new FileReader("file.xml");  // three first lines are easy, 
 XStream xstream = new XStream();                 // same initialisation as in the 
@@ -872,7 +878,7 @@ Ban firstBan = data.getBans().get(0);
 System.out.println("First ban = " + firstBan.toString());
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>As you can see XStream allows to easily convert more complicated XML structures into Java objects, it also gives a possibility to tune results by using different names if this from XML doesn&rsquo;t suit our needs.
 But there is one thing should catch your attention: we are converting XML representing a Date into raw String which isn&rsquo;t quite what we would like to get as a result. That&rsquo;s why we will add converter to do some job for us.</p>
@@ -880,7 +886,7 @@ But there is one thing should catch your attention: we are converting XML repres
 <h3>Using existing custom type converter</h3>
 
 <p>XStream library comes with set of built converters for most common use cases. We will use DateConverter. So now our class for Ban looks like that:
-[java]
+``` java
 public class Ban {</p>
 
 <pre><code>private Date dateOfUpdate;
@@ -888,18 +894,18 @@ private Person person;
 </code></pre>
 
 <p>}
-[/java]
+<code>
 And to use DateConverter we simply have to register it with date format that we expect to appear in XML data:
-[java]
+</code> java
    xstream.registerConverter(new DateConverter(&ldquo;yyyy-MM-dd&rdquo;, new String[] {}));
-[/java]</p>
+```</p>
 
 <p>and that&rsquo;s it. Now instead of String our object is populated with Date instance. Cool and easy! But what about classes and situations that aren&rsquo;t covered by existing converters? We could write our own.</p>
 
 <h3>Writing custom converter from scratch</h3>
 
 <p>Assume that instead of dateOfUpdate we want to know how many days ago update was done:
-[java]
+``` java
 public class Ban {</p>
 
 <pre><code>private int daysAgo;
@@ -907,9 +913,9 @@ private Person person;
 </code></pre>
 
 <p>}
-[/java]
-Of course we could calculate it manually for each Ban object but using converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/Converter.html">Converter</a> interface so we have to implement three methods with signatures looking a little bit scary:
-[java]
+<code>
+Of course we could calculate it manually for each Ban object but using converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement [Converter](http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/Converter.html) interface so we have to implement three methods with signatures looking a little bit scary:
+</code> java
 public class DaysAgoConverter implements Converter {</p>
 
 <pre><code>@Override
@@ -927,9 +933,9 @@ public boolean canConvert(Class type) {
 </code></pre>
 
 <p>}
-[/java]
-Last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/basic/AbstractSingleValueConverter.html">AbstractSingleValueConverter</a>that shields us from so low level mechanisms. And now our class looks much better:
-[java]
+<code>
+Last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using [AbstractSingleValueConverter](http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/basic/AbstractSingleValueConverter.html)that shields us from so low level mechanisms. And now our class looks much better:
+</code> java
 public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
 
 <pre><code>@Override
@@ -948,13 +954,13 @@ public String toString(Object obj) {
 </code></pre>
 
 <p>}
-[/java]
+```
 Additionally we must override method toString(Object obj) defined in AbstractSingleValueConverter as we want to store Date in XML calculated from Integer, not a simple <em>Object.toString</em> value which would be returned from default <em>toString</em> defined in abstract parent.</p>
 
 <p><strong>Implementation</strong></p>
 
 <p>Code below is pretty straightforward, but most interesting lines are commented. I&rsquo;ve skipped all validation stuff to make this example shorter.
-[java]
+``` java
 public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
 
 <pre><code>private final static String FORMAT = "yyyy-MM-dd"; // default Date format that will be used in conversion
@@ -986,16 +992,16 @@ public String toString(Object obj) {
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <p><strong>Usage</strong>
 To use our custom converter for a specific field we have to inform about it XStream object using registerLocalConverter:
-[java]</p>
+``` java</p>
 
 <pre><code>xstream.registerLocalConverter(Ban.class, "daysAgo", new DaysAgoConverter());
 </code></pre>
 
-<p>[/java]
+<p>```
 We are using &ldquo;local&rdquo; method to apply this conversion only to specific field and not to every Integer field in XML file. And after that we will get our Ban objects populated with number of days instead of Date.</p>
 
 <h3>Summary</h3>

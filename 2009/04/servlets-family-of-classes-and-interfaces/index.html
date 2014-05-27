@@ -156,23 +156,25 @@
 
 <p>Main interface from which all starts. It defines key methods for the life cycle of servlet:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(</span><span class="n">ServletConfig</span> <span class="n">config</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span><span class="o">;</span>
+</span><span class='line'><span class="kd">public</span> <span class="n">ServletConfig</span> <span class="nf">getServletConfig</span><span class="o">();</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">service</span><span class="o">(</span><span class="n">ServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="n">ServletResponse</span> <span class="n">res</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">IOException</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">destroy</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public void init(ServletConfig config) throws ServletException;
-public ServletConfig getServletConfig();
-public void service(ServletRequest req, ServletResponse res) throws ServletException, java.io.IOException;</p>
-
-<p>public void destroy();</p>
-
-<p>[/java]</p>
 
 <p>and one additional method</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">String</span> <span class="nf">getServletInfo</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public String getServletInfo();</p>
-
-<p>[/java]</p>
 
 <p>which should return information about servlet (version, author, resposibility, etc.)<!-- more --></p>
 
@@ -180,59 +182,69 @@ public void service(ServletRequest req, ServletResponse res) throws ServletExcep
 
 <p>Abstract  class implementing all Servlet interface methods, except method service (), which is implemented by a class one step  lower in the hierarchy: HttpServlet. Additionally GenericServlet also provides methods from ServletConfig interface allowing developer to read init parameters of servlet</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">String</span> <span class="nf">getInitParameter</span><span class="o">(</span><span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+</span><span class='line'><span class="kd">public</span> <span class="n">Enumeration</span> <span class="nf">getInitParameterNames</span><span class="o">()</span> <span class="o">{</span> <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public String getInitParameter(java.lang.String name) { }
-public Enumeration getInitParameterNames() { }</p>
-
-<p>[/java]</p>
 
 <p>These  parameters are defined in the web.xml file by using the elements &lt;init-param> nested in the declaration of a servlet:</p>
 
-<p>[xml]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;web-app&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;servlet&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;servlet-name&gt;</span>FirstToLoadServlet<span class="nt">&lt;/servlet-name&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;servlet-class&gt;</span>pl.tdziurko.scwcd.servlets.FirstToLoadServlet<span class="nt">&lt;/servlet-class&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;init-param&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;param-name&gt;</span>initParameter<span class="nt">&lt;/param-name&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;param-value&gt;</span>initValue<span class="nt">&lt;/param-value&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/init-param&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;init-param&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;param-name&gt;</span>anotherInitParameter<span class="nt">&lt;/param-name&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;param-value&gt;</span>anotherInitValue<span class="nt">&lt;/param-value&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/init-param&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/servlet&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;servlet-mapping&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;servlet-name&gt;</span>FirstToLoadServlet<span class="nt">&lt;/servlet-name&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;url-pattern&gt;</span>/FirstToLoadServlet<span class="nt">&lt;/url-pattern&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/servlet-mapping&gt;</span>
+</span><span class='line'><span class="nt">&lt;/web-app&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>&lt;web-app>
-  <servlet></p>
-
-<pre><code>&lt;servlet-name&gt;FirstToLoadServlet&lt;/servlet-name&gt;
-&lt;servlet-class&gt;pl.tdziurko.scwcd.servlets.FirstToLoadServlet&lt;/servlet-class&gt;
-&lt;init-param&gt;
-  &lt;param-name&gt;initParameter&lt;/param-name&gt;
-  &lt;param-value&gt;initValue&lt;/param-value&gt;
-&lt;/init-param&gt;
-&lt;init-param&gt;
-  &lt;param-name&gt;anotherInitParameter&lt;/param-name&gt;
-  &lt;param-value&gt;anotherInitValue&lt;/param-value&gt;
-&lt;/init-param&gt;
-</code></pre>
-
-<p>  </servlet>
-  &lt;servlet-mapping></p>
-
-<pre><code>&lt;servlet-name&gt;FirstToLoadServlet&lt;/servlet-name&gt;
-&lt;url-pattern&gt;/FirstToLoadServlet&lt;/url-pattern&gt;
-</code></pre>
-
-<p>  &lt;/servlet-mapping>
-&lt;/web-app></p>
-
-<p>[/xml]</p>
 
 <p>Another method of the interface ServletConfig</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">ServletContext</span> <span class="nf">getServletContext</span> <span class="o">()</span> <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public ServletContext getServletContext () {}</p>
-
-<p>[/java]</p>
 
 <p>returns the context in which servlet is running. From this context we can get information about server version and many other things which I don&rsquo;t cover in this episode of &ldquo;Preparing to SCWCD&rdquo; series :)</p>
 
 <p>The final method in class GenericServlet worth mentioning is</p>
 
-<p>[java]public void init () throws ServletException {}</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span> <span class="o">()</span> <span class="kd">throws</span> <span class="n">ServletException</span> <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>[/java]</p>
 
 <p>This method is added for the developers convenience. Rather  than overloading the init (ServletConfig config) and remember to call  super.init (config) , we can put our init logic in servlet initialization  method init (), which is called by the init (ServletConfig config).</p>
 
@@ -240,28 +252,30 @@ public Enumeration getInitParameterNames() { }</p>
 
 <p>It&rsquo;s the class, which will be extended by all our servlets. It has methods for handling HTTP requests:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doGet</span> <span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="n">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">IOException</span> <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, java.io.IOException {}</p>
-
-<p>[/java]</p>
 
 <p>and its brothers working with other HTTP protocol requests: doPost, doHead, doOptions, doPut, doDelete and doTrace.</p>
 
 <p>The two most important methods in this class are:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">service</span> <span class="o">(</span><span class="n">ServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="n">ServletResponse</span> <span class="n">res</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">IOException</span> <span class="o">{}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">service</span> <span class="o">(</span><span class="n">HttpServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="n">HttpServletResponse</span> <span class="n">resp</span><span class="o">)</span> <span class="o">{}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public void service (ServletRequest req, ServletResponse res) throws ServletException, java.io.IOException {}
-protected void service (HttpServletRequest req, HttpServletResponse resp) {}</p>
-
-<p>[/java]</p>
 
 <p>The first one (public one) is called by the container and redirects call to second one (protected), which, depending on the type of request calls one of doXXX() method.</p>
 </div>
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

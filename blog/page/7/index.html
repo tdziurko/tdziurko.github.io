@@ -177,8 +177,10 @@
 	</div>
 	<h1 class="title" itemprop="name"><a href="/2010/09/better-free-mercurial-repository-as-bitbucket-joins-atlassian/" itemprop="url">Better Free Mercurial Repository as Bitbucket Joins Atlassian</a></h1>
 	<div class="entry-content" itemprop="articleBody">
-		<p>So  far, for those who want to use Mercurial for private projects and in a  small development teams it was hard to find a good and free place to  host source code. <a href="http://bitbucket.org/">Bitbucket</a>, one of  the most interesting sites of this type which additionally offers very clear web  interface, had a restriction allowing only <strong>one</strong> private project. Others, unfortunately, had to be public.  This is not what I was looking for.
-And when I already planned migration to the <a href="https://www.dropbox.com/home">Dropbox</a>-Mercurial combo as it is described <a href="http://www.h4ck3r.net/2010/05/11/mercurial-hg-with-dropbox/">in  this post</a>, this morning in my inbox I found the information about the merge BitBucket with <a href="http://www.atlassian.com/">Atlassian</a>. Nothing extraordinary, one company has been overtaken by the other, but there is one detail worth noting. On the occasion of merge Bitbucket extended capabilities of  free accounts. From today, you could have free unlimited number of private and public repositories of unlimited size. The  only limit is number of people (max 5 including the owner) who could share each project. This is some kind of limit but for a small teams or home-made projects this should pose no problem. In addition, there is special offer until 3rd October where you can choose subscription with a limit of 10 members. This plan is free for 12 months and is a good option if you have bigger project on the horizon :)</p>
+		<p>So  far, for those who want to use Mercurial for private projects and in a small development teams it was hard to find a good and free place to host source code. <a href="http://bitbucket.org/">Bitbucket</a>, one of  the most interesting sites of this type which additionally offers very clear web  interface, had a restriction allowing only <strong>one</strong> private project. Others, unfortunately, had to be public. This is not what I was looking for.
+And when I already planned migration to the <a href="https://www.dropbox.com/home">Dropbox</a>-Mercurial combo as it is described <a href="http://www.h4ck3r.net/2010/05/11/mercurial-hg-with-dropbox/">in  this post</a>, this morning in my inbox I found the information about the merge BitBucket with <a href="http://www.atlassian.com/">Atlassian</a>.</p>
+
+<p>Nothing extraordinary, one company has been overtaken by the other, but there is one detail worth noting. On the occasion of merge Bitbucket extended capabilities of  free accounts. From today, you could have free unlimited number of private and public repositories of unlimited size. The  only limit is number of people (max 5 including the owner) who could share each project. This is some kind of limit but for a small teams or home-made projects this should pose no problem. In addition, there is special offer until 3rd October where you can choose subscription with a limit of 10 members. This plan is free for 12 months and is a good option if you have bigger project on the horizon :)</p>
 
 <p>More info about Bitbucket joining Attlasian can be read <a href="http://blog.bitbucket.org/2010/09/29/bitbucket-joins-atlassian/">here</a>.</p>
 
@@ -270,7 +272,9 @@ And when I already planned migration to the <a href="https://www.dropbox.com/hom
 
 <h3>Simple sending post-data to login form</h3>
 
-<p><a href="/images/blog/2010/10/smsgateway.png"><img src="/images/blog/2010/10/smsgateway.png" alt="SMS gateway site" /></a><strong>Example site:</strong> <a href="http://ebramka.ath.cx/">http://ebramka.ath.cx/</a> &ndash; polish free sms gateway
+<p style="text-align:center;"><img src="/images/blog/2010/10/smsgateway.png" alt="SMS gateway site" /></p>
+
+<p><strong>Example site:</strong> <a href="http://ebramka.ath.cx/">http://ebramka.ath.cx/</a> &ndash; polish free sms gateway
 <strong>Use case:</strong> login user and then check if main page rendered properly.</p>
 
 <p>This one is pretty simple. No HTTPS protocol, no SSL, just pure post data sent to login form.
@@ -316,7 +320,9 @@ And when I already planned migration to the <a href="https://www.dropbox.com/hom
 
 <p>Link do pozycji w księgarni: <a href="http://helion.pl/ksiazki/czysty_kod_podrecznik_dobrego_programisty_robert_c_martin,czykod.htm">link</a></p>
 
-<p><a href="/images/blog/2010/10/cleanCodePl.png"><img src="/images/blog/2010/10/cleanCodePl.png" alt="Clean Code Cover" /></a>Jeśli jeszcze nie masz tej książki, to bardzo polecam, bo pozycja naprawdę warta uwagi każdego szanującego się programisty.</p>
+<p style="text-align:center;"><img src="/images/blog/2010/10/cleanCodePl.png" alt="Clean Code Cover" /></p>
+
+<p>Jeśli jeszcze nie masz tej książki, to bardzo polecam, bo pozycja naprawdę warta uwagi każdego szanującego się programisty.</p>
 
 <p>PS:  Wiem, że ostatnio coś cicho i smutno na blogu, ale po zmianie stanu  cywilnego i założeniu własnej DG trochę się jeszcze nie wyrabiam  czasowo. Ale powoli widać światełko w tunelu i wkrótce coś powinno się  zacząć tutaj dziać :)</p>
 
@@ -400,54 +406,58 @@ And when I already planned migration to the <a href="https://www.dropbox.com/hom
 	<div class="entry-content" itemprop="articleBody">
 		<p>Last week after releasing first version of Wicket, Spring and JDBC based  application into production I noticed strange behavior. Everyday first  attempt to enter the service caused unexpected exception. Quick glance  at Tomcat logs showed code presented below:</p>
 
-<p>[java]
-Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet successfully received from the server was156378 seconds ago.The last packet sent successfully to the server was 156378 seconds ago, which  is longer than the server configured value of &lsquo;wait_timeout&rsquo;. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property &lsquo;autoReconnect=true&rsquo; to avoid this problem.</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Caused</span> <span class="nl">by:</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">jdbc4</span><span class="o">.</span><span class="na">CommunicationsException</span><span class="o">:</span> <span class="n">The</span> <span class="n">last</span> <span class="n">packet</span> <span class="n">successfully</span> <span class="n">received</span> <span class="n">from</span> <span class="n">the</span> <span class="n">server</span> <span class="n">was156378</span> <span class="n">seconds</span> <span class="n">ago</span><span class="o">.</span><span class="na">The</span> <span class="n">last</span> <span class="n">packet</span> <span class="n">sent</span> <span class="n">successfully</span> <span class="n">to</span> <span class="n">the</span> <span class="n">server</span> <span class="n">was</span> <span class="mi">156378</span> <span class="n">seconds</span> <span class="n">ago</span><span class="o">,</span> <span class="n">which</span>  <span class="n">is</span> <span class="n">longer</span> <span class="n">than</span> <span class="n">the</span> <span class="n">server</span> <span class="n">configured</span> <span class="n">value</span> <span class="n">of</span> <span class="err">&#39;</span><span class="n">wait_timeout</span><span class="err">&#39;</span><span class="o">.</span> <span class="n">You</span> <span class="n">should</span> <span class="n">consider</span> <span class="n">either</span> <span class="n">expiring</span> <span class="n">and</span><span class="o">/</span><span class="n">or</span> <span class="n">testing</span> <span class="n">connection</span> <span class="n">validity</span> <span class="n">before</span> <span class="n">use</span> <span class="n">in</span> <span class="n">your</span> <span class="n">application</span><span class="o">,</span> <span class="n">increasing</span> <span class="n">the</span> <span class="n">server</span> <span class="n">configured</span> <span class="n">values</span> <span class="k">for</span> <span class="n">client</span> <span class="n">timeouts</span><span class="o">,</span> <span class="n">or</span> <span class="n">using</span> <span class="n">the</span> <span class="n">Connector</span><span class="o">/</span><span class="n">J</span> <span class="n">connection</span> <span class="n">property</span> <span class="err">&#39;</span><span class="n">autoReconnect</span><span class="o">=</span><span class="kc">true</span><span class="err">&#39;</span> <span class="n">to</span> <span class="n">avoid</span> <span class="k">this</span> <span class="n">problem</span><span class="o">.</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">NativeConstructorAccessorImpl</span><span class="o">.</span><span class="na">newInstance0</span><span class="o">(</span><span class="n">Native</span> <span class="n">Method</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">NativeConstructorAccessorImpl</span><span class="o">.</span>
+</span><span class='line'><span class="nf">newInstance</span><span class="o">(</span><span class="n">NativeConstructorAccessorImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">39</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">DelegatingConstructorAccessorImpl</span><span class="o">.</span>
+</span><span class='line'><span class="nf">newInstance</span><span class="o">(</span><span class="n">DelegatingConstructorAccessorImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">27</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">Constructor</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="n">Constructor</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">513</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">Util</span><span class="o">.</span><span class="na">handleNewInstance</span><span class="o">(</span><span class="n">Util</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">406</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">SQLError</span><span class="o">.</span><span class="na">createCommunicationsException</span><span class="o">(</span><span class="n">SQLError</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1074</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">MysqlIO</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">MysqlIO</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">3246</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">MysqlIO</span><span class="o">.</span><span class="na">sendCommand</span><span class="o">(</span><span class="n">MysqlIO</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1917</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">MysqlIO</span><span class="o">.</span><span class="na">sqlQueryDirect</span><span class="o">(</span><span class="n">MysqlIO</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2060</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">ConnectionImpl</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">ConnectionImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2536</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">ConnectionImpl</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">ConnectionImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2465</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">StatementImpl</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="n">StatementImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1383</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">ConnectionImpl</span><span class="o">.</span><span class="na">getTransactionIsolation</span><span class="o">(</span><span class="n">ConnectionImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">3117</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">commons</span><span class="o">.</span><span class="na">dbcp</span><span class="o">.</span><span class="na">DelegatingConnection</span><span class="o">.</span>
+</span><span class='line'><span class="nf">getTransactionIsolation</span><span class="o">(</span><span class="n">DelegatingConnection</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">313</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">commons</span><span class="o">.</span><span class="na">dbcp</span><span class="o">.</span><span class="na">PoolingDataSource</span>
+</span><span class='line'><span class="n">$PoolGuardConnectionWrapper</span><span class="o">.</span><span class="na">getTransactionIsolation</span><span class="o">(</span><span class="n">PoolingDataSource</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">239</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">datasource</span><span class="o">.</span><span class="na">DataSourceUtils</span><span class="o">.</span>
+</span><span class='line'><span class="nf">prepareConnectionForTransaction</span><span class="o">(</span><span class="n">DataSourceUtils</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">173</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">datasource</span><span class="o">.</span><span class="na">DataSourceTransactionManager</span>
+</span><span class='line'><span class="o">.</span><span class="na">doBegin</span><span class="o">(</span><span class="n">DataSourceTransactionManager</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">210</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">...</span> <span class="mi">41</span> <span class="n">more</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>    at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-    at sun.reflect.NativeConstructorAccessorImpl.
-</code></pre>
-
-<p>newInstance(NativeConstructorAccessorImpl.java:39)</p>
-
-<pre><code>    at sun.reflect.DelegatingConstructorAccessorImpl.
-</code></pre>
-
-<p>newInstance(DelegatingConstructorAccessorImpl.java:27)</p>
-
-<pre><code>    at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
-    at com.mysql.jdbc.Util.handleNewInstance(Util.java:406)
-    at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1074)
-    at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3246)
-    at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1917)
-    at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
-    at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
-    at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
-    at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1383)
-    at com.mysql.jdbc.ConnectionImpl.getTransactionIsolation(ConnectionImpl.java:3117)
-    at org.apache.commons.dbcp.DelegatingConnection.
-</code></pre>
-
-<p>getTransactionIsolation(DelegatingConnection.java:313)</p>
-
-<pre><code>    at org.apache.commons.dbcp.PoolingDataSource
-</code></pre>
-
-<p>$PoolGuardConnectionWrapper.getTransactionIsolation(PoolingDataSource.java:239)</p>
-
-<pre><code>    at org.springframework.jdbc.datasource.DataSourceUtils.
-</code></pre>
-
-<p>prepareConnectionForTransaction(DataSourceUtils.java:173)</p>
-
-<pre><code>    at org.springframework.jdbc.datasource.DataSourceTransactionManager
-</code></pre>
-
-<p>.doBegin(DataSourceTransactionManager.java:210)</p>
-
-<pre><code>    ... 41 more
-</code></pre>
-
-<p>[/java]</p>
 
 <p>It looks that after few hours at night when no-one used the application,  MySQl server closed connection and first database query caused  exception. I double checked my connection url and settings in context.xml file to found nothing obviously wrong:
 		
@@ -487,24 +497,36 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last pac
 
 <p>Adding some method when exception appears in Wicket-based application is very easy task. In class extending WebApplication we should create our own implementation of method creating custom RequestCycle object where we override onRuntimeException method:</p>
 
-<p>[java]
-@Override
-public RequestCycle newRequestCycle(Request request, Response response) {
-  return new WebRequestCycle(this, (WebRequest)request, (WebResponse)response) {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Override</span>
+</span><span class='line'><span class="kd">public</span> <span class="n">RequestCycle</span> <span class="nf">newRequestCycle</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="nf">WebRequestCycle</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="o">(</span><span class="n">WebRequest</span><span class="o">)</span><span class="n">request</span><span class="o">,</span> <span class="o">(</span><span class="n">WebResponse</span><span class="o">)</span><span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Page</span> <span class="nf">onRuntimeException</span><span class="o">(</span><span class="n">Page</span> <span class="n">page</span><span class="o">,</span> <span class="n">RuntimeException</span> <span class="n">exception</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="c1">//</span>
+</span><span class='line'>      <span class="c1">// do something with this exception</span>
+</span><span class='line'>      <span class="c1">//</span>
+</span><span class='line'>      <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onRuntimeException</span><span class="o">(</span><span class="n">page</span><span class="o">,</span> <span class="n">exception</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">};</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-public Page onRuntimeException(Page page, RuntimeException exception) {
 
-  //
-  // do something with this exception
-  //
-  return super.onRuntimeException(page, exception);
-}
-</code></pre>
 
-<p>  };
-}
-[/java]</p>
 
 
 		
@@ -552,8 +574,9 @@ public Page onRuntimeException(Page page, RuntimeException exception) {
 
 <p>Wersja pdf do pobrania <a href="http://sdjournal.org/magazine/1065-rewolucja-on-line">stąd</a></p>
 
-<p><strong>Kilka słów komentarza:</strong>
-Bardzo  fajna inicjatywa, zwłaszcza dla studentów i osób dopiero zaczynających  swoją karierę w sektorze IT. Ciekawe jaki model biznesowy będzie miało  to przedsięwzięcie, żeby dalej przynosiło zyski. Być może autorzy liczą  na większe wpływy z reklam związane ze zwiększoną ilością czytelników  czasopisma w takim formacie albo zostaną objęci patronatem jakiejś dużej  firmy IT, która pokryje większość kosztów w zamian za propagowanie  własnej marki?
+<p><strong>Kilka słów komentarza:</strong></p>
+
+<p>Bardzo  fajna inicjatywa, zwłaszcza dla studentów i osób dopiero zaczynających swoją karierę w sektorze IT. Ciekawe jaki model biznesowy będzie miało  to przedsięwzięcie, żeby dalej przynosiło zyski. Być może autorzy liczą  na większe wpływy z reklam związane ze zwiększoną ilością czytelników  czasopisma w takim formacie albo zostaną objęci patronatem jakiejś dużej  firmy IT, która pokryje większość kosztów w zamian za propagowanie  własnej marki?
 Jest to faktycznie pionierski krok i z  niecierpliwością czekam, czy w ciągu najbliższych lat inni pójdą podobną  drogą czy też papierowe wydania wytrzymają konkurencję Internetu i  dostępu do wiedzy online. Zapowiedzi odnośnie wersji elektronicznej, co  prawda płatnej, już prawie dwa lata temu publikowała &ldquo;Piłka Nożna&rdquo;, ale  od tego czasu temat zupełnie ucichł i cały czas gromadzę wersje  papierowe :)</p>
 
 		
@@ -596,14 +619,14 @@ Jest to faktycznie pionierski krok i z  niecierpliwością czekam, czy w ciągu 
 <p>At this moment I know that:</p>
 
 <ul>
-<li><p><a href="http://allegro.pl">Allegro</a> (Polish e-Bay) is uding Symfony, PHP framework.</p></li>
+<li><p><a href="http://allegro.pl">Allegro</a> (Polish e-Bay) is using Symfony, PHP framework.</p></li>
 <li><p>Grono.net: Django and Python</p></li>
 <li><p>one of the telecom web services uses Wicket and Java</p></li>
 <li><p>shop Merlin.pl is written in Java.</p></li>
 </ul>
 
 
-<p>And when we consider foreign portals I read that Twitter was written in Ruby on Rails and later on there were some rumours that after having performance  problems they were thinking about living RoR but how it finally ended, I don&rsquo;t know. All I know for sure that mobile version of MalMart is in Wicket ((<a href="http://www.breakitdownblog.com/apache-wicket-powers-mobile-walmart-com/">link</a>).</p>
+<p>And when we consider foreign portals I read that Twitter was written in Ruby on Rails and later on there were some rumours that after having performance  problems they were thinking about living RoR but how it finally ended, I don&rsquo;t know. All I know for sure that mobile version of MalMart is in Wicket <a href="http://www.breakitdownblog.com/apache-wicket-powers-mobile-walmart-com/">article</a>.</p>
 
 		
 		

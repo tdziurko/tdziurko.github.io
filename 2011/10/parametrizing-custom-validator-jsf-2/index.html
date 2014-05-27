@@ -154,62 +154,78 @@
 
 <p>You need custom date validator, let&rsquo;s say checking that date from <em>rich:calendar</em> is not in the past. So we place calendar component with validator inside.</p>
 
-<p>[html]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;rich:calendar</span> <span class="na">value=</span><span class="s">&quot;#{fieldValue}&quot;</span> <span class="na">id=</span><span class="s">&quot;dateField&quot;</span> <span class="na">datePattern=</span><span class="s">&quot;yyyy/MM/dd&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;f:validator</span> <span class="na">validatorId=</span><span class="s">&quot;dateNotInThePast&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/rich:calendar&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>&lt;rich:calendar value="#{fieldValue}" id="dateField" datePattern="yyyy/MM/dd"&gt;
-    &lt;f:validator validatorId="dateNotInThePast"/&gt;
-&lt;/rich:calendar&gt;
-</code></pre>
 
-<p>[/html]</p>
+
 
 <!-- more -->
 
 
 <p>And our  validator could look like below:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@FacesValidator</span><span class="o">(</span><span class="s">&quot;dateNotInThePast&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DateNotInThePastValidator</span> <span class="kd">implements</span> <span class="n">Validator</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">validate</span><span class="o">(</span><span class="n">FacesContext</span> <span class="n">facesContext</span><span class="o">,</span> <span class="n">UIComponent</span> <span class="n">uiComponent</span><span class="o">,</span> <span class="n">Object</span> <span class="n">value</span><span class="o">)</span>
+</span><span class='line'>                                                              <span class="kd">throws</span> <span class="n">ValidatorException</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">ObjectUtil</span><span class="o">.</span><span class="na">isNotEmpty</span><span class="o">(</span><span class="n">value</span><span class="o">))</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">checkDate</span><span class="o">((</span><span class="n">Date</span><span class="o">)</span><span class="n">value</span><span class="o">,</span> <span class="n">uiComponent</span><span class="o">,</span> <span class="n">facesContext</span><span class="o">.</span><span class="na">getViewRoot</span><span class="o">().</span><span class="na">getLocale</span><span class="o">());</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">checkDate</span><span class="o">(</span><span class="n">Date</span> <span class="n">date</span><span class="o">,</span> <span class="n">UIComponent</span> <span class="n">uiComponent</span><span class="o">,</span> <span class="n">Locale</span> <span class="n">locale</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">if</span><span class="o">(</span><span class="n">isDateInRange</span><span class="o">(</span><span class="n">date</span><span class="o">)</span> <span class="o">==</span> <span class="kc">false</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">ResourceBundle</span> <span class="n">rb</span> <span class="o">=</span> <span class="n">ResourceBundle</span><span class="o">.</span><span class="na">getBundle</span><span class="o">(</span><span class="s">&quot;messages&quot;</span><span class="o">,</span> <span class="n">locale</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">String</span> <span class="n">messageText</span> <span class="o">=</span> <span class="n">rb</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="s">&quot;date.not.in.the.past&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="k">throw</span> <span class="k">new</span> <span class="nf">ValidatorException</span><span class="o">(</span><span class="k">new</span> <span class="n">FacesMessage</span><span class="o">(</span><span class="n">FacesMessage</span><span class="o">.</span><span class="na">SEVERITY_ERROR</span><span class="o">,</span>
+</span><span class='line'>                                     <span class="n">messageText</span><span class="o">,</span> <span class="n">messageText</span><span class="o">));</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isDateInRange</span><span class="o">(</span><span class="n">Date</span> <span class="n">date</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">Date</span> <span class="n">today</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DateTime</span><span class="o">().</span><span class="na">withTime</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">).</span><span class="na">toDate</span><span class="o">();</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">date</span><span class="o">.</span><span class="na">after</span><span class="o">(</span><span class="n">today</span><span class="o">)</span> <span class="o">||</span> <span class="n">date</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">today</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>@FacesValidator(&ldquo;dateNotInThePast&rdquo;)
-public class DateNotInThePastValidator implements Validator {</p>
-
-<p>  @Override
-  public void validate(FacesContext facesContext, UIComponent uiComponent, Object value)</p>
-
-<pre><code>                                                          throws ValidatorException {
-if (ObjectUtil.isNotEmpty(value)) {
-  checkDate((Date)value, uiComponent, facesContext.getViewRoot().getLocale());
-}
-</code></pre>
-
-<p>  }</p>
-
-<p>  private void checkDate(Date date, UIComponent uiComponent, Locale locale) {</p>
-
-<pre><code>if(isDateInRange(date) == false) {
-  ResourceBundle rb = ResourceBundle.getBundle("messages", locale);
-  String messageText = rb.getString("date.not.in.the.past");
-  throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                                 messageText, messageText));
-}
-</code></pre>
-
-<p>  }</p>
-
-<p>  private boolean isDateInRange(Date date) {</p>
-
-<pre><code>Date today = new DateTime().withTime(0, 0, 0, 0).toDate();
-return date.after(today) || date.equals(today);
-</code></pre>
-
-<p>  }
-}</p>
-
-<p>[/java]</p>
 
 <p>And if we provide key value in properties file we will see something like this:</p>
 
-<p><a href="/images/blog/2011/10/validator_1.png"><img src="/images/blog/2011/10/validator_1.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/10/validator_1.png" alt="" /></p>
 
 <p>So it looks that we have working and production-ready custom validator.</p>
 
@@ -217,7 +233,7 @@ return date.after(today) || date.equals(today);
 
 <p>But while our form becomes more and more complex we might encouter issue described on the screen below:</p>
 
-<p><a href="/images/blog/2011/10/validator_21.png"><img src="/images/blog/2011/10/validator_21.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/10/validator_21.png" alt="" /></p>
 
 <p>So the problem is how user can determine which date is valid and which is not? Our validator uses the same property key to display both error messages.</p>
 
@@ -227,52 +243,70 @@ return date.after(today) || date.equals(today);
 
 <p>So in Java Server Faces we could parametrize components with attributes (<em>f:attribute</em> tag). So we add attribute to rich:calendar and then read this passed value value inside validator assigned to this calendar field. So now our calendar components should look like that:</p>
 
-<p>[html]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>    <span class="nt">&lt;rich:calendar</span> <span class="na">value=</span><span class="s">&quot;#{fieldValue}&quot;</span> <span class="na">id=</span><span class="s">&quot;dateField&quot;</span> <span class="na">datePattern=</span><span class="s">&quot;yyyy/MM/dd&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;f:validator</span> <span class="na">validatorId=</span><span class="s">&quot;dateNotInThePast&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;f:attribute</span> <span class="na">name=</span><span class="s">&quot;fieldLabel&quot;</span> <span class="na">value=</span><span class="s">&quot;Date field 2&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/rich:calendar&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>&lt;rich:calendar value="#{fieldValue}" id="dateField" datePattern="yyyy/MM/dd"&gt;
-    &lt;f:validator validatorId="dateNotInThePast"/&gt;
-    &lt;f:attribute name="fieldLabel" value="Date field 2" /&gt;
-&lt;/rich:calendar&gt;
-</code></pre>
-
-<p>[/html]</p>
 
 <p>And in our validator Java class we could get this value using <em>uiComponent.getAttributes().get(&ldquo;fieldLabel&rdquo;);</em></p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">checkDate</span><span class="o">(</span><span class="n">Date</span> <span class="n">date</span><span class="o">,</span> <span class="n">UIComponent</span> <span class="n">uiComponent</span><span class="o">,</span> <span class="n">Locale</span> <span class="n">locale</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">if</span><span class="o">(</span><span class="n">isDateInRange</span><span class="o">(</span><span class="n">date</span><span class="o">)</span> <span class="o">==</span> <span class="kc">false</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">ResourceBundle</span> <span class="n">rb</span> <span class="o">=</span> <span class="n">ResourceBundle</span><span class="o">.</span><span class="na">getBundle</span><span class="o">(</span><span class="s">&quot;messages&quot;</span><span class="o">,</span> <span class="n">locale</span><span class="o">);</span>
+</span><span class='line'>            <span class="n">String</span> <span class="n">messageText</span> <span class="o">=</span> <span class="n">getFieldLabel</span><span class="o">(</span><span class="n">uiComponent</span><span class="o">)</span> <span class="o">+</span><span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">rb</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">getErrorKey</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">throw</span> <span class="k">new</span> <span class="nf">ValidatorException</span><span class="o">(</span><span class="k">new</span> <span class="n">FacesMessage</span><span class="o">(</span><span class="n">FacesMessage</span><span class="o">.</span><span class="na">SEVERITY_ERROR</span><span class="o">,</span>
+</span><span class='line'>                                            <span class="n">messageText</span><span class="o">,</span> <span class="n">messageText</span><span class="o">));</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">protected</span> <span class="n">String</span> <span class="nf">getFieldLabel</span><span class="o">(</span><span class="n">UIComponent</span> <span class="n">uiComponent</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">fieldLabel</span> <span class="o">=</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span> <span class="n">uiComponent</span><span class="o">.</span><span class="na">getAttributes</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="s">&quot;fieldLabel&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span><span class="o">(</span><span class="n">fieldLabel</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">fieldLabel</span> <span class="o">=</span> <span class="s">&quot;Date&quot;</span> <span class="o">;</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="n">fieldLabel</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private void checkDate(Date date, UIComponent uiComponent, Locale locale) {
-    if(isDateInRange(date) == false) {
-        ResourceBundle rb = ResourceBundle.getBundle("messages", locale);
-        String messageText = getFieldLabel(uiComponent) +" " + rb.getString(getErrorKey());
-
-        throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                                        messageText, messageText));
-    }
-}
-
-protected String getFieldLabel(UIComponent uiComponent) {
-    String fieldLabel = (String) uiComponent.getAttributes().get("fieldLabel");
-
-    if(fieldLabel == null) {
-        fieldLabel = "Date" ;
-    }
-
-    return fieldLabel;
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>Our property value for error should have value <em>can not be in the past</em> as <em>Date</em> or field label will be added at the beginning of error message.</p>
 
 <p>And working example should show something similar to this screen:</p>
 
-<p><a href="/images/blog/2011/10/validator_3.png"><img src="/images/blog/2011/10/validator_3.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/10/validator_3.png" alt="" /></p>
 </div>
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

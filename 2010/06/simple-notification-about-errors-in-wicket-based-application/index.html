@@ -154,24 +154,36 @@
 
 <p>Adding some method when exception appears in Wicket-based application is very easy task. In class extending WebApplication we should create our own implementation of method creating custom RequestCycle object where we override onRuntimeException method:</p>
 
-<p>[java]
-@Override
-public RequestCycle newRequestCycle(Request request, Response response) {
-  return new WebRequestCycle(this, (WebRequest)request, (WebResponse)response) {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Override</span>
+</span><span class='line'><span class="kd">public</span> <span class="n">RequestCycle</span> <span class="nf">newRequestCycle</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="nf">WebRequestCycle</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="o">(</span><span class="n">WebRequest</span><span class="o">)</span><span class="n">request</span><span class="o">,</span> <span class="o">(</span><span class="n">WebResponse</span><span class="o">)</span><span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Page</span> <span class="nf">onRuntimeException</span><span class="o">(</span><span class="n">Page</span> <span class="n">page</span><span class="o">,</span> <span class="n">RuntimeException</span> <span class="n">exception</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="c1">//</span>
+</span><span class='line'>      <span class="c1">// do something with this exception</span>
+</span><span class='line'>      <span class="c1">//</span>
+</span><span class='line'>      <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onRuntimeException</span><span class="o">(</span><span class="n">page</span><span class="o">,</span> <span class="n">exception</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">};</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-public Page onRuntimeException(Page page, RuntimeException exception) {
 
-  //
-  // do something with this exception
-  //
-  return super.onRuntimeException(page, exception);
-}
-</code></pre>
 
-<p>  };
-}
-[/java]</p>
 
 <!-- more -->
 
@@ -182,79 +194,116 @@ public Page onRuntimeException(Page page, RuntimeException exception) {
 
 <p>a) applicationContext.xml fragment:</p>
 
-<p>[xml]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;context:property-placeholder</span> <span class="na">location=</span><span class="s">&quot;classpath*:application.properties&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;mailSender&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;host&quot;</span> <span class="na">value=</span><span class="s">&quot;${smtp.host}&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;port&quot;</span> <span class="na">value=</span><span class="s">&quot;${smtp.port}&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span> <span class="na">value=</span><span class="s">&quot;${smtp.user}&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;password&quot;</span> <span class="na">value=</span><span class="s">&quot;${smtp.password}&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;defaultEncoding&quot;</span> <span class="na">value=</span><span class="s">&quot;UTF-8&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/bean&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&quot;mailFactory&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;constructor-arg</span> <span class="na">value=</span><span class="s">&quot;${mail.fromName}&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;constructor-arg</span> <span class="na">value=</span><span class="s">&quot;${mail.fromAddress}&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;constructor-arg</span> <span class="na">value=</span><span class="s">&quot;${mail.defaultToAddress}&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/bean&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<!-- ... -->
 
-
-<p>&lt;context:property-placeholder location=&ldquo;classpath*:application.properties&rdquo; /></p>
-
-<p><bean id="mailSender">
-  <property name="host" value="${smtp.host}" />
-  <property name="port" value="${smtp.port}" />
-  <property name="username" value="${smtp.user}" />
-  <property name="password" value="${smtp.password}" />
-  <property name="defaultEncoding" value="UTF-8" />
-</bean></p>
-
-<p><bean id="mailFactory">
-  &lt;constructor-arg value=&ldquo;${mail.fromName}&rdquo;/>
-  &lt;constructor-arg value=&ldquo;${mail.fromAddress}&rdquo;/>
-  &lt;constructor-arg value=&ldquo;${mail.defaultToAddress}&rdquo;/>
-</bean>
-[/xml]</p>
+<p></p>
 
 <p>Second bean is a simple messages factory which builds emails with content. Its constructor need some variables from properties file.</p>
 
 <p>b) WebApplication class fragment:</p>
 
-<p>[java]
-public class ClientNotifierApplication extends WebApplication {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClientNotifierApplication</span> <span class="kd">extends</span> <span class="n">WebApplication</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">JavaMailSenderImpl</span> <span class="n">mailSender</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">MailMessageFactory</span> <span class="n">mailMessageFactory</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">mailSender</span> <span class="o">=</span> <span class="o">(</span><span class="n">JavaMailSenderImpl</span><span class="o">)</span> <span class="n">getSpringContext</span><span class="o">().</span><span class="na">getBean</span><span class="o">(</span><span class="s">&quot;mailSender&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">mailMessageFactory</span> <span class="o">=</span> <span class="o">(</span><span class="n">MailMessageFactory</span><span class="o">)</span> <span class="n">getSpringContext</span><span class="o">().</span><span class="na">getBean</span><span class="o">(</span><span class="s">&quot;mailFactory&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// ...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">RequestCycle</span> <span class="nf">newRequestCycle</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">new</span> <span class="nf">WebRequestCycle</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="o">(</span><span class="n">WebRequest</span><span class="o">)</span> <span class="n">request</span><span class="o">,</span> <span class="o">(</span><span class="n">WebResponse</span><span class="o">)</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nd">@Override</span>
+</span><span class='line'>      <span class="kd">public</span> <span class="n">Page</span> <span class="nf">onRuntimeException</span><span class="o">(</span><span class="n">Page</span> <span class="n">page</span><span class="o">,</span> <span class="n">RuntimeException</span> <span class="n">exception</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">MimeMessage</span> <span class="n">message</span> <span class="o">=</span> <span class="n">mailSender</span><span class="o">.</span><span class="na">createMimeMessage</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">mailMessageFactory</span><span class="o">.</span><span class="na">prepareWicketExceptionMessage</span><span class="o">(</span><span class="n">message</span><span class="o">,</span> <span class="n">page</span><span class="o">,</span> <span class="n">exception</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">mailSender</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">onRuntimeException</span><span class="o">(</span><span class="n">page</span><span class="o">,</span> <span class="n">exception</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>    <span class="o">};</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>  private JavaMailSenderImpl mailSender;
-  private MailMessageFactory mailMessageFactory;</p>
-
-<p>  @Override
-  protected void init() {</p>
-
-<pre><code>super.init();
-
-mailSender = (JavaMailSenderImpl) getSpringContext().getBean("mailSender");
-mailMessageFactory = (MailMessageFactory) getSpringContext().getBean("mailFactory");
-</code></pre>
-
-<p>  }</p>
-
-<p>  // &hellip;</p>
-
-<p>  @Override
-  public RequestCycle newRequestCycle(Request request, Response response) {</p>
-
-<pre><code>return new WebRequestCycle(this, (WebRequest) request, (WebResponse) response) {
-
-  @Override
-  public Page onRuntimeException(Page page, RuntimeException exception) {
-
-    MimeMessage message = mailSender.createMimeMessage();
-    mailMessageFactory.prepareWicketExceptionMessage(message, page, exception);
-    mailSender.send(message);
-
-    return super.onRuntimeException(page, exception);
-  }
-};
-</code></pre>
-
-<p>  }
-}
-[/java]</p>
 
 <p>Because we passed Page object to the method prepareWicketExceptionMessage, we have access to more detailed data about application state when error appeared. We could read application name (useful when we use this mechanism in many projects), page parameters and through Session object also info about logged user. It&rsquo;s good to know to who every error happened in case we would like to contact him and ask some questions about what he did, etc.</p>
-
-<p>﻿﻿</p>
 </div>
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

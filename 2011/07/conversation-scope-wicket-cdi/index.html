@@ -203,54 +203,79 @@ mvn install jetty:run -P jetty
 
 <p>Ok, so let&rsquo;s start with something simple. As you already know Game class which holds state of user game is @SessionScoped bean so if user opens new browser tab with NumberGuess web application, he will see state of the game he started in his first tab. That is not ok as he might want to run many games simultaneously. So we replace session annotation with @ConversationScoped and add label showing current conversation id to show what conversation is currently running.</p>
 
-<p>[java]
-public class HomePage extends WebPage {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Inject</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Conversation</span> <span class="n">conversation</span><span class="o">;</span>
+</span><span class='line'>        <span class="c1">// (...)</span>
+</span><span class='line'>        <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// (...)</span>
+</span><span class='line'>        <span class="n">Label</span> <span class="n">conversationLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;conversationId&quot;</span><span class="o">,</span> <span class="n">conversation</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+</span><span class='line'>        <span class="n">form</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">conversationLabel</span><span class="o">);</span>
+</span><span class='line'>        <span class="c1">// (...)</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Inject
-private Conversation conversation;
-    // (...)
-    public HomePage() {
-    // (...)
-    Label conversationLabel = new Label("conversationId", conversation.getId());
-    form.add(conversationLabel);
-    // (...)
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>When you open our application in two tabs you should see something like this:</p>
 
-<p><a href="/images/blog/2011/07/conversationLabel.png"><img src="/images/blog/2011/07/conversationLabel.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/07/conversationLabel.png" alt="" /></p>
 
 <p>and in these two tabs you have two separate games running (and different conversation id shown). So everything looks fine. But, but&hellip; if during the game you accidentally hit refresh button (or F5) you will lose your state of game and see that conversation id has changed. WTH?! Calm down and check SeamApplication class source code. There is custom WebRequestCycleProcessor named SeamWebRequestCycleProcessor:</p>
 
-<p>[java]
-public class SeamWebRequestCycleProcessor extends WebRequestCycleProcessor {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SeamWebRequestCycleProcessor</span> <span class="kd">extends</span> <span class="n">WebRequestCycleProcessor</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Inject</span>
+</span><span class='line'>    <span class="n">Conversation</span> <span class="n">conversation</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/**</span>
+</span><span class='line'><span class="cm">     * If a long running conversation has been started, store its id into page</span>
+</span><span class='line'><span class="cm">     * metadata</span>
+</span><span class='line'><span class="cm">     */</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">respond</span><span class="o">(</span><span class="n">RequestCycle</span> <span class="n">requestCycle</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kd">super</span><span class="o">.</span><span class="na">respond</span><span class="o">(</span><span class="n">requestCycle</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(!</span><span class="n">conversation</span><span class="o">.</span><span class="na">isTransient</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Page</span> <span class="n">page</span> <span class="o">=</span> <span class="n">RequestCycle</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getResponsePage</span><span class="o">();</span>
+</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">page</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">page</span><span class="o">.</span><span class="na">setMetaData</span><span class="o">(</span><span class="n">SeamMetaData</span><span class="o">.</span><span class="na">CID</span><span class="o">,</span> <span class="n">conversation</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Inject
-Conversation conversation;
-
-/**
- * If a long running conversation has been started, store its id into page
- * metadata
- */
-@Override
-public void respond(RequestCycle requestCycle) {
-    super.respond(requestCycle);
-    if (!conversation.isTransient()) {
-        Page page = RequestCycle.get().getResponsePage();
-        if (page != null) {
-            page.setMetaData(SeamMetaData.CID, conversation.getId());
-        }
-    }
-
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>And what is most important here is that conversation id is saved between requests. I repeat, <strong>requests</strong>. And if you check what type GuessButton in HomePage.java is, you will see AjaxButton so there is no new HTTP request fired when it is clicked. And as a result no information about conversation is saved. Such behavior can be considered as limitation but in most cases you won&rsquo;t need conversation scope until you change page, so HTTP request is used and problem with missing information about conversation id disappears.</p>
 
@@ -260,85 +285,101 @@ public void respond(RequestCycle requestCycle) {
 
 <p>So far so good. But how conversation scope is working when we try to redirect to another page? Let&rsquo;s find out. First we should create SecondPage java and html files:</p>
 
-<p>[java]
-public class SecondPage extends WebPage {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SecondPage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Inject</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Game</span> <span class="n">game</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Inject</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Conversation</span> <span class="n">conversation</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">SecondPage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">Label</span> <span class="n">conversationLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;conversationId&quot;</span><span class="o">,</span> <span class="n">conversation</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+</span><span class='line'>        <span class="n">add</span><span class="o">(</span><span class="n">conversationLabel</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Label</span> <span class="n">guessesLeft</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;guessesLeft&quot;</span><span class="o">,</span> <span class="n">game</span><span class="o">.</span><span class="na">getRemainingGuesses</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">add</span><span class="o">(</span><span class="n">guessesLeft</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Inject
-private Game game;
-
-@Inject
-private Conversation conversation;
-
-public SecondPage() {
-    Label conversationLabel = new Label("conversationId", conversation.getId());
-    add(conversationLabel);
-
-    Label guessesLeft = new Label("guessesLeft", game.getRemainingGuesses() + "");
-    add(guessesLeft);
-}
-</code></pre>
-
-<p>}
-[/java]</p>
-
-<p>[html]</p>
-
-<pre><code>Second Page&lt;/pre&gt;
-</code></pre>
-
-<h1>Second page</h1>
 
 
-<div>Conversation id:</div>
 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>    Second Page<span class="nt">&lt;/pre&gt;</span>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>Second page<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;div&gt;</span>Conversation id:<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;div&gt;</span>Guesses left:<span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;pre&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<div>Guesses left:</div>
-
-
-<p><pre></p>
-
-<p>[/html]</p>
 
 <p>with information about conversation id and number of remaining guesses. Because Wicket propagates conversation between requests, we should get the same conversation id and the same game instance injected into both pages sharing the same conversation. But to test it we need a link from HomePage to SecondPage, so let&rsquo;s add a simple one:</p>
 
-<p>[java]
-Link secondPageLink = new Link(&ldquo;secondPageLink&rdquo;) {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Link</span> <span class="n">secondPageLink</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Link</span><span class="o">(</span><span class="s">&quot;secondPageLink&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="n">SecondPage</span><span class="o">());</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-public void onClick() {
-    setResponsePage(new SecondPage());
-}
-</code></pre>
-
-<p>};
-[/java]</p>
 
 <p>with corresponding HTML element in HomePage.html file.</p>
 
-<p>And when we try to guess a number and then click new link, we will see:</p>
-
-<p><a href="/images/blog/2011/07/withLink.png"><img src="/images/blog/2011/07/withLink.png" alt="" /></a></p>
+<p>And when we try to guess a number and then click new link, we will see:
+&ndash;><img src="/images/blog/2011/07/withLink.png" alt="" />&lt;&ndash;</p>
 
 <p>and then</p>
 
-<p><a href="/images/blog/2011/07/secondPage.png"><img src="/images/blog/2011/07/secondPage.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/07/secondPage.png" alt="" /></p>
 
 <p>So as you can see, we have the same conversation id and the same game instance. So it&rsquo;s working.</p>
 
 <p><strong>Bookmarkable pages</strong>
 Now we will try with link not pointing to the specific page instance (created in onClick() method) but to SecondPage class in general, so when user clicks, Wicket creates page of class passed to setResponsePage() method. This kind of link redirects to bookmarkable page because it doesn&rsquo;t hold a state. Application knows what to render basing only on information stored in the url.</p>
 
-<p>[java]
-Link secondPageLink = new Link(&ldquo;secondPageLink&rdquo;) {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Link</span> <span class="n">secondPageLink</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Link</span><span class="o">(</span><span class="s">&quot;secondPageLink&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">setResponsePage</span><span class="o">(</span><span class="n">SecondPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-public void onClick() {
-    setResponsePage(SecondPage.class);
-}
-</code></pre>
-
-<p>};
-[/java]</p>
 
 <p>And when we click this link, everything seems to be the same. We see the same page with correct conversation id, etc., but one thing has changed, the url. Now it looks like that</p>
 
@@ -354,16 +395,18 @@ public void onClick() {
 
 <p>Ok, so default bookmarkable pages are supported. But as you probably noticed, our last url contains package name so it is far from being elegant and SEO friendly. That&rsquo;s why we will try to mount it with some short, pretty url name &ldquo;second-page&rdquo;. To achieve it, we must add one line to init method in our NumberGuessApplication class:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Override</span>
+</span><span class='line'><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+</span><span class='line'>    <span class="n">mountBookmarkablePage</span><span class="o">(</span><span class="s">&quot;second-page&quot;</span><span class="o">,</span> <span class="n">SecondPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-protected void init() {
-    super.init();
-    mountBookmarkablePage("second-page", SecondPage.class);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>and when we click the same link we will land on page with address</p>
 
@@ -377,65 +420,116 @@ protected void init() {
 
 <p>All we need is to look into source code of SeamRequestCycle and make some small improvements</p>
 
-<p>[java]
-public class SeamRequestCycle extends WebRequestCycle {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SeamRequestCycle</span> <span class="kd">extends</span> <span class="n">WebRequestCycle</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onRequestTargetSet</span><span class="o">(</span><span class="n">IRequestTarget</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kd">super</span><span class="o">.</span><span class="na">onRequestTargetSet</span><span class="o">(</span><span class="n">target</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Page</span> <span class="n">page</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">target</span> <span class="k">instanceof</span> <span class="n">IPageRequestTarget</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">page</span> <span class="o">=</span> <span class="o">((</span><span class="n">IPageRequestTarget</span><span class="o">)</span> <span class="n">target</span><span class="o">).</span><span class="na">getPage</span><span class="o">();</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Two possible specifications of cid: page metadata or request url; the</span>
+</span><span class='line'>        <span class="c1">// latter is used to propagate the conversation to mounted (bookmarkable)</span>
+</span><span class='line'>        <span class="c1">// paths after a redirect</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">String</span> <span class="n">cid</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">page</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">cid</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="na">getMetaData</span><span class="o">(</span><span class="n">SeamMetaData</span><span class="o">.</span><span class="na">CID</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">cid</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">&quot;cid&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">ConversationContext</span> <span class="n">conversationContext</span> <span class="o">=</span> <span class="n">instance</span><span class="o">().</span><span class="na">select</span><span class="o">(</span><span class="n">HttpConversationContext</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">get</span><span class="o">();</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(!</span><span class="n">conversationContext</span><span class="o">.</span><span class="na">isActive</span><span class="o">())</span>
+</span><span class='line'>            <span class="n">conversationContext</span><span class="o">.</span><span class="na">activate</span><span class="o">(</span><span class="n">cid</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">Conversation</span> <span class="n">conversation</span> <span class="o">=</span> <span class="n">conversationContext</span><span class="o">.</span><span class="na">getCurrentConversation</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// handle propagation of existing long running converstaions to new</span>
+</span><span class='line'>        <span class="c1">// targets</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(!</span><span class="n">conversation</span><span class="o">.</span><span class="na">isTransient</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>            <span class="c1">// Note that we can&#39;t propagate conversations with other redirect</span>
+</span><span class='line'>            <span class="c1">// targets like RequestRedirectTarget through this mechanism, because</span>
+</span><span class='line'>            <span class="c1">// it does not provide an interface to modify its target URL. If</span>
+</span><span class='line'>            <span class="c1">// propagation with those targets is to be supported, it needs a custom</span>
+</span><span class='line'>            <span class="c1">// Response subclass.</span>
+</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">isRedirect</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">target</span> <span class="k">instanceof</span> <span class="n">BookmarkablePageRequestTarget</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">BookmarkablePageRequestTarget</span> <span class="n">bookmark</span> <span class="o">=</span> <span class="o">(</span><span class="n">BookmarkablePageRequestTarget</span><span class="o">)</span> <span class="n">target</span><span class="o">;</span>
+</span><span class='line'>                <span class="c1">// if a cid has already been specified, don&#39;t override it</span>
+</span><span class='line'>                <span class="k">if</span> <span class="o">(!</span><span class="n">bookmark</span><span class="o">.</span><span class="na">getPageParameters</span><span class="o">().</span><span class="na">containsKey</span><span class="o">(</span><span class="s">&quot;cid&quot;</span><span class="o">))</span>
+</span><span class='line'>                    <span class="n">bookmark</span><span class="o">.</span><span class="na">getPageParameters</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="s">&quot;cid&quot;</span><span class="o">,</span> <span class="n">conversation</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="c1">// If we have a target page, propagate the conversation to the page&#39;s</span>
+</span><span class='line'>            <span class="c1">// metadata</span>
+</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">page</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">page</span><span class="o">.</span><span class="na">setMetaData</span><span class="o">(</span><span class="n">SeamMetaData</span><span class="o">.</span><span class="na">CID</span><span class="o">,</span> <span class="n">conversation</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">cid</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">handleMissingConversation</span><span class="o">(</span><span class="n">cid</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// (...)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-protected void onRequestTargetSet(IRequestTarget target) {
-    super.onRequestTargetSet(target);
-
-    Page page = null;
-    if (target instanceof IPageRequestTarget) {
-        page = ((IPageRequestTarget) target).getPage();
-    }
-
-    // Two possible specifications of cid: page metadata or request url; the
-    // latter is used to propagate the conversation to mounted (bookmarkable)
-    // paths after a redirect
-
-    String cid = null;
-    if (page != null) {
-        cid = page.getMetaData(SeamMetaData.CID);
-    } else {
-        cid = request.getParameter("cid");
-    }
-
-    ConversationContext conversationContext = instance().select(HttpConversationContext.class).get();
-    if (!conversationContext.isActive())
-        conversationContext.activate(cid);
-    Conversation conversation = conversationContext.getCurrentConversation();
-
-    // handle propagation of existing long running converstaions to new
-    // targets
-    if (!conversation.isTransient()) {
-        // Note that we can't propagate conversations with other redirect
-        // targets like RequestRedirectTarget through this mechanism, because
-        // it does not provide an interface to modify its target URL. If
-        // propagation with those targets is to be supported, it needs a custom
-        // Response subclass.
-        if (isRedirect() &amp;&amp; target instanceof BookmarkablePageRequestTarget) {
-            BookmarkablePageRequestTarget bookmark = (BookmarkablePageRequestTarget) target;
-            // if a cid has already been specified, don't override it
-            if (!bookmark.getPageParameters().containsKey("cid"))
-                bookmark.getPageParameters().add("cid", conversation.getId());
-        }
-
-        // If we have a target page, propagate the conversation to the page's
-        // metadata
-        if (page != null) {
-            page.setMetaData(SeamMetaData.CID, conversation.getId());
-        }
-    } else if (cid != null) {
-        handleMissingConversation(cid);
-    }
-
-}
-
-// (...)
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>So what we can see here is:
 1. Getting cid from request parameters or from page metadata.
@@ -445,58 +539,72 @@ protected void onRequestTargetSet(IRequestTarget target) {
 
 <p>And most critical part of code which needs small tuning is:</p>
 
-<p>[java]
-String cid = null;
-if (page != null) {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span> <span class="n">cid</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'><span class="k">if</span> <span class="o">(</span><span class="n">page</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">cid</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="na">getMetaData</span><span class="o">(</span><span class="n">SeamMetaData</span><span class="o">.</span><span class="na">CID</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>     <span class="n">cid</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">&quot;cid&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>cid = page.getMetaData(SeamMetaData.CID);
-</code></pre>
-
-<p>} else {</p>
-
-<pre><code> cid = request.getParameter("cid");
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>We just must find the way how to extract cid parameter from the url. After some research I found that request.getURL() method returns part of address which contains cid parameter name and value. So simple regex magic and here we are:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span> <span class="n">cid</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'><span class="k">if</span> <span class="o">(</span><span class="n">page</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">cid</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="na">getMetaData</span><span class="o">(</span><span class="n">SeamMetaData</span><span class="o">.</span><span class="na">CID</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">cid</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">&quot;cid&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="o">(</span><span class="n">cid</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">Pattern</span> <span class="n">pattern</span> <span class="o">=</span> <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="s">&quot;/cid/(\\d+)($|/)&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">Matcher</span> <span class="n">matcher</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getURL</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">matcher</span><span class="o">.</span><span class="na">find</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">cid</span> <span class="o">=</span> <span class="n">matcher</span><span class="o">.</span><span class="na">group</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;cid = &quot;</span> <span class="o">+</span> <span class="n">cid</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>String cid = null;
-if (page != null) {
-    cid = page.getMetaData(SeamMetaData.CID);
-} else {
-    cid = request.getParameter("cid");
-}
-
-if (cid == null) {
-    Pattern pattern = Pattern.compile("/cid/(\\d+)($|/)");
-    Matcher matcher = pattern.matcher(request.getURL());
-
-    if (matcher.find()) {
-        cid = matcher.group(1);
-        System.out.println("cid = " + cid);
-    }
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>When none of standard ways of extracting cid work, application tries to extract it from url. Of course in more complicated project this pattern might need some additional tweaks but for us it is enough.</p>
 
 <p>And to use our modification we copy content of SeamRequestCycle into our CustomSeamRequestCycle class, apply our small patch and then configure NumberGuessApplication to use our implementation:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Override</span>
+</span><span class='line'><span class="kd">public</span> <span class="n">RequestCycle</span> <span class="nf">newRequestCycle</span><span class="o">(</span><span class="kd">final</span> <span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="kd">final</span> <span class="n">Response</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">new</span> <span class="nf">CustomSeamRequestCycle</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="o">(</span><span class="n">WebRequest</span><span class="o">)</span> <span class="n">request</span><span class="o">,</span> <span class="o">(</span><span class="n">WebResponse</span><span class="o">)</span> <span class="n">response</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-public RequestCycle newRequestCycle(final Request request, final Response response) {
-    return new CustomSeamRequestCycle(this, (WebRequest) request, (WebResponse) response);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>And when we restart jetty and use link to the SecondPage, we will see correct conversation and game object injected! :)</p>
 
@@ -509,6 +617,7 @@ public RequestCycle newRequestCycle(final Request request, final Response respon
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

@@ -150,63 +150,84 @@
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 	<h1 class="title" itemprop="name">Easy Html/Javascript JSON Escaping in Scalatra</h1>
-	<div class="entry-content" itemprop="articleBody"><p><a href="/images/blog/2013/04/logo-scalatra.png"><img src="/images/blog/2013/04/logo-scalatra.png" alt="logo-scalatra" /></a>
-<a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
+	<div class="entry-content" itemprop="articleBody"><!-- more -->
+
+
+<p style="text-align:center;"><img src="/images/blog/2013/04/logo-scalatra.png" alt="logo-scalatra" /></p>
+
+<p><a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
 So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.</p>
 
 <h3>Basic Scalatra project</h3>
 
 <p>To show how it could be accomplished, we need a simple sample project using Scalatra. I didn&rsquo;t want to create it from scratch by myself so I removed some Swagger related stuff from project by my colleague Krzysztof Ciesielski (<a href="http://abstractionextraction.wordpress.com/2013/03/31/using-swagger-with-scalatra/">his post about Scalatra and Swagger</a>) and I was ready to go :) Full commit with this basic project is available <a href="https://github.com/tdziurko/scalatra-json-escaping/commit/099c7ac30fe0f63319a890e848a94390c035e801">here</a>, but the most interesting class is shown below:</p>
 
-<!-- more -->
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">ExampleServlet</span><span class="o">()</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="k">with</span> <span class="nc">JacksonJsonSupport</span> <span class="k">with</span> <span class="nc">JValueResult</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">protected</span> <span class="k">implicit</span> <span class="k">val</span> <span class="n">jsonFormats</span><span class="k">:</span> <span class="kt">Formats</span> <span class="o">=</span> <span class="nc">DefaultFormats</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">val</span> <span class="n">messages</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span>
+</span><span class='line'>    <span class="nc">Message</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">&quot;&lt;script&gt;&lt;alert&gt;Script hacker&lt;/alert&gt;&lt;/script&gt;&quot;</span><span class="o">,</span> <span class="s">&quot;Johny Hacker&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">()),</span>
+</span><span class='line'>    <span class="nc">Message</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">&quot;Decent message&quot;</span><span class="o">,</span> <span class="s">&quot;John Smith&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">()),</span>
+</span><span class='line'>    <span class="nc">Message</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">&quot;Message with &lt;b&gt;bolded fragment&lt;/b&gt;&quot;</span><span class="o">,</span> <span class="s">&quot;Kate Norton&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">())</span>
+</span><span class='line'>  <span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">before</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">contentType</span> <span class="k">=</span> <span class="n">formats</span><span class="o">(</span><span class="s">&quot;json&quot;</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">messages</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">val</span> <span class="n">id</span> <span class="k">=</span> <span class="n">params</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">).</span><span class="n">toInt</span><span class="o">;</span>
+</span><span class='line'>    <span class="k">val</span> <span class="n">messageOptional</span> <span class="k">=</span> <span class="n">messages</span><span class="o">.</span><span class="n">find</span><span class="o">((</span><span class="n">m</span><span class="k">:</span> <span class="kt">Message</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">log</span><span class="o">(</span><span class="s">&quot;optional =&quot;</span> <span class="o">+</span> <span class="n">messageOptional</span><span class="o">)</span>
+</span><span class='line'>    <span class="n">messageOptional</span> <span class="k">match</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">e</span>
+</span><span class='line'>      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">Message</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">text</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">author</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">created</span><span class="k">:</span> <span class="kt">Date</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>[scala]
-class ExampleServlet() extends ScalatraServlet with JacksonJsonSupport with JValueResult {</p>
-
-<p>  protected implicit val jsonFormats: Formats = DefaultFormats</p>
-
-<p>  val messages = List(</p>
-
-<pre><code>Message(1, "&lt;script&gt;&lt;alert&gt;Script hacker&lt;/alert&gt;&lt;/script&gt;", "Johny Hacker", new Date()),
-Message(2, "Decent message", "John Smith", new Date()),
-Message(3, "Message with &lt;b&gt;bolded fragment&lt;/b&gt;", "Kate Norton", new Date())
-</code></pre>
-
-<p>  )</p>
-
-<p>  before() {</p>
-
-<pre><code>contentType = formats("json")
-</code></pre>
-
-<p>  }</p>
-
-<p>  get(&ldquo;/&rdquo;) {</p>
-
-<pre><code>messages
-</code></pre>
-
-<p>  }</p>
-
-<p>  get(&ldquo;/:id&rdquo;) {</p>
-
-<pre><code>val id = params("id").toInt;
-val messageOptional = messages.find((m: Message) =&gt; m.id == id)
-
-log("optional =" + messageOptional)
-messageOptional match {
-  case Some(e) =&gt; e
-  case _ =&gt;
-}
-</code></pre>
-
-<p>  }
-}</p>
-
-<p>case class Message(id: Int, text: String, author: String, created: Date)
-[/scala]
-Ok, so what we have here? Simple Rest service that returns JSON. Get method without any params returns list of messages and get with passed id returns single message with given id. For the sake of simplicity, I have hardcoded list of three messages with two of them containing some Html/JS elements.</p>
+<p>Ok, so what we have here? Simple Rest service that returns JSON. Get method without any params returns list of messages and get with passed id returns single message with given id. For the sake of simplicity, I have hardcoded list of three messages with two of them containing some Html/JS elements.</p>
 
 <h3>Definition of Done</h3>
 
@@ -220,33 +241,43 @@ Ok, so what we have here? Simple Rest service that returns JSON. Get method with
 
 <h3>Implementation details</h3>
 
-<p>To add escaping we need to find place in Scalatra where objects returned from method are converted to Json. After some digging I found <em>JacksonJsonOutput</em> trait with method <em>writeJon</em>:
-[scala]
-trait JacksonJsonOutput extends JsonOutput[JValue] with jackson.JsonMethods {
-  protected def writeJson(json: JValue, writer: Writer) {</p>
+<p>To add escaping we need to find place in Scalatra where objects returned from method are converted to Json. After some digging I found <em>JacksonJsonOutput</em> trait with method <em>writeJon</em>:</p>
 
-<pre><code>mapper.writeValue(writer, json)
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">trait</span> <span class="nc">JacksonJsonOutput</span> <span class="k">extends</span> <span class="nc">JsonOutput</span><span class="o">[</span><span class="kt">JValue</span><span class="o">]</span> <span class="k">with</span> <span class="n">jackson</span><span class="o">.</span><span class="nc">JsonMethods</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">protected</span> <span class="k">def</span> <span class="n">writeJson</span><span class="o">(</span><span class="n">json</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">,</span> <span class="n">writer</span><span class="k">:</span> <span class="kt">Writer</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">mapper</span><span class="o">.</span><span class="n">writeValue</span><span class="o">(</span><span class="n">writer</span><span class="o">,</span> <span class="n">json</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>  }
-}
-[/scala]</p>
 
-<p>So what we have to do is override method and somehow define logic to perform actual escaping for us. Luckily JValue has function <em>map</em> that allows to apply passed function to every value in JSON. So we could fire escapeHtml4 method from Apache Commons Lang on each String value in JSON:
-[scala]
-  override def writeJson(json: JValue, writer: Writer) {</p>
+<p>So what we have to do is override method and somehow define logic to perform actual escaping for us. Luckily JValue has function <em>map</em> that allows to apply passed function to every value in JSON. So we could fire escapeHtml4 method from Apache Commons Lang on each String value in JSON:</p>
 
-<pre><code>val escapedJson = json.map((x: JValue) =&gt;
-  x match {     // let's check what type is this element
-    case JString(y) =&gt; JString(escapeHtml4(y))    // if it is a String, escape it
-    case _ =&gt; x        // keep value of other type as is
-  }
-)
-mapper.writeValue(writer, escapedJson)
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="k">override</span> <span class="k">def</span> <span class="n">writeJson</span><span class="o">(</span><span class="n">json</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">,</span> <span class="n">writer</span><span class="k">:</span> <span class="kt">Writer</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">val</span> <span class="n">escapedJson</span> <span class="k">=</span> <span class="n">json</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="n">x</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">)</span> <span class="k">=&gt;</span>
+</span><span class='line'>      <span class="n">x</span> <span class="k">match</span> <span class="o">{</span>     <span class="c1">// let&#39;s check what type is this element</span>
+</span><span class='line'>        <span class="k">case</span> <span class="nc">JString</span><span class="o">(</span><span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">JString</span><span class="o">(</span><span class="n">escapeHtml4</span><span class="o">(</span><span class="n">y</span><span class="o">))</span>    <span class="c1">// if it is a String, escape it</span>
+</span><span class='line'>        <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">x</span>        <span class="c1">// keep value of other type as is</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>    <span class="o">)</span>
+</span><span class='line'>    <span class="n">mapper</span><span class="o">.</span><span class="n">writeValue</span><span class="o">(</span><span class="n">writer</span><span class="o">,</span> <span class="n">escapedJson</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>  }
-[/scala]</p>
 
 <p>As you can see all logic is done by <em>map</em> function, we only need to add a few lines of code that will filter and escape String values in JSON. So far so good, but now we are escaping every methods from our Rest API. This is not exactly what we wanted to achieve. To get it done right, we need to define a mechanism to disable escaping for a specific method.</p>
 
@@ -261,51 +292,76 @@ And after trying different approaches it turned out that only thing we need is t
 </ol>
 
 
-<p>Looks easy. We need simple wrapper class:
-[scala]
-  case class NotEscapedJsonWrapper<a href="notEscapedData:%20T">T</a>
-[/scala]</p>
+<p>Looks easy. We need simple wrapper class:</p>
 
-<p>and we need to wrap response with this object:
-[scala]
-  get(&ldquo;/:id&rdquo;) {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="k">case</span> <span class="k">class</span> <span class="nc">NotEscapedJsonWrapper</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">notEscapedData</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>val id = params("id").toInt;
-val messageOptional = messages.find((m: Message) =&gt; m.id == id)
 
-log("optional =" + messageOptional)
+<p>and we need to wrap response with this object:</p>
 
-messageOptional match {
-  case Some(e) =&gt; NotEscapedJsonWrapper(e) // wrap data that we don't want to be escaped
-  case _ =&gt;
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">val</span> <span class="n">id</span> <span class="k">=</span> <span class="n">params</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">).</span><span class="n">toInt</span><span class="o">;</span>
+</span><span class='line'>    <span class="k">val</span> <span class="n">messageOptional</span> <span class="k">=</span> <span class="n">messages</span><span class="o">.</span><span class="n">find</span><span class="o">((</span><span class="n">m</span><span class="k">:</span> <span class="kt">Message</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">log</span><span class="o">(</span><span class="s">&quot;optional =&quot;</span> <span class="o">+</span> <span class="n">messageOptional</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">messageOptional</span> <span class="k">match</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">NotEscapedJsonWrapper</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="c1">// wrap data that we don&#39;t want to be escaped</span>
+</span><span class='line'>      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>  }
-[/scala]</p>
 
-<p>And after that we have to modify <em>writeJson</em> to check if object to be written is wrapped with &ldquo;not-escape-me&rdquo; marker object or not.
-[scala]
-  override def writeJson(json: JValue, writer: Writer) {</p>
+<p>And after that we have to modify <em>writeJson</em> to check if object to be written is wrapped with &ldquo;not-escape-me&rdquo; marker object or not.</p>
 
-<pre><code>(json \ "notEscapedData") match {     // check if json contains field 'notEscapedData' meaning that it is wrapping object
-  case JNothing =&gt; {                  // no wrapper, so we perform escaping
-    val escapedJson = json.map((x: JValue) =&gt;
-      x match {
-        case JString(y) =&gt; JString(escapeHtml4(y))
-        case _ =&gt; x
-      }
-    )
-    mapper.writeValue(writer, escapedJson)
-  }
-  case _ =&gt; {    // field 'notEscapedData' detected, unwrap and return clean object
-    mapper.writeValue(writer, json \ "notEscapedData")
-  }
-}
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="k">override</span> <span class="k">def</span> <span class="n">writeJson</span><span class="o">(</span><span class="n">json</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">,</span> <span class="n">writer</span><span class="k">:</span> <span class="kt">Writer</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="o">(</span><span class="n">json</span> <span class="o">\</span> <span class="s">&quot;notEscapedData&quot;</span><span class="o">)</span> <span class="k">match</span> <span class="o">{</span>     <span class="c1">// check if json contains field &#39;notEscapedData&#39; meaning that it is wrapping object</span>
+</span><span class='line'>      <span class="k">case</span> <span class="nc">JNothing</span> <span class="k">=&gt;</span> <span class="o">{</span>                  <span class="c1">// no wrapper, so we perform escaping</span>
+</span><span class='line'>        <span class="k">val</span> <span class="n">escapedJson</span> <span class="k">=</span> <span class="n">json</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="n">x</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">)</span> <span class="k">=&gt;</span>
+</span><span class='line'>          <span class="n">x</span> <span class="k">match</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">case</span> <span class="nc">JString</span><span class="o">(</span><span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">JString</span><span class="o">(</span><span class="n">escapeHtml4</span><span class="o">(</span><span class="n">y</span><span class="o">))</span>
+</span><span class='line'>            <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">x</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>        <span class="o">)</span>
+</span><span class='line'>        <span class="n">mapper</span><span class="o">.</span><span class="n">writeValue</span><span class="o">(</span><span class="n">writer</span><span class="o">,</span> <span class="n">escapedJson</span><span class="o">)</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="o">{</span>    <span class="c1">// field &#39;notEscapedData&#39; detected, unwrap and return clean object</span>
+</span><span class='line'>        <span class="n">mapper</span><span class="o">.</span><span class="n">writeValue</span><span class="o">(</span><span class="n">writer</span><span class="o">,</span> <span class="n">json</span> <span class="o">\</span> <span class="s">&quot;notEscapedData&quot;</span><span class="o">)</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>  }
-[/scala]</p>
 
 <p>And after that we could compile and start container with our small application. When we enter /rest/example we will get list of all messages with every String properly escaped. And if we request /rest/example/1 we will get single message as not-escaped data. That&rsquo;s all, we have our escaping working.</p>
 
@@ -317,6 +373,7 @@ Source code of this small example app is available <a href="https://github.com/t
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

@@ -174,68 +174,84 @@
 </ol>
 
 
-<p>[scala]
-object Plugins extends Build {
-  lazy val plugins = Project(</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">object</span> <span class="nc">Plugins</span> <span class="k">extends</span> <span class="nc">Build</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">lazy</span> <span class="k">val</span> <span class="n">plugins</span> <span class="k">=</span> <span class="nc">Project</span><span class="o">(</span>
+</span><span class='line'>    <span class="s">&quot;plugins&quot;</span><span class="o">,</span>
+</span><span class='line'>    <span class="n">file</span><span class="o">(</span><span class="s">&quot;.&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">settings</span> <span class="k">=</span> <span class="nc">Defaults</span><span class="o">.</span><span class="n">defaultSettings</span> <span class="o">++</span>
+</span><span class='line'>      <span class="nc">Seq</span><span class="o">(</span><span class="n">addSbtPlugin</span><span class="o">(</span><span class="s">&quot;com.github.philcali&quot;</span> <span class="o">%</span> <span class="s">&quot;sbt-jslint&quot;</span> <span class="o">%</span> <span class="s">&quot;0.1.3&quot;</span><span class="o">))</span>
+</span><span class='line'>  <span class="o">)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>"plugins",
-file("."),
-settings = Defaults.defaultSettings ++
-  Seq(addSbtPlugin("com.github.philcali" % "sbt-jslint" % "0.1.3"))
-</code></pre>
-
-<p>  )
-}
-[/scala]</p>
 
 <ol>
 <li>Include plugin settings in Build.scala:</li>
 </ol>
 
 
-<p>[scala]
-import sbtjslint.Plugin.<em>
-import sbtjslint.Plugin.LintKeys.</em></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">import</span> <span class="nn">sbtjslint.Plugin._</span>
+</span><span class='line'><span class="k">import</span> <span class="nn">sbtjslint.Plugin.LintKeys._</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// ...</span>
+</span><span class='line'>  <span class="k">lazy</span> <span class="k">val</span> <span class="n">ui</span><span class="k">:</span> <span class="kt">Project</span> <span class="o">=</span> <span class="nc">Project</span><span class="o">(</span>
+</span><span class='line'>    <span class="s">&quot;bootstrap-ui&quot;</span><span class="o">,</span>
+</span><span class='line'>    <span class="n">file</span><span class="o">(</span><span class="s">&quot;bootstrap-ui&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">settings</span> <span class="k">=</span> <span class="n">buildSettings</span> <span class="o">++</span> <span class="n">lintSettings</span>
+</span><span class='line'>  <span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>// &hellip;
-  lazy val ui: Project = Project(</p>
-
-<pre><code>"bootstrap-ui",
-file("bootstrap-ui"),
-settings = buildSettings ++ lintSettings
-</code></pre>
-
-<p>  )
-[/scala]</p>
 
 <p>But as usual these steps are not enough. First of all, when we run <em>sbt jslint</em> we will see that it scans some default directory looking for JS files to analyse. And of course our JavaScript lies in a completely different place. Secondly, we want to add <em>jslint</em> step to build process so it is executed every time. So simply, we need lintCustomSettings with declared custom JS location and jslint step process added to test step in our build:</p>
 
-<p>[scala]
-  val lintCustomSettings = lintSettings ++ inConfig(Test)(Seq(</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="k">val</span> <span class="n">lintCustomSettings</span> <span class="k">=</span> <span class="n">lintSettings</span> <span class="o">++</span> <span class="n">inConfig</span><span class="o">(</span><span class="nc">Test</span><span class="o">)(</span><span class="nc">Seq</span><span class="o">(</span>
+</span><span class='line'>    <span class="n">sourceDirectory</span> <span class="n">in</span> <span class="n">jslint</span> <span class="o">&lt;&lt;=</span> <span class="o">(</span><span class="n">baseDirectory</span><span class="o">)(</span><span class="k">_</span> <span class="o">/</span> <span class="s">&quot;src/main/webapp/app&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">compile</span> <span class="n">in</span> <span class="nc">Test</span> <span class="o">&lt;&lt;=</span> <span class="o">(</span><span class="n">compile</span> <span class="n">in</span> <span class="nc">Test</span><span class="o">)</span> <span class="n">dependsOn</span> <span class="o">(</span><span class="n">jslint</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">))</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">lazy</span> <span class="k">val</span> <span class="n">ui</span><span class="k">:</span> <span class="kt">Project</span> <span class="o">=</span> <span class="nc">Project</span><span class="o">(</span>
+</span><span class='line'>    <span class="s">&quot;bootstrap-ui&quot;</span><span class="o">,</span>
+</span><span class='line'>    <span class="n">file</span><span class="o">(</span><span class="s">&quot;bootstrap-ui&quot;</span><span class="o">),</span>
+</span><span class='line'>    <span class="n">settings</span> <span class="k">=</span> <span class="n">buildSettings</span> <span class="o">++</span> <span class="n">lintCustomSettings</span>
+</span><span class='line'>  <span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>sourceDirectory in jslint &lt;&lt;= (baseDirectory)(_ / "src/main/webapp/app"),
-compile in Test &lt;&lt;= (compile in Test) dependsOn (jslint)
-</code></pre>
-
-<p>  ))</p>
-
-<p>  lazy val ui: Project = Project(</p>
-
-<pre><code>"bootstrap-ui",
-file("bootstrap-ui"),
-settings = buildSettings ++ lintCustomSettings
-</code></pre>
-
-<p>  )
-[/scala]</p>
 
 <p>Now after running <em>sbt test</em> we will see that JavaScript code is checked and report is printed to the console and also written in target/jslint/results.xml file.</p>
 
 <p>When you analyse report.xml you might be overwhelmed by the number of warnings raised by the plugin. Some of them are quite useful, but some might be ignored or, even better, disabled by custom flags. In our project we use something like:</p>
 
-<p>[scala]
-  flags in jslint ++= Seq(&ldquo;undef&rdquo;, &ldquo;vars&rdquo;, &ldquo;browser&rdquo;)
-[/scala]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="n">flags</span> <span class="n">in</span> <span class="n">jslint</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">&quot;undef&quot;</span><span class="o">,</span> <span class="s">&quot;vars&quot;</span><span class="o">,</span> <span class="s">&quot;browser&quot;</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>added to lintCustomSettings. For more flags and their descriptions please visit <a href="https://github.com/philcali/sbt-jslint/blob/master/README.md#some-notes">plugin documentation</a>.</p>
 
@@ -245,19 +261,19 @@ settings = buildSettings ++ lintCustomSettings
 
 <p>Simply go to <em>Edit Configuration Settings</em> of your build and then choose &ldquo;Build Step: Command Line&rdquo;:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step1/"><img src="/images/blog/2013/01/tc-step1.png" alt="tc-step1" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2013/01/tc-step1.png" alt="tc-step1" /></p>
 
 <p>And in the section Additional Build Features click &ldquo;Add build feature&rdquo;, choose &ldquo;XML report processing&rdquo;, then &ldquo;JSLint&rdquo; and specify path to the report.xml file. Personally I also check &ldquo;Verbose output&rdquo; to see more details in the build log.</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step2/"><img src="/images/blog/2013/01/tc-step2.png" alt="tc-step2" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2013/01/tc-step2.png" alt="tc-step2" /></p>
 
 <p>After saving we can go next build step named &ldquo;Build failure conditions&rdquo; and define two new rules there so we end up with something similar to screen presented below:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step3/"><img src="/images/blog/2013/01/tc-step3-1024x116.png" alt="tc-step3" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2013/01/tc-step3-1024x116.png" alt="tc-step3" /></p>
 
 <p>And finally our build is fully configured to report and  react on problems in JavaScript files:</p>
 
-<p><a href="http://tomaszdziurko.pl/2013/01/configuring-sbt-jslint-with-teamcity/tc-step4/"><img src="/images/blog/2013/01/tc-step4.png" alt="tc-step4" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2013/01/tc-step4.png" alt="tc-step4" /></p>
 
 <p>Reference commits from my current project:</p>
 
@@ -270,6 +286,7 @@ settings = buildSettings ++ lintCustomSettings
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

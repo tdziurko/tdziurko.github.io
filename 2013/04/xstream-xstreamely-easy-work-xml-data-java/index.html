@@ -150,16 +150,16 @@
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 	<h1 class="title" itemprop="name">XStream - XStreamely Easy Way to Work With XML Data in Java</h1>
-	<div class="entry-content" itemprop="articleBody"><p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
+	<div class="entry-content" itemprop="articleBody"><!-- more -->
 
-<p><a href="/images/blog/2013/04/xstream.gif"><img src="/images/blog/2013/04/xstream.gif" alt="xstream" /></a></p>
+
+<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
+
+<p style="text-align:center;"><a href="/images/blog/2013/04/xstream.gif"><img src="/images/blog/2013/04/xstream.gif" alt="xstream" /></a></p>
 
 <h3>Overview</h3>
 
 <p><a href="http://xstream.codehaus.org/">XStream</a> is a small library to serialize data between Java objects and XML. It&rsquo;s lightweight, small, has nice API and what is most important, it works with and without custom annotations that we might be not allowed to add when we are not the owner of Java classes.</p>
-
-<!-- more -->
-
 
 <h3>First example</h3>
 
@@ -183,35 +183,51 @@
 <p></config>
 [/xml]</p>
 
-<p>And we want to load it into Configuration object:
-[java]
-public class Configuration {</p>
+<p>And we want to load it into Configuration object:</p>
 
-<pre><code>private String inputFile;
-private String user;
-private String password;
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Configuration</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">inputFile</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">user</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">password</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">truststoreFile</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">keystoreFile</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">keystorePassword</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">truststorePassword</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// getters, setters, etc.</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-private String truststoreFile;
-private String keystoreFile;
-private String keystorePassword;
-private String truststorePassword;
 
-// getters, setters, etc.
-</code></pre>
+<p>So basically what we have to do is:</p>
 
-<p>}
-[/java]
-So basically what we have to do is:
-[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">FileReader</span> <span class="n">fileReader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="s">&quot;config.xml&quot;</span><span class="o">);</span>  <span class="c1">// load our xml file  </span>
+</span><span class='line'><span class="n">XStream</span> <span class="n">xstream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">XStream</span><span class="o">();</span>     <span class="c1">// init XStream</span>
+</span><span class='line'><span class="c1">// define root alias so XStream knows which element and which class are equivalent</span>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">alias</span><span class="o">(</span><span class="s">&quot;config&quot;</span><span class="o">,</span> <span class="n">Configuration</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'><span class="n">Configuration</span> <span class="n">loadedConfig</span> <span class="o">=</span> <span class="o">(</span><span class="n">Configuration</span><span class="o">)</span> <span class="n">xstream</span><span class="o">.</span><span class="na">fromXML</span><span class="o">(</span><span class="n">fileReader</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>FileReader fileReader = new FileReader("config.xml");  // load our xml file  
-XStream xstream = new XStream();     // init XStream
-// define root alias so XStream knows which element and which class are equivalent
-xstream.alias("config", Configuration.class);    
-Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
-</code></pre>
-
-<p>[/java]</p>
 
 <p>And that&rsquo;s all, easy peasy :)</p>
 
@@ -254,33 +270,40 @@ Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
 <p></DATA>
 [/xml]</p>
 
-<p>What we have here is simple list of bans written in XML. We want to load it into collection of Ban objects. So let&rsquo;s prepare some classes (getters/setters/toString omitted):
-[java]
-public class Data {</p>
+<p>What we have here is simple list of bans written in XML. We want to load it into collection of Ban objects. So let&rsquo;s prepare some classes (getters/setters/toString omitted):</p>
 
-<pre><code>private List bans = new ArrayList(); 
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Data</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">List</span> <span class="n">bans</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Ban</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">dateOfUpdate</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Person</span> <span class="n">person</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">documentNumber</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>}</p>
-
-<p>public class Ban {</p>
-
-<pre><code>private String dateOfUpdate;
-private Person person;
-</code></pre>
-
-<p>}</p>
-
-<p>public class Person {</p>
-
-<pre><code>private String firstName;
-private String lastName;
-private int age;
-private String documentNumber;
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>As you can see there is some naming and type mismatch between XML and Java classes (e.g. field name1->firstName, dateOfUpdate is String not a Date), but it&rsquo;s here for some example purposes.</p>
 
@@ -289,75 +312,119 @@ private String documentNumber;
 <h4>Parse with annotations</h4>
 
 <p>First, easier way is to use annotations. And that&rsquo;s the suggested approach in situation when we can modify Java classes to which XML will be mapped.
-So we have:
-[java]
-@XStreamAlias(&ldquo;DATA&rdquo;) // maps DATA element in XML to this class
-public class Data {</p>
+So we have:</p>
 
-<pre><code>// Here is something more complicated. If we have list of elements that are 
-// not wrapped in a element representing a list (like we have in our XML: 
-// multiple &lt;ban&gt; elements not wrapped inside &lt;bans&gt; collection, 
-// we have to declare that we want to treat these elements as an implicit list 
-// so they can be converted to List of objects. 
-@XStreamImplicit(itemFieldName = "ban") 
-private List bans = new ArrayList();
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@XStreamAlias</span><span class="o">(</span><span class="s">&quot;DATA&quot;</span><span class="o">)</span> <span class="c1">// maps DATA element in XML to this class</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Data</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// Here is something more complicated. If we have list of elements that are </span>
+</span><span class='line'>    <span class="c1">// not wrapped in a element representing a list (like we have in our XML: </span>
+</span><span class='line'>    <span class="c1">// multiple &lt;ban&gt; elements not wrapped inside &lt;bans&gt; collection, </span>
+</span><span class='line'>    <span class="c1">// we have to declare that we want to treat these elements as an implicit list </span>
+</span><span class='line'>    <span class="c1">// so they can be converted to List of objects. </span>
+</span><span class='line'>    <span class="nd">@XStreamImplicit</span><span class="o">(</span><span class="n">itemFieldName</span> <span class="o">=</span> <span class="s">&quot;ban&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">List</span> <span class="n">bans</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@XStreamAlias</span><span class="o">(</span><span class="s">&quot;BAN&quot;</span><span class="o">)</span> <span class="c1">// another mapping</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Ban</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="cm">/*</span>
+</span><span class='line'><span class="cm">     We want to have different field names in Java classes so</span>
+</span><span class='line'><span class="cm">     we define what element should be mapped to each field</span>
+</span><span class='line'><span class="cm">    */</span>
+</span><span class='line'>    <span class="nd">@XStreamAlias</span><span class="o">(</span><span class="s">&quot;UPDATED_AT&quot;</span><span class="o">)</span> <span class="c1">// </span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">dateOfUpdate</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@XStreamAlias</span><span class="o">(</span><span class="s">&quot;TROUBLEMAKER&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Person</span> <span class="n">person</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@XStreamAlias</span><span class="o">(</span><span class="s">&quot;TROUBLEMAKER&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@XStreamAlias</span><span class="o">(</span><span class="s">&quot;NAME1&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">firstName</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@XStreamAlias</span><span class="o">(</span><span class="s">&quot;NAME2&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">lastName</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@XStreamAlias</span><span class="o">(</span><span class="s">&quot;AGE&quot;</span><span class="o">)</span> <span class="c1">// String will be auto converted to int value</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@XStreamAlias</span><span class="o">(</span><span class="s">&quot;NUMBER&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">documentNumber</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>}</p>
-
-<p>@XStreamAlias(&ldquo;BAN&rdquo;) // another mapping
-public class Ban {</p>
-
-<pre><code>/*
- We want to have different field names in Java classes so
- we define what element should be mapped to each field
-*/
-@XStreamAlias("UPDATED_AT") // 
-private String dateOfUpdate;
-
-@XStreamAlias("TROUBLEMAKER")
-private Person person;
-</code></pre>
-
-<p>}</p>
-
-<p>@XStreamAlias(&ldquo;TROUBLEMAKER&rdquo;)
-public class Person {</p>
-
-<pre><code>@XStreamAlias("NAME1")
-private String firstName;
-
-@XStreamAlias("NAME2")
-private String lastName;
-
-@XStreamAlias("AGE") // String will be auto converted to int value
-private int age;
-
-@XStreamAlias("NUMBER")
-private String documentNumber;
-</code></pre>
-
-<p>[/java]</p>
 
 <p>And actual parsing logic is very short:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">FileReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="s">&quot;file.xml&quot;</span><span class="o">);</span>  <span class="c1">// load file</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">XStream</span> <span class="n">xstream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">XStream</span><span class="o">();</span>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">processAnnotations</span><span class="o">(</span><span class="n">Data</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>     <span class="c1">// inform XStream to parse annotations in Data class</span>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">processAnnotations</span><span class="o">(</span><span class="n">Ban</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>      <span class="c1">// and in two other classes... </span>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">processAnnotations</span><span class="o">(</span><span class="n">Person</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>   <span class="c1">// we use for mappings</span>
+</span><span class='line'><span class="n">Data</span> <span class="n">data</span> <span class="o">=</span> <span class="o">(</span><span class="n">Data</span><span class="o">)</span> <span class="n">xstream</span><span class="o">.</span><span class="na">fromXML</span><span class="o">(</span><span class="n">reader</span><span class="o">);</span> <span class="c1">// parse</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Print some data to console to see if results are correct</span>
+</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Number of bans = &quot;</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="na">getBans</span><span class="o">().</span><span class="na">size</span><span class="o">());</span>
+</span><span class='line'><span class="n">Ban</span> <span class="n">firstBan</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getBans</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;First ban = &quot;</span> <span class="o">+</span> <span class="n">firstBan</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>FileReader reader = new FileReader("file.xml");  // load file
-
-XStream xstream = new XStream();
-xstream.processAnnotations(Data.class);     // inform XStream to parse annotations in Data class
-xstream.processAnnotations(Ban.class);      // and in two other classes... 
-xstream.processAnnotations(Person.class);   // we use for mappings
-Data data = (Data) xstream.fromXML(reader); // parse
-
-// Print some data to console to see if results are correct
-System.out.println("Number of bans = " + data.getBans().size());
-Ban firstBan = data.getBans().get(0);
-System.out.println("First ban = " + firstBan.toString()); 
-</code></pre>
-
-<p>[/java]</p>
 
 <p>As you can see annotations are very easy to use and as a result final code is very concise. But what to do in situation when we can&rsquo;t modify mapping classes? We can use different approach that doesn&rsquo;t require any modifications in Java classes representing XML data.</p>
 
@@ -365,163 +432,257 @@ System.out.println("First ban = " + firstBan.toString());
 
 <p>When we can&rsquo;t enrich our model classes with annotations, there is another solution. We can define all mapping details using methods from XStream object:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">FileReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileReader</span><span class="o">(</span><span class="s">&quot;file.xml&quot;</span><span class="o">);</span>  <span class="c1">// three first lines are easy, </span>
+</span><span class='line'><span class="n">XStream</span> <span class="n">xstream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">XStream</span><span class="o">();</span>                 <span class="c1">// same initialisation as in the </span>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">alias</span><span class="o">(</span><span class="s">&quot;DATA&quot;</span><span class="o">,</span> <span class="n">Data</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>               <span class="c1">// basic example above</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">alias</span><span class="o">(</span><span class="s">&quot;BAN&quot;</span><span class="o">,</span> <span class="n">Ban</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>             <span class="c1">// two more aliases to map... </span>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">alias</span><span class="o">(</span><span class="s">&quot;TROUBLEMAKER&quot;</span><span class="o">,</span> <span class="n">Person</span><span class="o">.</span><span class="na">class</span><span class="o">);</span> <span class="c1">// between node names and classes</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// We want to have different field names in Java classes so</span>
+</span><span class='line'><span class="c1">// we have to use aliasField(&lt;fieldInXml&gt;, &lt;mappedJavaClass&gt;, &lt;mappedFieldInJavaClass&gt;)</span>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">aliasField</span><span class="o">(</span><span class="s">&quot;UPDATED_AT&quot;</span><span class="o">,</span> <span class="n">Ban</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;dateOfUpdate&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">aliasField</span><span class="o">(</span><span class="s">&quot;TROUBLEMAKER&quot;</span><span class="o">,</span> <span class="n">Ban</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;person&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">aliasField</span><span class="o">(</span><span class="s">&quot;NAME1&quot;</span><span class="o">,</span> <span class="n">Person</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;firstName&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">aliasField</span><span class="o">(</span><span class="s">&quot;NAME2&quot;</span><span class="o">,</span> <span class="n">Person</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;lastName&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">aliasField</span><span class="o">(</span><span class="s">&quot;AGE&quot;</span><span class="o">,</span> <span class="n">Person</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;age&quot;</span><span class="o">);</span>  <span class="c1">// notice here that XML will be auto-converted to int &quot;age&quot;</span>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">aliasField</span><span class="o">(</span><span class="s">&quot;NUMBER&quot;</span><span class="o">,</span> <span class="n">Person</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;documentNumber&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/*</span>
+</span><span class='line'><span class="cm"> Another way to define implicit collection</span>
+</span><span class='line'><span class="cm">*/</span>
+</span><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">addImplicitCollection</span><span class="o">(</span><span class="n">Bans</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;bans&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">Data</span> <span class="n">data</span> <span class="o">=</span> <span class="o">(</span><span class="n">Data</span><span class="o">)</span> <span class="n">xstream</span><span class="o">.</span><span class="na">fromXML</span><span class="o">(</span><span class="n">reader</span><span class="o">);</span>  <span class="c1">// do the actual parsing</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// let&#39;s print results to check if data was parsed</span>
+</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Number of bans = &quot;</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="na">getBans</span><span class="o">().</span><span class="na">size</span><span class="o">());</span>
+</span><span class='line'><span class="n">Ban</span> <span class="n">firstBan</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="na">getBans</span><span class="o">().</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class='line'><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;First ban = &quot;</span> <span class="o">+</span> <span class="n">firstBan</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>FileReader reader = new FileReader("file.xml");  // three first lines are easy, 
-XStream xstream = new XStream();                 // same initialisation as in the 
-xstream.alias("DATA", Data.class);               // basic example above
-
-xstream.alias("BAN", Ban.class);             // two more aliases to map... 
-xstream.alias("TROUBLEMAKER", Person.class); // between node names and classes
-
-// We want to have different field names in Java classes so
-// we have to use aliasField(&lt;fieldInXml&gt;, &lt;mappedJavaClass&gt;, &lt;mappedFieldInJavaClass&gt;)
-xstream.aliasField("UPDATED_AT", Ban.class, "dateOfUpdate"); 
-xstream.aliasField("TROUBLEMAKER", Ban.class, "person");
-
-xstream.aliasField("NAME1", Person.class, "firstName");
-xstream.aliasField("NAME2", Person.class, "lastName");
-xstream.aliasField("AGE", Person.class, "age");  // notice here that XML will be auto-converted to int "age"
-xstream.aliasField("NUMBER", Person.class, "documentNumber");
-
-/*
- Another way to define implicit collection
-*/ 
-xstream.addImplicitCollection(Bans.class, "bans");
-
-Data data = (Data) xstream.fromXML(reader);  // do the actual parsing
-
-// let's print results to check if data was parsed
-System.out.println("Number of bans = " + data.getBans().size());
-Ban firstBan = data.getBans().get(0);
-System.out.println("First ban = " + firstBan.toString());
-</code></pre>
-
-<p>[/java]</p>
 
 <p>As you can see XStream allows to easily convert more complicated XML structures into Java objects, it also gives a possibility to tune results by using different names if this from XML doesn&rsquo;t suit our needs.
 But there is one thing should catch your attention: we are converting XML representing a Date into raw String which isn&rsquo;t quite what we would like to get as a result. That&rsquo;s why we will add converter to do some job for us.</p>
 
 <h3>Using existing custom type converter</h3>
 
-<p>XStream library comes with set of built converters for most common use cases. We will use DateConverter. So now our class for Ban looks like that:
-[java]
-public class Ban {</p>
+<p>XStream library comes with set of built converters for most common use cases. We will use DateConverter. So now our class for Ban looks like that:</p>
 
-<pre><code>private Date dateOfUpdate;
-private Person person;
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Ban</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Date</span> <span class="n">dateOfUpdate</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Person</span> <span class="n">person</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>}
-[/java]
-And to use DateConverter we simply have to register it with date format that we expect to appear in XML data:
-[java]
-   xstream.registerConverter(new DateConverter(&ldquo;yyyy-MM-dd&rdquo;, new String[] {}));
-[/java]</p>
+
+<p>And to use DateConverter we simply have to register it with date format that we expect to appear in XML data:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>   <span class="n">xstream</span><span class="o">.</span><span class="na">registerConverter</span><span class="o">(</span><span class="k">new</span> <span class="n">DateConverter</span><span class="o">(</span><span class="s">&quot;yyyy-MM-dd&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{}));</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>and that&rsquo;s it. Now instead of String our object is populated with Date instance. Cool and easy! But what about classes and situations that aren&rsquo;t covered by existing converters? We could write our own.</p>
 
 <h3>Writing custom converter from scratch</h3>
 
-<p>Assume that instead of dateOfUpdate we want to know how many days ago update was done:
-[java]
-public class Ban {</p>
+<p>Assume that instead of dateOfUpdate we want to know how many days ago update was done:</p>
 
-<pre><code>private int daysAgo;
-private Person person;
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Ban</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kt">int</span> <span class="n">daysAgo</span><span class="o">;</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Person</span> <span class="n">person</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>}
-[/java]
-Of course we could calculate it manually for each Ban object but using converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/Converter.html">Converter</a> interface so we have to implement three methods with signatures looking a little bit scary:
-[java]
-public class DaysAgoConverter implements Converter {</p>
 
-<pre><code>@Override
-public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
-}
+<p>Of course we could calculate it manually for each Ban object but using converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/Converter.html">Converter</a> interface so we have to implement three methods with signatures looking a little bit scary:</p>
 
-@Override
-public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-}
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DaysAgoConverter</span> <span class="kd">implements</span> <span class="n">Converter</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">marshal</span><span class="o">(</span><span class="n">Object</span> <span class="n">source</span><span class="o">,</span> <span class="n">HierarchicalStreamWriter</span> <span class="n">writer</span><span class="o">,</span> <span class="n">MarshallingContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">unmarshal</span><span class="o">(</span><span class="n">HierarchicalStreamReader</span> <span class="n">reader</span><span class="o">,</span> <span class="n">UnmarshallingContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">canConvert</span><span class="o">(</span><span class="n">Class</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-@Override
-public boolean canConvert(Class type) {
-    return false;
-}
-</code></pre>
 
-<p>}
-[/java]
-Last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/basic/AbstractSingleValueConverter.html">AbstractSingleValueConverter</a>that shields us from so low level mechanisms. And now our class looks much better:
-[java]
-public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
+<p>Last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using <a href="http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/basic/AbstractSingleValueConverter.html">AbstractSingleValueConverter</a>that shields us from so low level mechanisms. And now our class looks much better:</p>
 
-<pre><code>@Override
-public boolean canConvert(Class type) {
-    return type.equals(Integer.class);
-}
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DaysAgoConverter</span> <span class="kd">extends</span> <span class="n">AbstractSingleValueConverter</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">canConvert</span><span class="o">(</span><span class="n">Class</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">type</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">fromString</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-@Override
-public Object fromString(String str) {
-    return null;
-}
 
-public String toString(Object obj) {
-    return null;
-}
-</code></pre>
-
-<p>}
-[/java]
-Additionally we must override method toString(Object obj) defined in AbstractSingleValueConverter as we want to store Date in XML calculated from Integer, not a simple <em>Object.toString</em> value which would be returned from default <em>toString</em> defined in abstract parent.</p>
+<p>Additionally we must override method toString(Object obj) defined in AbstractSingleValueConverter as we want to store Date in XML calculated from Integer, not a simple <em>Object.toString</em> value which would be returned from default <em>toString</em> defined in abstract parent.</p>
 
 <p><strong>Implementation</strong></p>
 
-<p>Code below is pretty straightforward, but most interesting lines are commented. I&rsquo;ve skipped all validation stuff to make this example shorter.
-[java]
-public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
+<p>Code below is pretty straightforward, but most interesting lines are commented. I&rsquo;ve skipped all validation stuff to make this example shorter.</p>
 
-<pre><code>private final static String FORMAT = "yyyy-MM-dd"; // default Date format that will be used in conversion
-private final DateTime now = DateTime.now().toDateMidnight().toDateTime(); // current day at midnight
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DaysAgoConverter</span> <span class="kd">extends</span> <span class="n">AbstractSingleValueConverter</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">FORMAT</span> <span class="o">=</span> <span class="s">&quot;yyyy-MM-dd&quot;</span><span class="o">;</span> <span class="c1">// default Date format that will be used in conversion</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">final</span> <span class="n">DateTime</span> <span class="n">now</span> <span class="o">=</span> <span class="n">DateTime</span><span class="o">.</span><span class="na">now</span><span class="o">().</span><span class="na">toDateMidnight</span><span class="o">().</span><span class="na">toDateTime</span><span class="o">();</span> <span class="c1">// current day at midnight</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">canConvert</span><span class="o">(</span><span class="n">Class</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">type</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>     <span class="c1">// Converter works only with Integers</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">fromString</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">SimpleDateFormat</span> <span class="n">format</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleDateFormat</span><span class="o">(</span><span class="n">FORMAT</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">Date</span> <span class="n">date</span> <span class="o">=</span> <span class="n">format</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">str</span><span class="o">);</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">Days</span><span class="o">.</span><span class="na">daysBetween</span><span class="o">(</span><span class="k">new</span> <span class="n">DateTime</span><span class="o">(</span><span class="n">date</span><span class="o">),</span> <span class="n">now</span><span class="o">).</span><span class="na">getDays</span><span class="o">();</span>  <span class="c1">// we simply calculate days between using JodaTime</span>
+</span><span class='line'>        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ParseException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">&quot;Invalid date format in &quot;</span> <span class="o">+</span> <span class="n">str</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">(</span><span class="n">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">obj</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Integer</span> <span class="n">daysAgo</span> <span class="o">=</span> <span class="o">((</span><span class="n">Integer</span><span class="o">)</span> <span class="n">obj</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">now</span><span class="o">.</span><span class="na">minusDays</span><span class="o">(</span><span class="n">daysAgo</span><span class="o">).</span><span class="na">toString</span><span class="o">(</span><span class="n">FORMAT</span><span class="o">);</span> <span class="c1">// here we subtract days from now and return formatted date string</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-public boolean canConvert(Class type) {
-    return type.equals(Integer.class);     // Converter works only with Integers
-}
 
-@Override
-public Object fromString(String str) {
-    SimpleDateFormat format = new SimpleDateFormat(FORMAT);
-    try {
-        Date date = format.parse(str);
-        return Days.daysBetween(new DateTime(date), now).getDays();  // we simply calculate days between using JodaTime
-    } catch (ParseException e) {
-        throw new RuntimeException("Invalid date format in " + str);
-    }
-}
-
-public String toString(Object obj) {
-    if (obj == null) {
-        return null;
-    }
-
-    Integer daysAgo = ((Integer) obj);
-    return now.minusDays(daysAgo).toString(FORMAT); // here we subtract days from now and return formatted date string
-}
-</code></pre>
-
-<p>}
-[/java]</p>
+<p></p>
 
 <p><strong>Usage</strong>
-To use our custom converter for a specific field we have to inform about it XStream object using registerLocalConverter:
-[java]</p>
+To use our custom converter for a specific field we have to inform about it XStream object using registerLocalConverter:</p>
 
-<pre><code>xstream.registerLocalConverter(Ban.class, "daysAgo", new DaysAgoConverter());
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">xstream</span><span class="o">.</span><span class="na">registerLocalConverter</span><span class="o">(</span><span class="n">Ban</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="s">&quot;daysAgo&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">DaysAgoConverter</span><span class="o">());</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>[/java]
-We are using &ldquo;local&rdquo; method to apply this conversion only to specific field and not to every Integer field in XML file. And after that we will get our Ban objects populated with number of days instead of Date.</p>
+
+<p>We are using &ldquo;local&rdquo; method to apply this conversion only to specific field and not to every Integer field in XML file. And after that we will get our Ban objects populated with number of days instead of Date.</p>
 
 <h3>Summary</h3>
 
@@ -530,6 +691,7 @@ We are using &ldquo;local&rdquo; method to apply this conversion only to specifi
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

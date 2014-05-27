@@ -162,74 +162,112 @@ So first, let&rsquo;s create html and Java files:</p>
 
 <p>LanguagePanel.html</p>
 
-<p>[html]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">&quot;languageForm&quot;</span> <span class="na">action=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">wicket:id=</span><span class="s">&quot;polishButton&quot;</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span> <span class="na">src=</span><span class="s">&quot;images/pl.png&quot;</span>
+</span><span class='line'>               <span class="na">name=</span><span class="s">&quot;image&quot;</span> <span class="na">width=</span><span class="s">&quot;25&quot;</span> <span class="na">height=</span><span class="s">&quot;25&quot;</span> <span class="na">style=</span><span class="s">&quot;border-style: none;&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">wicket:id=</span><span class="s">&quot;englishButton&quot;</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span> <span class="na">src=</span><span class="s">&quot;images/gb.png&quot;</span>
+</span><span class='line'>               <span class="na">name=</span><span class="s">&quot;image&quot;</span> <span class="na">width=</span><span class="s">&quot;25&quot;</span> <span class="na">height=</span><span class="s">&quot;25&quot;</span> <span class="na">style=</span><span class="s">&quot;border-style: none;&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>&lt;form wicket:id="languageForm" action=""&gt;
-        &lt;input wicket:id="polishButton" type="image" src="images/pl.png"
-               name="image" width="25" height="25" style="border-style: none;"/&gt;
-        &lt;input wicket:id="englishButton" type="image" src="images/gb.png"
-               name="image" width="25" height="25" style="border-style: none;"/&gt;
-&lt;/form&gt;
-</code></pre>
-
-<p>[/html]</p>
 
 <p>LanguagePanel.java:</p>
 
-<p>[java]
-public class LanguagePanel extends Panel {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LanguagePanel</span> <span class="kd">extends</span> <span class="n">Panel</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">Logger</span> <span class="n">log</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">LanguagePanel</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">LanguagePanel</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Form</span> <span class="n">languageForm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Form</span><span class="o">(</span><span class="s">&quot;languageForm&quot;</span><span class="o">);</span>   <span class="c1">// (1)</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">languageForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createLocaleChangingButton</span><span class="o">(</span><span class="s">&quot;polishButton&quot;</span><span class="o">,</span> <span class="s">&quot;PL&quot;</span><span class="o">));</span>
+</span><span class='line'>        <span class="n">languageForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createLocaleChangingButton</span><span class="o">(</span><span class="s">&quot;englishButton&quot;</span><span class="o">,</span> <span class="s">&quot;GB&quot;</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">add</span><span class="o">(</span><span class="n">languageForm</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Button</span> <span class="nf">createLocaleChangingButton</span><span class="o">(</span><span class="kd">final</span> <span class="n">String</span> <span class="n">buttonId</span><span class="o">,</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">localeString</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">new</span> <span class="nf">Button</span><span class="o">(</span><span class="n">buttonId</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="nd">@Override</span>
+</span><span class='line'>            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">changeUserLocaleTo</span><span class="o">(</span><span class="n">localeString</span><span class="o">);</span>    <span class="c1">// (2)</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">};</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">changeUserLocaleTo</span><span class="o">(</span><span class="n">String</span> <span class="n">localeString</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">getSession</span><span class="o">().</span><span class="na">setLocale</span><span class="o">(</span><span class="k">new</span> <span class="n">Locale</span><span class="o">(</span><span class="n">localeString</span><span class="o">));</span>      <span class="c1">// (3)</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>Logger log = LoggerFactory.getLogger(LanguagePanel.class);
-
-public LanguagePanel(String id) {
-    super(id);
-
-    Form languageForm = new Form("languageForm");   // (1)
-
-    languageForm.add(createLocaleChangingButton("polishButton", "PL"));
-    languageForm.add(createLocaleChangingButton("englishButton", "GB"));
-
-    add(languageForm);
-}
-
-private Button createLocaleChangingButton(final String buttonId, final String localeString) {
-    return new Button(buttonId) {
-        @Override
-        public void onSubmit() {
-            changeUserLocaleTo(localeString);    // (2)
-        }
-    };
-}
-
-private void changeUserLocaleTo(String localeString) {
-    getSession().setLocale(new Locale(localeString));      // (3)
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>As you can see it&rsquo;s simple panel with form containing two buttons to change language to Polish and English. We just create form <strong>(1)</strong>, add two buttons which both call <strong>(2)</strong> the same method <em>changeUserLocaleTo() </em><strong>(3)</strong> with different parameter. Method does one, but very important thing: it changes locale of user Sesssion object so all localized strings will be rendered in the chosen language.</p>
 
 <p>Next thing we need to do is add just created panel somewhere to the application. I will place it in the header bar in the BasePage with some styling:</p>
 
-<p>[html]
-(&hellip;)</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>(...)
+</span><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>    <span class="c">&lt;!-- MENU --&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a&gt;</span>Item locations<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>About application<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li</span> <span class="na">style=</span><span class="s">&quot;float: right; padding-top: 20px; padding-right: 20px;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;languagePanel&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>    <span class="c">&lt;!-- END MENU --&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>(...)
+</span></code></pre></td></tr></table></div></figure>
 
-<ul>
-    <!-- MENU -->
-    <li><a>Home</a></li>
-    <li><a>Item locations</a></li>
-    <li><a href="#">About application</a></li>
-    <li style="float: right; padding-top: 20px; padding-right: 20px;">
-            <span wicket:id="languagePanel"/>
-        </li>
-    <!-- END MENU -->
-</ul>
-
-
-<p>(&hellip;)
-[/html]</p>
 
 <p>We are almost done with this point but as we would like to test if language switching is working on the main page, we must add properties file for second language. And as properties gathered in Application.properties file doesn&rsquo;t seem to work when language is changed, we will move them to BasePage.properties:</p>
 
@@ -247,21 +285,24 @@ applicationHeader=Zarządzaj swoimi przedmiotami z łatwością!
 
 <p>Ok, it should work and when you run jetty server <em>mvn jetty:run</em>, enter application and click flag of Poland you should see:</p>
 
-<p><a href="/images/blog/2011/06/item11.png"><img src="/images/blog/2011/06/item11.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/06/item11.png" alt="" /></p>
 
 <p>Small improvement can be done with titles of flag images to inform user to which locale he will switch after clicking. This is good occasion to show nice feature of wicket:message which can render not only localized text but also to localize elements in other html tags like title in input HTML element. To make it work we simply add <em>wicket:message=&ldquo;element_name:key_from_properties_bundle&rdquo;</em>. In LanguagePanel.html we want to localize title so we add <em>wicket:message=&ldquo;title:pl&rdquo;</em> to input:</p>
 
-<p>[html]
-<form wicket:id="languageForm" action=""></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">&quot;languageForm&quot;</span> <span class="na">action=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;input</span> <span class="na">wicket:id=</span><span class="s">&quot;polishButton&quot;</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span> <span class="na">wicket:message=</span><span class="s">&quot;title:pl&quot;</span> <span class="na">src=</span><span class="s">&quot;images/pl.png&quot;</span>
+</span><span class='line'>         <span class="na">name=</span><span class="s">&quot;image&quot;</span> <span class="na">width=</span><span class="s">&quot;25&quot;</span> <span class="na">height=</span><span class="s">&quot;25&quot;</span> <span class="na">style=</span><span class="s">&quot;border-style: none;&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>     <span class="nt">&lt;input</span> <span class="na">wicket:id=</span><span class="s">&quot;englishButton&quot;</span> <span class="na">type=</span><span class="s">&quot;image&quot;</span> <span class="na">wicket:message=</span><span class="s">&quot;title:gb&quot;</span> <span class="na">src=</span><span class="s">&quot;images/gb.png&quot;</span>
+</span><span class='line'>         <span class="na">name=</span><span class="s">&quot;image&quot;</span> <span class="na">width=</span><span class="s">&quot;25&quot;</span> <span class="na">height=</span><span class="s">&quot;25&quot;</span> <span class="na">style=</span><span class="s">&quot;border-style: none;&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>&lt;input wicket:id="polishButton" type="image" wicket:message="title:pl" src="images/pl.png"
-     name="image" width="25" height="25" style="border-style: none;"/&gt;
- &lt;input wicket:id="englishButton" type="image" wicket:message="title:gb" src="images/gb.png"
-     name="image" width="25" height="25" style="border-style: none;"/&gt;
-</code></pre>
-
-<p></form>
-[/html]</p>
 
 <p>and after adding pl and gb keys to properties file we could see localized &ldquo;on hover&rdquo; title messages over both flags.</p>
 
@@ -273,17 +314,20 @@ applicationHeader=Zarządzaj swoimi przedmiotami z łatwością!
 
 <p>HomePage.java:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">initGui</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;helloLabel&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">StringResourceModel</span><span class="o">(</span><span class="s">&quot;welcomeLabel&quot;</span><span class="o">,</span> <span class="k">this</span><span class="o">,</span> <span class="kc">null</span><span class="o">)));</span>
+</span><span class='line'>  <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;currentTime&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">toString</span><span class="o">()));</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;numberOfUsers&quot;</span><span class="o">,</span> <span class="n">userService</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">+</span><span class="s">&quot;&quot;</span><span class="o">));</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private void initGui() {
-    add(new Label("helloLabel", new StringResourceModel("welcomeLabel", this, null)));
-    add(new Label("currentTime", new Date().toString()));
-
-    add(new Label("numberOfUsers", userService.size() +""));
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>If you are more interested in arguments of this class constructor please read <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/StringResourceModel.html">javadocs</a> where you can find detailed description how all this stuff is working.</p>
 
@@ -291,18 +335,22 @@ applicationHeader=Zarządzaj swoimi przedmiotami z łatwością!
 
 <p>RemoveLocationLink fragment:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Override</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">locationService</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">getSession</span><span class="o">().</span><span class="na">info</span><span class="o">(</span><span class="k">new</span> <span class="n">StringResourceModel</span><span class="o">(</span><span class="s">&quot;locationRemoved&quot;</span><span class="o">,</span> <span class="k">this</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span>
+</span><span class='line'>        <span class="k">new</span> <span class="n">Object</span><span class="o">[]</span> <span class="o">{</span> <span class="n">location</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">}).</span><span class="na">getString</span><span class="o">());</span>
+</span><span class='line'>  <span class="n">setResponsePage</span><span class="o">(</span><span class="n">LocationsPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Override
-public void onClick() {
-    locationService.remove(location);
-    getSession().info(new StringResourceModel("locationRemoved", this, null,
-        new Object[] { location.getName() }).getString());
-    setResponsePage(LocationsPage.class);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>alongside with properties message:</p>
 
@@ -318,60 +366,79 @@ locationRemoved=Location {0} was removed
 
 <p>To show how it works we will create localized sidebar panel of our application:</p>
 
-<p><a href="/images/blog/2011/06/item2.png"><img src="/images/blog/2011/06/item2.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/06/item2.png" alt="" /></p>
 
 <p>First we create empty Java class for panel and move sidebar markup to corresponding panel HTML file:</p>
 
-<p>[java]
-public class RightSidebarPanel extends Panel {</p>
-
-<pre><code>public RightSidebarPanel(String id) {
-    super(id);
-}
-</code></pre>
-
-<p>}
-[/java]
-[html]</p>
-
-<!-- SIDEBAR -->
-
-
-<h4>About</h4>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RightSidebarPanel</span> <span class="kd">extends</span> <span class="n">Panel</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">RightSidebarPanel</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kd">super</span><span class="o">(</span><span class="n">id</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>This is example application to help you manage your items hidden in many locations across your home.</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="c">&lt;!-- SIDEBAR --&gt;</span>
+</span><span class='line'><span class="nt">&lt;h4&gt;</span>About<span class="nt">&lt;/h4&gt;</span>
+</span><span class='line'>This is example application to help you manage your items hidden in many locations across your home.
+</span><span class='line'><span class="nt">&lt;h4&gt;</span>Links<span class="nt">&lt;/h4&gt;</span>
+</span><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;blocklist&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">title=</span><span class="s">&quot;Source code of this application&quot;</span> <span class="na">href=</span><span class="s">&quot;https://bitbucket.org/tdziurko/item-directory/src&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      Source code of this application
+</span><span class='line'>    <span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">title=</span><span class="s">&quot;Tutorial about creating this application&quot;</span>
+</span><span class='line'>      <span class="na">href=</span><span class="s">&quot;&lt;a href=&quot;</span><span class="err">/</span><span class="na">2011</span><span class="err">/</span><span class="na">03</span><span class="err">/</span><span class="na">wicket-tutorial-series-building-web-application-scratch</span><span class="err">/&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      Tutorial about creating this application
+</span><span class='line'>    <span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">title=</span><span class="s">&quot;Tomasz Dziurko&quot;</span> <span class="na">href=</span><span class="s">&quot;http://tomaszdziurko.pl/&quot;</span><span class="nt">&gt;</span>Author<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">title=</span><span class="s">&quot;Spyka Webmaster resources&quot;</span> <span class="na">href=</span><span class="s">&quot;http://www.spyka.net&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      Template Created by Spyka
+</span><span class='line'>    <span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'><span class="c">&lt;!-- SIDEBAR --&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<h4>Links</h4>
-
-
-<ul class="blocklist">
-  <li>
-    <a title="Source code of this application" href="https://bitbucket.org/tdziurko/item-directory/src">
-      Source code of this application
-    </a>
-  </li>
-  <li>
-    <a title="Tutorial about creating this application"
-      href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/">
-      Tutorial about creating this application
-    </a>
-  </li>
-  <li>
-    <a title="Tomasz Dziurko" href="http://tomaszdziurko.pl/">Author</a>
-  </li>
-  <li>
-    <a title="Spyka Webmaster resources" href="http://www.spyka.net">
-      Template Created by Spyka
-    </a>
-  </li>
-</ul>
-
-
-<!-- SIDEBAR -->
-
-
-<p>[/html]</p>
 
 <p>We need to add just created panel to BasePage java class and then, if we run application, home page screen won&rsquo;t change at all. Ok, now we are ready to the final trick :) Instead of replacing static text with wicket:message elements we create RightSidebarPanel_pl.html file next to standard one and replace whole content with text in Polish language. After this, Wicket uses Polish HTML file when user choose this language and English for users visiting us from other coutries. Easy and straightforward.</p>
 
@@ -381,21 +448,27 @@ public class RightSidebarPanel extends Panel {</p>
 
 <p>One thing I was missing in previous versions of Item Directory was title linked to main page. As in many other web pages I was clicking it to navigate to home page but previously I had forgott to add this functionality to it didn&rsquo;t work. And now, as we are adding title in other language, it&rsquo;s good occasion to fix it. So first we embed title and header in a href elements in HTML page and then we add links to BasePage Java class:</p>
 
-<p>[html]
-  <!-- TITLE -->
-  <h1><a href="#" wicket:id="headerHomePageLink">&lt;wicket:message key=&ldquo;applicationName&rdquo;/></a></h1>
-  <h2><a href="#" wicket:id="headerHomePageLink2">&lt;wicket:message key=&ldquo;applicationHeader&rdquo;/></a></h2>
-  <!-- END TITLE -->
-[/html]
-[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>  <span class="c">&lt;!-- TITLE --&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;h1&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;headerHomePageLink&quot;</span><span class="nt">&gt;&lt;wicket:message</span> <span class="na">key=</span><span class="s">&quot;applicationName&quot;</span><span class="nt">/&gt;&lt;/a&gt;&lt;/h1&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;headerHomePageLink2&quot;</span><span class="nt">&gt;&lt;wicket:message</span> <span class="na">key=</span><span class="s">&quot;applicationHeader&quot;</span><span class="nt">/&gt;&lt;/a&gt;&lt;/h2&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- END TITLE --&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private void addHeaderLinks() {
-    add(new BookmarkablePageLink("headerHomePageLink", Application.get().getHomePage()));
-    add(new BookmarkablePageLink("headerHomePageLink2", Application.get().getHomePage()));
-}
-</code></pre>
 
-<p>[/java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">addHeaderLinks</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">BookmarkablePageLink</span><span class="o">(</span><span class="s">&quot;headerHomePageLink&quot;</span><span class="o">,</span> <span class="n">Application</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getHomePage</span><span class="o">()));</span>
+</span><span class='line'>    <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">BookmarkablePageLink</span><span class="o">(</span><span class="s">&quot;headerHomePageLink2&quot;</span><span class="o">,</span> <span class="n">Application</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getHomePage</span><span class="o">()));</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>As you can see in HTML snippet I used <em>wicket:message</em> element which provides simple and easy to use label in markup functionality without any Java code. So it&rsquo;s good to utilize this Wicket feature in places with static text which maybe will need internationalization in the future and isn&rsquo;t connected with any particular logic.</p>
 
@@ -404,6 +477,7 @@ public class RightSidebarPanel extends Panel {</p>
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

@@ -150,7 +150,7 @@
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
 	<h1 class="title" itemprop="name">Wicket Tutorial, Part 3 - First Form in Our Application</h1>
-	<div class="entry-content" itemprop="articleBody"><p>Hello Visitor :) In previous posts we created <a href="http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">base project</a> and added <a href="http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/">common layout</a> to ItemDirectory Wicket application. Today we are going to add first form to allow users to insert some data into our application.</p>
+	<div class="entry-content" itemprop="articleBody"><p>Hello Visitor :) In previous posts we created <a href="/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">base project</a> and added <a href="/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/">common layout</a> to ItemDirectory Wicket application. Today we are going to add first form to allow users to insert some data into our application.</p>
 
 <p>As main feature of ItemDirectory is to manage information where items (books, movies, music, postage stamps) are stored in our home/work, the first data we need to know are locations where we actually can store those things. So we start with adding table, entity and form to manage locations of our precious items.</p>
 
@@ -158,53 +158,62 @@
 
 <p>First thing we need is locations table in database and entity mapping class:</p>
 
-<ul>
-<li>sql create table script listing:</li>
-</ul>
+<figure class='code'><figcaption><span>Create table script listing:</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">create</span> <span class="k">table</span> <span class="n">locations</span> <span class="p">(</span>
+</span><span class='line'>  <span class="n">id</span> <span class="nb">bigint</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span> <span class="n">auto_increment</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+</span><span class='line'>        <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">),</span>
+</span><span class='line'>  <span class="k">UNIQUE</span> <span class="k">KEY</span> <span class="n">unique_name</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span class='line'><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-
-<p>[sql]
-create table locations (</p>
-
-<pre><code>id bigint(20) not null auto_increment,
-name varchar(255) not null,
-    PRIMARY KEY (id),
-UNIQUE KEY unique_name (name)
-</code></pre>
-
-<p>);
-[/sql]</p>
 
 <ul>
 <li>entity class listing:</li>
 </ul>
 
 
-<p>[java]
-@javax.persistence.Entity
-@Table(name = &ldquo;locations&rdquo;)
-public class Location extends AbstractEntity {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@javax.persistence.Entity</span>
+</span><span class='line'><span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;locations&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Location</span> <span class="kd">extends</span> <span class="n">AbstractEntity</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Id</span>
+</span><span class='line'>    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Long</span> <span class="n">id</span><span class="o">;</span>
+</span><span class='line'>   <span class="nd">@Column</span><span class="o">(</span><span class="n">length</span><span class="o">=</span><span class="mi">255</span><span class="o">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">false</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>        <span class="kd">protected</span> <span class="nf">Location</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">Location</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">();</span>
+</span><span class='line'>      <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="c1">// getters, setters omitted</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
-</code></pre>
-
-<p>   @Column(length=255, nullable=false)</p>
-
-<pre><code>private String name;
-    protected Location() {
-    super();
-}
-public Location(String name) {
-    super();
-    this.name = name;
-}
-// getters, setters omitted
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>As you can see, Location class is very simple: only one field, but the only thing we want at the moment from this entity is a name describing where item is stored. Is it &ldquo;Bookcase in living room, second drawer from the top&rdquo; or &ldquo;Cabinet in the saloon, top bookshelf&rdquo;.</p>
 
@@ -219,83 +228,115 @@ public Location(String name) {
 
 <p>Listings of LocationsPage java and HTML files:</p>
 
-<p>[html]
-&lt;!DOCTYPE html PUBLIC &ldquo;&ndash;//W3C//DTD XHTML 1.0 Strict//EN&rdquo; &ldquo;<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</a>&rdquo;>
-&lt;html xmlns=&ldquo;<a href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</a>&rdquo; xml:lang=&ldquo;en&rdquo; lang=&ldquo;en&rdquo;</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="na">xml:lang=</span><span class="s">&quot;en&quot;</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span>
+</span><span class='line'>  <span class="na">xmlns:wicket=</span><span class="s">&quot;http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;wicket:extend&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div&gt;</span>
+</span><span class='line'>          Number of locations in database: <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;numberOfLocations&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;float: right;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;addLocationPageLink&quot;</span><span class="nt">&gt;</span>Add location<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/wicket:extend&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"&gt;
-</code></pre>
 
-<p><head>
-</head>
-<body></p>
 
-<pre><code>&lt;wicket:extend&gt;
-    &lt;div&gt;
-        Number of locations in database: &lt;span wicket:id="numberOfLocations"/&gt;
-    &lt;/div&gt;
-    &lt;div style="float: right;"&gt;
-        &lt;a href="#" wicket:id="addLocationPageLink"&gt;Add location&lt;/a&gt;
-    &lt;/div&gt;
-&lt;/wicket:extend&gt;
-</code></pre>
 
-<p></body>
-</html>
-[/html]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocationsPage</span> <span class="kd">extends</span> <span class="n">BasePage</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@SpringBean</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">LocationService</span> <span class="n">locationService</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">LocationsPage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">initGui</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">initGui</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;numberOfLocations&quot;</span><span class="o">,</span> <span class="n">locationService</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;&quot;</span><span class="o">));</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Link</span><span class="o">&lt;</span><span class="n">BasePage</span><span class="o">&gt;(</span><span class="s">&quot;addLocationPageLink&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="nd">@Override</span>
+</span><span class='line'>          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>              <span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="n">AddLocationPage</span><span class="o">());</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>      <span class="o">});</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>[java]
-public class LocationsPage extends BasePage {</p>
-
-<pre><code>@SpringBean
-private LocationService locationService;
-public LocationsPage() {
-    initGui();
-}
-private void initGui() {
-    add(new Label("numberOfLocations", locationService.size() + ""));
-    add(new Link&lt;BasePage&gt;("addLocationPageLink") {
-        @Override
-        public void onClick() {
-            setResponsePage(new AddLocationPage());
-        }
-    });
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>If you were cautious enough you probably noticed a link I didn&rsquo;t mentioned earlier.  It&rsquo;s a simple link redirecting user to AddLocationPage when clicked (see overriden method onClick()).</p>
 
 <p>Next we add link to LocationsPage in the BasePage to appear on the topbar. In BasePage.html we add Wicket placeholder for this link:</p>
 
-<p>[html]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;nav&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>          <span class="c">&lt;!-- MENU --&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;homePageLink&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;locationsPageLink&quot;</span><span class="nt">&gt;</span>Item locations<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>About application<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>          <span class="c">&lt;!-- END MENU --&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>    &lt;div class="nav"&gt;
-        &lt;ul&gt;
-            &lt;!-- MENU --&gt;
-            &lt;li&gt;&lt;a href="" wicket:id="homePageLink"&gt;Home&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="" wicket:id="locationsPageLink"&gt;Item locations&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;a href="#"&gt;About application&lt;/a&gt;&lt;/li&gt;
-            &lt;!-- END MENU --&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
-</code></pre>
-
-<p>[/html]</p>
 
 <p>and in corresponding Java class add line:</p>
 
-<p>[java]
-private void addTopMenuLinks() {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">addTopMenuLinks</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">BookmarkablePageLink</span><span class="o">&lt;</span><span class="n">BasePage</span><span class="o">&gt;(</span><span class="s">&quot;homePageLink&quot;</span><span class="o">,</span> <span class="n">Application</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getHomePage</span><span class="o">()));</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">BookmarkablePageLink</span><span class="o">&lt;</span><span class="n">BasePage</span><span class="o">&gt;(</span><span class="s">&quot;locationsPageLink&quot;</span><span class="o">,</span> <span class="n">LocationsPage</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>   <span class="c1">// this one is new : )</span>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>    add(new BookmarkablePageLink&lt;BasePage&gt;("homePageLink", Application.get().getHomePage()));
-    add(new BookmarkablePageLink&lt;BasePage&gt;("locationsPageLink", LocationsPage.class));   // this one is new : )
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>Everything seems to be ok, you can do mvn jetty:run to see the results, but one thing could be easily improved, the URL address of LocationsPage. Instead of ugly one:</p>
 
@@ -303,14 +344,14 @@ private void addTopMenuLinks() {</p>
 
 <p>after adding one line to Application class:</p>
 
-<p>[java]
-private void mountBookmarkablePages() {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">mountBookmarkablePages</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">mountBookmarkablePage</span><span class="o">(</span><span class="s">&quot;locations&quot;</span><span class="o">,</span> <span class="n">LocationsPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>    mountBookmarkablePage("locations", LocationsPage.class);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>we configure Wicket to:</p>
 
@@ -328,77 +369,111 @@ private void mountBookmarkablePages() {</p>
 
 <p>Now it&rsquo;s time to start with main part of this post: html form to add new location. First step is to add placeholders in AddLocationsPAge.html:</p>
 
-<p>[html]
-&lt;!DOCTYPE html PUBLIC &ldquo;&ndash;//W3C//DTD XHTML 1.0 Strict//EN&rdquo; &ldquo;<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</a>&rdquo;>
-&lt;html xmlns=&ldquo;<a href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</a>&rdquo; xml:lang=&ldquo;en&rdquo; lang=&ldquo;en&rdquo;</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="na">xml:lang=</span><span class="s">&quot;en&quot;</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span>
+</span><span class='line'>  <span class="na">xmlns:wicket=</span><span class="s">&quot;http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;wicket:head&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;title&gt;</span>Item Directory v0.1<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/wicket:head&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;wicket:extend&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;h3&gt;</span>
+</span><span class='line'>          Add location
+</span><span class='line'>      <span class="nt">&lt;/h3&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;br/&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;addLocationForm&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;name&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;nameLabel&quot;</span><span class="nt">&gt;</span>Location name<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;name&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;br/&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Save&quot;</span> <span class="na">class=</span><span class="s">&quot;formbutton&quot;</span> <span class="na">name=</span><span class="s">&quot;save&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;submitButton&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/form&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/wicket:extend&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"&gt;
-</code></pre>
-
-<p><head></p>
-
-<pre><code>&lt;wicket:head&gt;
-    &lt;title&gt;Item Directory v0.1&lt;/title&gt;
-&lt;/wicket:head&gt;
-</code></pre>
-
-<p></head>
-<body></p>
-
-<pre><code>&lt;wicket:extend&gt;
-    &lt;h3&gt;
-        Add location
-    &lt;/h3&gt;
-    &lt;br/&gt;
-        &lt;form action="" wicket:id="addLocationForm"&gt;
-            &lt;label for="name" wicket:id="nameLabel"&gt;Location name&lt;/label&gt; &lt;input type="text" id="name" wicket:id="name"/&gt;
-            &lt;br/&gt;
-            &lt;input type="submit" value="Save" class="formbutton" name="save" wicket:id="submitButton"/&gt;
-        &lt;/form&gt;
-&lt;/wicket:extend&gt;
-</code></pre>
-
-<p></body>
-</html>
-[/html]</p>
 
 <p>Second step is to create components in Java class:</p>
 
-<p>[java]
-public class AddLocationPage extends BasePage {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddLocationPage</span> <span class="kd">extends</span> <span class="n">BasePage</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">AddLocationPage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">initGui</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">initGui</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">Form</span><span class="o">&lt;</span><span class="n">AddLocationPage</span><span class="o">&gt;</span> <span class="n">addLocationForm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">AddLocationPage</span><span class="o">&gt;(</span><span class="s">&quot;addLocationForm&quot;</span><span class="o">,</span>
+</span><span class='line'>              <span class="k">new</span> <span class="n">CompoundPropertyModel</span><span class="o">&lt;</span><span class="n">AddLocationPage</span><span class="o">&gt;(</span><span class="k">this</span><span class="o">));</span>  <span class="c1">// (1)</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="n">addLocationForm</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">Label</span> <span class="n">nameLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;nameLabel&quot;</span><span class="o">,</span> <span class="s">&quot;Location name&quot;</span><span class="o">);</span>    <span class="c1">// (2)</span>
+</span><span class='line'>      <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nameLabel</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">TextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">nameField</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">&quot;name&quot;</span><span class="o">);</span>   <span class="c1">// (3)</span>
+</span><span class='line'>      <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nameField</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">Button</span> <span class="n">submitButton</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="s">&quot;submitButton&quot;</span><span class="o">)</span> <span class="o">{</span>          <span class="c1">// (4)</span>
+</span><span class='line'>          <span class="nd">@Override</span>
+</span><span class='line'>          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>              <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;OnSubmit, name = &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>      <span class="o">};</span>
+</span><span class='line'>      <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">submitButton</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private String name;
-public AddLocationPage() {
-    initGui();
-}
-private void initGui() {
-    Form&lt;AddLocationPage&gt; addLocationForm = new Form&lt;AddLocationPage&gt;("addLocationForm",
-            new CompoundPropertyModel&lt;AddLocationPage&gt;(this));  // (1)
-    add(addLocationForm);
-    Label nameLabel = new Label("nameLabel", "Location name");    // (2)
-    addLocationForm.add(nameLabel);
-    TextField&lt;String&gt; nameField = new TextField&lt;String&gt;("name");   // (3)
-    addLocationForm.add(nameField);
-    Button submitButton = new Button("submitButton") {          // (4)
-        @Override
-        public void onSubmit() {
-            System.out.println("OnSubmit, name = " + name);
-        }
-    };
-    addLocationForm.add(submitButton);
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>HTML file is rather self-explanatory: simple form with one input field and submit button. But java page class needs more elaborate explanation:</p>
 
 <p>In <strong>(1)</strong> we create Wicket form with model to gather data from user. We use <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/CompoundPropertyModel.html">CompoundPropertyModel</a> which automatically connects components with properties of model object with the same id/name. In our page model object is AddLocationPage itself and its <em>name</em> field (with usage of Compound model) works as a model for TextField component with id <em>name</em>.</p>
 
-<pre><code>Concept of models is one of the most important element of Wicket and you should understand what models do and how they work. In this tutorial I am concentrating on practical usage of Wicket, so theory isn't covered in great detail.
-Although you can read more about models on two (&lt;a href="https://cwiki.apache.org/WICKET/working-with-wicket-models.html"&gt;[1]&lt;/a&gt; and &lt;a href="https://cwiki.apache.org/WICKET/more-on-models.html"&gt;[2]&lt;/a&gt;) Wiki pages and generally in two presentations by Mystic Coders. Links to them can by found in the "Tutorial, guides" section in &lt;a href="http://tomaszdziurko.pl/2010/02/wicket-useful-links/"&gt;"Wicket - useful links"&lt;/a&gt; post
-</code></pre>
+<blockquote>    
+Concept of models is one of the most important element of Wicket and you should understand what models do and how they work. In this tutorial I am concentrating on practical usage of Wicket, so theory isn&#8217;t covered in great detail.
+Although you can read more about models on two [[1]](https://cwiki.apache.org/WICKET/working-with-wicket-models.html) and [[2]](https://cwiki.apache.org/WICKET/more-on-models.html). Wiki pages and generally in two presentations by Mystic Coders. Links to them can by found in the &#8220;Tutorial, guides&#8221; section in [Wicket - useful links](/2010/02/wicket-useful-links/) post
+</blockquote>
+
 
 <p>In <strong>(2)</strong>, <strong>(3)</strong> and <strong>(4)</strong> we create and add to our form: label for input field, input field (note that its called <em>name</em>, as property in page class) and submit button with overriden onSubmit method in which we place save logic.</p>
 
@@ -425,15 +500,18 @@ Although you can read more about models on two (&lt;a href="https://cwiki.apache
 
 <p>Adding length validation in Wicket is very, very easy. We use <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/validation/validator/StringValidator.html">StringValidator</a> and one of its nested classes: ExactLengthValidator, LengthBetweenValidator, MaximumLengthValidator or MinimumLengthValidator. In our case java code looks like that:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="c1">// (...), final constants for lengths are defined here</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">RequiredTextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">nameField</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RequiredTextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">&quot;name&quot;</span><span class="o">);</span>
+</span><span class='line'><span class="n">nameField</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">LengthBetweenValidator</span><span class="o">.</span><span class="na">lengthBetween</span><span class="o">(</span><span class="n">MIN_LOCATION_NAME_LENGTH</span><span class="o">,</span> <span class="n">MAX_LOCATION_NAME_LENGTH</span><span class="o">));</span>
+</span><span class='line'><span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nameField</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>// (&hellip;), final constants for lengths are defined here</p>
-
-<p>RequiredTextField<String> nameField = new RequiredTextField<String>(&ldquo;name&rdquo;);
-nameField.add(LengthBetweenValidator.lengthBetween(MIN_LOCATION_NAME_LENGTH, MAX_LOCATION_NAME_LENGTH));
-addLocationForm.add(nameField);</p>
-
-<p>[/java]</p>
 
 <p><strong>Unique location name validator</strong></p>
 
@@ -443,99 +521,159 @@ addLocationForm.add(nameField);</p>
 
 <p>Now, when we have some validation it would be cool to be able to tell user what he did wrong or when his action performed successfully. In Wicket there is component dedicated to showing feedback to user: <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/panel/FeedbackPanel.html">FeedbackPanel</a>. And as we will be potentially used in every page we will add it in BasePage class:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BasePage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// (...)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">initGui</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">addTopMenuLinks</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">FeedbackPanel</span><span class="o">(</span><span class="s">&quot;feedbackPanel&quot;</span><span class="o">));</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public abstract class BasePage extends WebPage {</p>
 
-<p>// (&hellip;)</p>
 
-<pre><code>private void initGui() {
-    addTopMenuLinks();
-    add(new FeedbackPanel("feedbackPanel"));
-}
-</code></pre>
 
-<p>}
-[/java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="c">&lt;!-- CONTENT --&gt;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">wicket:id=</span><span class="s">&quot;feedbackPanel&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nt">&lt;wicket:child/&gt;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c">&lt;!-- END CONTENT --&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>[html]</p>
-
-<pre><code>    &lt;div class="content"&gt;
-        &lt;!-- CONTENT --&gt;
-
-        &lt;div wicket:id="feedbackPanel"&gt;&lt;/div&gt;
-
-        &lt;wicket:child/&gt;
-
-        &lt;!-- END CONTENT --&gt;
-
-    &lt;/div&gt;
-</code></pre>
-
-<p>[/html]</p>
 
 <p>And how is it working? When validation fails on any validator, it adds message to feedback panel and rerenders page. Then, on rerender, messages are flushed and showed to the user on Error level (there are three levels: Info, Warn, Error which render in different css styles so their look can be customized). Ok, so far so good but what if we want to add such info manually? No problem, we will do this when succesfull save of Location object occurs. In this step we also add call to LocationService.save method to actually save new Location object in database.</p>
 
-<p>[java]
-public class AddLocationPage extends BasePage {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddLocationPage</span> <span class="kd">extends</span> <span class="n">BasePage</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MIN_LOCATION_NAME_LENGTH</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MAX_LOCATION_NAME_LENGTH</span> <span class="o">=</span> <span class="mi">255</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@SpringBean</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">LocationService</span> <span class="n">locationService</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">AddLocationPage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">initGui</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">initGui</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">Form</span><span class="o">&lt;</span><span class="n">AddLocationPage</span><span class="o">&gt;</span> <span class="n">addLocationForm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">AddLocationPage</span><span class="o">&gt;(</span><span class="s">&quot;addLocationForm&quot;</span><span class="o">,</span>
+</span><span class='line'>              <span class="k">new</span> <span class="n">CompoundPropertyModel</span><span class="o">&lt;</span><span class="n">AddLocationPage</span><span class="o">&gt;(</span><span class="k">this</span><span class="o">));</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="n">addLocationForm</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">Label</span> <span class="n">nameLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;nameLabel&quot;</span><span class="o">,</span> <span class="s">&quot;Location name&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nameLabel</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">RequiredTextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">nameField</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RequiredTextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">&quot;name&quot;</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">nameField</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">LengthBetweenValidator</span><span class="o">.</span><span class="na">lengthBetween</span><span class="o">(</span><span class="n">MIN_LOCATION_NAME_LENGTH</span><span class="o">,</span> <span class="n">MAX_LOCATION_NAME_LENGTH</span><span class="o">));</span>
+</span><span class='line'>      <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nameField</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">Button</span> <span class="n">submitButton</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="s">&quot;submitButton&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>          <span class="nd">@Override</span>
+</span><span class='line'>          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>              <span class="n">Location</span> <span class="n">location</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Location</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+</span><span class='line'>              <span class="n">locationService</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="n">getSession</span><span class="o">().</span><span class="na">info</span><span class="o">(</span><span class="s">&quot;Location added successfully&quot;</span><span class="o">);</span>
+</span><span class='line'>              <span class="n">setResponsePage</span><span class="o">(</span><span class="n">LocationsPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>      <span class="o">};</span>
+</span><span class='line'>      <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">submitButton</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private static final int MIN_LOCATION_NAME_LENGTH = 5;
-private static final int MAX_LOCATION_NAME_LENGTH = 255;
-
-@SpringBean
-private LocationService locationService;
-
-private String name;
-
-public AddLocationPage() {
-    initGui();
-}
-
-private void initGui() {
-
-    Form&lt;AddLocationPage&gt; addLocationForm = new Form&lt;AddLocationPage&gt;("addLocationForm",
-            new CompoundPropertyModel&lt;AddLocationPage&gt;(this));
-    add(addLocationForm);
-
-    Label nameLabel = new Label("nameLabel", "Location name");
-    addLocationForm.add(nameLabel);
-
-    RequiredTextField&lt;String&gt; nameField = new RequiredTextField&lt;String&gt;("name");
-    nameField.add(LengthBetweenValidator.lengthBetween(MIN_LOCATION_NAME_LENGTH, MAX_LOCATION_NAME_LENGTH));
-    addLocationForm.add(nameField);
-
-    Button submitButton = new Button("submitButton") {
-        @Override
-        public void onSubmit() {
-            Location location = new Location(name);
-            locationService.save(location);
-
-            getSession().info("Location added successfully");
-            setResponsePage(LocationsPage.class);
-        }
-    };
-    addLocationForm.add(submitButton);
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>Every Wicket component has three methods info(String message), warn(&hellip;), error(&hellip;) which add feedback message for component and they are very useful for validating data, etc. However, if we want to redirect user to another page and show message there, we must use another way of adding feedback messages, based on user session and not on current component as component messages won&rsquo;t be rendered after redirect to other page. That&rsquo;s why we use getSession().info(&hellip;);
 If yoy try with only info(&hellip;) you will get warning in the log:</p>
 
-<pre><code>WARN  - WebSession                 - Component-targetted feedback message was left unrendered. This
-could be because you are missing a FeedbackPanel on the page.  Message: [FeedbackMessage message = "
-Location added successfully", reporter = submitButton, level = INFO]
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">WARN</span>  <span class="o">-</span> <span class="n">WebSession</span>                 <span class="o">-</span> <span class="n">Component</span><span class="o">-</span><span class="n">targetted</span> <span class="n">feedback</span> <span class="n">message</span> <span class="n">was</span> <span class="n">left</span> <span class="n">unrendered</span><span class="o">.</span> <span class="n">This</span>
+</span><span class='line'><span class="n">could</span> <span class="n">be</span> <span class="n">because</span> <span class="n">you</span> <span class="n">are</span> <span class="n">missing</span> <span class="n">a</span> <span class="n">FeedbackPanel</span> <span class="n">on</span> <span class="n">the</span> <span class="n">page</span><span class="o">.</span>  <span class="nl">Message:</span> <span class="o">[</span><span class="n">FeedbackMessage</span> <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;</span>
+</span><span class='line'><span class="s">Location added successfully&quot;</span><span class="o">,</span> <span class="n">reporter</span> <span class="o">=</span> <span class="n">submitButton</span><span class="o">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">INFO</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>And after this we will see that everything is working as expected:</p>
 
-<p><a href="/images/blog/2011/02/SS-20110203121714.png"><img src="/images/blog/2011/02/SS-20110203121714.png" alt="" /></a>Ok, we reached the end of this post. We now have working Wicket form in our application. In next episode we will create custom validator to prevent adding non-unique location names.  Of course as always you can download latest source code from <a href="https://bitbucket.org/tdziurko/item-directory/src">here</a>. Hope you will be here for the next part of Wicket tutorial :)</p>
+<p style="text-align:center;"><img src="/images/blog/2011/02/SS-20110203121714.png" alt="" /></p>
+
+<p>Ok, we reached the end of this post. We now have working Wicket form in our application. In next episode we will create custom validator to prevent adding non-unique location names.  Of course as always you can download latest source code from <a href="https://bitbucket.org/tdziurko/item-directory/src">here</a>. Hope you will be here for the next part of Wicket tutorial :)</p>
 </div>
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

@@ -160,25 +160,38 @@
 
 <p>Code below presents fragment of web.xml file allowing to define order in which servlets are loaded when the containter starts:</p>
 
-<p>[xml]
-&lt;web-app></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;web-app&gt;</span>
+</span><span class='line'>    ...
+</span><span class='line'>    <span class="nt">&lt;servlet&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;servlet-name&gt;</span>FirstToLoadServlet<span class="nt">&lt;/servlet-name&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;servlet-class&gt;</span>pl.tdziurko.scwcd.servlets.FirstToLoadServlet<span class="nt">&lt;/servlet-class&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;load-on-startup&gt;</span>0<span class="nt">&lt;/load-on-startup&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/servlet&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;servlet&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;servlet-name&gt;</span>SecondToLoadServlet<span class="nt">&lt;/servlet-name&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;servlet-class&gt;</span>pl.tdziurko.scwcd.servlets.SecondToLoadServlet<span class="nt">&lt;/servlet-class&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/servlet&gt;</span>
+</span><span class='line'>    ...
+</span><span class='line'><span class="nt">&lt;/web-app&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>...
-&lt;servlet&gt;
-    &lt;servlet-name&gt;FirstToLoadServlet&lt;/servlet-name&gt;
-    &lt;servlet-class&gt;pl.tdziurko.scwcd.servlets.FirstToLoadServlet&lt;/servlet-class&gt;
-    &lt;load-on-startup&gt;0&lt;/load-on-startup&gt;
-&lt;/servlet&gt;
-&lt;servlet&gt;
-    &lt;servlet-name&gt;SecondToLoadServlet&lt;/servlet-name&gt;
-    &lt;servlet-class&gt;pl.tdziurko.scwcd.servlets.SecondToLoadServlet&lt;/servlet-class&gt;
-    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
-&lt;/servlet&gt;
-...
-</code></pre>
 
-<p>&lt;/web-app>
-[/xml]</p>
+
 
 <!-- more -->
 
@@ -215,6 +228,7 @@
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

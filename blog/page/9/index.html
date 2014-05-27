@@ -224,22 +224,30 @@
 
 <p>The very, very standard singleton looks like that:</p>
 
-<p>[java]
-package pl.tomaszdziurko.effectivejava;
-public class LeoMessi {
-  public static final LeoMessi INSTANCE = new LeoMessi();
- private LeoMessi() {
-   // create only one existing instance of LeoMessi, as he is unique
- }
- public void doMagicWithBall() {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">pl</span><span class="o">.</span><span class="na">tomaszdziurko</span><span class="o">.</span><span class="na">effectivejava</span><span class="o">;</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LeoMessi</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">LeoMessi</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LeoMessi</span><span class="o">();</span>
+</span><span class='line'> <span class="kd">private</span> <span class="nf">LeoMessi</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>   <span class="c1">// create only one existing instance of LeoMessi, as he is unique</span>
+</span><span class='line'> <span class="o">}</span>
+</span><span class='line'> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doMagicWithBall</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">//do something incredible on the pitch</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>//do something incredible on the pitch
-</code></pre>
 
-<p>  }
-}</p>
 
-<p>[/java]</p>
 
 
 		
@@ -314,7 +322,9 @@ public class LeoMessi {
 <pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
 </code></pre>
 
-<p><a href="/images/blog/2010/10/javarsovia2009.png"><img src="/images/blog/2010/10/javarsovia2009.png" alt="" /></a>Właśnie wróciłem z konferencji <a href="http://www.javarsovia.pl/">Javarsovia 2009</a>. Ogólne wrażenia jak najbardziej pozytywne, dokładniejsza relacja poniżej. Najbardziej żałuję, że nie udało się mi wyciągnąć tylu znajomych ilu chciałem, no i że nie wygrałem kubka ;)</p>
+<p style="text-align:center;"><img src="/images/blog/2010/10/javarsovia2009.png" alt="" /></p>
+
+<p>Właśnie wróciłem z konferencji <a href="http://www.javarsovia.pl/">Javarsovia 2009</a>. Ogólne wrażenia jak najbardziej pozytywne, dokładniejsza relacja poniżej. Najbardziej żałuję, że nie udało się mi wyciągnąć tylu znajomych ilu chciałem, no i że nie wygrałem kubka ;)</p>
 
 <h3>Godz. 9:00 &ndash; Intro</h3>
 
@@ -479,16 +489,18 @@ public class LeoMessi {
 
 <p>Eclipse generates equals method checking if classes of compared objects are the same:</p>
 
-<p>[java]
-&hellip;
-іf (getClass() != obϳ.getClass()) {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">...</span>
+</span><span class='line'><span class="err">і</span><span class="n">f</span> <span class="o">(</span><span class="n">getClass</span><span class="o">()</span> <span class="o">!=</span> <span class="n">ob</span><span class="err">ϳ</span><span class="o">.</span><span class="na">getClass</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">f</span><span class="err">а</span><span class="n">lse</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">...</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>return fаlse;
-</code></pre>
-
-<p>}
-&hellip;
-[/java]</p>
 
 <p>ant such behavior combined with Hibernate can cause some problems because very often while loading data from Db instead of object of our class Hibernate creates proxy object extending base class we are loading. And then equals method comparing getClass() returns false causing strange HashMap behavior. Solution is very simple: instead of getClass() you should use <strong>instanceof</strong>.</p>
 
@@ -533,23 +545,25 @@ public class LeoMessi {
 
 <p>Main interface from which all starts. It defines key methods for the life cycle of servlet:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(</span><span class="n">ServletConfig</span> <span class="n">config</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span><span class="o">;</span>
+</span><span class='line'><span class="kd">public</span> <span class="n">ServletConfig</span> <span class="nf">getServletConfig</span><span class="o">();</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">service</span><span class="o">(</span><span class="n">ServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="n">ServletResponse</span> <span class="n">res</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">IOException</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">destroy</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public void init(ServletConfig config) throws ServletException;
-public ServletConfig getServletConfig();
-public void service(ServletRequest req, ServletResponse res) throws ServletException, java.io.IOException;</p>
-
-<p>public void destroy();</p>
-
-<p>[/java]</p>
 
 <p>and one additional method</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">String</span> <span class="nf">getServletInfo</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public String getServletInfo();</p>
-
-<p>[/java]</p>
 
 <p>which should return information about servlet (version, author, resposibility, etc.)
 		

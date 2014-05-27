@@ -312,7 +312,7 @@
 	<div class="entry-content" itemprop="articleBody">
 		<p>This year is very intensive with regard to IT conferences. I&rsquo;ve already attended three of them and at least two more are scheduled. Last event I&rsquo;ve had a pleasure to participate in was <a href="http://2012.geecon.org/">GeeCON 2012</a> in Poznań. Below some of my personal impressions after this event.</p>
 
-<h3><a href="/images/blog/2012/05/geecon.png"><img src="/images/blog/2012/05/geecon.png" alt="" /></a></h3>
+<p style="text-align:center;"><img src="/images/blog/2012/05/geecon.png" alt="" /></p>
 
 <h3><strong>0 </strong></h3>
 
@@ -394,7 +394,7 @@
 	<div class="entry-content" itemprop="articleBody">
 		<p>During <a href="http://2012.33degree.org/">33rd Degree</a> conference in Cracow O&#8217;Reilly had its stand with books in very attractive prices and similarly to previous year I couldn&rsquo;t resist to buy something. This time I decided to get <a href="http://www.amazon.com/The-Information-Diet-Conscious-Consumption/dp/1449304680">&ldquo;The Information Diet&rdquo;</a> by Clay Johnson.</p>
 
-<p><a href="/images/blog/2012/04/infodiet.jpg"><img src="/images/blog/2012/04/infodiet.jpg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/04/infodiet.jpg" alt="" />]</p>
 
 <p>The <em>A Case for Conscious Consumption</em> subtitle looked very promising as I, as probably most of people working in IT, have problem with too many sources to read, check and analyze to extract information that are relevant and worth to spend my time on it. And I hoped that this book would help me to solve this issue.</p>
 
@@ -535,9 +535,11 @@
 
 <p>Before styling applied:</p>
 
-<p><img src="/images/blog/2012/03/screenshot_0101.png" alt="" /></p>
+<p style="text-align:center;"><img src="/images/blog/2012/03/screenshot_0101.png" alt="" /></p>
 
-<p>After:<a href="/images/blog/2012/03/screenshot_013.png"><img src="/images/blog/2012/03/screenshot_013.png" alt="Final Twitter Bootstrap Navigation Bar with Wicket" /></a></p>
+<p>After:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2012/03/screenshot_013.png" alt="Final Twitter Bootstrap Navigation Bar with Wicket" /></p>
 
 
 		
@@ -624,44 +626,65 @@
 
 <p>To listen to some events we need a listener class. Such class created in <em>google-guava-way</em> doesn&rsquo;t have to implement any particular interface or extend any specified class. It can be any class with just one required element: a method marked with <em>@Subscribe</em> annotation:</p>
 
-<p>[java]
-public class EventListener {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EventListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="n">lastMessage</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Subscribe</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">listen</span><span class="o">(</span><span class="n">OurTestEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">lastMessage</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getMessage</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getLastMessage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">lastMessage</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>public int lastMessage = 0;
-
-@Subscribe
-public void listen(OurTestEvent event) {
-    lastMessage = event.getMessage();
-}
-
-public int getLastMessage() {
-    return lastMessage;
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p><em>lastMessage</em> property is used in tests below to check if events were received successfully.</p>
 
 <p>And of course we need an event class to send it around:</p>
 
-<p>[java]
-public class OurTestEvent {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OurTestEvent</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">message</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">OurTestEvent</span><span class="o">(</span><span class="kt">int</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMessage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">message</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private final int message;
-
-public OurTestEvent(int message) {
-    this.message = message;
-}
-
-public int getMessage() {
-    return message;
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <h4>How it works</h4>
 

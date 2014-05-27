@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T17:47:31+02:00</updated>
+  <updated>2014-05-27T12:54:29+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -63,10 +63,14 @@
     <link href="http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
     <updated>2013-10-30T16:33:49+01:00</updated>
     <id>http://tdziurko.github.io/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
-    <content type="html"><![CDATA[<p>Dear Reader</p>
+    <content type="html"><![CDATA[<!-- more -->
 
-<pre><code>This post is in my native language as it is a review of book pyblished only in Poland. Please feel free to check my other posts which are mainly written in English.
-</code></pre>
+
+
+
+<blockquote>Dear Reader
+This post is in my native language as it is a review of book published only in Poland. Please feel free to check my other posts which are mainly written in English.</blockquote>
+
 
 <p>Dość rzadko sięgam po książki informatyczne wydane w naszym ojczystym języku. Powód jest dość prozaiczny: z reguły w momencie, gdy wychodzi polskie tłumaczenie &ldquo;JavaAwesomeWebFramework 1.2 w Akcji&rdquo; po angielsku jest już  dostępna &ldquo;JavaAwesomeWebFramework 2.0 in Action&rdquo; i cała wiedza zawarta w polskiej wersji jest, delikatnie mówiąc, lekko nieaktualna.</p>
 
@@ -74,12 +78,7 @@
 
 <p>I właśnie na takie problemy receptą jest lektura i stosowanie rad zawartych w książce <a href="http://helion.pl/ksiazki/oprogramowanie-szyte-na-miare-jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-michal-bartyzel,opszmi.htm">&ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo;</a> Michała Bartyzela.</p>
 
-<p><a href="/images/blog/2013/10/bartyzel_klient.jpg"><img src="/images/blog/2013/10/bartyzel_klient-300x300.jpg" alt="Audiobooks Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce. eBook. Pdf" /></a></p>
-
-<!-- more -->
-
-
-
+<p style="text-align:center;"><img src="/images/blog/2013/10/bartyzel_klient-300x300.jpg" alt="Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce" /></p>
 
 <blockquote>Klient wie, czego chce, ale nie wie czego potrzebuje</blockquote>
 
@@ -101,8 +100,9 @@
     <link href="http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review/"/>
     <updated>2013-03-18T22:53:16+01:00</updated>
     <id>http://tdziurko.github.io/2013/03/instant-angularjs-starter-book-review</id>
-    <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.
-<a href="http://tomaszdziurko.pl/2013/03/instant-angularjs-starter-book-review/angular_cover/"><img src="/images/blog/2013/03/angular_cover.png" alt="angular_cover" /></a></p>
+    <content type="html"><![CDATA[<p>Some time ago I have received an offer from <a href="http://www.packtpub.com/">Packt Publishing</a> to write a review of their new small book about AngularJS framework &ldquo;<a href="http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book">Instant AngularJS Starter</a>&rdquo;. And because I still consider myself as a AngularJS beginner, I decided to give it a go.</p>
+
+<p style="text-align:center;"><img src="/images/blog/2013/03/angular_cover.png" alt="angular_cover" /></p>
 
 <h3>Content</h3>
 
@@ -131,7 +131,7 @@
     <id>http://tdziurko.github.io/2012/07/practical-unit-testing-testng-mockito-review</id>
     <content type="html"><![CDATA[<p>Book &ldquo;<em>Practical Unit Testing with TestNG and Mockito</em>&rdquo; (<a href="http://practicalunittesting.com/">website</a>) covers wide spectrum of knowledge about testing in Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get most of this title. Below you can read some of my thoughts after reading this book.</p>
 
-<p><a href="/images/blog/2012/07/practical_unit_testing.png"><img src="/images/blog/2012/07/practical_unit_testing.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/07/practical_unit_testing.png" alt="" /></p>
 
 <!-- more -->
 
@@ -164,7 +164,7 @@
 
 <p>TestNG has a nice class <em>org.testng.Reporter</em> that allows developer to add some information to html reports</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>@Test
 public void testSomething() {
@@ -174,11 +174,11 @@ public void testSomething() {
 }
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>And after running such tests in html report we will see something like presenten on the screenshot below:</p>
 
-<p><a href="/images/blog/2012/07/testng-reporter.jpg"><img src="/images/blog/2012/07/testng-reporter.jpg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/07/testng-reporter.jpg" alt="" /></p>
 
 <p>and additionally all such messages are gathered in one, separate report.</p>
 
@@ -186,7 +186,7 @@ public void testSomething() {
 
 <p>Let&rsquo;s suppose that we are testing following method</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>@Test
 public void loadByAgeRange() {
@@ -194,11 +194,11 @@ public void loadByAgeRange() {
 }
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>and compare it with listing below:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>@Test
 public void loadByAgeRange() {
@@ -209,7 +209,7 @@ public void loadByAgeRange() {
 }
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>Isn&rsquo;t it much clearer? We replace dummy data with constants indicating which part is important and what parameters are not critical in this method.</p>
 
@@ -217,12 +217,12 @@ public void loadByAgeRange() {
 
 <p>Mockito allows us to automatically inject all mock into object we are going to test:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>@InjectMocks private ObjectUnderTest object = new ObjectUnderTest();
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>Of course it has some limitations (see <a href="http://docs.mockito.googlecode.com/hg/1.9.0/org/mockito/InjectMocks.html">JavaDocs</a>) but it&rsquo;s good to know that such feature is already in Mockito.</p>
 
@@ -230,18 +230,18 @@ public void loadByAgeRange() {
 
 <p>This small project will help you to create builders for your test cases easily. More can be found on <a href="http://code.google.com/p/make-it-easy/wiki/GettingStarted">its wiki</a>, but below simple use case showing how it looks:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>Person nat = make(a(Person, with(name, "Tomek"), with(age, 28)));
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 
 <h5><strong>Partial Mocking</strong></h5>
 
 <p>If there is a method we want to test but at the same time there is another method in tested object that want to mock, it is possible to do that by usinf Mockito spy():</p>
 
-<p>[java]
+<p>``` java
 @Test
 public void testCaluculationSummary() {</p>
 
@@ -254,13 +254,13 @@ assertThat(result).isEqualTo(10);
 </code></pre>
 
 <p>}
-[/java]</p>
+```</p>
 
 <h5><strong>Testing and capturing method arguments</strong></h5>
 
 <p>Mockito gives us another very useful feature, ability to check what arguments were passed to methods using <a href="http://docs.mockito.googlecode.com/hg/org/mockito/ArgumentCaptor.html">ArgumentCaptor</a>:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <pre><code>@Test
 public void testArgument() {
@@ -275,7 +275,7 @@ public void testArgument() {
 }
 </code></pre>
 
-<p>[/java]</p>
+<p>```</p>
 ]]></content>
   </entry>
   
@@ -286,7 +286,7 @@ public void testArgument() {
     <id>http://tdziurko.github.io/2012/04/notes-from-information-diet-book</id>
     <content type="html"><![CDATA[<p>During <a href="http://2012.33degree.org/">33rd Degree</a> conference in Cracow O'Reilly had its stand with books in very attractive prices and similarly to previous year I couldn&rsquo;t resist to buy something. This time I decided to get <a href="http://www.amazon.com/The-Information-Diet-Conscious-Consumption/dp/1449304680">&ldquo;The Information Diet&rdquo;</a> by Clay Johnson.</p>
 
-<p><a href="/images/blog/2012/04/infodiet.jpg"><img src="/images/blog/2012/04/infodiet.jpg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/04/infodiet.jpg" alt="" />]</p>
 
 <p>The <em>A Case for Conscious Consumption</em> subtitle looked very promising as I, as probably most of people working in IT, have problem with too many sources to read, check and analyze to extract information that are relevant and worth to spend my time on it. And I hoped that this book would help me to solve this issue.</p>
 

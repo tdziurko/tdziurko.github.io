@@ -169,11 +169,11 @@
 <!-- more -->
 
 
-<p><a href="/images/blog/2012/09/home_page1.jpg"><img src="/images/blog/2012/09/home_page1.jpg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/09/home_page1.jpg" alt="" /></p>
 
-<p><a href="/images/blog/2012/09/login_page.jpg"><img src="/images/blog/2012/09/login_page-1024x488.jpg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/09/login_page-1024x488.jpg" alt="" /></p>
 
-<p><a href="/images/blog/2012/09/home_page2.jpg"><img src="/images/blog/2012/09/home_page2-1024x402.jpg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/09/home_page2-1024x402.jpg" alt="" /></p>
 
 <h3>Remember Me functionality</h3>
 
@@ -193,70 +193,118 @@
 <p><strong>Step 1: As a User I want to decide if  I want to use &ldquo;Remember Me&rdquo; feature</strong>
 <a href="https://github.com/tdziurko/wicket-rememberme/commit/c5e91b39a203c9103754f8a03ab2e4151fc9e199">Link to commit with this step</a></p>
 
-<p>To allow user to notify application that he wants to use &lsquo;Remember Me&rsquo; functionality we will simply add a checkbox to login page. So we need to amend LoginPage java and html file a bit (new stuff is highlighted):</p>
+<p>To allow user to notify application that he wants to use &lsquo;Remember Me&rsquo; functionality we will simply add a checkbox to login page.
+So we need to amend LoginPage java and html file a bit:</p>
 
-<p>[html highlight=&ldquo;21,22,23,24,25,26,27&rdquo; title=&ldquo;LoginPage.html fragment&rdquo;]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;form</span> <span class="na">wicket:id=</span><span class="s">&quot;form&quot;</span> <span class="na">class=</span><span class="s">&quot;form-horizontal&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;fieldset&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;legend&gt;</span>Please login<span class="nt">&lt;/legend&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/fieldset&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;control-group&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">wicket:id=</span><span class="s">&quot;feedback&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;control-group&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label&quot;</span> <span class="na">for=</span><span class="s">&quot;login&quot;</span><span class="nt">&gt;</span>Login<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;login&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;login&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;control-group&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;control-label&quot;</span> <span class="na">for=</span><span class="s">&quot;password&quot;</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">id=</span><span class="s">&quot;password&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;password&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;control-group&quot;</span><span class="nt">&gt;</span> <span class="c">&lt;!-- this div is new --&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;controls&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">&quot;checkbox&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;rememberMe&quot;</span><span class="nt">&gt;</span> Remember me on this computer
+</span><span class='line'>            <span class="nt">&lt;/label&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;form-actions&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Login&quot;</span> <span class="na">title=</span><span class="s">&quot;Login&quot;</span> <span class="na">class=</span><span class="s">&quot;btn btn-primary&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;/form&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>&lt;form wicket:id="form" class="form-horizontal"&gt;
-    &lt;fieldset&gt;
-        &lt;legend&gt;Please login&lt;/legend&gt;
-    &lt;/fieldset&gt;
 
-    &lt;div class="control-group"&gt;
-        &lt;div wicket:id="feedback"&gt;&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="control-group"&gt;
-        &lt;label class="control-label" for="login"&gt;Login&lt;/label&gt;
-        &lt;div class="controls"&gt;
-            &lt;input type="text" id="login" wicket:id="login" /&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="control-group"&gt;
-        &lt;label class="control-label" for="password"&gt;Password&lt;/label&gt;
-        &lt;div class="controls"&gt;
-            &lt;input type="password" id="password" wicket:id="password" /&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="control-group"&gt;
-        &lt;div class="controls"&gt;
-            &lt;label class="checkbox"&gt;
-                &lt;input type="checkbox" wicket:id="rememberMe"&gt; Remember me on this computer
-            &lt;/label&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="form-actions"&gt;
-        &lt;input type="submit" wicket:id="submit" value="Login" title="Login" class="btn btn-primary"/&gt;
-    &lt;/div&gt;
-&lt;/form&gt;
-</code></pre>
+<p></p>
 
-<p>[/html]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="n">String</span> <span class="n">login</span><span class="o">;</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">String</span> <span class="n">password</span><span class="o">;</span>
+</span><span class='line'><span class="kd">private</span> <span class="kt">boolean</span> <span class="n">rememberMe</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="nf">LoginPage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">Form</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="n">loginForm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;(</span><span class="s">&quot;form&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">add</span><span class="o">(</span><span class="n">loginForm</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">loginForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">FeedbackPanel</span><span class="o">(</span><span class="s">&quot;feedback&quot;</span><span class="o">));</span>
+</span><span class='line'>    <span class="n">loginForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">RequiredTextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">&quot;login&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">PropertyModel</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="k">this</span><span class="o">,</span> <span class="s">&quot;login&quot;</span><span class="o">)));</span>
+</span><span class='line'>    <span class="n">loginForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">PasswordTextField</span><span class="o">(</span><span class="s">&quot;password&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">PropertyModel</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="k">this</span><span class="o">,</span> <span class="s">&quot;password&quot;</span><span class="o">)));</span>
+</span><span class='line'>    <span class="n">loginForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">CheckBox</span><span class="o">(</span><span class="s">&quot;rememberMe&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">PropertyModel</span><span class="o">&lt;</span><span class="n">Boolean</span><span class="o">&gt;(</span><span class="k">this</span><span class="o">,</span> <span class="s">&quot;rememberMe&quot;</span><span class="o">)));</span> <span class="c1">// this line</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">Button</span> <span class="n">submit</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="s">&quot;submit&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// (...)</span>
+</span><span class='line'>    <span class="o">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">loginForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">submit</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>[java highlight=&ldquo;3,13&rdquo; title=&ldquo;LoginPage.java fragment&rdquo;]</p>
-
-<pre><code>private String login;
-private String password;
-private boolean rememberMe;
-
-public LoginPage() {
-
-    Form&lt;Void&gt; loginForm = new Form&lt;Void&gt;("form");
-    add(loginForm);
-
-    loginForm.add(new FeedbackPanel("feedback"));
-    loginForm.add(new RequiredTextField&lt;String&gt;("login", new PropertyModel&lt;String&gt;(this, "login")));
-    loginForm.add(new PasswordTextField("password", new PropertyModel&lt;String&gt;(this, "password")));
-    loginForm.add(new CheckBox("rememberMe", new PropertyModel&lt;Boolean&gt;(this, "rememberMe")));
-
-    Button submit = new Button("submit") {
-        // (...)
-    };
-
-    loginForm.add(submit);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>Now we are ready for next step.</p>
 
@@ -265,74 +313,125 @@ public LoginPage() {
 
 <p>First we need a CookieService that will encapsulate all logic responsible for working with cookies: saving, listing and clearing cookie when needed. Code is rather simple, we work with WebResponse and WebRequest classes to modify cookies in user&rsquo;s browser.</p>
 
-<p>[java title=&ldquo;CookieService.java&rdquo;]
-public class CookieService {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CookieService</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Cookie</span> <span class="nf">loadCookie</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">String</span> <span class="n">cookieName</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Cookie</span><span class="o">&gt;</span> <span class="n">cookies</span> <span class="o">=</span> <span class="o">((</span><span class="n">WebRequest</span><span class="o">)</span> <span class="n">request</span><span class="o">).</span><span class="na">getCookies</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">cookies</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="n">Cookie</span> <span class="n">cookie</span> <span class="o">:</span> <span class="n">cookies</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">if</span><span class="o">(</span><span class="n">cookie</span><span class="o">.</span><span class="na">getName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">cookieName</span><span class="o">))</span> <span class="o">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="n">cookie</span><span class="o">;</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">saveCookie</span><span class="o">(</span><span class="n">Response</span> <span class="n">response</span><span class="o">,</span> <span class="n">String</span> <span class="n">cookieName</span><span class="o">,</span> <span class="n">String</span> <span class="n">cookieValue</span><span class="o">,</span> <span class="kt">int</span> <span class="n">expiryTimeInDays</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">Cookie</span> <span class="n">cookie</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cookie</span><span class="o">(</span><span class="n">cookieName</span><span class="o">,</span> <span class="n">cookieValue</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">cookie</span><span class="o">.</span><span class="na">setMaxAge</span><span class="o">((</span><span class="kt">int</span><span class="o">)</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">DAYS</span><span class="o">.</span><span class="na">toSeconds</span><span class="o">(</span><span class="n">expiryTimeInDays</span><span class="o">));</span>
+</span><span class='line'>        <span class="o">((</span><span class="n">WebResponse</span><span class="o">)</span><span class="n">response</span><span class="o">).</span><span class="na">addCookie</span><span class="o">(</span><span class="n">cookie</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeCookieIfPresent</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">response</span><span class="o">,</span> <span class="n">String</span> <span class="n">cookieName</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">Cookie</span> <span class="n">cookie</span> <span class="o">=</span> <span class="n">loadCookie</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">cookieName</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span><span class="o">(</span><span class="n">cookie</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="o">((</span><span class="n">WebResponse</span><span class="o">)</span><span class="n">response</span><span class="o">).</span><span class="na">clearCookie</span><span class="o">(</span><span class="n">cookie</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>public Cookie loadCookie(Request request, String cookieName) {
-
-    List&lt;Cookie&gt; cookies = ((WebRequest) request).getCookies();
-
-    if (cookies == null) {
-        return null;
-    }
-
-    for (Cookie cookie : cookies) {
-        if(cookie.getName().equals(cookieName)) {
-            return cookie;
-        }
-    }
-
-    return null;
-}
-
-public void saveCookie(Response response, String cookieName, String cookieValue, int expiryTimeInDays) {
-    Cookie cookie = new Cookie(cookieName, cookieValue);
-    cookie.setMaxAge((int) TimeUnit.DAYS.toSeconds(expiryTimeInDays));
-    ((WebResponse)response).addCookie(cookie);
-}
-
-public void removeCookieIfPresent(Request request, Response response, String cookieName) {
-    Cookie cookie = loadCookie(request, cookieName);
-
-    if(cookie != null) {
-        ((WebResponse)response).clearCookie(cookie);
-    }
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>Then when user checks &lsquo;Remember Me&rsquo; on LoginPage, we have to save cookies in his browser:</p>
 
-<p>[java title=&ldquo;LoginPage.java fragment&rdquo; highlight=&ldquo;14,15,16,17,18&rdquo;]</p>
+<figure class='code'><figcaption><span>LoginPage.java fragment</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Button</span> <span class="n">submit</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="s">&quot;submit&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">UserService</span> <span class="n">userService</span> <span class="o">=</span> <span class="n">WicketApplication</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getUserService</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">userService</span><span class="o">.</span><span class="na">findByLoginAndPassword</span><span class="o">(</span><span class="n">login</span><span class="o">,</span> <span class="n">password</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span><span class="o">(</span><span class="n">user</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">error</span><span class="o">(</span><span class="s">&quot;Invalid login and/or password. Please try again.&quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">UserSession</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">setUser</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">if</span><span class="o">(</span><span class="n">rememberMe</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">CookieService</span> <span class="n">cookieService</span> <span class="o">=</span> <span class="n">WicketApplication</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getCookieService</span><span class="o">();</span>
+</span><span class='line'>                <span class="n">cookieService</span><span class="o">.</span><span class="na">saveCookie</span><span class="o">(</span><span class="n">getResponse</span><span class="o">(),</span> <span class="n">REMEMBER_ME_LOGIN_COOKIE</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">getLogin</span><span class="o">(),</span> <span class="n">REMEMBER_ME_DURATION_IN_DAYS</span><span class="o">);</span>
+</span><span class='line'>                <span class="n">cookieService</span><span class="o">.</span><span class="na">saveCookie</span><span class="o">(</span><span class="n">getResponse</span><span class="o">(),</span> <span class="n">REMEMBER_ME_PASSWORD_COOKIE</span><span class="o">,</span> <span class="n">user</span><span class="o">.</span><span class="na">getPassword</span><span class="o">(),</span> <span class="n">REMEMBER_ME_DURATION_IN_DAYS</span><span class="o">);</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="n">setResponsePage</span><span class="o">(</span><span class="n">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>Button submit = new Button("submit") {
-    @Override
-    public void onSubmit() {
-        UserService userService = WicketApplication.get().getUserService();
-
-        User user = userService.findByLoginAndPassword(login, password);
-
-        if(user == null) {
-            error("Invalid login and/or password. Please try again.");
-        }
-        else {
-            UserSession.get().setUser(user);
-
-            if(rememberMe) {
-                CookieService cookieService = WicketApplication.get().getCookieService();
-                cookieService.saveCookie(getResponse(), REMEMBER_ME_LOGIN_COOKIE, user.getLogin(), REMEMBER_ME_DURATION_IN_DAYS);
-                cookieService.saveCookie(getResponse(), REMEMBER_ME_PASSWORD_COOKIE, user.getPassword(), REMEMBER_ME_DURATION_IN_DAYS);
-            }
-
-            setResponsePage(HomePage.class);
-        }
-    }
-};
-</code></pre>
-
-<p>[/java]</p>
 
 <p><strong>Step 3: As a User I want to be auto-logged when I return to web application</strong>
 <a href="https://github.com/tdziurko/wicket-rememberme/commit/59cb50d433a79a73b1020b488d5a13a7355da0d3">Link to commit with this step</a></p>
@@ -341,71 +440,102 @@ public void removeCookieIfPresent(Request request, Response response, String coo
 
 <p>So let&rsquo;s start with extracting session related logic into separate class called SessionProvider. It will need UserService and CookieService to check for existing users and cookies so we pass them as a references in the constructor.</p>
 
-<p>[java title=&ldquo;WicketApplication.java fragment&rdquo; highlight=&ldquo;5,9&rdquo;]
-public class WicketApplication extends WebApplication {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WicketApplication</span> <span class="kd">extends</span> <span class="n">WebApplication</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">UserService</span> <span class="n">userService</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserService</span><span class="o">();</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">CookieService</span> <span class="n">cookieService</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CookieService</span><span class="o">();</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">SessionProvider</span> <span class="n">sessionProvider</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SessionProvider</span><span class="o">(</span><span class="n">userService</span><span class="o">,</span> <span class="n">cookieService</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">Session</span> <span class="nf">newSession</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">sessionProvider</span><span class="o">.</span><span class="na">createNewSession</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>private UserService userService = new UserService();
-private CookieService cookieService = new CookieService();
-private SessionProvider sessionProvider = new SessionProvider(userService, cookieService);
-
-@Override
-public Session newSession(Request request, Response response) {
-    return sessionProvider.createNewSession(request);
-}
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <p>Role of SessionProvider is to create new UserSession, check if proper cookies are present and if so, set logged user. Additionally we add feedback message to inform user that he was auto logged. So let&rsquo;s look into the code:</p>
 
-<p>[java title=&ldquo;SessionProvider.java&rdquo;]
-public class SessionProvider {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SessionProvider</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">SessionProvider</span><span class="o">(</span><span class="n">UserService</span> <span class="n">userService</span><span class="o">,</span> <span class="n">CookieService</span> <span class="n">cookieService</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">userService</span> <span class="o">=</span> <span class="n">userService</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">cookieService</span> <span class="o">=</span> <span class="n">cookieService</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">WebSession</span> <span class="nf">createNewSession</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">UserSession</span> <span class="n">session</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UserSession</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Cookie</span> <span class="n">loginCookie</span> <span class="o">=</span> <span class="n">cookieService</span><span class="o">.</span><span class="na">loadCookie</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">REMEMBER_ME_LOGIN_COOKIE</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">Cookie</span> <span class="n">passwordCookie</span> <span class="o">=</span> <span class="n">cookieService</span><span class="o">.</span><span class="na">loadCookie</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">REMEMBER_ME_PASSWORD_COOKIE</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">if</span><span class="o">(</span><span class="n">loginCookie</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">passwordCookie</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="n">userService</span><span class="o">.</span><span class="na">findByLoginAndPassword</span><span class="o">(</span><span class="n">loginCookie</span><span class="o">.</span><span class="na">getValue</span><span class="o">(),</span> <span class="n">passwordCookie</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">if</span><span class="o">(</span><span class="n">user</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">session</span><span class="o">.</span><span class="na">setUser</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+</span><span class='line'>                <span class="n">session</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">&quot;You were automatically logged in.&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="n">session</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>public SessionProvider(UserService userService, CookieService cookieService) {
-    this.userService = userService;
-    this.cookieService = cookieService;
-}
-
-public WebSession createNewSession(Request request) {
-    UserSession session = new UserSession(request);
-
-    Cookie loginCookie = cookieService.loadCookie(request, REMEMBER_ME_LOGIN_COOKIE);
-    Cookie passwordCookie = cookieService.loadCookie(request, REMEMBER_ME_PASSWORD_COOKIE);
-
-    if(loginCookie != null &amp;&amp; passwordCookie != null) {
-        User user = userService.findByLoginAndPassword(loginCookie.getValue(), passwordCookie.getValue());
-
-        if(user != null) {
-            session.setUser(user);
-            session.info("You were automatically logged in.");
-        }
-    }
-
-    return session;
-}
-</code></pre>
-
-<p>}</p>
-
-<p>[/java]</p>
 
 <p>To show feedback message on HomePage.java we must add FeedbackPanel there, but for the brevity I will omit this in this post. You can read <a href="https://github.com/tdziurko/wicket-rememberme/commit/59cb50d433a79a73b1020b488d5a13a7355da0d3">commit</a> to check how to do that.</p>
 
 <p>So we after three steps we should have &lsquo;Remember Me&rsquo; working. To check it quickly please modify session timeout in web.xml file by adding:</p>
 
-<p>[xml title=&ldquo;web.xml fragment&rdquo;]</p>
+<figure class='code'><figcaption><span>web.xml fragment</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;session-config&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;session-timeout&gt;</span>1<span class="nt">&lt;/session-timeout&gt;</span>
+</span><span class='line'><span class="nt">&lt;/session-config&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>&lt;session-config&gt;
-    &lt;session-timeout&gt;1&lt;/session-timeout&gt;
-&lt;/session-config&gt;
-</code></pre>
-
-<p>[/xml]</p>
 
 <p>and then start application <em>mvn clean compile jetty:run</em>, go to login page, login, close browser and after over a 1 minute (when session expires) open it again on <a href="http://localhost:8080.">http://localhost:8080.</a> You should see something like this:</p>
 
-<p><a href="/images/blog/2012/09/auto_logged.jpg"><img src="/images/blog/2012/09/auto_logged-1024x313.jpg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/09/auto_logged-1024x313.jpg" alt="" /></p>
 
 <p>So it works. But we still need one more thing: allow user to remove cookies and turn-off auto-login.</p>
 
@@ -413,24 +543,34 @@ public WebSession createNewSession(Request request) {
 <a href="https://github.com/tdziurko/wicket-rememberme/commit/d9b35803ea0321dc5e80f80d480a6af527a457fa">Link to commit with this step</a>
 In the last step we have to allow user to clear his data and disable &ldquo;Remember Me&rdquo; for his account. This will be achieved by clearing both cookies when user explicitly clicks Logout link.</p>
 
-<p>[java title=&ldquo;HomePage.java fragment&rdquo; highlight=&ldquo;4,5,6,7,8,9&rdquo;]</p>
+<figure class='code'><figcaption><span>HomePage.java fragment</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Link</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="n">logoutLink</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Link</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;(</span><span class="s">&quot;logout&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">CookieService</span> <span class="n">cookieService</span> <span class="o">=</span> <span class="n">WicketApplication</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">getCookieService</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">cookieService</span><span class="o">.</span><span class="na">removeCookieIfPresent</span><span class="o">(</span><span class="n">getRequest</span><span class="o">(),</span> <span class="n">getResponse</span><span class="o">(),</span> <span class="n">SessionProvider</span><span class="o">.</span><span class="na">REMEMBER_ME_LOGIN_COOKIE</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">cookieService</span><span class="o">.</span><span class="na">removeCookieIfPresent</span><span class="o">(</span><span class="n">getRequest</span><span class="o">(),</span> <span class="n">getResponse</span><span class="o">(),</span> <span class="n">SessionProvider</span><span class="o">.</span><span class="na">REMEMBER_ME_PASSWORD_COOKIE</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">UserSession</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">setUser</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">UserSession</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">invalidate</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">};</span>
+</span><span class='line'><span class="n">logoutLink</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(</span><span class="n">UserSession</span><span class="o">.</span><span class="na">get</span><span class="o">().</span><span class="na">userLoggedIn</span><span class="o">());</span>
+</span><span class='line'><span class="n">add</span><span class="o">(</span><span class="n">logoutLink</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>Link&lt;Void&gt; logoutLink = new Link&lt;Void&gt;("logout") {
-    @Override
-    public void onClick() {
-        CookieService cookieService = WicketApplication.get().getCookieService();
-        cookieService.removeCookieIfPresent(getRequest(), getResponse(), SessionProvider.REMEMBER_ME_LOGIN_COOKIE);
-        cookieService.removeCookieIfPresent(getRequest(), getResponse(), SessionProvider.REMEMBER_ME_PASSWORD_COOKIE);
-
-        UserSession.get().setUser(null);
-        UserSession.get().invalidate();
-    }
-};
-logoutLink.setVisible(UserSession.get().userLoggedIn());
-add(logoutLink);
-</code></pre>
-
-<p>[/java]</p>
 
 <h3>Summary</h3>
 
@@ -439,6 +579,7 @@ add(logoutLink);
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

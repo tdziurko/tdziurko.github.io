@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Certificates | Tomasz Dziurko]]></title>
   <link href="http://tdziurko.github.io/blog/categories/certificates/atom.xml" rel="self"/>
   <link href="http://tdziurko.github.io/"/>
-  <updated>2014-05-25T17:47:31+02:00</updated>
+  <updated>2014-05-27T12:54:29+02:00</updated>
   <id>http://tdziurko.github.io/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -28,7 +28,7 @@
 
 <p>Code below presents fragment of web.xml file allowing to define order in which servlets are loaded when the containter starts:</p>
 
-<p>[xml]
+<p>``` xml
 &lt;web-app></p>
 
 <pre><code>...
@@ -46,7 +46,7 @@
 </code></pre>
 
 <p>&lt;/web-app>
-[/xml]</p>
+```</p>
 
 <!-- more -->
 
@@ -92,15 +92,26 @@
 <pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
 </code></pre>
 
-<p>Pewnie nie uwierzycie, ale istnieją miejsca na Ziemi, w których nie chcą  od ręki uznać dyplomu SCJP ;) i potrzebują tłumaczenia na język  ojczysty. Tak właśnie jest w polskich urzędach, gdzie bardzo miła pani  powiedziała, że wierzy mi, iż jest to certyfikat potwierdzający jakieś  kwalifikacje, ale żeby mogła wprowadzić go do bazy musi mieć tłumaczenie  i to przysięgłe. Rozpocząłem więc pielgrzymkę po biurach tłumaczeń,  które jak się okazało tłumaczą od ręki, ale nie zawsze pod przysięgą. W  końcu dotarłem do miłego pana, który wziął moje oba certyfikaty i  powiedział, że tłumaczenie będzie gotowe w ciągu dwóch dni.
-Gdy  pojawiłem się po odbiór okazało się, że tłumaczenie nie jest jeszcze w  pełni gotowe, bo tłumacz chciał ze mną skonsultować dwie kwestie:  tłumaczenie &ldquo;Sun Certified Programmer&rdquo; oraz &ldquo;Sun Certified Web Component  Developer&rdquo;. Po krótkiej dyskusji ustaliliśmy następujące brzmienie tych  nazw:
-&ndash; Certyfikowany Programista w języku programowania Java Standard Edition 5.0
-&ndash; Certyfikowany Programista Komponentów Internetowych w języku programowania Java Enterprise Edition 5
-Nazwy  nie są na pewno idealne, bo tłumacz nie mógł po prostu pominąć  niektórych fragmentów po angielsku, ale moim zdaniem dobrze oddają sens.  Zadowolony wróciłem do domu po czym naszła mnie taka oto myśl:
-Co  zrobiłby tłumacz, gdybym razem z certyfikatem SCJP przyniósł mu również  SCJD (Sun Certified Java Developer)? Jak poradziłby sobie ze słowem developer, które w języku polskim ma w sumie takie samo znaczenie jak programmer?  Myślałem nad tą kwestią sporo czasu i stwierdziłem, że chyba jedynym  dobrym rozwiązaniem byłoby wprowadzenie jakiegoś przymiotnika  określającego wyższy poziom umiejętności developera od programmera, czyli na przykład:
-a) Certyfikowany Programista w języku programowania Java Standard Edition 5.0 na poziomie zaawansowanym
-b) Certyfikowany Starszy Programista &hellip;
-Jednak żadne z tych tłumaczeń nie jest w pełni udane. Może Wy macie lepsze pomysły?</p>
+<p>Pewnie nie uwierzycie, ale istnieją miejsca na Ziemi, w których nie chcą  od ręki uznać dyplomu SCJP ;) i potrzebują tłumaczenia na język  ojczysty.</p>
+
+<p>Tak właśnie jest w polskich urzędach, gdzie bardzo miła pani  powiedziała, że wierzy mi, iż jest to certyfikat potwierdzający jakieś  kwalifikacje, ale żeby mogła wprowadzić go do bazy musi mieć tłumaczenie  i to przysięgłe. Rozpocząłem więc pielgrzymkę po biurach tłumaczeń,  które jak się okazało tłumaczą od ręki, ale nie zawsze pod przysięgą. W  końcu dotarłem do miłego pana, który wziął moje oba certyfikaty i  powiedział, że tłumaczenie będzie gotowe w ciągu dwóch dni.</p>
+
+<p>Gdy  pojawiłem się po odbiór okazało się, że tłumaczenie nie jest jeszcze w  pełni gotowe, bo tłumacz chciał ze mną skonsultować dwie kwestie:  tłumaczenie &ldquo;Sun Certified Programmer&rdquo; oraz &ldquo;Sun Certified Web Component  Developer&rdquo;. Po krótkiej dyskusji ustaliliśmy następujące brzmienie tych  nazw:</p>
+
+<ul>
+<li><p>Certyfikowany Programista w języku programowania Java Standard Edition 5.0</p></li>
+<li><p>Certyfikowany Programista Komponentów Internetowych w języku programowania Java Enterprise Edition 5</p></li>
+</ul>
+
+
+<p>Nazwy  nie są na pewno idealne, bo tłumacz nie mógł po prostu pominąć  niektórych fragmentów po angielsku, ale moim zdaniem dobrze oddają sens.  Zadowolony wróciłem do domu po czym naszła mnie taka oto myśl:
+Co  zrobiłby tłumacz, gdybym razem z certyfikatem SCJP przyniósł mu również  SCJD (Sun Certified Java Developer)? Jak poradziłby sobie ze słowem developer, które w języku polskim ma w sumie takie samo znaczenie jak programmer?  Myślałem nad tą kwestią sporo czasu i stwierdziłem, że chyba jedynym  dobrym rozwiązaniem byłoby wprowadzenie jakiegoś przymiotnika  określającego wyższy poziom umiejętności developera od programmera, czyli na przykład:</p>
+
+<p>a) Certyfikowany Programista w języku programowania Java Standard Edition 5.0 na poziomie zaawansowanym</p>
+
+<p>b) Certyfikowany Starszy Programista &hellip;</p>
+
+<p>Jednak żadne z tych tłumaczeń nie jest w pełni udane. Może Wy macie lepsze pomysły?</p>
 ]]></content>
   </entry>
   
@@ -109,9 +120,9 @@ Jednak żadne z tych tłumaczeń nie jest w pełni udane. Może Wy macie lepsze 
     <link href="http://tdziurko.github.io/2010/01/finally-my-scwcd-mission-completed/"/>
     <updated>2010-01-23T14:10:13+01:00</updated>
     <id>http://tdziurko.github.io/2010/01/finally-my-scwcd-mission-completed</id>
-    <content type="html"><![CDATA[<p>Much later than planned (check <a href="http://tomaszdziurko.pl/2009/04/lets-start-preperations-to-scwcd/">my post</a> when I revealed intent to pass SCWCD) I managed to get this certificate. The result (94%) is in my opinion more than good :) Preparations began fairly long time ago (over a year ago) but since this time there were some unexpected circumstances (mainly project which seems to grew and grew) and that&rsquo;s why SCWCD mission took me so long.</p>
+    <content type="html"><![CDATA[<p>Much later than planned (check <a href="/2009/04/lets-start-preperations-to-scwcd/">my post</a> when I revealed intent to pass SCWCD) I managed to get this certificate. The result (94%) is in my opinion more than good :) Preparations began fairly long time ago (over a year ago) but since this time there were some unexpected circumstances (mainly project which seems to grew and grew) and that&rsquo;s why SCWCD mission took me so long.</p>
 
-<p>I  started preparations as usual, by downloading specifications  and adding API to Firefox bookmarks (list of links <a href="../2009/04/lets-start-preperations-to-scwcd/">here</a>). Then I bought <a href="http://oreilly.com/catalog/9780596516680/">Head First Servlets  and JSP</a>, the most recommended book for this certificate. I had ambitiously assumed that I will be able to write more detailed posts about what I learnt but unfortunately lack of time didn&rsquo;t allow me to do it.<!-- more --></p>
+<p>I  started preparations as usual, by downloading specifications  and adding API to Firefox bookmarks (list of links <a href="/2009/04/lets-start-preperations-to-scwcd/">here</a>). Then I bought <a href="http://oreilly.com/catalog/9780596516680/">Head First Servlets  and JSP</a>, the most recommended book for this certificate. I had ambitiously assumed that I will be able to write more detailed posts about what I learnt but unfortunately lack of time didn&rsquo;t allow me to do it.<!-- more --></p>
 
 <p>I  read the book twice in a fairly considerable period of time. First reading was to revise servlets and read about areas I hadn&rsquo;t met before  (mainly Custom Tags). This time I didn&rsquo;t concentrate on details, it was the purpose of the second reading. Simultaneously with reading I started experimenting with NetBeans and writing simple JSP&rsquo;s, creating web.xml manually, etc.</p>
 
@@ -134,7 +145,7 @@ Jednak żadne z tych tłumaczeń nie jest w pełni udane. Może Wy macie lepsze 
 
 <p>Main interface from which all starts. It defines key methods for the life cycle of servlet:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <p>public void init(ServletConfig config) throws ServletException;
 public ServletConfig getServletConfig();
@@ -142,15 +153,15 @@ public void service(ServletRequest req, ServletResponse res) throws ServletExcep
 
 <p>public void destroy();</p>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>and one additional method</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <p>public String getServletInfo();</p>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>which should return information about servlet (version, author, resposibility, etc.)<!-- more --></p>
 
@@ -158,18 +169,17 @@ public void service(ServletRequest req, ServletResponse res) throws ServletExcep
 
 <p>Abstract  class implementing all Servlet interface methods, except method service (), which is implemented by a class one step  lower in the hierarchy: HttpServlet. Additionally GenericServlet also provides methods from ServletConfig interface allowing developer to read init parameters of servlet</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <p>public String getInitParameter(java.lang.String name) { }
 public Enumeration getInitParameterNames() { }</p>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>These  parameters are defined in the web.xml file by using the elements &lt;init-param> nested in the declaration of a servlet:</p>
 
-<p>[xml]</p>
-
-<p>&lt;web-app>
+<p>``` xml
+&lt;web-app>
   <servlet></p>
 
 <pre><code>&lt;servlet-name&gt;FirstToLoadServlet&lt;/servlet-name&gt;
@@ -194,23 +204,24 @@ public Enumeration getInitParameterNames() { }</p>
 <p>  &lt;/servlet-mapping>
 &lt;/web-app></p>
 
-<p>[/xml]</p>
+<p>```</p>
 
 <p>Another method of the interface ServletConfig</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <p>public ServletContext getServletContext () {}</p>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>returns the context in which servlet is running. From this context we can get information about server version and many other things which I don&rsquo;t cover in this episode of &ldquo;Preparing to SCWCD&rdquo; series :)</p>
 
 <p>The final method in class GenericServlet worth mentioning is</p>
 
-<p>[java]public void init () throws ServletException {}</p>
+<p>``` java
+public void init () throws ServletException {}</p>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>This method is added for the developers convenience. Rather  than overloading the init (ServletConfig config) and remember to call  super.init (config) , we can put our init logic in servlet initialization  method init (), which is called by the init (ServletConfig config).</p>
 
@@ -218,22 +229,23 @@ public Enumeration getInitParameterNames() { }</p>
 
 <p>It&rsquo;s the class, which will be extended by all our servlets. It has methods for handling HTTP requests:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
 <p>protected void doGet (HttpServletRequest req, HttpServletResponse resp) throws ServletException, java.io.IOException {}</p>
 
-<p>[/java]</p>
+<p>```</p>
 
 <p>and its brothers working with other HTTP protocol requests: doPost, doHead, doOptions, doPut, doDelete and doTrace.</p>
 
 <p>The two most important methods in this class are:</p>
 
-<p>[java]</p>
+<p>``` java</p>
 
-<p>public void service (ServletRequest req, ServletResponse res) throws ServletException, java.io.IOException {}
-protected void service (HttpServletRequest req, HttpServletResponse resp) {}</p>
+<p>public void service (ServletRequest req, ServletResponse res) throws ServletException, java.io.IOException {}</p>
 
-<p>[/java]</p>
+<p>protected void service (HttpServletRequest req, HttpServletResponse resp) {}</p>
+
+<p>```</p>
 
 <p>The first one (public one) is called by the container and redirects call to second one (protected), which, depending on the type of request calls one of doXXX() method.</p>
 ]]></content>
@@ -257,7 +269,7 @@ protected void service (HttpServletRequest req, HttpServletResponse resp) {}</p>
 
 <p>My aim is to pass this exam before July 2009 with result not lower than 80%.</p>
 
-<p><strong>Update</strong>:  And how it ended can be found in my another post &ndash; <a href="http://tomaszdziurko.pl/2010/01/finally-my-scwcd-mission-completed/">here</a>.</p>
+<p><strong>Update</strong>:  And how it ended can be found in my another post <a href="/2010/01/finally-my-scwcd-mission-completed/">here</a>.</p>
 ]]></content>
   </entry>
   

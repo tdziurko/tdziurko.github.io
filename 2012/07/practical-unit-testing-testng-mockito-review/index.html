@@ -152,7 +152,7 @@
 	<h1 class="title" itemprop="name">Practical Unit Testing With TestNG and Mockito - Review</h1>
 	<div class="entry-content" itemprop="articleBody"><p>Book &ldquo;<em>Practical Unit Testing with TestNG and Mockito</em>&rdquo; (<a href="http://practicalunittesting.com/">website</a>) covers wide spectrum of knowledge about testing in Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get most of this title. Below you can read some of my thoughts after reading this book.</p>
 
-<p><a href="/images/blog/2012/07/practical_unit_testing.png"><img src="/images/blog/2012/07/practical_unit_testing.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/07/practical_unit_testing.png" alt="" /></p>
 
 <!-- more -->
 
@@ -185,21 +185,24 @@
 
 <p>TestNG has a nice class <em>org.testng.Reporter</em> that allows developer to add some information to html reports</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>    <span class="nd">@Test</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSomething</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">Reporter</span><span class="o">.</span><span class="na">log</span><span class="o">(</span><span class="s">&quot;This is so soo important, please read it!&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">//test something</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Test
-public void testSomething() {
-    Reporter.log("This is so soo important, please read it!");
-
-    //test something
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>And after running such tests in html report we will see something like presenten on the screenshot below:</p>
 
-<p><a href="/images/blog/2012/07/testng-reporter.jpg"><img src="/images/blog/2012/07/testng-reporter.jpg" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2012/07/testng-reporter.jpg" alt="" /></p>
 
 <p>and additionally all such messages are gathered in one, separate report.</p>
 
@@ -207,30 +210,35 @@ public void testSomething() {
 
 <p>Let&rsquo;s suppose that we are testing following method</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Test</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">loadByAgeRange</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">service</span><span class="o">.</span><span class="na">loadClientBy</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">40</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Test
-public void loadByAgeRange() {
-    service.loadClientBy(1, 20, 40, null);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>and compare it with listing below:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>    <span class="nd">@Test</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">loadByAgeRange</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">ageFrom</span> <span class="o">=</span> <span class="mi">20</span><span class="o">;</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">ageTo</span> <span class="o">=</span> <span class="mi">40</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">service</span><span class="o">.</span><span class="na">loadClientBy</span><span class="o">(</span><span class="n">ANY_TYPE</span><span class="o">,</span> <span class="n">ageFrom</span><span class="o">,</span> <span class="n">ageTo</span><span class="o">,</span> <span class="n">ANY_REGION</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Test
-public void loadByAgeRange() {
-    int ageFrom = 20;
-    int ageTo = 40;
-
-    service.loadClientBy(ANY_TYPE, ageFrom, ageTo, ANY_REGION);
-}
-</code></pre>
-
-<p>[/java]</p>
 
 <p>Isn&rsquo;t it much clearer? We replace dummy data with constants indicating which part is important and what parameters are not critical in this method.</p>
 
@@ -238,12 +246,10 @@ public void loadByAgeRange() {
 
 <p>Mockito allows us to automatically inject all mock into object we are going to test:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@InjectMocks</span> <span class="kd">private</span> <span class="n">ObjectUnderTest</span> <span class="n">object</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectUnderTest</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@InjectMocks private ObjectUnderTest object = new ObjectUnderTest();
-</code></pre>
-
-<p>[/java]</p>
 
 <p>Of course it has some limitations (see <a href="http://docs.mockito.googlecode.com/hg/1.9.0/org/mockito/InjectMocks.html">JavaDocs</a>) but it&rsquo;s good to know that such feature is already in Mockito.</p>
 
@@ -251,56 +257,69 @@ public void loadByAgeRange() {
 
 <p>This small project will help you to create builders for your test cases easily. More can be found on <a href="http://code.google.com/p/make-it-easy/wiki/GettingStarted">its wiki</a>, but below simple use case showing how it looks:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Person</span> <span class="n">nat</span> <span class="o">=</span> <span class="n">make</span><span class="o">(</span><span class="n">a</span><span class="o">(</span><span class="n">Person</span><span class="o">,</span> <span class="n">with</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="s">&quot;Tomek&quot;</span><span class="o">),</span> <span class="n">with</span><span class="o">(</span><span class="n">age</span><span class="o">,</span> <span class="mi">28</span><span class="o">)));</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>Person nat = make(a(Person, with(name, "Tomek"), with(age, 28)));
-</code></pre>
-
-<p>[/java]</p>
 
 <h5><strong>Partial Mocking</strong></h5>
 
 <p>If there is a method we want to test but at the same time there is another method in tested object that want to mock, it is possible to do that by usinf Mockito spy():</p>
 
-<p>[java]
-@Test
-public void testCaluculationSummary() {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Test</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">testCaluculationSummary</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">TestedObject</span> <span class="n">object</span> <span class="o">=</span> <span class="n">spy</span><span class="o">(</span><span class="k">new</span> <span class="n">TestedObject</span><span class="o">());</span>
+</span><span class='line'>    <span class="n">when</span><span class="o">(</span><span class="n">object</span><span class="o">.</span><span class="na">executeHeavyCalculations</span><span class="o">()).</span><span class="na">thenReturn</span><span class="o">(</span><span class="s">&quot;resultString&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">object</span><span class="o">.</span><span class="na">getCalculationsSummary</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">result</span><span class="o">).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>TestedObject object = spy(new TestedObject());
-when(object.executeHeavyCalculations()).thenReturn("resultString");
-
-int result = object.getCalculationsSummary();
-
-assertThat(result).isEqualTo(10);
-</code></pre>
-
-<p>}
-[/java]</p>
 
 <h5><strong>Testing and capturing method arguments</strong></h5>
 
 <p>Mockito gives us another very useful feature, ability to check what arguments were passed to methods using <a href="http://docs.mockito.googlecode.com/hg/org/mockito/ArgumentCaptor.html">ArgumentCaptor</a>:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Test</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">testArgument</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// ...</span>
+</span><span class='line'>    <span class="n">CustomerService</span> <span class="n">customerService</span> <span class="o">=</span> <span class="n">mock</span><span class="o">(</span><span class="n">CustomerService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">ArgumentCaptor</span> <span class="n">argument</span> <span class="o">=</span> <span class="n">ArgumentCaptor</span><span class="o">.</span><span class="na">forClass</span><span class="o">(</span><span class="n">Customer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">verify</span><span class="o">(</span><span class="n">customerService</span><span class="o">).</span><span class="na">saveCustomer</span><span class="o">(</span><span class="n">argument</span><span class="o">.</span><span class="na">capture</span><span class="o">());</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">testedObject</span><span class="o">.</span><span class="na">executeSomeMethodCallingSaveCustomer</span><span class="o">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">assertThat</span><span class="o">(</span><span class="n">argument</span><span class="o">.</span><span class="na">getValue</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">expectedCustomer</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>@Test
-public void testArgument() {
-    // ...
-    CustomerService customerService = mock(CustomerService.class);
-    ArgumentCaptor argument = ArgumentCaptor.forClass(Customer.class);
-    verify(customerService).saveCustomer(argument.capture());
-
-    testedObject.executeSomeMethodCallingSaveCustomer()
-
-    assertThat(argument.getValue()).isEqualTo(expectedCustomer);
-}
-</code></pre>
-
-<p>[/java]</p>
 </div>
 
 
 <span class="post_end">
+    <br/>
 	  
   
 

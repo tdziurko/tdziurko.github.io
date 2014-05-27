@@ -181,38 +181,68 @@
 
 <p>Short research showed that this should be a piece of cake. Below small code snippet showing how to send message using library <a href="http://commons.apache.org/net/">Apache Commons Net</a>.</p>
 
-<p>[java]
-public class Main {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'> <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">NNTPClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">NNTPClient</span><span class="o">();</span>
+</span><span class='line'> <span class="n">client</span><span class="o">.</span><span class="na">connect</span><span class="o">(</span><span class="s">&quot;news.ustronie.pw.edu.pl&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">client</span><span class="o">.</span><span class="na">selectNewsgroup</span><span class="o">(</span><span class="s">&quot;pw.test&quot;</span><span class="o">);</span>
+</span><span class='line'> <span class="n">Writer</span> <span class="n">postArticle</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">postArticle</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">SimpleNNTPHeader</span> <span class="n">headers</span> <span class="o">=</span>
+</span><span class='line'> <span class="k">new</span> <span class="nf">SimpleNNTPHeader</span><span class="o">(</span><span class="s">&quot;Tomasz Dziurko &amp;lt;tdziurko@gmail.com&gt;&quot;</span><span class="o">,</span> <span class="s">&quot;Test kodowania polskich znaków&quot;</span><span class="o">);</span>
+</span><span class='line'> <span class="n">headers</span><span class="o">.</span><span class="na">addNewsgroup</span><span class="o">(</span><span class="s">&quot;pw.test&quot;</span><span class="o">);</span>
+</span><span class='line'> <span class="n">headers</span><span class="o">.</span><span class="na">addHeaderField</span><span class="o">(</span><span class="s">&quot;Mime-Version&quot;</span><span class="o">,</span> <span class="s">&quot;1.0&quot;</span><span class="o">);</span>
+</span><span class='line'> <span class="n">headers</span><span class="o">.</span><span class="na">addHeaderField</span><span class="o">(</span><span class="s">&quot;Content-Type&quot;</span><span class="o">,</span><span class="s">&quot;text/plain; charset=UTF-8&quot;</span><span class="o">);</span>
+</span><span class='line'> <span class="n">headers</span><span class="o">.</span><span class="na">addHeaderField</span><span class="o">(</span><span class="s">&quot;Content-Transfer-Encoding&quot;</span><span class="o">,</span> <span class="s">&quot;8bit&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">postArticle</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">headers</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+</span><span class='line'> <span class="n">postArticle</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="s">&quot;ąęóśłżźćń - test polskich znaków\r\n&quot;</span><span class="o">);</span>
+</span><span class='line'> <span class="n">postArticle</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">client</span><span class="o">.</span><span class="na">completePendingCommand</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">client</span><span class="o">.</span><span class="na">disconnect</span><span class="o">();</span>
+</span><span class='line'> <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p> public static void main(String[] args) throws Exception {</p>
 
-<p> NNTPClient client = new NNTPClient();
- client.connect(&ldquo;news.ustronie.pw.edu.pl&rdquo;);</p>
+<p>Everything worked as expected until I started to use Polish characters in the message. Then instead of &ldquo;ąęóśłżźćń&rdquo; I saw following picture:</p>
 
-<p> client.selectNewsgroup(&ldquo;pw.test&rdquo;);
- Writer postArticle = client.postArticle();</p>
+<p style="text-align:center;"><img src="/images/blog/2009/04/message1-300x93.png" alt="Invalid characters encoding in NNTP class in Apache Commons Net" /></p>
 
-<p> SimpleNNTPHeader headers =
- new SimpleNNTPHeader(&ldquo;Tomasz Dziurko &lt;<a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x74;&#100;&#x7a;&#x69;&#117;&#x72;&#107;&#111;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#116;&#100;&#122;&#105;&#117;&#x72;&#107;&#x6f;&#x40;&#103;&#x6d;&#x61;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a>>&rdquo;, &ldquo;Test kodowania polskich znaków&rdquo;);
- headers.addNewsgroup(&ldquo;pw.test&rdquo;);
- headers.addHeaderField(&ldquo;Mime-Version&rdquo;, &ldquo;1.0&rdquo;);
- headers.addHeaderField(&ldquo;Content-Type&rdquo;,&ldquo;text/plain; charset=UTF-8&rdquo;);
- headers.addHeaderField(&ldquo;Content-Transfer-Encoding&rdquo;, &ldquo;8bit&rdquo;);</p>
 
-<p> postArticle.write(headers.toString());
- postArticle.write(&ldquo;ąęóśłżźćń &ndash; test polskich znaków\r\n&rdquo;);
- postArticle.close();</p>
-
-<p> client.completePendingCommand();</p>
-
-<p> client.disconnect();
- }</p>
-
-<p>}
-[/java]</p>
-
-<p>Everything worked as expected until I started to use Polish characters in the message. Then instead of &ldquo;ąęóśłżźćń&rdquo; I saw following picture:
-<a href="/images/blog/2009/04/message1.png"><img src="/images/blog/2009/04/message1-300x93.png" alt="Invalid characters encoding in NNTP class in Apache Commons Net" /></a>
 		
 		<a href="/2009/04/nntp-apache-commons-and-non-us-charaters/" class="more-link">Read on &rarr;</a>
 	</div>
@@ -259,7 +289,7 @@ public class Main {</p>
 
 <p>My aim is to pass this exam before July 2009 with result not lower than 80%.</p>
 
-<p><strong>Update</strong>:  And how it ended can be found in my another post &ndash; <a href="http://tomaszdziurko.pl/2010/01/finally-my-scwcd-mission-completed/">here</a>.</p>
+<p><strong>Update</strong>:  And how it ended can be found in my another post <a href="/2010/01/finally-my-scwcd-mission-completed/">here</a>.</p>
 
 		
 		

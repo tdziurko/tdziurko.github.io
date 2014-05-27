@@ -161,47 +161,69 @@
 
 <p>To edit location we should first add link to the LocationsPage redirecting user to edit page:</p>
 
-<p>[html]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;table&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;th&gt;</span>ID<span class="nt">&lt;/th&gt;&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;&lt;th&gt;</span>Actions<span class="nt">&lt;/th&gt;</span> <span class="c">&lt;!-- new header column --&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;locations&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;td&gt;&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;id&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/td&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;td&gt;&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/td&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href</span> <span class="na">wicket:id=</span><span class="s">&quot;editLocationLink&quot;</span><span class="nt">&gt;</span>Edit<span class="nt">&lt;/a&gt;&lt;/td&gt;</span> <span class="c">&lt;!-- this is new --&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;/table&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<table>
-    <tr>
-        <th>ID</th><th>Name</th><th>Actions</th> <!-- new header column -->
-    </tr>
-    <span wicket:id="locations">
-        <tr>
-        <td><span wicket:id="id"></span></td>
-        <td><span wicket:id="name"></span></td>
-            <td><a href wicket:id="editLocationLink">Edit</a></td> <!-- this is new -->
-        </tr>
-    </span>
-</table>
-
-
-<p>[/html]</p>
 
 <p>In the corresponding Java class we add link to edit page:</p>
 
-<p>[java]
- ListView<Location> locations = new ListView<Location>(&ldquo;locations&rdquo;, createModelForLocations()) {
-   @Override
-   protected void populateItem(final ListItem<Location> item) {</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'> <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span> <span class="n">locations</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="s">&quot;locations&quot;</span><span class="o">,</span> <span class="n">createModelForLocations</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>   <span class="nd">@Override</span>
+</span><span class='line'>   <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="kd">final</span> <span class="n">ListItem</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>     <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">PropertyModel</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">(),</span> <span class="s">&quot;id&quot;</span><span class="o">)));</span>
+</span><span class='line'>     <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">PropertyModel</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">(),</span> <span class="s">&quot;name&quot;</span><span class="o">)));</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="n">Link</span><span class="o">&lt;</span><span class="n">BasePage</span><span class="o">&gt;</span> <span class="n">editLocationLink</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Link</span><span class="o">&lt;</span><span class="n">BasePage</span><span class="o">&gt;(</span><span class="s">&quot;editLocationLink&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>       <span class="nd">@Override</span>
+</span><span class='line'>       <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>         <span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="n">AddEditLocationPage</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getModelObject</span><span class="o">().</span><span class="na">getId</span><span class="o">()));</span>
+</span><span class='line'>       <span class="o">}</span>
+</span><span class='line'>     <span class="o">};</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">editLocationLink</span><span class="o">);</span>
+</span><span class='line'>   <span class="o">}</span>
+</span><span class='line'> <span class="o">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code> item.add(new Label("id", new PropertyModel&lt;Location&gt;(item.getModel(), "id")));
- item.add(new Label("name", new PropertyModel&lt;Location&gt;(item.getModel(), "name")));
-
- Link&lt;BasePage&gt; editLocationLink = new Link&lt;BasePage&gt;("editLocationLink") {
-   @Override
-   public void onClick() {
-     setResponsePage(new AddEditLocationPage(item.getModelObject().getId()));
-   }
- };
-
- item.add(editLocationLink);
-</code></pre>
-
-<p>   }
- };
-[/java]</p>
 
 <p>Careful reader might notice that we have new class here, AddEditLocationPage. But it&rsquo;s just old renamed AddLocationPage after some refactoring to reuse it for both creating new and editing existing locations. As in the code listing above, we are passing Id of location to the constructor to inform which object we are going to edit.</p>
 
@@ -211,90 +233,150 @@
 
 <p>First we add constructor taking id as a parameter:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="nf">AddEditLocationPage</span><span class="o">(</span><span class="n">Long</span> <span class="n">locationId</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">Location</span> <span class="n">location</span> <span class="o">=</span> <span class="n">locationService</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="n">locationId</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">setDefaultModel</span><span class="o">(</span><span class="k">new</span> <span class="n">Model</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="n">location</span><span class="o">));</span>
+</span><span class='line'>  <span class="n">initGui</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public AddEditLocationPage(Long locationId) {
-  Location location = locationService.findById(locationId);
-  setDefaultModel(new Model<Location>(location));
-  initGui();
-}
-[/java]</p>
 
 <p><em>setDefaultModel</em> will enable other components from the page to use loaded location as a source of rendered data. After this, to  be consistent we change constructor for new locations too:</p>
 
-<p>[java]
-public AddEditLocationPage() {
-  setDefaultModel(new Model<Location>(new Location()));
-  initGui();
-}
-[/java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="nf">AddEditLocationPage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">setDefaultModel</span><span class="o">(</span><span class="k">new</span> <span class="n">Model</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="k">new</span> <span class="n">Location</span><span class="o">()));</span>
+</span><span class='line'>  <span class="n">initGui</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <p>After these changes initGui() method needs some tweaks because it should use data from default page model and not from String name field:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="kt">void</span> <span class="nf">initGui</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'> <span class="n">Form</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span> <span class="n">addLocationForm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="s">&quot;addLocationForm&quot;</span><span class="o">,</span>
+</span><span class='line'>   <span class="k">new</span> <span class="n">CompoundPropertyModel</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="n">getDefaultModel</span><span class="o">()));</span>  <span class="c1">// (1)</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">add</span><span class="o">(</span><span class="n">addLocationForm</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">Label</span> <span class="n">nameLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;nameLabel&quot;</span><span class="o">,</span> <span class="s">&quot;Location name&quot;</span><span class="o">);</span>
+</span><span class='line'> <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nameLabel</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createLabelFieldWithValidation</span><span class="o">());</span> <span class="c1">// (2)</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">Button</span> <span class="n">submitButton</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="s">&quot;submitButton&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>   <span class="nd">@Override</span>
+</span><span class='line'>   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>     <span class="n">Location</span> <span class="n">location</span> <span class="o">=</span> <span class="n">getLocationFromPageModel</span><span class="o">();</span> <span class="c1">// (3)</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="k">if</span><span class="o">(</span><span class="n">location</span><span class="o">.</span><span class="na">isNew</span><span class="o">())</span> <span class="o">{</span>              <span class="c1">// (4)</span>
+</span><span class='line'>       <span class="n">locationService</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
+</span><span class='line'>       <span class="n">getSession</span><span class="o">().</span><span class="na">info</span><span class="o">(</span><span class="s">&quot;Location added successfully&quot;</span><span class="o">);</span>
+</span><span class='line'>       <span class="o">}</span>
+</span><span class='line'>     <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>       <span class="n">locationService</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
+</span><span class='line'>       <span class="n">getSession</span><span class="o">().</span><span class="na">info</span><span class="o">(</span><span class="s">&quot;Location updated successfully&quot;</span><span class="o">);</span>
+</span><span class='line'>     <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>     <span class="n">setResponsePage</span><span class="o">(</span><span class="n">LocationsPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>   <span class="o">}</span>
+</span><span class='line'> <span class="o">};</span>
+</span><span class='line'> <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">submitButton</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="n">RequiredTextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">createLabelFieldWithValidation</span><span class="o">()</span> <span class="o">{</span>     <span class="c1">// (5)</span>
+</span><span class='line'> <span class="n">RequiredTextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">nameField</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RequiredTextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">&quot;name&quot;</span><span class="o">);</span>
+</span><span class='line'> <span class="n">nameField</span><span class="o">.</span><span class="na">setLabel</span><span class="o">(</span><span class="k">new</span> <span class="n">Model</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">&quot;Name&quot;</span><span class="o">));</span>
+</span><span class='line'> <span class="n">nameField</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">LengthBetweenValidator</span><span class="o">.</span><span class="na">lengthBetween</span><span class="o">(</span><span class="n">MIN_LOCATION_NAME_LENGTH</span><span class="o">,</span> <span class="n">MAX_LOCATION_NAME_LENGTH</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'> <span class="n">nameField</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">createUniqueLocationNameValidator</span><span class="o">());</span>   <span class="c1">// (6)</span>
+</span><span class='line'>
+</span><span class='line'> <span class="k">return</span> <span class="n">nameField</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">private</span> <span class="n">UniqueEntityValidator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">createUniqueLocationNameValidator</span><span class="o">()</span> <span class="o">{</span>    <span class="c1">// (7)</span>
+</span><span class='line'> <span class="n">UniqueEntityValidator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">locationNameValidator</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'> <span class="k">if</span><span class="o">(</span><span class="n">getLocationFromPageModel</span><span class="o">().</span><span class="na">isNew</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>   <span class="n">locationNameValidator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UniqueEntityValidator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="n">locationDao</span><span class="o">,</span> <span class="s">&quot;name&quot;</span><span class="o">);</span>
+</span><span class='line'> <span class="o">}</span>
+</span><span class='line'> <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>   <span class="n">locationNameValidator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">UniqueEntityValidator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="n">locationDao</span><span class="o">,</span> <span class="n">getLocationFromPageModel</span><span class="o">().</span><span class="na">getId</span><span class="o">(),</span> <span class="s">&quot;name&quot;</span><span class="o">);</span>  <span class="c1">// (8)</span>
+</span><span class='line'> <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'> <span class="k">return</span> <span class="n">locationNameValidator</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">&quot;unchecked&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">private</span> <span class="n">Location</span> <span class="nf">getLocationFromPageModel</span><span class="o">()</span> <span class="o">{</span>       <span class="c1">// (9)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="o">(</span><span class="n">Location</span><span class="o">)</span> <span class="n">getDefaultModel</span><span class="o">().</span><span class="na">getObject</span><span class="o">();</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>private void initGui() {
- Form<Location> addLocationForm = new Form<Location>(&ldquo;addLocationForm&rdquo;,
-   new CompoundPropertyModel<Location>(getDefaultModel()));  // (1)</p>
-
-<p> add(addLocationForm);</p>
-
-<p> Label nameLabel = new Label(&ldquo;nameLabel&rdquo;, &ldquo;Location name&rdquo;);
- addLocationForm.add(nameLabel);</p>
-
-<p> addLocationForm.add(createLabelFieldWithValidation()); // (2)</p>
-
-<p> Button submitButton = new Button(&ldquo;submitButton&rdquo;) {
-   @Override
-   public void onSubmit() {</p>
-
-<pre><code> Location location = getLocationFromPageModel(); // (3)
-
- if(location.isNew()) {              // (4)
-   locationService.save(location);
-   getSession().info("Location added successfully");
-   }
- else {
-   locationService.update(location);
-   getSession().info("Location updated successfully");
- }
-
- setResponsePage(LocationsPage.class);
-</code></pre>
-
-<p>   }
- };
- addLocationForm.add(submitButton);
-}</p>
-
-<p>private RequiredTextField<String> createLabelFieldWithValidation() {     // (5)
- RequiredTextField<String> nameField = new RequiredTextField<String>(&ldquo;name&rdquo;);
- nameField.setLabel(new Model<String>(&ldquo;Name&rdquo;));
- nameField.add(LengthBetweenValidator.lengthBetween(MIN_LOCATION_NAME_LENGTH, MAX_LOCATION_NAME_LENGTH));</p>
-
-<p> nameField.add(createUniqueLocationNameValidator());   // (6)</p>
-
-<p> return nameField;
-}</p>
-
-<p>private UniqueEntityValidator<String> createUniqueLocationNameValidator() {    // (7)
- UniqueEntityValidator<String> locationNameValidator = null;
- if(getLocationFromPageModel().isNew()) {
-   locationNameValidator = new UniqueEntityValidator<String>(locationDao, &ldquo;name&rdquo;);
- }
- else {
-   locationNameValidator = new UniqueEntityValidator<String>(locationDao, getLocationFromPageModel().getId(), &ldquo;name&rdquo;);  // (8)
- }</p>
-
-<p> return locationNameValidator;
-}</p>
-
-<p>@SuppressWarnings(&ldquo;unchecked&rdquo;)
-private Location getLocationFromPageModel() {       // (9)
-  return (Location) getDefaultModel().getObject();
-}</p>
-
-<p>[/java]</p>
 
 <p><strong>This code listing needs some explanation:</strong></p>
 
@@ -306,104 +388,143 @@ private Location getLocationFromPageModel() {       // (9)
 
 <p>Ok. that&rsquo;s everything we have to do to add edit feature. We now can edit and add new locations as shown on the screen shot below.</p>
 
-<h3><a href="/images/blog/2011/05/SS-20110507141140.png"><img src="/images/blog/2011/05/SS-20110507141140.png" alt="" /></a></h3>
+<p style="text-align:center;"><img src="/images/blog/2011/05/SS-20110507141140.png" alt="" /></p>
 
 <h3>Removing locations</h3>
 
 <p>To start adding this feature we place another link in the LocationsPage HTML file (next to Edit one) and add link to Java class:</p>
 
-<p>[java]
-ListView<Location> locations = new ListView<Location>(&ldquo;locations&rdquo;, createModelForLocations()) {
-  @Override</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">ListView</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span> <span class="n">locations</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="s">&quot;locations&quot;</span><span class="o">,</span> <span class="n">createModelForLocations</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="kd">final</span> <span class="n">ListItem</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">PropertyModel</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">(),</span> <span class="s">&quot;id&quot;</span><span class="o">)));</span>
+</span><span class='line'>    <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">PropertyModel</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">(),</span> <span class="s">&quot;name&quot;</span><span class="o">)));</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">Link</span><span class="o">&lt;</span><span class="n">BasePage</span><span class="o">&gt;</span> <span class="n">editLocationLink</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Link</span><span class="o">&lt;</span><span class="n">BasePage</span><span class="o">&gt;(</span><span class="s">&quot;editLocationLink&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="nd">@Override</span>
+</span><span class='line'>      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">setResponsePage</span><span class="o">(</span><span class="k">new</span> <span class="n">AddEditLocationPage</span><span class="o">(</span><span class="n">item</span><span class="o">.</span><span class="na">getModelObject</span><span class="o">().</span><span class="na">getId</span><span class="o">()));</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>    <span class="o">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">editLocationLink</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">RemoveLocationLink</span><span class="o">(</span><span class="s">&quot;removeLocationLink&quot;</span><span class="o">,</span> <span class="n">item</span><span class="o">.</span><span class="na">getModelObject</span><span class="o">()));</span> <span class="c1">// new remove link component</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">};</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>protected void populateItem(final ListItem&lt;Location&gt; item) {
-item.add(new Label("id", new PropertyModel&lt;Location&gt;(item.getModel(), "id")));
-item.add(new Label("name", new PropertyModel&lt;Location&gt;(item.getModel(), "name")));
-
-Link&lt;BasePage&gt; editLocationLink = new Link&lt;BasePage&gt;("editLocationLink") {
-  @Override
-  public void onClick() {
-    setResponsePage(new AddEditLocationPage(item.getModelObject().getId()));
-  }
-};
-
-item.add(editLocationLink);
-item.add(new RemoveLocationLink("removeLocationLink", item.getModelObject())); // new remove link component
-</code></pre>
-
-<p>  }
-};
-[/java]</p>
 
 <p>And because we know that in the future logic for removing location will be more complicated, it will be easier to change it if we create remove location link as a separate class:</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RemoveLocationLink</span> <span class="kd">extends</span> <span class="n">Link</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@SpringBean</span>
+</span><span class='line'>  <span class="n">LocationService</span> <span class="n">locationService</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">final</span> <span class="n">Location</span> <span class="n">location</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">RemoveLocationLink</span><span class="o">(</span><span class="n">String</span> <span class="n">componentId</span><span class="o">,</span> <span class="n">Location</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">super</span><span class="o">(</span><span class="n">componentId</span><span class="o">);</span>
+</span><span class='line'>    <span class="k">this</span><span class="o">.</span><span class="na">location</span> <span class="o">=</span> <span class="n">location</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">locationService</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">getSession</span><span class="o">().</span><span class="na">info</span><span class="o">(</span><span class="s">&quot;Location &#39;&quot;</span> <span class="o">+</span> <span class="n">location</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;&#39; was removed&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="n">setResponsePage</span><span class="o">(</span><span class="n">LocationsPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public class RemoveLocationLink extends Link<Void> {</p>
-
-<p>  @SpringBean
-  LocationService locationService;</p>
-
-<p>  private final Location location;</p>
-
-<p>  public RemoveLocationLink(String componentId, Location location) {</p>
-
-<pre><code>super(componentId);
-this.location = location;
-</code></pre>
-
-<p>  }</p>
-
-<p>  @Override
-  public void onClick() {</p>
-
-<pre><code>locationService.remove(location);
-
-getSession().info("Location '" + location.getName() + "' was removed");
-setResponsePage(LocationsPage.class);
-</code></pre>
-
-<p>  }</p>
-
-<p>}
-[/java]</p>
 
 <p>We are almost done. The last thing we need to change is method in service class responsible for removing entity.  Without this change we will be trying to delete detached entity so we should use removeSafely() method instead of remove():</p>
 
-<p>[java]</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocationServiceImpl</span> <span class="kd">implements</span> <span class="n">LocationService</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'> <span class="nd">@Autowired</span>
+</span><span class='line'> <span class="kd">private</span> <span class="n">LocationDao</span> <span class="n">locationDao</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'> <span class="c1">// (..)</span>
+</span><span class='line'>
+</span><span class='line'> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">(</span><span class="n">Location</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>   <span class="n">locationDao</span><span class="o">.</span><span class="na">removeSafely</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
+</span><span class='line'> <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'> <span class="c1">// (...)</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>public class LocationServiceImpl implements LocationService {</p>
-
-<p> @Autowired
- private LocationDao locationDao;</p>
-
-<p> // (..)</p>
-
-<p> public void remove(Location location) {
-   locationDao.removeSafely(location);
- }</p>
-
-<p> // (&hellip;)
-}</p>
-
-<p>[/java]</p>
 
 <p>which is implemented in AbstractDAO class:</p>
 
-<p>[java]
-public void removeSafely(EntityClass entity) {
-  getEntityManager().remove(</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeSafely</span><span class="o">(</span><span class="n">EntityClass</span> <span class="n">entity</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>  <span class="n">getEntityManager</span><span class="o">().</span><span class="na">remove</span><span class="o">(</span>
+</span><span class='line'>    <span class="n">getEntityManager</span><span class="o">().</span><span class="na">getReference</span><span class="o">(</span><span class="n">getClazz</span><span class="o">(),</span> <span class="n">entity</span><span class="o">.</span><span class="na">getId</span><span class="o">()));</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code>getEntityManager().getReference(getClazz(), entity.getId()));
-</code></pre>
-
-<p>}</p>
-
-<p>[/java]</p>
 
 <p>After this small change application is ready for tests and we can check that everything works just fine.</p>
 
-<p><a href="/images/blog/2011/05/SS-20110507202517.png"><img src="/images/blog/2011/05/SS-20110507202517.png" alt="" /></a></p>
+<p style="text-align:center;"><img src="/images/blog/2011/05/SS-20110507202517.png" alt="" /></p>
 
 <h3>Summary</h3>
 
@@ -414,6 +535,7 @@ public void removeSafely(EntityClass entity) {
 
 
 <span class="post_end">
+    <br/>
 	  
   
 
