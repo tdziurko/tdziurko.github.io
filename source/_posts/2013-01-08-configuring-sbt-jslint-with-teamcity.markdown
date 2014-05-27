@@ -47,7 +47,7 @@ According to the documentation to configure plugin we have to perform two follow
 
 1. Add plugin declaration to Plugins.scala file
 
-[scala]
+``` scala
 object Plugins extends Build {
   lazy val plugins = Project(
     "plugins",
@@ -56,11 +56,11 @@ object Plugins extends Build {
       Seq(addSbtPlugin("com.github.philcali" % "sbt-jslint" % "0.1.3"))
   )
 }
-[/scala]
+```
 
 2. Include plugin settings in Build.scala:
 
-[scala]
+``` scala
 import sbtjslint.Plugin._
 import sbtjslint.Plugin.LintKeys._
 
@@ -70,11 +70,11 @@ import sbtjslint.Plugin.LintKeys._
     file("bootstrap-ui"),
     settings = buildSettings ++ lintSettings
   )
-[/scala]
+```
 
 But as usual these steps are not enough. First of all, when we run _sbt jslint_ we will see that it scans some default directory looking for JS files to analyse. And of course our JavaScript lies in a completely different place. Secondly, we want to add _jslint_ step to build process so it is executed every time. So simply, we need lintCustomSettings with declared custom JS location and jslint step process added to test step in our build:
 
-[scala]
+``` scala
   val lintCustomSettings = lintSettings ++ inConfig(Test)(Seq(
     sourceDirectory in jslint <<= (baseDirectory)(_ / "src/main/webapp/app"),
     compile in Test <<= (compile in Test) dependsOn (jslint)
@@ -85,15 +85,15 @@ But as usual these steps are not enough. First of all, when we run _sbt jslint_ 
     file("bootstrap-ui"),
     settings = buildSettings ++ lintCustomSettings
   )
-[/scala]
+```
 
 Now after running _sbt test_ we will see that JavaScript code is checked and report is printed to the console and also written in target/jslint/results.xml file.
 
 When you analyse report.xml you might be overwhelmed by the number of warnings raised by the plugin. Some of them are quite useful, but some might be ignored or, even better, disabled by custom flags. In our project we use something like:
 
-[scala]
+``` scala
   flags in jslint ++= Seq("undef", "vars", "browser")
-[/scala]
+```
 
 added to lintCustomSettings. For more flags and their descriptions please visit [plugin documentation](https://github.com/philcali/sbt-jslint/blob/master/README.md#some-notes).
 

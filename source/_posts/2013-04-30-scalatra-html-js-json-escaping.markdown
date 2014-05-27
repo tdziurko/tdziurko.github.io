@@ -26,8 +26,9 @@ So basically we needed easy and declarative way to define which Scalatra Rest en
 
 
 To show how it could be accomplished, we need a simple sample project using Scalatra. I didn't want to create it from scratch by myself so I removed some Swagger related stuff from project by my colleague Krzysztof Ciesielski ([his post about Scalatra and Swagger](http://abstractionextraction.wordpress.com/2013/03/31/using-swagger-with-scalatra/)) and I was ready to go :) Full commit with this basic project is available [here](https://github.com/tdziurko/scalatra-json-escaping/commit/099c7ac30fe0f63319a890e848a94390c035e801), but the most interesting class is shown below:
-<!-- more -->
-[scala]
+
+
+``` scala
 class ExampleServlet() extends ScalatraServlet with JacksonJsonSupport with JValueResult {
 
   protected implicit val jsonFormats: Formats = DefaultFormats
@@ -59,7 +60,8 @@ class ExampleServlet() extends ScalatraServlet with JacksonJsonSupport with JVal
 }
 
 case class Message(id: Int, text: String, author: String, created: Date)
-[/scala]
+```
+
 Ok, so what we have here? Simple Rest service that returns JSON. Get method without any params returns list of messages and get with passed id returns single message with given id. For the sake of simplicity, I have hardcoded list of three messages with two of them containing some Html/JS elements.
 
 
@@ -85,16 +87,18 @@ It is always good to have clear Definition of Done so in our case there are two 
 
 
 To add escaping we need to find place in Scalatra where objects returned from method are converted to Json. After some digging I found _JacksonJsonOutput_ trait with method _writeJon_:
-[scala]
+
+``` scala
 trait JacksonJsonOutput extends JsonOutput[JValue] with jackson.JsonMethods {
   protected def writeJson(json: JValue, writer: Writer) {
     mapper.writeValue(writer, json)
   }
 }
-[/scala]
+```
 
 So what we have to do is override method and somehow define logic to perform actual escaping for us. Luckily JValue has function _map_ that allows to apply passed function to every value in JSON. So we could fire escapeHtml4 method from Apache Commons Lang on each String value in JSON:
-[scala]
+
+``` scala
   override def writeJson(json: JValue, writer: Writer) {
     val escapedJson = json.map((x: JValue) =>
       x match {     // let's check what type is this element
@@ -104,7 +108,7 @@ So what we have to do is override method and somehow define logic to perform act
     )
     mapper.writeValue(writer, escapedJson)
   }
-[/scala]
+```
 
 As you can see all logic is done by _map_ function, we only need to add a few lines of code that will filter and escape String values in JSON. So far so good, but now we are escaping every methods from our Rest API. This is not exactly what we wanted to achieve. To get it done right, we need to define a mechanism to disable escaping for a specific method.
 
@@ -127,12 +131,13 @@ And after trying different approaches it turned out that only thing we need is t
 
 
 Looks easy. We need simple wrapper class:
-[scala]
+
+``` scala
   case class NotEscapedJsonWrapper[T](notEscapedData: T)
-[/scala]
+```
 
 and we need to wrap response with this object:
-[scala]
+``` scala
   get("/:id") {
     val id = params("id").toInt;
     val messageOptional = messages.find((m: Message) => m.id == id)
@@ -144,10 +149,10 @@ and we need to wrap response with this object:
       case _ =>
     }
   }
-[/scala]
+```
 
 And after that we have to modify _writeJson_ to check if object to be written is wrapped with "not-escape-me" marker object or not.
-[scala]
+``` scala
   override def writeJson(json: JValue, writer: Writer) {
     (json \ "notEscapedData") match {     // check if json contains field 'notEscapedData' meaning that it is wrapping object
       case JNothing => {                  // no wrapper, so we perform escaping
@@ -164,7 +169,7 @@ And after that we have to modify _writeJson_ to check if object to be written is
       }
     }
   }
-[/scala]
+```
 
 And after that we could compile and start container with our small application. When we enter /rest/example we will get list of all messages with every String properly escaped. And if we request /rest/example/1 we will get single message as not-escaped data. That's all, we have our escaping working.
 
