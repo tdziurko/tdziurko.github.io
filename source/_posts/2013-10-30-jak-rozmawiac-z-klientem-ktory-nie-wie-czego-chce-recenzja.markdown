@@ -4,8 +4,7 @@ comments: true
 date: 2013-10-30 15:33:49+00:00
 layout: post
 slug: jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja
-title: 'Recenzja "Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie
-  wie czego chce", czyli o tym co każdy programista umieć powinien'
+title: "Oprogramowanie szyte na miarę" - recenzja książki
 wordpress_id: 1895
 categories:
 - Books
@@ -14,6 +13,9 @@ tags:
 - Books
 - In Polish
 ---
+
+Bardzo fajna książka na temat, który jest często zaniedbywany przez programistów: komunikacji z klientem. W skrócie: 
+"Jak rozmawiać z klientem, który nie wie czego chce", czyli o tym co każdy programista umieć powinien.
 <!-- more -->
 
 <blockquote>

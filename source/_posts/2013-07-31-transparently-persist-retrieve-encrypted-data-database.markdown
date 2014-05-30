@@ -15,6 +15,7 @@ tags:
 - Jasypt
 - Java
 ---
+Big brother is watching... always so why not to encrypt everything. And then, auto-decrypt and encrypt our data stored in Database? Here comes Jasypt.
 <!-- more -->
 
 It's over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of [Confitura](http://confitura.pl) (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.

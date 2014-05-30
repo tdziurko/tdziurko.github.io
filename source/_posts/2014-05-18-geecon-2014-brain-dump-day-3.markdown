@@ -12,7 +12,8 @@ tags:
 - GeeCON
 ---
 
-Last, third post with my notes from [GeeCON 2014](http://2014.geecon.org/) conference.
+Last, third post with my notes from [GeeCON 2014](http://2014.geecon.org/) conference. Pretty short? I am not going to justify myself, but it was 
+third day and everyone was a bit tired after two intensive days and nights in Cracow.
 
 <!-- more -->
 

@@ -12,7 +12,8 @@ tags:
 - GeeCON
 ---
 
-The second part of my notes from [GeeCON 2014](http://2014.geecon.org/) conference.
+The second part of my notes from [GeeCON 2014](http://2014.geecon.org/) conference. 
+Day two was the most interesting and richest day of the conference so are the notes.
 
 <!-- more -->
 

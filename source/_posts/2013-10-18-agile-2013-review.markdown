@@ -14,6 +14,8 @@ tags:
 - Conferences
 ---
 
+My notes, thoughst and comments after my first agile conference in my career. Few interesting ideas, some already known approaches. 
+Anyway, I do not regret being there. 
 <!-- more -->
 
 I've just returned from my trip to Warsaw to attend 3rd edition of [Agile By Example](http://agilebyexample.com).

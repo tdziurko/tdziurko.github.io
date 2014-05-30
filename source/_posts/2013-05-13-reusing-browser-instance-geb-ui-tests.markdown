@@ -15,6 +15,8 @@ tags:
 - UI tests
 ---
 
+Home-baked optimization should be fine unless they are re-inventing the wheel. Unfortunately that was the case this time, 
+but thanks to the careful reader I know a lot more about Geb now. 
 <!-- more -->
 
 **UPDATE**

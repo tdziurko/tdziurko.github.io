@@ -14,6 +14,7 @@ tags:
 - scala
 - Scalatra
 ---
+Auto-escaping data in API response is always good except the moments when it is not... because suddenly in small edge case we need some unescaped data on the client side.
 <!-- more -->
 ->![logo-scalatra](/images/blog/2013/04/logo-scalatra.png)<-
 

@@ -14,6 +14,8 @@ tags:
 - UI tests
 ---
 
+There is nothing worse than being reported that UI test failed but without clear evidence what exactly went wrong. 
+And what could be better evidence than screenshot just after the failure?
 <!-- more -->
 
 This is a second post about [**Geb**](http://www.gebish.org/) in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.
