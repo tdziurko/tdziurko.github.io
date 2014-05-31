@@ -4,7 +4,7 @@ comments: true
 date: 2013-10-30 15:33:49+00:00
 layout: post
 slug: jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja
-title: "Oprogramowanie szyte na miarę" - recenzja książki
+title: Oprogramowanie szyte na miarę - recenzja książki
 wordpress_id: 1895
 categories:
 - Books
