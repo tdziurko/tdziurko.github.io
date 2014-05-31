@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-05-27T17:57:00+02:00</updated>
+  <updated>2014-05-31T22:04:07+02:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -18,7 +18,9 @@
     <link href="http://tomaszdziurko.pl/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
     <updated>2013-11-24T23:53:30+01:00</updated>
     <id>http://tomaszdziurko.pl/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
-    <content type="html"><![CDATA[<!-- more -->
+    <content type="html"><![CDATA[<p>First, complete book about AngularJS. Pretty good, very useful and written by our fellow man from Poland. Could I ask for more?</p>
+
+<!-- more -->
 
 
 <p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
@@ -59,11 +61,14 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Recenzja "Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce", czyli o tym co każdy programista umieć powinien]]></title>
+    <title type="html"><![CDATA[Oprogramowanie szyte na miarę - recenzja książki]]></title>
     <link href="http://tomaszdziurko.pl/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
     <updated>2013-10-30T16:33:49+01:00</updated>
     <id>http://tomaszdziurko.pl/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
-    <content type="html"><![CDATA[<!-- more -->
+    <content type="html"><![CDATA[<p>Bardzo fajna książka na temat, który jest często zaniedbywany przez programistów: komunikacji z klientem. W skrócie:
+&ldquo;Jak rozmawiać z klientem, który nie wie czego chce&rdquo;, czyli o tym co każdy programista umieć powinien.</p>
+
+<!-- more -->
 
 
 

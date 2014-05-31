@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-to | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-05-27T17:57:00+02:00</updated>
+  <updated>2014-05-31T22:04:07+02:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -18,7 +18,9 @@
     <link href="http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
     <updated>2013-07-31T08:45:07+02:00</updated>
     <id>http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
-    <content type="html"><![CDATA[<!-- more -->
+    <content type="html"><![CDATA[<p>Big brother is watching&hellip; always so why not to encrypt everything. And then, auto-decrypt and encrypt our data stored in Database? Here comes Jasypt.</p>
+
+<!-- more -->
 
 
 <p>It&rsquo;s over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of <a href="http://confitura.pl">Confitura</a> (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.</p>
@@ -167,7 +169,10 @@ public void shouldEncryptAndDecryptValue() {
     <link href="http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
     <updated>2013-05-27T19:30:36+02:00</updated>
     <id>http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
-    <content type="html"><![CDATA[<!-- more -->
+    <content type="html"><![CDATA[<p>There is nothing worse than being reported that UI test failed but without clear evidence what exactly went wrong.
+And what could be better evidence than screenshot just after the failure?</p>
+
+<!-- more -->
 
 
 <p>This is a second post about <a href="http://www.gebish.org/"><strong>Geb</strong></a> in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.</p>
@@ -317,7 +322,10 @@ class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
     <link href="http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests/"/>
     <updated>2013-05-13T12:46:19+02:00</updated>
     <id>http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests</id>
-    <content type="html"><![CDATA[<!-- more -->
+    <content type="html"><![CDATA[<p>Home-baked optimization should be fine unless they are re-inventing the wheel. Unfortunately that was the case this time,
+but thanks to the careful reader I know a lot more about Geb now.</p>
+
+<!-- more -->
 
 
 <p><strong>UPDATE</strong></p>
@@ -455,7 +463,9 @@ driver =</p>
     <link href="http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping/"/>
     <updated>2013-04-30T23:59:59+02:00</updated>
     <id>http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping</id>
-    <content type="html"><![CDATA[<!-- more -->
+    <content type="html"><![CDATA[<p>Auto-escaping data in API response is always good except the moments when it is not&hellip; because suddenly in small edge case we need some unescaped data on the client side.</p>
+
+<!-- more -->
 
 
 <p style="text-align:center;"><img src="/images/blog/2013/04/logo-scalatra.png" alt="logo-scalatra" /></p>

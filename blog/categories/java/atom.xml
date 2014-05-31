@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-05-27T17:57:00+02:00</updated>
+  <updated>2014-05-31T22:04:07+02:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -18,7 +18,9 @@
     <link href="http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
     <updated>2013-07-31T08:45:07+02:00</updated>
     <id>http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
-    <content type="html"><![CDATA[<!-- more -->
+    <content type="html"><![CDATA[<p>Big brother is watching&hellip; always so why not to encrypt everything. And then, auto-decrypt and encrypt our data stored in Database? Here comes Jasypt.</p>
+
+<!-- more -->
 
 
 <p>It&rsquo;s over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of <a href="http://confitura.pl">Confitura</a> (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.</p>

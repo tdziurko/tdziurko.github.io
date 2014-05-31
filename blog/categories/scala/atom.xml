@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Scala | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/scala/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-05-27T17:57:00+02:00</updated>
+  <updated>2014-05-31T22:04:07+02:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -18,7 +18,9 @@
     <link href="http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping/"/>
     <updated>2013-04-30T23:59:59+02:00</updated>
     <id>http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping</id>
-    <content type="html"><![CDATA[<!-- more -->
+    <content type="html"><![CDATA[<p>Auto-escaping data in API response is always good except the moments when it is not&hellip; because suddenly in small edge case we need some unescaped data on the client side.</p>
+
+<!-- more -->
 
 
 <p style="text-align:center;"><img src="/images/blog/2013/04/logo-scalatra.png" alt="logo-scalatra" /></p>
