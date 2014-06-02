@@ -6,6 +6,7 @@ layout: post
 slug: wicket-tutorial-part-4-custom-validator-unique-entity
 title: Wicket Tutorial, part 4 - custom validator for unique entity name
 wordpress_id: 524
+keywords: Wicket, tutorial, Wicket tutorial, how to, start, learn, custom validator
 categories:
 - How-to
 - Item Directory application

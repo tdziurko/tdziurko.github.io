@@ -6,6 +6,7 @@ layout: post
 slug: configuring-sbt-jslint-with-teamcity
 title: Configuring SBT JSLint with TeamCity build
 wordpress_id: 1683
+keywords: sbt, jslint, teamcity, scala
 categories:
 - How-to
 - JavaScript

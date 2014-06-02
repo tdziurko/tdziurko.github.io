@@ -6,6 +6,7 @@ layout: post
 slug: transparently-persist-retrieve-encrypted-data-database
 title: Transparently persist and retrieve encrypted data from database
 wordpress_id: 1863
+keywords: jasypt, encrypt, encryption
 categories:
 - How-to
 - Java

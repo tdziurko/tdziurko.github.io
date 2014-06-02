@@ -5,6 +5,7 @@ date: 2009-10-16 19:04:20+00:00
 layout: post
 slug: java-developers-day-2009-moimi-oczami
 title: Java Developers' Day 2009 moimi oczami
+keywords: Java Developers Day, 2009, JDD, konferencja
 wordpress_id: 295
 categories:
 - Conferences

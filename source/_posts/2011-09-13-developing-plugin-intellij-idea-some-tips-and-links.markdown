@@ -6,6 +6,7 @@ layout: post
 slug: developing-plugin-intellij-idea-some-tips-and-links
 title: Developing a plugin for IntelliJ IDEA - some useful tips and links
 wordpress_id: 867
+keywords: intellij idea, idea, intellij, plugin, development, links, help
 categories:
 - How-to
 - Java

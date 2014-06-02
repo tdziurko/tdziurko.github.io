@@ -6,6 +6,7 @@ layout: post
 slug: wicket-tutorial-series-building-web-application-scratch
 title: Wicket tutorial series - building web application from scratch
 wordpress_id: 638
+keywords: wicket, tutorial, framework, web application, java, dziurko, tomasz dziurko
 categories:
 - Item Directory application
 - Java

@@ -6,6 +6,7 @@ layout: post
 slug: share-pastie-plugin-intellij-idea
 title: Share with Pastie - my first plugin for IntelliJ IDEA
 wordpress_id: 846
+keywords: pastie, share code, snippets, code snippets
 categories:
 - Java
 tags:

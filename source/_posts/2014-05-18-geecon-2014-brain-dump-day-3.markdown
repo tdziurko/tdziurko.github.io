@@ -6,6 +6,7 @@ layout: post
 slug: geecon-2014-brain-dump-day-3
 title: GeeCON 2014 – Brain dump, Day 3
 wordpress_id: 1928
+keywords: geecon, notes, brain dump
 categories:
 - Conferences
 tags:

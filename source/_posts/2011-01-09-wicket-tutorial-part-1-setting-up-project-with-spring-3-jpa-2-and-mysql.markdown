@@ -6,6 +6,7 @@ layout: post
 slug: wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql
 title: Wicket Tutorial, part 1 - setting up project with Spring 3, JPA 2 and MySQL
 wordpress_id: 379
+keywords: Wicket, tutorial, Wicket tutorial, how to, start, learn, setting up project, Spring, JPA, Maven
 categories:
 - How-to
 - Item Directory application

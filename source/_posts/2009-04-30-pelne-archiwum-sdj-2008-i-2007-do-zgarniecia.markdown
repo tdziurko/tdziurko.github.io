@@ -5,6 +5,7 @@ date: 2009-04-30 06:23:05+00:00
 layout: post
 slug: pelne-archiwum-sdj-2008-i-2007-do-zgarniecia
 title: Pełne archiwum SDJ 2008 i 2007 do zgarnięcia
+keywords: Software Developers Journal, archiwum, za darmo]
 wordpress_id: 85
 categories:
 - In Polish

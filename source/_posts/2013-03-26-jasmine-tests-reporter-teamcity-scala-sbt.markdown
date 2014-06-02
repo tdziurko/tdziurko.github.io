@@ -6,6 +6,7 @@ layout: post
 slug: jasmine-tests-reporter-teamcity-scala-sbt
 title: Jasmine tests reporter in TeamCity with Scala and SBT
 wordpress_id: 1775
+keywords: jasmine, sbt, teamcity, scala, test reporter
 categories:
 - How-to
 - JavaScript

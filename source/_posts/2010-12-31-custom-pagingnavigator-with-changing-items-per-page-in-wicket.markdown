@@ -5,6 +5,7 @@ date: 2010-12-31 12:06:45+00:00
 layout: post
 slug: custom-pagingnavigator-with-changing-items-per-page-in-wicket
 title: Custom PagingNavigator with changing items per page in Wicket
+keywords: Wicket, PagingNavigator, custom, items per page
 wordpress_id: 315
 categories:
 - How-to

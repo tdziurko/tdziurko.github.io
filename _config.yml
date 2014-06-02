@@ -9,6 +9,11 @@ author: Tomasz Dziurko
 simple_search: https://www.google.com/search
 description: I am Java/Scala developer working remotely from small city in Poland.
 
+
+# SEO
+site_description: "Tomasz Dziurko - blog, my personal notes about development, learning, reading, productivity and other stuff"
+site_keywords: "Tomasz Dziurko, Dziurko, java, scala, wicket, groovy, spock, geb, reading, guava, google guava, code hard, go pro, blog"
+
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
 # http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
@@ -104,3 +109,5 @@ facebook_like: true
 
 # Greyshade Data
 email_md5: 6748c894c49b39b48101c39c8cf0871a
+
+

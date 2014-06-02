@@ -6,6 +6,7 @@ layout: post
 slug: wicket-tutorial-part-7-%e2%80%93-editing-and-removing-item-locations
 title: Wicket Tutorial, part 7 – editing and removing item locations
 wordpress_id: 687
+keywords: Wicket, tutorial, Wicket tutorial, how to, start, learn, remove data, edit data
 categories:
 - How-to
 - Item Directory application

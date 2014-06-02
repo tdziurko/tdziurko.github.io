@@ -6,6 +6,7 @@ layout: post
 slug: some-netbeans-shortcuts-you-might-not-know
 title: Some NetBeans shortcuts you might not know
 wordpress_id: 103
+keywords: IDE, Netbeans, shortcuts, useful
 categories:
 - How-to
 tags:

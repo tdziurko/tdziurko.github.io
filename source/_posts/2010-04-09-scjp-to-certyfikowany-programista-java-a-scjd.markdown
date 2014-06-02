@@ -5,6 +5,7 @@ date: 2010-04-09 19:00:36+00:00
 layout: post
 slug: scjp-to-certyfikowany-programista-java-a-scjd
 title: SCJP to certyfikowany programista Java, a SCJD?
+keywords: SCJP, SCJD, SCWCD, jak tłumaczyć, tłumaczenie, po polsku, Sun Certified Web Component Developer, Sun Certified Java Programmer
 wordpress_id: 248
 categories:
 - Certificates

@@ -6,6 +6,7 @@ layout: post
 slug: tools-retrospectives-distributed-teams
 title: Tools for retrospectives in distributed teams
 wordpress_id: 1390
+keywrods: tools, retrospective, remote, distributes, retro
 categories:
 - How-to
 tags:

@@ -6,6 +6,7 @@ layout: post
 slug: servlets-family-of-classes-and-interfaces
 title: Servlets –  family of classes and interfaces
 wordpress_id: 94
+keywords: SCWCD, Sun Certified Web Component Developer, servlet, API, servlet api
 categories:
 - Certificates
 - Java

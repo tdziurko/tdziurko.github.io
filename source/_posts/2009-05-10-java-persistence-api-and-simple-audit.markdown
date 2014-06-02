@@ -6,6 +6,7 @@ layout: post
 slug: java-persistence-api-and-simple-audit
 title: Java Persistence API and simple audit
 wordpress_id: 140
+keywords: JPA, Java Persistence API, simple, audit]
 categories:
 - How-to
 - Java

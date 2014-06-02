@@ -6,6 +6,7 @@ layout: post
 slug: simple-notification-about-errors-in-wicket-based-application
 title: Simple notification about errors in Wicket-based application
 wordpress_id: 209
+keywords: Wicket, tutorial, error notification, email
 categories:
 - How-to
 - Java

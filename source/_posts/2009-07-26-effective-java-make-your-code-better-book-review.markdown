@@ -5,6 +5,7 @@ date: 2009-07-26 06:22:22+00:00
 layout: post
 slug: effective-java-make-your-code-better-book-review
 title: Effective Java - make your code better, book review
+keywords: Effective Java, book, review, better code
 wordpress_id: 272
 categories:
 - Books

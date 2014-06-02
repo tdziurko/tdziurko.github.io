@@ -5,6 +5,7 @@ date: 2010-02-02 08:43:34+00:00
 layout: post
 slug: wicket-ajax-modal-are-you-sure-window
 title: Wicket Ajax Modal ‘Are you sure?’ window
+keywords: Wicket, ajax, modal Window, are you sure]
 wordpress_id: 239
 categories:
 - How-to

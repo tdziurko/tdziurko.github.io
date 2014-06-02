@@ -6,6 +6,7 @@ layout: post
 slug: taking-screenshot-in-failing-ui-tests-using-geb
 title: Taking a screenshot when UI tests written in Geb fail
 wordpress_id: 1839
+keywords: geb, screenshot, failing test
 categories:
 - How-to
 tags:

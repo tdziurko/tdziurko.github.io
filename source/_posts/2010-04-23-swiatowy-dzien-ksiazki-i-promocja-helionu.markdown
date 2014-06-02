@@ -5,6 +5,7 @@ date: 2010-04-23 06:10:04+00:00
 layout: post
 slug: swiatowy-dzien-ksiazki-i-promocja-helionu
 title: Światowy Dzień Książki i promocja Helionu
+keywords: Helion, promocja, dzień książki
 wordpress_id: 237
 categories:
 - Books

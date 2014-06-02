@@ -5,6 +5,7 @@ date: 2010-09-29 19:45:24+00:00
 layout: post
 slug: better-free-mercurial-repository-as-bitbucket-joins-atlassian
 title: Better free Mercurial repository as Bitbucket joins Atlassian
+keywords: Mercurial, Atlassian, BitBucket, free repository
 wordpress_id: 166
 categories:
 - News

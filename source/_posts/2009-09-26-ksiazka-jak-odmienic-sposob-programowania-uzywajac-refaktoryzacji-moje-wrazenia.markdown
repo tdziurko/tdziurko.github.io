@@ -6,6 +6,7 @@ layout: post
 slug: ksiazka-jak-odmienic-sposob-programowania-uzywajac-refaktoryzacji-moje-wrazenia
 title: Książka "Jak odmienić sposób programowania używając refaktoryzacji" - moje
   wrażenia
+keywords: Książka, Jak odmienić sposób programowania używając refaktoryzacji, refaktoryzacja, recenzja, opis, wrażenia
 wordpress_id: 269
 categories:
 - Books

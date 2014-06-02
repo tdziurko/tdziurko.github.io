@@ -6,6 +6,7 @@ layout: post
 slug: eclipse-and-problem-with-auto-generated-equals
 title: Eclipse and problem with auto generated equals()
 wordpress_id: 123
+keywords: Eclipse, equals, auto, generated
 categories:
 - How-to
 - Java

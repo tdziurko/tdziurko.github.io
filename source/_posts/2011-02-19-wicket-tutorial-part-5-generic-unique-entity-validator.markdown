@@ -6,6 +6,7 @@ layout: post
 slug: wicket-tutorial-part-5-generic-unique-entity-validator
 title: Wicket tutorial, part 5 - generic unique entity validator
 wordpress_id: 559
+keywords: Wicket, tutorial, Wicket tutorial, how to, start, learn, generic custom validator
 categories:
 - How-to
 - Item Directory application

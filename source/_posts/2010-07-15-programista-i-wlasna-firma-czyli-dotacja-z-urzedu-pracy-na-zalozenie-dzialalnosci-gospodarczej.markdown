@@ -7,6 +7,7 @@ slug: programista-i-wlasna-firma-czyli-dotacja-z-urzedu-pracy-na-zalozenie-dzial
 title: Programista i własna firma, czyli dotacja z Urzędu Pracy na założenie działalności
   gospodarczej
 wordpress_id: 196
+keywords: Programista, własna firma, dotacja, UP, Urząd Pracy
 categories:
 - How-to
 - In Polish

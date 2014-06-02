@@ -6,6 +6,7 @@ layout: post
 slug: wicket-tutorial-part-3-form-application
 title: Wicket Tutorial, part 3 - first form in our application
 wordpress_id: 477
+keywords: Wicket, tutorial, Wicket tutorial, how to, start, learn, first form
 categories:
 - How-to
 - Item Directory application

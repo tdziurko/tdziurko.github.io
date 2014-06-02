@@ -6,6 +6,7 @@ layout: post
 slug: remember-functionality-apache-wicket
 title: Remember Me functionality in Apache Wicket
 wordpress_id: 1608
+keywords: wicket, remember me
 categories:
 - How-to
 - Java

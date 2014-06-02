@@ -5,6 +5,7 @@ date: 2010-09-19 20:28:40+00:00
 layout: post
 slug: mercurial-some-useful-links-when-you-are-about-to-start
 title: Mercurial - some useful links when you are about to start
+keywords: Mercurial, repository, useful links, knowledge, tutorials
 wordpress_id: 173
 categories:
 - How-to

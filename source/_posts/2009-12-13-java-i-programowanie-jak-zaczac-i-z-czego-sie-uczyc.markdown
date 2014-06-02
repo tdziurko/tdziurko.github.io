@@ -5,6 +5,7 @@ date: 2009-12-13 21:30:41+00:00
 layout: post
 slug: java-i-programowanie-jak-zaczac-i-z-czego-sie-uczyc
 title: Java i programowanie - jak zacząć i z czego się uczyć
+keywords: Java, programowaine, jak zacząć, z czego się uczyć, start, początek
 wordpress_id: 264
 categories:
 - Books

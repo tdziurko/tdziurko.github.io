@@ -5,6 +5,7 @@ date: 2010-10-02 06:55:55+00:00
 layout: post
 slug: programming-books-in-english-with-free-worldwide-delivery-repost
 title: Programming books in English with free worldwide delivery, repost
+keywords: books online, free delivery, enlish books
 wordpress_id: 163
 tags:
 - book store

@@ -6,6 +6,7 @@ layout: post
 slug: my-impressions-after-passing-scjp
 title: My impressions after passing SCJP
 wordpress_id: 16
+keywords: SCJP, Sun Certified Java Programmer, certificate, preparation, prepare]
 categories:
 - Certificates
 - Java

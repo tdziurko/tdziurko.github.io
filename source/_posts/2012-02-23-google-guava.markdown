@@ -6,6 +6,7 @@ layout: post
 slug: google-guava
 title: Google Guava - almost everything you need to know
 wordpress_id: 1292
+keywords: google guava, guava, presentation, from zero to hero
 categories:
 - How-to
 - Java

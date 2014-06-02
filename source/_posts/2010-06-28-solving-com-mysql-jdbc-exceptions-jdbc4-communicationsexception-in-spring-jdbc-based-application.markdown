@@ -7,6 +7,7 @@ slug: solving-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-in-spring-
 title: Solving com.mysql.jdbc.exceptions. jdbc4.CommunicationsException in Spring
   JDBC based application
 wordpress_id: 203
+keywords: com.mysql.jdbc.exceptions. jdbc4.CommunicationsException, CommunicationsException , solution, Spring, JDBC]
 categories:
 - How-to
 - Java

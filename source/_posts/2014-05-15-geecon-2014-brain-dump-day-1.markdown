@@ -6,6 +6,7 @@ layout: post
 slug: geecon-2014-brain-dump-day-1
 title: GeeCON 2014 - Brain dump, Day 1
 wordpress_id: 1917
+keywords: geecon, notes, brain dump
 categories:
 - Conferences
 tags:

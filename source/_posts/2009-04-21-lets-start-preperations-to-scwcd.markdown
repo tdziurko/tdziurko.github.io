@@ -7,6 +7,7 @@ slug: lets-start-preperations-to-scwcd
 title: Let’s start preperations to SCWCD
 wordpress_id: 38
 categories:
+keywords: SCWCD, Sun Certified Web Component Developer, certificate, preparation, prepare
 - Certificates
 - Java
 tags:

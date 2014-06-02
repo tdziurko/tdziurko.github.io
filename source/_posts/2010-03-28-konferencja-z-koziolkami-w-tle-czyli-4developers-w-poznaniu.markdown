@@ -5,6 +5,7 @@ date: 2010-03-28 19:04:39+00:00
 layout: post
 slug: konferencja-z-koziolkami-w-tle-czyli-4developers-w-poznaniu
 title: Konferencja z koziołkami w tle, czyli 4Developers w Poznaniu
+keywords: 4Developers, Poznań, Poznan, 2009, konferencja, wrażenia]
 wordpress_id: 252
 categories:
 - Conferences

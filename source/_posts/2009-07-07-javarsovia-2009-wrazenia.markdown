@@ -5,6 +5,7 @@ date: 2009-07-07 13:36:32+00:00
 layout: post
 slug: javarsovia-2009-wrazenia
 title: Javarsovia 2009 – wrażenia
+keywords: Konferencja, Javarsovia, 2009, wrażenia, opis]
 wordpress_id: 150
 categories:
 - Conferences

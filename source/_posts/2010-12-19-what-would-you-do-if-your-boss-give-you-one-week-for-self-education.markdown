@@ -5,6 +5,7 @@ date: 2010-12-19 22:15:09+00:00
 layout: post
 slug: what-would-you-do-if-your-boss-give-you-one-week-for-self-education
 title: What would you do if your boss give you one week for self-education?
+keywords: self development, free week, learning
 wordpress_id: 309
 tags:
 - Uncategorized

@@ -6,6 +6,7 @@ layout: post
 slug: wicket-useful-links
 title: Wicket - useful links
 wordpress_id: 259
+keywords: Wicket, useful, links, learning, start]
 categories:
 - Java
 - Wicket

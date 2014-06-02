@@ -5,6 +5,7 @@ date: 2010-04-27 19:13:01+00:00
 layout: post
 slug: where-we-can-find-java-under-the-hood
 title: Where can we find Java under the hood?
+keywords: Java, under the hood, usage, usage of Java
 wordpress_id: 305
 categories:
 - Java

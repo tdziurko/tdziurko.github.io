@@ -5,6 +5,7 @@ date: 2009-07-30 06:46:32+00:00
 layout: post
 slug: effective-java-developer-part-1-singletons
 title: Effective Java developer, part 1 - singletons
+keywords: Effective Java, book, review, better code, singleton
 wordpress_id: 278
 categories:
 - Books

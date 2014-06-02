@@ -6,6 +6,7 @@ layout: post
 slug: twitter-bootstrap-navbar-angularjs-component
 title: Twitter Bootstrap Navbar as AngularJS component
 wordpress_id: 1726
+keywords: twitter, bootstrap, navbar, angularJS
 categories:
 - How-to
 - JavaScript

@@ -6,6 +6,7 @@ layout: post
 slug: my-first-tdd-or-why-netbeans-sucks
 title: My first TDD or why NetBeans sucks
 wordpress_id: 225
+keywords: TDD, Test-Driven Development, Netbeans]
 categories:
 - Java
 tags:

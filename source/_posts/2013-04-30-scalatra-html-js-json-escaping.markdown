@@ -6,6 +6,7 @@ layout: post
 slug: scalatra-html-js-json-escaping
 title: 'Easy Html/Javascript JSON escaping in Scalatra '
 wordpress_id: 1802
+keywords: scalatra, json, escaping
 categories:
 - How-to
 - Scala

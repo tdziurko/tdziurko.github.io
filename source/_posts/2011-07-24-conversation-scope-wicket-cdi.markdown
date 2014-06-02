@@ -6,6 +6,7 @@ layout: post
 slug: conversation-scope-wicket-cdi
 title: Conversation scope in Wicket using CDI
 wordpress_id: 804
+keywords: wicket, conversation, conversation scope, CDI
 categories:
 - Java
 - Wicket

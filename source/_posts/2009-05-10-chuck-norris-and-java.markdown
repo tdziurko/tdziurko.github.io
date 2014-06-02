@@ -5,6 +5,7 @@ date: 2009-05-10 12:56:10+00:00
 layout: post
 slug: chuck-norris-and-java
 title: Chuck Norris and Java
+keywords: Chuck, Chuck Norris, Java]
 wordpress_id: 146
 tags:
 - Chuck Norris

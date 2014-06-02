@@ -6,6 +6,7 @@ layout: post
 slug: why-we-dont-like-public-speeches-and-what-can-be-done-about-it
 title: Why we don't like public speeches and what can be done about it
 wordpress_id: 654
+keywords: Scott Berkun, public speach, Confessions of a public speaker, stage-fright
 categories:
 - Books
 - How-to

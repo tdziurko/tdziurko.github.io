@@ -6,6 +6,7 @@ layout: post
 slug: jcommander-parsing-command-line-parameters-ease
 title: JCommander - parsing command line parameters with ease
 wordpress_id: 1426
+keywords: jcommander, parsing, command line, parameters
 categories:
 - Java
 tags:

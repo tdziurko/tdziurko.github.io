@@ -5,6 +5,7 @@ date: 2010-08-22 19:50:53+00:00
 layout: post
 slug: submitting-ssl-and-no-ssl-html-forms-using-jmeter
 title: Submitting SSL and no-SSL html forms using JMeter
+keywords: JMeter, form, SSL form, submit, test
 wordpress_id: 179
 categories:
 - How-to

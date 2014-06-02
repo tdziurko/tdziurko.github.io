@@ -6,6 +6,7 @@ layout: post
 slug: xstream-xstreamely-easy-work-xml-data-java
 title: XStream - XStreamely easy way to work with XML data in Java
 wordpress_id: 1784
+keywrods: xstream, xml, java
 categories:
 - How-to
 - Java

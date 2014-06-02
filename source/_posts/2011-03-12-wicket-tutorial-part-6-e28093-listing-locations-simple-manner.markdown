@@ -5,6 +5,7 @@ date: 2011-03-12 18:58:47+00:00
 layout: post
 slug: wicket-tutorial-part-6-%e2%80%93-listing-locations-simple-manner
 title: Wicket Tutorial, part 6 – listing locations in a simple manner
+keywords: Wicket, tutorial, Wicket tutorial, how to, start, learn, listing locations, ListView
 wordpress_id: 615
 categories:
 - How-to

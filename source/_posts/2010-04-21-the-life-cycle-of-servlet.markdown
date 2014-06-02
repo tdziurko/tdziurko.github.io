@@ -6,6 +6,7 @@ layout: post
 slug: the-life-cycle-of-servlet
 title: The life cycle of servlet
 wordpress_id: 56
+keywords: java, servlet, lifecycle
 categories:
 - Certificates
 - Java

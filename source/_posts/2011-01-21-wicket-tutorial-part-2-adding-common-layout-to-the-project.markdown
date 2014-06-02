@@ -6,6 +6,7 @@ layout: post
 slug: wicket-tutorial-part-2-adding-common-layout-to-the-project
 title: Wicket Tutorial, part 2 - adding common layout to the project
 wordpress_id: 429
+keywords: Wicket, tutorial, Wicket tutorial, how to, start, learn, simple layout, common layout
 categories:
 - How-to
 - Item Directory application

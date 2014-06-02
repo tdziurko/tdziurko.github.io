@@ -5,6 +5,7 @@ date: 2011-07-15 22:05:09+00:00
 layout: post
 slug: wicket-tutorial-part-9-%e2%80%93-storing-loading-user-preferences-cookies
 title: Wicket Tutorial, part 9 – storing and loading user preferences from cookies
+keywords: wicket, tutorial, framework, web application, java, dziurko, tomasz dziurko, http, cookie
 wordpress_id: 797
 categories:
 - How-to

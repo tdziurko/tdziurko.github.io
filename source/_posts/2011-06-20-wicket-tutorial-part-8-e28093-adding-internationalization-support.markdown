@@ -6,6 +6,7 @@ layout: post
 slug: wicket-tutorial-part-8-%e2%80%93-adding-internationalization-support
 title: Wicket Tutorial, part 8 – adding internationalization support
 wordpress_id: 734
+keywords: wicket, tutorial, internationalization, wicket message, StringResourceModel
 categories:
 - How-to
 - Item Directory application
