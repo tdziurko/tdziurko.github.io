@@ -5,13 +5,13 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Our short Wicket talk at Web frameworks shootout, 33rdDegree conference - Tomasz Dziurko</title>
+	<title>Good bye Wordpress. Hello Octopress - Tomasz Dziurko</title>
 	<meta name="author" content="Tomasz Dziurko">
 
     
 	<meta name="description" content="Tomasz Dziurko - blog, my personal notes about development, learning, reading, productivity and other stuff">
     
-    <meta name="keywords" content="Tomasz Dziurko, Dziurko, java, scala, wicket, groovy, spock, geb, reading, guava, google guava, code hard, go pro, blog" />
+    <meta name="keywords" content="octopress, wordpress, migration, reasons, gotchas, issues, problems" />
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -20,7 +20,7 @@
 
 	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
 	
-	<link rel="canonical" href="http://tomaszdziurko.pl/2011/04/short-wicket-talk-web-frameworks-shootout-33rddegree-conference/">
+	<link rel="canonical" href="http://tomaszdziurko.pl/2014/06/good-bye-wordpress-hello-octopress/">
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
@@ -172,12 +172,85 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-	<h1 class="title" itemprop="name">Our Short Wicket Talk at Web Frameworks Shootout, 33rdDegree Conference</h1>
-	<div class="entry-content" itemprop="articleBody"><p>If you, by any chance, are one of the <a href="http://33degree.org">33rdDegree</a> conference participants and you are interested in developing web applications using Java/JVM environment you should also be interested in one of the BOF sessions on Wednesday during the conference: <a href="http://33degree.org/talks.html#BOFWebFrameworks">Web frameworks shootout</a>.</p>
+	<h1 class="title" itemprop="name">Good Bye Wordpress. Hello Octopress</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Developers are like women. From time to time they need new framework, language or sometimes, even new blogging platform.</p>
 
-<p>We (<a href="http://paulszulc.com">Paul Szulc</a> with me as a support) will be presenting Wicket framework and its nice features which help Java Developers to build web applications easily and with a lot of fun! :) At this BOF session you will have an opportunity to see more short and concise presentations of the following new and cool web frameworks: Play, Lift, and Grails,  so a lot of new knowledge are waiting there for you :)</p>
+<!-- more -->
 
-<p>Of course if you want to talk with me about Wicket or anything else, don&#8217;t hesitate and catch me anytime during 33rdDegree.</p>
+
+<p>For quite long time I&rsquo;ve got this idea to change something on my blog. Old version was heavy, took some time to load and
+most important, template was <em>noisy</em> and didn&rsquo;t look so well.</p>
+
+<p>Initially, I didn&rsquo;t plan to migrate whole blog. I just wanted new, minimalistic theme for Wordpress, but I couldn&rsquo;t find anything
+suitable, even among paid (premium) themes. There were some candidates but we, programmers, need one, essential feature:
+main content column should be wide and allow to present code snippets in a pretty way.</p>
+
+<h3>Research</h3>
+
+<p>I&rsquo;ve lost hope that I will finally find my ideal WP skin and some day at work discussion about blogging, blogging platforms emerged.
+There were some sites mentioned that I haven&rsquo;t heard about before: <a href="http://ghost.org">Ghost</a> or <a href="http://medium.com">Medium</a>.
+Some people also started praising <a href="http://octopress.org">Octopress</a>. This discussion showed me that there are some interesting
+alternatives to Wordpress and encouraged me to start digging deeper. I&rsquo;ve spent two evenings on research, even migrated my blog to
+<a href="http://ghost.org">Ghost</a>, but paid service and non-trivial self-hosting weren&rsquo;t something I was very excited of.</p>
+
+<p>Then I started looking at Octopress. Firstly I tried to find theme that was minimal and suitable for blogging developer. Surprisingly I was able
+to find more than one in a very short time. And this with some more advantages of Octopress convinced me to start my migration process.</p>
+
+<h4>Octopress pros:</h4>
+
+<ul>
+<li>many themes well-suited for blogging developers</li>
+<li>free hosting on Github</li>
+<li>blazingly fast, static pages</li>
+<li>I can write posts in my favourite IDE</li>
+</ul>
+
+
+<p><img class="center" src="/images/blog/2014/06/octopress-logo.png"></p>
+
+<h3>Migration</h3>
+
+<p>As I am not the very first person that made a decision to switch from Wordpress to Octopress, migration was simple and clearly explain.</p>
+
+<p>There are some good posts that helped me along the way:</p>
+
+<ul>
+<li><p><a href="http://everythingisgray.com/2013/06/15/on-migrating-from-wordpress-to-octopress">Everything is Gray</a></p></li>
+<li><p><a href="http://jason.pureconcepts.net/2013/01/migrating-wordpress-octopress/">Jason McCreary</a></p></li>
+<li><p><a href="http://decodize.com/html/moving-from-wordpress-to-octopress/">Decodize</a></p></li>
+</ul>
+
+
+<h4>Minor issues</h4>
+
+<p>As usual, whole process is seamless but&hellip; with some small exceptions:</p>
+
+<ul>
+<li><p>image displayed on blog posts after conversion were too big. I guess it has something with WP auto sizing feature which
+wasn&rsquo;t included in exported xml data. I had to manually resize some images so they could fit into the blog.</p></li>
+<li><p>missing images horizontal alignment. I had to manually add &ndash;>(image)&lt;&ndash; to every image.</p></li>
+<li><p>code snippets had to be formatted from the scratch as Syntax Highlighter placeholders were different than those in Octopress</p></li>
+<li><p>default RSS url <root>/atom.xml is different than default in Wordpress: <root>/feed so I need to apply some tricks to
+make rss look the same after migration. More details about what needs to be done in the post from <a href="http://luosky.com/2012/07/24/create-custom-rss-feed-for-octopress/">Luosky</a>.</p></li>
+<li><p>keywords for blog posts weren&rsquo;t migrated to Octopress. I had to add them manually.</p></li>
+<li><p>no SEO at all. Wordpress has pretty good support to almost any SEO feature you can think about. In Octopress this requires some changes and additional work.
+Here are some good posts about SEO in Octopress:</p>
+
+<ul>
+<li><p><a href="http://xit0.org/2013/05/seo-for-octopress-websites/">SEO for Octopress</a></p></li>
+<li><p><a href="http://learnaholic.me/2012/10/15/octopress-seo-and-disabling-the-blog-route/">Octopress SEO</a></p></li>
+</ul>
+</li>
+</ul>
+
+
+<h3>Summary</h3>
+
+<p>So that was relation of my short journey from Wordpress to Octopress. At the end of it, I must say I am happy with the
+results: page looks better, loads faster and programming part of me has a new toy to play with :)</p>
+
+<p>However, my website is still in early alpha so if you spot any issues or have any feedback what is missing or what could be
+done better, please let me know in the comments. Thanks in advance!</p>
 </div>
 
 
@@ -200,12 +273,8 @@
   
 
 
-<time datetime="2011-04-04T13:08:30+02:00" data-updated="true" itemprop="datePublished">Apr 4<span>th</span>, 2011</time>
+<time datetime="2014-06-01T15:15:09+02:00" data-updated="true" itemprop="datePublished">Jun 1<span>st</span>, 2014</time>
 	  <span class="categories">
-
-
-	<a class='category' href='/blog/categories/conferences/'>Conferences</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>
-
 
 </span>
 </span>
@@ -214,10 +283,8 @@
 	<div class="page">
 		<p class="meta">
 		  
-			<a class="basic-alignment left" href="/2011/03/wicket-tutorial-series-building-web-application-scratch/" title="Previous: Wicket tutorial series - building web application from scratch">&laquo; Wicket tutorial series - building web application from scratch</a>
+			<a class="basic-alignment left" href="/2014/05/geecon-2014-brain-dump-day-3/" title="Previous: GeeCON 2014 – Brain dump, Day 3">&laquo; GeeCON 2014 – Brain dump, Day 3</a>
 		  
-		  
-			<a class="basic-alignment right" href="/2011/05/why-we-dont-like-public-speeches-and-what-can-be-done-about-it/" title="Next: Why we don't like public speeches and what can be done about it">Why we don't like public speeches and what can be done about it &raquo;</a>
 		  
 		</p>
 	</div>
@@ -262,8 +329,8 @@ Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Sha
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://tomaszdziurko.pl/2011/04/short-wicket-talk-web-frameworks-shootout-33rddegree-conference/';
-        var disqus_url = 'http://tomaszdziurko.pl/2011/04/short-wicket-talk-web-frameworks-shootout-33rddegree-conference/';
+        var disqus_identifier = 'http://tomaszdziurko.pl/2014/06/good-bye-wordpress-hello-octopress/';
+        var disqus_url = 'http://tomaszdziurko.pl/2014/06/good-bye-wordpress-hello-octopress/';
         var disqus_script = 'embed.js';
       
     (function () {
