@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Good bye Wordpress. Hello Octopress"
+title: "Goodbye Wordpress. Hello Octopress"
 date: 2014-06-01 15:15:09 +0200
 comments: true
 keywords: octopress, wordpress, migration, reasons, gotchas, issues, problems
