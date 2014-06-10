@@ -1,0 +1,459 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Handle every event in your Akka application - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="Akka based solution to make sure that every unhandled event will be noticed in Scala or Java application">
+    
+    <meta name="keywords" content="Scala, Akka, events, unhandled events" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2014/06/handle-every-event-in-your-akka-application/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/06/handle-every-event-in-your-akka-application/">Handle Every Event in Your Akka Application</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/06/goodbye-wordpress-hello-octopress/">Goodbye Wordpress. Hello Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Handle Every Event in Your Akka Application</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Event here, event there, events flying everywhere. Post about checking that every Akka event will finally find its home</p>
+
+<!-- more -->
+
+
+<p><img class="center" src="/images/blog/2014/06/akka-logo.png"></p>
+
+<p><a href="http://akka.io">Akka</a> and reactive, event-based applications are new approach to creating software. We are using Akka pretty intensively
+in our current Scala-based project. Events fit our use cases especially well as we are communicating with external API which might be slow.
+This could damage user experience when handled using traditional synchronous approach. But luckily, our requests can be performed
+asynchronously so passing them to Actor seemed a good idea.</p>
+
+<h3>When things get ouf of control</h3>
+
+<p>But while being cool and very useful, events can still hurt project when handled by inexperienced hands. Asynchronous nature makes
+application flow hard to understand at first glance. And each time you add a new actor or event type to your system, probability
+that you will forget to handle something properly increases.</p>
+
+<p>Let&rsquo;s look at the example class, this is an actor handling events associated with Image tags and comments:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">YourActor</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">override</span> <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">case</span> <span class="n">event</span><span class="k">:</span> <span class="kt">ImageTagged</span> <span class="o">=&gt;</span>
+</span><span class='line'>          <span class="n">doSomething</span><span class="o">()</span>
+</span><span class='line'>        <span class="k">case</span> <span class="n">event</span><span class="k">:</span> <span class="kt">OtherImageTaggedByFriend</span> <span class="o">=&gt;</span>
+</span><span class='line'>          <span class="n">doSomething2</span><span class="o">()</span>
+</span><span class='line'>        <span class="k">case</span> <span class="n">event</span><span class="k">:</span> <span class="kt">MostMotedUserImage</span> <span class="o">=&gt;</span>
+</span><span class='line'>          <span class="n">doSomething3</span><span class="o">()</span>
+</span><span class='line'>        <span class="k">case</span> <span class="n">event</span><span class="k">:</span> <span class="kt">MostCommentedFriendImageChosen</span> <span class="o">=&gt;</span>
+</span><span class='line'>          <span class="n">doSomething4</span><span class="o">()</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and when you add next event, let&rsquo;s say <em>MostLikedFriendImage</em> you can easily forget to add handler case section in actor,
+especially if there is more than one actor listening for this type of event.</p>
+
+<h3>DRY violating solution</h3>
+
+<p>There is one simple solution that will allow to detect forgotten handlers. We can add case _ to each actor:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">YourActor</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">override</span> <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">case</span> <span class="n">event</span><span class="k">:</span> <span class="kt">ImageTagged</span> <span class="o">=&gt;</span>
+</span><span class='line'>          <span class="n">doSomething</span><span class="o">()</span>
+</span><span class='line'>        <span class="k">case</span> <span class="n">event</span><span class="k">:</span> <span class="kt">OtherImageTaggedByFriend</span> <span class="o">=&gt;</span>
+</span><span class='line'>          <span class="n">doSomething2</span><span class="o">()</span>
+</span><span class='line'>        <span class="k">case</span> <span class="n">event</span><span class="k">:</span> <span class="kt">MostMotedUserImage</span> <span class="o">=&gt;</span>
+</span><span class='line'>          <span class="n">doSomething3</span><span class="o">()</span>
+</span><span class='line'>        <span class="k">case</span> <span class="n">event</span><span class="k">:</span> <span class="kt">MostCommentedFriendImageChosen</span> <span class="o">=&gt;</span>
+</span><span class='line'>          <span class="n">doSomething4</span><span class="o">()</span>
+</span><span class='line'>        <span class="k">case</span> <span class="n">event</span><span class="k">:</span> <span class="k">_</span> <span class="kt">:</span>
+</span><span class='line'>          <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="o">(</span><span class="s">&quot;Received unknown event &quot;</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="n">getClass</span><span class="o">.</span><span class="n">toString</span><span class="o">)</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And while it looks pretty ok for one or two actors, adding same code fragment to multiple actors is troublesome and violates DRY
+principle. But, what is most dangerous, someone in your team could forget to add it (as someone said <em>“Every manual task that can be forgotten, will be forgotten”</em>).
+So maybe we should pursue better solution?</p>
+
+<h3>React on ANY unhandled event</h3>
+
+<p><img class="center" src="/images/blog/2014/06/event-shall-not-unhandled.jpg"></p>
+
+<p>Luckily, we are not stuck with our error-prone approach. When actor can not handle event that was passed to him <em>UnhandledMessage</em> is
+raised and published to ActorSystem&rsquo;s EventStream.</p>
+
+<p>So to handle every forgotten event we could create listener and subscribe it to EventStream:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">UnhandledMessageListener</span> <span class="k">extends</span> <span class="nc">Actor</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">val</span> <span class="n">logger</span> <span class="k">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="n">getLogger</span><span class="o">(</span><span class="n">getClass</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">override</span> <span class="k">def</span> <span class="n">receive</span> <span class="k">=</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">case</span> <span class="n">message</span><span class="k">:</span> <span class="kt">UnhandledMessage</span> <span class="o">=&gt;</span>
+</span><span class='line'>      <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="o">(</span><span class="n">s</span><span class="s">&quot;CRITICAL! No actors found for message ${message.getMessage}&quot;</span><span class="o">))</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">if</span> <span class="o">(!</span><span class="nc">Environment</span><span class="o">.</span><span class="n">isProduction</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// Fail fast, fail LOUD</span>
+</span><span class='line'>        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="o">(</span><span class="s">&quot;Shutting application down&quot;</span><span class="o">)</span>
+</span><span class='line'>        <span class="nc">System</span><span class="o">.</span><span class="n">exit</span><span class="o">(-</span><span class="mi">1</span><span class="o">)</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And subscribing code fragment:</p>
+
+<figure class='code'><figcaption><span>Subscribe logic</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'> <span class="k">val</span> <span class="n">actorSystem</span> <span class="k">=</span> <span class="nc">ActorSystem</span><span class="o">.</span><span class="n">create</span><span class="o">(</span><span class="s">&quot;projectActorSystem&quot;</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'> <span class="k">val</span> <span class="n">listener</span> <span class="k">=</span> <span class="n">actorSystem</span><span class="o">.</span><span class="n">actorOf</span><span class="o">(</span><span class="nc">Props</span><span class="o">(</span><span class="k">new</span> <span class="nc">UnhandledMessageListener</span><span class="o">()))</span>
+</span><span class='line'> <span class="n">actorSystem</span><span class="o">.</span><span class="n">eventStream</span><span class="o">.</span><span class="n">subscribe</span><span class="o">(</span><span class="n">listener</span><span class="o">,</span> <span class="n">classOf</span><span class="o">[</span><span class="kt">UnhandledMessage</span><span class="o">])</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and that&rsquo;s it. Now every time there is an event that wasn&rsquo;t handled by actor, we will know about it, especially when application
+is deployed in a non-production environment :)</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-03T09:48:54+02:00" data-updated="true" itemprop="datePublished">Jun 3<span>rd</span>, 2014</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/akka/'>Akka</a>, <a class='category' href='/blog/categories/scala/'>Scala</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2014/06/goodbye-wordpress-hello-octopress/" title="Previous: Goodbye Wordpress. Hello Octopress">&laquo; Goodbye Wordpress. Hello Octopress</a>
+		  
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2014/06/handle-every-event-in-your-akka-application/';
+        var disqus_url = 'http://tomaszdziurko.pl/2014/06/handle-every-event-in-your-akka-application/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

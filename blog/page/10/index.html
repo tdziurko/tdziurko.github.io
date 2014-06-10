@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/06/handle-every-event-in-your-akka-application/">Handle Every Event in Your Akka Application</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/06/goodbye-wordpress-hello-octopress/">Goodbye Wordpress. Hello Octopress</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/">Deep Dive Into AngularJS - My Review of "Mastering Web Application Development With AngularJS"</a>
       </li>
     
   </ul>
@@ -172,6 +172,68 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-30T09:03:40+02:00" data-updated="true" itemprop="datePublished">Apr 30<span>th</span>, 2009</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/certificates/'>Certificates</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2009/04/servlets-family-of-classes-and-interfaces/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2009/04/servlets-family-of-classes-and-interfaces/" itemprop="url">Servlets – Family of Classes and Interfaces</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Today I am going to present the most important methods, classes and interfaces in the Servlet API.</p>
+
+<h3>public interface Servlet</h3>
+
+<p>Main interface from which all starts. It defines key methods for the life cycle of servlet:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(</span><span class="n">ServletConfig</span> <span class="n">config</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span><span class="o">;</span>
+</span><span class='line'><span class="kd">public</span> <span class="n">ServletConfig</span> <span class="nf">getServletConfig</span><span class="o">();</span>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">service</span><span class="o">(</span><span class="n">ServletRequest</span> <span class="n">req</span><span class="o">,</span> <span class="n">ServletResponse</span> <span class="n">res</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ServletException</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">IOException</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kt">void</span> <span class="nf">destroy</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and one additional method</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="n">String</span> <span class="nf">getServletInfo</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>which should return information about servlet (version, author, resposibility, etc.)
+		
+		<a href="/2009/04/servlets-family-of-classes-and-interfaces/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
