@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/07/zookeeper-curator-and-microservices-load-balancing/">ZooKeeper, Curator and How Microservices Load Balancing Works</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/06/handle-every-event-in-your-akka-application/">Handle Every Event in Your Akka Application</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/05/geecon-2014-brain-dump-day-1/">GeeCON 2014 - Brain Dump, Day 1</a>
       </li>
     
   </ul>
@@ -172,6 +172,64 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-09T13:26:22+02:00" data-updated="true" itemprop="datePublished">May 9<span>th</span>, 2009</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2009/05/eclipse-and-problem-with-auto-generated-equals/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2009/05/eclipse-and-problem-with-auto-generated-equals/" itemprop="url">Eclipse and Problem With Auto Generated Equals()</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Lately my colleague from job encountered following problem:</p>
+
+<p>JSF table &lt;rich:dataTable> was using HashMap to represent data. This Map contained objects collected from the database. After saving new objects to Db and table refresh it showed objects completely different from what we expected. After few hours of searching for a bug in our code or in JSF code it appeared that problem lied in other place.</p>
+
+<p>Eclipse generates equals method checking if classes of compared objects are the same:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">...</span>
+</span><span class='line'><span class="err">і</span><span class="n">f</span> <span class="o">(</span><span class="n">getClass</span><span class="o">()</span> <span class="o">!=</span> <span class="n">ob</span><span class="err">ϳ</span><span class="o">.</span><span class="na">getClass</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">f</span><span class="err">а</span><span class="n">lse</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ant such behavior combined with Hibernate can cause some problems because very often while loading data from Db instead of object of our class Hibernate creates proxy object extending base class we are loading. And then equals method comparing getClass() returns false causing strange HashMap behavior. Solution is very simple: instead of getClass() you should use <strong>instanceof</strong>.</p>
+
+<p>Additionally, as I read in comment on <a href="http://www.proxorkut.info/liskovs-substitution-principle-equals-and-hibernate-proxies">Proxorkut blog</a>, if we use lazy loading in entity classes we should use getXXX() methods in equals() and hashcode() to get variable values because if we try to get them directly from the fields, Hibernate might not initialize them before we try to use them.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
