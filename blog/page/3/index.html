@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/07/apprenticeship-patterns-book-review/">The Apprenticeship Patterns - Book Review</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/07/zookeeper-curator-and-microservices-load-balancing/">ZooKeeper, Curator and How Microservices Load Balancing Works</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
       </li>
     
   </ul>
@@ -172,6 +172,44 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-11T17:00:47+02:00" data-updated="true" itemprop="datePublished">Oct 11<span>th</span>, 2012</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2012/10/fixing-bug-hibernate-envers/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2012/10/fixing-bug-hibernate-envers/" itemprop="url">Fixing Bug in Hibernate Envers</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Recently in our project we were reported a strange bug. In a one report where we display historical data provided by <a href="http://www.jboss.org/envers">Hibernate Envers</a>, users encountered duplicated records in dropdown used for filtering. We tried to find a source of this bug, but after spending a few hours looking at the code responsible for this functionality we had to give up and ask for a dump from production database to check what actually is stored in one table. And when we got it and started investigating, it turned out that there is a bug in Hibernate Envers 3.6 that is a cause of our problems. But luckily after some investigation and invaluable help from <a href="http://www.warski.org/blog/">Adam Warski</a> (author of Envers) we were able to fix this issue.</p>
+
+
+		
+		<a href="/2012/10/fixing-bug-hibernate-envers/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -606,67 +644,6 @@ Dear Reader, this post is in my native language as it applies only to developers
 
 		
 		<a href="/2012/04/tools-retrospectives-distributed-teams/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-29T18:21:21+02:00" data-updated="true" itemprop="datePublished">Mar 29<span>th</span>, 2012</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/news/'>News</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/2012/03/most-valuable-blogger-dzone/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/2012/03/most-valuable-blogger-dzone/" itemprop="url">Most Valuable Blogger at DZone</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>A few days ago it turned out that somewhere on the Internet there is a person or maybe two who think that my blog posts are a little bit above <em>pathetic, boring, useless</em> level and maybe if they re-post them on their website, their click ratio and number of visitors will increase. Pretty naive thinking but who knows :)</p>
-
-<p>So they&rsquo;ve contacted me and asked if I want to join their <em>DZone Most Valuable Blogger (MVB) Program </em>(more details <a href="http://www.dzone.com/aboutmvb">here</a>)<em>. Why not, </em>I thought. And after a few e-mails I can officially  announce:</p>
-
-<h2><strong>I am member of Most Valuable Blogger Program at DZone</strong></h2>
-
-<p>But you may ask <em>What it really gives</em>?</p>
-
-<ul>
-<li><p>I have this cool badge you can see on the right</p></li>
-<li><p>My ugly face is <a href="http://www.dzone.com/page/mvbs">among</a> many people than are much smarter than me. So If you calculate average <em>smartness</em> it will look that I am much smarter than in reality which is good</p></li>
-<li><p>I actually can go and say <em>Hi, I am MVB too </em>to many well-known people in the Java World: <a href="http://www.dzone.com/user/91624">Matt Raible</a>, <a href="http://www.dzone.com/user/258218">Hamlet D&#8217;Arcy</a>, <a href="http://www.dzone.com/user/323432">Martin Fowler</a> and many others</p></li>
-<li><p>Maybe my boss will give me a raise? Boss, Boss, are you reading this?</p></li>
-<li><p><a href="http://nurkiewicz.blogspot.com/">Tomek Nurkiewicz</a> is no longer <del>the only</del> person from Poland in the MVB program. Update: It appeared that there are more Poles (Adam Warski, Łukasz Budnik) on that list that I expected. Good for us :)</p></li>
-<li><p>I received a bonus <strong>+1o</strong> to my e-peni &hellip;  erhhm&hellip; my e-charisma</p></li>
-</ul>
-
-
-<p>Ok, end of this stupid jokes :)</p>
-
-<p>What it really gives is a satisfaction that all this blogging is worth something because some people really thing it is worth their time to visit and read what I am writing here. That&rsquo;s really, really cool and it makes writing new posts a lot easier. And of course blogging has some other, concrete benefits. I was given a few books to review. Someone even invited me to be a member of <a href="http://2012.4developers.org.pl/pl/program/program-committee/">Conference Program Comitee</a> (do I have to mention that I received free conference ticket ? :) ). And I am working in a really, really cool <a href="http://SoftwareMill.com">company</a>. But most important is that I had an opportunity to meet and discuss with many really experienced people and try to learn something from them, share opinions and knowledge. And in my opinion that is the biggest benefit.</p>
-
-<p>So keep visiting this blog. I will try not to let you down and write something interesting from time to time :)</p>
-
-<p>PS: If you think that this MVB is cool, please check <a href="http://www.blog.project13.pl/index.php/project13/1466/im-featured-java-magazine/">this guy</a> that I have a pleasure to work with. Konrad was interviewed and is featured in the latest Java Magazine published by Oracle, <a href="http://oracle.com">this Oracle</a>! This is impressive. Congratz again man! :)</p>
-
-		
-		
 	</div>
 
 </article>

@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/07/apprenticeship-patterns-book-review/">The Apprenticeship Patterns - Book Review</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/07/zookeeper-curator-and-microservices-load-balancing/">ZooKeeper, Curator and How Microservices Load Balancing Works</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/05/geecon-2014-brain-dump-day-2/">GeeCON 2014 – Brain Dump, Day 2</a>
       </li>
     
   </ul>
@@ -172,6 +172,152 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-02T09:43:34+01:00" data-updated="true" itemprop="datePublished">Feb 2<span>nd</span>, 2010</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2010/02/wicket-ajax-modal-are-you-sure-window/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2010/02/wicket-ajax-modal-are-you-sure-window/" itemprop="url">Wicket Ajax Modal ‘Are You Sure?’ Window</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>While developing web application with Wicket I sometimes need to check  whether the user really, really does want to do something, for example  to delete an entity from the database. The first and easiest choice that  comes to my mind is to use JavaScript window.</p>
+
+<p>So we have HomePage.html:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html</span>
+</span><span class='line'><span class="cp">    PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;</span>
+</span><span class='line'><span class="cp">    &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns:wicket=</span><span class="s">&quot;http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd&quot;</span> <span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;head&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;title&gt;</span>Wicket Ajax &#39;Are you sure?&#39; Modal Window<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/head&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;body&gt;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">align=</span><span class="s">&quot;center&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;strong&gt;</span>Wicket Ajax &#39;Are you sure?&#39; Modal Window<span class="nt">&lt;/strong&gt;</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;formWithJavaScript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;buttonWithJavaScript&quot;</span> <span class="na">value=</span><span class="s">&quot;Action!&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;/form&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and corresponding Java class:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">pl</span><span class="o">.</span><span class="na">tdziurko</span><span class="o">.</span><span class="na">ajaxmodalwindowapp</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// imports omitted</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="n">WebPage</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">(</span><span class="kd">final</span> <span class="n">PageParameters</span> <span class="n">parameters</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Form</span> <span class="n">formWithJavaScript</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Form</span><span class="o">(</span><span class="s">&quot;formWithJavaScript&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">Button</span> <span class="n">buttonWithJavaScript</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="s">&quot;buttonWithJavaScript&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="nd">@Override</span>
+</span><span class='line'>            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Doing my job&quot;</span><span class="o">);</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">};</span>
+</span><span class='line'>        <span class="n">buttonWithJavaScript</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">SimpleAttributeModifier</span><span class="o">(</span>
+</span><span class='line'>                <span class="s">&quot;onclick&quot;</span><span class="o">,</span> <span class="s">&quot;if(!confirm(&#39;Do you really want to perform this action?&#39;)) return false;&quot;</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">formWithJavaScript</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">buttonWithJavaScript</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">add</span><span class="o">(</span><span class="n">formWithJavaScript</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Finally, we can see how it looks:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2010/11/javaScriptWindow.png" alt="" /></p>
+
+<p>It solves our problem but in the era of Web2.0, rounded corners and  shiny looks it isn&rsquo;t enough. Why can&rsquo;t we use ajax modal window to ask  user for confirmation? It would make our application look good and our  css magician could make it look even better.
+		
+		<a href="/2010/02/wicket-ajax-modal-are-you-sure-window/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -586,44 +732,6 @@ Potem  trzygodzinna podróż do Grodu Kraka i 15 minutowy spacer z dworca na  Un
 <p>If we are using Java Persistence API we can pick very useful annotations: @PrePersist and @PreUpdate. Suppose that in every class we want to gather data about who and when created database record and who and when edited it for a last time. Because such functionality is needed in every entity class we can move logic to common abstract class which will be extended by all concrete entity classes:
 		
 		<a href="/2009/05/java-persistence-api-and-simple-audit/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-05-09T20:26:14+02:00" data-updated="true" itemprop="datePublished">May 9<span>th</span>, 2009</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/how-to/'>How-to</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/2009/05/some-netbeans-shortcuts-you-might-not-know/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/2009/05/some-netbeans-shortcuts-you-might-not-know/" itemprop="url">Some NetBeans Shortcuts You Might Not Know</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Every developer has favourite Java framework, library or  favourite browser, the more advanced even have favourite design pattern :) Each  one of us also have his beloved IDE. The most popular are NetBeans and Eclipse, both with many admirers and  enemies who is always ready to argue that one IDE is great, and the other is passe. From time to time, unaware novice developer asks in one or another discussion group &ldquo;Which IDE choose : Eclipse or NetBeans?&rdquo; causing  endless debate very similar to that in which some people try to  prove the superiority of Christmas over Easter, while the other opts for  the opposite proposition.</p>
-
-<p>﻿
-		
-		<a href="/2009/05/some-netbeans-shortcuts-you-might-not-know/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>

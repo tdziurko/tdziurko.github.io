@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Books | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/books/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-07-01T23:29:00+02:00</updated>
+  <updated>2014-07-14T09:33:17+02:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,91 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Apprenticeship Patterns - book review]]></title>
+    <link href="http://tomaszdziurko.pl/2014/07/apprenticeship-patterns-book-review/"/>
+    <updated>2014-07-13T20:48:54+02:00</updated>
+    <id>http://tomaszdziurko.pl/2014/07/apprenticeship-patterns-book-review</id>
+    <content type="html"><![CDATA[<p>130 pages to help you nurture your passion and become a better developer. Pretty good deal, isn&rsquo;t it?</p>
+
+<!-- more -->
+
+
+<p>Between reading hardcore programming books (like <a href="https://www.goodreads.com/book/show/11335855-scala-for-the-impatient">&ldquo;Scala for the impatient&rdquo;</a>,
+<a href="https://www.goodreads.com/book/show/18006341-programming-groovy-2">&ldquo;Programming in Groovy&rdquo;</a>, etc.) and completely off-topic
+books read for pure pleasure (<a href="https://www.goodreads.com/book/show/21890735-i-am-zlatan">&ldquo;I am Zlatan&rdquo;</a> or
+<a href="https://www.goodreads.com/book/show/8908.World_War_Z">&ldquo;World War Z&rdquo;</a>) I like to read something &ldquo;soft&rdquo; but still allowing me
+to be a better developer.</p>
+
+<p>There are many books about being good developer, but recently when I was &ldquo;feeding&rdquo; my bookshelf one title caught my attention:
+<a href="https://www.goodreads.com/book/show/5608045-apprenticeship-patterns">&ldquo;Apprenticeship Patterns: Guidance for the Aspiring Software Craftsman&rdquo;</a></p>
+
+<p><img class="center" src="/images/blog/2014/07/apprentice_patterns.jpg"></p>
+
+<p><strong>Important note:</strong> After finishing book I&rsquo;ve learnt that its online version is available for free <a href="http://chimera.labs.oreilly.com/books/1234000001813/index.html">here</a> :)</p>
+
+<p>Book has rating 4.11 on <a href="https://www.goodreads.com/book/show/5608045-apprenticeship-patterns">GoodReads</a> (I consider any book with rating
+higher than 4.0 as a very good candidate to read) and many positive reviews I&rsquo;ve decided to spend a few evenings with it in my hands. Below you can read
+my review and some notes I&rsquo;ve made during reading.</p>
+
+<h3>Your Guidance as an Aspiring Software Craftsman</h3>
+
+<p>Book isn&rsquo;t very long (about 130 pages) and is written in a concise language with concrete ideas so you won&rsquo;t get bored at any point.
+&ldquo;Apprenticeship Patterns&rdquo; consists of six main parts, each with 5-10 short chapters. Every chapter is about one &ldquo;pattern&rdquo;. Pattern is something
+similar in concept to &ldquo;design pattern&rdquo; and describes generic problem or situation in which every developer can found themselves.</p>
+
+<p>Each of patterns have well defined context in which it can occur, problem which we are facing and of course, solution and action points
+that should be taken. While reading this book I was surprised that many patterns happened to me during my career as a developer. Luckily,
+some actions I took were correct (or at least suggested in the book). But on the other side, some of them weren&rsquo;t and now I have some
+thoughts and ideas what I could improve. Book is easy to read as each pattern forms separate story that fits perfectly to single evening reading session.</p>
+
+<p><strong>My short summary of main parts so you can get an idea what&rsquo;s inside</strong></p>
+
+<ol>
+<li><p>Patterns approach is described and explained here</p></li>
+<li><p>chapter is about starting adventure as a developer, learning first language, coping with own
+ignorance and choosing topics to learn at the beginning.</p></li>
+<li><p>is for those planning to be a developer for the most of their career. It is about <em>&ldquo;walking the long road&rdquo;</em>
+when at start we are far behind other developers with much more experience and knowledge but thanks to constant learning
+and well-thought decisions in long term we could even overtake them.</p></li>
+<li><p>helps us to accurately self-asses our skills, strong and weak points.</p></li>
+<li><p>helps to setup basement to perpetual learning, nurturing our passion and creating feedback loops. Everything is about
+habits and conscious decisions.</p></li>
+<li><p>can be shortened to <em>&ldquo;read, read constantly, read classics, read what people you admire suggest&rdquo;</em></p></li>
+</ol>
+
+
+<h3>Review Summary</h3>
+
+<p><blockquote><p>Best development book I&rsquo;ve read, has no code in it &ndash; quote from <a href="http://arasatasaygin.com/">http://arasatasaygin.com/</a></p></blockquote></p>
+
+<p>I can guarantee that you won&rsquo;t be disappointed after reading this book. Not only it is well written, short and concise but
+it also contains many interesting and very useful ideas that we could apply in our work to help our skills grow and our career flourish.</p>
+
+<p>I can only regret that I&rsquo;ve read it after almost 7 years of work as a developer. It would be even more useful if I had done it at the early
+stage of my career.</p>
+
+<h3>Notes to myself made during reading</h3>
+
+<ul>
+<li><p><a href="https://www.goodreads.com/book/show/44919.Working_Effectively_with_Legacy_Code">&ldquo;Working effectively with legacy code&rdquo;</a> &ndash; strongly suggested book</p></li>
+<li><p>Pick one skill, tool, or technique and actively fill the gaps in your knowledge about it</p></li>
+<li><p>Breakable toys &ndash; build application using tools/languages you want to master at home, in the environment where you
+are safe to fail</p></li>
+<li><p>People aspiring to become master of software craftsmanship need to plan for the long term</p></li>
+<li><p>The things we build for customers <strong>can</strong> be beautiful but <strong>must</strong> be useful</p></li>
+<li><p>If you&rsquo;re worried that your current job is rotting your brain, it probably is</p></li>
+<li><p><a href="http://www.stickyminds.com/">StickyMinds.com</a> &ndash; interesting portal about quality in our industry</p></li>
+<li><p>Your goal should be to become skilled rather than experienced</p></li>
+<li><p>Keep reading! Keep your personal reading list so you always have some books to choose from (my personal choice is
+<a href="http://goodreads.com">GoodReads</a>)</p></li>
+<li><p>Keep list of even small things you&rsquo;ve learnt. Some kind of diary where you can put all meaningful
+stuff you encounter during your daily job.</p></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Deep dive into AngularJS - my review of "Mastering Web Application Development with AngularJS"]]></title>
@@ -282,51 +367,6 @@ public void testArgument() {
 </code></pre>
 
 <p>```</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[There is so much I need to know that I didn't know that I need to know - notes after reading "Information Diet" book]]></title>
-    <link href="http://tomaszdziurko.pl/2012/04/notes-from-information-diet-book/"/>
-    <updated>2012-04-29T17:05:08+02:00</updated>
-    <id>http://tomaszdziurko.pl/2012/04/notes-from-information-diet-book</id>
-    <content type="html"><![CDATA[<p>During <a href="http://2012.33degree.org/">33rd Degree</a> conference in Cracow O'Reilly had its stand with books in very attractive prices and similarly to previous year I couldn&rsquo;t resist to buy something. This time I decided to get <a href="http://www.amazon.com/The-Information-Diet-Conscious-Consumption/dp/1449304680">&ldquo;The Information Diet&rdquo;</a> by Clay Johnson.</p>
-
-<p style="text-align:center;"><img src="/images/blog/2012/04/infodiet.jpg" alt="" />]</p>
-
-<p>The <em>A Case for Conscious Consumption</em> subtitle looked very promising as I, as probably most of people working in IT, have problem with too many sources to read, check and analyze to extract information that are relevant and worth to spend my time on it. And I hoped that this book would help me to solve this issue.</p>
-
-<h4><!-- more -->Information obesity like a food obesity</h4>
-
-<p>In the first part of the book author shows an analogy between food and information obesity. A few hundred of years ago human civilization didn&rsquo;t produce enough food for everyone so obesity was a sign of wealth. Only well situated people had enough money (and as a result food) to actually get fat. But then, agriculture developed and finally humans learnt how to produce food more effectively. And in XXI century we have more food that we can eat (of course I mean developed countries) and what is more worrying, the better food tastes the worst it is for our health so we eat more junk found than healthy one.</p>
-
-<p>Similar situation is with information. In XXI humanity produces so much information that no one is able to consume every piece of it. And we tend to consume information that &ldquo;tastes&rdquo; good and is far from being &ldquo;healthy&rdquo; and valuable. Such &ldquo;unhealthy&rdquo; data has some certain features. It :</p>
-
-<ul>
-<li><p>confirms our beliefs</p></li>
-<li><p>does not show arguments of the other side</p></li>
-<li><p>shows content that does not require thinking</p></li>
-</ul>
-
-
-<p>For me this analogy was quite convincing but building and describing it on over sixty pages is definitely too much and the same result could be achieved in a much shorter way.</p>
-
-<h4>Information Diet</h4>
-
-<p>Second part forms main thought of this book about how to learn to make conscious choices what and how to consume information that surrounds us. The main takeaways after reading this part for me are:</p>
-
-<ul>
-<li><p>you should concentrate more on information from your neighborhood (your district, your town). Local news saying that there is a ongoing road repair near your house is more important for you than news about war in Syria as it is more likely to affect you in a noticeable way</p></li>
-<li><p>Sitting kills you so taking short breaks from your computer is really, really suggested</p></li>
-<li><p>Eliminate all notifications, blinking icons showing that you have a message in your Facebook/Twitter/IM client/e-mail etc.</p></li>
-<li><p><a href="http://rescuetime.com/">RescueTime.com</a> is a great tool to measure the way you use your computer. It could track what applications, what websites you read and for how long each day, week, month so you could clearly see what kind of information consumption is eating most of your time and energy and tune your habits accordingly</p></li>
-<li><p><a href="http://www.pomodorotechnique.com/">Pomodoro technique</a> is good way of reducing temptation to check Facebook/Twitter every two minutes but you can also start from shorter cycles (5 or 10 minutes) before you become a regular pomodoer</p></li>
-</ul>
-
-
-<p>That list does not look so impressive, isn&rsquo;t it? You probably aren&rsquo;t very convinced to go and buy this book, right? :)</p>
-
-<p>But the main and most important thing after reading this title is that it made me think about the way I consume information. I started to reduce time spent on reading stuff that isn&rsquo;t actually useful, I unsubscribed from some RSS feeds, I stopped following some people who produces too much information noise that wasn&rsquo;t valuable and relevant, for other ones I set filters to hide tweets containing words that are out of my area of interest. So it actually pushed me towards more effective and conscious information diet. And that is why I didn&rsquo;t consider time spent on reading <em>Information Diet</em> as a wasted.</p>
 ]]></content>
   </entry>
   
