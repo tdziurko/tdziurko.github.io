@@ -3,7 +3,7 @@ author: Tomasz Dziurko
 comments: true
 date: 2011-06-20 19:52:06+00:00
 layout: post
-slug: wicket-tutorial-part-8-%e2%80%93-adding-internationalization-support
+slug: wicket-tutorial-part-8-adding-internationalization-support
 title: Wicket Tutorial, part 8 – adding internationalization support
 wordpress_id: 734
 keywords: wicket, tutorial, internationalization, wicket message, StringResourceModel
