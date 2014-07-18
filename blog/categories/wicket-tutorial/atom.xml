@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Wicket Tutorial | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/wicket-tutorial/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-07-14T09:33:17+02:00</updated>
+  <updated>2014-07-18T22:54:50+02:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -73,9 +73,9 @@
   
   <entry>
     <title type="html"><![CDATA[Wicket Tutorial, part 9 – storing and loading user preferences from cookies]]></title>
-    <link href="http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies/"/>
+    <link href="http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-storing-loading-user-preferences-cookies/"/>
     <updated>2011-07-16T00:05:09+02:00</updated>
-    <id>http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies</id>
+    <id>http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-storing-loading-user-preferences-cookies</id>
     <content type="html"><![CDATA[<p>In the previous post we learnt a few tricks regarding internationalization features in Wicket. Today we will go further and will let application to remember some user preferences using HTTP Cookies. Storing some basic data in cookies is an easy and popular way of letting user customize look and feel of web application he uses very often. Some portals use cookies to render modules in order chosen by user so that most interesting information are in the top.</p>
 
 <p>In our ItemDirectory web application we don&rsquo;t have (yet!) any sophisticated mechanism which could rely on cookies so we will show how it can be used to store and load language selected by the user.</p>
@@ -169,9 +169,9 @@ private Session trySetLanguageFromCookie(Session session, Request request, Respo
   
   <entry>
     <title type="html"><![CDATA[Wicket Tutorial, part 8 – adding internationalization support]]></title>
-    <link href="http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support/"/>
+    <link href="http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-adding-internationalization-support/"/>
     <updated>2011-06-20T21:52:06+02:00</updated>
-    <id>http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-e28093-adding-internationalization-support</id>
+    <id>http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-adding-internationalization-support</id>
     <content type="html"><![CDATA[<p>Today we will continue Wicket tutorial series with adding support to multiple languages in web application. Ok, let&rsquo;s do it step by step.</p>
 
 <h3>Create form to change language</h3>
@@ -427,9 +427,9 @@ public class RightSidebarPanel extends Panel {</p>
   
   <entry>
     <title type="html"><![CDATA[Wicket Tutorial, part 7 – editing and removing item locations]]></title>
-    <link href="http://tomaszdziurko.pl/2011/05/wicket-tutorial-part-7-e28093-editing-and-removing-item-locations/"/>
+    <link href="http://tomaszdziurko.pl/2011/05/wicket-tutorial-part-7-editing-and-removing-item-locations/"/>
     <updated>2011-05-07T20:45:32+02:00</updated>
-    <id>http://tomaszdziurko.pl/2011/05/wicket-tutorial-part-7-e28093-editing-and-removing-item-locations</id>
+    <id>http://tomaszdziurko.pl/2011/05/wicket-tutorial-part-7-editing-and-removing-item-locations</id>
     <content type="html"><![CDATA[<p>Welcome back to our practical Wicket tutorial series. I apologize for long break after last post (shame on me as it was published more than 1,5 month ago) but I had many unplanned things with higher priority: Wicket demo appplication  on <a href="http://33degree.org/talks.html#BOFWebFrameworks">33rdDegree</a> conference to prepare, a conference itself and most time-consuming one, I damaged knee ligament during football match and after that everyday for three weeks I was driving to the hospital for rehabilitation so day became too short to write something here. But now everything seems to be ok and I have some spare time to continue Wicket tutorial subject.</p>
 
 <p>Today we will add two new features: editing and removing locations from our application. Currently we don&rsquo;t have any items connected with locations so deleting shouldn&rsquo;t be too complicated. Later on, when we add some items, we will have to rework this functionality but now it shouldn&rsquo;t bother us too much.</p>
@@ -708,10 +708,10 @@ public void removeSafely(EntityClass entity) {
 <li><p><a href="/2011/02/wicket-tutorial-part-3-form-application/">Wicket Tutorial, part 3 – first form in our application</a></p></li>
 <li><p><a href="/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/">Wicket Tutorial, part 4 – custom validator for unique entity name</a></p></li>
 <li><p><a href="/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/">Wicket tutorial, part 5 – generic unique entity validator</a></p></li>
-<li><p><a href="/2011/03/wicket-tutorial-part-6-%E2%80%93-listing-locations-simple-manner/">Wicket Tutorial, part 6 – listing locations in a simple manner</a></p></li>
-<li><p><a href="/2011/05/wicket-tutorial-part-7-%E2%80%93-editing-and-removing-item-locations/">Wicket Tutorial, part 7 – editing and removing item locations</a></p></li>
-<li><p><a href="/2011/06/wicket-tutorial-part-8-%E2%80%93-adding-internationalization-support/">Wicket Tutorial, part 8 &ndash; adding internationalization support</a></p></li>
-<li><p><a href="/2011/07/wicket-tutorial-part-9-%E2%80%93-storing-loading-user-preferences-cookies/">Wicket Tutorial, part 9 – storing and loading user preferences from cookies</a></p></li>
+<li><p><a href="/2011/03/wicket-tutorial-part-6-listing-locations-simple-manner/">Wicket Tutorial, part 6 – listing locations in a simple manner</a></p></li>
+<li><p><a href="/2011/05/wicket-tutorial-part-7--editing-and-removing-item-locations/">Wicket Tutorial, part 7 – editing and removing item locations</a></p></li>
+<li><p><a href="/2011/06/wicket-tutorial-part-8-adding-internationalization-support/">Wicket Tutorial, part 8 &ndash; adding internationalization support</a></p></li>
+<li><p><a href="/2011/07/wicket-tutorial-part-9-storing-loading-user-preferences-cookies/">Wicket Tutorial, part 9 – storing and loading user preferences from cookies</a></p></li>
 </ol>
 
 

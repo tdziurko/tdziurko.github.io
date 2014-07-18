@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Wicket | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/wicket/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-07-14T09:33:17+02:00</updated>
+  <updated>2014-07-18T22:54:50+02:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -1086,9 +1086,9 @@ public RequestCycle newRequestCycle(final Request request, final Response respon
   
   <entry>
     <title type="html"><![CDATA[Wicket Tutorial, part 9 – storing and loading user preferences from cookies]]></title>
-    <link href="http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies/"/>
+    <link href="http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-storing-loading-user-preferences-cookies/"/>
     <updated>2011-07-16T00:05:09+02:00</updated>
-    <id>http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-e28093-storing-loading-user-preferences-cookies</id>
+    <id>http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-storing-loading-user-preferences-cookies</id>
     <content type="html"><![CDATA[<p>In the previous post we learnt a few tricks regarding internationalization features in Wicket. Today we will go further and will let application to remember some user preferences using HTTP Cookies. Storing some basic data in cookies is an easy and popular way of letting user customize look and feel of web application he uses very often. Some portals use cookies to render modules in order chosen by user so that most interesting information are in the top.</p>
 
 <p>In our ItemDirectory web application we don&rsquo;t have (yet!) any sophisticated mechanism which could rely on cookies so we will show how it can be used to store and load language selected by the user.</p>
