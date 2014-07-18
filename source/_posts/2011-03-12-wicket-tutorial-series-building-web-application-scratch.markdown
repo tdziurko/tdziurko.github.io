@@ -35,7 +35,7 @@ This post aggregates the  series of Wicket tutorial articles from this blog. Bu
 
 6. [Wicket Tutorial, part 6 – listing locations in a simple manner](/2011/03/wicket-tutorial-part-6-listing-locations-simple-manner/)
 
-7. [Wicket Tutorial, part 7 – editing and removing item locations](/2011/05/wicket-tutorial-part-7--editing-and-removing-item-locations/)
+7. [Wicket Tutorial, part 7 – editing and removing item locations](/2011/05/wicket-tutorial-part-7-editing-and-removing-item-locations/)
 
 8. [Wicket Tutorial, part 8 - adding internationalization support](/2011/06/wicket-tutorial-part-8-adding-internationalization-support/)
 
