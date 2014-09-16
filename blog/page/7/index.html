@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/09/why-sometimes-i-hate-myself/">Why Sometimes I Hate Myself</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/07/apprenticeship-patterns-book-review/">The Apprenticeship Patterns - Book Review</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2014/06/goodbye-wordpress-hello-octopress/">Goodbye Wordpress. Hello Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
       </li>
     
   </ul>
@@ -172,6 +172,59 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-31T13:06:45+01:00" data-updated="true" itemprop="datePublished">Dec 31<span>st</span>, 2010</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2010/12/custom-pagingnavigator-with-changing-items-per-page-in-wicket/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2010/12/custom-pagingnavigator-with-changing-items-per-page-in-wicket/" itemprop="url">Custom PagingNavigator With Changing Items Per Page in Wicket</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>In one of my recent projects I had to create Wicket pagination component with one additional functionality allowing user to dynamically change maximum number of items presented on each page.</p>
+
+<p>Finished component will look like below:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2010/12/customPaginator.png" alt="custom paginator" /></p>
+
+<p>Of course I was not going to implement this from the scratch, because most of work had been already done by Wicket authors and commiters in component <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/navigation/paging/PagingNavigator.html">PagingNavigator</a>. Source of this component as a reference to changes I made can be found <a href="http://pastebin.com/kwzBG9mH">here</a>.</p>
+
+<p><strong>The first steps in creating our component:</strong></p>
+
+<ul>
+<li><p>add List <em>itemsPerPageValues</em> holding numbers for &lsquo;items per page&rsquo; which will be shown to the user allowing him to click and change this value.</p></li>
+<li><p>provide default List <em>DEFAULT_ITEMS_PER_PAGE_VALUES</em>, which will be used (what a surprise!) as a default :)</p></li>
+<li><p>give our component reference to the <em>DataView</em> object on which we will execute change items per page method.</p></li>
+</ul>
+
+
+
+		
+		<a href="/2010/12/custom-pagingnavigator-with-changing-items-per-page-in-wicket/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -568,97 +621,6 @@ And when I already planned migration to the <a href="https://www.dropbox.com/hom
 <p>Pierwszą rzeczą, którą warto zrobić jest dostarczenie do UP wszelkich  zaświadczeń o wykształceniu, certyfikatach, szkoleniach, a także  doświadczeniu zawodowym (um. o pracę, o dzieło, itp.), pozwoli to  uwiarygodnić nasze umiejętności i znacznie zwiększy szanse na otrzymanie  dotacji. Niestety dokumenty w języku innym niż polski wymagają  tłumaczenia przysięgłego (cena 50-100zł/strona u tłumacza w biurze lub  trochę taniej na Allegro).
 		
 		<a href="/2010/07/programista-i-wlasna-firma-czyli-dotacja-z-urzedu-pracy-na-zalozenie-dzialalnosci-gospodarczej/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-28T20:31:59+02:00" data-updated="true" itemprop="datePublished">Jun 28<span>th</span>, 2010</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/2010/06/solving-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-in-spring-jdbc-based-application/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/2010/06/solving-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-in-spring-jdbc-based-application/" itemprop="url">Solving com.mysql.jdbc.exceptions. jdbc4.CommunicationsException in Spring JDBC Based Application</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Last week after releasing first version of Wicket, Spring and JDBC based  application into production I noticed strange behavior. Everyday first  attempt to enter the service caused unexpected exception. Quick glance  at Tomcat logs showed code presented below:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Caused</span> <span class="nl">by:</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">jdbc4</span><span class="o">.</span><span class="na">CommunicationsException</span><span class="o">:</span> <span class="n">The</span> <span class="n">last</span> <span class="n">packet</span> <span class="n">successfully</span> <span class="n">received</span> <span class="n">from</span> <span class="n">the</span> <span class="n">server</span> <span class="n">was156378</span> <span class="n">seconds</span> <span class="n">ago</span><span class="o">.</span><span class="na">The</span> <span class="n">last</span> <span class="n">packet</span> <span class="n">sent</span> <span class="n">successfully</span> <span class="n">to</span> <span class="n">the</span> <span class="n">server</span> <span class="n">was</span> <span class="mi">156378</span> <span class="n">seconds</span> <span class="n">ago</span><span class="o">,</span> <span class="n">which</span>  <span class="n">is</span> <span class="n">longer</span> <span class="n">than</span> <span class="n">the</span> <span class="n">server</span> <span class="n">configured</span> <span class="n">value</span> <span class="n">of</span> <span class="err">&#39;</span><span class="n">wait_timeout</span><span class="err">&#39;</span><span class="o">.</span> <span class="n">You</span> <span class="n">should</span> <span class="n">consider</span> <span class="n">either</span> <span class="n">expiring</span> <span class="n">and</span><span class="o">/</span><span class="n">or</span> <span class="n">testing</span> <span class="n">connection</span> <span class="n">validity</span> <span class="n">before</span> <span class="n">use</span> <span class="n">in</span> <span class="n">your</span> <span class="n">application</span><span class="o">,</span> <span class="n">increasing</span> <span class="n">the</span> <span class="n">server</span> <span class="n">configured</span> <span class="n">values</span> <span class="k">for</span> <span class="n">client</span> <span class="n">timeouts</span><span class="o">,</span> <span class="n">or</span> <span class="n">using</span> <span class="n">the</span> <span class="n">Connector</span><span class="o">/</span><span class="n">J</span> <span class="n">connection</span> <span class="n">property</span> <span class="err">&#39;</span><span class="n">autoReconnect</span><span class="o">=</span><span class="kc">true</span><span class="err">&#39;</span> <span class="n">to</span> <span class="n">avoid</span> <span class="k">this</span> <span class="n">problem</span><span class="o">.</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">NativeConstructorAccessorImpl</span><span class="o">.</span><span class="na">newInstance0</span><span class="o">(</span><span class="n">Native</span> <span class="n">Method</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">NativeConstructorAccessorImpl</span><span class="o">.</span>
-</span><span class='line'><span class="nf">newInstance</span><span class="o">(</span><span class="n">NativeConstructorAccessorImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">39</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">DelegatingConstructorAccessorImpl</span><span class="o">.</span>
-</span><span class='line'><span class="nf">newInstance</span><span class="o">(</span><span class="n">DelegatingConstructorAccessorImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">27</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">Constructor</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="n">Constructor</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">513</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">Util</span><span class="o">.</span><span class="na">handleNewInstance</span><span class="o">(</span><span class="n">Util</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">406</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">SQLError</span><span class="o">.</span><span class="na">createCommunicationsException</span><span class="o">(</span><span class="n">SQLError</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1074</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">MysqlIO</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">MysqlIO</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">3246</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">MysqlIO</span><span class="o">.</span><span class="na">sendCommand</span><span class="o">(</span><span class="n">MysqlIO</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1917</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">MysqlIO</span><span class="o">.</span><span class="na">sqlQueryDirect</span><span class="o">(</span><span class="n">MysqlIO</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2060</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">ConnectionImpl</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">ConnectionImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2536</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">ConnectionImpl</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">ConnectionImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2465</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">StatementImpl</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="n">StatementImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1383</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">ConnectionImpl</span><span class="o">.</span><span class="na">getTransactionIsolation</span><span class="o">(</span><span class="n">ConnectionImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">3117</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">commons</span><span class="o">.</span><span class="na">dbcp</span><span class="o">.</span><span class="na">DelegatingConnection</span><span class="o">.</span>
-</span><span class='line'><span class="nf">getTransactionIsolation</span><span class="o">(</span><span class="n">DelegatingConnection</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">313</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">commons</span><span class="o">.</span><span class="na">dbcp</span><span class="o">.</span><span class="na">PoolingDataSource</span>
-</span><span class='line'><span class="n">$PoolGuardConnectionWrapper</span><span class="o">.</span><span class="na">getTransactionIsolation</span><span class="o">(</span><span class="n">PoolingDataSource</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">239</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">datasource</span><span class="o">.</span><span class="na">DataSourceUtils</span><span class="o">.</span>
-</span><span class='line'><span class="nf">prepareConnectionForTransaction</span><span class="o">(</span><span class="n">DataSourceUtils</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">173</span><span class="o">)</span>
-</span><span class='line'>        <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">datasource</span><span class="o">.</span><span class="na">DataSourceTransactionManager</span>
-</span><span class='line'><span class="o">.</span><span class="na">doBegin</span><span class="o">(</span><span class="n">DataSourceTransactionManager</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">210</span><span class="o">)</span>
-</span><span class='line'>        <span class="o">...</span> <span class="mi">41</span> <span class="n">more</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It looks that after few hours at night when no-one used the application,  MySQl server closed connection and first database query caused  exception. I double checked my connection url and settings in context.xml file to found nothing obviously wrong:
-		
-		<a href="/2010/06/solving-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-in-spring-jdbc-based-application/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>

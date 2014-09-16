@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/09/why-sometimes-i-hate-myself/">Why Sometimes I Hate Myself</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/07/apprenticeship-patterns-book-review/">The Apprenticeship Patterns - Book Review</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2014/06/goodbye-wordpress-hello-octopress/">Goodbye Wordpress. Hello Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
       </li>
     
   </ul>
@@ -172,6 +172,46 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-16T22:24:57+02:00" data-updated="true" itemprop="datePublished">Apr 16<span>th</span>, 2012</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2012/04/tools-retrospectives-distributed-teams/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2012/04/tools-retrospectives-distributed-teams/" itemprop="url">Tools for Retrospectives in Distributed Teams</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>In <a href="http://softwaremill.com">our</a> company we work remotely from different locations across Poland. And because we work using agile, after each iteration (in my project usually every 2 weeks) we have a sprint retrospective when we share our insights about what was good and bad in the last sprint. Then we vote on minuses, discuss them and try to extract action items to perform so those problem are less likely to recur in the future.</p>
+
+<p>Standard retrospective is easy , you sit next to other people from your project and simply discuss. But when there are hundreds of kilometers between team members, you need a tool (except Skype of course :) ) that will allow to conduct a successful retro. Below I share my opinions about three tools that might be essential for distributed teams and distributed retrospectives.</p>
+
+
+		
+		<a href="/2012/04/tools-retrospectives-distributed-teams/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -654,57 +694,6 @@ Dear Reader, this post is in my native language as it applies only to developers
 
 		
 		<a href="/2011/10/sobotnia-mobilizacja-na-mobilizacje/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-19T08:52:18+02:00" data-updated="true" itemprop="datePublished">Oct 19<span>th</span>, 2011</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/2011/10/parametrizing-custom-validator-jsf-2/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/2011/10/parametrizing-custom-validator-jsf-2/" itemprop="url">Parametrizing Custom Validator in JSF 2</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Writing a custom validator in JSF 2 is not a complicated task. You implement <em>Validator</em> interface, add <em>@FacesValidator</em> annotation and insert validator declaration in <em>faces-config.xml</em>, that&rsquo;s all. A piece of cake. But let&rsquo;s consider following scenario:</p>
-
-<p>You need custom date validator, let&rsquo;s say checking that date from <em>rich:calendar</em> is not in the past. So we place calendar component with validator inside.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;rich:calendar</span> <span class="na">value=</span><span class="s">&quot;#{fieldValue}&quot;</span> <span class="na">id=</span><span class="s">&quot;dateField&quot;</span> <span class="na">datePattern=</span><span class="s">&quot;yyyy/MM/dd&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;f:validator</span> <span class="na">validatorId=</span><span class="s">&quot;dateNotInThePast&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/rich:calendar&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-
-		
-		<a href="/2011/10/parametrizing-custom-validator-jsf-2/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>

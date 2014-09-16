@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/09/why-sometimes-i-hate-myself/">Why Sometimes I Hate Myself</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/07/apprenticeship-patterns-book-review/">The Apprenticeship Patterns - Book Review</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2014/06/goodbye-wordpress-hello-octopress/">Goodbye Wordpress. Hello Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
       </li>
     
   </ul>
@@ -172,6 +172,44 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-10T14:15:02+02:00" data-updated="true" itemprop="datePublished">May 10<span>th</span>, 2009</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2009/05/java-persistence-api-and-simple-audit/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2009/05/java-persistence-api-and-simple-audit/" itemprop="url">Java Persistence API and Simple Audit</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Recently for a first time  have to create in the application functionality to track changes in the database made by users. There are some existing solutions and one of I found using Google is very interesting article at JavaLobby <a href="http://java.dzone.com/articles/using-a-hibernate-interceptor-">&ldquo;Using a Hibernate Interceptor to set audit trail properties&rdquo;</a>. But there is a much simpler solution which I present here.</p>
+
+<p>If we are using Java Persistence API we can pick very useful annotations: @PrePersist and @PreUpdate. Suppose that in every class we want to gather data about who and when created database record and who and when edited it for a last time. Because such functionality is needed in every entity class we can move logic to common abstract class which will be extended by all concrete entity classes:
+		
+		<a href="/2009/05/java-persistence-api-and-simple-audit/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">

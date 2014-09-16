@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/09/why-sometimes-i-hate-myself/">Why Sometimes I Hate Myself</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/07/apprenticeship-patterns-book-review/">The Apprenticeship Patterns - Book Review</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2014/06/goodbye-wordpress-hello-octopress/">Goodbye Wordpress. Hello Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/05/geecon-2014-brain-dump-day-3/">GeeCON 2014 – Brain Dump, Day 3</a>
       </li>
     
   </ul>
@@ -172,6 +172,57 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-19T08:52:18+02:00" data-updated="true" itemprop="datePublished">Oct 19<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2011/10/parametrizing-custom-validator-jsf-2/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2011/10/parametrizing-custom-validator-jsf-2/" itemprop="url">Parametrizing Custom Validator in JSF 2</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Writing a custom validator in JSF 2 is not a complicated task. You implement <em>Validator</em> interface, add <em>@FacesValidator</em> annotation and insert validator declaration in <em>faces-config.xml</em>, that&rsquo;s all. A piece of cake. But let&rsquo;s consider following scenario:</p>
+
+<p>You need custom date validator, let&rsquo;s say checking that date from <em>rich:calendar</em> is not in the past. So we place calendar component with validator inside.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;rich:calendar</span> <span class="na">value=</span><span class="s">&quot;#{fieldValue}&quot;</span> <span class="na">id=</span><span class="s">&quot;dateField&quot;</span> <span class="na">datePattern=</span><span class="s">&quot;yyyy/MM/dd&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;f:validator</span> <span class="na">validatorId=</span><span class="s">&quot;dateNotInThePast&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/rich:calendar&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+
+		
+		<a href="/2011/10/parametrizing-custom-validator-jsf-2/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -588,47 +639,6 @@ So first, let&rsquo;s create html and Java files:</p>
 
 		
 		<a href="/2011/05/why-we-dont-like-public-speeches-and-what-can-be-done-about-it/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-04T13:08:30+02:00" data-updated="true" itemprop="datePublished">Apr 4<span>th</span>, 2011</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/conferences/'>Conferences</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/2011/04/short-wicket-talk-web-frameworks-shootout-33rddegree-conference/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/2011/04/short-wicket-talk-web-frameworks-shootout-33rddegree-conference/" itemprop="url">Our Short Wicket Talk at Web Frameworks Shootout, 33rdDegree Conference</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>If you, by any chance, are one of the <a href="http://33degree.org">33rdDegree</a> conference participants and you are interested in developing web applications using Java/JVM environment you should also be interested in one of the BOF sessions on Wednesday during the conference: <a href="http://33degree.org/talks.html#BOFWebFrameworks">Web frameworks shootout</a>.</p>
-
-<p>We (<a href="http://paulszulc.com">Paul Szulc</a> with me as a support) will be presenting Wicket framework and its nice features which help Java Developers to build web applications easily and with a lot of fun! :) At this BOF session you will have an opportunity to see more short and concise presentations of the following new and cool web frameworks: Play, Lift, and Grails,  so a lot of new knowledge are waiting there for you :)</p>
-
-<p>Of course if you want to talk with me about Wicket or anything else, don&#8217;t hesitate and catch me anytime during 33rdDegree.</p>
-
-		
-		
 	</div>
 
 </article>
