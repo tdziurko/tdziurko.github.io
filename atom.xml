@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/feed" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-12-15T07:54:57+01:00</updated>
+  <updated>2014-12-15T09:18:38+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -218,11 +218,9 @@ and after that applying regEx to detect errors. This approach was very easy to i
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-<span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">errors =</span>
 </span><span class='line'>  <span class="s">&#39;wziasc&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
 </span><span class='line'>  <span class="s">&#39;pokarze&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
-</span><span class='line'>  <span class="s">&#39;pokarzę&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
 </span><span class='line'>  <span class="s">&#39;zadzic&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
 </span></code></pre></td></tr></table></div></figure>
 

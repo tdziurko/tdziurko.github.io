@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Chat bot | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/chat-bot/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-12-15T07:54:57+01:00</updated>
+  <updated>2014-12-15T09:18:38+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -173,7 +173,6 @@ and after that applying regEx to detect errors. This approach was very easy to i
 errors =
   &lsquo;wziasc&rsquo;  : &lsquo;wziąć&rsquo;
   &lsquo;pokarze&rsquo; : &lsquo;pokażę&rsquo;
-  &lsquo;pokarzę&rsquo; : &lsquo;pokażę&rsquo;
   &lsquo;zadzic&rsquo;  : &lsquo;rządzić&rsquo;</p>
 
 <p>```</p>
