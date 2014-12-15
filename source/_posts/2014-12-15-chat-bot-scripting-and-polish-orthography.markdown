@@ -156,7 +156,6 @@ Now we don't have all those different combination of one error word and our exam
 errors =
   'wziasc'  : 'wziąć'
   'pokarze' : 'pokażę'
-  'pokarzę' : 'pokażę'
   'zadzic'  : 'rządzić'
 
 ```
