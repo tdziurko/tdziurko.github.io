@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Chat bot, scripting and learning developers orthography "
+title: "Chat bot, scripting and teaching developers orthography "
 date: 2014-12-15 08:00:22 +0200
 comments: true
 categories: 
