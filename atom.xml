@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/feed" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-09-16T09:24:15+02:00</updated>
+  <updated>2014-12-15T07:54:57+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,241 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Chat bot, scripting and learning developers orthography ]]></title>
+    <link href="http://tomaszdziurko.pl/2014/12/chat-bot-scripting-and-polish-orthography/"/>
+    <updated>2014-12-15T07:00:22+01:00</updated>
+    <id>http://tomaszdziurko.pl/2014/12/chat-bot-scripting-and-polish-orthography</id>
+    <content type="html"><![CDATA[<p>Few lines of script to help devs to learn orthography</p>
+
+<!-- more -->
+
+
+<p>In <a href="http://softwaremill.com">our remote company</a> we are heavily using text messaging tools, we&rsquo;ve tried Skype, then HipChat and then <a href="https://slack.com/">Slack</a> which we are using until now.
+One of the coolest features in Slack is its scripting capability. Moreover Github built <a href="https://hubot.github.com/">Hubot</a> &ndash; a bot running our scripts. It can be easily integrated with Slack. You deploy bot on Heroku, put custom scripts in proper directory and that&rsquo;s it.</p>
+
+<h3>The Idea</h3>
+
+<p>We are using Slack for some time and I&rsquo;ve planned to play with custom scripting since beginning of Slack in SoftwareMill.  Yet I didn&rsquo;t have the any idea good enough that I would love to implement it right away.
+That was the case until last week when I&rsquo;ve noticed that we are making quite a lot of orthographic mistakes. And when you often see words written with error, your internal &lsquo;correct or not&rsquo; detector starts to go haywire &ndash;
+you are no longer sure if that word should be written this way or another. So I&rsquo;ve decided to write a script that will try to spot such errors, correct and comment them in a gentle way :)</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2014/12/slap.jpg" width="450" height="400"></p>
+
+<h3>Intro</h3>
+
+<p>But first let me briefly describe anatomy of Hubot script. It can be written in JavaScript or CoffeeScript and should implement at least one of two methods:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'>    <span class="nv">module.exports = </span><span class="nf">(robot) -&gt;</span>
+</span><span class='line'>      <span class="nx">robot</span><span class="p">.</span><span class="nx">hear</span> <span class="o">&lt;</span><span class="nx">regexp</span><span class="o">&gt;</span><span class="p">,</span> <span class="nf">(msg) -&gt;</span>
+</span><span class='line'>        <span class="c1"># Code reacting on any message written in any chat room that matches &lt;regexp&gt;</span>
+</span><span class='line'>        <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span> <span class="s">&#39;Example response to chat room&#39;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="o">&lt;</span><span class="nx">regexp</span><span class="o">&gt;</span><span class="p">,</span> <span class="nf">(msg) -&gt;</span>
+</span><span class='line'>        <span class="c1"># Code reacting on any message written to our bot that matches &lt;regexp&gt;</span>
+</span><span class='line'>        <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span> <span class="s">&#39;Example response 2 to chat room&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Because we are interested in watching every room (channel) we will only play with <em>hear</em> method.</p>
+
+<h3>Iteration 1</h3>
+
+<p>At the beginning I wanted to implement something simple to check that my idea working and to see if it is easy to write and run custom script on Hubot. And after that, I could make my script more sophisticated, etc. So at first I&rsquo;ve created something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">module.exports = </span><span class="nf">(robot) -&gt;</span>
+</span><span class='line'>  <span class="nx">robot</span><span class="p">.</span><span class="nx">hear</span> <span class="nx">prepareErrorDetectingRegEx</span><span class="p">(),</span> <span class="nf">(msg) -&gt;</span>
+</span><span class='line'>    <span class="nv">author = </span><span class="nx">msg</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span>
+</span><span class='line'>    <span class="nv">grammarFailure = </span><span class="nx">msg</span><span class="p">.</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>    <span class="nv">exclamationSentence = </span><span class="nx">msg</span><span class="p">.</span><span class="nx">random</span> <span class="nx">messages</span>
+</span><span class='line'>    <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span>  <span class="s">&#39;@&#39;</span> <span class="o">+</span> <span class="nx">author</span> <span class="o">+</span> <span class="s">&#39;, &#39;</span> <span class="o">+</span> <span class="nx">exclamationSentence</span> <span class="o">+</span> <span class="s">&#39;! It should be *&#39;</span> <span class="o">+</span> <span class="nx">errors</span><span class="p">[</span><span class="nx">grammarFailure</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">trim</span><span class="p">()]</span> <span class="o">+</span> <span class="s">&#39;*&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">prepareErrorDetectingRegEx = </span><span class="p">()</span> <span class="nf">-&gt;</span>
+</span><span class='line'>  <span class="nv">errorWords = </span><span class="p">[]</span>
+</span><span class='line'>  <span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="k">of</span> <span class="nx">errors</span>
+</span><span class='line'>    <span class="nx">errorWords</span><span class="p">.</span><span class="nx">push</span> <span class="nx">k</span>
+</span><span class='line'>  <span class="nv">joinedErrors = </span><span class="nx">errorWords</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">errorDetectingRegex = </span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s">&#39;.*(&#39;</span> <span class="o">+</span> <span class="nx">joinedErrors</span> <span class="o">+</span> <span class="s">&#39;).*&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">errorDetectingRegex</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># key-value pair where key is an error and value contains correct word</span>
+</span><span class='line'><span class="nv">errors =</span>
+</span><span class='line'>  <span class="s">&#39;wziąść&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;wziasc&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;wziaśc&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;wziasć&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;pokarze&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
+</span><span class='line'>  <span class="s">&#39;pokarzę&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
+</span><span class='line'>  <span class="s">&#39;żądzić&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>  <span class="s">&#39;żadzić&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>  <span class="s">&#39;żadzic&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>  <span class="s">&#39;ządzic&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">messages = </span><span class="p">[</span><span class="s">&#39;come on&#39;</span><span class="p">,</span> <span class="s">&#39;gimme a break&#39;</span><span class="p">,</span> <span class="s">&#39;are you serious?&#39;</span><span class="p">]</span> <span class="c1"># for a Polish list of &#39;gentle&#39; messages check source code (link at the end of the post) :-)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Entry point of our script is in <em>robot.hear</em> function. Wee are creating regEx in <em>prepareErrorDetectingRegEx</em> which loads all <em>errors</em> and producing <em>OR</em> combo with all possible mistakes. This regular expression seemed fine at first,
+but then turned out to be not so perfect :)</p>
+
+<p>When any text written in chat matches our pattern, we know that we have our &ldquo;victim&rdquo;. Now we can extract author name, find correct version of word and prepare complete response like</p>
+
+<pre><code>@user, gimme a break! It should be &lt;correctVersionOfWordWrittenInBold&gt;
+</code></pre>
+
+<h3>Iteration 2</h3>
+
+<p>After first release, it was time to test script on production and see how it deals with messages posted during normal work day. And of course, it turned out that many common errors are missing in <em>errors</em> object but also that
+first version of regular expression is far from perfect. It was detecting mistakes in a properly written words, for example if we had pair &lsquo;eror&rsquo;: &lsquo;error&rsquo; it was firing also for messages like &lsquo;abcEror&rsquo; or &lsquo;erorSomething&rsquo;.</p>
+
+<p>This one can be fixed by new, better pattern checking only for separate words (or start/end of sentence)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">prepareErrorDetectingRegEx = </span><span class="nf">-&gt;</span>
+</span><span class='line'>  <span class="nv">errorWords = </span><span class="p">[]</span>
+</span><span class='line'>  <span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="k">of</span> <span class="nx">errors</span>
+</span><span class='line'>    <span class="nx">errorWords</span><span class="p">.</span><span class="nx">push</span> <span class="nx">k</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">joinedErrors = </span><span class="nx">errorWords</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">new</span> <span class="nb">RegExp</span> <span class="s">&#39;(^|\\s)(&#39;</span> <span class="o">+</span> <span class="nx">joinedErrors</span> <span class="o">+</span> <span class="s">&#39;)($|\\s)&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That was the first issue, the second one was rather on code level: in Polish we have these national characters like &ldquo;ąęłśćżźóń&rdquo; but some people write words without them. And to catch all possible combinations, each word had to be added to <em>errors</em>
+ in many versions. Below you can see example listing with only three errors but using all combinations requires 10 records:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">errors =</span>
+</span><span class='line'>  <span class="s">&#39;wziąść&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;wziasc&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;wziaśc&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;wziasć&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;pokarze&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
+</span><span class='line'>  <span class="s">&#39;pokarzę&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
+</span><span class='line'>  <span class="s">&#39;żądzić&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>  <span class="s">&#39;żadzić&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>  <span class="s">&#39;żadzic&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>  <span class="s">&#39;ządzic&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This approach is tedious but also much more error-prone. To make adding more records easier, I have to simplify algorithm a bit. And when I was discussing this with <a href="http://szimano.org">Szimano</a> he suggested escaping all polish characters first
+and after that applying regEx to detect errors. This approach was very easy to implement: first we accept all messages using <em>/.*/</em> pattern, then replace all national characters with their standard versions:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">replacePolishChars = </span><span class="nf">(text) -&gt;</span>
+</span><span class='line'>    <span class="nx">text</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ą&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ć&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ę&#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ł&#39;</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ń&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ó&#39;</span><span class="p">,</span> <span class="s">&#39;o&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ś&#39;</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ż&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ź&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now we don&rsquo;t have all those different combination of one error word and our example errors list looks much simpler:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">errors =</span>
+</span><span class='line'>  <span class="s">&#39;wziasc&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;pokarze&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
+</span><span class='line'>  <span class="s">&#39;pokarzę&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
+</span><span class='line'>  <span class="s">&#39;zadzic&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Backlog</h3>
+
+<p>So after two iterations we have a stable script doing what we want and keeping our orthography skills sharp. Complete source code is available <a href="https://github.com/softwaremill/hal-9k/blob/master/scripts/grammar-corrector.coffee">at GitHub</a>.</p>
+
+<p>But as we are using this script, some new ideas started appearing and landed in my backlog for future versions:</p>
+
+<ul>
+<li><p>Store most often misspelled words in a database</p></li>
+<li><p>Store users making most mistakes and print &lsquo;hall of fame&rsquo; table</p></li>
+<li><p>Allow user to add new entries to <em>errors</em> directly from chat rooms</p></li>
+</ul>
+
+
+<h3>Summary</h3>
+
+<p>As you can see, scripting in text communicators like Slack or HipChat is really powerful and easy to deploy tool, you are only limited by your creativity. And you don&rsquo;t need hundreds line of codes to write something useful.</p>
+
+<p>Further reading: <a href="https://github.com/github/hubot/blob/master/docs/scripting.md">Hubot Scripting Guide</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Why sometimes I hate myself]]></title>
@@ -2900,190 +3135,6 @@ So when we know which link should be highlighted, jQuery selectors come to do th
 <h3>Summary</h3>
 
 <p>In this post I tried to show how with a few simple steps we could apply DRY rule to our html markup in AngularJS application. And as your application grow, you will probably find more and more places where html is duplicated making it a good candidate to convert it into component directive.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Running unit tests and integration tests separately with Maven Failsafe and TestNG]]></title>
-    <link href="http://tomaszdziurko.pl/2013/01/running-unit-tests-integration-tests-separately-maven-testng/"/>
-    <updated>2013-01-23T16:42:28+01:00</updated>
-    <id>http://tomaszdziurko.pl/2013/01/running-unit-tests-integration-tests-separately-maven-testng</id>
-    <content type="html"><![CDATA[<p>Recently for my new pet project I decided that I would like to have some tests executed during standard <em>mvn test</em> and some other ones only during different phase, let&rsquo;s call it integration phase. I googled and googled and nothing seemed to work, so after struggling with making my setup work I&rsquo;ve decided to write down my findings how I was able to configure TestNG with Maven to run integration and unit tests separately.</p>
-
-<h3>Basic (not working) setup</h3>
-
-<p>For integration testing there is a <a href="http://maven.apache.org/surefire/maven-failsafe-plugin/integration-test-mojo.html">Maven Failsafe plugin</a> that is supposed to do what we want out of the box. Unfortunately, things are not as easy and straightforward as we might expect.</p>
-
-<!-- more -->
-
-
-<p>Let&rsquo;s look at basic setup that should work:</p>
-
-<p>We have two test classes, one with IT postfix that will indicate that this is our integration test:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">org.testng.annotations.Test</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">fest</span><span class="o">.</span><span class="na">assertions</span><span class="o">.</span><span class="na">Assertions</span><span class="o">.</span><span class="na">assertThat</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExampleUnitTest</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Test</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldPass</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">assertThat</span><span class="o">(</span><span class="kc">false</span><span class="o">).</span><span class="na">isFalse</span><span class="o">();</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>and</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">org.testng.annotations.Test</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">fest</span><span class="o">.</span><span class="na">assertions</span><span class="o">.</span><span class="na">Assertions</span><span class="o">.</span><span class="na">assertThat</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StatusTestIT</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Test</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldFail</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">assertThat</span><span class="o">(</span><span class="s">&quot;aaa&quot;</span><span class="o">).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">);</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>and now let&rsquo;s declare plugin mentioned above in our pom.xml:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;project&gt;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c">&lt;!-- ... --&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;build&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;plugins&gt;</span>
-</span><span class='line'>            <span class="c">&lt;!-- ... --&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;plugin&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;artifactId&gt;</span>maven-surefire-plugin<span class="nt">&lt;/artifactId&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;version&gt;</span>2.9<span class="nt">&lt;/version&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;/plugin&gt;</span>
-</span><span class='line'>
-</span><span class='line'>            <span class="nt">&lt;plugin&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;artifactId&gt;</span>maven-failsafe-plugin<span class="nt">&lt;/artifactId&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;version&gt;</span>2.13<span class="nt">&lt;/version&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;configuration&gt;</span>
-</span><span class='line'>                    <span class="nt">&lt;includes&gt;</span>
-</span><span class='line'>                        <span class="nt">&lt;include&gt;</span>**/*IT.java<span class="nt">&lt;/include&gt;</span>
-</span><span class='line'>                    <span class="nt">&lt;/includes&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;/configuration&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;/plugin&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/plugins&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/build&gt;</span>
-</span><span class='line'><span class="nt">&lt;/project&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>After that we should see two things. <em>mvn test</em> should pass as we have a one green test in ExampleUnitTest class, but <em>mvn failsafe:integration-test</em> should fail with StatusTestIT red. But as I said before, this does not work. <em>mvn test</em> looks as expected, but second Maven execution is passing as well showing that no test were run. Plugin seems to omit our completely valid test&hellip;</p>
-
-<h3>Small fix doing its job</h3>
-
-<p>After testing different approaches I found out that all we need to make this setup work is to add plugin execution to an integration-test phase of maven life cycle. So tiny change, but now our integration tests are executed only when we call <em>mvn integration-test</em>.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;plugin&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;artifactId&gt;</span>maven-failsafe-plugin<span class="nt">&lt;/artifactId&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;version&gt;</span>2.13<span class="nt">&lt;/version&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;configuration&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;includes&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;include&gt;</span>**/*IT.java<span class="nt">&lt;/include&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/includes&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/configuration&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;executions&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;execution&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;id&gt;</span>failsafe-integration-tests<span class="nt">&lt;/id&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;phase&gt;</span>integration-test<span class="nt">&lt;/phase&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;goals&gt;</span>
-</span><span class='line'>                <span class="nt">&lt;goal&gt;</span>integration-test<span class="nt">&lt;/goal&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;/goals&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/execution&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/executions&gt;</span>
-</span><span class='line'><span class="nt">&lt;/plugin&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And that&rsquo;s all, we could execute integration tests only when we really want to. Of course there are some things to remember when adopting setup described above:</p>
-
-<ul>
-<li><p>our unit tests must have Test postfix, if you use something else, we have to configure surefire plugin using <em>include</em></p></li>
-<li><p>during integration test unit tests are executed too. This is a small flaw in this setup, but exclude <em>*/</em>Test.java seem not to work :(</p></li>
-</ul>
-
-
-<p>Source code of this example setup is available on <a href="https://github.com/tdziurko/maven-testng-integration-tests">GitHub</a></p>
 ]]></content>
   </entry>
   

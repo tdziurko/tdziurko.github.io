@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-to | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-09-16T09:24:15+02:00</updated>
+  <updated>2014-12-15T07:54:57+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,192 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Chat bot, scripting and learning developers orthography ]]></title>
+    <link href="http://tomaszdziurko.pl/2014/12/chat-bot-scripting-and-polish-orthography/"/>
+    <updated>2014-12-15T07:00:22+01:00</updated>
+    <id>http://tomaszdziurko.pl/2014/12/chat-bot-scripting-and-polish-orthography</id>
+    <content type="html"><![CDATA[<p>Few lines of script to help devs to learn orthography</p>
+
+<!-- more -->
+
+
+<p>In <a href="http://softwaremill.com">our remote company</a> we are heavily using text messaging tools, we&rsquo;ve tried Skype, then HipChat and then <a href="https://slack.com/">Slack</a> which we are using until now.
+One of the coolest features in Slack is its scripting capability. Moreover Github built <a href="https://hubot.github.com/">Hubot</a> &ndash; a bot running our scripts. It can be easily integrated with Slack. You deploy bot on Heroku, put custom scripts in proper directory and that&rsquo;s it.</p>
+
+<h3>The Idea</h3>
+
+<p>We are using Slack for some time and I&rsquo;ve planned to play with custom scripting since beginning of Slack in SoftwareMill.  Yet I didn&rsquo;t have the any idea good enough that I would love to implement it right away.
+That was the case until last week when I&rsquo;ve noticed that we are making quite a lot of orthographic mistakes. And when you often see words written with error, your internal &lsquo;correct or not&rsquo; detector starts to go haywire &ndash;
+you are no longer sure if that word should be written this way or another. So I&rsquo;ve decided to write a script that will try to spot such errors, correct and comment them in a gentle way :)</p>
+
+<p><img class="center" src="/images/blog/2014/12/slap.jpg" width="450" height="400"></p>
+
+<h3>Intro</h3>
+
+<p>But first let me briefly describe anatomy of Hubot script. It can be written in JavaScript or CoffeeScript and should implement at least one of two methods:</p>
+
+<p>``` coffeescript</p>
+
+<pre><code>module.exports = (robot) -&gt;
+  robot.hear &lt;regexp&gt;, (msg) -&gt;
+    # Code reacting on any message written in any chat room that matches &lt;regexp&gt;
+    msg.send 'Example response to chat room'
+
+  robot.respond &lt;regexp&gt;, (msg) -&gt;
+    # Code reacting on any message written to our bot that matches &lt;regexp&gt;
+    msg.send 'Example response 2 to chat room'
+</code></pre>
+
+<p>```</p>
+
+<p>Because we are interested in watching every room (channel) we will only play with <em>hear</em> method.</p>
+
+<h3>Iteration 1</h3>
+
+<p>At the beginning I wanted to implement something simple to check that my idea working and to see if it is easy to write and run custom script on Hubot. And after that, I could make my script more sophisticated, etc. So at first I&rsquo;ve created something like this:</p>
+
+<p>``` coffeescript</p>
+
+<p>module.exports = (robot) &ndash;>
+  robot.hear prepareErrorDetectingRegEx(), (msg) &ndash;></p>
+
+<pre><code>author = msg.message.user.name
+grammarFailure = msg.match[1]
+exclamationSentence = msg.random messages
+msg.send  '@' + author + ', ' + exclamationSentence + '! It should be *' + errors[grammarFailure.toLowerCase().trim()] + '*'
+</code></pre>
+
+<p>prepareErrorDetectingRegEx = () &ndash;>
+  errorWords = []
+  for k, v of errors</p>
+
+<pre><code>errorWords.push k
+</code></pre>
+
+<p>  joinedErrors = errorWords.join(&lsquo;|&rsquo;)
+  errorDetectingRegex = new RegExp(&lsquo;.<em>(&rsquo; + joinedErrors + &lsquo;).</em>&rsquo;, &lsquo;i&rsquo;);
+  return errorDetectingRegex</p>
+
+<h1>key-value pair where key is an error and value contains correct word</h1>
+
+<p>errors =
+  &lsquo;wziąść&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziasc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziaśc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziasć&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;pokarze&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;pokarzę&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;żądzić&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;żadzić&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;żadzic&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;ządzic&rsquo;  : &lsquo;rządzić&rsquo;</p>
+
+<p>messages = [&lsquo;come on&rsquo;, &lsquo;gimme a break&rsquo;, &lsquo;are you serious?&rsquo;] # for a Polish list of &lsquo;gentle&rsquo; messages check source code (link at the end of the post) :&ndash;)</p>
+
+<p>```</p>
+
+<p>Entry point of our script is in <em>robot.hear</em> function. Wee are creating regEx in <em>prepareErrorDetectingRegEx</em> which loads all <em>errors</em> and producing <em>OR</em> combo with all possible mistakes. This regular expression seemed fine at first,
+but then turned out to be not so perfect :)</p>
+
+<p>When any text written in chat matches our pattern, we know that we have our &ldquo;victim&rdquo;. Now we can extract author name, find correct version of word and prepare complete response like</p>
+
+<pre><code>@user, gimme a break! It should be &lt;correctVersionOfWordWrittenInBold&gt;
+</code></pre>
+
+<h3>Iteration 2</h3>
+
+<p>After first release, it was time to test script on production and see how it deals with messages posted during normal work day. And of course, it turned out that many common errors are missing in <em>errors</em> object but also that
+first version of regular expression is far from perfect. It was detecting mistakes in a properly written words, for example if we had pair &lsquo;eror&rsquo;: &lsquo;error&rsquo; it was firing also for messages like &lsquo;abcEror&rsquo; or &lsquo;erorSomething&rsquo;.</p>
+
+<p>This one can be fixed by new, better pattern checking only for separate words (or start/end of sentence)</p>
+
+<p>``` coffeescript</p>
+
+<p>prepareErrorDetectingRegEx = &ndash;>
+  errorWords = []
+  for k, v of errors</p>
+
+<pre><code>errorWords.push k
+</code></pre>
+
+<p>  joinedErrors = errorWords.join(&lsquo;|&rsquo;)
+  new RegExp &lsquo;(^|\s)(&rsquo; + joinedErrors + &lsquo;)($|\s)&rsquo;, &lsquo;i&rsquo;</p>
+
+<p>```</p>
+
+<p>That was the first issue, the second one was rather on code level: in Polish we have these national characters like &ldquo;ąęłśćżźóń&rdquo; but some people write words without them. And to catch all possible combinations, each word had to be added to <em>errors</em>
+ in many versions. Below you can see example listing with only three errors but using all combinations requires 10 records:</p>
+
+<p>``` coffeescript</p>
+
+<p>errors =
+  &lsquo;wziąść&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziasc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziaśc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziasć&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;pokarze&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;pokarzę&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;żądzić&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;żadzić&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;żadzic&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;ządzic&rsquo;  : &lsquo;rządzić&rsquo;</p>
+
+<p>```</p>
+
+<p>This approach is tedious but also much more error-prone. To make adding more records easier, I have to simplify algorithm a bit. And when I was discussing this with <a href="http://szimano.org">Szimano</a> he suggested escaping all polish characters first
+and after that applying regEx to detect errors. This approach was very easy to implement: first we accept all messages using <em>/.*/</em> pattern, then replace all national characters with their standard versions:</p>
+
+<p>``` coffeescript</p>
+
+<p>replacePolishChars = (text) &ndash;></p>
+
+<pre><code>text.toLowerCase()
+  .replace('ą', 'a')
+  .replace('ć', 'c')
+  .replace('ę', 'e')
+  .replace('ł', 'l')
+  .replace('ń', 'n')
+  .replace('ó', 'o')
+  .replace('ś', 's')
+  .replace('ż', 'z')
+  .replace('ź', 'z')
+</code></pre>
+
+<p>```</p>
+
+<p>Now we don&rsquo;t have all those different combination of one error word and our example errors list looks much simpler:</p>
+
+<p>``` coffeescript
+errors =
+  &lsquo;wziasc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;pokarze&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;pokarzę&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;zadzic&rsquo;  : &lsquo;rządzić&rsquo;</p>
+
+<p>```</p>
+
+<h3>Backlog</h3>
+
+<p>So after two iterations we have a stable script doing what we want and keeping our orthography skills sharp. Complete source code is available <a href="https://github.com/softwaremill/hal-9k/blob/master/scripts/grammar-corrector.coffee">at GitHub</a>.</p>
+
+<p>But as we are using this script, some new ideas started appearing and landed in my backlog for future versions:</p>
+
+<ul>
+<li><p>Store most often misspelled words in a database</p></li>
+<li><p>Store users making most mistakes and print &lsquo;hall of fame&rsquo; table</p></li>
+<li><p>Allow user to add new entries to <em>errors</em> directly from chat rooms</p></li>
+</ul>
+
+
+<h3>Summary</h3>
+
+<p>As you can see, scripting in text communicators like Slack or HipChat is really powerful and easy to deploy tool, you are only limited by your creativity. And you don&rsquo;t need hundreds line of codes to write something useful.</p>
+
+<p>Further reading: <a href="https://github.com/github/hubot/blob/master/docs/scripting.md">Hubot Scripting Guide</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Transparently persist and retrieve encrypted data from database]]></title>
@@ -633,390 +819,6 @@ messageOptional match {
 
 <p>In this short post I&rsquo;ve described how to implement Html/Js escaping in Scalatra based application in a pretty straightforward way that can be easily defined in one, common place without need to add manual escaping in every method that needs that. Thanks to this, our application is much safer and only explicitly declared methods can return potentially unsafe data.
 Source code of this small example app is available <a href="https://github.com/tdziurko/scalatra-json-escaping">on GitHub</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[XStream - XStreamely easy way to work with XML data in Java]]></title>
-    <link href="http://tomaszdziurko.pl/2013/04/xstream-xstreamely-easy-work-xml-data-java/"/>
-    <updated>2013-04-22T10:55:55+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/04/xstream-xstreamely-easy-work-xml-data-java</id>
-    <content type="html"><![CDATA[<!-- more -->
-
-
-<p>From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term &ldquo;XML hell&rdquo; describing situation when programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because specification from client says something like &ldquo;use configuration written in XML file&rdquo; or something similar. And in such cases, <a href="http://xstream.codehaus.org/">XStream</a> comes with its very cool features that make dealing with XML really less painful.</p>
-
-<p style="text-align:center;"><a href="/images/blog/2013/04/xstream.gif"><img src="/images/blog/2013/04/xstream.gif" alt="xstream" /></a></p>
-
-<h3>Overview</h3>
-
-<p><a href="http://xstream.codehaus.org/">XStream</a> is a small library to serialize data between Java objects and XML. It&rsquo;s lightweight, small, has nice API and what is most important, it works with and without custom annotations that we might be not allowed to add when we are not the owner of Java classes.</p>
-
-<h3>First example</h3>
-
-<p>Suppose we have a requirement to load configuration from xml file:
-``` xml
-<config></p>
-
-<pre><code>&lt;inputFile&gt;/Users/tomek/work/mystuff/input.csv&lt;/inputFile&gt;
-&lt;truststoreFile&gt;/Users/tomek/work/mystuff/truststore.ts&lt;/truststoreFile&gt;
-&lt;keystoreFile&gt;/Users/tomek/work/mystuff/CN-user.jks&lt;/keystoreFile&gt;
-
-&lt;!-- ssl stores passwords--&gt;
-&lt;truststorePassword&gt;password&lt;/truststorePassword&gt;
-&lt;keystorePassword&gt;password&lt;/keystorePassword&gt;
-
-&lt;!-- user credentials --&gt;
-&lt;user&gt;user&lt;/user&gt;
-&lt;password&gt;secret&lt;/password&gt;
-</code></pre>
-
-<p></config>
-```</p>
-
-<p>And we want to load it into Configuration object:
-``` java
-public class Configuration {</p>
-
-<pre><code>private String inputFile;
-private String user;
-private String password;
-
-private String truststoreFile;
-private String keystoreFile;
-private String keystorePassword;
-private String truststorePassword;
-
-// getters, setters, etc.
-</code></pre>
-
-<p>}
-<code>
-So basically what we have to do is:
-</code> java</p>
-
-<pre><code>FileReader fileReader = new FileReader("config.xml");  // load our xml file  
-XStream xstream = new XStream();     // init XStream
-// define root alias so XStream knows which element and which class are equivalent
-xstream.alias("config", Configuration.class);    
-Configuration loadedConfig = (Configuration) xstream.fromXML(fileReader);
-</code></pre>
-
-<p>```</p>
-
-<p>And that&rsquo;s all, easy peasy :)</p>
-
-<h3>Something more serious</h3>
-
-<p>Ok, but previous example is very basic so now let&rsquo;s do something more complicated: real XML returned by real WebService.</p>
-
-<p>``` xml
-<DATA xmlns=""></p>
-
-<pre><code>&lt;BAN&gt;
-    &lt;UPDATED_AT&gt;2013-03-09&lt;/UPDATED_AT&gt;
-    &lt;TROUBLEMAKER&gt;
-        &lt;NAME1&gt;JOHN&lt;/NAME1&gt;
-        &lt;NAME2&gt;EXAMPLE&lt;/NAME2&gt;
-        &lt;AGE&gt;24&lt;/AGE&gt;
-        &lt;NUMBER&gt;ASD123123&lt;/NUMBER&gt;
-    &lt;/TROUBLEMAKER&gt;
-&lt;/BAN&gt;
-&lt;BAN&gt;
-    &lt;UPDATED_AT&gt;2012-03-10&lt;/UPDATED_AT&gt;
-    &lt;TROUBLEMAKER&gt;
-        &lt;NAME1&gt;ANNA&lt;/NAME1&gt;
-        &lt;NAME2&gt;BAKER&lt;/NAME2&gt;
-        &lt;AGE&gt;26&lt;/AGE&gt;
-        &lt;NUMBER&gt;AXN567890&lt;/NUMBER&gt;
-    &lt;/TROUBLEMAKER&gt;
-&lt;/BAN&gt;
-&lt;BAN&gt;
-    &lt;UPDATED_AT&gt;2010-12-05&lt;/UPDATED_AT&gt;
-    &lt;TROUBLEMAKER&gt;
-        &lt;NAME1&gt;TOM&lt;/NAME1&gt;
-        &lt;NAME2&gt;MEADOW&lt;/NAME2&gt;
-        &lt;NUMBER&gt;SGH08945&lt;/NUMBER&gt;
-        &lt;AGE&gt;48&lt;/AGE&gt;
-    &lt;/TROUBLEMAKER&gt;
-&lt;/BAN&gt;
-</code></pre>
-
-<p></DATA>
-```</p>
-
-<p>What we have here is simple list of bans written in XML. We want to load it into collection of Ban objects. So let&rsquo;s prepare some classes (getters/setters/toString omitted):
-``` java
-public class Data {</p>
-
-<pre><code>private List bans = new ArrayList(); 
-</code></pre>
-
-<p>}</p>
-
-<p>public class Ban {</p>
-
-<pre><code>private String dateOfUpdate;
-private Person person;
-</code></pre>
-
-<p>}</p>
-
-<p>public class Person {</p>
-
-<pre><code>private String firstName;
-private String lastName;
-private int age;
-private String documentNumber;
-</code></pre>
-
-<p>}
-```</p>
-
-<p>As you can see there is some naming and type mismatch between XML and Java classes (e.g. field name1->firstName, dateOfUpdate is String not a Date), but it&rsquo;s here for some example purposes.</p>
-
-<p>So the goal here is to parse XML and get Data object with populated collection of Ban instances containing correct data. Let&rsquo;s see how it can be achieved.</p>
-
-<h4>Parse with annotations</h4>
-
-<p>First, easier way is to use annotations. And that&rsquo;s the suggested approach in situation when we can modify Java classes to which XML will be mapped.
-So we have:
-``` java
-@XStreamAlias(&ldquo;DATA&rdquo;) // maps DATA element in XML to this class
-public class Data {</p>
-
-<pre><code>// Here is something more complicated. If we have list of elements that are 
-// not wrapped in a element representing a list (like we have in our XML: 
-// multiple &lt;ban&gt; elements not wrapped inside &lt;bans&gt; collection, 
-// we have to declare that we want to treat these elements as an implicit list 
-// so they can be converted to List of objects. 
-@XStreamImplicit(itemFieldName = "ban") 
-private List bans = new ArrayList();
-</code></pre>
-
-<p>}</p>
-
-<p>@XStreamAlias(&ldquo;BAN&rdquo;) // another mapping
-public class Ban {</p>
-
-<pre><code>/*
- We want to have different field names in Java classes so
- we define what element should be mapped to each field
-*/
-@XStreamAlias("UPDATED_AT") // 
-private String dateOfUpdate;
-
-@XStreamAlias("TROUBLEMAKER")
-private Person person;
-</code></pre>
-
-<p>}</p>
-
-<p>@XStreamAlias(&ldquo;TROUBLEMAKER&rdquo;)
-public class Person {</p>
-
-<pre><code>@XStreamAlias("NAME1")
-private String firstName;
-
-@XStreamAlias("NAME2")
-private String lastName;
-
-@XStreamAlias("AGE") // String will be auto converted to int value
-private int age;
-
-@XStreamAlias("NUMBER")
-private String documentNumber;
-</code></pre>
-
-<p>```</p>
-
-<p>And actual parsing logic is very short:</p>
-
-<p>``` java</p>
-
-<pre><code>FileReader reader = new FileReader("file.xml");  // load file
-
-XStream xstream = new XStream();
-xstream.processAnnotations(Data.class);     // inform XStream to parse annotations in Data class
-xstream.processAnnotations(Ban.class);      // and in two other classes... 
-xstream.processAnnotations(Person.class);   // we use for mappings
-Data data = (Data) xstream.fromXML(reader); // parse
-
-// Print some data to console to see if results are correct
-System.out.println("Number of bans = " + data.getBans().size());
-Ban firstBan = data.getBans().get(0);
-System.out.println("First ban = " + firstBan.toString()); 
-</code></pre>
-
-<p>```</p>
-
-<p>As you can see annotations are very easy to use and as a result final code is very concise. But what to do in situation when we can&rsquo;t modify mapping classes? We can use different approach that doesn&rsquo;t require any modifications in Java classes representing XML data.</p>
-
-<h4>Parse without annotations</h4>
-
-<p>When we can&rsquo;t enrich our model classes with annotations, there is another solution. We can define all mapping details using methods from XStream object:</p>
-
-<p>``` java</p>
-
-<pre><code>FileReader reader = new FileReader("file.xml");  // three first lines are easy, 
-XStream xstream = new XStream();                 // same initialisation as in the 
-xstream.alias("DATA", Data.class);               // basic example above
-
-xstream.alias("BAN", Ban.class);             // two more aliases to map... 
-xstream.alias("TROUBLEMAKER", Person.class); // between node names and classes
-
-// We want to have different field names in Java classes so
-// we have to use aliasField(&lt;fieldInXml&gt;, &lt;mappedJavaClass&gt;, &lt;mappedFieldInJavaClass&gt;)
-xstream.aliasField("UPDATED_AT", Ban.class, "dateOfUpdate"); 
-xstream.aliasField("TROUBLEMAKER", Ban.class, "person");
-
-xstream.aliasField("NAME1", Person.class, "firstName");
-xstream.aliasField("NAME2", Person.class, "lastName");
-xstream.aliasField("AGE", Person.class, "age");  // notice here that XML will be auto-converted to int "age"
-xstream.aliasField("NUMBER", Person.class, "documentNumber");
-
-/*
- Another way to define implicit collection
-*/ 
-xstream.addImplicitCollection(Bans.class, "bans");
-
-Data data = (Data) xstream.fromXML(reader);  // do the actual parsing
-
-// let's print results to check if data was parsed
-System.out.println("Number of bans = " + data.getBans().size());
-Ban firstBan = data.getBans().get(0);
-System.out.println("First ban = " + firstBan.toString());
-</code></pre>
-
-<p>```</p>
-
-<p>As you can see XStream allows to easily convert more complicated XML structures into Java objects, it also gives a possibility to tune results by using different names if this from XML doesn&rsquo;t suit our needs.
-But there is one thing should catch your attention: we are converting XML representing a Date into raw String which isn&rsquo;t quite what we would like to get as a result. That&rsquo;s why we will add converter to do some job for us.</p>
-
-<h3>Using existing custom type converter</h3>
-
-<p>XStream library comes with set of built converters for most common use cases. We will use DateConverter. So now our class for Ban looks like that:
-``` java
-public class Ban {</p>
-
-<pre><code>private Date dateOfUpdate;
-private Person person;
-</code></pre>
-
-<p>}
-<code>
-And to use DateConverter we simply have to register it with date format that we expect to appear in XML data:
-</code> java
-   xstream.registerConverter(new DateConverter(&ldquo;yyyy-MM-dd&rdquo;, new String[] {}));
-```</p>
-
-<p>and that&rsquo;s it. Now instead of String our object is populated with Date instance. Cool and easy! But what about classes and situations that aren&rsquo;t covered by existing converters? We could write our own.</p>
-
-<h3>Writing custom converter from scratch</h3>
-
-<p>Assume that instead of dateOfUpdate we want to know how many days ago update was done:
-``` java
-public class Ban {</p>
-
-<pre><code>private int daysAgo;
-private Person person;
-</code></pre>
-
-<p>}
-<code>
-Of course we could calculate it manually for each Ban object but using converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement [Converter](http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/Converter.html) interface so we have to implement three methods with signatures looking a little bit scary:
-</code> java
-public class DaysAgoConverter implements Converter {</p>
-
-<pre><code>@Override
-public void marshal(Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
-}
-
-@Override
-public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-}
-
-@Override
-public boolean canConvert(Class type) {
-    return false;
-}
-</code></pre>
-
-<p>}
-<code>
-Last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using [AbstractSingleValueConverter](http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/basic/AbstractSingleValueConverter.html)that shields us from so low level mechanisms. And now our class looks much better:
-</code> java
-public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
-
-<pre><code>@Override
-public boolean canConvert(Class type) {
-    return type.equals(Integer.class);
-}
-
-@Override
-public Object fromString(String str) {
-    return null;
-}
-
-public String toString(Object obj) {
-    return null;
-}
-</code></pre>
-
-<p>}
-```
-Additionally we must override method toString(Object obj) defined in AbstractSingleValueConverter as we want to store Date in XML calculated from Integer, not a simple <em>Object.toString</em> value which would be returned from default <em>toString</em> defined in abstract parent.</p>
-
-<p><strong>Implementation</strong></p>
-
-<p>Code below is pretty straightforward, but most interesting lines are commented. I&rsquo;ve skipped all validation stuff to make this example shorter.
-``` java
-public class DaysAgoConverter extends AbstractSingleValueConverter {</p>
-
-<pre><code>private final static String FORMAT = "yyyy-MM-dd"; // default Date format that will be used in conversion
-private final DateTime now = DateTime.now().toDateMidnight().toDateTime(); // current day at midnight
-
-public boolean canConvert(Class type) {
-    return type.equals(Integer.class);     // Converter works only with Integers
-}
-
-@Override
-public Object fromString(String str) {
-    SimpleDateFormat format = new SimpleDateFormat(FORMAT);
-    try {
-        Date date = format.parse(str);
-        return Days.daysBetween(new DateTime(date), now).getDays();  // we simply calculate days between using JodaTime
-    } catch (ParseException e) {
-        throw new RuntimeException("Invalid date format in " + str);
-    }
-}
-
-public String toString(Object obj) {
-    if (obj == null) {
-        return null;
-    }
-
-    Integer daysAgo = ((Integer) obj);
-    return now.minusDays(daysAgo).toString(FORMAT); // here we subtract days from now and return formatted date string
-}
-</code></pre>
-
-<p>}
-```</p>
-
-<p><strong>Usage</strong>
-To use our custom converter for a specific field we have to inform about it XStream object using registerLocalConverter:
-``` java</p>
-
-<pre><code>xstream.registerLocalConverter(Ban.class, "daysAgo", new DaysAgoConverter());
-</code></pre>
-
-<p>```
-We are using &ldquo;local&rdquo; method to apply this conversion only to specific field and not to every Integer field in XML file. And after that we will get our Ban objects populated with number of days instead of Date.</p>
-
-<h3>Summary</h3>
-
-<p>That&rsquo;s all what I wanted to show you in this post. Now you have basic knowledge about what XStream is capable of and how it can be used to easily map XML data to Java objects If you need something more advanced, please check <a href="http://xstream.codehaus.org/">project official page</a> as it contains very good documentation and examples.</p>
 ]]></content>
   </entry>
   

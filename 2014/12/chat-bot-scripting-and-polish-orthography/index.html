@@ -1,0 +1,536 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Chat bot, scripting and learning developers orthography  - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="How help developers to learn orthography">
+    
+    <meta name="keywords" content="chat bot, slack, hubot, halbot, orthography" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2014/12/chat-bot-scripting-and-polish-orthography/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2014/12/chat-bot-scripting-and-polish-orthography/">Chat Bot, Scripting and Learning Developers Orthography</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/09/why-sometimes-i-hate-myself/">Why Sometimes I Hate Myself</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/07/apprenticeship-patterns-book-review/">The Apprenticeship Patterns - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/07/zookeeper-curator-and-microservices-load-balancing/">ZooKeeper, Curator and How Microservices Load Balancing Works</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/06/handle-every-event-in-your-akka-application/">Handle Every Event in Your Akka Application</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Chat Bot, Scripting and Learning Developers Orthography</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Few lines of script to help devs to learn orthography</p>
+
+<!-- more -->
+
+
+<p>In <a href="http://softwaremill.com">our remote company</a> we are heavily using text messaging tools, we&rsquo;ve tried Skype, then HipChat and then <a href="https://slack.com/">Slack</a> which we are using until now.
+One of the coolest features in Slack is its scripting capability. Moreover Github built <a href="https://hubot.github.com/">Hubot</a> &ndash; a bot running our scripts. It can be easily integrated with Slack. You deploy bot on Heroku, put custom scripts in proper directory and that&rsquo;s it.</p>
+
+<h3>The Idea</h3>
+
+<p>We are using Slack for some time and I&rsquo;ve planned to play with custom scripting since beginning of Slack in SoftwareMill.  Yet I didn&rsquo;t have the any idea good enough that I would love to implement it right away.
+That was the case until last week when I&rsquo;ve noticed that we are making quite a lot of orthographic mistakes. And when you often see words written with error, your internal &lsquo;correct or not&rsquo; detector starts to go haywire &ndash;
+you are no longer sure if that word should be written this way or another. So I&rsquo;ve decided to write a script that will try to spot such errors, correct and comment them in a gentle way :)</p>
+
+<p><img class="center" src="/images/blog/2014/12/slap.jpg" width="450" height="400"></p>
+
+<h3>Intro</h3>
+
+<p>But first let me briefly describe anatomy of Hubot script. It can be written in JavaScript or CoffeeScript and should implement at least one of two methods:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'>    <span class="nv">module.exports = </span><span class="nf">(robot) -&gt;</span>
+</span><span class='line'>      <span class="nx">robot</span><span class="p">.</span><span class="nx">hear</span> <span class="o">&lt;</span><span class="nx">regexp</span><span class="o">&gt;</span><span class="p">,</span> <span class="nf">(msg) -&gt;</span>
+</span><span class='line'>        <span class="c1"># Code reacting on any message written in any chat room that matches &lt;regexp&gt;</span>
+</span><span class='line'>        <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span> <span class="s">&#39;Example response to chat room&#39;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="o">&lt;</span><span class="nx">regexp</span><span class="o">&gt;</span><span class="p">,</span> <span class="nf">(msg) -&gt;</span>
+</span><span class='line'>        <span class="c1"># Code reacting on any message written to our bot that matches &lt;regexp&gt;</span>
+</span><span class='line'>        <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span> <span class="s">&#39;Example response 2 to chat room&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Because we are interested in watching every room (channel) we will only play with <em>hear</em> method.</p>
+
+<h3>Iteration 1</h3>
+
+<p>At the beginning I wanted to implement something simple to check that my idea working and to see if it is easy to write and run custom script on Hubot. And after that, I could make my script more sophisticated, etc. So at first I&rsquo;ve created something like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">module.exports = </span><span class="nf">(robot) -&gt;</span>
+</span><span class='line'>  <span class="nx">robot</span><span class="p">.</span><span class="nx">hear</span> <span class="nx">prepareErrorDetectingRegEx</span><span class="p">(),</span> <span class="nf">(msg) -&gt;</span>
+</span><span class='line'>    <span class="nv">author = </span><span class="nx">msg</span><span class="p">.</span><span class="nx">message</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span>
+</span><span class='line'>    <span class="nv">grammarFailure = </span><span class="nx">msg</span><span class="p">.</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>    <span class="nv">exclamationSentence = </span><span class="nx">msg</span><span class="p">.</span><span class="nx">random</span> <span class="nx">messages</span>
+</span><span class='line'>    <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span>  <span class="s">&#39;@&#39;</span> <span class="o">+</span> <span class="nx">author</span> <span class="o">+</span> <span class="s">&#39;, &#39;</span> <span class="o">+</span> <span class="nx">exclamationSentence</span> <span class="o">+</span> <span class="s">&#39;! It should be *&#39;</span> <span class="o">+</span> <span class="nx">errors</span><span class="p">[</span><span class="nx">grammarFailure</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">trim</span><span class="p">()]</span> <span class="o">+</span> <span class="s">&#39;*&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">prepareErrorDetectingRegEx = </span><span class="p">()</span> <span class="nf">-&gt;</span>
+</span><span class='line'>  <span class="nv">errorWords = </span><span class="p">[]</span>
+</span><span class='line'>  <span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="k">of</span> <span class="nx">errors</span>
+</span><span class='line'>    <span class="nx">errorWords</span><span class="p">.</span><span class="nx">push</span> <span class="nx">k</span>
+</span><span class='line'>  <span class="nv">joinedErrors = </span><span class="nx">errorWords</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="nv">errorDetectingRegex = </span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s">&#39;.*(&#39;</span> <span class="o">+</span> <span class="nx">joinedErrors</span> <span class="o">+</span> <span class="s">&#39;).*&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nx">errorDetectingRegex</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># key-value pair where key is an error and value contains correct word</span>
+</span><span class='line'><span class="nv">errors =</span>
+</span><span class='line'>  <span class="s">&#39;wziąść&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;wziasc&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;wziaśc&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;wziasć&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;pokarze&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
+</span><span class='line'>  <span class="s">&#39;pokarzę&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
+</span><span class='line'>  <span class="s">&#39;żądzić&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>  <span class="s">&#39;żadzić&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>  <span class="s">&#39;żadzic&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>  <span class="s">&#39;ządzic&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">messages = </span><span class="p">[</span><span class="s">&#39;come on&#39;</span><span class="p">,</span> <span class="s">&#39;gimme a break&#39;</span><span class="p">,</span> <span class="s">&#39;are you serious?&#39;</span><span class="p">]</span> <span class="c1"># for a Polish list of &#39;gentle&#39; messages check source code (link at the end of the post) :-)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Entry point of our script is in <em>robot.hear</em> function. Wee are creating regEx in <em>prepareErrorDetectingRegEx</em> which loads all <em>errors</em> and producing <em>OR</em> combo with all possible mistakes. This regular expression seemed fine at first,
+but then turned out to be not so perfect :)</p>
+
+<p>When any text written in chat matches our pattern, we know that we have our &ldquo;victim&rdquo;. Now we can extract author name, find correct version of word and prepare complete response like</p>
+
+<pre><code>@user, gimme a break! It should be &lt;correctVersionOfWordWrittenInBold&gt;
+</code></pre>
+
+<h3>Iteration 2</h3>
+
+<p>After first release, it was time to test script on production and see how it deals with messages posted during normal work day. And of course, it turned out that many common errors are missing in <em>errors</em> object but also that
+first version of regular expression is far from perfect. It was detecting mistakes in a properly written words, for example if we had pair &lsquo;eror&rsquo;: &lsquo;error&rsquo; it was firing also for messages like &lsquo;abcEror&rsquo; or &lsquo;erorSomething&rsquo;.</p>
+
+<p>This one can be fixed by new, better pattern checking only for separate words (or start/end of sentence)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">prepareErrorDetectingRegEx = </span><span class="nf">-&gt;</span>
+</span><span class='line'>  <span class="nv">errorWords = </span><span class="p">[]</span>
+</span><span class='line'>  <span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="k">of</span> <span class="nx">errors</span>
+</span><span class='line'>    <span class="nx">errorWords</span><span class="p">.</span><span class="nx">push</span> <span class="nx">k</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nv">joinedErrors = </span><span class="nx">errorWords</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">new</span> <span class="nb">RegExp</span> <span class="s">&#39;(^|\\s)(&#39;</span> <span class="o">+</span> <span class="nx">joinedErrors</span> <span class="o">+</span> <span class="s">&#39;)($|\\s)&#39;</span><span class="p">,</span> <span class="s">&#39;i&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That was the first issue, the second one was rather on code level: in Polish we have these national characters like &ldquo;ąęłśćżźóń&rdquo; but some people write words without them. And to catch all possible combinations, each word had to be added to <em>errors</em>
+ in many versions. Below you can see example listing with only three errors but using all combinations requires 10 records:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">errors =</span>
+</span><span class='line'>  <span class="s">&#39;wziąść&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;wziasc&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;wziaśc&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;wziasć&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;pokarze&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
+</span><span class='line'>  <span class="s">&#39;pokarzę&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
+</span><span class='line'>  <span class="s">&#39;żądzić&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>  <span class="s">&#39;żadzić&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>  <span class="s">&#39;żadzic&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span><span class='line'>  <span class="s">&#39;ządzic&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This approach is tedious but also much more error-prone. To make adding more records easier, I have to simplify algorithm a bit. And when I was discussing this with <a href="http://szimano.org">Szimano</a> he suggested escaping all polish characters first
+and after that applying regEx to detect errors. This approach was very easy to implement: first we accept all messages using <em>/.*/</em> pattern, then replace all national characters with their standard versions:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">replacePolishChars = </span><span class="nf">(text) -&gt;</span>
+</span><span class='line'>    <span class="nx">text</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ą&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ć&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ę&#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ł&#39;</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ń&#39;</span><span class="p">,</span> <span class="s">&#39;n&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ó&#39;</span><span class="p">,</span> <span class="s">&#39;o&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ś&#39;</span><span class="p">,</span> <span class="s">&#39;s&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ż&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="s">&#39;ź&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now we don&rsquo;t have all those different combination of one error word and our example errors list looks much simpler:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='coffeescript'><span class='line'><span class="nv">errors =</span>
+</span><span class='line'>  <span class="s">&#39;wziasc&#39;</span>  <span class="o">:</span> <span class="s">&#39;wziąć&#39;</span>
+</span><span class='line'>  <span class="s">&#39;pokarze&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
+</span><span class='line'>  <span class="s">&#39;pokarzę&#39;</span> <span class="o">:</span> <span class="s">&#39;pokażę&#39;</span>
+</span><span class='line'>  <span class="s">&#39;zadzic&#39;</span>  <span class="o">:</span> <span class="s">&#39;rządzić&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Backlog</h3>
+
+<p>So after two iterations we have a stable script doing what we want and keeping our orthography skills sharp. Complete source code is available <a href="https://github.com/softwaremill/hal-9k/blob/master/scripts/grammar-corrector.coffee">at GitHub</a>.</p>
+
+<p>But as we are using this script, some new ideas started appearing and landed in my backlog for future versions:</p>
+
+<ul>
+<li><p>Store most often misspelled words in a database</p></li>
+<li><p>Store users making most mistakes and print &lsquo;hall of fame&rsquo; table</p></li>
+<li><p>Allow user to add new entries to <em>errors</em> directly from chat rooms</p></li>
+</ul>
+
+
+<h3>Summary</h3>
+
+<p>As you can see, scripting in text communicators like Slack or HipChat is really powerful and easy to deploy tool, you are only limited by your creativity. And you don&rsquo;t need hundreds line of codes to write something useful.</p>
+
+<p>Further reading: <a href="https://github.com/github/hubot/blob/master/docs/scripting.md">Hubot Scripting Guide</a></p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-12-15T07:00:22+01:00" data-updated="true" itemprop="datePublished">Dec 15<span>th</span>, 2014</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/chat-bot/'>Chat bot</a>, <a class='category' href='/blog/categories/coffeescript/'>CoffeeScript</a>, <a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/scripting/'>Scripting</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2014/09/why-sometimes-i-hate-myself/" title="Previous: Why sometimes I hate myself">&laquo; Why sometimes I hate myself</a>
+		  
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2014 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2014/12/chat-bot-scripting-and-polish-orthography/';
+        var disqus_url = 'http://tomaszdziurko.pl/2014/12/chat-bot-scripting-and-polish-orthography/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

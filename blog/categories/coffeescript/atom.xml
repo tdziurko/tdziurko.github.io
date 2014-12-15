@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: CoffeeScript | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/coffeescript/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2014-12-15T07:54:57+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Chat bot, scripting and learning developers orthography ]]></title>
+    <link href="http://tomaszdziurko.pl/2014/12/chat-bot-scripting-and-polish-orthography/"/>
+    <updated>2014-12-15T07:00:22+01:00</updated>
+    <id>http://tomaszdziurko.pl/2014/12/chat-bot-scripting-and-polish-orthography</id>
+    <content type="html"><![CDATA[<p>Few lines of script to help devs to learn orthography</p>
+
+<!-- more -->
+
+
+<p>In <a href="http://softwaremill.com">our remote company</a> we are heavily using text messaging tools, we&rsquo;ve tried Skype, then HipChat and then <a href="https://slack.com/">Slack</a> which we are using until now.
+One of the coolest features in Slack is its scripting capability. Moreover Github built <a href="https://hubot.github.com/">Hubot</a> &ndash; a bot running our scripts. It can be easily integrated with Slack. You deploy bot on Heroku, put custom scripts in proper directory and that&rsquo;s it.</p>
+
+<h3>The Idea</h3>
+
+<p>We are using Slack for some time and I&rsquo;ve planned to play with custom scripting since beginning of Slack in SoftwareMill.  Yet I didn&rsquo;t have the any idea good enough that I would love to implement it right away.
+That was the case until last week when I&rsquo;ve noticed that we are making quite a lot of orthographic mistakes. And when you often see words written with error, your internal &lsquo;correct or not&rsquo; detector starts to go haywire &ndash;
+you are no longer sure if that word should be written this way or another. So I&rsquo;ve decided to write a script that will try to spot such errors, correct and comment them in a gentle way :)</p>
+
+<p><img class="center" src="/images/blog/2014/12/slap.jpg" width="450" height="400"></p>
+
+<h3>Intro</h3>
+
+<p>But first let me briefly describe anatomy of Hubot script. It can be written in JavaScript or CoffeeScript and should implement at least one of two methods:</p>
+
+<p>``` coffeescript</p>
+
+<pre><code>module.exports = (robot) -&gt;
+  robot.hear &lt;regexp&gt;, (msg) -&gt;
+    # Code reacting on any message written in any chat room that matches &lt;regexp&gt;
+    msg.send 'Example response to chat room'
+
+  robot.respond &lt;regexp&gt;, (msg) -&gt;
+    # Code reacting on any message written to our bot that matches &lt;regexp&gt;
+    msg.send 'Example response 2 to chat room'
+</code></pre>
+
+<p>```</p>
+
+<p>Because we are interested in watching every room (channel) we will only play with <em>hear</em> method.</p>
+
+<h3>Iteration 1</h3>
+
+<p>At the beginning I wanted to implement something simple to check that my idea working and to see if it is easy to write and run custom script on Hubot. And after that, I could make my script more sophisticated, etc. So at first I&rsquo;ve created something like this:</p>
+
+<p>``` coffeescript</p>
+
+<p>module.exports = (robot) &ndash;>
+  robot.hear prepareErrorDetectingRegEx(), (msg) &ndash;></p>
+
+<pre><code>author = msg.message.user.name
+grammarFailure = msg.match[1]
+exclamationSentence = msg.random messages
+msg.send  '@' + author + ', ' + exclamationSentence + '! It should be *' + errors[grammarFailure.toLowerCase().trim()] + '*'
+</code></pre>
+
+<p>prepareErrorDetectingRegEx = () &ndash;>
+  errorWords = []
+  for k, v of errors</p>
+
+<pre><code>errorWords.push k
+</code></pre>
+
+<p>  joinedErrors = errorWords.join(&lsquo;|&rsquo;)
+  errorDetectingRegex = new RegExp(&lsquo;.<em>(&rsquo; + joinedErrors + &lsquo;).</em>&rsquo;, &lsquo;i&rsquo;);
+  return errorDetectingRegex</p>
+
+<h1>key-value pair where key is an error and value contains correct word</h1>
+
+<p>errors =
+  &lsquo;wziąść&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziasc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziaśc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziasć&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;pokarze&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;pokarzę&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;żądzić&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;żadzić&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;żadzic&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;ządzic&rsquo;  : &lsquo;rządzić&rsquo;</p>
+
+<p>messages = [&lsquo;come on&rsquo;, &lsquo;gimme a break&rsquo;, &lsquo;are you serious?&rsquo;] # for a Polish list of &lsquo;gentle&rsquo; messages check source code (link at the end of the post) :&ndash;)</p>
+
+<p>```</p>
+
+<p>Entry point of our script is in <em>robot.hear</em> function. Wee are creating regEx in <em>prepareErrorDetectingRegEx</em> which loads all <em>errors</em> and producing <em>OR</em> combo with all possible mistakes. This regular expression seemed fine at first,
+but then turned out to be not so perfect :)</p>
+
+<p>When any text written in chat matches our pattern, we know that we have our &ldquo;victim&rdquo;. Now we can extract author name, find correct version of word and prepare complete response like</p>
+
+<pre><code>@user, gimme a break! It should be &lt;correctVersionOfWordWrittenInBold&gt;
+</code></pre>
+
+<h3>Iteration 2</h3>
+
+<p>After first release, it was time to test script on production and see how it deals with messages posted during normal work day. And of course, it turned out that many common errors are missing in <em>errors</em> object but also that
+first version of regular expression is far from perfect. It was detecting mistakes in a properly written words, for example if we had pair &lsquo;eror&rsquo;: &lsquo;error&rsquo; it was firing also for messages like &lsquo;abcEror&rsquo; or &lsquo;erorSomething&rsquo;.</p>
+
+<p>This one can be fixed by new, better pattern checking only for separate words (or start/end of sentence)</p>
+
+<p>``` coffeescript</p>
+
+<p>prepareErrorDetectingRegEx = &ndash;>
+  errorWords = []
+  for k, v of errors</p>
+
+<pre><code>errorWords.push k
+</code></pre>
+
+<p>  joinedErrors = errorWords.join(&lsquo;|&rsquo;)
+  new RegExp &lsquo;(^|\s)(&rsquo; + joinedErrors + &lsquo;)($|\s)&rsquo;, &lsquo;i&rsquo;</p>
+
+<p>```</p>
+
+<p>That was the first issue, the second one was rather on code level: in Polish we have these national characters like &ldquo;ąęłśćżźóń&rdquo; but some people write words without them. And to catch all possible combinations, each word had to be added to <em>errors</em>
+ in many versions. Below you can see example listing with only three errors but using all combinations requires 10 records:</p>
+
+<p>``` coffeescript</p>
+
+<p>errors =
+  &lsquo;wziąść&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziasc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziaśc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziasć&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;pokarze&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;pokarzę&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;żądzić&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;żadzić&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;żadzic&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;ządzic&rsquo;  : &lsquo;rządzić&rsquo;</p>
+
+<p>```</p>
+
+<p>This approach is tedious but also much more error-prone. To make adding more records easier, I have to simplify algorithm a bit. And when I was discussing this with <a href="http://szimano.org">Szimano</a> he suggested escaping all polish characters first
+and after that applying regEx to detect errors. This approach was very easy to implement: first we accept all messages using <em>/.*/</em> pattern, then replace all national characters with their standard versions:</p>
+
+<p>``` coffeescript</p>
+
+<p>replacePolishChars = (text) &ndash;></p>
+
+<pre><code>text.toLowerCase()
+  .replace('ą', 'a')
+  .replace('ć', 'c')
+  .replace('ę', 'e')
+  .replace('ł', 'l')
+  .replace('ń', 'n')
+  .replace('ó', 'o')
+  .replace('ś', 's')
+  .replace('ż', 'z')
+  .replace('ź', 'z')
+</code></pre>
+
+<p>```</p>
+
+<p>Now we don&rsquo;t have all those different combination of one error word and our example errors list looks much simpler:</p>
+
+<p>``` coffeescript
+errors =
+  &lsquo;wziasc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;pokarze&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;pokarzę&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;zadzic&rsquo;  : &lsquo;rządzić&rsquo;</p>
+
+<p>```</p>
+
+<h3>Backlog</h3>
+
+<p>So after two iterations we have a stable script doing what we want and keeping our orthography skills sharp. Complete source code is available <a href="https://github.com/softwaremill/hal-9k/blob/master/scripts/grammar-corrector.coffee">at GitHub</a>.</p>
+
+<p>But as we are using this script, some new ideas started appearing and landed in my backlog for future versions:</p>
+
+<ul>
+<li><p>Store most often misspelled words in a database</p></li>
+<li><p>Store users making most mistakes and print &lsquo;hall of fame&rsquo; table</p></li>
+<li><p>Allow user to add new entries to <em>errors</em> directly from chat rooms</p></li>
+</ul>
+
+
+<h3>Summary</h3>
+
+<p>As you can see, scripting in text communicators like Slack or HipChat is really powerful and easy to deploy tool, you are only limited by your creativity. And you don&rsquo;t need hundreds line of codes to write something useful.</p>
+
+<p>Further reading: <a href="https://github.com/github/hubot/blob/master/docs/scripting.md">Hubot Scripting Guide</a></p>
+]]></content>
+  </entry>
+  
+</feed>
