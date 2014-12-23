@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/12/merry-christmas-in-java/">Merry Christmas and Silent Night in Java</a>
+      </li>
+    
+      <li class="post">
         <a href="/2014/12/chat-bot-scripting-and-polish-orthography/">Chat Bot, Scripting and Teaching Developers Orthography</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2014/07/zookeeper-curator-and-microservices-load-balancing/">ZooKeeper, Curator and How Microservices Load Balancing Works</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/06/handle-every-event-in-your-akka-application/">Handle Every Event in Your Akka Application</a>
       </li>
     
   </ul>
@@ -172,6 +172,54 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-28T23:26:25+01:00" data-updated="true" itemprop="datePublished">Feb 28<span>th</span>, 2013</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2013/02/twitter-bootstrap-navbar-angularjs-component/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2013/02/twitter-bootstrap-navbar-angularjs-component/" itemprop="url">Twitter Bootstrap Navbar as AngularJS Component</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>You all know <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>, don&rsquo;t you? It&rsquo;s the awesome library to make your web application looks pretty good without spending many hours on CSS. We are using Bootstrap based design in our current project that also uses AngularJS and as we are planning to have many new pages, we decided that&rsquo;s the earlier we introduce some components to our UI the better. And, what shouldn&rsquo;t be a surprise, navigation bar natually became the first candidate.</p>
+
+<h3>Overview</h3>
+
+<p>So in this post I am going to show how externalize Twitter Bootstrap Navbar into a separate, flexible AngularJS component. All source code is available in <a href="https://github.com/tdziurko/twitter-bootstrap-navbar-as-angularjs-directive">my GitHub repository</a> , so everything should be easy to follow and repeat.</p>
+
+<h3>Basic setup</h3>
+
+<p>To start from the basics, I&rsquo;ve prepared three pages that use the same navigation bar. These pages will soon become our super simple web application using AngularJS:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2013/02/navbar_angularjs1.png" alt="navbar_angularjs1" /></p>
+
+<p>Next step will be adding AngularJS and converting three pages into one small application. This is done in this <a href="https://github.com/tdziurko/twitter-bootstrap-navbar-as-angularjs-directive/commit/9d135332ef5e934920a65975f41fb06f6cc852a8">commit</a>. And after that we are ready to start working on our Navbar component.
+		
+		<a href="/2013/02/twitter-bootstrap-navbar-angularjs-component/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -610,46 +658,6 @@ Dear Reader, this post is in my native language as it applies only to developers
 
 		
 		<a href="/2012/05/my-numbers-of-geecon/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-13T08:48:54+02:00" data-updated="true" itemprop="datePublished">May 13<span>th</span>, 2012</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/java/'>Java</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/2012/05/jcommander-parsing-command-line-parameters-ease/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/2012/05/jcommander-parsing-command-line-parameters-ease/" itemprop="url">JCommander - Parsing Command Line Parameters With Ease</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>From time to time each of us have to create a small console application to perform a few tedious tasks that can be automated so we can concentrate on more creative ones instead. And every time I had to build such an app I struggled with passing options via command line parameters. Instead of concentrating on implementing logic, I had to create a parser, validator and so on. And in another console application I had to do the same&hellip; again and again. But thankfully it&rsquo;s over.</p>
-
-<p>Thanks to small library by <a href="http://beust.com/">Cédric Beust</a>, creator of well-known Java testing framework <a href="http://testng.org/">TestNG</a>. This time he created <strong>JCommander</strong> with a motto <em>Because life is too short to parse command line parameters</em>. But enough talking, let&rsquo;s sit down and write some code.</p>
-
-
-		
-		<a href="/2012/05/jcommander-parsing-command-line-parameters-ease/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>
