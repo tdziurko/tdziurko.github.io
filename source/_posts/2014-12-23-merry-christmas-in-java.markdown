@@ -14,7 +14,7 @@ Programmable Christmas wishes and carol, how cool is this?
 
 <!-- more -->
 
-Christmas is a special time for everyone: for decent people but even for us, nerds and geeks that feel really strange sitting at the table
+Christmas is a special time for everyone: for regular people but even for us, nerds and geeks that feel really strange sitting at the table
 far away from our computers, our natural environment.
 
 {% img center /images/blog/2014/12/christmas-tree.jpg 450 400 %}
