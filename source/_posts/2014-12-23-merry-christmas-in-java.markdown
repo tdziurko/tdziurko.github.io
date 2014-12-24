@@ -5,7 +5,7 @@ date: 2014-12-23 23:30:10 +0200
 comments: true
 categories: 
 - How-to
-- Offtopic
+- Off-topic
 keywords: Java, Carol, Merry Christmas, Java Sound
 description: Programmable Merry Christmas and Carol in Java
 ---
@@ -36,4 +36,4 @@ And in this special time I have a special message for you, my Dear Readers:
 ->**Merry Christmas and all the best in 2015**<-
 
 
-For those interested, source code is available on [Github](https://github.com/tdziurko/merry-christmas-in-java).
+For those interested, source code is available on [Github](https://github.com/tdziurko/merry-christmas-in-java/tree/master/src/main/java/pl/tomaszdziurko/silent_night).
