@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-to | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-12-24T09:05:14+01:00</updated>
+  <updated>2014-12-24T09:07:39+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -41,7 +41,7 @@ far away from our computers, our natural environment.</p>
 
 <p style="text-align:center;"><strong>With computer and phones turned off.</strong></p>
 
-<p style="text-align:center;"><strong>Merry Christmas and all the best in 2015</strong></p>
+<p style="text-align:center;"><strong>Merry Christmas and all the best in 2015!</strong></p>
 
 <p>For those interested, source code is available on <a href="https://github.com/tdziurko/merry-christmas-in-java/tree/master/src/main/java/pl/tomaszdziurko/silent_night">Github</a>.</p>
 ]]></content>
