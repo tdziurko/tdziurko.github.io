@@ -33,7 +33,7 @@ And in this special time I have a special message for you, my Dear Readers:
 
 ->**With computer and phones turned off.**<-
 
-->**Merry Christmas and all the best in 2015**<-
+->**Merry Christmas and all the best in 2015!**<-
 
 
 For those interested, source code is available on [Github](https://github.com/tdziurko/merry-christmas-in-java/tree/master/src/main/java/pl/tomaszdziurko/silent_night).
