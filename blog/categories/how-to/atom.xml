@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-to | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2014-12-24T13:11:10+01:00</updated>
+  <updated>2015-03-17T08:52:17+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,52 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Journey to Craft Perfect API]]></title>
+    <link href="http://tomaszdziurko.pl/2015/03/journey-to-craft-perfect-api/"/>
+    <updated>2015-03-17T09:09:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2015/03/journey-to-craft-perfect-api</id>
+    <content type="html"><![CDATA[<p>Trying to be a perfect in a never taught art</p>
+
+<!-- more -->
+
+
+<p>Several years ago our projects were lone islands, doing everything inside, sometimes communicating via database
+or from time to time via XML and Web Service. Rarely developer had to consume sophisticated API and almost never we had to create one.
+And because there was no need to write that, no one was teaching how to do it properly.</p>
+
+<p><img class="center" src="/images/blog/2015/03/perfect_stamp.jpg" width="400" height="400"></p>
+
+<p>Nowadays things look completely different, we live in the era of public APIs: Twitter, Facebook, microservices, nanoservices,
+two-line-services. Everything should have perfect REST API: well thought out, nicely designed and easy to use. But how to achieve these goals?
+This is a main subject of short book &ldquo;Web API Design &ndash; Crafting Interfaces that Developers Love” by￼Brian Mulloy <a href="http://apigee.com/about/resources/ebooks/web-api-design">available for free on ApiGee site</a>.</p>
+
+<p><img class="center" src="/images/blog/2015/03/web_api_design.jpg" width="300" height="200"></p>
+
+<h3>What is this book about</h3>
+
+<p>I am not going to write full abstract because this book is extremely short (and again, <a href="http://apigee.com/about/resources/ebooks/web-api-design">free</a>), only 36 pages so you can read it
+in two evenings. It is showing good practices when creating REST APIs with many real-life examples taken from such prominent companies as Google, LinkedIn, Facebook and Netflix.</p>
+
+<p>We can learn that:</p>
+
+<ul>
+<li><p>nouns should be used for naming instead of verbs</p></li>
+<li><p>we should not have more than two endpoints per resource</p></li>
+<li><p>errors indication should be done via HTTP Statuses (we can start with three: 200 &ndash; ok, 400 &ndash; request was not ok, 500 &ndash; something went wrong)</p></li>
+<li><p>but with human readable error messages that can be displayed when necessary</p></li>
+<li><p>API version should me mandatory</p></li>
+<li><p>place where version should be stored is not yet standardised, there are two approaches: url or request headers.</p></li>
+</ul>
+
+
+<p>So if you are in the “chatty” project communicating with others via REST or trying to make your API as usable
+for other developers as possible, you should really, really consider reading this paper. Short, concise and straight to the point.</p>
+
+<p>PS: Many thanks to the <a href="https://www.linkedin.com/pub/rafa%C5%82-remisiewicz/66/b02/456">Rafał Remisiewicz</a> for pushing me to reading this book and for being “Certified REST API designer” in our project for several months when we were working together :)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Merry Christmas and Silent Night in Java]]></title>
@@ -533,147 +579,6 @@ class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
 ```</p>
 
 <p>And that&rsquo;s all. Each test fail will now appear with corresponding screenshot from browser.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Reusing browser instance in Geb UI tests]]></title>
-    <link href="http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests/"/>
-    <updated>2013-05-13T12:46:19+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/05/reusing-browser-instance-geb-ui-tests</id>
-    <content type="html"><![CDATA[<p>Home-baked optimization should be fine unless they are re-inventing the wheel. Unfortunately that was the case this time,
-but thanks to the careful reader I know a lot more about Geb now.</p>
-
-<!-- more -->
-
-
-<p><strong>UPDATE</strong></p>
-
-<blockquote>
-When I originally wrote this post, I was Geb newbie. Despite the fact that approach presented below is valid and works, there is a much simpler solution to this problem incorporated by Geb itself and I strongly suggest using it instead of mine, home-crafted hack. All credits go to Artur Gajowy for showing me better approach. I have added short paragraph about this simpler solution at the end of this article, probably you should scroll down to the paragraph named "Better solution" :).*
-</blockquote>
-
-
-<p><a href="http://gebish.org">Geb</a> is next-generation UI testing library that frees developer from dealing with Selenium API which is in many cases not so friendly. The most important feature of Geb is its support, or I would even say, strong encouragement to use Page Objects in your UI tests. Page Objects are also present in Selenium, but they are not as intuitive and east to use as in Geb.
-But enough about Geb itself. Today I will share with you simple trick how to share one browser instance when running many Geb UI tests. This will significantly reduce time needed to execute UI tests and also reduce memory usage on test machines.</p>
-
-<h3>The Problem</h3>
-
-<p>Assume we have many test classes (spefications) similar to this one below.</p>
-
-<p>``` groovy
-class ExampleUITest extends GebSpec {</p>
-
-<pre><code>def "Should test feature 1"() {
-    given:
-    to LoginPage
-
-    when:
-    loginWith("login", "password")
-
-    then:
-    at HomePage
-    assert loggedUserLabel == "loggedUser"
-}
-
-def "Should test feature 2"() {
-    given:
-    to LoginPage
-
-    when:
-    loginWith("login", "password")
-
-    then:
-    at HomePage
-    assert loggedUserLabel == "loggedUser"
-}
-
-// and so on...
-</code></pre>
-
-<p>```</p>
-
-<p>What we have to do is prepare browser instance (in our case Firefox one) to click through our tests. We could to it in setup() method:</p>
-
-<p>``` groovy
-class ExampleUITest extends GebSpec {</p>
-
-<pre><code>def setup() {
-    driver = new FirefoxDriver()
-}
-
-def "Should test feature 1"() {
-    // ...
-}  
-
-def cleanup() {
-    driver.quit()
-}
-</code></pre>
-
-<p>```</p>
-
-<p>This approach works but it has one, big drawback. We all know that UI tests tend to last quite long and creating new browser instance for each, yes, each test method will only make this situation worse as it also takes some time to start browser on your testing server.</p>
-
-<p><strong>Second approach</strong></p>
-
-<p>We also could reuse same browser in each specification (each Geb class) by using setupSpec() and cleanupSpec() methods instead. This will reduce number of new instances created but still we will have many of them, especially in large codebase with many test classes.</p>
-
-<h3>Solution</h3>
-
-<p>My solution to this issue takes from both approaches presented above. But instead of creating browser for each specification, I am reusing one created in the first executed class.</p>
-
-<p>To make it work we need to introduce common abstract class for all our UI tests:
-``` groovy
-class IntelliGebSpec extends GebSpec {</p>
-
-<pre><code>static def cachedDriver // static variable will store our single driver instance
-
-def setupSpec() {
-    if ( cachedDriver == null) { // in first Specification this will be true
-        cachedDriver = new FirefoxDriver()  // so let's create driver and put it in cachedDriver variable
-    }
-}
-
-def setup() {
-    driver = cachedDriver   // each test should use our cached browser instance
-}
-
-// as we are reusing browser, we should logout from our application after
-// each test to have clean browser state on each test run
-def cleanup() {  
-    if ($(id: "logout").isDisplayed()) {
-        $(id: "logout").click()
-        waitFor { $(id: "inputName").isDisplayed() }
-    }
-    driver.manage().deleteAllCookies()
-}
-</code></pre>
-
-<p>}  <br/>
-```</p>
-
-<h3>Summary</h3>
-
-<p>In this post I have shown my home made solution to reusing browser in multiple tests. I strongly suggest all of you to check and try Geb, as after over a year of using Selenium I am really impressed by this library. Easy to use with really cool Page Objects support.</p>
-
-<h3>Update: the best solution</h3>
-
-<p>As explained in reference documentation <a href="http://www.gebish.org/manual/current/configuration.html#driver_caching">here</a>, Geb provides mechanism to configure and reuse single instance of browser in all our UI tests. Only thing we have to do is create GebConfig script in default package that will contain driver instantiation script, e.g.:
-``` groovy
-// complete GebConfig.groovy file:
-driver =</p>
-
-<pre><code>{
-    newDriver = new FirefoxDriver()
-    newDriver.manage().window().setSize(new Dimension(1024, 768))
-    return newDriver
-}
-</code></pre>
-
-<p>```</p>
-
-<p>And that&rsquo;s it, no hacking, no ugly static field.</p>
 ]]></content>
   </entry>
   

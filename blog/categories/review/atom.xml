@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Review | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/review/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2015-03-17T08:52:17+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Journey to Craft Perfect API]]></title>
+    <link href="http://tomaszdziurko.pl/2015/03/journey-to-craft-perfect-api/"/>
+    <updated>2015-03-17T09:09:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2015/03/journey-to-craft-perfect-api</id>
+    <content type="html"><![CDATA[<p>Trying to be a perfect in a never taught art</p>
+
+<!-- more -->
+
+
+<p>Several years ago our projects were lone islands, doing everything inside, sometimes communicating via database
+or from time to time via XML and Web Service. Rarely developer had to consume sophisticated API and almost never we had to create one.
+And because there was no need to write that, no one was teaching how to do it properly.</p>
+
+<p><img class="center" src="/images/blog/2015/03/perfect_stamp.jpg" width="400" height="400"></p>
+
+<p>Nowadays things look completely different, we live in the era of public APIs: Twitter, Facebook, microservices, nanoservices,
+two-line-services. Everything should have perfect REST API: well thought out, nicely designed and easy to use. But how to achieve these goals?
+This is a main subject of short book &ldquo;Web API Design &ndash; Crafting Interfaces that Developers Love” by￼Brian Mulloy <a href="http://apigee.com/about/resources/ebooks/web-api-design">available for free on ApiGee site</a>.</p>
+
+<p><img class="center" src="/images/blog/2015/03/web_api_design.jpg" width="300" height="200"></p>
+
+<h3>What is this book about</h3>
+
+<p>I am not going to write full abstract because this book is extremely short (and again, <a href="http://apigee.com/about/resources/ebooks/web-api-design">free</a>), only 36 pages so you can read it
+in two evenings. It is showing good practices when creating REST APIs with many real-life examples taken from such prominent companies as Google, LinkedIn, Facebook and Netflix.</p>
+
+<p>We can learn that:</p>
+
+<ul>
+<li><p>nouns should be used for naming instead of verbs</p></li>
+<li><p>we should not have more than two endpoints per resource</p></li>
+<li><p>errors indication should be done via HTTP Statuses (we can start with three: 200 &ndash; ok, 400 &ndash; request was not ok, 500 &ndash; something went wrong)</p></li>
+<li><p>but with human readable error messages that can be displayed when necessary</p></li>
+<li><p>API version should me mandatory</p></li>
+<li><p>place where version should be stored is not yet standardised, there are two approaches: url or request headers.</p></li>
+</ul>
+
+
+<p>So if you are in the “chatty” project communicating with others via REST or trying to make your API as usable
+for other developers as possible, you should really, really consider reading this paper. Short, concise and straight to the point.</p>
+
+<p>PS: Many thanks to the <a href="https://www.linkedin.com/pub/rafa%C5%82-remisiewicz/66/b02/456">Rafał Remisiewicz</a> for pushing me to reading this book and for being “Certified REST API designer” in our project for several months when we were working together :)</p>
+]]></content>
+  </entry>
+  
+</feed>
