@@ -43,7 +43,7 @@ We can learn that:
 
 * but with human readable error messages that can be displayed when necessary
 
-* API version should me mandatory
+* API version should be mandatory
 
 * place where version should be stored is not yet standardised, there are two approaches: url or request headers.
 
