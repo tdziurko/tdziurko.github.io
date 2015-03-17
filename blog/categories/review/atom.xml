@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Review | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/review/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2015-03-17T08:52:17+01:00</updated>
+  <updated>2015-03-17T09:20:44+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -47,7 +47,7 @@ in two evenings. It is showing good practices when creating REST APIs with many 
 <li><p>we should not have more than two endpoints per resource</p></li>
 <li><p>errors indication should be done via HTTP Statuses (we can start with three: 200 &ndash; ok, 400 &ndash; request was not ok, 500 &ndash; something went wrong)</p></li>
 <li><p>but with human readable error messages that can be displayed when necessary</p></li>
-<li><p>API version should me mandatory</p></li>
+<li><p>API version should be mandatory</p></li>
 <li><p>place where version should be stored is not yet standardised, there are two approaches: url or request headers.</p></li>
 </ul>
 
