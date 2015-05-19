@@ -48,11 +48,11 @@ is not provided in proven, well-known traditional RDBMS like PostgreSQL.
 ### 4. It’s all about People
 There are many IT events here in Poland but GeeCON stands out as one which really cares about socialising, making new friends and meeting old ones. I’ve always loved those discussions about IT and non-IT topics over a glass of 
 cold beer. And this year was no different. Talking with other developers helps when deciding what technology is worth trying and which one we should avoid at all costs. It also helps to filter “marketing bullshit” when choosing 
-new place to work. Some companies promote themselves as great place to be, but quite often talking with some current or former employees could change your opinion significantly. Especially after a few beers, people are more chatty and honest :)
+new place to work. Some companies promote themselves as great place to be, but quite often talking with some current or former employees could change your opinion significantly. Especially after a few beers, when people are more chatty and honest :)
 
 ### 5. Remote work is almost here
 You can call me biased, but a few years ago only [SoftwareMill](http://SoftwareMill.com) offered full-time remote work for Java developers. Now there are some other options, still not too many, still not 100% remote, still not in a company which was created and is run with remoteness in mind like SoftwareMill, 
-but change is visible. As Scott Berkun said during his closing keynote “everything you do in front of the screen, can be dome remotely" and world will be slowly moving in this direction.
+but change is visible. As Scott Berkun said during his closing keynote: “everything you do in front of the screen, can be dome remotely" and world will be slowly moving in this direction.
 
 And of course, ability to work remotely and company culture will play more and more important role when changing jobs so future looks promising.
 
