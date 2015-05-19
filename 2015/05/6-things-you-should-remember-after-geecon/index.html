@@ -1,0 +1,376 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>6 things you should remember after GeeCON 2015 - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="How to design good REST API which is easy to use">
+    
+    <meta name="keywords" content="GeeCON, Microservices, conference" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2015/05/6-things-you-should-remember-after-geecon/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/05/6-things-you-should-remember-after-geecon/">6 Things You Should Remember After GeeCON 2015</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/03/journey-to-craft-perfect-api/">The Journey to Craft Perfect API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/12/merry-christmas-in-java/">Merry Christmas and Silent Night in Java</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/12/chat-bot-scripting-and-polish-orthography/">Chat Bot, Scripting and Teaching Developers Orthography</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/09/why-sometimes-i-hate-myself/">Why Sometimes I Hate Myself</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">6 Things You Should Remember After GeeCON 2015</h1>
+	<div class="entry-content" itemprop="articleBody"><p>1200 developers, 75 speakers, 80 talks and 6 important things to remember</p>
+
+<!-- more -->
+
+
+<p>GeeCON 2015 is over so it is a good time for a summary of this great conference. Below list of my reflections during and just after this great event.</p>
+
+<p><img class="center" src="/images/blog/2015/05/geecon_2015.png" width="800" height="800"></p>
+
+<h3>1. Microservices are ultra fancy now</h3>
+
+<p>There was no more popular topic than microservices in this years’ talks. And of course we could hear see that “Microservices are the way to go”, “Microservices will help you build scalable systems”,
+“Microservices will help you this, Microservices will help you that”.</p>
+
+<p>People are in love with this, not so new but currently very hot, approach. As a developer working in microservices environment for almost a year I see many disadvantages, potential problems and issues when applying this approach.
+Especially when idea is introduced without careful planning and checking if company (infrastructure, codebase and especially people)
+is ready for such fundamental change. That is why I am rather sceptical when looking at this, often mindless, “let’s built everything using Microservices” movement.</p>
+
+<h3>2. Microservices architecture definitely will be overused and/or misused in the near future</h3>
+
+<p>In a 2-3 years I expect some talks during conferences with titles like “Migrating from microservices to more monolithic architecture”, “Microservices &ndash; what went wrong” or “Getting your project out of microservices hell”.
+People tend to apply things they’ve heard during conferences without considering their own context. In my opinion probably most of our projects will never reach a moment when you should make a decision to split system into
+multiple microservices. Monolith is a simple approach that will be enough for small to medium teams and projects/products.</p>
+
+<p>But worst decision people could make is starting a new project using microservices, especially when your team is new to this approach, domain is new and bounded contexts are very vaguely defined. This is a very quick way leading to project failure.
+Unfortunately developers tend to forget that most of their projects are pretty standard and standard problems are best solved by standard approaches.</p>
+
+<h3>3. PostgreSQL might have all features you need when considering MongoDB</h3>
+
+<p>Some time ago many people tend to overuse MongoDB because it promised to solve all our problems with persisting data and scaling DB servers. Of course in many cases it didn&rsquo;t end too well. Moreover MongoDB recently got bad press
+(examples: <a href="https://aphyr.com/posts/322-call-me-maybe-mongodb-stale-reads">Stale Reads in MongoDB</a> or <a href="https://aphyr.com/posts/284-call-me-maybe-mongodb">Call me maybe</a>). But it looks like potential solution came from completely different direction.</p>
+
+<p>One of the last releases of PostgreSQL (v. 9.4) introduced support to JSON Binary (more details <a href="http://www.infoq.com/news/2014/05/postgresql-9-4">here</a>) so it is really worth to check if you really need anything from MongoDB that
+is not provided in proven, well-known traditional RDBMS like PostgreSQL.</p>
+
+<h3>4. It’s all about People</h3>
+
+<p>There are many IT events here in Poland but GeeCON stands out as one which really cares about socialising, making new friends and meeting old ones. I’ve always loved those discussions about IT and non-IT topics over a glass of
+cold beer. And this year was no different. Talking with other developers helps when deciding what technology is worth trying and which one we should avoid at all costs. It also helps to filter “marketing bullshit” when choosing
+new place to work. Some companies promote themselves as great place to be, but quite often talking with some current or former employees could change your opinion significantly. Especially after a few beers, when people are more chatty and honest :)</p>
+
+<h3>5. Remote work is almost here</h3>
+
+<p>You can call me biased, but a few years ago only <a href="http://SoftwareMill.com">SoftwareMill</a> offered full-time remote work for Java developers. Now there are some other options, still not too many, still not 100% remote, still not in a company which was created and is run with remoteness in mind like SoftwareMill,
+but change is visible. As Scott Berkun said during his closing keynote: “everything you do in front of the screen, can be dome remotely&#8221; and world will be slowly moving in this direction.</p>
+
+<p>And of course, ability to work remotely and company culture will play more and more important role when changing jobs so future looks promising.</p>
+
+<h3>6. You can&rsquo;t know everything</h3>
+
+<p>Three or four years ago if you knew Java Persistence API, one front-end framework (like Spring MVC, Apache Wicket, etc.) and dependency injection (Spring or CDI) you could consider yourself as a pretty good developer.</p>
+
+<p>Nowadays everything is much more complicated: there is a JavaScript huge popularity growth (not to mention CoffeeScript or TypeScript), AngularJS and whole JS ecosystem with constantly growing number of build tools,
+libraries, frameworks or micro frameworks. We have devOps stuff (Ansible, Puppet, etc.), monitoring and logs aggregation (logstash, ElasticSearch, Kibana), many JVM languages in one project (Java + testing with Spock and Groovy most often),
+growing Scala ecosystem, reactive applications, functional programming and so on, and so on&hellip;</p>
+
+<p>We are living in hard times for any developer who wants to be up to date with all this stuff that happens around IT and programming. That&rsquo;s why it&rsquo;s very important to consciously choose only a few areas to follow regularly and invest most of your time there.
+Other stuff can wait until it is needed, <em>lazy val</em> was invented for a reason :)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">lazy</span> <span class="k">val</span> <span class="n">mySkillsInAreaX</span> <span class="k">=</span> <span class="n">learnSkillsInAreaX</span><span class="o">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Your free time is limited (unless you are no-life person without family, friends or even a pet), so you should spend it with care and with some long-term plan.</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-05-20T00:00:10+02:00" data-updated="true" itemprop="datePublished">May 20<span>th</span>, 2015</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/conferences/'>Conferences</a>, <a class='category' href='/blog/categories/geecon/'>GeeCON</a>, <a class='category' href='/blog/categories/review/'>Review</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2015/03/journey-to-craft-perfect-api/" title="Previous: The Journey to Craft Perfect API">&laquo; The Journey to Craft Perfect API</a>
+		  
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2015 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2015/05/6-things-you-should-remember-after-geecon/';
+        var disqus_url = 'http://tomaszdziurko.pl/2015/05/6-things-you-should-remember-after-geecon/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

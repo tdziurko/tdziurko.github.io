@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2015/05/6-things-you-should-remember-after-geecon/">6 Things You Should Remember After GeeCON 2015</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/03/journey-to-craft-perfect-api/">The Journey to Craft Perfect API</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2014/09/why-sometimes-i-hate-myself/">Why Sometimes I Hate Myself</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/07/apprenticeship-patterns-book-review/">The Apprenticeship Patterns - Book Review</a>
       </li>
     
   </ul>
@@ -172,6 +172,57 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-19T22:28:40+02:00" data-updated="true" itemprop="datePublished">Sep 19<span>th</span>, 2010</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2010/09/mercurial-some-useful-links-when-you-are-about-to-start/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2010/09/mercurial-some-useful-links-when-you-are-about-to-start/" itemprop="url">Mercurial - Some Useful Links When You Are About to Start</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>In my current project for a first time I am working with <a href="http://mercurial.selenic.com/">Mercurial</a> version control system. And here are some links, materials and tutorials which I found very useful at the beginning of work with this distributed source code management so different than CVS or SVN.</p>
+
+<ol>
+<li><p> <a href="http://hginit.com/top/">http://hginit.com/top/</a> &ndash; Short but very concise tutorial written by Joel Spolsky, yeah <a href="http://www.joelonsoftware.com/">that</a> Joel :) All written in a very entertaining way</p></li>
+<li><p> <a href="http://tortoisehg.bitbucket.org/">TortoiseHg</a> &ndash; popular application known from its versions for SVN/CVS with version for Mercurial</p></li>
+<li><p> <a href="http://www.h4ck3r.net/2010/05/11/mercurial-hg-with-dropbox/">Zdalne repozytorium za darmo z użyciem serwisu Dropbox</a> &ndash; Article explaining how to connect Mercurial with Dropbox to end with free self-backuping repository.</p></li>
+<li><p> <a href="http://javaforge.com/project/HGE">MercurialEclipse</a> &ndash; Eclipse plugin allowing to work with Mercurial from this IDE</p></li>
+<li><p> <a href="http://hgbook.red-bean.com/">Mercurial &ndash; the Definitive Guide</a> &ndash; Book explaining almost every detail of Mercurial</p></li>
+<li><p> <a href="http://www.jemander.se/MercurialByExample.pdf">Mercurial by Example (PDF)</a> &ndash; Mini article showing how to use Mercurial with easy to follow examples</p></li>
+<li><p> <a href="http://stevelosh.com/blog/2009/08/a-guide-to-branching-in-mercurial/">Branch i merge w Mercurial</a> &ndash; Guide how to create branches, how to merge and how spend only a few moments (in contrary to SVN) on merging two distant branches</p></li>
+<li><p> <a href="http://blogs.techrepublic.com.com/programming-and-development/?p=3237">Development workflow for Mercurial</a> &ndash; article at TechRepublic</p></li>
+</ol>
+
+
+<p>And as always, the latest list of articles and tutorials can be found on the Wiki site &ndash; <a href="http://mercurial.selenic.com/wiki">http://mercurial.selenic.com/wiki</a>.</p>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -662,85 +713,6 @@ Jest to faktycznie pionierski krok i z  niecierpliwością czekam, czy w ciągu 
 
 		
 		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-21T16:55:08+02:00" data-updated="true" itemprop="datePublished">Apr 21<span>st</span>, 2010</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/certificates/'>Certificates</a>, <a class='category' href='/blog/categories/java/'>Java</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/2010/04/the-life-cycle-of-servlet/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/2010/04/the-life-cycle-of-servlet/" itemprop="url">The Life Cycle of Servlet</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p><strong>Life cycle of servlet from the perspective of the container</strong></p>
-
-<ol>
-<li><p>After  start, the container is looking for servlet classes in the appropriate directory (for Apache Tomcat  would be $ TOMCAT_HOME / webapps) .</p></li>
-<li><p>Once they are found, there are two possible ways: servlets are loaded immediately or only when someone wants to use them. By using term &ldquo;load servlet&rdquo; I mean the execution of its constructor and init () method. init () is executed only once in the life cycle of servlet . It allows you to prepare it for usage (eg to connect to the database, initialize any resources).</p></li>
-</ol>
-
-
-<p>Code below presents fragment of web.xml file allowing to define order in which servlets are loaded when the containter starts:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;web-app&gt;</span>
-</span><span class='line'>    ...
-</span><span class='line'>    <span class="nt">&lt;servlet&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;servlet-name&gt;</span>FirstToLoadServlet<span class="nt">&lt;/servlet-name&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;servlet-class&gt;</span>pl.tdziurko.scwcd.servlets.FirstToLoadServlet<span class="nt">&lt;/servlet-class&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;load-on-startup&gt;</span>0<span class="nt">&lt;/load-on-startup&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/servlet&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;servlet&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;servlet-name&gt;</span>SecondToLoadServlet<span class="nt">&lt;/servlet-name&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;servlet-class&gt;</span>pl.tdziurko.scwcd.servlets.SecondToLoadServlet<span class="nt">&lt;/servlet-class&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/servlet&gt;</span>
-</span><span class='line'>    ...
-</span><span class='line'><span class="nt">&lt;/web-app&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-
-		
-		<a href="/2010/04/the-life-cycle-of-servlet/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>
