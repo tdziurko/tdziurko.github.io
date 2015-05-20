@@ -52,7 +52,7 @@ new place to work. Some companies promote themselves as great place to be, but q
 
 ### 5. Remote work is almost here
 You can call me biased, but a few years ago only [SoftwareMill](http://SoftwareMill.com) offered full-time remote work for Java developers. Now there are some other options, still not too many, still not 100% remote, still not in a company which was created and is run with remoteness in mind like SoftwareMill, 
-but change is visible. As Scott Berkun said during his closing keynote: “everything you do in front of the screen, can be dome remotely" and world will be slowly moving in this direction.
+but change is visible. As Scott Berkun said during his closing keynote: “everything you do in front of the screen, can be done remotely" and world will be slowly moving in this direction.
 
 And of course, ability to work remotely and company culture will play more and more important role when changing jobs so future looks promising.
 
