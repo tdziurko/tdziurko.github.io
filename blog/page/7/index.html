@@ -129,6 +129,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2015/10/speaker-at-java-developers-day-2015/">Speaker at Java Developers' Day 2015</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/10/seven-heroku-gotchas-for-java-developer/">Seven Heroku Gotchas for Java Developer</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/05/6-things-you-should-remember-after-geecon/">6 Things You Should Remember After GeeCON 2015</a>
       </li>
     
@@ -138,14 +146,6 @@
     
       <li class="post">
         <a href="/2014/12/merry-christmas-in-java/">Merry Christmas and Silent Night in Java</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/12/chat-bot-scripting-and-polish-orthography/">Chat Bot, Scripting and Teaching Developers Orthography</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/09/why-sometimes-i-hate-myself/">Why Sometimes I Hate Myself</a>
       </li>
     
   </ul>
@@ -172,6 +172,142 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-20T00:04:04+01:00" data-updated="true" itemprop="datePublished">Feb 20<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/" itemprop="url">Wicket Tutorial, Part 5 - Generic Unique Entity Validator</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>As I promised in the <a href="/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/">previous post</a>, today we will focus on transforming our unique name validator in Wicket to generic one. So now, let&rsquo;s simply list what we are going to achieve;</p>
+
+<ul>
+<li><p>validator should validate any entity object in our project</p></li>
+<li><p>validator should check unique value of any property from validated object</p></li>
+<li><p>error message should be generic too but customization should be easy</p></li>
+</ul>
+
+
+
+		
+		<a href="/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-17T22:51:42+01:00" data-updated="true" itemprop="datePublished">Feb 17<span>th</span>, 2011</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/" itemprop="url">Wicket Tutorial, Part 4 - Custom Validator for Unique Entity Name</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Welcome back to our <a href="%22/categories/wicket-tutorial/">Wicket tutorial</a> series! :) As I mentioned in <a href="/2011/02/wicket-tutorial-part-3-form-application/">previous post</a>, today we will concentrate on building validator stopping user from adding item location with non-unique name. At first we will start with non-generic but working validator and then we will try to make is as flexible as possible. Ok, so let&rsquo;s write some code!</p>
+
+<h3>Problem</h3>
+
+<p>As you might remember, currently we have Wicket form with basic validation checking existence of name field and whether its length is in proper range or not:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'> <span class="n">Form</span><span class="o">&lt;</span><span class="n">AddLocationPage</span><span class="o">&gt;</span> <span class="n">addLocationForm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Form</span><span class="o">&lt;</span><span class="n">AddLocationPage</span><span class="o">&gt;(</span><span class="s">&quot;addLocationForm&quot;</span><span class="o">,</span>
+</span><span class='line'>          <span class="k">new</span> <span class="n">CompoundPropertyModel</span><span class="o">&lt;</span><span class="n">AddLocationPage</span><span class="o">&gt;(</span><span class="k">this</span><span class="o">));</span>
+</span><span class='line'>  <span class="n">add</span><span class="o">(</span><span class="n">addLocationForm</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">Label</span> <span class="n">nameLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;nameLabel&quot;</span><span class="o">,</span> <span class="s">&quot;Location name&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nameLabel</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">RequiredTextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">nameField</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RequiredTextField</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="s">&quot;name&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">nameField</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">LengthBetweenValidator</span><span class="o">.</span><span class="na">lengthBetween</span><span class="o">(</span><span class="n">MIN_LOCATION_NAME_LENGTH</span><span class="o">,</span> <span class="n">MAX_LOCATION_NAME_LENGTH</span><span class="o">));</span>
+</span><span class='line'>  <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">nameField</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">Button</span> <span class="n">submitButton</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Button</span><span class="o">(</span><span class="s">&quot;submitButton&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>      <span class="nd">@Override</span>
+</span><span class='line'>      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSubmit</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">Location</span> <span class="n">location</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Location</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">locationService</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">location</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="n">getSession</span><span class="o">().</span><span class="na">info</span><span class="o">(</span><span class="s">&quot;Location added successfully&quot;</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">setResponsePage</span><span class="o">(</span><span class="n">LocationsPage</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">};</span>
+</span><span class='line'>  <span class="n">addLocationForm</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">submitButton</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+
+		
+		<a href="/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -598,83 +734,6 @@
 <li>Almost blinding Thomas Sundberg with reflectors at the end of his talk that he wasn&rsquo;t able to see people asking questions was embarrassing for me and so it should be for organizers.
 		
 		<a href="/2010/10/jdd-2010-from-my-perspective/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-02T08:55:55+02:00" data-updated="true" itemprop="datePublished">Oct 2<span>nd</span>, 2010</time></div>
-		<div class="tags">
-
-</div>
-		
-			<span class="comments"><a href="/2010/10/programming-books-in-english-with-free-worldwide-delivery-repost/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/2010/10/programming-books-in-english-with-free-worldwide-delivery-repost/" itemprop="url">Programming Books in English With Free Worldwide Delivery, Repost</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Few days ago in the discussion in Polish LinkedIn-like portal <a href="http://www.goldenline.pl">GoldenLine</a> about constant learning for people working in the IT, delivery costs from Amazon to Poland and ebooks appeared that only small group of people knows about online book store that sends all its books for free, even to Poland :)</p>
-
-<p>This book store is <a href="http://www.bookdepository.co.uk/">The Book Depository</a> and I found this information in <a href="http://groups.google.pl/group/warszawa-jug/browse_thread/thread/c7f393dbc9f6b449/e2012f715b167428?q=#e2012f715b167428">this post</a> (in Polish) by <a href="http://www.margiel.eu/">Michał Margiel</a> (thanks!) on the Warsaw Java Users Group forum. But because not everyone reads this forum regularly and awareness that such book store exists can be very useful for most of us, IT people, I am reposting it on my blog :)</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-29T21:45:24+02:00" data-updated="true" itemprop="datePublished">Sep 29<span>th</span>, 2010</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/news/'>News</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/2010/09/better-free-mercurial-repository-as-bitbucket-joins-atlassian/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/2010/09/better-free-mercurial-repository-as-bitbucket-joins-atlassian/" itemprop="url">Better Free Mercurial Repository as Bitbucket Joins Atlassian</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>So  far, for those who want to use Mercurial for private projects and in a small development teams it was hard to find a good and free place to host source code. <a href="http://bitbucket.org/">Bitbucket</a>, one of  the most interesting sites of this type which additionally offers very clear web  interface, had a restriction allowing only <strong>one</strong> private project. Others, unfortunately, had to be public. This is not what I was looking for.
-And when I already planned migration to the <a href="https://www.dropbox.com/home">Dropbox</a>-Mercurial combo as it is described <a href="http://www.h4ck3r.net/2010/05/11/mercurial-hg-with-dropbox/">in  this post</a>, this morning in my inbox I found the information about the merge BitBucket with <a href="http://www.atlassian.com/">Atlassian</a>.</p>
-
-<p>Nothing extraordinary, one company has been overtaken by the other, but there is one detail worth noting. On the occasion of merge Bitbucket extended capabilities of  free accounts. From today, you could have free unlimited number of private and public repositories of unlimited size. The  only limit is number of people (max 5 including the owner) who could share each project. This is some kind of limit but for a small teams or home-made projects this should pose no problem. In addition, there is special offer until 3rd October where you can choose subscription with a limit of 10 members. This plan is free for 12 months and is a good option if you have bigger project on the horizon :)</p>
-
-<p>More info about Bitbucket joining Attlasian can be read <a href="http://blog.bitbucket.org/2010/09/29/bitbucket-joins-atlassian/">here</a>.</p>
-
-		
-		
 	</div>
 
 </article>
