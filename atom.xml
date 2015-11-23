@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/feed" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2015-10-08T12:56:44+02:00</updated>
+  <updated>2015-11-23T08:12:02+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,286 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[One and the only one reason to customize IntelliJ IDEA memory settings]]></title>
+    <link href="http://tomaszdziurko.pl/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/"/>
+    <updated>2015-11-23T08:00:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings</id>
+    <content type="html"><![CDATA[<p><em>Don&rsquo;t be a Scrooge and give your IDE some more memory</em></p>
+
+<!-- more -->
+
+
+<p>Yesterday we had a discussion about customizing memory settings in IntelliJ IDEA and it appeared that some people do not do that, some people (like me) use some simple changeset
+and some developers craft a fancy, sophisticated setup that satisfy their needs. While working for a current project I had to deal with several small microservices projects and
+one older project, a core of the client&rsquo;s business which is quite big. And after applying some changes I have noticed really significant improvement when it comes to IDE speed and responsiveness.
+But at that time I didn&rsquo;t measure what exactly changed, it was only a subjective observation that <em>&ldquo;IDEA is now faster&rdquo;</em>.</p>
+
+<p>But during that discussion one of the developers working for the same client (thank you Yuri) sent me his settings and I was really overwhelmed by their level of complexity.
+I was happy with my own setup, but I was also curious how those completely different settings compare to each other and also how they compare to defaults provided by JetBrains. So after
+discussion with Yuri I knew that this is a good material for a blog post.</p>
+
+<h1>Goal</h1>
+
+<p>My plan is to compare how different IDEA memory settings perform in a scenario close to my daily usage (load big project, load two or three microservices, refresh big project after hypothetical <em>git pull</em>)
+and then choose the most optimal settings when it comes to memory consumption and speed improvement.</p>
+
+<h1>Test machine and projects</h1>
+
+<p><strong>Laptop</strong>: MacBook Pro Retina, 2,3GHz Intel Core i7, 16GB 1600Mhz DDR3, SSD Disc, OS X Yosemite</p>
+
+<p><strong>Projects</strong></p>
+
+<ul>
+<li>Big Project  &ndash; monolith, 700 000 lines of code (Java 8 and Groovy), 303 Gradle modules</li>
+<li>Two microservices &ndash; small projects with 10 000 &ndash; 20 000 lines of code (Java 8 and Groovy), each with one Gradle module</li>
+</ul>
+
+
+<h1>Test scenario</h1>
+
+<ol>
+<li>Close all projects in Idea</li>
+<li>Put settings under test to idea.vmoptions file</li>
+<li>Reset my laptop</li>
+<li>After a start close all unrelated programs (communicators, etc.)</li>
+<li>Open Idea (measure time)</li>
+<li>Open Big Project (measure time)</li>
+<li>Check jstat -gcutil</li>
+<li>Open two more projects: Microservice One and Microservice Two (measure times)</li>
+<li>Check jstat -gcutil</li>
+<li>Go back to Big Project and click &ldquo;Refresh Gradle project&rdquo; button (measure time)</li>
+<li>Check jstat -gcutil</li>
+</ol>
+
+
+<h2>What is jstat -gcutil</h2>
+
+<p>jstat is a tool available in your JDK to monitor JVM and Garbage Collector statistics. It has many different options to collect various data
+(<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstat.html">full documentation is here</a>) but we are interested in only one: <strong>-gcutil</strong>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-gcutil - Summary of garbage collection statistics.
+</span><span class='line'>
+</span><span class='line'>S0: Survivor space 0 utilization as a percentage of the space's current capacity.
+</span><span class='line'>S1: Survivor space 1 utilization as a percentage of the space's current capacity.
+</span><span class='line'>E: Eden space utilization as a percentage of the space's current capacity.
+</span><span class='line'>O: Old space utilization as a percentage of the space's current capacity.
+</span><span class='line'>M: Metaspace utilization as a percentage of the space's current capacity.
+</span><span class='line'>CCS: Compressed class space utilization as a percentage.
+</span><span class='line'>YGC: Number of young generation GC events.
+</span><span class='line'>YGCT: Young generation garbage collection time.
+</span><span class='line'>FGC: Number of full GC events.
+</span><span class='line'>FGCT: Full garbage collection time.
+</span><span class='line'>GCT: Total garbage collection time.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Example output from this command looks like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>S0     S1    E     O     M    CCS  YGC YGCT FGC  FGCT   GCT
+</span><span class='line'>89.70 0.00 81.26 74.27 95.68 91.76 40 2.444 14  0.715  3.159
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In this post the most important parameters are number of GC events (<strong>YGC</strong> and <strong>FGC</strong>) and collection times (<strong>YGCT</strong> and <strong>FGCT</strong>).</p>
+
+<h1>Tested settings</h1>
+
+<p>I have tested four different settings, to make reading easier each of them was given a name.</p>
+
+<h2>Default (grey)</h2>
+
+<p>These are built-in settings provided by JetBrains, clean IDEA 15 is using them:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-Xms128m
+</span><span class='line'>-Xmx750m
+</span><span class='line'>-XX:MaxPermSize=350m
+</span><span class='line'>-XX:ReservedCodeCacheSize=240m
+</span><span class='line'>-XX:+UseCompressedOops</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Big (red)</h2>
+
+<p>4096MB for Xmx and 1024MB for <em>ReservedCodeCacheSize</em>, that&rsquo;s quite a lot of memory.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-Xms1024m
+</span><span class='line'>-Xmx4096m
+</span><span class='line'>-XX:ReservedCodeCacheSize=1024m
+</span><span class='line'>-XX:+:UseCompressedOops
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h2>Balanced (blue)</h2>
+
+<p>2GB for Xmx and 2GB for Xms, more balanced approach to the memory consumption</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-Xms2g
+</span><span class='line'>-Xmx2g
+</span><span class='line'>-XX:ReservedCodeCacheSize=1024m
+</span><span class='line'>-XX:+:UseCompressedOops
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Sophisticated (orange)</h2>
+
+<p>2GB for Xmx and 2GB for Xms as above, but different Garbage Collector is specified and many different flags for GC and memory management. I have received these settings from Yuri.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-server
+</span><span class='line'>-Xms2g
+</span><span class='line'>-Xmx2g
+</span><span class='line'>-XX:NewRatio=3
+</span><span class='line'>-Xss16m
+</span><span class='line'>-XX:+UseConcMarkSweepGC
+</span><span class='line'>-XX:+CMSParallelRemarkEnabled
+</span><span class='line'>-XX:ConcGCThreads=4
+</span><span class='line'>-XX:ReservedCodeCacheSize=240m
+</span><span class='line'>-XX:+AlwaysPreTouch
+</span><span class='line'>-XX:+TieredCompilation
+</span><span class='line'>-XX:+UseCompressedOops
+</span><span class='line'>-XX:SoftRefLRUPolicyMSPerMB=50
+</span><span class='line'>-Dsun.io.useCanonCaches=false
+</span><span class='line'>-Djava.net.preferIPv4Stack=true
+</span><span class='line'>-Djsse.enableSNIExtension=false
+</span><span class='line'>-ea</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So these are our test setups. To perform our test scenarios we have to create a file <em>idea.vmoptions</em> under <em>~/Library/Preferences/IntelliJIdea15/</em> (it is Mac OS specific,
+to see how change these settings for your OS, check <a href="https://www.jetbrains.com/idea/help/increasing-memory-heap.html">this article</a>).</p>
+
+<p>Now it is time to perform our test scenarios and compare the results.</p>
+
+<h1>Results</h1>
+
+<h2>Idea startup time</h2>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1557289692&format=image" width="800" height="500"></p>
+
+<p>As you can see startup time does not depend on memory settings. Idea startup time is about 10 seconds for all test scenarios no matter how many memory we allocate.
+And this is not a surprise as those settings should not affect application behaviour in such early stage.</p>
+
+<h2>Time to load The Big Project</h2>
+
+<p>Ok, so now it is time to load our Monolith and its 700k lines of code.</p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1400772564&format=image" width="800" height="500"></p>
+
+<p>Finally there are some differences. Default settings performs almost three times worse than the rest. Apparently so large codebase needs more memory :) And if we execute</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>jstat -gcutil &lt;IDEA_PID&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>we will notice that Garbage Collector was really, really busy with default settings when we compare it other setups.</p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=93956661&format=image" width="800" height="500"></p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1213605225&format=image" width="800" height="500"></p>
+
+<p>Not only total time spent by GC on freeing memory is dramatically higher (about 50 times higher) but also average execution time of Full GC is much, much longer. Long periods spent on Full GCs
+are the main cause of low responsiveness of our IDE.</p>
+
+<h2>Opening two microservices in IDEA</h2>
+
+<p>Ok, so we have our Monolith loaded but we need to add some code to two smaller microservices. So let&rsquo;s open them in IDEA and compare total times.</p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=2053860050&format=image" width="800" height="500"></p>
+
+<p>In this test scenario we see that differences are still visible and <strong>Sophisticated</strong> wins here, <strong>Default</strong> is far behind the rest.</p>
+
+<h3>jstat -gcutil again</h3>
+
+<p>After loading two microservices we can check how Garbage Collectors is performing with three opened projects. We can see that three custom settings
+look almost the same and results of default settings are very, very poor.</p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=242159654&format=image" width="800" height="500"></p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1738350771&format=image" width="800" height="500"></p>
+
+<h2>Final stage: reload the Monolith</h2>
+
+<p>So we have coded for a while and now we need to fetch latest version of The Big Project from repository and then refresh Gradle Project so IDEA
+could see all new classes, etc.</p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=625856708&format=image" width="800" height="500"></p>
+
+<p><strong>Important note</strong>: Bar for Default setup is so high because IDEA crashed during refresh and I could not measure the actual time. Simply assigned memory was
+not sufficient to perform this operation.</p>
+
+<p>But looking at the best three, we see that Big settings refreshed project in the shortest time so the largest assigned memory helps a bit here.</p>
+
+<h3>jstat -gcutil for the last time</h3>
+
+<p>Because IDEA was not able to refresh projet with <strong>Default</strong> settings, they are not included in this measurement.</p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1467101172&format=image" width="800" height="500"></p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=712785115&format=image" width="800" height="500"></p>
+
+<p>In these last charts we see that differences between total times are quite small, but single Full GC is the fastest with <strong>Big</strong> settings applied. Again,
+it looks like very large Xmx helps a bit more when it comes to responsiveness.</p>
+
+<h1>Summary</h1>
+
+<p>In this short experiment I tried to test how much we could gain by customising memory settings of IntelliJ IDEA and it looks like that even some simple
+tweaks can drastically improve performance of our IDE and speed up our work. Of course the more memory you assign, the better results you will see, but
+we are using IDE next to many different applications which also consume memory so our goal should be to find a balance between performance gain and memory consumption.
+I think that in most cases setting <strong>Xmx</strong> to value between 2g and 3g is the best approach. If you have some more time you can play with jstat and
+<a href="http://docs.oracle.com/javase/6/docs/technotes/tools/share/jvisualvm.html">jvisualm</a> to check how changing different VM flags affect performance
+and memory footprint.</p>
+
+<h3>And you?</h3>
+
+<p>And what about you? What is your idea.vmoptions setup? Do you have any other ways to improve InteliJ IDEA performance?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Speaker at Java Developers' Day 2015]]></title>
@@ -2236,235 +2516,6 @@ But enough about Geb itself. Today I will share with you simple trick how to sha
 
 
 <p>And that&rsquo;s it, no hacking, no ugly static field.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Easy Html/Javascript JSON escaping in Scalatra ]]></title>
-    <link href="http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping/"/>
-    <updated>2013-04-30T23:59:59+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping</id>
-    <content type="html"><![CDATA[<p>Auto-escaping data in API response is always good except the moments when it is not&hellip; because suddenly in small edge case we need some unescaped data on the client side.</p>
-
-<!-- more -->
-
-
-<p style="text-align:center;"><img src="http://tomaszdziurko.pl/images/blog/2013/04/logo-scalatra.png" alt="logo-scalatra" /></p>
-
-<p><a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
-So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.</p>
-
-<h3>Basic Scalatra project</h3>
-
-<p>To show how it could be accomplished, we need a simple sample project using Scalatra. I didn&rsquo;t want to create it from scratch by myself so I removed some Swagger related stuff from project by my colleague Krzysztof Ciesielski (<a href="http://abstractionextraction.wordpress.com/2013/03/31/using-swagger-with-scalatra/">his post about Scalatra and Swagger</a>) and I was ready to go :) Full commit with this basic project is available <a href="https://github.com/tdziurko/scalatra-json-escaping/commit/099c7ac30fe0f63319a890e848a94390c035e801">here</a>, but the most interesting class is shown below:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">ExampleServlet</span><span class="o">()</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="k">with</span> <span class="nc">JacksonJsonSupport</span> <span class="k">with</span> <span class="nc">JValueResult</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">protected</span> <span class="k">implicit</span> <span class="k">val</span> <span class="n">jsonFormats</span><span class="k">:</span> <span class="kt">Formats</span> <span class="o">=</span> <span class="nc">DefaultFormats</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">val</span> <span class="n">messages</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span>
-</span><span class='line'>    <span class="nc">Message</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">&quot;&lt;script&gt;&lt;alert&gt;Script hacker&lt;/alert&gt;&lt;/script&gt;&quot;</span><span class="o">,</span> <span class="s">&quot;Johny Hacker&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">()),</span>
-</span><span class='line'>    <span class="nc">Message</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">&quot;Decent message&quot;</span><span class="o">,</span> <span class="s">&quot;John Smith&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">()),</span>
-</span><span class='line'>    <span class="nc">Message</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">&quot;Message with &lt;b&gt;bolded fragment&lt;/b&gt;&quot;</span><span class="o">,</span> <span class="s">&quot;Kate Norton&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">())</span>
-</span><span class='line'>  <span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">before</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>    <span class="n">contentType</span> <span class="k">=</span> <span class="n">formats</span><span class="o">(</span><span class="s">&quot;json&quot;</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="n">messages</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="k">val</span> <span class="n">id</span> <span class="k">=</span> <span class="n">params</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">).</span><span class="n">toInt</span><span class="o">;</span>
-</span><span class='line'>    <span class="k">val</span> <span class="n">messageOptional</span> <span class="k">=</span> <span class="n">messages</span><span class="o">.</span><span class="n">find</span><span class="o">((</span><span class="n">m</span><span class="k">:</span> <span class="kt">Message</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">log</span><span class="o">(</span><span class="s">&quot;optional =&quot;</span> <span class="o">+</span> <span class="n">messageOptional</span><span class="o">)</span>
-</span><span class='line'>    <span class="n">messageOptional</span> <span class="k">match</span> <span class="o">{</span>
-</span><span class='line'>      <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">e</span>
-</span><span class='line'>      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">Message</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">text</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">author</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">created</span><span class="k">:</span> <span class="kt">Date</span><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ok, so what we have here? Simple Rest service that returns JSON. Get method without any params returns list of messages and get with passed id returns single message with given id. For the sake of simplicity, I have hardcoded list of three messages with two of them containing some Html/JS elements.</p>
-
-<h3>Definition of Done</h3>
-
-<p>It is always good to have clear Definition of Done so in our case there are two things we want our methods to do:</p>
-
-<ul>
-<li><p>Get /rest/example without parameters should return list of messages with escaped content</p></li>
-<li><p>Get /rest/example/1 (with parameter) should return single messages without escaping</p></li>
-</ul>
-
-
-<h3>Implementation details</h3>
-
-<p>To add escaping we need to find place in Scalatra where objects returned from method are converted to Json. After some digging I found <em>JacksonJsonOutput</em> trait with method <em>writeJon</em>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">trait</span> <span class="nc">JacksonJsonOutput</span> <span class="k">extends</span> <span class="nc">JsonOutput</span><span class="o">[</span><span class="kt">JValue</span><span class="o">]</span> <span class="k">with</span> <span class="n">jackson</span><span class="o">.</span><span class="nc">JsonMethods</span> <span class="o">{</span>
-</span><span class='line'>  <span class="k">protected</span> <span class="k">def</span> <span class="n">writeJson</span><span class="o">(</span><span class="n">json</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">,</span> <span class="n">writer</span><span class="k">:</span> <span class="kt">Writer</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="n">mapper</span><span class="o">.</span><span class="n">writeValue</span><span class="o">(</span><span class="n">writer</span><span class="o">,</span> <span class="n">json</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So what we have to do is override method and somehow define logic to perform actual escaping for us. Luckily JValue has function <em>map</em> that allows to apply passed function to every value in JSON. So we could fire escapeHtml4 method from Apache Commons Lang on each String value in JSON:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="k">override</span> <span class="k">def</span> <span class="n">writeJson</span><span class="o">(</span><span class="n">json</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">,</span> <span class="n">writer</span><span class="k">:</span> <span class="kt">Writer</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="k">val</span> <span class="n">escapedJson</span> <span class="k">=</span> <span class="n">json</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="n">x</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">)</span> <span class="k">=&gt;</span>
-</span><span class='line'>      <span class="n">x</span> <span class="k">match</span> <span class="o">{</span>     <span class="c1">// let&#39;s check what type is this element</span>
-</span><span class='line'>        <span class="k">case</span> <span class="nc">JString</span><span class="o">(</span><span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">JString</span><span class="o">(</span><span class="n">escapeHtml4</span><span class="o">(</span><span class="n">y</span><span class="o">))</span>    <span class="c1">// if it is a String, escape it</span>
-</span><span class='line'>        <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">x</span>        <span class="c1">// keep value of other type as is</span>
-</span><span class='line'>      <span class="o">}</span>
-</span><span class='line'>    <span class="o">)</span>
-</span><span class='line'>    <span class="n">mapper</span><span class="o">.</span><span class="n">writeValue</span><span class="o">(</span><span class="n">writer</span><span class="o">,</span> <span class="n">escapedJson</span><span class="o">)</span>
-</span><span class='line'>  <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>As you can see all logic is done by <em>map</em> function, we only need to add a few lines of code that will filter and escape String values in JSON. So far so good, but now we are escaping every methods from our Rest API. This is not exactly what we wanted to achieve. To get it done right, we need to define a mechanism to disable escaping for a specific method.</p>
-
-<h4>Wrapping marker object</h4>
-
-<p>So we need a marker &ldquo;something&rdquo; (class, interface or trait) that will tell <em>writeJson</em> method which data shouldn&rsquo;t be escaped.
-And after trying different approaches it turned out that only thing we need is to wrap value returned from method in a marker object and then in <em>writeJson</em> check if its is wrapped or not and escape only not wrapped data. So workflow looks as follows:</p>
-
-<ol>
-<li><p> If we dont&#8217; want escaping, wrap returned object in a <em>NotEscapedJsonWrapper</em></p></li>
-<li><p> In writeJson check if object to write is a wrapper. If so, only unwrap it and write. It it is not a wrapper, escape all Strings inside object and wride data after that</p></li>
-</ol>
-
-
-<p>Looks easy. We need simple wrapper class:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="k">case</span> <span class="k">class</span> <span class="nc">NotEscapedJsonWrapper</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">notEscapedData</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>and we need to wrap response with this object:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="k">val</span> <span class="n">id</span> <span class="k">=</span> <span class="n">params</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">).</span><span class="n">toInt</span><span class="o">;</span>
-</span><span class='line'>    <span class="k">val</span> <span class="n">messageOptional</span> <span class="k">=</span> <span class="n">messages</span><span class="o">.</span><span class="n">find</span><span class="o">((</span><span class="n">m</span><span class="k">:</span> <span class="kt">Message</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">log</span><span class="o">(</span><span class="s">&quot;optional =&quot;</span> <span class="o">+</span> <span class="n">messageOptional</span><span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">messageOptional</span> <span class="k">match</span> <span class="o">{</span>
-</span><span class='line'>      <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">NotEscapedJsonWrapper</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="c1">// wrap data that we don&#39;t want to be escaped</span>
-</span><span class='line'>      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>  <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And after that we have to modify <em>writeJson</em> to check if object to be written is wrapped with &ldquo;not-escape-me&rdquo; marker object or not.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="k">override</span> <span class="k">def</span> <span class="n">writeJson</span><span class="o">(</span><span class="n">json</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">,</span> <span class="n">writer</span><span class="k">:</span> <span class="kt">Writer</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>    <span class="o">(</span><span class="n">json</span> <span class="o">\</span> <span class="s">&quot;notEscapedData&quot;</span><span class="o">)</span> <span class="k">match</span> <span class="o">{</span>     <span class="c1">// check if json contains field &#39;notEscapedData&#39; meaning that it is wrapping object</span>
-</span><span class='line'>      <span class="k">case</span> <span class="nc">JNothing</span> <span class="k">=&gt;</span> <span class="o">{</span>                  <span class="c1">// no wrapper, so we perform escaping</span>
-</span><span class='line'>        <span class="k">val</span> <span class="n">escapedJson</span> <span class="k">=</span> <span class="n">json</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="n">x</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">)</span> <span class="k">=&gt;</span>
-</span><span class='line'>          <span class="n">x</span> <span class="k">match</span> <span class="o">{</span>
-</span><span class='line'>            <span class="k">case</span> <span class="nc">JString</span><span class="o">(</span><span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">JString</span><span class="o">(</span><span class="n">escapeHtml4</span><span class="o">(</span><span class="n">y</span><span class="o">))</span>
-</span><span class='line'>            <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">x</span>
-</span><span class='line'>          <span class="o">}</span>
-</span><span class='line'>        <span class="o">)</span>
-</span><span class='line'>        <span class="n">mapper</span><span class="o">.</span><span class="n">writeValue</span><span class="o">(</span><span class="n">writer</span><span class="o">,</span> <span class="n">escapedJson</span><span class="o">)</span>
-</span><span class='line'>      <span class="o">}</span>
-</span><span class='line'>      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="o">{</span>    <span class="c1">// field &#39;notEscapedData&#39; detected, unwrap and return clean object</span>
-</span><span class='line'>        <span class="n">mapper</span><span class="o">.</span><span class="n">writeValue</span><span class="o">(</span><span class="n">writer</span><span class="o">,</span> <span class="n">json</span> <span class="o">\</span> <span class="s">&quot;notEscapedData&quot;</span><span class="o">)</span>
-</span><span class='line'>      <span class="o">}</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>  <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And after that we could compile and start container with our small application. When we enter /rest/example we will get list of all messages with every String properly escaped. And if we request /rest/example/1 we will get single message as not-escaped data. That&rsquo;s all, we have our escaping working.</p>
-
-<h3>Summary</h3>
-
-<p>In this short post I&rsquo;ve described how to implement Html/Js escaping in Scalatra based application in a pretty straightforward way that can be easily defined in one, common place without need to add manual escaping in every method that needs that. Thanks to this, our application is much safer and only explicitly declared methods can return potentially unsafe data.
-Source code of this small example app is available <a href="https://github.com/tdziurko/scalatra-json-escaping">on GitHub</a>.</p>
 ]]></content>
   </entry>
   

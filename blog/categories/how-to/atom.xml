@@ -4,7 +4,7 @@
   <title><![CDATA[Category: How-to | Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/blog/categories/how-to/atom.xml" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2015-10-08T12:56:44+02:00</updated>
+  <updated>2015-11-23T08:12:02+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,261 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[One and the only one reason to customize IntelliJ IDEA memory settings]]></title>
+    <link href="http://tomaszdziurko.pl/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/"/>
+    <updated>2015-11-23T08:00:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings</id>
+    <content type="html"><![CDATA[<p><em>Don&rsquo;t be a Scrooge and give your IDE some more memory</em></p>
+
+<!-- more -->
+
+
+<p>Yesterday we had a discussion about customizing memory settings in IntelliJ IDEA and it appeared that some people do not do that, some people (like me) use some simple changeset
+and some developers craft a fancy, sophisticated setup that satisfy their needs. While working for a current project I had to deal with several small microservices projects and
+one older project, a core of the client&rsquo;s business which is quite big. And after applying some changes I have noticed really significant improvement when it comes to IDE speed and responsiveness.
+But at that time I didn&rsquo;t measure what exactly changed, it was only a subjective observation that <em>&ldquo;IDEA is now faster&rdquo;</em>.</p>
+
+<p>But during that discussion one of the developers working for the same client (thank you Yuri) sent me his settings and I was really overwhelmed by their level of complexity.
+I was happy with my own setup, but I was also curious how those completely different settings compare to each other and also how they compare to defaults provided by JetBrains. So after
+discussion with Yuri I knew that this is a good material for a blog post.</p>
+
+<h1>Goal</h1>
+
+<p>My plan is to compare how different IDEA memory settings perform in a scenario close to my daily usage (load big project, load two or three microservices, refresh big project after hypothetical <em>git pull</em>)
+and then choose the most optimal settings when it comes to memory consumption and speed improvement.</p>
+
+<h1>Test machine and projects</h1>
+
+<p><strong>Laptop</strong>: MacBook Pro Retina, 2,3GHz Intel Core i7, 16GB 1600Mhz DDR3, SSD Disc, OS X Yosemite</p>
+
+<p><strong>Projects</strong></p>
+
+<ul>
+<li>Big Project  &ndash; monolith, 700 000 lines of code (Java 8 and Groovy), 303 Gradle modules</li>
+<li>Two microservices &ndash; small projects with 10 000 &ndash; 20 000 lines of code (Java 8 and Groovy), each with one Gradle module</li>
+</ul>
+
+
+<h1>Test scenario</h1>
+
+<ol>
+<li>Close all projects in Idea</li>
+<li>Put settings under test to idea.vmoptions file</li>
+<li>Reset my laptop</li>
+<li>After a start close all unrelated programs (communicators, etc.)</li>
+<li>Open Idea (measure time)</li>
+<li>Open Big Project (measure time)</li>
+<li>Check jstat -gcutil</li>
+<li>Open two more projects: Microservice One and Microservice Two (measure times)</li>
+<li>Check jstat -gcutil</li>
+<li>Go back to Big Project and click &ldquo;Refresh Gradle project&rdquo; button (measure time)</li>
+<li>Check jstat -gcutil</li>
+</ol>
+
+
+<h2>What is jstat -gcutil</h2>
+
+<p>jstat is a tool available in your JDK to monitor JVM and Garbage Collector statistics. It has many different options to collect various data
+(<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstat.html">full documentation is here</a>) but we are interested in only one: <strong>-gcutil</strong>:</p>
+
+<p>```</p>
+
+<pre><code>-gcutil - Summary of garbage collection statistics.
+
+S0: Survivor space 0 utilization as a percentage of the space's current capacity.
+S1: Survivor space 1 utilization as a percentage of the space's current capacity.
+E: Eden space utilization as a percentage of the space's current capacity.
+O: Old space utilization as a percentage of the space's current capacity.
+M: Metaspace utilization as a percentage of the space's current capacity.
+CCS: Compressed class space utilization as a percentage.
+YGC: Number of young generation GC events.
+YGCT: Young generation garbage collection time.
+FGC: Number of full GC events.
+FGCT: Full garbage collection time.
+GCT: Total garbage collection time.
+</code></pre>
+
+<p>```</p>
+
+<p>Example output from this command looks like this:
+```</p>
+
+<pre><code>S0     S1    E     O     M    CCS  YGC YGCT FGC  FGCT   GCT
+89.70 0.00 81.26 74.27 95.68 91.76 40 2.444 14  0.715  3.159
+</code></pre>
+
+<p>```</p>
+
+<p>In this post the most important parameters are number of GC events (<strong>YGC</strong> and <strong>FGC</strong>) and collection times (<strong>YGCT</strong> and <strong>FGCT</strong>).</p>
+
+<h1>Tested settings</h1>
+
+<p>I have tested four different settings, to make reading easier each of them was given a name.</p>
+
+<h2>Default (grey)</h2>
+
+<p>These are built-in settings provided by JetBrains, clean IDEA 15 is using them:</p>
+
+<p>```</p>
+
+<pre><code>-Xms128m
+-Xmx750m
+-XX:MaxPermSize=350m
+-XX:ReservedCodeCacheSize=240m
+-XX:+UseCompressedOops
+</code></pre>
+
+<p>```</p>
+
+<h2>Big (red)</h2>
+
+<p>4096MB for Xmx and 1024MB for <em>ReservedCodeCacheSize</em>, that&rsquo;s quite a lot of memory.</p>
+
+<p>```</p>
+
+<pre><code>-Xms1024m
+-Xmx4096m
+-XX:ReservedCodeCacheSize=1024m
+-XX:+:UseCompressedOops
+</code></pre>
+
+<p>```</p>
+
+<h2>Balanced (blue)</h2>
+
+<p>2GB for Xmx and 2GB for Xms, more balanced approach to the memory consumption</p>
+
+<p>```</p>
+
+<pre><code>-Xms2g
+-Xmx2g
+-XX:ReservedCodeCacheSize=1024m
+-XX:+:UseCompressedOops
+</code></pre>
+
+<p>```</p>
+
+<h2>Sophisticated (orange)</h2>
+
+<p>2GB for Xmx and 2GB for Xms as above, but different Garbage Collector is specified and many different flags for GC and memory management. I have received these settings from Yuri.</p>
+
+<p>```</p>
+
+<pre><code>-server
+-Xms2g
+-Xmx2g
+-XX:NewRatio=3
+-Xss16m
+-XX:+UseConcMarkSweepGC
+-XX:+CMSParallelRemarkEnabled
+-XX:ConcGCThreads=4
+-XX:ReservedCodeCacheSize=240m
+-XX:+AlwaysPreTouch
+-XX:+TieredCompilation
+-XX:+UseCompressedOops
+-XX:SoftRefLRUPolicyMSPerMB=50
+-Dsun.io.useCanonCaches=false
+-Djava.net.preferIPv4Stack=true
+-Djsse.enableSNIExtension=false
+-ea
+</code></pre>
+
+<p>```</p>
+
+<p>So these are our test setups. To perform our test scenarios we have to create a file <em>idea.vmoptions</em> under <em>~/Library/Preferences/IntelliJIdea15/</em> (it is Mac OS specific,
+to see how change these settings for your OS, check <a href="https://www.jetbrains.com/idea/help/increasing-memory-heap.html">this article</a>).</p>
+
+<p>Now it is time to perform our test scenarios and compare the results.</p>
+
+<h1>Results</h1>
+
+<h2>Idea startup time</h2>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1557289692&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1557289692&amp;format=image</a>" width="800" height="500"></p>
+
+<p>As you can see startup time does not depend on memory settings. Idea startup time is about 10 seconds for all test scenarios no matter how many memory we allocate.
+And this is not a surprise as those settings should not affect application behaviour in such early stage.</p>
+
+<h2>Time to load The Big Project</h2>
+
+<p>Ok, so now it is time to load our Monolith and its 700k lines of code.</p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1400772564&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1400772564&amp;format=image</a>" width="800" height="500"></p>
+
+<p>Finally there are some differences. Default settings performs almost three times worse than the rest. Apparently so large codebase needs more memory :) And if we execute</p>
+
+<p>```</p>
+
+<pre><code>jstat -gcutil &lt;IDEA_PID&gt;
+</code></pre>
+
+<p>```</p>
+
+<p>we will notice that Garbage Collector was really, really busy with default settings when we compare it other setups.</p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=93956661&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=93956661&amp;format=image</a>" width="800" height="500"></p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1213605225&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1213605225&amp;format=image</a>" width="800" height="500"></p>
+
+<p>Not only total time spent by GC on freeing memory is dramatically higher (about 50 times higher) but also average execution time of Full GC is much, much longer. Long periods spent on Full GCs
+are the main cause of low responsiveness of our IDE.</p>
+
+<h2>Opening two microservices in IDEA</h2>
+
+<p>Ok, so we have our Monolith loaded but we need to add some code to two smaller microservices. So let&rsquo;s open them in IDEA and compare total times.</p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=2053860050&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=2053860050&amp;format=image</a>" width="800" height="500"></p>
+
+<p>In this test scenario we see that differences are still visible and <strong>Sophisticated</strong> wins here, <strong>Default</strong> is far behind the rest.</p>
+
+<h3>jstat -gcutil again</h3>
+
+<p>After loading two microservices we can check how Garbage Collectors is performing with three opened projects. We can see that three custom settings
+look almost the same and results of default settings are very, very poor.</p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=242159654&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=242159654&amp;format=image</a>" width="800" height="500"></p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1738350771&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1738350771&amp;format=image</a>" width="800" height="500"></p>
+
+<h2>Final stage: reload the Monolith</h2>
+
+<p>So we have coded for a while and now we need to fetch latest version of The Big Project from repository and then refresh Gradle Project so IDEA
+could see all new classes, etc.</p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=625856708&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=625856708&amp;format=image</a>" width="800" height="500"></p>
+
+<p><strong>Important note</strong>: Bar for Default setup is so high because IDEA crashed during refresh and I could not measure the actual time. Simply assigned memory was
+not sufficient to perform this operation.</p>
+
+<p>But looking at the best three, we see that Big settings refreshed project in the shortest time so the largest assigned memory helps a bit here.</p>
+
+<h3>jstat -gcutil for the last time</h3>
+
+<p>Because IDEA was not able to refresh projet with <strong>Default</strong> settings, they are not included in this measurement.</p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1467101172&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1467101172&amp;format=image</a>" width="800" height="500"></p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=712785115&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=712785115&amp;format=image</a>" width="800" height="500"></p>
+
+<p>In these last charts we see that differences between total times are quite small, but single Full GC is the fastest with <strong>Big</strong> settings applied. Again,
+it looks like very large Xmx helps a bit more when it comes to responsiveness.</p>
+
+<h1>Summary</h1>
+
+<p>In this short experiment I tried to test how much we could gain by customising memory settings of IntelliJ IDEA and it looks like that even some simple
+tweaks can drastically improve performance of our IDE and speed up our work. Of course the more memory you assign, the better results you will see, but
+we are using IDE next to many different applications which also consume memory so our goal should be to find a balance between performance gain and memory consumption.
+I think that in most cases setting <strong>Xmx</strong> to value between 2g and 3g is the best approach. If you have some more time you can play with jstat and
+<a href="http://docs.oracle.com/javase/6/docs/technotes/tools/share/jvisualvm.html">jvisualm</a> to check how changing different VM flags affect performance
+and memory footprint.</p>
+
+<h3>And you?</h3>
+
+<p>And what about you? What is your idea.vmoptions setup? Do you have any other ways to improve InteliJ IDEA performance?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[The Journey to Craft Perfect API]]></title>
@@ -426,159 +681,6 @@ public void shouldEncryptAndDecryptValue() {
 
 <p>}
 ```</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Taking a screenshot when UI tests written in Geb fail]]></title>
-    <link href="http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
-    <updated>2013-05-27T19:30:36+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
-    <content type="html"><![CDATA[<p>There is nothing worse than being reported that UI test failed but without clear evidence what exactly went wrong.
-And what could be better evidence than screenshot just after the failure?</p>
-
-<!-- more -->
-
-
-<p>This is a second post about <a href="http://www.gebish.org/"><strong>Geb</strong></a> in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.</p>
-
-<h3>The Problem</h3>
-
-<p>We need a simple way to configure Geb UI tests to take a screenshot on each test fail. This should be &ldquo;add and forget&rdquo; config that does not need any changes when we add more tests to our application.</p>
-
-<h3>Solution</h3>
-
-<p>We have to find some type of listener that waits for different test results and fires proper method when test fails. In <a href="http://testng.org/">TestNG</a> we have a <a href="http://testng.org/javadocs/org/testng/TestListenerAdapter.html">TestListenerAdapter</a> so probably Geb or Spock should have something similar.</p>
-
-<p>After some digging I was able to locate <em>IRunListener</em> with method I need:
-``` groovy
-public interface IRunListener {</p>
-
-<pre><code>void beforeSpec(org.spockframework.runtime.model.SpecInfo specInfo);
-
-void beforeFeature(org.spockframework.runtime.model.FeatureInfo featureInfo);
-
-void beforeIteration(org.spockframework.runtime.model.IterationInfo iterationInfo);
-
-void afterIteration(org.spockframework.runtime.model.IterationInfo iterationInfo);
-
-void afterFeature(org.spockframework.runtime.model.FeatureInfo featureInfo);
-
-void afterSpec(org.spockframework.runtime.model.SpecInfo specInfo);
-
-void error(org.spockframework.runtime.model.ErrorInfo errorInfo); // &lt; -- this is it
-
-void specSkipped(org.spockframework.runtime.model.SpecInfo specInfo);
-
-void featureSkipped(org.spockframework.runtime.model.FeatureInfo featureInfo);
-</code></pre>
-
-<p>}
-```</p>
-
-<p><strong>Simple version of test failure listener</strong>
-Luckily this interface comes with abstract class named <em>AbstractRunListener</em> that allows us to implement only methods we want instead of fulfilling the whole contract specified by IRunListener.</p>
-
-<p>So our first step will be to print something to the console every time our test fails:</p>
-
-<p>``` groovy
-class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
-
-<p>   def void error(ErrorInfo error) {</p>
-
-<pre><code>   System.out.println("Error in method " + error.method.name);
-</code></pre>
-
-<p>   }
-}
-```</p>
-
-<p><strong>Adding custom listener to all tests with Spock extension</strong>
-But except implementation of a listener, we have to add this listener to our tests. Currently in Spock this is possible only with extensions. Again, I had to find proper extension to use and ended with interface IGlobalExtension which has only one method visiting each spec (test method) in our codebase:
-<code>groovy
-public interface IGlobalExtension {
-  void visitSpec(SpecInfo spec);
-}
-</code></p>
-
-<p>So extension implementation looks as follows, to each visited spec we add our TakeScreenshotOnTestFailureListener listener:
-``` groovy
-class GlobalSpecExtension implements IGlobalExtension {</p>
-
-<pre><code>@Override
-void visitSpec(SpecInfo specInfo) {
-    specInfo.addListener(new TakeScreenshotOnTestFailureListener())
-}
-</code></pre>
-
-<p>}
-```</p>
-
-<p><strong>Registering Spock global extension</strong>
-Each global extension have to be registered to Spock. This can be achieved by placing text file with easy to remember name in META-INF/services directory. File must be named <em>org.spockframework.runtime.extension.IGlobalExtension</em> and should contain full name of our implementation of IGlobalExtension interface:
-<code>java
-com.smscpl.mc5.uitests.geb_extensions.GlobalSpecExtension
-</code></p>
-
-<p><strong>Taking a screenshot on each UI test fail</strong>
-Now on each test fail we will see that our text message is printed to the console. This proves that our solution is going in the right direction and last thing still not implemented is taking a screenshot.</p>
-
-<p>Taking a screenshot using Selenium driver is quite easy, it is one method call, but before that we have to acquire driver instance in our listener class. Directly it is impossible to access driver directly from the listener so we need to store it in globally accessible object. Simplest solution is to save reference to the driver when we create it in our GebConfig file. So let&rsquo;s create a singleton that will hold our browser:</p>
-
-<p>``` groovy
-@Singleton
-class BrowserInstance {</p>
-
-<pre><code>def FirefoxDriver browser;
-</code></pre>
-
-<p>}
-```</p>
-
-<p>and initialise it in GebConfig.groovy script located in root package of our project:</p>
-
-<p>``` groovy
-driver =</p>
-
-<pre><code>{
-    newDriver = new FirefoxDriver()
-    BrowserInstance.instance.browser = newDriver
-    return newDriver
-}
-</code></pre>
-
-<p>```</p>
-
-<p>Now we can access driver from our listener object, so final taking screenshot logic is pretty straightforward:
-``` groovy
-class TakeScreenshotOnTestFailureListener extends AbstractRunListener {</p>
-
-<p>   def void error(ErrorInfo error) {</p>
-
-<pre><code>   File screenFile = BrowserInstance.instance.browser.getScreenshotAs(OutputType.FILE); // take a screenshot
-
-   String fileName = createFileName(error) // generate file name based on test class and method names
-   File destinationFile = new File(System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + fileName)
-   Files.copy(screenFile, destinationFile)
-
-   System.out.println("##teamcity[publishArtifacts '" + destinationFile.getAbsolutePath() + "']"); // publish as artifact in TeamCity
-</code></pre>
-
-<p>   }</p>
-
-<pre><code>def private String createFileName(ErrorInfo error) {
-    String specName = error.method.parent.name
-    String testName = error.method.name
-    String milliseconds = new Date().getTime()
-    String fileName = specName + ": '" + testName + "' " + milliseconds + ".png"
-    fileName
-}
-</code></pre>
-
-<p>}
-```</p>
-
-<p>And that&rsquo;s all. Each test fail will now appear with corresponding screenshot from browser.</p>
 ]]></content>
   </entry>
   

@@ -1,0 +1,581 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>One and the only one reason to customize IntelliJ IDEA memory settings - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="Customizing memory settings in IntelliJ IDEA">
+    
+    <meta name="keywords" content="IntelliJ, IDEA, performance, memory" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/">One and the Only One Reason to Customize IntelliJ IDEA Memory Settings</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/10/speaker-at-java-developers-day-2015/">Speaker at Java Developers' Day 2015</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/05/6-things-you-should-remember-after-geecon/">6 Things You Should Remember After GeeCON 2015</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2015/03/journey-to-craft-perfect-api/">The Journey to Craft Perfect API</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2014/12/merry-christmas-in-java/">Merry Christmas and Silent Night in Java</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">One and the Only One Reason to Customize IntelliJ IDEA Memory Settings</h1>
+	<div class="entry-content" itemprop="articleBody"><p><em>Don&rsquo;t be a Scrooge and give your IDE some more memory</em></p>
+
+<!-- more -->
+
+
+<p>Yesterday we had a discussion about customizing memory settings in IntelliJ IDEA and it appeared that some people do not do that, some people (like me) use some simple changeset
+and some developers craft a fancy, sophisticated setup that satisfy their needs. While working for a current project I had to deal with several small microservices projects and
+one older project, a core of the client&rsquo;s business which is quite big. And after applying some changes I have noticed really significant improvement when it comes to IDE speed and responsiveness.
+But at that time I didn&rsquo;t measure what exactly changed, it was only a subjective observation that <em>&ldquo;IDEA is now faster&rdquo;</em>.</p>
+
+<p>But during that discussion one of the developers working for the same client (thank you Yuri) sent me his settings and I was really overwhelmed by their level of complexity.
+I was happy with my own setup, but I was also curious how those completely different settings compare to each other and also how they compare to defaults provided by JetBrains. So after
+discussion with Yuri I knew that this is a good material for a blog post.</p>
+
+<h1>Goal</h1>
+
+<p>My plan is to compare how different IDEA memory settings perform in a scenario close to my daily usage (load big project, load two or three microservices, refresh big project after hypothetical <em>git pull</em>)
+and then choose the most optimal settings when it comes to memory consumption and speed improvement.</p>
+
+<h1>Test machine and projects</h1>
+
+<p><strong>Laptop</strong>: MacBook Pro Retina, 2,3GHz Intel Core i7, 16GB 1600Mhz DDR3, SSD Disc, OS X Yosemite</p>
+
+<p><strong>Projects</strong></p>
+
+<ul>
+<li>Big Project  &ndash; monolith, 700 000 lines of code (Java 8 and Groovy), 303 Gradle modules</li>
+<li>Two microservices &ndash; small projects with 10 000 &ndash; 20 000 lines of code (Java 8 and Groovy), each with one Gradle module</li>
+</ul>
+
+
+<h1>Test scenario</h1>
+
+<ol>
+<li>Close all projects in Idea</li>
+<li>Put settings under test to idea.vmoptions file</li>
+<li>Reset my laptop</li>
+<li>After a start close all unrelated programs (communicators, etc.)</li>
+<li>Open Idea (measure time)</li>
+<li>Open Big Project (measure time)</li>
+<li>Check jstat -gcutil</li>
+<li>Open two more projects: Microservice One and Microservice Two (measure times)</li>
+<li>Check jstat -gcutil</li>
+<li>Go back to Big Project and click &ldquo;Refresh Gradle project&rdquo; button (measure time)</li>
+<li>Check jstat -gcutil</li>
+</ol>
+
+
+<h2>What is jstat -gcutil</h2>
+
+<p>jstat is a tool available in your JDK to monitor JVM and Garbage Collector statistics. It has many different options to collect various data
+(<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstat.html">full documentation is here</a>) but we are interested in only one: <strong>-gcutil</strong>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-gcutil - Summary of garbage collection statistics.
+</span><span class='line'>
+</span><span class='line'>S0: Survivor space 0 utilization as a percentage of the space's current capacity.
+</span><span class='line'>S1: Survivor space 1 utilization as a percentage of the space's current capacity.
+</span><span class='line'>E: Eden space utilization as a percentage of the space's current capacity.
+</span><span class='line'>O: Old space utilization as a percentage of the space's current capacity.
+</span><span class='line'>M: Metaspace utilization as a percentage of the space's current capacity.
+</span><span class='line'>CCS: Compressed class space utilization as a percentage.
+</span><span class='line'>YGC: Number of young generation GC events.
+</span><span class='line'>YGCT: Young generation garbage collection time.
+</span><span class='line'>FGC: Number of full GC events.
+</span><span class='line'>FGCT: Full garbage collection time.
+</span><span class='line'>GCT: Total garbage collection time.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Example output from this command looks like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>S0     S1    E     O     M    CCS  YGC YGCT FGC  FGCT   GCT
+</span><span class='line'>89.70 0.00 81.26 74.27 95.68 91.76 40 2.444 14  0.715  3.159
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In this post the most important parameters are number of GC events (<strong>YGC</strong> and <strong>FGC</strong>) and collection times (<strong>YGCT</strong> and <strong>FGCT</strong>).</p>
+
+<h1>Tested settings</h1>
+
+<p>I have tested four different settings, to make reading easier each of them was given a name.</p>
+
+<h2>Default (grey)</h2>
+
+<p>These are built-in settings provided by JetBrains, clean IDEA 15 is using them:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-Xms128m
+</span><span class='line'>-Xmx750m
+</span><span class='line'>-XX:MaxPermSize=350m
+</span><span class='line'>-XX:ReservedCodeCacheSize=240m
+</span><span class='line'>-XX:+UseCompressedOops</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Big (red)</h2>
+
+<p>4096MB for Xmx and 1024MB for <em>ReservedCodeCacheSize</em>, that&rsquo;s quite a lot of memory.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-Xms1024m
+</span><span class='line'>-Xmx4096m
+</span><span class='line'>-XX:ReservedCodeCacheSize=1024m
+</span><span class='line'>-XX:+:UseCompressedOops
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h2>Balanced (blue)</h2>
+
+<p>2GB for Xmx and 2GB for Xms, more balanced approach to the memory consumption</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-Xms2g
+</span><span class='line'>-Xmx2g
+</span><span class='line'>-XX:ReservedCodeCacheSize=1024m
+</span><span class='line'>-XX:+:UseCompressedOops
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Sophisticated (orange)</h2>
+
+<p>2GB for Xmx and 2GB for Xms as above, but different Garbage Collector is specified and many different flags for GC and memory management. I have received these settings from Yuri.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>-server
+</span><span class='line'>-Xms2g
+</span><span class='line'>-Xmx2g
+</span><span class='line'>-XX:NewRatio=3
+</span><span class='line'>-Xss16m
+</span><span class='line'>-XX:+UseConcMarkSweepGC
+</span><span class='line'>-XX:+CMSParallelRemarkEnabled
+</span><span class='line'>-XX:ConcGCThreads=4
+</span><span class='line'>-XX:ReservedCodeCacheSize=240m
+</span><span class='line'>-XX:+AlwaysPreTouch
+</span><span class='line'>-XX:+TieredCompilation
+</span><span class='line'>-XX:+UseCompressedOops
+</span><span class='line'>-XX:SoftRefLRUPolicyMSPerMB=50
+</span><span class='line'>-Dsun.io.useCanonCaches=false
+</span><span class='line'>-Djava.net.preferIPv4Stack=true
+</span><span class='line'>-Djsse.enableSNIExtension=false
+</span><span class='line'>-ea</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So these are our test setups. To perform our test scenarios we have to create a file <em>idea.vmoptions</em> under <em>~/Library/Preferences/IntelliJIdea15/</em> (it is Mac OS specific,
+to see how change these settings for your OS, check <a href="https://www.jetbrains.com/idea/help/increasing-memory-heap.html">this article</a>).</p>
+
+<p>Now it is time to perform our test scenarios and compare the results.</p>
+
+<h1>Results</h1>
+
+<h2>Idea startup time</h2>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1557289692&format=image" width="800" height="500"></p>
+
+<p>As you can see startup time does not depend on memory settings. Idea startup time is about 10 seconds for all test scenarios no matter how many memory we allocate.
+And this is not a surprise as those settings should not affect application behaviour in such early stage.</p>
+
+<h2>Time to load The Big Project</h2>
+
+<p>Ok, so now it is time to load our Monolith and its 700k lines of code.</p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1400772564&format=image" width="800" height="500"></p>
+
+<p>Finally there are some differences. Default settings performs almost three times worse than the rest. Apparently so large codebase needs more memory :) And if we execute</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>jstat -gcutil &lt;IDEA_PID&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>we will notice that Garbage Collector was really, really busy with default settings when we compare it other setups.</p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=93956661&format=image" width="800" height="500"></p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1213605225&format=image" width="800" height="500"></p>
+
+<p>Not only total time spent by GC on freeing memory is dramatically higher (about 50 times higher) but also average execution time of Full GC is much, much longer. Long periods spent on Full GCs
+are the main cause of low responsiveness of our IDE.</p>
+
+<h2>Opening two microservices in IDEA</h2>
+
+<p>Ok, so we have our Monolith loaded but we need to add some code to two smaller microservices. So let&rsquo;s open them in IDEA and compare total times.</p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=2053860050&format=image" width="800" height="500"></p>
+
+<p>In this test scenario we see that differences are still visible and <strong>Sophisticated</strong> wins here, <strong>Default</strong> is far behind the rest.</p>
+
+<h3>jstat -gcutil again</h3>
+
+<p>After loading two microservices we can check how Garbage Collectors is performing with three opened projects. We can see that three custom settings
+look almost the same and results of default settings are very, very poor.</p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=242159654&format=image" width="800" height="500"></p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1738350771&format=image" width="800" height="500"></p>
+
+<h2>Final stage: reload the Monolith</h2>
+
+<p>So we have coded for a while and now we need to fetch latest version of The Big Project from repository and then refresh Gradle Project so IDEA
+could see all new classes, etc.</p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=625856708&format=image" width="800" height="500"></p>
+
+<p><strong>Important note</strong>: Bar for Default setup is so high because IDEA crashed during refresh and I could not measure the actual time. Simply assigned memory was
+not sufficient to perform this operation.</p>
+
+<p>But looking at the best three, we see that Big settings refreshed project in the shortest time so the largest assigned memory helps a bit here.</p>
+
+<h3>jstat -gcutil for the last time</h3>
+
+<p>Because IDEA was not able to refresh projet with <strong>Default</strong> settings, they are not included in this measurement.</p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1467101172&format=image" width="800" height="500"></p>
+
+<p><img class="center" src="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=712785115&format=image" width="800" height="500"></p>
+
+<p>In these last charts we see that differences between total times are quite small, but single Full GC is the fastest with <strong>Big</strong> settings applied. Again,
+it looks like very large Xmx helps a bit more when it comes to responsiveness.</p>
+
+<h1>Summary</h1>
+
+<p>In this short experiment I tried to test how much we could gain by customising memory settings of IntelliJ IDEA and it looks like that even some simple
+tweaks can drastically improve performance of our IDE and speed up our work. Of course the more memory you assign, the better results you will see, but
+we are using IDE next to many different applications which also consume memory so our goal should be to find a balance between performance gain and memory consumption.
+I think that in most cases setting <strong>Xmx</strong> to value between 2g and 3g is the best approach. If you have some more time you can play with jstat and
+<a href="http://docs.oracle.com/javase/6/docs/technotes/tools/share/jvisualvm.html">jvisualm</a> to check how changing different VM flags affect performance
+and memory footprint.</p>
+
+<h3>And you?</h3>
+
+<p>And what about you? What is your idea.vmoptions setup? Do you have any other ways to improve InteliJ IDEA performance?</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-11-23T08:00:10+01:00" data-updated="true" itemprop="datePublished">Nov 23<span>rd</span>, 2015</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/ide/'>IDE</a>, <a class='category' href='/blog/categories/intellij-idea/'>IntelliJ IDEA</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2015/10/speaker-at-java-developers-day-2015/" title="Previous: Speaker at Java Developers' Day 2015">&laquo; Speaker at Java Developers' Day 2015</a>
+		  
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2015 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/';
+        var disqus_url = 'http://tomaszdziurko.pl/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

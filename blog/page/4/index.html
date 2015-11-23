@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/">One and the Only One Reason to Customize IntelliJ IDEA Memory Settings</a>
+      </li>
+    
+      <li class="post">
         <a href="/2015/10/speaker-at-java-developers-day-2015/">Speaker at Java Developers' Day 2015</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2014/12/merry-christmas-in-java/">Merry Christmas and Silent Night in Java</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2014/12/chat-bot-scripting-and-polish-orthography/">Chat Bot, Scripting and Teaching Developers Orthography</a>
       </li>
     
   </ul>
@@ -172,6 +172,46 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-20T17:14:06+02:00" data-updated="true" itemprop="datePublished">Jul 20<span>th</span>, 2012</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/books/'>Books</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2012/07/practical-unit-testing-testng-mockito-review/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2012/07/practical-unit-testing-testng-mockito-review/" itemprop="url">Practical Unit Testing With TestNG and Mockito - Review</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Book &ldquo;<em>Practical Unit Testing with TestNG and Mockito</em>&rdquo; (<a href="http://practicalunittesting.com/">website</a>) covers wide spectrum of knowledge about testing in Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get most of this title. Below you can read some of my thoughts after reading this book.</p>
+
+<p style="text-align:center;"><img src="/images/blog/2012/07/practical_unit_testing.png" alt="" /></p>
+
+
+		
+		<a href="/2012/07/practical-unit-testing-testng-mockito-review/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -630,112 +670,6 @@ Dear Reader, this post is in my native language as it applies only to developers
 
 		
 		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-23T19:18:46+01:00" data-updated="true" itemprop="datePublished">Jan 23<span>rd</span>, 2012</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/java/'>Java</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/2012/01/google-guava-eventbus-easy-elegant-publisher-subscriber-cases/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/2012/01/google-guava-eventbus-easy-elegant-publisher-subscriber-cases/" itemprop="url">Google Guava EventBus - an Easy and Elegant Way for Your Publisher - Subscriber Use Cases</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Google Guava in version number 10 introduced new package <a href="http://docs.guava-libraries.googlecode.com/git-history/v11.0.1/javadoc/com/google/common/eventbus/package-summary.html">eventbus</a> with a few very interesting classes to deal with listener (or publisher &ndash; subscriber) use case. Below I present my short introduction to EventBus class and its family.</p>
-
-<h3>Basics</h3>
-
-<p>To listen to some events we need a listener class. Such class created in <em>google-guava-way</em> doesn&rsquo;t have to implement any particular interface or extend any specified class. It can be any class with just one required element: a method marked with <em>@Subscribe</em> annotation:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EventListener</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="n">lastMessage</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Subscribe</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">listen</span><span class="o">(</span><span class="n">OurTestEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">lastMessage</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="na">getMessage</span><span class="o">();</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getLastMessage</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">lastMessage</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><em>lastMessage</em> property is used in tests below to check if events were received successfully.</p>
-
-<p>And of course we need an event class to send it around:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">OurTestEvent</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">message</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="nf">OurTestEvent</span><span class="o">(</span><span class="kt">int</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMessage</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">message</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>How it works</h4>
-
-<p>The best way to show something in action is to write some tests, so let&rsquo;s see how simple usage of EventBus looks like:</p>
-
-
-		
-		<a href="/2012/01/google-guava-eventbus-easy-elegant-publisher-subscriber-cases/" class="more-link">Read on &rarr;</a>
 	</div>
 
 </article>
