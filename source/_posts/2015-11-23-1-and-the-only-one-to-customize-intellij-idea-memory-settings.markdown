@@ -109,7 +109,7 @@ These are built-in settings provided by JetBrains, clean IDEA 15 is using them:
     -Xms1024m
     -Xmx4096m
     -XX:ReservedCodeCacheSize=1024m
-    -XX:+:UseCompressedOops
+    -XX:+UseCompressedOops
     
 ```    
 
