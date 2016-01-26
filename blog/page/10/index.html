@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2016/01/dockerizing-spring-boot-application/">Dockerizing Spring Boot Application</a>
+      </li>
+    
+      <li class="post">
         <a href="/2016/01/time-to-summarize-my-2015/">Time to Summarize My 2015</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2015/05/6-things-you-should-remember-after-geecon/">6 Things You Should Remember After GeeCON 2015</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2015/03/journey-to-craft-perfect-api/">The Journey to Craft Perfect API</a>
       </li>
     
   </ul>
@@ -172,6 +172,44 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-23T14:10:13+01:00" data-updated="true" itemprop="datePublished">Jan 23<span>rd</span>, 2010</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/certificates/'>Certificates</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2010/01/finally-my-scwcd-mission-completed/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2010/01/finally-my-scwcd-mission-completed/" itemprop="url">Finally My SCWCD Mission Completed</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Much later than planned (check <a href="/2009/04/lets-start-preperations-to-scwcd/">my post</a> when I revealed intent to pass SCWCD) I managed to get this certificate. The result (94%) is in my opinion more than good :) Preparations began fairly long time ago (over a year ago) but since this time there were some unexpected circumstances (mainly project which seems to grew and grew) and that&rsquo;s why SCWCD mission took me so long.</p>
+
+<p>I  started preparations as usual, by downloading specifications  and adding API to Firefox bookmarks (list of links <a href="/2009/04/lets-start-preperations-to-scwcd/">here</a>). Then I bought <a href="http://oreilly.com/catalog/9780596516680/">Head First Servlets  and JSP</a>, the most recommended book for this certificate. I had ambitiously assumed that I will be able to write more detailed posts about what I learnt but unfortunately lack of time didn&rsquo;t allow me to do it.
+		
+		<a href="/2010/01/finally-my-scwcd-mission-completed/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -586,64 +624,6 @@ Potem  trzygodzinna podróż do Grodu Kraka i 15 minutowy spacer z dworca na  Un
 <p>﻿
 		
 		<a href="/2009/05/some-netbeans-shortcuts-you-might-not-know/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-05-09T13:26:22+02:00" data-updated="true" itemprop="datePublished">May 9<span>th</span>, 2009</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/2009/05/eclipse-and-problem-with-auto-generated-equals/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/2009/05/eclipse-and-problem-with-auto-generated-equals/" itemprop="url">Eclipse and Problem With Auto Generated Equals()</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Lately my colleague from job encountered following problem:</p>
-
-<p>JSF table &lt;rich:dataTable> was using HashMap to represent data. This Map contained objects collected from the database. After saving new objects to Db and table refresh it showed objects completely different from what we expected. After few hours of searching for a bug in our code or in JSF code it appeared that problem lied in other place.</p>
-
-<p>Eclipse generates equals method checking if classes of compared objects are the same:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="o">...</span>
-</span><span class='line'><span class="err">і</span><span class="n">f</span> <span class="o">(</span><span class="n">getClass</span><span class="o">()</span> <span class="o">!=</span> <span class="n">ob</span><span class="err">ϳ</span><span class="o">.</span><span class="na">getClass</span><span class="o">())</span> <span class="o">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">f</span><span class="err">а</span><span class="n">lse</span><span class="o">;</span>
-</span><span class='line'><span class="o">}</span>
-</span><span class='line'><span class="o">...</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>ant such behavior combined with Hibernate can cause some problems because very often while loading data from Db instead of object of our class Hibernate creates proxy object extending base class we are loading. And then equals method comparing getClass() returns false causing strange HashMap behavior. Solution is very simple: instead of getClass() you should use <strong>instanceof</strong>.</p>
-
-<p>Additionally, as I read in comment on <a href="http://www.proxorkut.info/liskovs-substitution-principle-equals-and-hibernate-proxies">Proxorkut blog</a>, if we use lazy loading in entity classes we should use getXXX() methods in equals() and hashcode() to get variable values because if we try to get them directly from the fields, Hibernate might not initialize them before we try to use them.</p>
-
-		
-		
 	</div>
 
 </article>

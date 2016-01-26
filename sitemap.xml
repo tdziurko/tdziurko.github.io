@@ -501,6 +501,10 @@
         <lastmod>2016-01-06T14:44:43+01:00</lastmod>
     </url>
     <url>
+        <loc>http://tomaszdziurko.pl/2016/01/dockerizing-spring-boot-application/</loc>
+        <lastmod>2016-01-26T11:18:57+01:00</lastmod>
+    </url>
+    <url>
         <loc>http://tomaszdziurko.pl/404.html</loc>
         <lastmod>2014-06-03T06:32:53+02:00</lastmod>
     </url>
@@ -510,7 +514,7 @@
     </url>
     <url>
         <loc>http://tomaszdziurko.pl/blog/archives/</loc>
-        <lastmod>2016-01-06T14:44:43+01:00</lastmod>
+        <lastmod>2016-01-26T11:18:57+01:00</lastmod>
     </url>
     <url>
         <loc>http://tomaszdziurko.pl/blog/categories/</loc>
@@ -518,7 +522,7 @@
     </url>
     <url>
         <loc>http://tomaszdziurko.pl/</loc>
-        <lastmod>2016-01-06T14:44:43+01:00</lastmod>
+        <lastmod>2016-01-26T11:18:57+01:00</lastmod>
     </url>
     <url>
         <loc>http://tomaszdziurko.pl/my-bookshelf/</loc>

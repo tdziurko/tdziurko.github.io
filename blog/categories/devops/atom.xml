@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: devops | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/devops/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2016-01-26T11:19:32+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dockerizing Spring Boot application]]></title>
+    <link href="http://tomaszdziurko.pl/2016/01/dockerizing-spring-boot-application/"/>
+    <updated>2016-01-26T03:00:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2016/01/dockerizing-spring-boot-application</id>
+    <content type="html"><![CDATA[<p>Docker here, Docker there, I see Dockers everywhere</p>
+
+<!-- more -->
+
+
+<p>In this post I will describe process of migrating Spring Boot application to Docker. We will start with modifying build file,
+then we will create Dockerfile so it could be run locally. Finally we will publish our image in <a href="https://hub.docker.com/">DockerHub</a>.</p>
+
+<h1>Introduction</h1>
+
+<p>A few months ago I have started new personal project called <a href="https://github.com/tdziurko/jvm-bloggers/">JVM Bloggers</a> with a goal to help Polish programmers with spreading news about their new blog posts.
+Initially this Spring Boot application was hosted on my local machine, then I have migrated it to free account on <a href="https://github.com/tdziurko/jvm-bloggers/">Heroku</a>.</p>
+
+<p>And for first weeks I was satisfied: application didn’t have to be online 24/7 so sleeping for 8 hours per day (limitation of free Heroku account) was not a big problem,
+500 MB memory cap didn’t limit me too. But as JVM Bloggers grown I started to encounter strange issues with memory usage: application started to consume 500-550MB and it was very difficult to find a source of this behaviour.
+I even left application running on my local machine with a profiler attached but still didn’t find anything suspicious.</p>
+
+<p>Memory footprint problems became irritating as I had to monitor application and restart it every 1-2 days and due to Heroku nature I could not simply <em>ssh</em> to the server and debug or attach profiler to running process.
+It became clear that if I am going to add more features to JVM Bloggers I have to migrate it to something more flexible &ndash; a Linux machine with Docker.</p>
+
+<h2>Docker</h2>
+
+<p>Nowadays <a href="http://docker.com">Docker</a> is a very popular topic among many developers, especially in projects migrating to microservices architecture. But the most interesting feature from my problem&rsquo;s perspective is the
+ability to create a standarised image of my application and run it in a different environments without worrying about differences. One image can be deployed either locally or on almost any Linux machine
+so with Docker I would be able to test my app locally, deploy it on AWS or somewhere else without much hassle.</p>
+
+<p><img class="center" src="/images/blog/2016/01/docker.png" width="600" height="200"></p>
+
+<h1>Migration</h1>
+
+<p>First we have to add some new dependencies and tasks to our <em>build.gradle</em> script:</p>
+
+<p>``` groovy</p>
+
+<p>buildscript {</p>
+
+<pre><code>// ...
+dependencies {
+    // ...
+    classpath('se.transmode.gradle:gradle-docker:1.2')
+}
+</code></pre>
+
+<p>}</p>
+
+<p>// &hellip;</p>
+
+<p>group = &lsquo;tdziurko&rsquo; // this will be my login at DockerHub (more about it later in this post)</p>
+
+<p>task buildDocker(type: Docker, dependsOn: build) {      // this task will build our Docker image</p>
+
+<pre><code>push = true
+applicationName = jar.baseName
+dockerfile = file('src/main/docker/Dockerfile')
+doFirst {
+    copy {
+        from jar
+        into stageDir
+    }
+}
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<p>In the line 17 we have specified location of our Dockerfile so now it is time to create one there.</p>
+
+<h1>Creating Dockerfile</h1>
+
+<p>Dockerfile is a configuration file that specifies how to create our Docker image that we can deploy later on.</p>
+
+<p>``` bash
+FROM java:8
+MAINTAINER <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x65;&#x6d;&#97;&#105;&#x6c;&#64;&#x65;&#x78;&#x61;&#109;&#x70;&#x6c;&#101;&#x2e;&#99;&#111;&#x6d;">&#101;&#109;&#x61;&#105;&#x6c;&#x40;&#x65;&#x78;&#x61;&#109;&#112;&#108;&#x65;&#x2e;&#x63;&#111;&#109;</a>
+VOLUME /tmp
+EXPOSE 8080</p>
+
+<p>ENV USER_NAME blogger
+ENV APP_HOME /home/$USER_NAME/app</p>
+
+<p>RUN useradd -ms /bin/bash $USER_NAME
+RUN mkdir $APP_HOME</p>
+
+<p>ADD jvm-bloggers-0.5.0.jar $APP_HOME/jvm-bloggers.jar
+RUN chown $USER_NAME $APP_HOME/jvm-bloggers.jar</p>
+
+<p>USER $USER_NAME
+WORKDIR $APP_HOME
+RUN bash -c &lsquo;touch jvm-bloggers.jar&rsquo;</p>
+
+<p>ENTRYPOINT [&ldquo;java&rdquo;,&ldquo;-Djava.security.egd=file:/dev/./urandom&rdquo;,&ldquo;-jar&rdquo;,&ldquo;jvm-bloggers.jar&rdquo;]</p>
+
+<p>```</p>
+
+<p>So let me explain this file step by step:</p>
+
+<ul>
+<li><p><strong>FROM java:8</strong>: our base image, it&rsquo;s something like <em>extend</em> keyword in Java. Here we want to base on the image with Java 8 installed</p></li>
+<li><p><strong>VOLUME /tmp</strong>: mounted directory where our application could write something to disk</p></li>
+<li><p><strong>EXPOSE 8080</strong>: port number our app will be started, it will be available from the outside of the Docker container</p></li>
+<li><p><strong>ENV USER_NAME blogger</strong>: helper variable with a user name we will use to run our application</p></li>
+<li><p><strong>ENV APP_HOME /home/$USER_NAME/app</strong>: next helper variable with directory where our app will be located</p></li>
+<li><p><strong>RUN useradd -ms /bin/bash $USER_NAME</strong>: create user with a name defined in <em>$USER_NAME</em></p></li>
+<li><p><strong>RUN mkdir $APP_HOME</strong>: create app directory</p></li>
+<li><p><strong>ADD jvm-bloggers-0.5.0.jar $APP_HOME/jvm-bloggers.jar</strong>: add fat-jar to our image and put it in <em>$APP_HOME</em></p></li>
+<li><p><strong>RUN chown $USER_NAME $APP_HOME/jvm-bloggers.jar</strong>: all previous commands were executed as <em>ROOT</em> so we need to change owner of our jar file to <em>$USER_NAME</em>. Generally using <em>ROOT</em> in Docker is considered as wrong approach because of the security.</p></li>
+<li><p><strong>USER $USER_NAME; WORKDIR $APP_HOME</strong>: change user and working directory to ones we want to use to run our application</p></li>
+<li><p><strong>RUN bash -c &lsquo;touch jvm-bloggers.jar&rsquo;</strong>: touch our file so it has modification time</p></li>
+<li><p><strong>ENTRYPOINT [&ldquo;java&rdquo;,&ldquo;-Djava.security.egd=file:/dev/./urandom&rdquo;,&ldquo;-jar&rdquo;,&ldquo;jvm-bloggers.jar&rdquo;]</strong>: execute our fat-jar (urandom is for Tomcat source of entropy)</p></li>
+</ul>
+
+
+<h1>Running Docker image locally</h1>
+
+<p>Now we have everything ready to build and launch our Docker image.</p>
+
+<p><code>groovy
+./gradlew clean build buildDocker
+</code></p>
+
+<p>Response:</p>
+
+<p>```  <br/>
+:buildDocker FAILED</p>
+
+<p>FAILURE: Build failed with an exception.</p>
+
+<ul>
+<li>What went wrong:
+Execution failed for task &lsquo;:buildDocker&rsquo;.
+
+<blockquote><p>Docker execution failed
+Command line [docker push tdziurko/jvm-bloggers:latest] returned:
+unauthorized: access to the requested resource is not authorized</p></blockquote></li>
+</ul>
+
+
+<p>```</p>
+
+<p>Task <em>buildDocker</em> failed because you don&rsquo;t have account on <a href="https://hub.docker.com/">DockerHub</a> or you are not logged there. but if you check local images</p>
+
+<p><code>
+docker images
+</code></p>
+
+<p>You will see that our image with tag <em>latest</em> is ready to use:</p>
+
+<p>```  <br/>
+REPOSITORY                  TAG                             IMAGE ID            CREATED             VIRTUAL SIZE
+tdziurko/jvm-bloggers       latest                          a09f884c5aa9        11 minutes ago      785.6 MB</p>
+
+<p>```</p>
+
+<p>So we can run it in a docker container with the following command:</p>
+
+<p><code>bash
+docker run -p 8080:8080 --add-host=database:&lt;your_local_db_host&gt; -e jasypt.encryptor.password="&lt;secretPassword&gt;" -e spring.profiles.active="dev" tdziurko/jvm-bloggers:latest
+</code></p>
+
+<p>Again, some fragments need more detailed explanation:</p>
+
+<ul>
+<li><p><strong>&mdash;add-host=database:&lt;your_local_db_host></strong>: adds address to /etc/hosts in the container, <em>database</em> var should be the address of our database, e.g. <em>192.168.0.101</em></p></li>
+<li><p><strong>-e jasypt.encryptor.password=&ldquo;<secretPassword>&rdquo;</strong>: Jasypt password to decrypt some values from *.properties files, -e adds it as env variable to the container</p></li>
+<li><p><strong>-e spring.profiles.active=&ldquo;dev&rdquo;</strong>: Spring Boot profile. <em>dev</em> is one used to run application locally</p></li>
+</ul>
+
+
+<p>After a few seconds you should see that our application started and it is running in the Docker container.</p>
+
+<h1>Publishing to DockerHub</h1>
+
+<p>Having a Docker image available locally is ok as long as you plan to play with it only on your own computer, but because we are aiming to AWS deployment we need to publish
+our image to DockerHub, so it is accessible from any Linux machine.</p>
+
+<p>First need to create account there (<em>tdziurko</em> in my case) and login using Docker client so we could publish it.</p>
+
+<p><code>bash
+$ docker login
+Username: tdziurko
+Password:
+Email: tomek@example.com
+WARNING: login credentials saved in /Users/tomek/.docker/config.json
+Login Succeeded
+</code></p>
+
+<p>Now we can rebuild our application to push image to DockerHub:</p>
+
+<p><code>groovy
+./gradlew clean build buildDocker
+</code></p>
+
+<p>After a few minutes we will see a message <em>BUILD SUCCESSFUL</em> and if you visit your DockerHub public profile page you should see something similar:</p>
+
+<p><img class="center" src="/images/blog/2016/01/docker_hub_image.png" width="600" height="200"></p>
+
+<p>which means that our Docker image with application is there waiting for deploy to AWS EC2 machine. But this is a material for another blog post :)</p>
+
+<h1>Summary</h1>
+
+<p>In a few steps I have described how to add Docker capabilities to your Java project, how to configure your image and publish it in DockerHub.
+Whole process is not very complicated and let us prepare application to deployment on every Linux machine or server supporting Docker.</p>
+]]></content>
+  </entry>
+  
+</feed>

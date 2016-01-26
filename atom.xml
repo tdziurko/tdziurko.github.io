@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/feed" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2016-01-06T14:45:18+01:00</updated>
+  <updated>2016-01-26T11:19:32+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,277 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Dockerizing Spring Boot application]]></title>
+    <link href="http://tomaszdziurko.pl/2016/01/dockerizing-spring-boot-application/"/>
+    <updated>2016-01-26T03:00:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2016/01/dockerizing-spring-boot-application</id>
+    <content type="html"><![CDATA[<p>Docker here, Docker there, I see Dockers everywhere</p>
+
+<!-- more -->
+
+
+<p>In this post I will describe process of migrating Spring Boot application to Docker. We will start with modifying build file,
+then we will create Dockerfile so it could be run locally. Finally we will publish our image in <a href="https://hub.docker.com/">DockerHub</a>.</p>
+
+<h1>Introduction</h1>
+
+<p>A few months ago I have started new personal project called <a href="https://github.com/tdziurko/jvm-bloggers/">JVM Bloggers</a> with a goal to help Polish programmers with spreading news about their new blog posts.
+Initially this Spring Boot application was hosted on my local machine, then I have migrated it to free account on <a href="https://github.com/tdziurko/jvm-bloggers/">Heroku</a>.</p>
+
+<p>And for first weeks I was satisfied: application didn’t have to be online 24/7 so sleeping for 8 hours per day (limitation of free Heroku account) was not a big problem,
+500 MB memory cap didn’t limit me too. But as JVM Bloggers grown I started to encounter strange issues with memory usage: application started to consume 500-550MB and it was very difficult to find a source of this behaviour.
+I even left application running on my local machine with a profiler attached but still didn’t find anything suspicious.</p>
+
+<p>Memory footprint problems became irritating as I had to monitor application and restart it every 1-2 days and due to Heroku nature I could not simply <em>ssh</em> to the server and debug or attach profiler to running process.
+It became clear that if I am going to add more features to JVM Bloggers I have to migrate it to something more flexible &ndash; a Linux machine with Docker.</p>
+
+<h2>Docker</h2>
+
+<p>Nowadays <a href="http://docker.com">Docker</a> is a very popular topic among many developers, especially in projects migrating to microservices architecture. But the most interesting feature from my problem&rsquo;s perspective is the
+ability to create a standarised image of my application and run it in a different environments without worrying about differences. One image can be deployed either locally or on almost any Linux machine
+so with Docker I would be able to test my app locally, deploy it on AWS or somewhere else without much hassle.</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/01/docker.png" width="600" height="200"></p>
+
+<h1>Migration</h1>
+
+<p>First we have to add some new dependencies and tasks to our <em>build.gradle</em> script:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">buildscript</span> <span class="o">{</span>
+</span><span class='line'>    <span class="c1">// ...</span>
+</span><span class='line'>    <span class="n">dependencies</span> <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// ...</span>
+</span><span class='line'>        <span class="n">classpath</span><span class="o">(</span><span class="s1">&#39;se.transmode.gradle:gradle-docker:1.2&#39;</span><span class="o">)</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// ...</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">group</span> <span class="o">=</span> <span class="s1">&#39;tdziurko&#39;</span> <span class="c1">// this will be my login at DockerHub (more about it later in this post)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">task</span> <span class="nf">buildDocker</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Docker</span><span class="o">,</span> <span class="nl">dependsOn:</span> <span class="n">build</span><span class="o">)</span> <span class="o">{</span>      <span class="c1">// this task will build our Docker image</span>
+</span><span class='line'>    <span class="n">push</span> <span class="o">=</span> <span class="kc">true</span>
+</span><span class='line'>    <span class="n">applicationName</span> <span class="o">=</span> <span class="n">jar</span><span class="o">.</span><span class="na">baseName</span>
+</span><span class='line'>    <span class="n">dockerfile</span> <span class="o">=</span> <span class="n">file</span><span class="o">(</span><span class="s1">&#39;src/main/docker/Dockerfile&#39;</span><span class="o">)</span>
+</span><span class='line'>    <span class="n">doFirst</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">copy</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">from</span> <span class="n">jar</span>
+</span><span class='line'>            <span class="n">into</span> <span class="n">stageDir</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>In the line 17 we have specified location of our Dockerfile so now it is time to create one there.</p>
+
+<h1>Creating Dockerfile</h1>
+
+<p>Dockerfile is a configuration file that specifies how to create our Docker image that we can deploy later on.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>FROM java:8
+</span><span class='line'>MAINTAINER email@example.com
+</span><span class='line'>VOLUME /tmp
+</span><span class='line'>EXPOSE 8080
+</span><span class='line'>
+</span><span class='line'>ENV USER_NAME blogger
+</span><span class='line'>ENV APP_HOME /home/<span class="nv">$USER_NAME</span>/app
+</span><span class='line'>
+</span><span class='line'>RUN useradd -ms /bin/bash <span class="nv">$USER_NAME</span>
+</span><span class='line'>RUN mkdir <span class="nv">$APP_HOME</span>
+</span><span class='line'>
+</span><span class='line'>ADD jvm-bloggers-0.5.0.jar <span class="nv">$APP_HOME</span>/jvm-bloggers.jar
+</span><span class='line'>RUN chown <span class="nv">$USER_NAME</span> <span class="nv">$APP_HOME</span>/jvm-bloggers.jar
+</span><span class='line'>
+</span><span class='line'>USER <span class="nv">$USER_NAME</span>
+</span><span class='line'>WORKDIR <span class="nv">$APP_HOME</span>
+</span><span class='line'>RUN bash -c <span class="s1">&#39;touch jvm-bloggers.jar&#39;</span>
+</span><span class='line'>
+</span><span class='line'>ENTRYPOINT <span class="o">[</span><span class="s2">&quot;java&quot;</span>,<span class="s2">&quot;-Djava.security.egd=file:/dev/./urandom&quot;</span>,<span class="s2">&quot;-jar&quot;</span>,<span class="s2">&quot;jvm-bloggers.jar&quot;</span><span class="o">]</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>So let me explain this file step by step:</p>
+
+<ul>
+<li><p><strong>FROM java:8</strong>: our base image, it&rsquo;s something like <em>extend</em> keyword in Java. Here we want to base on the image with Java 8 installed</p></li>
+<li><p><strong>VOLUME /tmp</strong>: mounted directory where our application could write something to disk</p></li>
+<li><p><strong>EXPOSE 8080</strong>: port number our app will be started, it will be available from the outside of the Docker container</p></li>
+<li><p><strong>ENV USER_NAME blogger</strong>: helper variable with a user name we will use to run our application</p></li>
+<li><p><strong>ENV APP_HOME /home/$USER_NAME/app</strong>: next helper variable with directory where our app will be located</p></li>
+<li><p><strong>RUN useradd -ms /bin/bash $USER_NAME</strong>: create user with a name defined in <em>$USER_NAME</em></p></li>
+<li><p><strong>RUN mkdir $APP_HOME</strong>: create app directory</p></li>
+<li><p><strong>ADD jvm-bloggers-0.5.0.jar $APP_HOME/jvm-bloggers.jar</strong>: add fat-jar to our image and put it in <em>$APP_HOME</em></p></li>
+<li><p><strong>RUN chown $USER_NAME $APP_HOME/jvm-bloggers.jar</strong>: all previous commands were executed as <em>ROOT</em> so we need to change owner of our jar file to <em>$USER_NAME</em>. Generally using <em>ROOT</em> in Docker is considered as wrong approach because of the security.</p></li>
+<li><p><strong>USER $USER_NAME; WORKDIR $APP_HOME</strong>: change user and working directory to ones we want to use to run our application</p></li>
+<li><p><strong>RUN bash -c &lsquo;touch jvm-bloggers.jar&rsquo;</strong>: touch our file so it has modification time</p></li>
+<li><p><strong>ENTRYPOINT [&ldquo;java&rdquo;,&ldquo;-Djava.security.egd=file:/dev/./urandom&rdquo;,&ldquo;-jar&rdquo;,&ldquo;jvm-bloggers.jar&rdquo;]</strong>: execute our fat-jar (urandom is for Tomcat source of entropy)</p></li>
+</ul>
+
+
+<h1>Running Docker image locally</h1>
+
+<p>Now we have everything ready to build and launch our Docker image.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="o">./</span><span class="n">gradlew</span> <span class="n">clean</span> <span class="n">build</span> <span class="n">buildDocker</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Response:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="o">:</span><span class="n">buildDocker</span> <span class="n">FAILED</span>
+</span><span class='line'>
+</span><span class='line'><span class="nl">FAILURE:</span> <span class="n">Build</span> <span class="n">failed</span> <span class="n">with</span> <span class="n">an</span> <span class="n">exception</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">*</span> <span class="n">What</span> <span class="n">went</span> <span class="nl">wrong:</span>
+</span><span class='line'><span class="n">Execution</span> <span class="n">failed</span> <span class="k">for</span> <span class="n">task</span> <span class="s1">&#39;:buildDocker&#39;</span><span class="o">.</span>
+</span><span class='line'><span class="o">&gt;</span> <span class="n">Docker</span> <span class="n">execution</span> <span class="n">failed</span>
+</span><span class='line'>  <span class="n">Command</span> <span class="n">line</span> <span class="o">[</span><span class="n">docker</span> <span class="n">push</span> <span class="n">tdziurko</span><span class="o">/</span><span class="n">jvm</span><span class="o">-</span><span class="nl">bloggers:</span><span class="n">latest</span><span class="o">]</span> <span class="nl">returned:</span>
+</span><span class='line'>  <span class="nl">unauthorized:</span> <span class="n">access</span> <span class="n">to</span> <span class="n">the</span> <span class="n">requested</span> <span class="n">resource</span> <span class="n">is</span> <span class="n">not</span> <span class="n">authorized</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Task <em>buildDocker</em> failed because you don&rsquo;t have account on <a href="https://hub.docker.com/">DockerHub</a> or you are not logged there. but if you check local images</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">docker</span> <span class="n">images</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>You will see that our image with tag <em>latest</em> is ready to use:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">REPOSITORY</span>                  <span class="n">TAG</span>                             <span class="n">IMAGE</span> <span class="n">ID</span>            <span class="n">CREATED</span>             <span class="n">VIRTUAL</span> <span class="n">SIZE</span>
+</span><span class='line'><span class="n">tdziurko</span><span class="o">/</span><span class="n">jvm</span><span class="o">-</span><span class="n">bloggers</span>       <span class="n">latest</span>                          <span class="n">a09f884c5aa9</span>        <span class="mi">11</span> <span class="n">minutes</span> <span class="n">ago</span>      <span class="mf">785.6</span> <span class="n">MB</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>So we can run it in a docker container with the following command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>docker run -p 8080:8080 --add-host<span class="o">=</span>database:&lt;your_local_db_host&gt; -e jasypt.encryptor.password<span class="o">=</span><span class="s2">&quot;&lt;secretPassword&gt;&quot;</span> -e spring.profiles.active<span class="o">=</span><span class="s2">&quot;dev&quot;</span> tdziurko/jvm-bloggers:latest
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Again, some fragments need more detailed explanation:</p>
+
+<ul>
+<li><p><strong>&mdash;add-host=database:&lt;your_local_db_host></strong>: adds address to /etc/hosts in the container, <em>database</em> var should be the address of our database, e.g. <em>192.168.0.101</em></p></li>
+<li><p><strong>-e jasypt.encryptor.password=&ldquo;<secretPassword>&rdquo;</strong>: Jasypt password to decrypt some values from *.properties files, -e adds it as env variable to the container</p></li>
+<li><p><strong>-e spring.profiles.active=&ldquo;dev&rdquo;</strong>: Spring Boot profile. <em>dev</em> is one used to run application locally</p></li>
+</ul>
+
+
+<p>After a few seconds you should see that our application started and it is running in the Docker container.</p>
+
+<h1>Publishing to DockerHub</h1>
+
+<p>Having a Docker image available locally is ok as long as you plan to play with it only on your own computer, but because we are aiming to AWS deployment we need to publish
+our image to DockerHub, so it is accessible from any Linux machine.</p>
+
+<p>First need to create account there (<em>tdziurko</em> in my case) and login using Docker client so we could publish it.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>docker login
+</span><span class='line'>Username: tdziurko
+</span><span class='line'>Password:
+</span><span class='line'>Email: tomek@example.com
+</span><span class='line'>WARNING: login credentials saved in /Users/tomek/.docker/config.json
+</span><span class='line'>Login Succeeded
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now we can rebuild our application to push image to DockerHub:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="o">./</span><span class="n">gradlew</span> <span class="n">clean</span> <span class="n">build</span> <span class="n">buildDocker</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After a few minutes we will see a message <em>BUILD SUCCESSFUL</em> and if you visit your DockerHub public profile page you should see something similar:</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/01/docker_hub_image.png" width="600" height="200"></p>
+
+<p>which means that our Docker image with application is there waiting for deploy to AWS EC2 machine. But this is a material for another blog post :)</p>
+
+<h1>Summary</h1>
+
+<p>In a few steps I have described how to add Docker capabilities to your Java project, how to configure your image and publish it in DockerHub.
+Whole process is not very complicated and let us prepare application to deployment on every Linux machine or server supporting Docker.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Time to summarize my 2015]]></title>
@@ -2179,211 +2450,6 @@ Anyway, I do not regret being there.</p>
 </span><span class='line'><span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Taking a screenshot when UI tests written in Geb fail]]></title>
-    <link href="http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/"/>
-    <updated>2013-05-27T19:30:36+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb</id>
-    <content type="html"><![CDATA[<p>There is nothing worse than being reported that UI test failed but without clear evidence what exactly went wrong.
-And what could be better evidence than screenshot just after the failure?</p>
-
-<!-- more -->
-
-
-<p>This is a second post about <a href="http://www.gebish.org/"><strong>Geb</strong></a> in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.</p>
-
-<h3>The Problem</h3>
-
-<p>We need a simple way to configure Geb UI tests to take a screenshot on each test fail. This should be &ldquo;add and forget&rdquo; config that does not need any changes when we add more tests to our application.</p>
-
-<h3>Solution</h3>
-
-<p>We have to find some type of listener that waits for different test results and fires proper method when test fails. In <a href="http://testng.org/">TestNG</a> we have a <a href="http://testng.org/javadocs/org/testng/TestListenerAdapter.html">TestListenerAdapter</a> so probably Geb or Spock should have something similar.</p>
-
-<p>After some digging I was able to locate <em>IRunListener</em> with method I need:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IRunListener</span> <span class="o">{</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="nf">beforeSpec</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">SpecInfo</span> <span class="n">specInfo</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">void</span> <span class="nf">beforeFeature</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">FeatureInfo</span> <span class="n">featureInfo</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">void</span> <span class="nf">beforeIteration</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">IterationInfo</span> <span class="n">iterationInfo</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">void</span> <span class="nf">afterIteration</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">IterationInfo</span> <span class="n">iterationInfo</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">void</span> <span class="nf">afterFeature</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">FeatureInfo</span> <span class="n">featureInfo</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">void</span> <span class="nf">afterSpec</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">SpecInfo</span> <span class="n">specInfo</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">ErrorInfo</span> <span class="n">errorInfo</span><span class="o">);</span> <span class="c1">// &lt; -- this is it</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">void</span> <span class="nf">specSkipped</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">SpecInfo</span> <span class="n">specInfo</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">void</span> <span class="nf">featureSkipped</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">FeatureInfo</span> <span class="n">featureInfo</span><span class="o">);</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>Simple version of test failure listener</strong>
-Luckily this interface comes with abstract class named <em>AbstractRunListener</em> that allows us to implement only methods we want instead of fulfilling the whole contract specified by IRunListener.</p>
-
-<p>So our first step will be to print something to the console every time our test fails:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">TakeScreenshotOnTestFailureListener</span> <span class="kd">extends</span> <span class="n">AbstractRunListener</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="kt">def</span> <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">ErrorInfo</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;Error in method &quot;</span> <span class="o">+</span> <span class="n">error</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-</span><span class='line'>   <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>Adding custom listener to all tests with Spock extension</strong>
-But except implementation of a listener, we have to add this listener to our tests. Currently in Spock this is possible only with extensions. Again, I had to find proper extension to use and ended with interface IGlobalExtension which has only one method visiting each spec (test method) in our codebase:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IGlobalExtension</span> <span class="o">{</span>
-</span><span class='line'>  <span class="kt">void</span> <span class="nf">visitSpec</span><span class="o">(</span><span class="n">SpecInfo</span> <span class="n">spec</span><span class="o">);</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So extension implementation looks as follows, to each visited spec we add our TakeScreenshotOnTestFailureListener listener:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">GlobalSpecExtension</span> <span class="kd">implements</span> <span class="n">IGlobalExtension</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Override</span>
-</span><span class='line'>    <span class="kt">void</span> <span class="nf">visitSpec</span><span class="o">(</span><span class="n">SpecInfo</span> <span class="n">specInfo</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">specInfo</span><span class="o">.</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="n">TakeScreenshotOnTestFailureListener</span><span class="o">())</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>Registering Spock global extension</strong>
-Each global extension have to be registered to Spock. This can be achieved by placing text file with easy to remember name in META-INF/services directory. File must be named <em>org.spockframework.runtime.extension.IGlobalExtension</em> and should contain full name of our implementation of IGlobalExtension interface:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">com</span><span class="o">.</span><span class="na">smscpl</span><span class="o">.</span><span class="na">mc5</span><span class="o">.</span><span class="na">uitests</span><span class="o">.</span><span class="na">geb_extensions</span><span class="o">.</span><span class="na">GlobalSpecExtension</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>Taking a screenshot on each UI test fail</strong>
-Now on each test fail we will see that our text message is printed to the console. This proves that our solution is going in the right direction and last thing still not implemented is taking a screenshot.</p>
-
-<p>Taking a screenshot using Selenium driver is quite easy, it is one method call, but before that we have to acquire driver instance in our listener class. Directly it is impossible to access driver directly from the listener so we need to store it in globally accessible object. Simplest solution is to save reference to the driver when we create it in our GebConfig file. So let&rsquo;s create a singleton that will hold our browser:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="nd">@Singleton</span>
-</span><span class='line'><span class="kd">class</span> <span class="nc">BrowserInstance</span> <span class="o">{</span>
-</span><span class='line'>    <span class="kt">def</span> <span class="n">FirefoxDriver</span> <span class="n">browser</span><span class="o">;</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>and initialise it in GebConfig.groovy script located in root package of our project:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">driver</span> <span class="o">=</span>
-</span><span class='line'>    <span class="o">{</span>
-</span><span class='line'>        <span class="n">newDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">()</span>
-</span><span class='line'>        <span class="n">BrowserInstance</span><span class="o">.</span><span class="na">instance</span><span class="o">.</span><span class="na">browser</span> <span class="o">=</span> <span class="n">newDriver</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">newDriver</span>
-</span><span class='line'>    <span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Now we can access driver from our listener object, so final taking screenshot logic is pretty straightforward:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">TakeScreenshotOnTestFailureListener</span> <span class="kd">extends</span> <span class="n">AbstractRunListener</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>   <span class="kt">def</span> <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">ErrorInfo</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>       <span class="n">File</span> <span class="n">screenFile</span> <span class="o">=</span> <span class="n">BrowserInstance</span><span class="o">.</span><span class="na">instance</span><span class="o">.</span><span class="na">browser</span><span class="o">.</span><span class="na">getScreenshotAs</span><span class="o">(</span><span class="n">OutputType</span><span class="o">.</span><span class="na">FILE</span><span class="o">);</span> <span class="c1">// take a screenshot</span>
-</span><span class='line'>
-</span><span class='line'>       <span class="n">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">createFileName</span><span class="o">(</span><span class="n">error</span><span class="o">)</span> <span class="c1">// generate file name based on test class and method names</span>
-</span><span class='line'>       <span class="n">File</span> <span class="n">destinationFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s2">&quot;java.io.tmpdir&quot;</span><span class="o">)</span> <span class="o">+</span> <span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s2">&quot;file.separator&quot;</span><span class="o">)</span> <span class="o">+</span> <span class="n">fileName</span><span class="o">)</span>
-</span><span class='line'>       <span class="n">Files</span><span class="o">.</span><span class="na">copy</span><span class="o">(</span><span class="n">screenFile</span><span class="o">,</span> <span class="n">destinationFile</span><span class="o">)</span>
-</span><span class='line'>
-</span><span class='line'>       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;##teamcity[publishArtifacts &#39;&quot;</span> <span class="o">+</span> <span class="n">destinationFile</span><span class="o">.</span><span class="na">getAbsolutePath</span><span class="o">()</span> <span class="o">+</span> <span class="s2">&quot;&#39;]&quot;</span><span class="o">);</span> <span class="c1">// publish as artifact in TeamCity</span>
-</span><span class='line'>   <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">def</span> <span class="kd">private</span> <span class="n">String</span> <span class="nf">createFileName</span><span class="o">(</span><span class="n">ErrorInfo</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">String</span> <span class="n">specName</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">parent</span><span class="o">.</span><span class="na">name</span>
-</span><span class='line'>        <span class="n">String</span> <span class="n">testName</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">name</span>
-</span><span class='line'>        <span class="n">String</span> <span class="n">milliseconds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">()</span>
-</span><span class='line'>        <span class="n">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">specName</span> <span class="o">+</span> <span class="s2">&quot;: &#39;&quot;</span> <span class="o">+</span> <span class="n">testName</span> <span class="o">+</span> <span class="s2">&quot;&#39; &quot;</span> <span class="o">+</span> <span class="n">milliseconds</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
-</span><span class='line'>        <span class="n">fileName</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And that&rsquo;s all. Each test fail will now appear with corresponding screenshot from browser.</p>
 ]]></content>
   </entry>
   
