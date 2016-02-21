@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/feed" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2016-01-26T11:19:32+01:00</updated>
+  <updated>2016-02-21T18:30:40+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,87 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[My impressions after Advanced Data Structures at Coursera]]></title>
+    <link href="http://tomaszdziurko.pl/2016/02/coursera-advanced-data-structures-summary/"/>
+    <updated>2016-02-22T11:00:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2016/02/coursera-advanced-data-structures-summary</id>
+    <content type="html"><![CDATA[<p>Short summary after I have finished &ldquo;Advanced Data Structures in Java&rdquo; at Coursera</p>
+
+<!-- more -->
+
+
+<p>Online course <a href="https://www.coursera.org/learn/advanced-data-structures/">&ldquo;Advanced Data Structures in Java&rdquo;</a> at Coursera have finished last week and I felt
+that after these cool five weeks it is worth to recap and summarise my impressions.</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/02/graphs.png" width="900" height="600">
+<em>image source: <a href="http://lin-ear-th-inking.blogspot.com/2013/05/flight-paths-in-jeql-redux.html">http://lin-ear-th-inking.blogspot.com</a></em></p>
+
+<h1>Course Content</h1>
+
+<p>At start, do not be mislead by course name. It is not about all advanced data structures what would be a very broad topic, but about graphs,
+searching algorithms and path calculations.</p>
+
+<p>During the first week we have learnt about data structures that can be used to represent graphs &ndash; Adjacency Matrix and Adjacency
+List &ndash; and what are best use cases to choose each of them. Next we had to create a class hierarchy for map search engine to be used as
+a framework during the rest of our assignments. Assignment from this week also required to implement <a href="https://en.wikipedia.org/wiki/Breadth-first_search">Breadth-first Search</a>
+(BFS) algorithm. <a href="https://en.wikipedia.org/wiki/Depth-first_search">DFS</a> was also covered but we have not coded it
+in our assignments as it can not be used to find shortest paths.</p>
+
+<p>Third week was about implementing <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra</a> and
+<a href="https://en.wikipedia.org/wiki/A*_search_algorithm">A-Star</a> algorithms and how they can be created using BFS as a base. Using BFS as a starting point
+helped me to understand these algorithms much faster. Fourth week was theoretical one, only one without an assignment. So there were no coding but more lectures about
+<a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">Travelling Salesman Problem</a>, NP Complete and NP Hard problems and different types
+of graphs (Eulerian, Hamiltonian).</p>
+
+<p>Final week was the most creative one as we were asked to implement an extension to any of algorithms we have learnt about. We could extend A*
+or Dijkstra to use not only distance but also road type or speed limits to find the fastest route or we could try to improve speed of any of these algorithms or&hellip;
+or we could create completely original extension. I have chosen to implement something I called &ldquo;Route Calculation Cache&rdquo;, quote from my submission:</p>
+
+<blockquote><p>My extension remembers calculated routes and when another user wants to find similar route, extension will retrieve <br/>this stored route instead of starting duplicated and extensive calculation. This will decrease execution time <br/>and user will see routes in a shorter time.</p></blockquote>
+
+
+<p>And after that course ended after five weeks with graphs.</p>
+
+<h1>My impressions</h1>
+
+<ul>
+<li><p>Sophisticated algorithms are not the thing we use frequently at work so it was very funny feeling to
+learn again stuff that I was forced to memorize several years ago at university. Obviously now I was more motivated
+so learning was more enjoyable process than when I was a young student.</p></li>
+<li><p>Test datasets can be obtained for any area using provided application so everyone was able to test A* or Dijkstra
+using streets from their neighbourhood. You could check if your route to work is optimal or not ;) Below fragment of my home city
+with calculated example route:</p></li>
+</ul>
+
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/02/plock_dijkstra.png" width="700" height="520"></p>
+
+<ul>
+<li><p>Peer reviews. Our solutions for Week3 and (partly) Week5 were reviewed by other developers attending this course. At first
+I was not convinced that it will bring any value to my learning process, but it appeared that comparing how
+people from different countries and with different backgrounds designed classes hierarchy to solve same problem
+was an interesting experience. I saw approaches similar to mine but also completely different ones but still valid.
+Another topic is different approach to documenting code: some developers shared my view and used comments only where it
+was really, really necessary and tried to write self-explanatory code. But in some people&rsquo;s solutions I saw
+as many lines of documentation as lines of code :)</p></li>
+<li><p>Good peer pressure: because I have advertised this course at <a href="https://github.com/tdziurko/jvm-bloggers/">JVM Bloggers</a>
+newsletter I was motivated to graduate :) And the more people I know tweeted that they are joining, the more motivated
+I was to complete assignments week by week. Discussing about course with developers from my company helped a lot too.
+Generally this is one of the finest features of online courses: motivating others and getting motivation :)</p></li>
+</ul>
+
+
+<h1>Wrap up</h1>
+
+<p>I am happy that I have enrolled &ldquo;Advanced Data Structures in Java&rdquo;. I have refreshed some long forgotten
+knowledge about graph structures, learnt a lot too so definitely it was time well spent. Also a satisfaction after
+successfully finishing a five-weeks long course is a nice feeling.</p>
+
+<p>And what about you? What are you thoughts about this course or online courses in general?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Dockerizing Spring Boot application]]></title>
@@ -2240,216 +2321,6 @@ Anyway, I do not regret being there.</p>
 <h3>Summary</h3>
 
 <p>After first day of ABE 2013 I felt a little bit disappointed, there were no &ldquo;wow&rdquo; effect, I&rsquo;ve made some notes but during breaks we shared similar thought with a few colleagues that maybe we are too agile-aware to learn anything new during this event. But then, 2nd day came by and everything changed. Topics were more interesting, talks more engaging and solutions more inspiring so at the end I can tell that even for someone who works in an agile environment for about 3 years it was well spent time. Some new stuff, some inspirations and of course, a great occasion to share and discuss our problems and approaches with people from different companies and with different experiences.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Transparently persist and retrieve encrypted data from database]]></title>
-    <link href="http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
-    <updated>2013-07-31T08:45:07+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
-    <content type="html"><![CDATA[<p>Big brother is watching&hellip; always so why not to encrypt everything. And then, auto-decrypt and encrypt our data stored in Database? Here comes Jasypt.</p>
-
-<!-- more -->
-
-
-<p>It&rsquo;s over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of <a href="http://confitura.pl">Confitura</a> (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.</p>
-
-<p>In this post I will shortly describe how we can store encrypted data in our database and retrieve it as already decrypted in a simple, transparent way using <a href="http://www.jasypt.org/">Jasypt</a> library. Our use case will be to store Twitter Api credentials so they are safe in our database but still easy to retrieve and use to post updates in our timeline.</p>
-
-<p>So what we have is a simple entity representing our settings item:</p>
-
-<figure class='code'><figcaption><span>SettingsItem entity</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Entity</span>
-</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SettingsItem</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Id</span>
-</span><span class='line'>    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="n">javax</span><span class="o">.</span><span class="na">persistence</span><span class="o">.</span><span class="na">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="o">;</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="n">String</span> <span class="n">encryptedValue</span><span class="o">;</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In such table we will store values for Twitter Consumer Key, Twitter Access Token and so on.</p>
-
-<p>What we would like to achieve is that when we create SettingItem object with value as plain text and then we persist it, encryption is automatically performed so in the DB we have encrypted String. And of course, when we retrieve data from DB, we want to see decrypted String without additional effort, just out of the box.</p>
-
-<h3>Jasypt to the rescue</h3>
-
-<p style="text-align:center;"><img src="http://tomaszdziurko.pl/images/blog/2013/07/jasypt-small.png" alt="jasypt-small" /></p>
-
-<p><a href="http://www.jasypt.org">Jasypt</a> is a simple encryption library written in Java. It frees developer from dealing with low level configuration details and makes whole encryption process easy and straightforward. And what is most interesting now, it also has nice integration with Hibernate allowing seamless encryption/decryption of data stored in database.</p>
-
-<h4>Setup</h4>
-
-<p>To use Jasypt and its Hibernate integration module we have to add two items to our pom:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;dependency&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;groupId&gt;</span>org.jasypt<span class="nt">&lt;/groupId&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;artifactId&gt;</span>jasypt<span class="nt">&lt;/artifactId&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;version&gt;</span>1.9.0<span class="nt">&lt;/version&gt;</span>
-</span><span class='line'><span class="nt">&lt;/dependency&gt;</span>
-</span><span class='line'><span class="nt">&lt;dependency&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;groupId&gt;</span>org.jasypt<span class="nt">&lt;/groupId&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;artifactId&gt;</span>jasypt-hibernate4<span class="nt">&lt;/artifactId&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;version&gt;</span>1.9.0<span class="nt">&lt;/version&gt;</span>
-</span><span class='line'><span class="nt">&lt;/dependency&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>Custom type</h4>
-
-<p>Then we have to declare custom Hibernate type (@TypeDef) in our entity:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@TypeDef</span><span class="o">(</span>
-</span><span class='line'>        <span class="n">name</span><span class="o">=</span><span class="s">&quot;encryptedString&quot;</span><span class="o">,</span>
-</span><span class='line'>        <span class="n">typeClass</span><span class="o">=</span><span class="n">EncryptedStringType</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
-</span><span class='line'>        <span class="n">parameters</span><span class="o">=</span> <span class="o">{</span>
-</span><span class='line'>                <span class="c1">// value will be used later to register encryptor</span>
-</span><span class='line'>                <span class="nd">@Parameter</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;encryptorRegisteredName&quot;</span><span class="o">,</span> <span class="n">value</span><span class="o">=</span><span class="s">&quot;STRING_ENCRYPTOR&quot;</span><span class="o">)</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'><span class="o">)</span>
-</span><span class='line'><span class="nd">@Entity</span>
-</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SettingsItem</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
-</span><span class='line'>   <span class="c1">// (...)</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>and after that in the same class we can mark our encryptedValue field to use this custom type:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Type</span><span class="o">(</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;encryptedString&quot;</span><span class="o">)</span>
-</span><span class='line'><span class="kd">private</span> <span class="n">String</span> <span class="n">encryptedValue</span><span class="o">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>Registering encryptor</h4>
-
-<p>We are almost done. Last thing we have to do is register encryptor in HibernatePBEEncryptorRegistry class. This can be done in  initialization class of our application, e.g. ServletContext or simply in class with main(String[] args) method:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">&quot;jasypt.password&quot;</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">StandardPBEStringEncryptor</span> <span class="n">strongEncryptor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StandardPBEStringEncryptor</span><span class="o">();</span>
-</span><span class='line'><span class="n">strongEncryptor</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="n">password</span><span class="o">);</span>
-</span><span class='line'><span class="n">HibernatePBEEncryptorRegistry</span> <span class="n">registry</span> <span class="o">=</span>
-</span><span class='line'>        <span class="n">HibernatePBEEncryptorRegistry</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-</span><span class='line'><span class="n">registry</span><span class="o">.</span><span class="na">registerPBEStringEncryptor</span><span class="o">(</span><span class="s">&quot;STRING_ENCRYPTOR&quot;</span><span class="o">,</span> <span class="n">strongEncryptor</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p>One important thing here is that by using System.getProperty() or System.getenv() we can safely configure our encryption mechanism, password is provided at runtime by setting proper value on server machine.</p>
-
-<h4>Summary</h4>
-
-<p>As as a summary, one short passing test showing that our solution works:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SettingsItemRepositoryShould</span> <span class="kd">extends</span> <span class="n">IntegrationTest</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Autowired</span>
-</span><span class='line'>    <span class="kd">private</span> <span class="n">SettingsItemRepository</span> <span class="n">repository</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@BeforeClass</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">StandardPBEStringEncryptor</span> <span class="n">strongEncryptor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StandardPBEStringEncryptor</span><span class="o">();</span>
-</span><span class='line'>        <span class="n">strongEncryptor</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="s">&quot;JohnDoe&quot;</span><span class="o">);</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="n">HibernatePBEEncryptorRegistry</span> <span class="n">registry</span> <span class="o">=</span>
-</span><span class='line'>                <span class="n">HibernatePBEEncryptorRegistry</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-</span><span class='line'>        <span class="n">registry</span><span class="o">.</span><span class="na">registerPBEStringEncryptor</span><span class="o">(</span><span class="s">&quot;STRING_ENCRYPTOR&quot;</span><span class="o">,</span> <span class="n">strongEncryptor</span><span class="o">);</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nd">@Test</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shouldEncryptAndDecryptValue</span><span class="o">()</span> <span class="o">{</span>
-</span><span class='line'>        <span class="c1">// Given</span>
-</span><span class='line'>        <span class="n">String</span> <span class="n">settingName</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span><span class="o">;</span>
-</span><span class='line'>        <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="s">&quot;EncryptMe&quot;</span><span class="o">;</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="c1">// When</span>
-</span><span class='line'>        <span class="n">repository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="k">new</span> <span class="n">SettingsItem</span><span class="o">(</span><span class="n">settingName</span><span class="o">,</span> <span class="n">value</span><span class="o">));</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="c1">// Then</span>
-</span><span class='line'>        <span class="n">SettingsItem</span> <span class="n">settingsItem</span> <span class="o">=</span> <span class="n">repository</span><span class="o">.</span><span class="na">findByName</span><span class="o">(</span><span class="n">settingName</span><span class="o">);</span>
-</span><span class='line'>        <span class="n">assertThat</span><span class="o">(</span><span class="n">settingsItem</span><span class="o">.</span><span class="na">getEncryptedValue</span><span class="o">()).</span><span class="na">isEqualTo</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
