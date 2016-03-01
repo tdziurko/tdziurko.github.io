@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/feed" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2016-02-21T18:30:40+01:00</updated>
+  <updated>2016-03-01T18:09:32+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,84 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[5 reasons for every developer reading books to join Goodreads]]></title>
+    <link href="http://tomaszdziurko.pl/2016/03/5-reasons-to-join-goodreads/"/>
+    <updated>2016-03-01T18:20:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2016/03/5-reasons-to-join-goodreads</id>
+    <content type="html"><![CDATA[<p>Goodreads &ndash; a website for a book readers and why you should care</p>
+
+<!-- more -->
+
+
+<p>Today I am going to share my experience with a website that changed the way I interact with books. I am a developer, member of industry that is constantly
+changing, evolving and coining new ideas, new approaches and of course new languages and frameworks. And this constant change forces us to learn new stuff
+and or course to read <strong>A LOT</strong>.</p>
+
+<p><a href="http://goodreads.com">Goodreads</a> is a website for book readers helping them to track what they read and recommend what they should pick next.
+I am so satisfied user that I have decided to share my positive opinion about GoodReads here and try to convince you to start using it :)</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/03/goodreads.jpg" width="700"></p>
+
+<h1>Create your to-read list</h1>
+
+<p>Once in a while everyone stumbles upon a book that looks very interesting that we want to read it someday. But very often we forget to write it down
+somewhere and later on it is hard to get back to it.</p>
+
+<p>With Goodreads you can easily mark any title as “Want to read” and have a list of planned readings. I also use this list as a reference during sales
+(Black Friday, Cyber Monday, etc) to check what I am planning to read in next few months and try to buy these books much cheaper. It can be also a
+good source of ideas for gifts to your friends.</p>
+
+<h1>Recommendations</h1>
+
+<p>Your reading history, your ratings and “Want to Read” lists are source of recommendations that Goodreads prepares for you.
+It suggests similar books from genre you read a lot, notifies you about new title from author you liked or from series you partially read. And in
+most cases suggestions are relevant.</p>
+
+<h1>Follow friends and check books they like</h1>
+
+<p>We are surrounded by advertisements, they are everywhere and it is hard to find a reliable opinion about anything we plan to buy. That is why what
+I value the most is an opinion from someone I know and trust. Same applies to books: if someone I know writes an enthusiastic review of a book or
+gives 5 of 5 stars and book is within area of my interest then I check this book and maybe consider it as a something worth my time.</p>
+
+<p>Sometimes I even get a direct recommendation from my friends when they think that book they have just read is something I should be interested in and very often I am.</p>
+
+<p>Knowing that some of your friend started or finished a book is also a good topic for a discussion. At work we often discuss books that we are currently reading,
+want to read or looking for a free time to read :)</p>
+
+<h1>Follow famous people and influencers to see what they are reading</h1>
+
+<p>Same situation applies to famous people and well-known people from your industry. Obviously in most cases you are not their friend but similarly to Twitter,
+you can follow their activity and see what they are reading and check their reviews and ratings. This is also a very good source of interesting books to read that I probably would not find other way.</p>
+
+<p>This way you could follow:</p>
+
+<ul>
+<li><p><a href="https://www.goodreads.com/user/show/11764723-kent-beck">Kent Beck</a>, author of &ldquo;Test-Driven Development: By Example&rdquo; and co-author of JUnit testing library</p></li>
+<li><p><a href="https://www.goodreads.com/author/show/7127583.Sandro_Mancuso">Sandro Mancuso</a>, author of &ldquo;Software Craftsmanship&rdquo;, developer and speaker at various conferences and meetups</p></li>
+<li><p><a href="https://www.goodreads.com/author/show/4462627.Jurgen_Appelo">Jurgen Appello</a>, author of many <a href="http://jurgenappelo.com/writing/">innovative books about management</a></p></li>
+</ul>
+
+
+<h1>Motivate yourself to read more regularly</h1>
+
+<p>Every January Goodreads starts a challenge in which you can declare how many books you are going to read this year. You can see your challenge next to
+ones of your friends: their progress, whether they (and you) are on track or a little behind :)</p>
+
+<p>Once a week you get a notification about what your friends have read or want to read. Even if you fail and do not complete 100% of your reading plan
+still all of these small &ldquo;pokes&rdquo; are nice motivators to read more regularly and read more.</p>
+
+<p>And sharing that you have finished reading a book is also kind of small gratification :)</p>
+
+<h1>Summary</h1>
+
+<p>These are the most important advantages of using Goodreads. From my perspective it has influenced they way I choose books to more conscious and changed how I think about reading.
+I believe it is a very helpful website for every book reader so I encourage you to check it out.</p>
+
+<p>If you like it, you can find me there under <a href="https://www.goodreads.com/user/show/9486100-tomasz">Tomasz Dziurko</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My impressions after Advanced Data Structures at Coursera]]></title>
@@ -2190,137 +2268,6 @@ Dear Reader, this post is in my native language as it is a review of book publis
 <p><strong>Podsumowanie</strong></p>
 
 <p>Jeśli książkę &ldquo;Clean Code&rdquo; Uncle Boba uważam za coś, co każdy programista powinien przeczytać zanim dopuści się go do klawiatury i kodu, to &ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo; jest pozycją, którą każdy programista powinien przyswoić <strong>zanim dopuści się go</strong> do rozmów z klientem. I wydaje mi się, że książka jest na tyle wartościowa, że warto by rozważyć jej przetłumaczenie na język angielski, no może po poprawieniu ilustracji, które były rysowane trochę &ldquo;na kolanie&rdquo; :)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Agile By Example 2013 - review]]></title>
-    <link href="http://tomaszdziurko.pl/2013/10/agile-2013-review/"/>
-    <updated>2013-10-18T23:11:26+02:00</updated>
-    <id>http://tomaszdziurko.pl/2013/10/agile-2013-review</id>
-    <content type="html"><![CDATA[<p>My notes, thoughst and comments after my first agile conference in my career. Few interesting ideas, some already known approaches.
-Anyway, I do not regret being there.</p>
-
-<!-- more -->
-
-
-<p>I&rsquo;ve just returned from my trip to Warsaw to attend 3rd edition of <a href="http://agilebyexample.com">Agile By Example</a>.</p>
-
-<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2013/10/abe_2013.jpg"></p>
-
-<p>Here&rsquo;s my thoughts, impression and notes after this event.</p>
-
-<h3>Overview</h3>
-
-<p>This year&rsquo;s Agile By Example (or simply ABE) was my 2nd visit to this conference, I&rsquo;ve missed only the first edition. Last year I felt really refreshed by the conference built not only around code, coding, testing and developing software. This edition was bigger and had more famous speakers, also venue was really much more impressive. Cinema (as everyone who attended <a href="http://www.devoxx.be/">Devoxx</a> can confirm) is a great place to held any event of this type and Kino Praha was no different. Enormous screen, climatic rooms and cozy seats are things that really improve perception of the conference.</p>
-
-<h3>Day One &ndash; notes</h3>
-
-<p><strong>Jeff Sutherland, opening key</strong></p>
-
-<p>Presentation by one of the fathers of Scrum. Evangelistic, as expected, but too much about Scrum as a &ldquo;silver bullet&rdquo; that will solve all our problems, every time, everywhere.</p>
-
-<ul>
-<li>Plan for interruptions. In each iteration add buffer to deal with unexpected stuff when it appears. Also add time to improve process to each sprint.</li>
-</ul>
-
-
-<p><strong>Pawel Brodzinki &ndash; Building Teams</strong></p>
-
-<ul>
-<li><p>Really controversial with saying that we should hire women even if their technical skills is below the level we look for. It was said that woman will increase cognitive intelligence in team and will recompensate lower skills with increasing diversity and mentioned type of intelligence.</p></li>
-<li><p>From conversation with Pawel during the break, my question: What should be accepted difference between skill of hired woman and the rest of the team. Answer: &ldquo;Level that won&rsquo;t cause woman to hate you that you hired her and level that won&rsquo;t cause team to hate her and you&rdquo;. Pretty obvious, but thought provoking.</p></li>
-</ul>
-
-
-<p><strong>Tomek Włodarek &ndash; Are we agile yet</strong></p>
-
-<ul>
-<li><p>Scrumpede &ndash; 1. Sudden frenzied rush of (panic–stricken) organizations to do Scrum because it is the next best thing. 2. To flee in a headlong rush back to prescriptive ways of doing things because Scrum is difficult and hard work.</p></li>
-<li><p>Very interesting quote <em>&ldquo;Without knowledge action is useless and knowledge without action is futile.&rdquo;</em>, so even with the best intentions we are to fail if we aren&rsquo;t equipped with knowledge what should be done and how it should be done correctly.</p></li>
-</ul>
-
-
-<p><strong>Michał Przadka &ndash; Get agile and don&rsquo;t die trying</strong></p>
-
-<ul>
-<li><p>Don&rsquo;t&#8217; start with transforming whole organization or big part of it. Start with a small team, and then, step by step build agile environment around it.</p></li>
-<li><p>Some people might not fit into a new model of work. Some even say that it might be up to 30% that decide to leave a company if issue is not addressed properly</p></li>
-<li><p>Get help from coaches, agile mentors. My comment: Strangely it was repeated many times during the conference by different speakers. And what is most interesting, they weren&rsquo;t these coaches but people that hired an agile coach that proved to help a lot and be a successful and now they are suggesting similar steps to the other teams/organizations.  It could mean that such transformations are much easier with an assistance of someone who &ldquo;been there, done that&rdquo;.</p></li>
-<li><p>Kanban is deceptively simple, but requires a really high level of discipline to work. Albeit it&rsquo;s not the best idea to start &ldquo;being agile&rdquo; with Kanban</p></li>
-<li><p>If you can introduce only one practice, start with retrospective meetings. They really change a lot.</p></li>
-</ul>
-
-
-<p><strong>Sandro Mancuso &ndash; Software Craftsmanship</strong></p>
-
-<p>Most entertaining presentation during first day. There were some &ldquo;shits&rdquo;, many laughs, but also many comments how we should be a craftsman in what we do. If you can attend any of Sandro&rsquo;s talk, please do it or at least try to watch a video. It&rsquo;s really worth it :)</p>
-
-<ul>
-<li>We should prepare code in the project to accept changes in the future so that adding new stuff won&rsquo;t become painful and slow</li>
-</ul>
-
-
-<h3>Day Two &ndash; notes</h3>
-
-<p><strong>Jurgen Appelo &ndash; keynote</strong></p>
-
-<p>Jurgen is a quality speaker and his performance during ABE confirmed that. Talks was about intrinsic motivators, driving a change and convincing people to do what we want. Overview can be read <a href="http://www.noop.nl/2013/02/champfrogs.html">here</a>.</p>
-
-<ul>
-<li><p><em>Fake it until you make it </em>which means faking optimism will actually make you more optimisting and change the way other people perceive you.</p></li>
-<li><p>Look like a successful person, people like to be close to the success.</p></li>
-</ul>
-
-
-<p><strong>Paul Klipp &ndash; Kanban</strong></p>
-
-<p>Well prepared thoughts after five years of using Kanban in Paul&rsquo;s company. What didn&rsquo;t work, what they did about it and what were the results. Short stories from seasoned agile advocate.</p>
-
-<p><strong>Malcom Peacock &ndash; Planning a release</strong></p>
-
-<p>Very interesting analogy between planning a family car trip and planning a release of a product/project.</p>
-
-<ul>
-<li><p>Satellite navigation is our source of estimations, but we have to add some time for unexpected stuff that might appear during the travel.</p></li>
-<li><p>Geographical position is analogy to requirements, if we get wrong position, estimations will be incorrect and we will never reach our destination.</p></li>
-<li><p>In case of any delays, update release plan as Sat Nav updates estimated date of arrival.</p></li>
-<li><p>Inform product owner about changes as you would inform your passengers.</p></li>
-</ul>
-
-
-<p><strong>Michał Ostruszka &ndash; Code Reviews</strong></p>
-
-<p>This one is hard to judge as Michał, like me, is one of <a href="https://softwaremill.com/20-ceos-in-one-company/">twenty CEOs</a> in <a href="https://softwaremill.com/">SoftwareMill</a> :) Code reviews are very important part of our development process and Michał told about experiences, problems and solutions that should help when introducing or struggling with code reviews in your organization.</p>
-
-<p><strong>Tomasz Borowski &ndash; Spaceship Commander</strong></p>
-
-<p>Very interesting talk about introducing gamification to solve some problems in organisation. Lessons learnt during the process, examples what worked well, things that didn&rsquo;t and  had to be changed along the way. Game written as a core of described gamification process is <a href="http://yougameapp.com/">available online</a> and also open sourced on <a href="https://github.com/miksturait/YouGame">GitHub</a>.</p>
-
-<ul>
-<li><p>Beware of ending in pontification instead of gamification.</p></li>
-<li><p>Hide worst performers to avoid stupid managers using results of the game as a reason to fire people.</p></li>
-<li><p><del><em>Results of the game are base to yearly bonuses</em>. I am not sure if I got if correctly, but this one is in my opinion a huge mistake. Instead of gamification we end up with bonusification and all fun that comes with gamifying things in company is severely damaged.</del> Ok, Tomasz wrote me a tweet that they are not using YouGamApp to calculate bonuses. But they have something interesting instead just to allow people to give kudos to other team members. Please check readme on this <a href="https://github.com/miksturait/merit-money">project&rsquo;s GitHub page</a>.</p></li>
-</ul>
-
-
-<p><strong>Marek Kirejczyk &ndash; Agile Office</strong></p>
-
-<p>Marek showed us office of this company where thanks to visualisation of many things (burn-down charts, organisation changes kanban board, etc.) they radically increased transparency and empowered agile climate in <a href="http://www.elpassion.com/">elPassion</a>.</p>
-
-<p><strong>Tom Gilb &ndash; Agility is the Tool, not the Purpose</strong></p>
-
-<p>Tom is called a grand-father of Scrum as he introduced very similar concepts some time before Scrum was created. His talk was about how to by measuring impact of different project areas/functionalities/submodules on features/results we could analyze and pick with ones with highest effect and lowest cost. He showed rather complicated matrix from which company was able to choose on which area concentrate first. Concept is quite similar to <a href="http://impactmapping.org/">impact mapping</a>, but Tom&rsquo;s approach is more rigid and number-based. And for me it looks as both advantage and drawback: numbers should give are pretty objective view on project but on the other side, they are taken from discussions with people, so they can also be incorrect and subjective as well. Nevertheless, I fell this approach can be quite successful for smaller groups of people and not very complicated feature/impact matrix.</p>
-
-<p><strong>Surprise talk - Iwona Cymerman</strong></p>
-
-<p>Speaker and topic of this talks weren&rsquo;t revealed earlier and many people stayed until the end of event to see what this surprise is about. And I think no one was dissapointed.</p>
-
-<p>Most inspiring presentation of the conference. Iwona told us about introducing agile practices (stand-up meetings, pomodoro, agile manifesto) in here job which is not IT-related at all. She&rsquo;s a scientist in a Lab conducting various biology researches.  She also presented a history about how she started a movement that forces Parlament in Poland to change wrong law that affects every scientist in our country (vote will take place in a few weeks, fingers crossed).</p>
-
-<h3>Summary</h3>
-
-<p>After first day of ABE 2013 I felt a little bit disappointed, there were no &ldquo;wow&rdquo; effect, I&rsquo;ve made some notes but during breaks we shared similar thought with a few colleagues that maybe we are too agile-aware to learn anything new during this event. But then, 2nd day came by and everything changed. Topics were more interesting, talks more engaging and solutions more inspiring so at the end I can tell that even for someone who works in an agile environment for about 3 years it was well spent time. Some new stuff, some inspirations and of course, a great occasion to share and discuss our problems and approaches with people from different companies and with different experiences.</p>
 ]]></content>
   </entry>
   
