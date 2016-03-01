@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 5 reasons for every developer reading books to join Goodreads
-date: 2016-03-01 17:20:10:11 +0200
+date: 2016-03-01 16:10:10:11 +0200
 comments: true
 categories: 
 - learning
