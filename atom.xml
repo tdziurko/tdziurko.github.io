@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/feed" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2016-03-01T18:15:49+01:00</updated>
+  <updated>2016-03-06T11:44:25+01:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,111 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Podsumowanie ankiety o JVM Bloggers]]></title>
+    <link href="http://tomaszdziurko.pl/2016/03/podsumowanie-ankiety-o-jvm-bloggers/"/>
+    <updated>2016-03-06T09:10:00+01:00</updated>
+    <id>http://tomaszdziurko.pl/2016/03/podsumowanie-ankiety-o-jvm-bloggers</id>
+    <content type="html"><![CDATA[<p>JVM Bloggers &ndash; głos ludu kodującego</p>
+
+<!-- more -->
+
+
+<pre><code>Dear reader, 
+this post is written in Polish as it summarizes a survey conducted in developers 
+community in Poland. Questions were in Polish, answers are in Polish so logically 
+it makes sense to comment them in Polish as well.
+</code></pre>
+
+<br/>
+
+
+<p>Dwa tygodnie temu przygotowałem ankietę dotyczącą projektu <a href="https://github.com/tdziurko/jvm-bloggers">JVM Bloggers</a> i poprosiłem o jej wypełnienie programistów z naszej społeczności.
+Na podstawie odpowiedzi chciałem się dowiedzieć o tym co ludzie sądzą o samym pomyśle, jakie mają odczucia wobec niektórych jego elementów oraz które
+z planowanych nowych funkcjonalności są dla nich ważne, a które zupełnie zbędne. Liczyłem też na parę ciekawych pomysłów, które pojawią się w odpowiedziac na pytania otwarte.
+I jak się okazuje, nie zawiodłem się :)</p>
+
+<p>Po zebraniu 81 odpowiedzi, przyszła pora na podsumowanie, a ponieważ projekt jest open source to wyniki ankiety też mogą być jawne :)</p>
+
+<h1>Odbiór projektu</h1>
+
+<p>Zaraz po starcie projektu miałem trochę wątpliwości, że jednak może to jest zupełnie <em>bes sęsu</em>, ale patrząc na ogólny odbiór JVM Bloggers,
+chyba nie jest tak źle, bo <strong>90,1%</strong> osób ocenia projekt jako <em>Fajny</em> lub <em>Bardzo fajny</em>.</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/03/general_reception.png" width="900"></p>
+
+<h1>Sekcja Varia</h1>
+
+<p>Ten element nie był już oceniany tak dobrze (58% osób uważa, że jest <em>Fajna</em> lub <em>Bardzo fajna</em>), ale mniej jest również osób, które uważają, że <em>Varia</em> jest zbędna (tylko 3,7%).
+Dla sporej części Varia <em>po prostu jest</em> :)</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/03/varia_reception.png" width="900"></p>
+
+<h1>Ocena pomysłów na nowe funkcjonalności</h1>
+
+<p>Główną częścią ankiety były pytania na temat propozycji nowych funkcjonalności, które z czasem będa dodawane do projektu.</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/03/global_rss.png" width="900"></p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/03/most_commented_posts.png" width="900"></p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/03/most_read_posts.png" width="900"></p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/03/most_rt_likes_tweets.png" width="900"></p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/03/website_with_all_editions.png" width="900"></p>
+
+<p>Jak widać dwie najbardziej przydatne rzeczy okiem uczestników ankiety to zbiorczy RSS ze wszystkimi wpisami oraz strona
+z najnowszym oraz archiwalnymi wydaniami newslettera. Pozostałe rzeczy cieszyły się mniejszą, ale tylko o kilka procent, przychylnością :)</p>
+
+<h1>Integracja z Social Media</h1>
+
+<p>Trochę mnie to zaskoczyło, ale okazało się, że integracja z Social Media raczej nie jest potrzebna i ludzie wolą otrzymywać zbiorczo
+informację na maila (lub mieć RSS0a niż być bombardowani powiadomieniami na FB/Twitterze/G+</p>
+
+<p>Wyniki ankiety pokazały też, że Google Plus faktycznie umiera, bo prawie nikt z tego regularnie nie korzysta.</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/03/publication_on_twitter.png" width="700"></p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/03/publication_on_fb.png" width="700"></p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/03/publication_on_gplus.png" width="700"></p>
+
+<h1>Pytania otwarte</h1>
+
+<p>Jak to najczęściej bywa, najwięcej ciekawych rzeczy pojawiło się w odpowiedziach na pytania otwarte. Poniżej moje komentarze do niektórych wypowiedzi:</p>
+
+<ul>
+<li><em>&ldquo;projekt miał dotyczyć polskich blogów, a już pojawił się Spring Blog, który chyba wszyscy zainteresowani i tak subskrybują, ida tą drogą za chwile będą jeszcze blogi Oracle, IntelliJ, etc&rdquo;</em></li>
+</ul>
+
+
+<p>mój komentarz: Blog Springa pojawił się tylko dlatego, że czasami pisze tam Polak (<a href="http://toomuchdocing.com">Marcin Grzejszczak</a>), który pracuje w Pivotalu. Pozostałe wpisy nie przechodzą moderacji.</p>
+
+<ul>
+<li><em>&ldquo;nie wszystkie wpisy techniczne ze śledzonych blogów sa publikowane przez co jesli wiem, że ktoś publikuje ciekawe wpisy techniczne niedotyczące Javy to i tak trzymam jego blog w moich RSSach&rdquo;</em></li>
+</ul>
+
+
+<p>mój komentarz: blogi programistów nie sa moderowane poza przypadkami jakichś mocno politycznych/mało cenzuralnych wpisów. Wszystko poza nimi dotychczas wpadało do newslettera.</p>
+
+<ul>
+<li><p>Zbiorczy RSS i strona z aktualnym i poprzednimi wydaniami newslettera &ndash; to są dwie rzeczy, które chcemy
+zaimplementować w pierwszej kolejności. Jest już nawet domena <a href="http://jvm-bloggers.com">http://jvm-bloggers.com</a> :)</p></li>
+<li><p>Kilka osób zaproponowało przeniesienie sekcji &ldquo;Varia&rdquo; na dół. Może to jest dobry pomysł, chociaż wtedy mało kto może do niej dotrzeć :) Co o tym sądzicie?</p></li>
+<li><p>Głosowanie na fajne posty: to wymaga trochę więcej czasu i kodowania i nie wiem czy naprawdę warto coś takiego robić.</p></li>
+</ul>
+
+
+<h1>Podsumowanie</h1>
+
+<p>Wszystkie odpowiedzi na pyt. otwarte można zobaczyć pod <a href="http://bit.ly/1RuX3z5">tym linkiem</a> (można komentować). Ciągle szukamy też osób,
+które chciałyby pomóc w kodowaniu :) Więcej info oraz kontakt na <a href="https://github.com/tdziurko/jvm-bloggers">GitHubie</a>.</p>
+
+<p>A Wy co sądzicie o wynikach ankiety? Co sądzicie o planowanych funkcjonalnościach? Zachęcam do komentowania tutaj lub w GoogleDocs.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[5 reasons for every developer reading books to join Goodreads]]></title>
@@ -2227,47 +2332,6 @@ This is my &#8221;Brain dump&#8221; after Day 1.</p>
 <h3>Summary</h3>
 
 <p>Simply Must Have reference title for every AngularJS developer. The most advanced book about this framework on the market with plenty of practical suggestions. Very detailed but written in a way that is easy to follow. If you want to understand AngularJS and how to use if effectively, this book is a very good choice.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Oprogramowanie szyte na miarę - recenzja książki]]></title>
-    <link href="http://tomaszdziurko.pl/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/"/>
-    <updated>2013-10-30T16:33:49+01:00</updated>
-    <id>http://tomaszdziurko.pl/2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja</id>
-    <content type="html"><![CDATA[<p>Bardzo fajna książka na temat, który jest często zaniedbywany przez programistów: komunikacji z klientem. W skrócie:
-&ldquo;Jak rozmawiać z klientem, który nie wie czego chce&rdquo;, czyli o tym co każdy programista umieć powinien.</p>
-
-<!-- more -->
-
-
-
-
-<blockquote>
-Dear Reader, this post is in my native language as it is a review of book published only in Poland. Please feel free to check my other posts which are mainly written in English.
-</blockquote>
-
-
-<p>Dość rzadko sięgam po książki informatyczne wydane w naszym ojczystym języku. Powód jest dość prozaiczny: z reguły w momencie, gdy wychodzi polskie tłumaczenie &ldquo;JavaAwesomeWebFramework 1.2 w Akcji&rdquo; po angielsku jest już  dostępna &ldquo;JavaAwesomeWebFramework 2.0 in Action&rdquo; i cała wiedza zawarta w polskiej wersji jest, delikatnie mówiąc, lekko nieaktualna.</p>
-
-<p>Ale są tematy, które można nazwać, choć to dość górnolotne słowo, ponadczasowymi, bo dotyczą zagadnień aktualnych zarówno teraz jak i kilka lat temu. I do takich należy właśnie komunikacja z klientem. Temat dość ciężki, należący do tzw. &ldquo;obszarów miękkich&rdquo; i przez co traktowany przez programistów mocno po macoszemu. Co niestety powoduje częste napięcia na linii klient-zespół programistów, bo programista uważa, że on jest bez winy, a to klient wyraził się niejasno i jest źródłem wszystkich problemów.</p>
-
-<p>I właśnie na takie problemy receptą jest lektura i stosowanie rad zawartych w książce <a href="http://helion.pl/ksiazki/oprogramowanie-szyte-na-miare-jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-michal-bartyzel,opszmi.htm">&ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo;</a> Michała Bartyzela.</p>
-
-<p style="text-align:center;"><img src="http://tomaszdziurko.pl/images/blog/2013/10/bartyzel_klient-300x300.jpg" alt="Oprogramowanie szyte na miarę. Jak rozmawiać z klientem, który nie wie, czego chce" /></p>
-
-<blockquote>Klient wie, czego chce, ale nie wie czego potrzebuje</blockquote>
-
-
-<p>Właśnie takim, bardzo mądrym stwierdzeniem zaczyna się ta książka. I jeśli dobrze je przemyślimy i weźmiemy do serca to nasze postrzeganie klienta zmieni się diametralnie. Klient przychodzi do nas z problemem biznesowym i wie co jest jego rozwiązaniem. Nie wie jednak co jest potrzebne, żeby to rozwiązanie przekuć na aplikację. I tu się zaczyna nasza rola jako członków zespołu programistów. Zrozumieć problem i stworzyć aplikacją, która go rozwiązuje. Bo choćby nie wiem jak czysty, piękny i przetestowany był nasz kod, to jeśli nie pomoże klientowi w jego problemie to cały projekt będzie porażką, a nasza firma straci klienta. <em>&ldquo;Think about Business Value&rdquo;</em> jak często mawia <a href="http://pawel.wrzesz.cz/">Paweł Wrzeszcz</a>, mój kolega z pracy.</p>
-
-<p>Książka podzielona jest na kilka rozdziałów, które po kolei omawiają sposoby dobrej komunikacji, sztukę zadawania pytań (zarówno konkretyzujących jak i uogólniających), ustalanie priorytetów wymagań, a także efektywne prowadzenia spotkań, które nie będą stratą czasu i pozwolą nam osiągnąć założone cele.</p>
-
-<p>Każdy rozdział zawiera sporo przykładów zwrotów i zachowań, które ułatwią nam rozmowy z drugą stroną, a na końcu publikacji umieszczony jest swojego rodzaju bryk z zebranymi wszystkimi poradami w pigułce.</p>
-
-<p><strong>Podsumowanie</strong></p>
-
-<p>Jeśli książkę &ldquo;Clean Code&rdquo; Uncle Boba uważam za coś, co każdy programista powinien przeczytać zanim dopuści się go do klawiatury i kodu, to &ldquo;Oprogramowanie szyte na miarę: Jak rozmawiać z klientem, który nie wie czego chce&rdquo; jest pozycją, którą każdy programista powinien przyswoić <strong>zanim dopuści się go</strong> do rozmów z klientem. I wydaje mi się, że książka jest na tyle wartościowa, że warto by rozważyć jej przetłumaczenie na język angielski, no może po poprawieniu ilustracji, które były rysowane trochę &ldquo;na kolanie&rdquo; :)</p>
 ]]></content>
   </entry>
   
