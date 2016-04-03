@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/feed" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2016-03-06T11:46:09+01:00</updated>
+  <updated>2016-04-03T14:28:36+02:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Varidesk - an adjustable standing desk - review]]></title>
+    <link href="http://tomaszdziurko.pl/2016/04/varidesk-standing-desk-review/"/>
+    <updated>2016-04-02T00:00:00+02:00</updated>
+    <id>http://tomaszdziurko.pl/2016/04/varidesk-standing-desk-review</id>
+    <content type="html"><![CDATA[<p>My impressions after six months with Varidesk standing desk</p>
+
+<!-- more -->
+
+
+<p>I was thinking about buying a standing desk for quite some time, but always when I was almost convinced to buy one,
+I had one unsolved problem: what to do with my old, wooden desk. It is a solid furniture with four drawers where I
+store many indispensable things and I didn&rsquo;t want to toss it away. But about six months ago my friend showed me a new
+furniture in his home office &ndash; a VariDesk standing desk. I needed only a few looks to know that I want it too :)</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/04/varidesk_official.jpg" width="600"></p>
+
+<p><a href="http://www.varidesk.com">Varidesk</a> is a producer of adjustable standing desks that can be placed <strong>on</strong> any table or desk so you
+don’t loose your old furniture, you only augment it with standing-desk functionality. Because at work I am using two
+external 27&#8217;&lsquo; monitors I have ordered the largest model named <a href="http://www.varidesk.com/standing-desk-pro-plus-48">Pro Plus 48</a>.
+And the first thing I have noticed after package have arrived to my home is that this thing is huge and really heavy.</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/04/varidesk_box.jpg" width="600"></p>
+
+<p>I had to help the courier to carry it to the third floor and after unboxing it I really struggled to put it on my desk.
+But after a few tries I have finally done it and I could start arranging cables to use my new setup.</p>
+
+<p>This is how it looks in <em>sitting</em> mode:</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/04/varidesk_sitting.jpg" width="600"></p>
+
+<p>As you can see it is a really large desk, but thanks to this two large monitors fit there easily. Mine are 27’’
+but there is still some free room so even two 30+ should be fine. Another good thing is that there is still
+plenty of space left for your mug of coffee, a notebook or any random stuff you often have on your desk. Varidesk has
+a special spring-assisted lifting mechanism so even with two monitors on board it can be easily lifted up to <em>standing</em>
+mode. And changing positions is a matter of only a few seconds.</p>
+
+<p>Materials used to build Varidesk are solid and easy to clean, nothing is creaking, nothing is swinging loose. There
+are also versions in white colour but I black looked more attractive to me.</p>
+
+<p><em>Standing</em> mode:</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/04/varidesk_standing.jpg" width="600"></p>
+
+<h1>Summary</h1>
+
+<p>Whole setup is very stable (Varidesk is so heavy for a reason), its height is adjustable (11 different positions)
+and, what is very important for me, I can still use my old desk and its drawers to store stuff. Additionally it looks really,
+really impressive in a standing mode. One friend when she saw it for the first time compared it to some kind of
+center of operations :)</p>
+
+<p>So if you are thinking about a standing desk I can recommend <a href="http://www.varidesk.com">Varidesk</a> as a good choice.
+They offer various models with different sizes and setups so everyone should be able to find something suited to their needs.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Podsumowanie ankiety o JVM Bloggers]]></title>
@@ -2285,53 +2341,6 @@ This is my &#8221;Brain dump&#8221; after Day 1.</p>
 <h3>And what about your GeeCON?</h3>
 
 <p>What about you? Did you find anything very interesting during GeeCON? Or maybe I&rsquo;ve missed really interesting talk on Day 1?</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Deep dive into AngularJS - my review of "Mastering Web Application Development with AngularJS"]]></title>
-    <link href="http://tomaszdziurko.pl/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/"/>
-    <updated>2013-11-24T23:53:30+01:00</updated>
-    <id>http://tomaszdziurko.pl/2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs</id>
-    <content type="html"><![CDATA[<p>First, complete book about AngularJS. Pretty good, very useful and written by our fellow man from Poland. Could I ask for more?</p>
-
-<!-- more -->
-
-
-<p><a href="http://angularjs.org/">AngularJS</a> is very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There were no really good, reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to &ldquo;Mastering Web Application Development with AngularJS&rdquo; that is no longer the case.</p>
-
-<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2013/11/AngularJs-cover-243x300.jpg"></p>
-
-<h3>Overview</h3>
-
-<p>The book starts with gentle introduction to the framework, we have a simple Hello World application just to get a quick glance how AngularJS works. Then in later chapters we learn how to organise project (directories layout, build system), communicate with backend, get data and display data to the user, design navigation and other usual topics which are covered in every book about all web frameworks. Luckily everything is provided in an easy to understand way with a lot of useful tips and code snippets.</p>
-
-<p>And when after reading this part of book  I thought &ldquo;Oh man, AngularJS is easy, now I get it &rdquo; I reached  two chapters about directives. And trust me, if someone says &ldquo;I fully understand directives from AngularJS&rdquo; he either is AngularJS committer/author or a liar. I knew that directives are powerful and complex, but I wasn&rsquo;t aware that they are so powerful and so complex. These two chapters are a masterpiece in taking you into world of getting as much as possible from this flagship AngularJS feature. But it is so complicated topic that I had to read these chapters twice probably only to get to &ldquo;I understand it more or less&rdquo; level. But at least I know that every time I need to write non-trivial directive I could grab this book as a reference and find detailed explanation of how directives work and what they are capable of.</p>
-
-<p>After section about directives there are easier topics like internationalization, quick look at framework internals and very useful part describing how to detect and solve performance problems of your application.</p>
-
-<h4>What I liked:</h4>
-
-<ul>
-<li><p>level of detail, this book is most complete reference guide to understand and leverage power of AngularJS</p></li>
-<li><p>best explanation of directives and their powers</p></li>
-<li><p>many useful tips from people using AngularJS in they daily job</p></li>
-<li><p>very test-oriented examples</p></li>
-<li><p>avoiding step-by-step tutorial approach and choosing more systematic way of introducing a framework</p></li>
-</ul>
-
-
-<h4><strong>What I didn&rsquo;t like:</strong></h4>
-
-<ul>
-<li><p>Almost nothing about various projects around AngularJS that could be helpful during development and learning</p></li>
-<li><p>Nothing about animations</p></li>
-</ul>
-
-
-<h3>Summary</h3>
-
-<p>Simply Must Have reference title for every AngularJS developer. The most advanced book about this framework on the market with plenty of practical suggestions. Very detailed but written in a way that is easy to follow. If you want to understand AngularJS and how to use if effectively, this book is a very good choice.</p>
 ]]></content>
   </entry>
   
