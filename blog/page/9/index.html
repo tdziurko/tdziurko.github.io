@@ -129,6 +129,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2016/08/jvm-bloggers-docker-compose-and-views-counter/">What's New in JVM Bloggers - Docker Compose and Views Counter</a>
+      </li>
+    
+      <li class="post">
         <a href="/2016/04/varidesk-standing-desk-review/">Varidesk - an Adjustable Standing Desk - Review</a>
       </li>
     
@@ -142,10 +146,6 @@
     
       <li class="post">
         <a href="/2016/02/coursera-advanced-data-structures-summary/">My Impressions After Advanced Data Structures at Coursera</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2016/01/dockerizing-spring-boot-application/">Dockerizing Spring Boot Application</a>
       </li>
     
   </ul>
@@ -172,6 +172,53 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-22T21:50:53+02:00" data-updated="true" itemprop="datePublished">Aug 22<span>nd</span>, 2010</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</div>
+		
+			<span class="comments"><a href="/2010/08/submitting-ssl-and-no-ssl-html-forms-using-jmeter/#disqus_thread">Comments</a></span>
+		
+	</div>
+	<h1 class="title" itemprop="name"><a href="/2010/08/submitting-ssl-and-no-ssl-html-forms-using-jmeter/" itemprop="url">Submitting SSL and no-SSL Html Forms Using JMeter</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>JMeter is well-known tool for testing performance of web applications, databases and many other things (check <a href="http://jakarta.apache.org/jmeter/index.html">project official site</a> for more). Today I am going to show how to test web application with  JMeter when user needs to be logged-in to take some actions (JMeter must  fill and submit login form at first).</p>
+
+<p>Im my diploma thesis which  involves comparison between Struts 2 and Wicket, I need to take some  tests about how fast are both frameworks. For this purpose I used  mentioned above tool. In this post I will show and describe how form  submitting can be done from JMeter depending on application architecture  and security level.</p>
+
+<h3>Simple sending post-data to login form</h3>
+
+<p style="text-align:center;"><img src="/images/blog/2010/10/smsgateway.png" alt="SMS gateway site" /></p>
+
+<p><strong>Example site:</strong> <a href="http://ebramka.ath.cx/">http://ebramka.ath.cx/</a> &ndash; polish free sms gateway
+<strong>Use case:</strong> login user and then check if main page rendered properly.</p>
+
+<p>This one is pretty simple. No HTTPS protocol, no SSL, just pure post data sent to login form.
+		
+		<a href="/2010/08/submitting-ssl-and-no-ssl-html-forms-using-jmeter/" class="more-link">Read on &rarr;</a>
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -694,67 +741,6 @@ Jest to faktycznie pionierski krok i z  niecierpliwością czekam, czy w ciągu 
 
 		
 		<a href="/2010/04/the-life-cycle-of-servlet/" class="more-link">Read on &rarr;</a>
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-09T21:00:36+02:00" data-updated="true" itemprop="datePublished">Apr 9<span>th</span>, 2010</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/blog/categories/certificates/'>Certificates</a>, <a class='category' href='/blog/categories/in-polish/'>In Polish</a>
-
-
-</div>
-		
-			<span class="comments"><a href="/2010/04/scjp-to-certyfikowany-programista-java-a-scjd/#disqus_thread">Comments</a></span>
-		
-	</div>
-	<h1 class="title" itemprop="name"><a href="/2010/04/scjp-to-certyfikowany-programista-java-a-scjd/" itemprop="url">SCJP to Certyfikowany Programista Java, a SCJD?</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p>Dear Reader</p>
-
-<pre><code>This post is in my native language as it applies only to developers society in Poland. Please feel free to check my other posts which are mainly written in English.
-</code></pre>
-
-<p>Pewnie nie uwierzycie, ale istnieją miejsca na Ziemi, w których nie chcą  od ręki uznać dyplomu SCJP ;) i potrzebują tłumaczenia na język  ojczysty.</p>
-
-<p>Tak właśnie jest w polskich urzędach, gdzie bardzo miła pani  powiedziała, że wierzy mi, iż jest to certyfikat potwierdzający jakieś  kwalifikacje, ale żeby mogła wprowadzić go do bazy musi mieć tłumaczenie  i to przysięgłe. Rozpocząłem więc pielgrzymkę po biurach tłumaczeń,  które jak się okazało tłumaczą od ręki, ale nie zawsze pod przysięgą. W  końcu dotarłem do miłego pana, który wziął moje oba certyfikaty i  powiedział, że tłumaczenie będzie gotowe w ciągu dwóch dni.</p>
-
-<p>Gdy  pojawiłem się po odbiór okazało się, że tłumaczenie nie jest jeszcze w  pełni gotowe, bo tłumacz chciał ze mną skonsultować dwie kwestie:  tłumaczenie &ldquo;Sun Certified Programmer&rdquo; oraz &ldquo;Sun Certified Web Component  Developer&rdquo;. Po krótkiej dyskusji ustaliliśmy następujące brzmienie tych  nazw:</p>
-
-<ul>
-<li><p>Certyfikowany Programista w języku programowania Java Standard Edition 5.0</p></li>
-<li><p>Certyfikowany Programista Komponentów Internetowych w języku programowania Java Enterprise Edition 5</p></li>
-</ul>
-
-
-<p>Nazwy  nie są na pewno idealne, bo tłumacz nie mógł po prostu pominąć  niektórych fragmentów po angielsku, ale moim zdaniem dobrze oddają sens.  Zadowolony wróciłem do domu po czym naszła mnie taka oto myśl:
-Co  zrobiłby tłumacz, gdybym razem z certyfikatem SCJP przyniósł mu również  SCJD (Sun Certified Java Developer)? Jak poradziłby sobie ze słowem developer, które w języku polskim ma w sumie takie samo znaczenie jak programmer?  Myślałem nad tą kwestią sporo czasu i stwierdziłem, że chyba jedynym  dobrym rozwiązaniem byłoby wprowadzenie jakiegoś przymiotnika  określającego wyższy poziom umiejętności developera od programmera, czyli na przykład:</p>
-
-<p>a) Certyfikowany Programista w języku programowania Java Standard Edition 5.0 na poziomie zaawansowanym</p>
-
-<p>b) Certyfikowany Starszy Programista &hellip;</p>
-
-<p>Jednak żadne z tych tłumaczeń nie jest w pełni udane. Może Wy macie lepsze pomysły?</p>
-
-		
-		
 	</div>
 
 </article>

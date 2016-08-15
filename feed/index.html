@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/feed" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2016-04-03T14:28:36+02:00</updated>
+  <updated>2016-08-15T10:27:48+02:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,313 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[What's new in JVM Bloggers - docker compose and views counter]]></title>
+    <link href="http://tomaszdziurko.pl/2016/08/jvm-bloggers-docker-compose-and-views-counter/"/>
+    <updated>2016-08-15T00:00:00+02:00</updated>
+    <id>http://tomaszdziurko.pl/2016/08/jvm-bloggers-docker-compose-and-views-counter</id>
+    <content type="html"><![CDATA[<p>Version 0.10.0 is live with Docker Compose and views counter</p>
+
+<!-- more -->
+
+
+<p>As some of you may be aware, for the last year I am working on a pet project called <a href="https://github.com/tdziurko/jvm-bloggers/">JVM Bloggers</a> with a goal
+to popularize blogging and knowledge sharing in the Polish Java developers community. We send a weekly summary with new blog posts and new videos published in the last 7 days.</p>
+
+<p>During last few weeks two major changes were added to the project:</p>
+
+<ul>
+<li><p>deployment is done using Docker Compose</p></li>
+<li><p>All clicks are going through the application so we can gather some statistics</p></li>
+</ul>
+
+
+<h1>Docker Compose</h1>
+
+<p>Previously application was deployed using two separate Dockers, that was the easier approach to get things going
+but as we are moving to microservices architecture I knew that Docker Compose will be a good choice allowing us
+to easily add more and more elements to our system.</p>
+
+<p>First, <a href="https://github.com/tdziurko/jvm-bloggers/blob/b1e243ffd2bdb98d1075c0ded51612a18bd7a088/docker-compose.yml">docker-compose.yml</a> needs to be created with two services: jvm_bloggers_db and jvm-bloggers-core:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>version: '2'
+</span><span class='line'>services:
+</span><span class='line'>  jvm_bloggers_db:
+</span><span class='line'>    image: sameersbn/postgresql:9.4-22
+</span><span class='line'>    environment:
+</span><span class='line'>      DB_USER: $JVM_BLOGGERS_DB_USER
+</span><span class='line'>      DB_PASS: $JVM_BLOGGERS_DB_PASSWORD
+</span><span class='line'>      DB_NAME: $JVM_BLOGGERS_DB_NAME
+</span><span class='line'>    ports:
+</span><span class='line'>      - "$JVM_BLOGGERS_DB_PUBLISHED_PORT:5432"
+</span><span class='line'>    volumes:
+</span><span class='line'>      - "$JVM_BLOGGERS_DB_PATH:/var/lib/postgresql"
+</span><span class='line'>  jvm-bloggers-core:
+</span><span class='line'>    image: tdziurko/jvm-bloggers:$JVM_BLOGGERS_CORE_IMAGE_VERSION
+</span><span class='line'>    environment:
+</span><span class='line'>      spring.profiles.active: $JVM_BLOGGERS_CORE_SPRING_PROFILES
+</span><span class='line'>      jasypt.encryptor.password: $JVM_BLOGGERS_CORE_ENCRYPTOR_PASSWORD
+</span><span class='line'>    ports:
+</span><span class='line'>      - "$JVM_BLOGGERS_CORE_PORT:8080"
+</span><span class='line'>    volumes:
+</span><span class='line'>      - /etc/localtime:/etc/localtime:ro
+</span><span class='line'>      - /usr/share/zoneinfo/Europe/Warsaw:/etc/timezone:ro
+</span><span class='line'>      - /tmp
+</span><span class='line'>    links:
+</span><span class='line'>      - jvm_bloggers_db
+</span><span class='line'>    depends_on:
+</span><span class='line'>      - jvm_bloggers_db</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In <em>jvm_bloggers_db</em> we have some parameters that allows to customize PostgreSQL image, besides most obvious ones like database name, user and password there are also:</p>
+
+<ul>
+<li><p><em>$JVM_BLOGGERS_DB_PUBLISHED_PORT</em> &ndash; port on which our database will be available from external (like developer&rsquo;s machine)</p></li>
+<li><p><em>$JVM_BLOGGERS_DB_PATH</em> &ndash; path to a directory where database files are located on our server</p></li>
+</ul>
+
+
+<p><em>jvm-bloggers-core</em> is more complicated:</p>
+
+<ul>
+<li><p>environment variables specifies Spring profile and master password used to encrypt properties like API keys, password to admin panel, etc.</p></li>
+<li><p><em>$JVM_BLOGGERS_CORE_PORT</em> &ndash; port on which application is available, on production it is obviously 80, but locally it can be different</p></li>
+<li><p>link <em>jvm_bloggers_db</em> allows us to use this as a url to the database in <em>spring.datasource.url</em> with value <em>jdbc:postgresql://jvm_bloggers_db:5432/jvm_bloggers_prod</em> without worrying where exactly database container is running in our internal network.</p></li>
+</ul>
+
+
+<p>Next to docker-compose file we need a <a href="https://github.com/tdziurko/jvm-bloggers/blob/b1e243ffd2bdb98d1075c0ded51612a18bd7a088/jvm-bloggers.sh">bash script</a> to start/stop our system:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
+</span><span class='line'>
+</span><span class='line'>setupProperties<span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="c"># Database settings</span>
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_DB_USER</span><span class="o">=</span>jvm_bloggers
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_DB_PASSWORD</span><span class="o">=</span>jvm_bloggers
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_DB_NAME</span><span class="o">=</span>jvm_bloggers
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_DB_PATH</span><span class="o">=</span><span class="s2">&quot;~/postgresql-data/&quot;</span>
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_DB_PUBLISHED_PORT</span><span class="o">=</span>5432
+</span><span class='line'>
+</span><span class='line'>  <span class="c"># Core Application settings:</span>
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_CORE_IMAGE_VERSION</span><span class="o">=</span>0.9.0-20160724-165001-19f0d70
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_CORE_SPRING_PROFILES</span><span class="o">=</span>dev
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_CORE_ENCRYPTOR_PASSWORD</span><span class="o">=</span>secret
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_CORE_PORT</span><span class="o">=</span>9000
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>start<span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    docker-compose up -d
+</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;Started JVM Bloggers&quot;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>stop<span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    docker-compose down
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$1&quot;</span> in
+</span><span class='line'>  start<span class="o">)</span>
+</span><span class='line'>    start
+</span><span class='line'>    ;;
+</span><span class='line'>  stop<span class="o">)</span>
+</span><span class='line'>    stop
+</span><span class='line'>    ;;
+</span><span class='line'>  status<span class="o">)</span>
+</span><span class='line'>    status
+</span><span class='line'>    ;;
+</span><span class='line'>  restart<span class="o">)</span>
+</span><span class='line'>    stop
+</span><span class='line'>    start
+</span><span class='line'>    ;;
+</span><span class='line'>  *<span class="o">)</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;Usage: $0 {start|stop|restart|status}&quot;</span>
+</span><span class='line'><span class="k">esac</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Main part of this file consists of multiple exports that enable customization of docker-compose so it can be
+used without changes locally and on production. Then we have simple commands to launch, shutdown and
+check status of running services. And that&rsquo;s all, now we can use following command to launch all services:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>./jvm-bloggers.sh start
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Views counter</h1>
+
+<p>Next feature released with 0.10.0 version is views counter. I wanted to have some insight into
+how many people use JVM Bloggers and, most importantly, what are the most popular entries. In next
+weeks we plan to add section with most popular posts from last month so authors of most valuable
+content could get extra recognition.</p>
+
+<p>To add this feature following things were required:</p>
+
+<ol>
+<li><p>Redirect controller</p></li>
+<li><p>Migration from UUID as a unique blog post identifier to something shorter</p></li>
+<li><p>Logic to store clicks in the database</p></li>
+</ol>
+
+
+<p>Job of <a href="https://github.com/tdziurko/jvm-bloggers/blob/24d00aad8f90c5e13087ac91e5db0c9f7fd3fe2a/src/main/java/pl/tomaszdziurko/jvm_bloggers/rest/blogpost_redirect/RedirectController.java">Redirect Controller</a> is very simple &ndash; get UID from the url parameter (e.g. <a href="http://jvm-bloggers.com/r/wx1LivZ">http://jvm-bloggers.com/r/wx1LivZ</a>)
+and redirect user to proper blog post. But before 0.10.0 UID was a full</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">_UUID</span><span class="o">.</span><span class="na">randomUUID</span><span class="o">().</span><span class="na">toString</span><span class="o">()</span><span class="n">_</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>so instead of a nice and short link we had something like <a href="http://jvm-bloggers.com/r/b877a837-4f5b-4a0b-90b2-981c83c1366e,">http://jvm-bloggers.com/r/b877a837-4f5b-4a0b-90b2-981c83c1366e,</a>
+not very friendly and concise. Simple data migration was necessary and in a new approach UID is compact 7-chars length String:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">RandomStringUtils</span><span class="o">.</span><span class="na">randomAlphanumeric</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>The last thing we needed was a logic to save clicks. I didn&rsquo;t want to make a redirection slower only because
+we are storing something in the database so I decided to use Akka to handle this work in a separate thread.</p>
+
+<p>In RedirectController we publish SingleClick event:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">actorRef</span><span class="o">.</span><span class="na">tell</span><span class="o">(</span><span class="k">new</span> <span class="n">SingleClick</span><span class="o">(</span><span class="n">blogPost</span><span class="o">.</span><span class="na">get</span><span class="o">()),</span> <span class="n">noSender</span><span class="o">());</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and actors simply handles this event by persisting Click entity:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Slf4j</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClicksStoringActor</span> <span class="kd">extends</span> <span class="n">AbstractActor</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">ClicksStoringActor</span><span class="o">(</span><span class="n">ClickRepository</span> <span class="n">clickRepository</span><span class="o">,</span> <span class="n">NowProvider</span> <span class="n">nowProvider</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Creating &quot;</span> <span class="o">+</span> <span class="n">ClicksStoringActor</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">());</span>
+</span><span class='line'>        <span class="n">receive</span><span class="o">(</span><span class="n">ReceiveBuilder</span><span class="o">.</span><span class="na">match</span><span class="o">(</span><span class="n">SingleClick</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+</span><span class='line'>            <span class="n">clickEvent</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Storing click for &quot;</span> <span class="o">+</span> <span class="n">clickEvent</span><span class="o">.</span><span class="na">getBlogPost</span><span class="o">().</span><span class="na">getUrl</span><span class="o">());</span>
+</span><span class='line'>                <span class="n">clickRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="k">new</span> <span class="n">Click</span><span class="o">(</span><span class="n">clickEvent</span><span class="o">.</span><span class="na">getBlogPost</span><span class="o">(),</span> <span class="n">nowProvider</span><span class="o">.</span><span class="na">now</span><span class="o">()));</span>
+</span><span class='line'>            <span class="o">}).</span><span class="na">build</span><span class="o">()</span>
+</span><span class='line'>        <span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Props</span> <span class="nf">props</span><span class="o">(</span><span class="n">ClickRepository</span> <span class="n">clickRepository</span><span class="o">,</span> <span class="n">NowProvider</span> <span class="n">nowProvider</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">Props</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">ClicksStoringActor</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="k">new</span> <span class="nf">ClicksStoringActor</span><span class="o">(</span><span class="n">clickRepository</span><span class="o">,</span> <span class="n">nowProvider</span><span class="o">);</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Credits</h3>
+
+<p>These new features wouldn&rsquo;t be possible without contributors, most notably <a href="https://github.com/matek2305">Mateusz Urbański</a> and <a href="https://github.com/goostleek">Marcin Kłopotek</a>.</p>
+
+<h1>Summary</h1>
+
+<p>JVM Bloggers is still evolving with both small changes and major new features, so if you want to help
+please contact me or join our <a href="https://gitter.im/tdziurko/jvm-bloggers">gitter</a> channel. We have Java8, Spring Boot, Docker,
+Akka on board and plenty of ideas to implement (even using different languages).</p>
+
+<p>For more details you should visit our <a href="https://github.com/tdziurko/jvm-bloggers">GitHub repository</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Varidesk - an adjustable standing desk - review]]></title>
@@ -2247,100 +2554,6 @@ Day two was the most interesting and richest day of the conference so are the no
 
 
 <p>That&rsquo;s all I&rsquo;ve noted from second dat at GeeCON 2014. Stay tuned for the 3rd part of my brain dump.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[GeeCON 2014 - Brain dump, Day 1]]></title>
-    <link href="http://tomaszdziurko.pl/2014/05/geecon-2014-brain-dump-day-1/"/>
-    <updated>2014-05-15T21:00:10+02:00</updated>
-    <id>http://tomaszdziurko.pl/2014/05/geecon-2014-brain-dump-day-1</id>
-    <content type="html"><![CDATA[<p>Inspired by post <a href="http://scottberkun.com/2014/min-max-note-taking/">&ldquo;Min/max note taking for conferences&rdquo;</a> I&rsquo;ve noted down my impressions,
-most interesting sentences, mentioned tools/books/blogs during ongoing <a href="http://2014.geecon.org/">GeeCON 2014</a> conference.
-This is my &#8221;Brain dump&#8221; after Day 1.</p>
-
-<!-- more -->
-
-
-<h3>Pavel Sekanina - Nothing comes for free</h3>
-
-<ul>
-<li><p>Be yourself, be true. It makes everything much easier.</p></li>
-<li><p>Your colleagues do not have to like you, but they should appreciate you for your skills, attitude and professionalism.</p></li>
-</ul>
-
-
-<h3>Jurgen Appelo - The 7 Duties of Great Software Professionals</h3>
-
-<ul>
-<li><p>Won Entrepreneur of the Year 1999 in Holland &ndash; <a href="http://www.nieuwsbank.nl/inp/1999/12/1215R099.htm">details</a> in Dutch (Google Translate for English version)</p></li>
-<li><p>recommended book <a href="https://www.goodreads.com/book/show/6452796-drive">&ldquo;Drive&rdquo;</a></p></li>
-<li><p>Measure how you spend time to find ways where you can optimise things</p></li>
-<li><p>There is <a href="http://ale2014.alenetwork.eu/">ALE 2014 Unconference</a> in Cracow in August, looking very interesting</p></li>
-<li><p>&ldquo;Actually be cool instead of saying everyone &lsquo;we are cool&rsquo;&rdquo;</p></li>
-<li><p>We tend to anticipate too much, what if, what will happen when&hellip; We should explore more things</p></li>
-<li><p>Time management: attach what is useful with what is pleasurable</p></li>
-<li><p>Time management: try to set aside a little bit of time each day</p></li>
-</ul>
-
-
-<h3>Jakub Jurkiewicz - Back to the Future &ndash; how to go back in time and provide better future for your agile team</h3>
-
-<ul>
-<li><p>very often forgotten point of retrospectives: &ldquo;reflect how to become more effective&rdquo;</p></li>
-<li><p>ice breakers: Factor fiction game &ndash; everyone tells three (2 true, 1 false) sentences about himself and let other team members try to guess</p></li>
-<li><p>Worth to read and try: <a href="http://insight.typepad.co.uk/40_icebreakers_for_small_groups.pdf">40 Icebreakers for Small Groups </a></p></li>
-<li><p>Very important rule &ldquo;Do not leave the retrospective room without saying what you wanted to say&rdquo;</p></li>
-<li><p>Gather data about specific topics. e.g. how people perceive communication inside of the team, quality of the job, etc. and then check how this indicators are changing when you compare them with results from the retrospectives in the past</p></li>
-<li><p>Give people space and time to share appreciations. Allow them to give &ldquo;kudos&rdquo; to others.</p></li>
-<li><p>Decide what to do, write down action points.</p></li>
-<li><p>Action points should be SMART: Specific, Measurable, Assignable, Realistic, Time-related</p></li>
-<li><p>Do retrospective about how this retrospective went. What was ok, what needs improvement.</p></li>
-<li><p>Interesting tool for remote retros:  <a href="http://www.ideaboardz.com/">http://www.ideaboardz.com/</a></p></li>
-<li><p>Books to check: <a href="https://www.goodreads.com/book/show/721338.Agile_Retrospectives">&ldquo;Agile retrospectives&rdquo;</a>, <a href="https://www.goodreads.com/book/show/1523368.Project_Retrospectives">&ldquo;Project retrospectives&rdquo;</a></p></li>
-</ul>
-
-
-<h3>Patroklos Papapetrou - Managing your Technical Debt with SonarQube</h3>
-
-<ul>
-<li>Code quality &ndash; how fast developers can add business value to the system</li>
-</ul>
-
-
-<h3>Adam Warski - Keep it Simple with Scala</h3>
-
-<ul>
-<li><p><a href="https://github.com/scala/async">Scala Async</a> - readable lib to write asynchronous code</p></li>
-<li><p><a href="http://spray.io/">Spray.io</a> &ndash; Akka based REST library in Scala with readable DSL</p></li>
-<li><p>Over heard during this talk: Spock is very cool, but what I miss in it is type safety. ScalaTest is much better when you refactor stuff.</p></li>
-<li><p><a href="https://github.com/adamw/macwire">Macwire</a> &ndash; simple, non-invasive DI for Scala</p></li>
-</ul>
-
-
-<h3>Tim Boudreau - Node.js for Java developers</h3>
-
-<ul>
-<li><p>speaker webpage to check - <a href="http://timboudreau.com/">http://timboudreau.com/</a></p></li>
-<li><p><a href="http://spumko.github.io/">hapi</a> - rich framework for building web applications and services for Node.js</p></li>
-<li><p><a href="https://github.com/spumko/joi">joi</a> &ndash; library to JSON validation</p></li>
-</ul>
-
-
-<h3>Olga Madejska &ndash; &lsquo;I will never deploy on Fridays&rsquo; &ndash; yeah, right&hellip;</h3>
-
-<ul>
-<li><p>Show your drafts/unfinished work as soon as it is possible. The quicker feedback the better final result will be.</p></li>
-<li><p>Treat project as something that you will have to work with till the end of your life. Do not cut corners.</p></li>
-<li><p>&ldquo;Every manual task that can be forgotten, will be forgotten&rdquo; &ndash;> automate everything</p></li>
-</ul>
-
-
-<p>That&rsquo;s all about Day 1. Other days should appear within next week.</p>
-
-<h3>And what about your GeeCON?</h3>
-
-<p>What about you? Did you find anything very interesting during GeeCON? Or maybe I&rsquo;ve missed really interesting talk on Day 1?</p>
 ]]></content>
   </entry>
   
