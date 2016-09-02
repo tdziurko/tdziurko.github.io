@@ -4,7 +4,7 @@
   <title><![CDATA[Tomasz Dziurko]]></title>
   <link href="http://tomaszdziurko.pl/feed" rel="self"/>
   <link href="http://tomaszdziurko.pl/"/>
-  <updated>2016-08-15T10:27:48+02:00</updated>
+  <updated>2016-09-02T10:25:49+02:00</updated>
   <id>http://tomaszdziurko.pl/</id>
   <author>
     <name><![CDATA[Tomasz Dziurko]]></name>
@@ -12,6 +12,139 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Six steps to improve your remote communication with TeamSpeak]]></title>
+    <link href="http://tomaszdziurko.pl/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/"/>
+    <updated>2016-09-02T00:00:00+02:00</updated>
+    <id>http://tomaszdziurko.pl/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak</id>
+    <content type="html"><![CDATA[<p>Few tips to make your TeamSpeak usage a real pleasure</p>
+
+<!-- more -->
+
+
+<p>Communication is the key in any team working on software, this well-known fact is even more true in a company
+working 100% remotely where team members sit at their comfortable desks hundred kilometers away from each other.</p>
+
+<p>Remote work brings many advantages but, at the same time, requires more cautious approach to setting and preserving
+communication within the team. It is very easy to &ldquo;leave&rdquo; your people feeling alone or left without any connection with the
+rest of your company. To resemble the feeling of being together in SoftwareMill we use <a href="https://www.teamspeak.com/">TeamSpeak</a>. In our setup
+TeamSpeak is used as a central hub for voice communication. Each team working on a specific project has its own
+channel (room) where developers &ldquo;sit&rdquo;, any of them can initiate discussion with other team members using &ldquo;push-to-talk&rdquo; in just one click.
+No &ldquo;Can I call you on Skype?&rdquo; questions, no &ldquo;Let&rsquo;s create a group call to discuss it&rdquo;. One click and you are talking with your peers.</p>
+
+<p>But as usual, over the time we have learnt more about TeamSpeak and how we could adjust it to our needs. In this post I am
+going to share a few trick that could make your work with TeamSpeak even more productive.</p>
+
+<h2>Away from keyboard status</h2>
+
+<p>There is almost nothing more irritating than describing a complicated problem to developers in your team
+for a few minutes only to notice that all of them are away from their computers. Of course you can always ask beforehand, but&hellip;
+this quickly becomes a tedious task. To avoid such situations we have introduced a habit to use &ldquo;Toggle away&rdquo; TeamSpeak status
+(marked with red rectangles):</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/09/team_speak_away_all.png" width="700"></p>
+
+<p>So in one glance you can check if person is away or not. Clicking this &ldquo;toggle&rdquo; each time is rather a slow and quickly becomes a tedious task
+so we have added a handy shortcut to toggle it on and off. This way we have reached another important topic.</p>
+
+<h2>Shortcuts, shortcuts, shortcuts</h2>
+
+<p>When using any application, as soon as you spot any patterns in your monkey clicking, please spend a few minutes checking if
+this activity could be replaced by a handy shortcut. TeamSpeak is very customizable in this area so you will be able
+to save dozens of clicks every hour. For example I have shortcuts for:</p>
+
+<ul>
+<li>switching to my project channel</li>
+<li>switching to 2nd most frequently used channel</li>
+<li>toggle away status</li>
+</ul>
+
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/09/team_speak_shortcuts.png" width="700"></p>
+
+<h2>Place to discuss in smaller groups</h2>
+
+<p>From time to time a smaller group in a project starts diving into specific topic which is not interesting for others.
+After few struggles to find a proper place to continue discussion we decided to create a sub-channel in our project rooms.
+In most cases it is called &ldquo;Couch&rdquo;, &ldquo;Terrace on the roof&rdquo;, &ldquo;Luxury sofa&rdquo;, etc. These channels are easily accessible so
+people could quickly switch to them and keep the discussion flow without unnecessary breaks.</p>
+
+<h2>Default channels</h2>
+
+<p>Another tiny tip, but also saving you a few clicks each day: in your server settings you can set up a default channel
+to join after you start TeamSpeak client. If you spend most of your time in specific channel this setting will make your
+life a bit easier.</p>
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/09/team_speak_default_channel.png" width="700"></p>
+
+<h2>Reduce TeamSpeak client CPU usage</h2>
+
+<p>TeamSpeak client is known for its surprisingly high CPU consumption. I have seen situations when client was consuming 30 or
+even 40% of CPU time on our Mac Books. After many trial and errors I have observed that disabling following options
+significantly improves the situation:</p>
+
+<ul>
+<li>close small, moving news moving banner at the bottom of your client window</li>
+<li>turn off Animated GIF Support in <em>Preferences &ndash;> Design</em></li>
+<li>turn off Echo Reduction and Echo cancellation in <em>Preferences &ndash;> Capture</em> (however, depending on your headphones/speakers setup, this might reduce sound quality)</li>
+</ul>
+
+
+<p>After such tuning my TS client rarely goes above 10% of CPU.</p>
+
+<h2>Text to Speech for most important events, others turned off</h2>
+
+<p>Quite often I hear &ldquo;User joined your channel&rdquo; message and to know who has just stepped in I need to find TS window
+and check it visually. Same happens when I am in the middle of conversation with a developer from my team and suddenly
+I hear &ldquo;User disconnected&rdquo; and I am not sure if this is my current interlocutor and I should wait for him or someone else.</p>
+
+<p>Both situations are irritating interruptions. To limit their number you can simply:</p>
+
+<ol>
+<li>Disable notifications on almost all events in in <em>Preferences &ndash;> Notifications</em> window. I only have &ldquo;user left/joined/disconnected your channel&rdquo; enabled.</li>
+<li>Switch to &ldquo;Default Text To Speech&rdquo; under <em>Preferences &ndash;> Notifications &ndash;> Sound Pack</em></li>
+</ol>
+
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/09/team_speak_text_to_speech.png" width="700"></p>
+
+<ol>
+<li>Download &ldquo;Text to Speech&rdquo; voice pack in your native language for your OS. This applies only if user names in your team/company sound weird in English :)</li>
+</ol>
+
+
+<p><img class="center" src="http://tomaszdziurko.pl/images/blog/2016/09/text_to_speech.png" width="700"></p>
+
+<ol>
+<li>Edit messages about events you are interested in, for example you can replace</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>CLIENT_CONNECTION_CONNECTED_CURRENT_CHANNEL = say("${clientname} entered your channel")</span></code></pre></td></tr></table></div></figure>
+
+
+<p>with translated:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>CLIENT_CONNECTION_CONNECTED_CURRENT_CHANNEL = say("${clientname} dołączył do twojego kanału")</span></code></pre></td></tr></table></div></figure>
+
+
+<p>All messages are configured in <em>settings.ini</em> file located in your TeamSpeak installation folder (for example under OS X it is
+<em>/Applications/TeamSpeak 3 Client.app/Contents/SharedSupport/sound/default_speech/settings.ini</em>)</p>
+
+<p>After these steps number of notifications is really small and those most important are self descriptive instead of enigmatic
+<em>User joined your channel</em>.</p>
+
+<h2>Wrap up</h2>
+
+<p>TeamSpeak is a very useful tool for any remote communication, in our company it quickly became essential for every team working
+on software project. With these small adjustments presented above it can be even better and make your work a bit easier.</p>
+
+<p><em>Note: This was was originally posted on <a href="https://softwaremill.com/six-steps-to-improve-your-remote-communication-with-teamspeak/">SoftwareMill Blog</a></em>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What's new in JVM Bloggers - docker compose and views counter]]></title>
@@ -2449,111 +2582,6 @@ third day and everyone was a bit tired after two intensive days and nights in Cr
 <li><p>&ldquo;Do not check for stupid everywhere, check for stupid at the door&rdquo;</p></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[GeeCON 2014 – Brain dump, Day 2]]></title>
-    <link href="http://tomaszdziurko.pl/2014/05/geecon-2014-brain-dump-day-2/"/>
-    <updated>2014-05-17T23:31:25+02:00</updated>
-    <id>http://tomaszdziurko.pl/2014/05/geecon-2014-brain-dump-day-2</id>
-    <content type="html"><![CDATA[<p>The second part of my notes from <a href="http://2014.geecon.org/">GeeCON 2014</a> conference.
-Day two was the most interesting and richest day of the conference so are the notes.</p>
-
-<!-- more -->
-
-
-<h3>Hazem Saleh - Jasmine Automated Tests for JavaScript</h3>
-
-<ul>
-<li><p>Testing asynchronous code with <a href="http://jasmine.github.io/2.0/introduction.html">Jasmine</a> looks really ugly. <a href="http://michalostruszka.pl/">Michał Ostruszka</a> suggests using <a href="http://visionmedia.github.io/mocha/">Mocha</a> for such use cases.</p></li>
-<li><p><a href="https://github.com/gotwarlost/istanbul">Istanbul</a> &ndash; code coverage for Java Script</p></li>
-</ul>
-
-
-<h3>Sam Newman - Deploying And Testing Microservices</h3>
-
-<ul>
-<li><p><a href="http://www.thoughtworks.com/radar/#/">Technology Radar</a> from ThoughtWorks</p></li>
-<li><p>Book <a href="http://shop.oreilly.com/product/0636920033158.do">&ldquo;Building Microservices&rdquo;</a> by Sam Newman, currently in early version</p></li>
-<li><p>It&rsquo;s worth to follow <a href="https://twitter.com/samnewman">Sam Newman</a> on Twitter</p></li>
-<li><p><a href="http://www.mbtest.org/">Mountebank</a> &ndash; tool to provide test doubles using various protocols (http, https, etc)</p></li>
-<li><p>&ldquo;Get good at releasing services independently&rdquo;</p></li>
-<li><p>Last tests should be performed on production just after the release, but make sure that it do not affect your business</p></li>
-<li><p><a href="http://martinfowler.com/articles/consumerDrivenContracts.html">&ldquo;Consumer Driven Contracts&rdquo;</a> article by Martin Fowler</p></li>
-<li><p><a href="https://github.com/realestate-com-au/pact">Pact</a> - tool enabling consumer driven contract testing</p></li>
-<li><p><a href="http://www.packer.io/">Packer</a> &ndash; tool for creating identical images for multiple platforms</p></li>
-<li><p><a href="http://www.ansible.com/home">Ansible</a> &ndash; tool to automate app deployment, configuration management, etc., <a href="http://red-badger.com/blog/2013/06/29/ansible/">further reading</a></p></li>
-<li><p>One service per machine</p>
-
-<ul>
-<li><p>pros: easy to reason about (who to blame when CPU is 100%)</p></li>
-<li><p>cons: cost and management overhead</p></li>
-</ul>
-</li>
-<li><p><a href="https://www.docker.io/">Docker</a> - virtualized container allowing to automate deployment of any application</p>
-
-<ul>
-<li>&ldquo;not production ready&rdquo;</li>
-</ul>
-</li>
-<li><p>&ldquo;Deploy one thing at a time&rdquo;</p></li>
-<li><p><a href="http://dbdeploy.com/">DbDeploy</a> - Database Change Management tool</p></li>
-<li><p>&ldquo;You can&rsquo;t expect to change your database as often as you change your software&rdquo;</p></li>
-<li><p>&ldquo;It&rsquo;s easier to manage one service with two versions of API&rdquo;</p></li>
-</ul>
-
-
-<h3>Michał Ostruszka - SRP applied &ndash; building modern web applications</h3>
-
-<ul>
-<li><p><a href="http://gulpjs.com/">gulp</a>, <a href="http://gruntjs.com/">grunt</a> (more popular one) &ndash; build systems for frontend/JS</p></li>
-<li><p><a href="http://yeoman.io/">yeoman</a>, <a href="http://www.linemanjs.com/">lineman</a> - tools to generate bootstrap of frontend part of your application using e.g. AngularJS, Ember, Backbone, etc.</p></li>
-</ul>
-
-
-<h3>Peter Lawrey - Micro-second latency logging, persistence, IPC and more</h3>
-
-<ul>
-<li><p><a href="http://vanillajava.blogspot.com/2013/07/openhft-java-lang-project.html">OpenHFT</a> (High Frequency Trading)</p></li>
-<li><p><a href="https://github.com/OpenHFT/Java-Chronicle">Java Chronicle</a> project &ndash; persisted low latency messaging library</p></li>
-<li><p><a href="https://github.com/OpenHFT/HugeCollections">HugeCollections</a> - Huge Collections for Java using efficient off heap storage</p></li>
-<li><p><a href="http://www.fasterj.com/articles/sharedhashmap1a.shtml">SharedHashMap</a>, another <a href="https://github.com/OpenHFT/HugeCollections/wiki/When-to-use-SharedHashMap">link</a>:</p>
-
-<ul>
-<li><p>GC-free implementation of hash map</p></li>
-<li><p>persistent, stored in the file</p></li>
-<li><p>shared between processes</p></li>
-<li><p>1/5th of a size of corresponding HashMap in the memory</p></li>
-</ul>
-</li>
-</ul>
-
-
-<h3>Kevlin Henney - Seven Ineffective Coding Habits of Many Java Programmers</h3>
-
-<ul>
-<li><p>Book <a href="https://www.goodreads.com/book/show/7003902-97-things-every-programmer-should-know">&ldquo;97 Things Every Programmer Should Know&rdquo;</a></p></li>
-<li><p>Comments in your code are sign of defeat, you failed in explaining your intentions using the code itself</p></li>
-<li><p>Max. column width: 80 chars, we shouldn&rsquo;t be forced to move head while reading</p></li>
-<li><p>Keep method arguments in one line or each argument in a new line</p></li>
-<li><p>Why do we add &ldquo;Exception&rdquo; to the exception classes? Do we add &ldquo;Class&rdquo; at the end of each class name?</p></li>
-</ul>
-
-
-<h3>Kevlin Henney - Worse Is Better, for Better or for Worse</h3>
-
-<ul>
-<li><p>Stop over-promising</p></li>
-<li><p>Concentrate on something you can complete</p></li>
-<li><p>&ldquo;You learn by finishing things&rdquo;</p></li>
-<li><p>Book <a href="101%20Things%20I%20Learned%20in%20Architecture%20School">&ldquo;101 Things I Learned in Architecture School&rdquo;</a>, worth to read also from the perspective of developer/architect</p></li>
-<li><p>Book <a href="https://www.goodreads.com/book/show/225111.The_Laws_of_Simplicity">&ldquo;The Laws of Simplicity: Design, Technology, Business, Life&rdquo;</a></p></li>
-<li><p>Small off-topic: Kevlin gave one of the best closing keynotes I&rsquo;ve ever seen titled &ldquo;Cool Code&rdquo;. You can watch video <a href="http://vimeo.com/44792649">here</a>. Really entertaining talk!</p></li>
-</ul>
-
-
-<p>That&rsquo;s all I&rsquo;ve noted from second dat at GeeCON 2014. Stay tuned for the 3rd part of my brain dump.</p>
 ]]></content>
   </entry>
   
