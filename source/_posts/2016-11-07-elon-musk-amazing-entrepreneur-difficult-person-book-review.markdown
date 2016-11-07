@@ -19,7 +19,7 @@ it immediately caught my attention.
 
 {% img center /images/blog/2016/11/elon_musk_book.jpg %}
 
-It took me only three days to finish this it, so in my opinion this book a good choice if you 
+It took me only three days to finish it, so in my opinion this book a good choice if you 
 need some entertainment but at the same time you don't want to deviate too far from IT domain we are familiar with.
 
        
@@ -36,7 +36,7 @@ company Zip2 was sold for 307 million USD. He invested most of his income from t
 in X.com - an online financial service which was merged with its direct competitor and then 
 renamed into [PayPal](https://www.paypal.com). This company was sold for around 1.5 billion USD.
 
-After this sale, he launched [Tesla](https://www.tesla.com/) and [SpaceX](http://www.spacex.com/) - two his most renowned companies right now. The former builds electric cars,
+After this sale, he launched [Tesla](https://www.tesla.com/) and [SpaceX](http://www.spacex.com/) - his two the most renowned companies right now. The former builds electric cars,
 the latter sends rockets into space and aims to send astronauts to Mars and launch a colony there "making humans a Multiplanetary Specie". 
 
 {% img center /images/blog/2016/11/space_x.jpg 400 %}
@@ -62,12 +62,12 @@ but at the same time they can not cope his pressure and treatment.
 Book about Elon Musk shown me his road to current success. I have also learnt many small but interesting facts 
 about his life and his work ethics. He is a very controversial person but I see him as a one of the potential 
 candidates to really move forward the way humanity lives and looks at our near future. His plans (but also his achievements) 
-are really impressive and I can't wait to see how our planet will look in 10-20 years from now 
+are really impressive and I can't wait to see how our planet will look like in 10-20 years from now 
 with at least a part of his ideas realized.
  
 Another interesting observation I made after reading this book is that two well-known people that 
 significantly moved technology forward in last 10-15 years (Steve Jobs and Elon Musk) were really hard workers 
-but also they were very harsh on their co-workers. Maybe, in the world where one-man armies can't compete with other companies, it is the best way to achieve great things: demand much from yourself
+but also they were very harsh on their co-workers. Maybe, in the world where one-man armies can't compete with other companies, this is the best way to achieve great things: demand much from yourself
 but at the same time demand even more from people around you and push them to their limits?
 
 credits: all images were taken from Wikipedia</small>
