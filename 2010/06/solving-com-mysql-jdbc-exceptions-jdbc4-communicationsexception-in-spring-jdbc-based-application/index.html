@@ -1,0 +1,393 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Solving com.mysql.jdbc.exceptions. jdbc4.CommunicationsException in Spring JDBC based application - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="Tomasz Dziurko - blog, my personal notes about development, learning, reading, productivity and other stuff">
+    
+    <meta name="keywords" content="com.mysql.jdbc.exceptions. jdbc4.CommunicationsException, CommunicationsException , solution, Spring, JDBC]" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2010/06/solving-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-in-spring-jdbc-based-application/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/11/elon-musk-amazing-entrepreneur-difficult-person-book-review/">Elon Musk - an Amazing Entrepreneur and a Difficult Person - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/">Six Steps to Improve Your Remote Communication With TeamSpeak</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/08/jvm-bloggers-docker-compose-and-views-counter/">What's New in JVM Bloggers - Docker Compose and Views Counter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/04/varidesk-standing-desk-review/">Varidesk - an Adjustable Standing Desk - Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/podsumowanie-ankiety-o-jvm-bloggers/">Podsumowanie Ankiety O JVM Bloggers</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Solving com.mysql.jdbc.exceptions. jdbc4.CommunicationsException in Spring JDBC Based Application</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Last week after releasing first version of Wicket, Spring and JDBC based  application into production I noticed strange behavior. Everyday first  attempt to enter the service caused unexpected exception. Quick glance  at Tomcat logs showed code presented below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">Caused</span> <span class="nl">by:</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">jdbc4</span><span class="o">.</span><span class="na">CommunicationsException</span><span class="o">:</span> <span class="n">The</span> <span class="n">last</span> <span class="n">packet</span> <span class="n">successfully</span> <span class="n">received</span> <span class="n">from</span> <span class="n">the</span> <span class="n">server</span> <span class="n">was156378</span> <span class="n">seconds</span> <span class="n">ago</span><span class="o">.</span><span class="na">The</span> <span class="n">last</span> <span class="n">packet</span> <span class="n">sent</span> <span class="n">successfully</span> <span class="n">to</span> <span class="n">the</span> <span class="n">server</span> <span class="n">was</span> <span class="mi">156378</span> <span class="n">seconds</span> <span class="n">ago</span><span class="o">,</span> <span class="n">which</span>  <span class="n">is</span> <span class="n">longer</span> <span class="n">than</span> <span class="n">the</span> <span class="n">server</span> <span class="n">configured</span> <span class="n">value</span> <span class="n">of</span> <span class="err">&#39;</span><span class="n">wait_timeout</span><span class="err">&#39;</span><span class="o">.</span> <span class="n">You</span> <span class="n">should</span> <span class="n">consider</span> <span class="n">either</span> <span class="n">expiring</span> <span class="n">and</span><span class="o">/</span><span class="n">or</span> <span class="n">testing</span> <span class="n">connection</span> <span class="n">validity</span> <span class="n">before</span> <span class="n">use</span> <span class="n">in</span> <span class="n">your</span> <span class="n">application</span><span class="o">,</span> <span class="n">increasing</span> <span class="n">the</span> <span class="n">server</span> <span class="n">configured</span> <span class="n">values</span> <span class="k">for</span> <span class="n">client</span> <span class="n">timeouts</span><span class="o">,</span> <span class="n">or</span> <span class="n">using</span> <span class="n">the</span> <span class="n">Connector</span><span class="o">/</span><span class="n">J</span> <span class="n">connection</span> <span class="n">property</span> <span class="err">&#39;</span><span class="n">autoReconnect</span><span class="o">=</span><span class="kc">true</span><span class="err">&#39;</span> <span class="n">to</span> <span class="n">avoid</span> <span class="k">this</span> <span class="n">problem</span><span class="o">.</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">NativeConstructorAccessorImpl</span><span class="o">.</span><span class="na">newInstance0</span><span class="o">(</span><span class="n">Native</span> <span class="n">Method</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">NativeConstructorAccessorImpl</span><span class="o">.</span>
+</span><span class='line'><span class="nf">newInstance</span><span class="o">(</span><span class="n">NativeConstructorAccessorImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">39</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">sun</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">DelegatingConstructorAccessorImpl</span><span class="o">.</span>
+</span><span class='line'><span class="nf">newInstance</span><span class="o">(</span><span class="n">DelegatingConstructorAccessorImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">27</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">java</span><span class="o">.</span><span class="na">lang</span><span class="o">.</span><span class="na">reflect</span><span class="o">.</span><span class="na">Constructor</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="n">Constructor</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">513</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">Util</span><span class="o">.</span><span class="na">handleNewInstance</span><span class="o">(</span><span class="n">Util</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">406</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">SQLError</span><span class="o">.</span><span class="na">createCommunicationsException</span><span class="o">(</span><span class="n">SQLError</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1074</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">MysqlIO</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">MysqlIO</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">3246</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">MysqlIO</span><span class="o">.</span><span class="na">sendCommand</span><span class="o">(</span><span class="n">MysqlIO</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1917</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">MysqlIO</span><span class="o">.</span><span class="na">sqlQueryDirect</span><span class="o">(</span><span class="n">MysqlIO</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2060</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">ConnectionImpl</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">ConnectionImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2536</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">ConnectionImpl</span><span class="o">.</span><span class="na">execSQL</span><span class="o">(</span><span class="n">ConnectionImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">2465</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">StatementImpl</span><span class="o">.</span><span class="na">executeQuery</span><span class="o">(</span><span class="n">StatementImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">1383</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="na">mysql</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">ConnectionImpl</span><span class="o">.</span><span class="na">getTransactionIsolation</span><span class="o">(</span><span class="n">ConnectionImpl</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">3117</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">commons</span><span class="o">.</span><span class="na">dbcp</span><span class="o">.</span><span class="na">DelegatingConnection</span><span class="o">.</span>
+</span><span class='line'><span class="nf">getTransactionIsolation</span><span class="o">(</span><span class="n">DelegatingConnection</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">313</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">commons</span><span class="o">.</span><span class="na">dbcp</span><span class="o">.</span><span class="na">PoolingDataSource</span>
+</span><span class='line'><span class="n">$PoolGuardConnectionWrapper</span><span class="o">.</span><span class="na">getTransactionIsolation</span><span class="o">(</span><span class="n">PoolingDataSource</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">239</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">datasource</span><span class="o">.</span><span class="na">DataSourceUtils</span><span class="o">.</span>
+</span><span class='line'><span class="nf">prepareConnectionForTransaction</span><span class="o">(</span><span class="n">DataSourceUtils</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">173</span><span class="o">)</span>
+</span><span class='line'>        <span class="n">at</span> <span class="n">org</span><span class="o">.</span><span class="na">springframework</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">datasource</span><span class="o">.</span><span class="na">DataSourceTransactionManager</span>
+</span><span class='line'><span class="o">.</span><span class="na">doBegin</span><span class="o">(</span><span class="n">DataSourceTransactionManager</span><span class="o">.</span><span class="na">java</span><span class="o">:</span><span class="mi">210</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">...</span> <span class="mi">41</span> <span class="n">more</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It looks that after few hours at night when no-one used the application,  MySQl server closed connection and first database query caused  exception. I double checked my connection url and settings in context.xml file to found nothing obviously wrong:<!-- more --></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Resource</span> <span class="na">auth=</span><span class="s">&quot;Container&quot;</span> <span class="na">driverClassName=</span><span class="s">&quot;com.mysql.jdbc.Driver&quot;</span>
+</span><span class='line'> <span class="na">factory=</span><span class="s">&quot;org.apache.commons.dbcp.BasicDataSourceFactory&quot;</span>
+</span><span class='line'>   <span class="na">logAbandoned=</span><span class="s">&quot;true&quot;</span> <span class="na">maxActive=</span><span class="s">&quot;32&quot;</span> <span class="na">maxIdle=</span><span class="s">&quot;1&quot;</span> <span class="na">name=</span><span class="s">&quot;myDB&quot;</span>
+</span><span class='line'>   <span class="na">password=</span><span class="s">&quot;secret&quot;</span> <span class="na">removeAbandoned=</span><span class="s">&quot;true&quot;</span> <span class="na">removeAbandonedTimeout=</span><span class="s">&quot;300&quot;</span>
+</span><span class='line'>   <span class="na">type=</span><span class="s">&quot;javax.sql.DataSource&quot;</span>
+</span><span class='line'>   <span class="na">url=</span><span class="s">&quot;jdbc:mysql://mywebapp:3306/myDB?autoReconnect=true&amp;characterEncoding=utf-8&amp;useUnicode=true&quot;</span> <span class="na">username=</span><span class="s">&quot;user&quot;</span>
+</span><span class='line'> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I had used the same settings in pure JDBC projects few times before and  never encoutered similar exception so now I wanted to ask uncle Google  for some answers :) At the beginning I dove into the MySQL manual to  check why autoReconnect isn&rsquo;t  enough in my application but found nothing relevant to my problem. After  some thinking I got the idea that maybe some settings in Commons-DBCP  are missing so I read <a href="http://commons.apache.org/dbcp/configuration.html">dbcp configuration</a> to find that connection could be validated before real usage by specifing two parameters: testOnBorrow=&ldquo;true&rdquo; validationQuery=&ldquo;select 1&rdquo;  . As written in docs:</p>
+
+<blockquote>testOnBorrow - The indication of whether objects will be validated  before being borrowed from the pool. If the object fails to validate, it  will be dropped from the pool, and we will attempt to borrow another.
+NOTE - for a true value to have any effect, the validationQuery parameter must be set to a non-null string.
+validationQuery  - The SQL query that will be used to validate connections from this  pool before returning them to the caller. If specified, this query MUST  be an SQL SELECT statement that returns at least one row.</blockquote>
+
+
+<p>After adding these two parameters to context.xml my problems dissapeared.</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-28T20:31:59+02:00" data-updated="true" itemprop="datePublished">Jun 28<span>th</span>, 2010</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2010/06/simple-notification-about-errors-in-wicket-based-application/" title="Previous: Simple notification about errors in Wicket-based application">&laquo; Simple notification about errors in Wicket-based application</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2010/07/programista-i-wlasna-firma-czyli-dotacja-z-urzedu-pracy-na-zalozenie-dzialalnosci-gospodarczej/" title="Next: Programista i własna firma, czyli dotacja z Urzędu Pracy na założenie działalności gospodarczej">Programista i własna firma, czyli dotacja z Urzędu Pracy na założenie działalności gospodarczej &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2010/06/solving-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-in-spring-jdbc-based-application/';
+        var disqus_url = 'http://tomaszdziurko.pl/2010/06/solving-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-in-spring-jdbc-based-application/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

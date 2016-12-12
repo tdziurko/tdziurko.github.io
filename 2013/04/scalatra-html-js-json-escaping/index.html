@@ -1,0 +1,532 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Easy Html/Javascript JSON escaping in Scalatra  - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="Tomasz Dziurko - blog, my personal notes about development, learning, reading, productivity and other stuff">
+    
+    <meta name="keywords" content="scalatra, json, escaping" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/11/elon-musk-amazing-entrepreneur-difficult-person-book-review/">Elon Musk - an Amazing Entrepreneur and a Difficult Person - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/">Six Steps to Improve Your Remote Communication With TeamSpeak</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/08/jvm-bloggers-docker-compose-and-views-counter/">What's New in JVM Bloggers - Docker Compose and Views Counter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/04/varidesk-standing-desk-review/">Varidesk - an Adjustable Standing Desk - Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/podsumowanie-ankiety-o-jvm-bloggers/">Podsumowanie Ankiety O JVM Bloggers</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Easy Html/Javascript JSON Escaping in Scalatra</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Auto-escaping data in API response is always good except the moments when it is not&hellip; because suddenly in small edge case we need some unescaped data on the client side.</p>
+
+<!-- more -->
+
+
+<p style="text-align:center;"><img src="/images/blog/2013/04/logo-scalatra.png" alt="logo-scalatra" /></p>
+
+<p><a href="http://www.scalatra.org/">Scalatra</a> is a small web-framework that allows to easily build Rest API for web applications. We are using it in two projects to serve JSON data consumed by AngularJS based front-ends. And in one of this project we had a problem with text messages that could contain Html/Javascript elements. User could save message and then this message could be used on two pages. On first we need to display escaped data (read-only view) and on second (edit page) we wanted to display message in the exactly same way as user typed it.
+So basically we needed easy and declarative way to define which Scalatra Rest end-points should return escaped and not-escaped JSON data.</p>
+
+<h3>Basic Scalatra project</h3>
+
+<p>To show how it could be accomplished, we need a simple sample project using Scalatra. I didn&rsquo;t want to create it from scratch by myself so I removed some Swagger related stuff from project by my colleague Krzysztof Ciesielski (<a href="http://abstractionextraction.wordpress.com/2013/03/31/using-swagger-with-scalatra/">his post about Scalatra and Swagger</a>) and I was ready to go :) Full commit with this basic project is available <a href="https://github.com/tdziurko/scalatra-json-escaping/commit/099c7ac30fe0f63319a890e848a94390c035e801">here</a>, but the most interesting class is shown below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">class</span> <span class="nc">ExampleServlet</span><span class="o">()</span> <span class="k">extends</span> <span class="nc">ScalatraServlet</span> <span class="k">with</span> <span class="nc">JacksonJsonSupport</span> <span class="k">with</span> <span class="nc">JValueResult</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">protected</span> <span class="k">implicit</span> <span class="k">val</span> <span class="n">jsonFormats</span><span class="k">:</span> <span class="kt">Formats</span> <span class="o">=</span> <span class="nc">DefaultFormats</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">val</span> <span class="n">messages</span> <span class="k">=</span> <span class="nc">List</span><span class="o">(</span>
+</span><span class='line'>    <span class="nc">Message</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">&quot;&lt;script&gt;&lt;alert&gt;Script hacker&lt;/alert&gt;&lt;/script&gt;&quot;</span><span class="o">,</span> <span class="s">&quot;Johny Hacker&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">()),</span>
+</span><span class='line'>    <span class="nc">Message</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">&quot;Decent message&quot;</span><span class="o">,</span> <span class="s">&quot;John Smith&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">()),</span>
+</span><span class='line'>    <span class="nc">Message</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">&quot;Message with &lt;b&gt;bolded fragment&lt;/b&gt;&quot;</span><span class="o">,</span> <span class="s">&quot;Kate Norton&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">())</span>
+</span><span class='line'>  <span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">before</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">contentType</span> <span class="k">=</span> <span class="n">formats</span><span class="o">(</span><span class="s">&quot;json&quot;</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">messages</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">val</span> <span class="n">id</span> <span class="k">=</span> <span class="n">params</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">).</span><span class="n">toInt</span><span class="o">;</span>
+</span><span class='line'>    <span class="k">val</span> <span class="n">messageOptional</span> <span class="k">=</span> <span class="n">messages</span><span class="o">.</span><span class="n">find</span><span class="o">((</span><span class="n">m</span><span class="k">:</span> <span class="kt">Message</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">log</span><span class="o">(</span><span class="s">&quot;optional =&quot;</span> <span class="o">+</span> <span class="n">messageOptional</span><span class="o">)</span>
+</span><span class='line'>    <span class="n">messageOptional</span> <span class="k">match</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">e</span>
+</span><span class='line'>      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">case</span> <span class="k">class</span> <span class="nc">Message</span><span class="o">(</span><span class="n">id</span><span class="k">:</span> <span class="kt">Int</span><span class="o">,</span> <span class="n">text</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">author</span><span class="k">:</span> <span class="kt">String</span><span class="o">,</span> <span class="n">created</span><span class="k">:</span> <span class="kt">Date</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ok, so what we have here? Simple Rest service that returns JSON. Get method without any params returns list of messages and get with passed id returns single message with given id. For the sake of simplicity, I have hardcoded list of three messages with two of them containing some Html/JS elements.</p>
+
+<h3>Definition of Done</h3>
+
+<p>It is always good to have clear Definition of Done so in our case there are two things we want our methods to do:</p>
+
+<ul>
+<li><p>Get /rest/example without parameters should return list of messages with escaped content</p></li>
+<li><p>Get /rest/example/1 (with parameter) should return single messages without escaping</p></li>
+</ul>
+
+
+<h3>Implementation details</h3>
+
+<p>To add escaping we need to find place in Scalatra where objects returned from method are converted to Json. After some digging I found <em>JacksonJsonOutput</em> trait with method <em>writeJon</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'><span class="k">trait</span> <span class="nc">JacksonJsonOutput</span> <span class="k">extends</span> <span class="nc">JsonOutput</span><span class="o">[</span><span class="kt">JValue</span><span class="o">]</span> <span class="k">with</span> <span class="n">jackson</span><span class="o">.</span><span class="nc">JsonMethods</span> <span class="o">{</span>
+</span><span class='line'>  <span class="k">protected</span> <span class="k">def</span> <span class="n">writeJson</span><span class="o">(</span><span class="n">json</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">,</span> <span class="n">writer</span><span class="k">:</span> <span class="kt">Writer</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="n">mapper</span><span class="o">.</span><span class="n">writeValue</span><span class="o">(</span><span class="n">writer</span><span class="o">,</span> <span class="n">json</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So what we have to do is override method and somehow define logic to perform actual escaping for us. Luckily JValue has function <em>map</em> that allows to apply passed function to every value in JSON. So we could fire escapeHtml4 method from Apache Commons Lang on each String value in JSON:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="k">override</span> <span class="k">def</span> <span class="n">writeJson</span><span class="o">(</span><span class="n">json</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">,</span> <span class="n">writer</span><span class="k">:</span> <span class="kt">Writer</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">val</span> <span class="n">escapedJson</span> <span class="k">=</span> <span class="n">json</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="n">x</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">)</span> <span class="k">=&gt;</span>
+</span><span class='line'>      <span class="n">x</span> <span class="k">match</span> <span class="o">{</span>     <span class="c1">// let&#39;s check what type is this element</span>
+</span><span class='line'>        <span class="k">case</span> <span class="nc">JString</span><span class="o">(</span><span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">JString</span><span class="o">(</span><span class="n">escapeHtml4</span><span class="o">(</span><span class="n">y</span><span class="o">))</span>    <span class="c1">// if it is a String, escape it</span>
+</span><span class='line'>        <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">x</span>        <span class="c1">// keep value of other type as is</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>    <span class="o">)</span>
+</span><span class='line'>    <span class="n">mapper</span><span class="o">.</span><span class="n">writeValue</span><span class="o">(</span><span class="n">writer</span><span class="o">,</span> <span class="n">escapedJson</span><span class="o">)</span>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As you can see all logic is done by <em>map</em> function, we only need to add a few lines of code that will filter and escape String values in JSON. So far so good, but now we are escaping every methods from our Rest API. This is not exactly what we wanted to achieve. To get it done right, we need to define a mechanism to disable escaping for a specific method.</p>
+
+<h4>Wrapping marker object</h4>
+
+<p>So we need a marker &ldquo;something&rdquo; (class, interface or trait) that will tell <em>writeJson</em> method which data shouldn&rsquo;t be escaped.
+And after trying different approaches it turned out that only thing we need is to wrap value returned from method in a marker object and then in <em>writeJson</em> check if its is wrapped or not and escape only not wrapped data. So workflow looks as follows:</p>
+
+<ol>
+<li><p> If we dont&#8217; want escaping, wrap returned object in a <em>NotEscapedJsonWrapper</em></p></li>
+<li><p> In writeJson check if object to write is a wrapper. If so, only unwrap it and write. It it is not a wrapper, escape all Strings inside object and wride data after that</p></li>
+</ol>
+
+
+<p>Looks easy. We need simple wrapper class:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="k">case</span> <span class="k">class</span> <span class="nc">NotEscapedJsonWrapper</span><span class="o">[</span><span class="kt">T</span><span class="o">](</span><span class="n">notEscapedData</span><span class="k">:</span> <span class="kt">T</span><span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and we need to wrap response with this object:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="n">get</span><span class="o">(</span><span class="s">&quot;/:id&quot;</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">val</span> <span class="n">id</span> <span class="k">=</span> <span class="n">params</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">).</span><span class="n">toInt</span><span class="o">;</span>
+</span><span class='line'>    <span class="k">val</span> <span class="n">messageOptional</span> <span class="k">=</span> <span class="n">messages</span><span class="o">.</span><span class="n">find</span><span class="o">((</span><span class="n">m</span><span class="k">:</span> <span class="kt">Message</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">id</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">log</span><span class="o">(</span><span class="s">&quot;optional =&quot;</span> <span class="o">+</span> <span class="n">messageOptional</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">messageOptional</span> <span class="k">match</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">case</span> <span class="nc">Some</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">NotEscapedJsonWrapper</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="c1">// wrap data that we don&#39;t want to be escaped</span>
+</span><span class='line'>      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And after that we have to modify <em>writeJson</em> to check if object to be written is wrapped with &ldquo;not-escape-me&rdquo; marker object or not.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='scala'><span class='line'>  <span class="k">override</span> <span class="k">def</span> <span class="n">writeJson</span><span class="o">(</span><span class="n">json</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">,</span> <span class="n">writer</span><span class="k">:</span> <span class="kt">Writer</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="o">(</span><span class="n">json</span> <span class="o">\</span> <span class="s">&quot;notEscapedData&quot;</span><span class="o">)</span> <span class="k">match</span> <span class="o">{</span>     <span class="c1">// check if json contains field &#39;notEscapedData&#39; meaning that it is wrapping object</span>
+</span><span class='line'>      <span class="k">case</span> <span class="nc">JNothing</span> <span class="k">=&gt;</span> <span class="o">{</span>                  <span class="c1">// no wrapper, so we perform escaping</span>
+</span><span class='line'>        <span class="k">val</span> <span class="n">escapedJson</span> <span class="k">=</span> <span class="n">json</span><span class="o">.</span><span class="n">map</span><span class="o">((</span><span class="n">x</span><span class="k">:</span> <span class="kt">JValue</span><span class="o">)</span> <span class="k">=&gt;</span>
+</span><span class='line'>          <span class="n">x</span> <span class="k">match</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">case</span> <span class="nc">JString</span><span class="o">(</span><span class="n">y</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="nc">JString</span><span class="o">(</span><span class="n">escapeHtml4</span><span class="o">(</span><span class="n">y</span><span class="o">))</span>
+</span><span class='line'>            <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="n">x</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>        <span class="o">)</span>
+</span><span class='line'>        <span class="n">mapper</span><span class="o">.</span><span class="n">writeValue</span><span class="o">(</span><span class="n">writer</span><span class="o">,</span> <span class="n">escapedJson</span><span class="o">)</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="k">case</span> <span class="k">_</span> <span class="k">=&gt;</span> <span class="o">{</span>    <span class="c1">// field &#39;notEscapedData&#39; detected, unwrap and return clean object</span>
+</span><span class='line'>        <span class="n">mapper</span><span class="o">.</span><span class="n">writeValue</span><span class="o">(</span><span class="n">writer</span><span class="o">,</span> <span class="n">json</span> <span class="o">\</span> <span class="s">&quot;notEscapedData&quot;</span><span class="o">)</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>  <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And after that we could compile and start container with our small application. When we enter /rest/example we will get list of all messages with every String properly escaped. And if we request /rest/example/1 we will get single message as not-escaped data. That&rsquo;s all, we have our escaping working.</p>
+
+<h3>Summary</h3>
+
+<p>In this short post I&rsquo;ve described how to implement Html/Js escaping in Scalatra based application in a pretty straightforward way that can be easily defined in one, common place without need to add manual escaping in every method that needs that. Thanks to this, our application is much safer and only explicitly declared methods can return potentially unsafe data.
+Source code of this small example app is available <a href="https://github.com/tdziurko/scalatra-json-escaping">on GitHub</a>.</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-30T23:59:59+02:00" data-updated="true" itemprop="datePublished">Apr 30<span>th</span>, 2013</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/scala/'>Scala</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2013/04/xstream-xstreamely-easy-work-xml-data-java/" title="Previous: XStream - XStreamely easy way to work with XML data in Java">&laquo; XStream - XStreamely easy way to work with XML data in Java</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2013/05/reusing-browser-instance-geb-ui-tests/" title="Next: Reusing browser instance in Geb UI tests">Reusing browser instance in Geb UI tests &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping/';
+        var disqus_url = 'http://tomaszdziurko.pl/2013/04/scalatra-html-js-json-escaping/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

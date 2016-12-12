@@ -1,0 +1,403 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>The Clean Coder, another great book from Robert C. Martin - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="Tomasz Dziurko - blog, my personal notes about development, learning, reading, productivity and other stuff">
+    
+    <meta name="keywords" content="Tomasz Dziurko, Dziurko, java, scala, wicket, groovy, spock, geb, reading, guava, google guava, code hard, go pro, blog" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2011/11/clean-coder/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/11/elon-musk-amazing-entrepreneur-difficult-person-book-review/">Elon Musk - an Amazing Entrepreneur and a Difficult Person - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/">Six Steps to Improve Your Remote Communication With TeamSpeak</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/08/jvm-bloggers-docker-compose-and-views-counter/">What's New in JVM Bloggers - Docker Compose and Views Counter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/04/varidesk-standing-desk-review/">Varidesk - an Adjustable Standing Desk - Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/podsumowanie-ankiety-o-jvm-bloggers/">Podsumowanie Ankiety O JVM Bloggers</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">The Clean Coder, Another Great Book From Robert C. Martin</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Some time ago I found very interesting InformIT page with <a href="http://www.informit.com/deals/index.aspx">eBook Deal of the Day</a>, where you can buy IT ebook for only 9,99$. Every 24h (or sometimes a bit longer) they change a title you can get for this amazing price so it is worth to check it from time to time or <a href="http://twitter.com/informit">follow them on Twitter</a>. And one day I noticed that they were selling last Robert C. Martin&rsquo;s book titled &ldquo;The Clean Coder&rdquo;. It was so cheap and I was already impressed by &ldquo;The Clean Code&rdquo; so without the slightest hesitation I ordered one electronic copy and started reading.</p>
+
+<p style="text-align:center;"><img src="/images/blog/2011/10/clean-coder1.jpg" alt="" /></p>
+
+<h3>My opinion</h3>
+
+<p>This title joins my set of books which should be read by every developer aspiring to become better and better. It shows how we, as developers, can behave as a professionals and as a result be perceived and treated like professionals. Robert C. Martin basing on his experience (did you know that he is a programmer for 42 years!?) shows us how to improve or change our habits, our communication and collaboration skills to become more valuable part of our team, our company and finally our client. Below I present some main thoughts from some chapters of this great book.</p>
+
+<!-- more -->
+
+
+<h3>Chapter 1: Professionalism</h3>
+
+<p>In first chapter we can learn that being a professional has some drawback too. We should take responsibility for our actions and we can not take our potential mistakes lightly. Every mistake we made has some more serious implications, for example: client can loose his patience or trust to our company or software might crash and cause large finance loss. So as a professional we should concentrate not only on adding new features but also or even mainly how not to harm existing system.</p>
+
+<blockquote>You must be able to make changes without exorbitant costs</blockquote>
+
+
+<p>Our code and your architecture must be flexible to allow future changes to be as painless as possible.</p>
+
+<h3><strong>Chapters 2 and 3: Saying &ldquo;No&rdquo; and &ldquo;Yes&rdquo;</strong></h3>
+
+<p>Next two chapters are about saying &ldquo;No&rdquo; and &ldquo;Yes&rdquo;. We should not be afraid to tell that adding a feature is impossible in a given time so team or project manager could react properly. And the earlier we say &ldquo;No&rdquo; the better. Although we should always try to find a solution to say &ldquo;Yes&rdquo; by, for instance, removing some less important elements from feature or postponing another feature for later iteration so this more important one could be finished on time.</p>
+
+<blockquote>Slaves are not allowed to say no. Professionals are expected to say No</blockquote>
+
+
+
+
+<blockquote>There is no trying</blockquote>
+
+
+<p>The worst thing developer could say when someone is pushing him to complete a task faster that he knows it is possible is &ldquo;I will try&rdquo; because it means that you could put some extra effort (so before that you weren&rsquo;t working at full speed?) and by applying this additional effort goal will be achieved. So without saying &ldquo;Yes, I will do that&rdquo; you unintentionally have just made a commitment that this task will be done. So &ldquo;there is no trying&rdquo; when estimates shows that we have less time than needed.</p>
+
+<blockquote>Don&#8217;t try to be a hero</blockquote>
+
+
+<p>Temptation to take a short cut and omit writing tests, refactoring, using design patterns just to finish on time and become a team/company hero can be strong, but this lack of good practices will hit you later and it will hit you badly causing more delays and frustration than constantly sticking to your good habits and practices.</p>
+
+<h3>Chapter 4: Coding</h3>
+
+<p>In this part Uncle Bob is saying that the famous state of mind called &ldquo;Flow&rdquo; or &ldquo;Zone&rdquo; is not as good as most people think. Of course it allows developer to stay focused on a single task but what is a big disadvantage, it prevents him from seeing a big picture, a context of what he is currently doing. It  might lead to bugs, code duplication and misunderstandings how current code fragment should talk with other parts of the system. The best way to avoid entering Zone is Pair Programming, when you need to often switch from Driver to Navigator.</p>
+
+<blockquote>Creative output depends on creative input</blockquote>
+
+
+<p>We are creating something. We have to be creative. And one of the ways to increase our creativity is to feed our mind with creative ideas by reading various books. For Uncle Bob it is science-fiction, but for someone else it could be a good thriller or even poetry.</p>
+
+<h3><strong>Chapter 12: Collaboration</strong></h3>
+
+<p>In this chapter author concentrates on communication process between developers, developers and client and developers and boss/project manager/etc. Currently most projects are not developed by lone person but by a team consisting of different people and different personalities, so soft skills and communication skills are as important important as our programming skills.</p>
+
+<blockquote>It’s good to be passionate about what we do. But it’s also good to keep your eye on the goals of the people who pay you.</blockquote>
+
+
+
+
+<blockquote>You might work better alone but your team definitely won&#8217;t when you work alone.</blockquote>
+
+
+
+
+<blockquote>Programming is all about working with people: you must please client, you must understand BA</blockquote>
+
+
+<p>The clue of this chapter is that we should be able to cooperate effectively with other people to be a professional. We need to improve out communication skills, we need to think not only about ourselves but also about our company and our client. Because at the end thanks to them we can pay our bills.</p>
+
+<h3>Some valuable ideas and quotes from other chapters</h3>
+
+<blockquote>Hope is a project killer</blockquote>
+
+
+<p>If your estimation shows that you need at least two weeks to finish this task and demo is in five days you can not hope to finish it on time. Instead of saying that you hope to be ready for a demo you should inform everyone interested in deadlines that this feature won&rsquo;t be ready and something needs to be done about it.</p>
+
+<blockquote>An estimate is a guess. Not a commitment</blockquote>
+
+
+<p>As <a href="http://twitter.com/#!/jaimeohm">@jaimeohm</a> wrote on Twitter some time ago:</p>
+
+<blockquote>Coders are special. &#8220;We are expected to know how to do things we&#8217;ve never done before and estimate how long they will take.&#8221;</blockquote>
+
+
+<p>We just estimate. Of course we try to be as accurate as possible but our estimations are not 100% correct. We should educate our project managers that the estimation can not be treated as a commitment or a hard number.</p>
+
+<blockquote>Teams should be feeded with projects not project feeded with developers.Teams are harder to build than projects.</blockquote>
+
+
+<p>Team of developers should not be created just for a single project, then disbanded and when another project appears, formed again but with different people which were available at that moment. Team needs some time to consolidate, to create relationships between metrue, mbers. Team which was given enough time to do so is more productive and works in a more constant and predictable velocity. So instead of creating teams for a project, the more emphasis should be put on finding projects for gelled team of  developers who know each other well.</p>
+
+<h3>Summary</h3>
+
+<p>These quotes presented above are my favorite but if you read this book (and I strongly recommend it) you will probably find different set of wise sentences and thoughts inside. And then, after rethinking them, you will be a few steps closer to become a better developer. And from who should we learn if not from Uncle Bob and his 42 years of experience?</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-05T15:13:39+01:00" data-updated="true" itemprop="datePublished">Nov 5<span>th</span>, 2011</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/books/'>Books</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2011/10/sobotnia-mobilizacja-na-mobilizacje/" title="Previous: Sobotnia mobilizacja na Mobilizację">&laquo; Sobotnia mobilizacja na Mobilizację</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2011/11/my-relation-devoxx-2011/" title="Next: "We will always be there for you" - my relation from Devoxx 2011">"We will always be there for you" - my relation from Devoxx 2011 &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2011/11/clean-coder/';
+        var disqus_url = 'http://tomaszdziurko.pl/2011/11/clean-coder/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,610 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>What's new in JVM Bloggers - docker compose and views counter - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="New things in JVM Bloggers in version 0.10.0 - docker compose, views counter">
+    
+    <meta name="keywords" content="Tomasz Dziurko, Dziurko, java, scala, wicket, groovy, spock, geb, reading, guava, google guava, code hard, go pro, blog" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2016/08/jvm-bloggers-docker-compose-and-views-counter/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/11/elon-musk-amazing-entrepreneur-difficult-person-book-review/">Elon Musk - an Amazing Entrepreneur and a Difficult Person - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/">Six Steps to Improve Your Remote Communication With TeamSpeak</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/08/jvm-bloggers-docker-compose-and-views-counter/">What's New in JVM Bloggers - Docker Compose and Views Counter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/04/varidesk-standing-desk-review/">Varidesk - an Adjustable Standing Desk - Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/podsumowanie-ankiety-o-jvm-bloggers/">Podsumowanie Ankiety O JVM Bloggers</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">What's New in JVM Bloggers - Docker Compose and Views Counter</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Version 0.10.0 is live with Docker Compose and views counter</p>
+
+<!-- more -->
+
+
+<p>As some of you may be aware, for the last year I am working on a pet project called <a href="https://github.com/tdziurko/jvm-bloggers/">JVM Bloggers</a> with a goal
+to popularize blogging and knowledge sharing in the Polish Java developers community. We send a weekly summary with new blog posts and new videos published in the last 7 days.</p>
+
+<p>During last few weeks two major changes were added to the project:</p>
+
+<ul>
+<li><p>deployment is done using Docker Compose</p></li>
+<li><p>All clicks are going through the application so we can gather some statistics</p></li>
+</ul>
+
+
+<h1>Docker Compose</h1>
+
+<p>Previously application was deployed using two separate Dockers, that was the easier approach to get things going
+but as we are moving to microservices architecture I knew that Docker Compose will be a good choice allowing us
+to easily add more and more elements to our system.</p>
+
+<p>First, <a href="https://github.com/tdziurko/jvm-bloggers/blob/b1e243ffd2bdb98d1075c0ded51612a18bd7a088/docker-compose.yml">docker-compose.yml</a> needs to be created with two services: jvm_bloggers_db and jvm-bloggers-core:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>version: '2'
+</span><span class='line'>services:
+</span><span class='line'>  jvm_bloggers_db:
+</span><span class='line'>    image: sameersbn/postgresql:9.4-22
+</span><span class='line'>    environment:
+</span><span class='line'>      DB_USER: $JVM_BLOGGERS_DB_USER
+</span><span class='line'>      DB_PASS: $JVM_BLOGGERS_DB_PASSWORD
+</span><span class='line'>      DB_NAME: $JVM_BLOGGERS_DB_NAME
+</span><span class='line'>    ports:
+</span><span class='line'>      - "$JVM_BLOGGERS_DB_PUBLISHED_PORT:5432"
+</span><span class='line'>    volumes:
+</span><span class='line'>      - "$JVM_BLOGGERS_DB_PATH:/var/lib/postgresql"
+</span><span class='line'>  jvm-bloggers-core:
+</span><span class='line'>    image: tdziurko/jvm-bloggers:$JVM_BLOGGERS_CORE_IMAGE_VERSION
+</span><span class='line'>    environment:
+</span><span class='line'>      spring.profiles.active: $JVM_BLOGGERS_CORE_SPRING_PROFILES
+</span><span class='line'>      jasypt.encryptor.password: $JVM_BLOGGERS_CORE_ENCRYPTOR_PASSWORD
+</span><span class='line'>    ports:
+</span><span class='line'>      - "$JVM_BLOGGERS_CORE_PORT:8080"
+</span><span class='line'>    volumes:
+</span><span class='line'>      - /etc/localtime:/etc/localtime:ro
+</span><span class='line'>      - /usr/share/zoneinfo/Europe/Warsaw:/etc/timezone:ro
+</span><span class='line'>      - /tmp
+</span><span class='line'>    links:
+</span><span class='line'>      - jvm_bloggers_db
+</span><span class='line'>    depends_on:
+</span><span class='line'>      - jvm_bloggers_db</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In <em>jvm_bloggers_db</em> we have some parameters that allows to customize PostgreSQL image, besides most obvious ones like database name, user and password there are also:</p>
+
+<ul>
+<li><p><em>$JVM_BLOGGERS_DB_PUBLISHED_PORT</em> &ndash; port on which our database will be available from external (like developer&rsquo;s machine)</p></li>
+<li><p><em>$JVM_BLOGGERS_DB_PATH</em> &ndash; path to a directory where database files are located on our server</p></li>
+</ul>
+
+
+<p><em>jvm-bloggers-core</em> is more complicated:</p>
+
+<ul>
+<li><p>environment variables specifies Spring profile and master password used to encrypt properties like API keys, password to admin panel, etc.</p></li>
+<li><p><em>$JVM_BLOGGERS_CORE_PORT</em> &ndash; port on which application is available, on production it is obviously 80, but locally it can be different</p></li>
+<li><p>link <em>jvm_bloggers_db</em> allows us to use this as a url to the database in <em>spring.datasource.url</em> with value <em>jdbc:postgresql://jvm_bloggers_db:5432/jvm_bloggers_prod</em> without worrying where exactly database container is running in our internal network.</p></li>
+</ul>
+
+
+<p>Next to docker-compose file we need a <a href="https://github.com/tdziurko/jvm-bloggers/blob/b1e243ffd2bdb98d1075c0ded51612a18bd7a088/jvm-bloggers.sh">bash script</a> to start/stop our system:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#!/bin/sh</span>
+</span><span class='line'>
+</span><span class='line'>setupProperties<span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>  <span class="c"># Database settings</span>
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_DB_USER</span><span class="o">=</span>jvm_bloggers
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_DB_PASSWORD</span><span class="o">=</span>jvm_bloggers
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_DB_NAME</span><span class="o">=</span>jvm_bloggers
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_DB_PATH</span><span class="o">=</span><span class="s2">&quot;~/postgresql-data/&quot;</span>
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_DB_PUBLISHED_PORT</span><span class="o">=</span>5432
+</span><span class='line'>
+</span><span class='line'>  <span class="c"># Core Application settings:</span>
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_CORE_IMAGE_VERSION</span><span class="o">=</span>0.9.0-20160724-165001-19f0d70
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_CORE_SPRING_PROFILES</span><span class="o">=</span>dev
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_CORE_ENCRYPTOR_PASSWORD</span><span class="o">=</span>secret
+</span><span class='line'>  <span class="nb">export </span><span class="nv">JVM_BLOGGERS_CORE_PORT</span><span class="o">=</span>9000
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>start<span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    docker-compose up -d
+</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;Started JVM Bloggers&quot;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>stop<span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    docker-compose down
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">case</span> <span class="s2">&quot;$1&quot;</span> in
+</span><span class='line'>  start<span class="o">)</span>
+</span><span class='line'>    start
+</span><span class='line'>    ;;
+</span><span class='line'>  stop<span class="o">)</span>
+</span><span class='line'>    stop
+</span><span class='line'>    ;;
+</span><span class='line'>  status<span class="o">)</span>
+</span><span class='line'>    status
+</span><span class='line'>    ;;
+</span><span class='line'>  restart<span class="o">)</span>
+</span><span class='line'>    stop
+</span><span class='line'>    start
+</span><span class='line'>    ;;
+</span><span class='line'>  *<span class="o">)</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="s2">&quot;Usage: $0 {start|stop|restart|status}&quot;</span>
+</span><span class='line'><span class="k">esac</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Main part of this file consists of multiple exports that enable customization of docker-compose so it can be
+used without changes locally and on production. Then we have simple commands to launch, shutdown and
+check status of running services. And that&rsquo;s all, now we can use following command to launch all services:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>./jvm-bloggers.sh start
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Views counter</h1>
+
+<p>Next feature released with 0.10.0 version is views counter. I wanted to have some insight into
+how many people use JVM Bloggers and, most importantly, what are the most popular entries. In next
+weeks we plan to add section with most popular posts from last month so authors of most valuable
+content could get extra recognition.</p>
+
+<p>To add this feature following things were required:</p>
+
+<ol>
+<li><p>Redirect controller</p></li>
+<li><p>Migration from UUID as a unique blog post identifier to something shorter</p></li>
+<li><p>Logic to store clicks in the database</p></li>
+</ol>
+
+
+<p>Job of <a href="https://github.com/tdziurko/jvm-bloggers/blob/24d00aad8f90c5e13087ac91e5db0c9f7fd3fe2a/src/main/java/pl/tomaszdziurko/jvm_bloggers/rest/blogpost_redirect/RedirectController.java">Redirect Controller</a> is very simple &ndash; get UID from the url parameter (e.g. <a href="http://jvm-bloggers.com/r/wx1LivZ">http://jvm-bloggers.com/r/wx1LivZ</a>)
+and redirect user to proper blog post. But before 0.10.0 UID was a full</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">_UUID</span><span class="o">.</span><span class="na">randomUUID</span><span class="o">().</span><span class="na">toString</span><span class="o">()</span><span class="n">_</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>so instead of a nice and short link we had something like <a href="http://jvm-bloggers.com/r/b877a837-4f5b-4a0b-90b2-981c83c1366e,">http://jvm-bloggers.com/r/b877a837-4f5b-4a0b-90b2-981c83c1366e,</a>
+not very friendly and concise. Simple data migration was necessary and in a new approach UID is compact 7-chars length String:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">RandomStringUtils</span><span class="o">.</span><span class="na">randomAlphanumeric</span><span class="o">(</span><span class="mi">7</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>The last thing we needed was a logic to save clicks. I didn&rsquo;t want to make a redirection slower only because
+we are storing something in the database so I decided to use Akka to handle this work in a separate thread.</p>
+
+<p>In RedirectController we publish SingleClick event:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">actorRef</span><span class="o">.</span><span class="na">tell</span><span class="o">(</span><span class="k">new</span> <span class="n">SingleClick</span><span class="o">(</span><span class="n">blogPost</span><span class="o">.</span><span class="na">get</span><span class="o">()),</span> <span class="n">noSender</span><span class="o">());</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and actors simply handles this event by persisting Click entity:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Slf4j</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClicksStoringActor</span> <span class="kd">extends</span> <span class="n">AbstractActor</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="nf">ClicksStoringActor</span><span class="o">(</span><span class="n">ClickRepository</span> <span class="n">clickRepository</span><span class="o">,</span> <span class="n">NowProvider</span> <span class="n">nowProvider</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Creating &quot;</span> <span class="o">+</span> <span class="n">ClicksStoringActor</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getSimpleName</span><span class="o">());</span>
+</span><span class='line'>        <span class="n">receive</span><span class="o">(</span><span class="n">ReceiveBuilder</span><span class="o">.</span><span class="na">match</span><span class="o">(</span><span class="n">SingleClick</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+</span><span class='line'>            <span class="n">clickEvent</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Storing click for &quot;</span> <span class="o">+</span> <span class="n">clickEvent</span><span class="o">.</span><span class="na">getBlogPost</span><span class="o">().</span><span class="na">getUrl</span><span class="o">());</span>
+</span><span class='line'>                <span class="n">clickRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="k">new</span> <span class="n">Click</span><span class="o">(</span><span class="n">clickEvent</span><span class="o">.</span><span class="na">getBlogPost</span><span class="o">(),</span> <span class="n">nowProvider</span><span class="o">.</span><span class="na">now</span><span class="o">()));</span>
+</span><span class='line'>            <span class="o">}).</span><span class="na">build</span><span class="o">()</span>
+</span><span class='line'>        <span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Props</span> <span class="nf">props</span><span class="o">(</span><span class="n">ClickRepository</span> <span class="n">clickRepository</span><span class="o">,</span> <span class="n">NowProvider</span> <span class="n">nowProvider</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">Props</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">ClicksStoringActor</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="k">new</span> <span class="nf">ClicksStoringActor</span><span class="o">(</span><span class="n">clickRepository</span><span class="o">,</span> <span class="n">nowProvider</span><span class="o">);</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Credits</h3>
+
+<p>These new features wouldn&rsquo;t be possible without contributors, most notably <a href="https://github.com/matek2305">Mateusz Urbański</a> and <a href="https://github.com/goostleek">Marcin Kłopotek</a>.</p>
+
+<h1>Summary</h1>
+
+<p>JVM Bloggers is still evolving with both small changes and major new features, so if you want to help
+please contact me or join our <a href="https://gitter.im/tdziurko/jvm-bloggers">gitter</a> channel. We have Java8, Spring Boot, Docker,
+Akka on board and plenty of ideas to implement (even using different languages).</p>
+
+<p>For more details you should visit our <a href="https://github.com/tdziurko/jvm-bloggers">GitHub repository</a>.</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-08-15T00:00:00+02:00" data-updated="true" itemprop="datePublished">Aug 15<span>th</span>, 2016</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/jvm-bloggers/'>jvm-bloggers</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2016/04/varidesk-standing-desk-review/" title="Previous: Varidesk - an adjustable standing desk - review">&laquo; Varidesk - an adjustable standing desk - review</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/" title="Next: Six steps to improve your remote communication with TeamSpeak">Six steps to improve your remote communication with TeamSpeak &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2016/08/jvm-bloggers-docker-compose-and-views-counter/';
+        var disqus_url = 'http://tomaszdziurko.pl/2016/08/jvm-bloggers-docker-compose-and-views-counter/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

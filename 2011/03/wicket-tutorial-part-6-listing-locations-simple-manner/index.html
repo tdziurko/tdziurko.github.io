@@ -1,0 +1,643 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Wicket Tutorial, part 6 – listing locations in a simple manner - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="Tomasz Dziurko - blog, my personal notes about development, learning, reading, productivity and other stuff">
+    
+    <meta name="keywords" content="Wicket, tutorial, Wicket tutorial, how to, start, learn, listing locations, ListView" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-part-6-listing-locations-simple-manner/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/11/elon-musk-amazing-entrepreneur-difficult-person-book-review/">Elon Musk - an Amazing Entrepreneur and a Difficult Person - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/">Six Steps to Improve Your Remote Communication With TeamSpeak</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/08/jvm-bloggers-docker-compose-and-views-counter/">What's New in JVM Bloggers - Docker Compose and Views Counter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/04/varidesk-standing-desk-review/">Varidesk - an Adjustable Standing Desk - Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/podsumowanie-ankiety-o-jvm-bloggers/">Podsumowanie Ankiety O JVM Bloggers</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Wicket Tutorial, Part 6 – Listing Locations in a Simple Manner</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Today we will add simple listing view for locations added to the database in previous posts.  I said &lsquo;simple&rsquo; as there are some more sophisticated ways to show many items using Wicket but probably we will not have many locations to show in our application so simple view without pagination should be ok. More complicated way (<a href="http://wicketstuff.org/wicket14/repeater/?wicket:bookmarkablePage=:org.apache.wicket.examples.repeater.DataTablePage">DataTable</a> component) will be covered in the future when we will add &lsquo;listing items&rsquo; feature&#8217;.</p>
+
+<!-- more -->
+
+
+<p>But first small bug I found in our DAO layer. In class AbstractDAO we created method findByProperty and there is one line there:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="k">return</span> <span class="nf">getEntityManager</span><span class="o">().</span><span class="na">createQuery</span><span class="o">(</span><span class="n">findEntityQuery</span><span class="o">).</span><span class="na">getSingleResult</span><span class="o">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>At first everything  seems to be ok, but what will happen when query returns no result? An ugly exception is thrown. So we have to fix it with following code:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">TypedQuery</span><span class="o">&lt;</span><span class="n">EntityClass</span><span class="o">&gt;</span> <span class="n">query</span> <span class="o">=</span> <span class="n">getEntityManager</span><span class="o">().</span><span class="na">createQuery</span><span class="o">(</span><span class="n">findEntityQuery</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">List</span><span class="o">&lt;</span><span class="n">EntityClass</span><span class="o">&gt;</span> <span class="n">entities</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="na">setMaxResults</span><span class="o">(</span><span class="mi">1</span><span class="o">).</span><span class="na">getResultList</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">if</span><span class="o">(</span><span class="n">entities</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>      <span class="k">else</span> <span class="o">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">entities</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After this one, we could return to main topic of this post.</p>
+
+<h3>Preparing logic</h3>
+
+<p>As we need list of all locations we must add one method to ListingService interface and class:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocationServiceImpl</span> <span class="kd">implements</span> <span class="n">LocationService</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Autowired</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">LocationDao</span> <span class="n">locationDao</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// (...)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span> <span class="nf">findAll</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">locationDao</span><span class="o">.</span><span class="na">findAll</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>LocationDao uses generic method findAll from AbstractDAO to load all objects from db.</p>
+
+<h3>Adding listing component</h3>
+
+<p>When we are ready with our logic, we could look at LocationsPage.java and HTML files:</p>
+
+<p>First we add placeholders for Wicket objects in HTML:
+&ndash; <em>locations</em> for component to list all locations from database. We add it around tr element so each item will be rendered as separate table row. Of course you can use li, span, div instead.
+&ndash; <em>id</em>: a label <strong>inside</strong> locations to render ID of each entity object
+&ndash; <em>name</em>: a label <strong>inside</strong> locations to show name of each location</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;wicket:extend&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;h3&gt;</span>Locations<span class="nt">&lt;/h3&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;br/&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;table&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;tr&gt;&lt;th&gt;</span>ID<span class="nt">&lt;/th&gt;&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;&lt;/tr&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;locations&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>                      <span class="nt">&lt;td&gt;&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;id&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/td&gt;</span>
+</span><span class='line'>                      <span class="nt">&lt;td&gt;&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/td&gt;</span>
+</span><span class='line'>                  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/table&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;float: right;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;addLocationPageLink&quot;</span><span class="nt">&gt;</span>Add new location<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/wicket:extend&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then we modify wicket page class:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocationsPage</span> <span class="kd">extends</span> <span class="n">BasePage</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">//   (...)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">initGui</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">addLocationsModule</span><span class="o">();</span>                               <span class="c1">// (1)</span>
+</span><span class='line'>      <span class="n">addCreateNewLocationLink</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">addLocationsModule</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span> <span class="n">locations</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListView</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="s">&quot;locations&quot;</span><span class="o">,</span> <span class="n">createModelForLocations</span><span class="o">())</span> <span class="o">{</span> <span class="c1">// (2)</span>
+</span><span class='line'>          <span class="nd">@Override</span>
+</span><span class='line'>          <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">populateItem</span><span class="o">(</span><span class="n">ListItem</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span> <span class="n">item</span><span class="o">)</span> <span class="o">{</span>             <span class="c1">// (3)</span>
+</span><span class='line'>              <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">PropertyModel</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">(),</span> <span class="s">&quot;id&quot;</span><span class="o">)));</span>    <span class="c1">// (4)</span>
+</span><span class='line'>              <span class="n">item</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">PropertyModel</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;(</span><span class="n">item</span><span class="o">.</span><span class="na">getModel</span><span class="o">(),</span> <span class="s">&quot;name&quot;</span><span class="o">)));</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>      <span class="o">};</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="n">locations</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">LoadableDetachableModel</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;&gt;</span> <span class="nf">createModelForLocations</span><span class="o">()</span> <span class="o">{</span>    <span class="c1">// (5)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">return</span> <span class="k">new</span> <span class="n">LoadableDetachableModel</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>    <span class="c1">// (6)</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="nd">@Override</span>
+</span><span class='line'>          <span class="kd">protected</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span> <span class="nf">load</span><span class="o">()</span> <span class="o">{</span>    <span class="c1">// (7)</span>
+</span><span class='line'>              <span class="k">return</span> <span class="n">locationService</span><span class="o">.</span><span class="na">findAll</span><span class="o">();</span>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>      <span class="o">};</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So what is happening in the code above? Let me explain it in more detail. In <strong>(1)</strong> we add new method to initGui(), in<strong> (2)</strong> we create <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/list/ListView.html">ListView</a> component which renders list of object in a selected way. In <strong>(2)</strong> you can also notice a createModelForLocations() method invocation, but this method will be covered a little later. ListView class has one method we have to implement: populateItem <strong>(3)</strong> which is called for each object from collections or collection model passed to ListView.</p>
+
+<p>In this method we must add two labels declared inside locations element in HTML file, and we do it in <strong>(4)</strong>.  And here, as authors of Wicket and developers using this framework suggest, we use model instead of sending pure String value to the component. Why? Because if we use property of entity loaded from database, we are connecting view with this data and when page state is serialized also entity object is serialized too. And if our application uses Open Session in View we could end with the whole object graph serialized which will dramatically increase memory needed for each user session. So this is not what we really want :)</p>
+
+<p>In <strong>(4)</strong> we are using <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/PropertyModel.html">PropertyModel</a> which wraps Location model to get one property from it, id or name. Model wrapping is one of the best ways to use Wicket models effectively. Thanks to it we have only one Location model and we can wrap it many times in many ways to use it in a different situations.</p>
+
+<p>Now, it&rsquo;s time to talk about mysterious method creating model for our ListView component <strong>(5)</strong>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">private</span> <span class="n">LoadableDetachableModel</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;&gt;</span> <span class="nf">createModelForLocations</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">return</span> <span class="k">new</span> <span class="n">LoadableDetachableModel</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;&gt;()</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nd">@Override</span>
+</span><span class='line'>      <span class="kd">protected</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Location</span><span class="o">&gt;</span> <span class="nf">load</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">locationService</span><span class="o">.</span><span class="na">findAll</span><span class="o">();</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>  <span class="o">};</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In this method we are using <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/LoadableDetachableModel.html">LoadableDetachableModel</a>, another feature which you should use often if you want your applications to be memory efficient. This model (more detailed info can be found <a href="https://cwiki.apache.org/WICKET/detachable-models.html">here</a>) has one nice feature, it nullifies model object at the end of each request and loads it when needed. So no risk to have your 100000 entity objects serialized when page is saved on the server.</p>
+
+<h3>Results</h3>
+
+<p style="text-align:center;"><img src="/images/blog/2011/03/SS-20110312191713.png" alt="" /></p>
+
+<p>Working as expected. But if we view this page with empty database it will look rather strange:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2011/03/SS-20110312192333.png" alt="" /></p>
+
+<p>ListView component isn&rsquo;t rendered (no locations so nothing to show) but as it is placed inside table and under row with headers this part of HTML is visible.  We must fix it and additionally, we will add with information label when there are no locations.</p>
+
+<p>The simplest way of hiding component is to call setVisible(false) method but as we want to hide pure HTML which isn&rsquo;t directly assigned to any Wicket component, this way won&rsquo;t work. In such cases framework provides <em>wicket:enclosure</em> tag (read more about Wicket tags <a href="https://cwiki.apache.org/WICKET/wickets-xhtml-tags.html">here</a>) which renders html inside only when connected Wicket component is visible. Let me show this in practice:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'> <span class="nt">&lt;wicket:enclosure</span> <span class="na">child=</span><span class="s">&quot;locations&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;table&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;tr&gt;&lt;th&gt;</span>ID<span class="nt">&lt;/th&gt;&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;&lt;/tr&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;locations&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>                  <span class="nt">&lt;td&gt;&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;id&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/td&gt;</span>
+</span><span class='line'>                  <span class="nt">&lt;td&gt;&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/td&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/table&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/wicket:enclosure&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>We simply surround table with wicket:enclosure and define its child component as locations. So when locations.getVisible() returns false, no code inside enclosure is rendered.
+Now we need to make location ListView component invisible when list is empty:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'>    <span class="n">locations</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(!</span><span class="n">locations</span><span class="o">.</span><span class="na">getList</span><span class="o">().</span><span class="na">isEmpty</span><span class="o">());</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Moreover we want to show information when there are no locations, so we add label:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;wicket:extend&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;h3&gt;</span>Locations<span class="nt">&lt;/h3&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;br/&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;wicket:enclosure</span> <span class="na">child=</span><span class="s">&quot;locations&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;table&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;tr&gt;&lt;th&gt;</span>ID<span class="nt">&lt;/th&gt;&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;&lt;/tr&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;locations&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>                  <span class="nt">&lt;tr&gt;</span>
+</span><span class='line'>                      <span class="nt">&lt;td&gt;&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;id&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/td&gt;</span>
+</span><span class='line'>                      <span class="nt">&lt;td&gt;&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;&lt;/span&gt;&lt;/td&gt;</span>
+</span><span class='line'>                  <span class="nt">&lt;/tr&gt;</span>
+</span><span class='line'>              <span class="nt">&lt;/span&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;/table&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/wicket:enclosure&gt;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">wicket:id=</span><span class="s">&quot;noLocationsLabel&quot;</span><span class="nt">&gt;&lt;/div&gt;</span> <span class="c">&lt;!--  NEW label here --&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">&quot;float: right;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span> <span class="na">wicket:id=</span><span class="s">&quot;addLocationPageLink&quot;</span><span class="nt">&gt;</span>Add new location<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/wicket:extend&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and in Java page class we create Label which is visible when ListView is not:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'> <span class="n">Label</span> <span class="n">noLocationsLabel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;noLocationsLabel&quot;</span><span class="o">,</span> <span class="s">&quot;There are no locations in the database. Maybe you can add one?&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="n">noLocationsLabel</span><span class="o">.</span><span class="na">setVisible</span><span class="o">(!</span><span class="n">locations</span><span class="o">.</span><span class="na">isVisible</span><span class="o">());</span>
+</span><span class='line'>  <span class="n">add</span><span class="o">(</span><span class="n">noLocationsLabel</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After these improvements our page is ready:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2011/03/SS-20110312194653.png" alt="" /></p>
+
+<p>Page is ready, you are ready to use ListView component in your projects  so we reached the end of this post. As usual latest source code is available <a href="https://bitbucket.org/tdziurko/item-directory/src">here</a> and changeset from this post (except DAO bug fix which was pushed earlier) can be viewed <a href="https://bitbucket.org/tdziurko/item-directory/changeset/2403961c4a2b">here</a>.</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-12T19:58:47+01:00" data-updated="true" itemprop="datePublished">Mar 12<span>th</span>, 2011</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2011/02/who-the-heck-is-corey-haines/" title="Previous: Who the heck is Corey Haines? ">&laquo; Who the heck is Corey Haines? </a>
+		  
+		  
+			<a class="basic-alignment right" href="/2011/03/wicket-tutorial-series-building-web-application-scratch/" title="Next: Wicket tutorial series - building web application from scratch">Wicket tutorial series - building web application from scratch &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2011/03/wicket-tutorial-part-6-listing-locations-simple-manner/';
+        var disqus_url = 'http://tomaszdziurko.pl/2011/03/wicket-tutorial-part-6-listing-locations-simple-manner/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

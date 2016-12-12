@@ -1,0 +1,504 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Fixing bug in Hibernate Envers - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="Tomasz Dziurko - blog, my personal notes about development, learning, reading, productivity and other stuff">
+    
+    <meta name="keywords" content="Tomasz Dziurko, Dziurko, java, scala, wicket, groovy, spock, geb, reading, guava, google guava, code hard, go pro, blog" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2012/10/fixing-bug-hibernate-envers/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/11/elon-musk-amazing-entrepreneur-difficult-person-book-review/">Elon Musk - an Amazing Entrepreneur and a Difficult Person - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/">Six Steps to Improve Your Remote Communication With TeamSpeak</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/08/jvm-bloggers-docker-compose-and-views-counter/">What's New in JVM Bloggers - Docker Compose and Views Counter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/04/varidesk-standing-desk-review/">Varidesk - an Adjustable Standing Desk - Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/podsumowanie-ankiety-o-jvm-bloggers/">Podsumowanie Ankiety O JVM Bloggers</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Fixing Bug in Hibernate Envers</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Recently in our project we were reported a strange bug. In a one report where we display historical data provided by <a href="http://www.jboss.org/envers">Hibernate Envers</a>, users encountered duplicated records in dropdown used for filtering. We tried to find a source of this bug, but after spending a few hours looking at the code responsible for this functionality we had to give up and ask for a dump from production database to check what actually is stored in one table. And when we got it and started investigating, it turned out that there is a bug in Hibernate Envers 3.6 that is a cause of our problems. But luckily after some investigation and invaluable help from <a href="http://www.warski.org/blog/">Adam Warski</a> (author of Envers) we were able to fix this issue.</p>
+
+<!-- more -->
+
+
+<h3>Bug itself</h3>
+
+<p>Let&rsquo;s consider following scenario:</p>
+
+<ol>
+<li><p> Transaction is started. We insert some audited entities during it and then it is rolled back.</p></li>
+<li><p> The same EntityManager is reused to start another transaction</p></li>
+<li><p> Second transaction is committed</p></li>
+</ol>
+
+
+<p>But when we check audit tables for entities that were created and then rolled back in step one we will notice that they are still there and were not rolled back as we could expect. We were able to reproduce it in a failing test in our project so next step was to prepare failing test in Envers so we could verify if our fix is working.</p>
+
+<h3>Failing test</h3>
+
+<p>The simplest test cases already present in Envers are located in Simple.java class and they look quite straightforward:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Simple</span> <span class="kd">extends</span> <span class="n">AbstractEntityTest</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">private</span> <span class="n">Integer</span> <span class="n">id1</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">Ejb3Configuration</span> <span class="n">cfg</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">cfg</span><span class="o">.</span><span class="na">addAnnotatedClass</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initData</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">EntityManager</span> <span class="n">em</span> <span class="o">=</span> <span class="n">getEntityManager</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">begin</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">IntTestEntity</span> <span class="n">ite</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntTestEntity</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">ite</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">id1</span> <span class="o">=</span> <span class="n">ite</span><span class="o">.</span><span class="na">getId</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">begin</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">ite</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="na">find</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">id1</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">ite</span><span class="o">.</span><span class="na">setNumber</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span><span class="o">(</span><span class="n">dependsOnMethods</span> <span class="o">=</span> <span class="s">&quot;initData&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testRevisionsCounts</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">assert</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">getAuditReader</span><span class="o">().</span><span class="na">getRevisions</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">id1</span><span class="o">));</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span><span class="o">(</span><span class="n">dependsOnMethods</span> <span class="o">=</span> <span class="s">&quot;initData&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testHistoryOfId1</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">IntTestEntity</span> <span class="n">ver1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntTestEntity</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="n">id1</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">IntTestEntity</span> <span class="n">ver2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntTestEntity</span><span class="o">(</span><span class="mi">20</span><span class="o">,</span> <span class="n">id1</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">assert</span> <span class="nf">getAuditReader</span><span class="o">().</span><span class="na">find</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">id1</span><span class="o">,</span> <span class="mi">1</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">ver1</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">assert</span> <span class="nf">getAuditReader</span><span class="o">().</span><span class="na">find</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">id1</span><span class="o">,</span> <span class="mi">2</span><span class="o">).</span><span class="na">equals</span><span class="o">(</span><span class="n">ver2</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>so preparing my failing test executing scenario described above wasn&rsquo;t a rocket science:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * @author Tomasz Dziurko (tdziurko at gmail dot com)</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TransactionRollbackBehaviour</span>  <span class="kd">extends</span> <span class="n">AbstractEntityTest</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">configure</span><span class="o">(</span><span class="n">Ejb3Configuration</span> <span class="n">cfg</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">cfg</span><span class="o">.</span><span class="na">addAnnotatedClass</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Test</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testAuditRecordsRollback</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// Given</span>
+</span><span class='line'>        <span class="n">EntityManager</span> <span class="n">em</span> <span class="o">=</span> <span class="n">getEntityManager</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">begin</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">IntTestEntity</span> <span class="n">iteToRollback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntTestEntity</span><span class="o">(</span><span class="mi">30</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">iteToRollback</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">Integer</span> <span class="n">rollbackedIteId</span> <span class="o">=</span> <span class="n">iteToRollback</span><span class="o">.</span><span class="na">getId</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">rollback</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// When</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">begin</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">IntTestEntity</span> <span class="n">ite2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">IntTestEntity</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">ite2</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">Integer</span> <span class="n">ite2Id</span> <span class="o">=</span> <span class="n">ite2</span><span class="o">.</span><span class="na">getId</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">em</span><span class="o">.</span><span class="na">getTransaction</span><span class="o">().</span><span class="na">commit</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="c1">// Then</span>
+</span><span class='line'>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Number</span><span class="o">&gt;</span> <span class="n">revisionsForSavedClass</span> <span class="o">=</span> <span class="n">getAuditReader</span><span class="o">().</span><span class="na">getRevisions</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">ite2Id</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">assertEquals</span><span class="o">(</span><span class="n">revisionsForSavedClass</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">1</span><span class="o">,</span> <span class="s">&quot;There should be one revision for inserted entity&quot;</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="n">List</span><span class="o">&lt;</span><span class="n">Number</span><span class="o">&gt;</span> <span class="n">revisionsForRolledbackClass</span> <span class="o">=</span> <span class="n">getAuditReader</span><span class="o">().</span><span class="na">getRevisions</span><span class="o">(</span><span class="n">IntTestEntity</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">rollbackedIteId</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">assertEquals</span><span class="o">(</span><span class="n">revisionsForRolledbackClass</span><span class="o">.</span><span class="na">size</span><span class="o">(),</span> <span class="mi">0</span><span class="o">,</span> <span class="s">&quot;There should be no revisions for insert that was rolled back&quot;</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now I could verify that tests is failing on forked <a href="https://github.com/hibernate/hibernate-orm/tree/3.6">3.6 branch</a> and check if fix that we had is making this test green.</p>
+
+<h3>The fix</h3>
+
+<p>After writing failing test in our project, I placed several breakpoints in Envers code to understand better what is wrong there. But imagine being thrown in a project developed for a few years by many programmers smarter than you. I felt overwhelmed and have no idea where fix should be applied and what exactly is not working as expected. Luckily in <a href="http://softwaremill.com">my company</a> we have Adam Warski on board. He is the initial author of Envers and actually he pointed us the solution.</p>
+
+<p>The fix itself contains only check that registers audit process that will be execute on transaction completion only when such process is still in the <em>Map&lt;Transaction, AuditProcess></em> for given transaction. It sounds complicated, but if you look at the class <em>AuditProcessManager</em> in <a href="https://github.com/tdziurko/hibernate-orm/commit/02c071718f29797bf0d76f3a6f2e6a5438ccaab1">this commit</a> it should be more clear what is happening there.</p>
+
+<h3>Official path</h3>
+
+<p>Besides locating problem and fixing it, there are some more official steps that must be performed to have fix included in Envers.</p>
+
+<p>Step 1. Create JIRA issue with bug - <a href="https://hibernate.onjira.com/browse/HHH-7682">https://hibernate.onjira.com/browse/HHH-7682</a></p>
+
+<p>Step 2: Create local branch <em>Envers-bugfix-HHH-7682</em> of forked Hibernate 3.6</p>
+
+<p>Step 3: Commit and push failing test and fix to your local and remote repository on Github</p>
+
+<p>Step 4: Create pull request - <a href="https://github.com/hibernate/hibernate-orm/pull/393">https://github.com/hibernate/hibernate-orm/pull/393</a></p>
+
+<p>Step 5: Wait for merge</p>
+
+<p>And that&rsquo;s all. Now fix is merged into main repository and we have one bug less in the world of open source :)</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-11T17:00:47+02:00" data-updated="true" itemprop="datePublished">Oct 11<span>th</span>, 2012</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/java/'>Java</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2012/10/deploying-java-web-application-jelastic/" title="Previous: Deploying Java Web Application on Jelastic">&laquo; Deploying Java Web Application on Jelastic</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2013/01/configuring-sbt-jslint-with-teamcity/" title="Next: Configuring SBT JSLint with TeamCity build">Configuring SBT JSLint with TeamCity build &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2012/10/fixing-bug-hibernate-envers/';
+        var disqus_url = 'http://tomaszdziurko.pl/2012/10/fixing-bug-hibernate-envers/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: How-to | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/how-to/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2016-12-12T22:32:01+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[One and the only one reason to customize IntelliJ IDEA memory settings]]></title>
+    <link href="http://tomaszdziurko.pl/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/"/>
+    <updated>2015-11-23T08:00:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings</id>
+    <content type="html"><![CDATA[<p><em>Don&rsquo;t be a Scrooge and give your IDE some more memory</em></p>
+
+<!-- more -->
+
+
+<p>Yesterday we had a discussion about customizing memory settings in IntelliJ IDEA and it appeared that some people do not do that, some people (like me) use some simple changeset
+and some developers craft a fancy, sophisticated setup that satisfy their needs. While working for a current project I had to deal with several small microservices projects and
+one older project, a core of the client&rsquo;s business which is quite big. And after applying some changes I have noticed really significant improvement when it comes to IDE speed and responsiveness.
+But at that time I didn&rsquo;t measure what exactly changed, it was only a subjective observation that <em>&ldquo;IDEA is now faster&rdquo;</em>.</p>
+
+<p>But during that discussion one of the developers working for the same client (thank you Yuri) sent me his settings and I was really overwhelmed by their level of complexity.
+I was happy with my own setup, but I was also curious how those completely different settings compare to each other and also how they compare to defaults provided by JetBrains. So after
+discussion with Yuri I knew that this is a good material for a blog post.</p>
+
+<h1>Goal</h1>
+
+<p>My plan is to compare how different IDEA memory settings perform in a scenario close to my daily usage (load big project, load two or three microservices, refresh big project after hypothetical <em>git pull</em>)
+and then choose the most optimal settings when it comes to memory consumption and speed improvement.</p>
+
+<h1>Test machine and projects</h1>
+
+<p><strong>Laptop</strong>: MacBook Pro Retina, 2,3GHz Intel Core i7, 16GB 1600Mhz DDR3, SSD Disc, OS X Yosemite</p>
+
+<p><strong>Projects</strong></p>
+
+<ul>
+<li>Big Project  &ndash; monolith, 700 000 lines of code (Java 8 and Groovy), 303 Gradle modules</li>
+<li>Two microservices &ndash; small projects with 10 000 &ndash; 20 000 lines of code (Java 8 and Groovy), each with one Gradle module</li>
+</ul>
+
+
+<h1>Test scenario</h1>
+
+<ol>
+<li>Close all projects in Idea</li>
+<li>Put settings under test to idea.vmoptions file</li>
+<li>Reset my laptop</li>
+<li>After a start close all unrelated programs (communicators, etc.)</li>
+<li>Open Idea (measure time)</li>
+<li>Open Big Project (measure time)</li>
+<li>Check jstat -gcutil</li>
+<li>Open two more projects: Microservice One and Microservice Two (measure times)</li>
+<li>Check jstat -gcutil</li>
+<li>Go back to Big Project and click &ldquo;Refresh Gradle project&rdquo; button (measure time)</li>
+<li>Check jstat -gcutil</li>
+</ol>
+
+
+<h2>What is jstat -gcutil</h2>
+
+<p>jstat is a tool available in your JDK to monitor JVM and Garbage Collector statistics. It has many different options to collect various data
+(<a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jstat.html">full documentation is here</a>) but we are interested in only one: <strong>-gcutil</strong>:</p>
+
+<p>```</p>
+
+<pre><code>-gcutil - Summary of garbage collection statistics.
+
+S0: Survivor space 0 utilization as a percentage of the space's current capacity.
+S1: Survivor space 1 utilization as a percentage of the space's current capacity.
+E: Eden space utilization as a percentage of the space's current capacity.
+O: Old space utilization as a percentage of the space's current capacity.
+M: Metaspace utilization as a percentage of the space's current capacity.
+CCS: Compressed class space utilization as a percentage.
+YGC: Number of young generation GC events.
+YGCT: Young generation garbage collection time.
+FGC: Number of full GC events.
+FGCT: Full garbage collection time.
+GCT: Total garbage collection time.
+</code></pre>
+
+<p>```</p>
+
+<p>Example output from this command looks like this:
+```</p>
+
+<pre><code>S0     S1    E     O     M    CCS  YGC YGCT FGC  FGCT   GCT
+89.70 0.00 81.26 74.27 95.68 91.76 40 2.444 14  0.715  3.159
+</code></pre>
+
+<p>```</p>
+
+<p>In this post the most important parameters are number of GC events (<strong>YGC</strong> and <strong>FGC</strong>) and collection times (<strong>YGCT</strong> and <strong>FGCT</strong>).</p>
+
+<h1>Tested settings</h1>
+
+<p>I have tested four different settings, to make reading easier each of them was given a name.</p>
+
+<h2>Default (grey)</h2>
+
+<p>These are built-in settings provided by JetBrains, clean IDEA 15 is using them:</p>
+
+<p>```</p>
+
+<pre><code>-Xms128m
+-Xmx750m
+-XX:MaxPermSize=350m
+-XX:ReservedCodeCacheSize=240m
+-XX:+UseCompressedOops
+</code></pre>
+
+<p>```</p>
+
+<h2>Big (red)</h2>
+
+<p>4096MB for Xmx and 1024MB for <em>ReservedCodeCacheSize</em>, that&rsquo;s quite a lot of memory.</p>
+
+<p>```</p>
+
+<pre><code>-Xms1024m
+-Xmx4096m
+-XX:ReservedCodeCacheSize=1024m
+-XX:+UseCompressedOops
+</code></pre>
+
+<p>```</p>
+
+<h2>Balanced (blue)</h2>
+
+<p>2GB for Xmx and 2GB for Xms, more balanced approach to the memory consumption</p>
+
+<p>```</p>
+
+<pre><code>-Xms2g
+-Xmx2g
+-XX:ReservedCodeCacheSize=1024m
+-XX:+UseCompressedOops
+</code></pre>
+
+<p>```</p>
+
+<h2>Sophisticated (orange)</h2>
+
+<p>2GB for Xmx and 2GB for Xms as above, but different Garbage Collector is specified and many different flags for GC and memory management. I have received these settings from Yuri.</p>
+
+<p>```</p>
+
+<pre><code>-server
+-Xms2g
+-Xmx2g
+-XX:NewRatio=3
+-Xss16m
+-XX:+UseConcMarkSweepGC
+-XX:+CMSParallelRemarkEnabled
+-XX:ConcGCThreads=4
+-XX:ReservedCodeCacheSize=240m
+-XX:+AlwaysPreTouch
+-XX:+TieredCompilation
+-XX:+UseCompressedOops
+-XX:SoftRefLRUPolicyMSPerMB=50
+-Dsun.io.useCanonCaches=false
+-Djava.net.preferIPv4Stack=true
+-Djsse.enableSNIExtension=false
+-ea
+</code></pre>
+
+<p>```</p>
+
+<p>So these are our test setups. To perform our test scenarios we have to create a file <em>idea.vmoptions</em> under <em>~/Library/Preferences/IntelliJIdea15/</em> (it is Mac OS specific,
+to see how change these settings for your OS, check <a href="https://www.jetbrains.com/idea/help/increasing-memory-heap.html">this article</a>).</p>
+
+<p>Now it is time to perform our test scenarios and compare the results.</p>
+
+<h1>Results</h1>
+
+<h2>Idea startup time</h2>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1557289692&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1557289692&amp;format=image</a>" width="800" height="500"></p>
+
+<p>As you can see startup time does not depend on memory settings. Idea startup time is about 10 seconds for all test scenarios no matter how many memory we allocate.
+And this is not a surprise as those settings should not affect application behaviour in such early stage.</p>
+
+<h2>Time to load The Big Project</h2>
+
+<p>Ok, so now it is time to load our Monolith and its 700k lines of code.</p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1400772564&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1400772564&amp;format=image</a>" width="800" height="500"></p>
+
+<p>Finally there are some differences. Default settings performs almost three times worse than the rest. Apparently so large codebase needs more memory :) And if we execute</p>
+
+<p>```</p>
+
+<pre><code>jstat -gcutil &lt;IDEA_PID&gt;
+</code></pre>
+
+<p>```</p>
+
+<p>we will notice that Garbage Collector was really, really busy with default settings when we compare it other setups.</p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=93956661&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=93956661&amp;format=image</a>" width="800" height="500"></p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1213605225&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1213605225&amp;format=image</a>" width="800" height="500"></p>
+
+<p>Not only total time spent by GC on freeing memory is dramatically higher (about 50 times higher) but also average execution time of Full GC is much, much longer. Long periods spent on Full GCs
+are the main cause of low responsiveness of our IDE.</p>
+
+<h2>Opening two microservices in IDEA</h2>
+
+<p>Ok, so we have our Monolith loaded but we need to add some code to two smaller microservices. So let&rsquo;s open them in IDEA and compare total times.</p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=2053860050&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=2053860050&amp;format=image</a>" width="800" height="500"></p>
+
+<p>In this test scenario we see that differences are still visible and <strong>Sophisticated</strong> wins here, <strong>Default</strong> is far behind the rest.</p>
+
+<h3>jstat -gcutil again</h3>
+
+<p>After loading two microservices we can check how Garbage Collectors is performing with three opened projects. We can see that three custom settings
+look almost the same and results of default settings are very, very poor.</p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=242159654&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=242159654&amp;format=image</a>" width="800" height="500"></p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1738350771&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1738350771&amp;format=image</a>" width="800" height="500"></p>
+
+<h2>Final stage: reload the Monolith</h2>
+
+<p>So we have coded for a while and now we need to fetch latest version of The Big Project from repository and then refresh Gradle Project so IDEA
+could see all new classes, etc.</p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=625856708&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=625856708&amp;format=image</a>" width="800" height="500"></p>
+
+<p><strong>Important note</strong>: Bar for Default setup is so high because IDEA crashed during refresh and I could not measure the actual time. Simply assigned memory was
+not sufficient to perform this operation.</p>
+
+<p>But looking at the best three, we see that Big settings refreshed project in the shortest time so the largest assigned memory helps a bit here.</p>
+
+<h3>jstat -gcutil for the last time</h3>
+
+<p>Because IDEA was not able to refresh projet with <strong>Default</strong> settings, they are not included in this measurement.</p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1467101172&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=1467101172&amp;format=image</a>" width="800" height="500"></p>
+
+<p><img class="center <a" src="href="https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=712785115&amp;format=image">https://docs.google.com/spreadsheets/d/1iN6_z2HfJPsGPKlNzwgnUxps4MT5BxhUbOuhwXdnIgI/pubchart?oid=712785115&amp;format=image</a>" width="800" height="500"></p>
+
+<p>In these last charts we see that differences between total times are quite small, but single Full GC is the fastest with <strong>Big</strong> settings applied. Again,
+it looks like very large Xmx helps a bit more when it comes to responsiveness.</p>
+
+<h1>Summary</h1>
+
+<p>In this short experiment I tried to test how much we could gain by customising memory settings of IntelliJ IDEA and it looks like that even some simple
+tweaks can drastically improve performance of our IDE and speed up our work. Of course the more memory you assign, the better results you will see, but
+we are using IDE next to many different applications which also consume memory so our goal should be to find a balance between performance gain and memory consumption.
+I think that in most cases setting <strong>Xmx</strong> to value between 2g and 3g is the best approach. If you have some more time you can play with jstat and
+<a href="http://docs.oracle.com/javase/6/docs/technotes/tools/share/jvisualvm.html">jvisualm</a> to check how changing different VM flags affect performance
+and memory footprint.</p>
+
+<h3>And you?</h3>
+
+<p>And what about you? What is your idea.vmoptions setup? Do you have any other ways to improve InteliJ IDEA performance?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Journey to Craft Perfect API]]></title>
+    <link href="http://tomaszdziurko.pl/2015/03/journey-to-craft-perfect-api/"/>
+    <updated>2015-03-17T09:09:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2015/03/journey-to-craft-perfect-api</id>
+    <content type="html"><![CDATA[<p>Trying to be a perfect in a never taught art</p>
+
+<!-- more -->
+
+
+<p>Several years ago our projects were lone islands, doing everything inside, sometimes communicating via database
+or from time to time via XML and Web Service. Rarely developer had to consume sophisticated API and almost never we had to create one.
+And because there was no need to write that, no one was teaching how to do it properly.</p>
+
+<p><img class="center" src="/images/blog/2015/03/perfect_stamp.jpg" width="400" height="400"></p>
+
+<p>Nowadays things look completely different, we live in the era of public APIs: Twitter, Facebook, microservices, nanoservices,
+two-line-services. Everything should have perfect REST API: well thought out, nicely designed and easy to use. But how to achieve these goals?
+This is a main subject of short book &ldquo;Web API Design &ndash; Crafting Interfaces that Developers Love” by￼Brian Mulloy <a href="http://apigee.com/about/resources/ebooks/web-api-design">available for free on ApiGee site</a>.</p>
+
+<p><img class="center" src="/images/blog/2015/03/web_api_design.jpg" width="300" height="200"></p>
+
+<h3>What is this book about</h3>
+
+<p>I am not going to write full abstract because this book is extremely short (and again, <a href="http://apigee.com/about/resources/ebooks/web-api-design">free</a>), only 36 pages so you can read it
+in two evenings. It is showing good practices when creating REST APIs with many real-life examples taken from such prominent companies as Google, LinkedIn, Facebook and Netflix.</p>
+
+<p>We can learn that:</p>
+
+<ul>
+<li><p>nouns should be used for naming instead of verbs</p></li>
+<li><p>we should not have more than two endpoints per resource</p></li>
+<li><p>errors indication should be done via HTTP Statuses (we can start with three: 200 &ndash; ok, 400 &ndash; request was not ok, 500 &ndash; something went wrong)</p></li>
+<li><p>but with human readable error messages that can be displayed when necessary</p></li>
+<li><p>API version should be mandatory</p></li>
+<li><p>place where version should be stored is not yet standardised, there are two approaches: url or request headers.</p></li>
+</ul>
+
+
+<p>So if you are in the “chatty” project communicating with others via REST or trying to make your API as usable
+for other developers as possible, you should really, really consider reading this paper. Short, concise and straight to the point.</p>
+
+<p>PS: Many thanks to the <a href="https://www.linkedin.com/pub/rafa%C5%82-remisiewicz/66/b02/456">Rafał Remisiewicz</a> for pushing me to reading this book and for being “Certified REST API designer” in our project for several months when we were working together :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Merry Christmas and Silent Night in Java]]></title>
+    <link href="http://tomaszdziurko.pl/2014/12/merry-christmas-in-java/"/>
+    <updated>2014-12-23T22:30:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2014/12/merry-christmas-in-java</id>
+    <content type="html"><![CDATA[<p>Programmable Christmas wishes and carol, how cool is this?</p>
+
+<!-- more -->
+
+
+<p>Christmas is a special time for everyone: for regular people but even for us, nerds and geeks that feel really strange sitting at the table
+far away from our computers, our natural environment.</p>
+
+<p><img class="center" src="/images/blog/2014/12/christmas-tree.jpg" width="450" height="400"></p>
+
+<p>And in this special time I have a special message for you, my Dear Readers:</p>
+
+<p><strong>Fully digitalized, computer-generated Christmas wishes and &ldquo;Silent Night&rdquo; carol written completely in Java</strong></p>
+
+<iframe width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/182884511&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+
+
+<p style="text-align:center;"><strong>Let this Christmas be a really special time for You</strong></p>
+
+<p style="text-align:center;"><strong>Spent with your families and friends</strong></p>
+
+<p style="text-align:center;"><strong>With computer and phones turned off.</strong></p>
+
+<p style="text-align:center;"><strong>Merry Christmas and all the best in 2015!</strong></p>
+
+<p>For those interested, source code is available on <a href="https://github.com/tdziurko/merry-christmas-in-java/tree/master/src/main/java/pl/tomaszdziurko/silent_night">Github</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Chat bot, scripting and teaching developers orthography ]]></title>
+    <link href="http://tomaszdziurko.pl/2014/12/chat-bot-scripting-and-polish-orthography/"/>
+    <updated>2014-12-15T07:00:22+01:00</updated>
+    <id>http://tomaszdziurko.pl/2014/12/chat-bot-scripting-and-polish-orthography</id>
+    <content type="html"><![CDATA[<p>Few lines of script to help devs to learn orthography</p>
+
+<!-- more -->
+
+
+<p>In <a href="http://softwaremill.com">our remote company</a> we are heavily using text messaging tools, we&rsquo;ve tried Skype, then HipChat and then <a href="https://slack.com/">Slack</a> which we are using until now.
+One of the coolest features in Slack is its scripting capability. Moreover Github built <a href="https://hubot.github.com/">Hubot</a> &ndash; a bot running our scripts. It can be easily integrated with Slack. You deploy bot on Heroku, put custom scripts in proper directory and that&rsquo;s it.</p>
+
+<h3>The Idea</h3>
+
+<p>We are using Slack for some time and I&rsquo;ve planned to play with custom scripting since beginning of Slack in SoftwareMill.  Yet I didn&rsquo;t have the any idea good enough that I would love to implement it right away.
+That was the case until last week when I&rsquo;ve noticed that we are making quite a lot of orthographic mistakes. And when you often see words written with error, your internal &lsquo;correct or not&rsquo; detector starts to go haywire &ndash;
+you are no longer sure if that word should be written this way or another. So I&rsquo;ve decided to write a script that will try to spot such errors, correct and comment them in a gentle way :)</p>
+
+<p><img class="center" src="/images/blog/2014/12/slap.jpg" width="450" height="400"></p>
+
+<h3>Intro</h3>
+
+<p>But first let me briefly describe anatomy of Hubot script. It can be written in JavaScript or CoffeeScript and should implement at least one of two methods:</p>
+
+<p>``` coffeescript</p>
+
+<pre><code>module.exports = (robot) -&gt;
+  robot.hear &lt;regexp&gt;, (msg) -&gt;
+    # Code reacting on any message written in any chat room that matches &lt;regexp&gt;
+    msg.send 'Example response to chat room'
+
+  robot.respond &lt;regexp&gt;, (msg) -&gt;
+    # Code reacting on any message written to our bot that matches &lt;regexp&gt;
+    msg.send 'Example response 2 to chat room'
+</code></pre>
+
+<p>```</p>
+
+<p>Because we are interested in watching every room (channel) we will only play with <em>hear</em> method.</p>
+
+<h3>Iteration 1</h3>
+
+<p>At the beginning I wanted to implement something simple to check that my idea working and to see if it is easy to write and run custom script on Hubot. And after that, I could make my script more sophisticated, etc. So at first I&rsquo;ve created something like this:</p>
+
+<p>``` coffeescript</p>
+
+<p>module.exports = (robot) &ndash;>
+  robot.hear prepareErrorDetectingRegEx(), (msg) &ndash;></p>
+
+<pre><code>author = msg.message.user.name
+grammarFailure = msg.match[1]
+exclamationSentence = msg.random messages
+msg.send  '@' + author + ', ' + exclamationSentence + '! It should be *' + errors[grammarFailure.toLowerCase().trim()] + '*'
+</code></pre>
+
+<p>prepareErrorDetectingRegEx = () &ndash;>
+  errorWords = []
+  for k, v of errors</p>
+
+<pre><code>errorWords.push k
+</code></pre>
+
+<p>  joinedErrors = errorWords.join(&lsquo;|&rsquo;)
+  errorDetectingRegex = new RegExp(&lsquo;.<em>(&rsquo; + joinedErrors + &lsquo;).</em>&rsquo;, &lsquo;i&rsquo;);
+  return errorDetectingRegex</p>
+
+<h1>key-value pair where key is an error and value contains correct word</h1>
+
+<p>errors =
+  &lsquo;wziąść&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziasc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziaśc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziasć&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;pokarze&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;pokarzę&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;żądzić&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;żadzić&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;żadzic&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;ządzic&rsquo;  : &lsquo;rządzić&rsquo;</p>
+
+<p>messages = [&lsquo;come on&rsquo;, &lsquo;gimme a break&rsquo;, &lsquo;are you serious?&rsquo;] # for a Polish list of &lsquo;gentle&rsquo; messages check source code (link at the end of the post) :&ndash;)</p>
+
+<p>```</p>
+
+<p>Entry point of our script is in <em>robot.hear</em> function. Wee are creating regEx in <em>prepareErrorDetectingRegEx</em> which loads all <em>errors</em> and producing <em>OR</em> combo with all possible mistakes. This regular expression seemed fine at first,
+but then turned out to be not so perfect :)</p>
+
+<p>When any text written in chat matches our pattern, we know that we have our &ldquo;victim&rdquo;. Now we can extract author name, find correct version of word and prepare complete response like</p>
+
+<pre><code>@user, gimme a break! It should be &lt;correctVersionOfWordWrittenInBold&gt;
+</code></pre>
+
+<h3>Iteration 2</h3>
+
+<p>After first release, it was time to test script on production and see how it deals with messages posted during normal work day. And of course, it turned out that many common errors are missing in <em>errors</em> object but also that
+first version of regular expression is far from perfect. It was detecting mistakes in a properly written words, for example if we had pair &lsquo;eror&rsquo;: &lsquo;error&rsquo; it was firing also for messages like &lsquo;abcEror&rsquo; or &lsquo;erorSomething&rsquo;.</p>
+
+<p>This one can be fixed by new, better pattern checking only for separate words (or start/end of sentence)</p>
+
+<p>``` coffeescript</p>
+
+<p>prepareErrorDetectingRegEx = &ndash;>
+  errorWords = []
+  for k, v of errors</p>
+
+<pre><code>errorWords.push k
+</code></pre>
+
+<p>  joinedErrors = errorWords.join(&lsquo;|&rsquo;)
+  new RegExp &lsquo;(^|\s)(&rsquo; + joinedErrors + &lsquo;)($|\s)&rsquo;, &lsquo;i&rsquo;</p>
+
+<p>```</p>
+
+<p>That was the first issue, the second one was rather on code level: in Polish we have these national characters like &ldquo;ąęłśćżźóń&rdquo; but some people write words without them. And to catch all possible combinations, each word had to be added to <em>errors</em>
+ in many versions. Below you can see example listing with only three errors but using all combinations requires 10 records:</p>
+
+<p>``` coffeescript</p>
+
+<p>errors =
+  &lsquo;wziąść&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziasc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziaśc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;wziasć&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;pokarze&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;pokarzę&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;żądzić&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;żadzić&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;żadzic&rsquo;  : &lsquo;rządzić&rsquo;
+  &lsquo;ządzic&rsquo;  : &lsquo;rządzić&rsquo;</p>
+
+<p>```</p>
+
+<p>This approach is tedious but also much more error-prone. To make adding more records easier, I have to simplify algorithm a bit. And when I was discussing this with <a href="http://szimano.org">Szimano</a> he suggested escaping all polish characters first
+and after that applying regEx to detect errors. This approach was very easy to implement: first we accept all messages using <em>/.*/</em> pattern, then replace all national characters with their standard versions:</p>
+
+<p>``` coffeescript</p>
+
+<p>replacePolishChars = (text) &ndash;></p>
+
+<pre><code>text.toLowerCase()
+  .replace('ą', 'a')
+  .replace('ć', 'c')
+  .replace('ę', 'e')
+  .replace('ł', 'l')
+  .replace('ń', 'n')
+  .replace('ó', 'o')
+  .replace('ś', 's')
+  .replace('ż', 'z')
+  .replace('ź', 'z')
+</code></pre>
+
+<p>```</p>
+
+<p>Now we don&rsquo;t have all those different combination of one error word and our example errors list looks much simpler:</p>
+
+<p>``` coffeescript
+errors =
+  &lsquo;wziasc&rsquo;  : &lsquo;wziąć&rsquo;
+  &lsquo;pokarze&rsquo; : &lsquo;pokażę&rsquo;
+  &lsquo;zadzic&rsquo;  : &lsquo;rządzić&rsquo;</p>
+
+<p>```</p>
+
+<h3>Backlog</h3>
+
+<p>So after two iterations we have a stable script doing what we want and keeping our orthography skills sharp. Complete source code is available <a href="https://github.com/softwaremill/hal-9k/blob/master/scripts/grammar-corrector.coffee">at GitHub</a>.</p>
+
+<p>But as we are using this script, some new ideas started appearing and landed in my backlog for future versions:</p>
+
+<ul>
+<li><p>Store most often misspelled words in a database</p></li>
+<li><p>Store users making most mistakes and print &lsquo;hall of fame&rsquo; table</p></li>
+<li><p>Allow user to add new entries to <em>errors</em> directly from chat rooms</p></li>
+</ul>
+
+
+<h3>Summary</h3>
+
+<p>As you can see, scripting in text communicators like Slack or HipChat is really powerful and easy to deploy tool, you are only limited by your creativity. And you don&rsquo;t need hundreds line of codes to write something useful.</p>
+
+<p>Further reading: <a href="https://github.com/github/hubot/blob/master/docs/scripting.md">Hubot Scripting Guide</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Transparently persist and retrieve encrypted data from database]]></title>
+    <link href="http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database/"/>
+    <updated>2013-07-31T08:45:07+02:00</updated>
+    <id>http://tomaszdziurko.pl/2013/07/transparently-persist-retrieve-encrypted-data-database</id>
+    <content type="html"><![CDATA[<p>Big brother is watching&hellip; always so why not to encrypt everything. And then, auto-decrypt and encrypt our data stored in Database? Here comes Jasypt.</p>
+
+<!-- more -->
+
+
+<p>It&rsquo;s over two months since my last post here but June and July were extremely busy and intensive months this year. First, organisation of <a href="http://confitura.pl">Confitura</a> (the biggest free conference for Java developers in Europe) was taking all of my free evenings and then, after quite nervous period in hospital, our 2nd son was born. But now, I will try to blog regularly again, so please stay tuned.</p>
+
+<p>In this post I will shortly describe how we can store encrypted data in our database and retrieve it as already decrypted in a simple, transparent way using <a href="http://www.jasypt.org/">Jasypt</a> library. Our use case will be to store Twitter Api credentials so they are safe in our database but still easy to retrieve and use to post updates in our timeline.</p>
+
+<p>So what we have is a simple entity representing our settings item:
+``` java SettingsItem entity
+@Entity
+public class SettingsItem implements Serializable {</p>
+
+<pre><code>@Id
+@GeneratedValue(strategy = javax.persistence.GenerationType.AUTO)
+private Integer id;
+
+private String name;
+private String encryptedValue;
+</code></pre>
+
+<p>}
+```</p>
+
+<p>In such table we will store values for Twitter Consumer Key, Twitter Access Token and so on.</p>
+
+<p>What we would like to achieve is that when we create SettingItem object with value as plain text and then we persist it, encryption is automatically performed so in the DB we have encrypted String. And of course, when we retrieve data from DB, we want to see decrypted String without additional effort, just out of the box.</p>
+
+<h3>Jasypt to the rescue</h3>
+
+<p style="text-align:center;"><img src="/images/blog/2013/07/jasypt-small.png" alt="jasypt-small" /></p>
+
+<p><a href="http://www.jasypt.org">Jasypt</a> is a simple encryption library written in Java. It frees developer from dealing with low level configuration details and makes whole encryption process easy and straightforward. And what is most interesting now, it also has nice integration with Hibernate allowing seamless encryption/decryption of data stored in database.</p>
+
+<h4>Setup</h4>
+
+<p>To use Jasypt and its Hibernate integration module we have to add two items to our pom:
+``` xml</p>
+
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.jasypt&lt;/groupId&gt;
+    &lt;artifactId&gt;jasypt&lt;/artifactId&gt;
+    &lt;version&gt;1.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.jasypt&lt;/groupId&gt;
+    &lt;artifactId&gt;jasypt-hibernate4&lt;/artifactId&gt;
+    &lt;version&gt;1.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>```</p>
+
+<h4>Custom type</h4>
+
+<p>Then we have to declare custom Hibernate type (@TypeDef) in our entity:</p>
+
+<p>``` java
+@TypeDef(</p>
+
+<pre><code>    name="encryptedString",
+    typeClass=EncryptedStringType.class,
+    parameters= {
+            // value will be used later to register encryptor
+            @Parameter(name="encryptorRegisteredName", value="STRING_ENCRYPTOR")
+    }
+</code></pre>
+
+<p>)
+@Entity
+public class SettingsItem implements Serializable {
+   // (&hellip;)
+}
+```</p>
+
+<p>and after that in the same class we can mark our encryptedValue field to use this custom type:</p>
+
+<p>``` java</p>
+
+<pre><code>@Type(type="encryptedString")
+private String encryptedValue;
+</code></pre>
+
+<p>```</p>
+
+<h4>Registering encryptor</h4>
+
+<p>We are almost done. Last thing we have to do is register encryptor in HibernatePBEEncryptorRegistry class. This can be done in  initialization class of our application, e.g. ServletContext or simply in class with main(String[] args) method:</p>
+
+<p>``` java</p>
+
+<pre><code>String password = System.getProperty("jasypt.password");
+
+StandardPBEStringEncryptor strongEncryptor = new StandardPBEStringEncryptor();
+strongEncryptor.setPassword(password);
+HibernatePBEEncryptorRegistry registry =
+        HibernatePBEEncryptorRegistry.getInstance();
+registry.registerPBEStringEncryptor("STRING_ENCRYPTOR", strongEncryptor);
+</code></pre>
+
+<p>```</p>
+
+<p>One important thing here is that by using System.getProperty() or System.getenv() we can safely configure our encryption mechanism, password is provided at runtime by setting proper value on server machine.</p>
+
+<h4>Summary</h4>
+
+<p>As as a summary, one short passing test showing that our solution works:</p>
+
+<p>``` java
+public class SettingsItemRepositoryShould extends IntegrationTest {</p>
+
+<pre><code>@Autowired
+private SettingsItemRepository repository;
+
+
+@BeforeClass
+public static void init() {
+    StandardPBEStringEncryptor strongEncryptor = new StandardPBEStringEncryptor();
+    strongEncryptor.setPassword("JohnDoe");
+
+    HibernatePBEEncryptorRegistry registry =
+            HibernatePBEEncryptorRegistry.getInstance();
+    registry.registerPBEStringEncryptor("STRING_ENCRYPTOR", strongEncryptor);
+}
+
+@Test
+public void shouldEncryptAndDecryptValue() {
+    // Given
+    String settingName = "test";
+    String value = "EncryptMe";
+
+    // When
+    repository.save(new SettingsItem(settingName, value));
+
+    // Then
+    SettingsItem settingsItem = repository.findByName(settingName);
+    assertThat(settingsItem.getEncryptedValue()).isEqualTo(value);
+}
+</code></pre>
+
+<p>}
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

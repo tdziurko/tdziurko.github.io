@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: learning | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/learning/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2016-12-12T22:32:01+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[5 reasons for every developer reading books to join Goodreads]]></title>
+    <link href="http://tomaszdziurko.pl/2016/03/5-reasons-to-join-goodreads/"/>
+    <updated>2016-03-01T17:10:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2016/03/5-reasons-to-join-goodreads</id>
+    <content type="html"><![CDATA[<p>Goodreads &ndash; a website for a book readers and why you should care</p>
+
+<!-- more -->
+
+
+<p>Today I am going to share my experience with a website that changed the way I interact with books. I am a developer, member of industry that is constantly
+changing, evolving and coining new ideas, new approaches and of course new languages and frameworks. And this constant change forces us to learn new stuff
+and or course to read <strong>A LOT</strong>.</p>
+
+<p><a href="http://goodreads.com">Goodreads</a> is a website for book readers helping them to track what they read and recommend what they should pick next.
+I am so satisfied user that I have decided to share my positive opinion about GoodReads here and try to convince you to start using it :)</p>
+
+<p><img class="center" src="/images/blog/2016/03/goodreads.jpg" width="700"></p>
+
+<h1>Create your to-read list</h1>
+
+<p>Once in a while everyone stumbles upon a book that looks very interesting that we want to read it someday. But very often we forget to write it down
+somewhere and later on it is hard to get back to it.</p>
+
+<p>With Goodreads you can easily mark any title as “Want to read” and have a list of planned readings. I also use this list as a reference during sales
+(Black Friday, Cyber Monday, etc) to check what I am planning to read in next few months and try to buy these books much cheaper. It can be also a
+good source of ideas for gifts to your friends.</p>
+
+<h1>Recommendations</h1>
+
+<p>Your reading history, your ratings and “Want to Read” lists are source of recommendations that Goodreads prepares for you.
+It suggests similar books from genre you read a lot, notifies you about new title from author you liked or from series you partially read. And in
+most cases suggestions are relevant.</p>
+
+<h1>Follow friends and check books they like</h1>
+
+<p>We are surrounded by advertisements, they are everywhere and it is hard to find a reliable opinion about anything we plan to buy. That is why what
+I value the most is an opinion from someone I know and trust. Same applies to books: if someone I know writes an enthusiastic review of a book or
+gives 5 of 5 stars and book is within area of my interest then I check this book and maybe consider it as a something worth my time.</p>
+
+<p>Sometimes I even get a direct recommendation from my friends when they think that book they have just read is something I should be interested in and very often I am.</p>
+
+<p>Knowing that some of your friend started or finished a book is also a good topic for a discussion. At work we often discuss books that we are currently reading,
+want to read or looking for a free time to read :)</p>
+
+<h1>Follow famous people and influencers to see what they are reading</h1>
+
+<p>Same situation applies to famous people and well-known people from your industry. Obviously in most cases you are not their friend but similarly to Twitter,
+you can follow their activity and see what they are reading and check their reviews and ratings. This is also a very good source of interesting books to read that I probably would not find other way.</p>
+
+<p>This way you could follow:</p>
+
+<ul>
+<li><p><a href="https://www.goodreads.com/user/show/11764723-kent-beck">Kent Beck</a>, author of &ldquo;Test-Driven Development: By Example&rdquo; and co-author of JUnit testing library</p></li>
+<li><p><a href="https://www.goodreads.com/author/show/7127583.Sandro_Mancuso">Sandro Mancuso</a>, author of &ldquo;Software Craftsmanship&rdquo;, developer and speaker at various conferences and meetups</p></li>
+<li><p><a href="https://www.goodreads.com/author/show/4462627.Jurgen_Appelo">Jurgen Appello</a>, author of many <a href="http://jurgenappelo.com/writing/">innovative books about management</a></p></li>
+</ul>
+
+
+<h1>Motivate yourself to read more regularly</h1>
+
+<p>Every January Goodreads starts a challenge in which you can declare how many books you are going to read this year. You can see your challenge next to
+ones of your friends: their progress, whether they (and you) are on track or a little behind :)</p>
+
+<p>Once a week you get a notification about what your friends have read or want to read. Even if you fail and do not complete 100% of your reading plan
+still all of these small &ldquo;pokes&rdquo; are nice motivators to read more regularly and read more.</p>
+
+<p>And sharing that you have finished reading a book is also kind of small gratification :)</p>
+
+<h1>Summary</h1>
+
+<p>These are the most important advantages of using Goodreads. From my perspective it has influenced they way I choose books to more conscious and changed how I think about reading.
+I believe it is a very helpful website for every book reader so I encourage you to check it out.</p>
+
+<p>If you like it, you can find me there under <a href="https://www.goodreads.com/user/show/9486100-tomasz">Tomasz Dziurko</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My impressions after Advanced Data Structures at Coursera]]></title>
+    <link href="http://tomaszdziurko.pl/2016/02/coursera-advanced-data-structures-summary/"/>
+    <updated>2016-02-22T11:00:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2016/02/coursera-advanced-data-structures-summary</id>
+    <content type="html"><![CDATA[<p>Short summary after I have finished &ldquo;Advanced Data Structures in Java&rdquo; at Coursera</p>
+
+<!-- more -->
+
+
+<p>Online course <a href="https://www.coursera.org/learn/advanced-data-structures/">&ldquo;Advanced Data Structures in Java&rdquo;</a> at Coursera have finished last week and I felt
+that after these cool five weeks it is worth to recap and summarise my impressions.</p>
+
+<p><img class="center" src="/images/blog/2016/02/graphs.png" width="900" height="600">
+<em>image source: <a href="http://lin-ear-th-inking.blogspot.com/2013/05/flight-paths-in-jeql-redux.html">http://lin-ear-th-inking.blogspot.com</a></em></p>
+
+<h1>Course Content</h1>
+
+<p>At start, do not be mislead by course name. It is not about all advanced data structures what would be a very broad topic, but about graphs,
+searching algorithms and path calculations.</p>
+
+<p>During the first week we have learnt about data structures that can be used to represent graphs &ndash; Adjacency Matrix and Adjacency
+List &ndash; and what are best use cases to choose each of them. Next we had to create a class hierarchy for map search engine to be used as
+a framework during the rest of our assignments. Assignment from this week also required to implement <a href="https://en.wikipedia.org/wiki/Breadth-first_search">Breadth-first Search</a>
+(BFS) algorithm. <a href="https://en.wikipedia.org/wiki/Depth-first_search">DFS</a> was also covered but we have not coded it
+in our assignments as it can not be used to find shortest paths.</p>
+
+<p>Third week was about implementing <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra</a> and
+<a href="https://en.wikipedia.org/wiki/A*_search_algorithm">A-Star</a> algorithms and how they can be created using BFS as a base. Using BFS as a starting point
+helped me to understand these algorithms much faster. Fourth week was theoretical one, only one without an assignment. So there were no coding but more lectures about
+<a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">Travelling Salesman Problem</a>, NP Complete and NP Hard problems and different types
+of graphs (Eulerian, Hamiltonian).</p>
+
+<p>Final week was the most creative one as we were asked to implement an extension to any of algorithms we have learnt about. We could extend A*
+or Dijkstra to use not only distance but also road type or speed limits to find the fastest route or we could try to improve speed of any of these algorithms or&hellip;
+or we could create completely original extension. I have chosen to implement something I called &ldquo;Route Calculation Cache&rdquo;, quote from my submission:</p>
+
+<p><blockquote><p></p></p><p><p>My extension remembers calculated routes and when another user wants to find similar route, extension will retrieve<br/>this stored route instead of starting duplicated and extensive calculation. This will decrease execution time<br/>and user will see routes in a shorter time.</p></p><p><p></p></blockquote></p>
+
+<p>And after that course ended after five weeks with graphs.</p>
+
+<h1>My impressions</h1>
+
+<ul>
+<li><p>Sophisticated algorithms are not the thing we use frequently at work so it was very funny feeling to
+learn again stuff that I was forced to memorize several years ago at university. Obviously now I was more motivated
+so learning was more enjoyable process than when I was a young student.</p></li>
+<li><p>Test datasets can be obtained for any area using provided application so everyone was able to test A* or Dijkstra
+using streets from their neighbourhood. You could check if your route to work is optimal or not ;) Below fragment of my home city
+with calculated example route:</p></li>
+</ul>
+
+
+<p><img class="center" src="/images/blog/2016/02/plock_dijkstra.png" width="700" height="520"></p>
+
+<ul>
+<li><p>Peer reviews. Our solutions for Week3 and (partly) Week5 were reviewed by other developers attending this course. At first
+I was not convinced that it will bring any value to my learning process, but it appeared that comparing how
+people from different countries and with different backgrounds designed classes hierarchy to solve same problem
+was an interesting experience. I saw approaches similar to mine but also completely different ones but still valid.
+Another topic is different approach to documenting code: some developers shared my view and used comments only where it
+was really, really necessary and tried to write self-explanatory code. But in some people&rsquo;s solutions I saw
+as many lines of documentation as lines of code :)</p></li>
+<li><p>Good peer pressure: because I have advertised this course at <a href="https://github.com/tdziurko/jvm-bloggers/">JVM Bloggers</a>
+newsletter I was motivated to graduate :) And the more people I know tweeted that they are joining, the more motivated
+I was to complete assignments week by week. Discussing about course with developers from my company helped a lot too.
+Generally this is one of the finest features of online courses: motivating others and getting motivation :)</p></li>
+</ul>
+
+
+<h1>Wrap up</h1>
+
+<p>I am happy that I have enrolled &ldquo;Advanced Data Structures in Java&rdquo;. I have refreshed some long forgotten
+knowledge about graph structures, learnt a lot too so definitely it was time well spent. Also a satisfaction after
+successfully finishing a five-weeks long course is a nice feeling.</p>
+
+<p>And what about you? What are you thoughts about this course or online courses in general?</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Off-topic | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/off-topic/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2016-12-12T22:32:01+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Merry Christmas and Silent Night in Java]]></title>
+    <link href="http://tomaszdziurko.pl/2014/12/merry-christmas-in-java/"/>
+    <updated>2014-12-23T22:30:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2014/12/merry-christmas-in-java</id>
+    <content type="html"><![CDATA[<p>Programmable Christmas wishes and carol, how cool is this?</p>
+
+<!-- more -->
+
+
+<p>Christmas is a special time for everyone: for regular people but even for us, nerds and geeks that feel really strange sitting at the table
+far away from our computers, our natural environment.</p>
+
+<p><img class="center" src="/images/blog/2014/12/christmas-tree.jpg" width="450" height="400"></p>
+
+<p>And in this special time I have a special message for you, my Dear Readers:</p>
+
+<p><strong>Fully digitalized, computer-generated Christmas wishes and &ldquo;Silent Night&rdquo; carol written completely in Java</strong></p>
+
+<iframe width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/182884511&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+
+
+<p style="text-align:center;"><strong>Let this Christmas be a really special time for You</strong></p>
+
+<p style="text-align:center;"><strong>Spent with your families and friends</strong></p>
+
+<p style="text-align:center;"><strong>With computer and phones turned off.</strong></p>
+
+<p style="text-align:center;"><strong>Merry Christmas and all the best in 2015!</strong></p>
+
+<p>For those interested, source code is available on <a href="https://github.com/tdziurko/merry-christmas-in-java/tree/master/src/main/java/pl/tomaszdziurko/silent_night">Github</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

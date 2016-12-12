@@ -1,0 +1,436 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Six steps to improve your remote communication with TeamSpeak - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="Configuring TeamSpeak for performance and usability in a remote work environment">
+    
+    <meta name="keywords" content="Tomasz Dziurko, Dziurko, java, scala, wicket, groovy, spock, geb, reading, guava, google guava, code hard, go pro, blog" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/11/elon-musk-amazing-entrepreneur-difficult-person-book-review/">Elon Musk - an Amazing Entrepreneur and a Difficult Person - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/">Six Steps to Improve Your Remote Communication With TeamSpeak</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/08/jvm-bloggers-docker-compose-and-views-counter/">What's New in JVM Bloggers - Docker Compose and Views Counter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/04/varidesk-standing-desk-review/">Varidesk - an Adjustable Standing Desk - Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/podsumowanie-ankiety-o-jvm-bloggers/">Podsumowanie Ankiety O JVM Bloggers</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Six Steps to Improve Your Remote Communication With TeamSpeak</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Few tips to make your TeamSpeak usage a real pleasure</p>
+
+<!-- more -->
+
+
+<p>Communication is the key in any team working on software, this well-known fact is even more true in a company
+working 100% remotely where team members sit at their comfortable desks hundred kilometers away from each other.</p>
+
+<p>Remote work brings many advantages but, at the same time, requires more cautious approach to setting and preserving
+communication within the team. It is very easy to &ldquo;leave&rdquo; your people feeling alone or left without any connection with the
+rest of your company. To resemble the feeling of being together in SoftwareMill we use <a href="https://www.teamspeak.com/">TeamSpeak</a>. In our setup
+TeamSpeak is used as a central hub for voice communication. Each team working on a specific project has its own
+channel (room) where developers &ldquo;sit&rdquo;, any of them can initiate discussion with other team members using &ldquo;push-to-talk&rdquo; in just one click.
+No &ldquo;Can I call you on Skype?&rdquo; questions, no &ldquo;Let&rsquo;s create a group call to discuss it&rdquo;. One click and you are talking with your peers.</p>
+
+<p>But as usual, over the time we have learnt more about TeamSpeak and how we could adjust it to our needs. In this post I am
+going to share a few trick that could make your work with TeamSpeak even more productive.</p>
+
+<h2>Away from keyboard status</h2>
+
+<p>There is almost nothing more irritating than describing a complicated problem to developers in your team
+for a few minutes only to notice that all of them are away from their computers. Of course you can always ask beforehand, but&hellip;
+this quickly becomes a tedious task. To avoid such situations we have introduced a habit to use &ldquo;Toggle away&rdquo; TeamSpeak status
+(marked with red rectangles):</p>
+
+<p><img class="center" src="/images/blog/2016/09/team_speak_away_all.png" width="700"></p>
+
+<p>So in one glance you can check if person is away or not. Clicking this &ldquo;toggle&rdquo; each time is rather a slow and quickly becomes a tedious task
+so we have added a handy shortcut to toggle it on and off. This way we have reached another important topic.</p>
+
+<h2>Shortcuts, shortcuts, shortcuts</h2>
+
+<p>When using any application, as soon as you spot any patterns in your monkey clicking, please spend a few minutes checking if
+this activity could be replaced by a handy shortcut. TeamSpeak is very customizable in this area so you will be able
+to save dozens of clicks every hour. For example I have shortcuts for:</p>
+
+<ul>
+<li>switching to my project channel</li>
+<li>switching to 2nd most frequently used channel</li>
+<li>toggle away status</li>
+</ul>
+
+
+<p><img class="center" src="/images/blog/2016/09/team_speak_shortcuts.png" width="700"></p>
+
+<h2>Place to discuss in smaller groups</h2>
+
+<p>From time to time a smaller group in a project starts diving into specific topic which is not interesting for others.
+After few struggles to find a proper place to continue discussion we decided to create a sub-channel in our project rooms.
+In most cases it is called &ldquo;Couch&rdquo;, &ldquo;Terrace on the roof&rdquo;, &ldquo;Luxury sofa&rdquo;, etc. These channels are easily accessible so
+people could quickly switch to them and keep the discussion flow without unnecessary breaks.</p>
+
+<h2>Default channels</h2>
+
+<p>Another tiny tip, but also saving you a few clicks each day: in your server settings you can set up a default channel
+to join after you start TeamSpeak client. If you spend most of your time in specific channel this setting will make your
+life a bit easier.</p>
+
+<p><img class="center" src="/images/blog/2016/09/team_speak_default_channel.png" width="700"></p>
+
+<h2>Reduce TeamSpeak client CPU usage</h2>
+
+<p>TeamSpeak client is known for its surprisingly high CPU consumption. I have seen situations when client was consuming 30 or
+even 40% of CPU time on our Mac Books. After many trial and errors I have observed that disabling following options
+significantly improves the situation:</p>
+
+<ul>
+<li>close small, moving news moving banner at the bottom of your client window</li>
+<li>turn off Animated GIF Support in <em>Preferences &ndash;> Design</em></li>
+<li>turn off Echo Reduction and Echo cancellation in <em>Preferences &ndash;> Capture</em> (however, depending on your headphones/speakers setup, this might reduce sound quality)</li>
+</ul>
+
+
+<p>After such tuning my TS client rarely goes above 10% of CPU.</p>
+
+<h2>Text to Speech for most important events, others turned off</h2>
+
+<p>Quite often I hear &ldquo;User joined your channel&rdquo; message and to know who has just stepped in I need to find TS window
+and check it visually. Same happens when I am in the middle of conversation with a developer from my team and suddenly
+I hear &ldquo;User disconnected&rdquo; and I am not sure if this is my current interlocutor and I should wait for him or someone else.</p>
+
+<p>Both situations are irritating interruptions. To limit their number you can simply:</p>
+
+<ol>
+<li>Disable notifications on almost all events in in <em>Preferences &ndash;> Notifications</em> window. I only have &ldquo;user left/joined/disconnected your channel&rdquo; enabled.</li>
+<li>Switch to &ldquo;Default Text To Speech&rdquo; under <em>Preferences &ndash;> Notifications &ndash;> Sound Pack</em></li>
+</ol>
+
+
+<p><img class="center" src="/images/blog/2016/09/team_speak_text_to_speech.png" width="700"></p>
+
+<ol>
+<li>Download &ldquo;Text to Speech&rdquo; voice pack in your native language for your OS. This applies only if user names in your team/company sound weird in English :)</li>
+</ol>
+
+
+<p><img class="center" src="/images/blog/2016/09/text_to_speech.png" width="700"></p>
+
+<ol>
+<li>Edit messages about events you are interested in, for example you can replace</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>CLIENT_CONNECTION_CONNECTED_CURRENT_CHANNEL = say("${clientname} entered your channel")</span></code></pre></td></tr></table></div></figure>
+
+
+<p>with translated:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>CLIENT_CONNECTION_CONNECTED_CURRENT_CHANNEL = say("${clientname} dołączył do twojego kanału")</span></code></pre></td></tr></table></div></figure>
+
+
+<p>All messages are configured in <em>settings.ini</em> file located in your TeamSpeak installation folder (for example under OS X it is
+<em>/Applications/TeamSpeak 3 Client.app/Contents/SharedSupport/sound/default_speech/settings.ini</em>)</p>
+
+<p>After these steps number of notifications is really small and those most important are self descriptive instead of enigmatic
+<em>User joined your channel</em>.</p>
+
+<h2>Wrap up</h2>
+
+<p>TeamSpeak is a very useful tool for any remote communication, in our company it quickly became essential for every team working
+on software project. With these small adjustments presented above it can be even better and make your work a bit easier.</p>
+
+<p><em>Note: This was was originally posted on <a href="https://softwaremill.com/six-steps-to-improve-your-remote-communication-with-teamspeak/">SoftwareMill Blog</a></em>.</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-09-02T00:00:00+02:00" data-updated="true" itemprop="datePublished">Sep 2<span>nd</span>, 2016</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/remote-work/'>remote work</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2016/08/jvm-bloggers-docker-compose-and-views-counter/" title="Previous: What's new in JVM Bloggers - docker compose and views counter">&laquo; What's new in JVM Bloggers - docker compose and views counter</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2016/11/elon-musk-amazing-entrepreneur-difficult-person-book-review/" title="Next: Elon Musk -  an amazing entrepreneur and a difficult person - book review">Elon Musk -  an amazing entrepreneur and a difficult person - book review &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/';
+        var disqus_url = 'http://tomaszdziurko.pl/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,638 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>ZooKeeper, Curator and how microservices load balancing works - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="Simple example how ZooKeeper with Curator library allows microservices load balancing">
+    
+    <meta name="keywords" content="Microservices, ZooKeeper, Curator, Load balancing" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2014/07/zookeeper-curator-and-microservices-load-balancing/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/11/elon-musk-amazing-entrepreneur-difficult-person-book-review/">Elon Musk - an Amazing Entrepreneur and a Difficult Person - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/">Six Steps to Improve Your Remote Communication With TeamSpeak</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/08/jvm-bloggers-docker-compose-and-views-counter/">What's New in JVM Bloggers - Docker Compose and Views Counter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/04/varidesk-standing-desk-review/">Varidesk - an Adjustable Standing Desk - Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/podsumowanie-ankiety-o-jvm-bloggers/">Podsumowanie Ankiety O JVM Bloggers</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">ZooKeeper, Curator and How Microservices Load Balancing Works</h1>
+	<div class="entry-content" itemprop="articleBody"><p>How Zookeeper makes sure that every worker happily gets some stuff to do from job delegating manager</p>
+
+<!-- more -->
+
+
+<p><a href="http://zookeeper.apache.org/">Apache ZooKeeper</a> is a tool to register, manage and discover services working on different machines.
+It is an indispensable member in technology stack when we have to deal with distributed system with many nodes
+which need to know where their dependencies are launched.</p>
+
+<p><img class="center" src="/images/blog/2014/07/zookeeper_logo.png"></p>
+
+<p>However ZooKeeper is pretty low level and even standard use-cases require many lines of code. That is why <a href="http://curator.apache.org/">Apache Curator</a>
+was born &ndash; a much more friendly and easier to use wrapper library over ZooKeeper. Using Curator we can deliver more with less code and in a much cleaner way.</p>
+
+<p><img class="center" src="/images/blog/2014/07/curator_logo.png"></p>
+
+<blockquote><p>&#8220;Guava is to Java what Curator is to ZooKeeper&#8221; - Patrick Hunt, ZooKeeper committer</p></blockquote>
+
+
+<h3>Load balancing microservices with ZooKeeper</h3>
+
+<p>We are accustomed to situation when there is a load balancer deployed in front of our application. Its role is to make sure that
+every single node gets more or less same amount of traffic.</p>
+
+<p>In a microservices world situation is the same but we have
+a significant advantage over a monolithic approach: when we need to scale application we don&rsquo;t have to duplicate whole system
+and deploy it on a server powerful enough to run it smoothly. We can concentrate only on a small module that needs to be scaled
+so cost of scaling is much lower (both in terms of server cost and development needed to prepare module for deployment in many instances).</p>
+
+<p>But as our system grows, we end up with many scaled modules, each of them requiring separate load balancer. This seems troublesome
+as our infrastructure is very complex even without them. Luckily if we use ZooKeeper as a service orchestration and discovery tool
+we can use built-in load balancing capability without introducing any additional complexity into our microservice architecture.</p>
+
+<p>To present how out of the box load-balancing works in ZooKeeper we need two services: worker which will be deployed multiple times
+and manager delegating tasks to registered workers.</p>
+
+<h3>Simple worker</h3>
+
+<p>Let&rsquo;s start with creating a simple worker that will listen on a given port and return some result when asked to perform its job.
+To implement this tiny microservice we will use Groovy, <a href="http://undertow.io/">Undertow</a> light-weight servlet container
+and of course ZooKeeper and Curator.</p>
+
+<p>Our worker will consist of one, small class with <em>main</em> method that does three things:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="c1">// Step 1: Extract name and port number to launch worker</span>
+</span><span class='line'>        <span class="c1">// Step 2: Configure and start Rest server on given port</span>
+</span><span class='line'>        <span class="c1">// Step 3: Register worker in ZooKeeper</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For a brevity I will omit steps 1 and 2 here, you can check complete source code on <a href="https://github.com/tdziurko/microservices-load-balancing">GitHub project</a>.
+Our worker will have only a single endpoint GET /work which returns a response with name of the called worker:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="nd">@Path</span><span class="o">(</span><span class="s2">&quot;/&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@GET</span>
+</span><span class='line'>    <span class="nd">@Path</span><span class="o">(</span><span class="s2">&quot;/work&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="n">String</span> <span class="nf">work</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">response</span> <span class="o">=</span> <span class="s2">&quot;Work done by $workerName&quot;</span>
+</span><span class='line'>        <span class="n">println</span> <span class="n">response</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">response</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Step 3: <em>Register worker in ZooKeeper</em> is the most interesting here so I will explain it in more detail:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">registerInZookeeper</span><span class="o">(</span><span class="kt">int</span> <span class="n">port</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">CuratorFramework</span> <span class="n">curatorFramework</span> <span class="o">=</span> <span class="n">CuratorFrameworkFactory</span><span class="o">.</span><span class="na">newClient</span><span class="o">(</span><span class="s2">&quot;localhost:2181&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">RetryNTimes</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">1000</span><span class="o">))</span>
+</span><span class='line'>    <span class="n">curatorFramework</span><span class="o">.</span><span class="na">start</span><span class="o">()</span>
+</span><span class='line'>    <span class="n">ServiceInstance</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="n">serviceInstance</span> <span class="o">=</span> <span class="n">ServiceInstance</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">uriSpec</span><span class="o">(</span><span class="k">new</span> <span class="n">UriSpec</span><span class="o">(</span><span class="s2">&quot;{scheme}://{address}:{port}&quot;</span><span class="o">))</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">address</span><span class="o">(</span><span class="s1">&#39;localhost&#39;</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">port</span><span class="o">(</span><span class="n">port</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">name</span><span class="o">(</span><span class="s2">&quot;worker&quot;</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">build</span><span class="o">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">ServiceDiscoveryBuilder</span><span class="o">.</span><span class="na">builder</span><span class="o">(</span><span class="n">Void</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">basePath</span><span class="o">(</span><span class="s2">&quot;load-balancing-example&quot;</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">client</span><span class="o">(</span><span class="n">curatorFramework</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">thisInstance</span><span class="o">(</span><span class="n">serviceInstance</span><span class="o">)</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">build</span><span class="o">()</span>
+</span><span class='line'>        <span class="o">.</span><span class="na">start</span><span class="o">()</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>Lines 2-3: we create and start CuratorFramework client wrapping all operations we want to perform on ZooKeeper instance. For a simplicity
+we use localhost with default port (in general it should be the URL to the running instance of ZooKeeper)</p></li>
+<li><p>Lines 4-9 create ServiceInstance representing our worker. We pass all &ldquo;contact details&rdquo; required to call this worker from other microservices</p></li>
+<li><p>Lines 11-16 register our instance in a ZooKeeper represented by CuratorFramework client.</p></li>
+</ul>
+
+
+<p><strong>Starting worker</strong></p>
+
+<p>Worker is now ready so we can create fat jar (with Gradle <em>fatJar</em> task) and then launch it using</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">simple</span><span class="o">-</span><span class="n">worker</span><span class="s">/build/</span><span class="n">libs</span><span class="o">/</span><span class="n">simple</span><span class="o">-</span><span class="n">worker</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">shadow</span><span class="o">.</span><span class="na">jar</span> <span class="n">Worker_1</span> <span class="mi">18005</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Before starting worker remember that you need ZooKeeper instance running on default 2181 port!</p>
+
+<p>To check that worker is running you should open browser on <a href="http://localhost:18005/work">http://localhost:18005/work</a> and see &ldquo;Work done by Worker_1&rdquo; text there.
+To verify that worker has properly registered itself in ZooKeeper, launch command line client:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">cd</span> <span class="o">&lt;</span><span class="n">ZK_ROOT</span><span class="o">&gt;</span><span class="s">/bin</span>
+</span><span class='line'><span class="s">./</span><span class="n">zkCli</span><span class="o">.</span><span class="na">sh</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and then execute <em>ls</em> command to see one node registered under <em>/load-balancing-example/worker</em> path:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="o">[</span><span class="nl">zk:</span> <span class="nl">localhost:</span><span class="mi">2181</span><span class="o">(</span><span class="n">CONNECTED</span><span class="o">)</span> <span class="mi">1</span><span class="o">]</span> <span class="n">ls</span> <span class="s">/load-balancing-example/</span><span class="n">worker</span> <span class="o">&lt;</span><span class="n">enter</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">[</span><span class="n">f69545e8</span><span class="o">-</span><span class="mi">8466</span><span class="o">-</span><span class="mi">40</span><span class="n">c0</span><span class="o">-</span><span class="mi">93</span><span class="n">e9</span><span class="o">-</span><span class="n">f493eb7496b4</span><span class="o">]</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h3>Simple manager</h3>
+
+<p>Now, as we have worker listening on <em>/work</em> for requests, we can create simple manager service delegating tasks to its subordinates.
+Main method looks quite similar to one in simple-worker project, the main difference is that we do not register in ZooKeeper, we only create
+<em>ServiceProvider</em> which role is to (surprise, surprise) provide us with instance of worker. So basic workflow is:</p>
+
+<ol>
+<li><p>Wait for requests on <em>/delegate</em></p></li>
+<li><p>Get instance of worker service from ZooKeeper&rsquo;s ServiceProvider</p></li>
+<li><p>Call worker&rsquo;s <em>/work</em> and return results of its execution</p></li>
+</ol>
+
+
+<p>To create ServiceProvider we have to create CuratorFramework client, connect to ZooKeeper and then fetch ServiceProvider for
+service with given name, <em>worker</em> in our case:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">CuratorFramework</span> <span class="n">curatorFramework</span> <span class="o">=</span> <span class="n">CuratorFrameworkFactory</span><span class="o">.</span><span class="na">newClient</span><span class="o">(</span><span class="s2">&quot;localhost:2181&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">RetryNTimes</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="mi">1000</span><span class="o">))</span>
+</span><span class='line'><span class="n">curatorFramework</span><span class="o">.</span><span class="na">start</span><span class="o">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">ServiceDiscovery</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="n">serviceDiscovery</span> <span class="o">=</span> <span class="n">ServiceDiscoveryBuilder</span>
+</span><span class='line'>    <span class="o">.</span><span class="na">builder</span><span class="o">(</span><span class="n">Void</span><span class="o">)</span>
+</span><span class='line'>    <span class="o">.</span><span class="na">basePath</span><span class="o">(</span><span class="s2">&quot;load-balancing-example&quot;</span><span class="o">)</span>
+</span><span class='line'>    <span class="o">.</span><span class="na">client</span><span class="o">(</span><span class="n">curatorFramework</span><span class="o">).</span><span class="na">build</span><span class="o">()</span>
+</span><span class='line'><span class="n">serviceDiscovery</span><span class="o">.</span><span class="na">start</span><span class="o">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">serviceProvider</span> <span class="o">=</span> <span class="n">serviceDiscovery</span><span class="o">.</span><span class="na">serviceProviderBuilder</span><span class="o">().</span><span class="na">serviceName</span><span class="o">(</span><span class="s2">&quot;worker&quot;</span><span class="o">).</span><span class="na">build</span><span class="o">()</span>
+</span><span class='line'><span class="n">serviceProvider</span><span class="o">.</span><span class="na">start</span><span class="o">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p>Lines 1-2, create ZooKeeper client, same way as in simple-worker</p></li>
+<li><p>Lines 4-8, create ServiceDiscovery which will be able to give us service providers.</p></li>
+<li><p>Lines 10-11. create and start ServiceProvider which will be used to fetch working instance of worker node.</p></li>
+</ul>
+
+
+<p>Finally, we need a Rest endpoint on which manager waits for tasks to delegate:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="nd">@GET</span>
+</span><span class='line'><span class="nd">@Path</span><span class="o">(</span><span class="s2">&quot;/delegate&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="n">String</span> <span class="nf">delegate</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">def</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">serviceProvider</span><span class="o">.</span><span class="na">getInstance</span><span class="o">()</span>
+</span><span class='line'>    <span class="n">String</span> <span class="n">address</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="na">buildUriSpec</span><span class="o">()</span>
+</span><span class='line'>    <span class="n">String</span> <span class="n">response</span> <span class="o">=</span> <span class="o">(</span><span class="n">address</span> <span class="o">+</span> <span class="s2">&quot;/work&quot;</span><span class="o">).</span><span class="na">toURL</span><span class="o">().</span><span class="na">getText</span><span class="o">()</span>
+</span><span class='line'>    <span class="n">println</span> <span class="n">response</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">response</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Starting manager</strong></p>
+
+<p>Manager is ready and after <em>fatJar</em> task we can launch it using</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">simple</span><span class="o">-</span><span class="n">manager</span><span class="s">/build/</span><span class="n">libs</span><span class="o">/</span><span class="n">simple</span><span class="o">-</span><span class="n">manager</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">shadow</span><span class="o">.</span><span class="na">jar</span> <span class="mi">18000</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>To verify it is working we can open (<a href="http://localhost:18000/delegate">http://localhost:18000/delegate</a>) in browser to see message &ldquo;Work done by Worker_1&rdquo;.</p>
+
+<p>Manager doesn&rsquo;t know anything about its workers. Only thing he know is that service is registered under specific path in ZooKeeper. And it is
+that simple no matter if we have multiple workers launched locally or spread across different servers in different countries.</p>
+
+<h3>Out of the box load-balancing with ZooKeeper</h3>
+
+<p>Imagine situation that manager gets so many tasks from his CEO that he needs more than one worker to delegate job. In a standard
+case we will be forced to scale workers and place load balancer in front of them. But ZooKeeper gives us this feature without any
+additional work.</p>
+
+<p>Let&rsquo;s add some more workers listening on different ports:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">simple</span><span class="o">-</span><span class="n">worker</span><span class="s">/build/</span><span class="n">libs</span><span class="s">/simple-worker-1.0-shadow.jar Worker_1 18005 &amp;</span>
+</span><span class='line'><span class="s">          </span>
+</span><span class='line'><span class="s">java -jar simple-worker/</span><span class="n">build</span><span class="s">/libs/</span><span class="n">simple</span><span class="o">-</span><span class="n">worker</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">shadow</span><span class="o">.</span><span class="na">jar</span> <span class="n">Worker_2</span> <span class="mi">18006</span> <span class="o">&amp;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">java</span> <span class="o">-</span><span class="n">jar</span> <span class="n">simple</span><span class="o">-</span><span class="n">worker</span><span class="s">/build/</span><span class="n">libs</span><span class="s">/simple-worker-1.0-shadow.jar Worker_3 18007 &amp;</span>
+</span><span class='line'><span class="s">          </span>
+</span><span class='line'><span class="s">java -jar simple-worker/</span><span class="n">build</span><span class="s">/libs/</span><span class="n">simple</span><span class="o">-</span><span class="n">worker</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">shadow</span><span class="o">.</span><span class="na">jar</span> <span class="n">Worker_4</span> <span class="mi">18008</span> <span class="o">&amp;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The trick is that all workers are registered under the same path in ZooKeeper, so when we list nodes under
+<em>/load-balancing-example/worker</em> we will see four instances:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="o">[</span><span class="nl">zk:</span> <span class="nl">localhost:</span><span class="mi">2181</span><span class="o">(</span><span class="n">CONNECTED</span><span class="o">)</span> <span class="mi">0</span><span class="o">]</span> <span class="n">ls</span> <span class="s">/load-balancing-example/</span><span class="n">worker</span>  <span class="o">&lt;</span><span class="n">enter</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">[</span><span class="n">d5bc4eb9</span><span class="o">-</span><span class="mi">8</span><span class="n">ebb</span><span class="o">-</span><span class="mi">4</span><span class="n">b7c</span><span class="o">-</span><span class="mi">813</span><span class="n">e</span><span class="o">-</span><span class="mi">966</span><span class="n">a25fdd843</span><span class="o">,</span> <span class="mi">13</span><span class="n">de9196</span><span class="o">-</span><span class="n">bfeb</span><span class="o">-</span><span class="mi">4</span><span class="n">c1a</span><span class="o">-</span><span class="n">b632</span><span class="o">-</span><span class="n">b8b9969b9c0b</span><span class="o">,</span> <span class="mi">85</span><span class="n">cd1387</span><span class="o">-</span><span class="mi">2</span><span class="n">be8</span><span class="o">-</span><span class="mi">4</span><span class="n">c08</span><span class="o">-</span><span class="mi">977</span><span class="n">a</span><span class="o">-</span><span class="mi">0798017379</span><span class="n">b1</span><span class="o">,</span> <span class="mi">9</span><span class="n">e07bd1d</span><span class="o">-</span><span class="n">c615</span><span class="o">-</span><span class="mi">430</span><span class="n">c</span><span class="o">-</span><span class="mi">8</span><span class="n">dcb</span><span class="o">-</span><span class="n">bf228e9b56fc</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What is most important here is that to utilize all these four new workers, manager doesn&rsquo;t require any changes in the code.
+We can launch new worker instances as traffic increases or shut them down when there is nothing to do. Manager is decoupled from these actions,
+it still calls <em>ServiceProvider</em> to get instance of worker and passes job to him.</p>
+
+<p>So now when we open <a href="http://localhost:18000/delegate">http://localhost:18000/delegate</a> and hit refresh several times we will see:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">Work</span> <span class="n">done</span> <span class="n">by</span> <span class="n">Worker_1</span>
+</span><span class='line'><span class="n">Work</span> <span class="n">done</span> <span class="n">by</span> <span class="n">Worker_2</span>
+</span><span class='line'><span class="n">Work</span> <span class="n">done</span> <span class="n">by</span> <span class="n">Worker_3</span>
+</span><span class='line'><span class="n">Work</span> <span class="n">done</span> <span class="n">by</span> <span class="n">Worker_4</span>
+</span><span class='line'><span class="n">Work</span> <span class="n">done</span> <span class="n">by</span> <span class="n">Worker_1</span>
+</span><span class='line'><span class="n">Work</span> <span class="n">done</span> <span class="n">by</span> <span class="n">Worker_2</span>
+</span><span class='line'><span class="n">Work</span> <span class="n">done</span> <span class="n">by</span> <span class="n">Worker_3</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>How is it implemented under the hood? By default ServiceProvider uses Round-robin ProviderStrategy implementation which
+rotates instances available under given path so each gets some job to do. Of course we can implement our custom strategy
+if default mechanism doesn&rsquo;t suit our needs.</p>
+
+<h3>Summary</h3>
+
+<p>That&rsquo;s all for today. As you can see in by using Apache ZooKeeper and Curator we can live without separate load balancers that need
+to be deployed, monitored and managed. Infrastructure in a microservices architecture is pretty complicated even without them.</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-01T20:48:54+02:00" data-updated="true" itemprop="datePublished">Jul 1<span>st</span>, 2014</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/architecture/'>Architecture</a>, <a class='category' href='/blog/categories/microservices/'>Microservices</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2014/06/handle-every-event-in-your-akka-application/" title="Previous: Handle every event in your Akka application">&laquo; Handle every event in your Akka application</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2014/07/apprenticeship-patterns-book-review/" title="Next: The Apprenticeship Patterns - book review">The Apprenticeship Patterns - book review &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2014/07/zookeeper-curator-and-microservices-load-balancing/';
+        var disqus_url = 'http://tomaszdziurko.pl/2014/07/zookeeper-curator-and-microservices-load-balancing/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

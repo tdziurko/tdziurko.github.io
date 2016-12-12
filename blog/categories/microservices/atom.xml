@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Microservices | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/microservices/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2016-12-12T22:32:01+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ZooKeeper, Curator and how microservices load balancing works]]></title>
+    <link href="http://tomaszdziurko.pl/2014/07/zookeeper-curator-and-microservices-load-balancing/"/>
+    <updated>2014-07-01T20:48:54+02:00</updated>
+    <id>http://tomaszdziurko.pl/2014/07/zookeeper-curator-and-microservices-load-balancing</id>
+    <content type="html"><![CDATA[<p>How Zookeeper makes sure that every worker happily gets some stuff to do from job delegating manager</p>
+
+<!-- more -->
+
+
+<p><a href="http://zookeeper.apache.org/">Apache ZooKeeper</a> is a tool to register, manage and discover services working on different machines.
+It is an indispensable member in technology stack when we have to deal with distributed system with many nodes
+which need to know where their dependencies are launched.</p>
+
+<p><img class="center" src="/images/blog/2014/07/zookeeper_logo.png"></p>
+
+<p>However ZooKeeper is pretty low level and even standard use-cases require many lines of code. That is why <a href="http://curator.apache.org/">Apache Curator</a>
+was born &ndash; a much more friendly and easier to use wrapper library over ZooKeeper. Using Curator we can deliver more with less code and in a much cleaner way.</p>
+
+<p><img class="center" src="/images/blog/2014/07/curator_logo.png"></p>
+
+<p><blockquote><p>&ldquo;Guava is to Java what Curator is to ZooKeeper&rdquo; &ndash; Patrick Hunt, ZooKeeper committer</p></blockquote></p>
+
+<h3>Load balancing microservices with ZooKeeper</h3>
+
+<p>We are accustomed to situation when there is a load balancer deployed in front of our application. Its role is to make sure that
+every single node gets more or less same amount of traffic.</p>
+
+<p>In a microservices world situation is the same but we have
+a significant advantage over a monolithic approach: when we need to scale application we don&rsquo;t have to duplicate whole system
+and deploy it on a server powerful enough to run it smoothly. We can concentrate only on a small module that needs to be scaled
+so cost of scaling is much lower (both in terms of server cost and development needed to prepare module for deployment in many instances).</p>
+
+<p>But as our system grows, we end up with many scaled modules, each of them requiring separate load balancer. This seems troublesome
+as our infrastructure is very complex even without them. Luckily if we use ZooKeeper as a service orchestration and discovery tool
+we can use built-in load balancing capability without introducing any additional complexity into our microservice architecture.</p>
+
+<p>To present how out of the box load-balancing works in ZooKeeper we need two services: worker which will be deployed multiple times
+and manager delegating tasks to registered workers.</p>
+
+<h3>Simple worker</h3>
+
+<p>Let&rsquo;s start with creating a simple worker that will listen on a given port and return some result when asked to perform its job.
+To implement this tiny microservice we will use Groovy, <a href="http://undertow.io/">Undertow</a> light-weight servlet container
+and of course ZooKeeper and Curator.</p>
+
+<p>Our worker will consist of one, small class with <em>main</em> method that does three things:</p>
+
+<p>``` groovy</p>
+
+<p>class Main {</p>
+
+<pre><code>static final void main(String[] args) {
+    // Step 1: Extract name and port number to launch worker
+    // Step 2: Configure and start Rest server on given port
+    // Step 3: Register worker in ZooKeeper
+}
+</code></pre>
+
+<p>}</p>
+
+<p>```
+For a brevity I will omit steps 1 and 2 here, you can check complete source code on <a href="https://github.com/tdziurko/microservices-load-balancing">GitHub project</a>.
+Our worker will have only a single endpoint GET /work which returns a response with name of the called worker:</p>
+
+<p>``` groovy</p>
+
+<p>@Path(&ldquo;/&rdquo;)
+class Main {</p>
+
+<pre><code>@GET
+@Path("/work")
+public String work() {
+    String response = "Work done by $workerName"
+    println response
+    return response
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Step 3: <em>Register worker in ZooKeeper</em> is the most interesting here so I will explain it in more detail:</p>
+
+<p>``` groovy</p>
+
+<p>private static void registerInZookeeper(int port) {</p>
+
+<pre><code>    CuratorFramework curatorFramework = CuratorFrameworkFactory.newClient("localhost:2181", new RetryNTimes(5, 1000))
+curatorFramework.start()
+ServiceInstance&lt;Void&gt; serviceInstance = ServiceInstance.builder()
+    .uriSpec(new UriSpec("{scheme}://{address}:{port}"))
+    .address('localhost')
+    .port(port)
+    .name("worker")
+    .build()
+
+ServiceDiscoveryBuilder.builder(Void)
+    .basePath("load-balancing-example")
+    .client(curatorFramework)
+    .thisInstance(serviceInstance)
+    .build()
+    .start()
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<ul>
+<li><p>Lines 2-3: we create and start CuratorFramework client wrapping all operations we want to perform on ZooKeeper instance. For a simplicity
+we use localhost with default port (in general it should be the URL to the running instance of ZooKeeper)</p></li>
+<li><p>Lines 4-9 create ServiceInstance representing our worker. We pass all &ldquo;contact details&rdquo; required to call this worker from other microservices</p></li>
+<li><p>Lines 11-16 register our instance in a ZooKeeper represented by CuratorFramework client.</p></li>
+</ul>
+
+
+<p><strong>Starting worker</strong></p>
+
+<p>Worker is now ready so we can create fat jar (with Gradle <em>fatJar</em> task) and then launch it using</p>
+
+<p>```</p>
+
+<pre><code>java -jar simple-worker/build/libs/simple-worker-1.0-shadow.jar Worker_1 18005
+</code></pre>
+
+<p>```</p>
+
+<p>Before starting worker remember that you need ZooKeeper instance running on default 2181 port!</p>
+
+<p>To check that worker is running you should open browser on <a href="http://localhost:18005/work">http://localhost:18005/work</a> and see &ldquo;Work done by Worker_1&rdquo; text there.
+To verify that worker has properly registered itself in ZooKeeper, launch command line client:</p>
+
+<p>```</p>
+
+<pre><code>cd &lt;ZK_ROOT&gt;/bin
+./zkCli.sh
+</code></pre>
+
+<p>```</p>
+
+<p>and then execute <em>ls</em> command to see one node registered under <em>/load-balancing-example/worker</em> path:</p>
+
+<p>```
+[zk: localhost:2181(CONNECTED) 1] ls /load-balancing-example/worker <enter>
+[f69545e8-8466-40c0-93e9-f493eb7496b4]</p>
+
+<p>```</p>
+
+<h3>Simple manager</h3>
+
+<p>Now, as we have worker listening on <em>/work</em> for requests, we can create simple manager service delegating tasks to its subordinates.
+Main method looks quite similar to one in simple-worker project, the main difference is that we do not register in ZooKeeper, we only create
+<em>ServiceProvider</em> which role is to (surprise, surprise) provide us with instance of worker. So basic workflow is:</p>
+
+<ol>
+<li><p>Wait for requests on <em>/delegate</em></p></li>
+<li><p>Get instance of worker service from ZooKeeper&rsquo;s ServiceProvider</p></li>
+<li><p>Call worker&rsquo;s <em>/work</em> and return results of its execution</p></li>
+</ol>
+
+
+<p>To create ServiceProvider we have to create CuratorFramework client, connect to ZooKeeper and then fetch ServiceProvider for
+service with given name, <em>worker</em> in our case:</p>
+
+<p>``` groovy</p>
+
+<pre><code>CuratorFramework curatorFramework = CuratorFrameworkFactory.newClient("localhost:2181", new RetryNTimes(5, 1000))
+curatorFramework.start()
+
+ServiceDiscovery&lt;Void&gt; serviceDiscovery = ServiceDiscoveryBuilder
+    .builder(Void)
+    .basePath("load-balancing-example")
+    .client(curatorFramework).build()
+serviceDiscovery.start()
+
+serviceProvider = serviceDiscovery.serviceProviderBuilder().serviceName("worker").build()
+serviceProvider.start()
+</code></pre>
+
+<p>```</p>
+
+<ul>
+<li><p>Lines 1-2, create ZooKeeper client, same way as in simple-worker</p></li>
+<li><p>Lines 4-8, create ServiceDiscovery which will be able to give us service providers.</p></li>
+<li><p>Lines 10-11. create and start ServiceProvider which will be used to fetch working instance of worker node.</p></li>
+</ul>
+
+
+<p>Finally, we need a Rest endpoint on which manager waits for tasks to delegate:</p>
+
+<p>``` groovy</p>
+
+<pre><code>@GET
+@Path("/delegate")
+public String delegate() {
+    def instance = serviceProvider.getInstance()
+    String address = instance.buildUriSpec()
+    String response = (address + "/work").toURL().getText()
+    println response
+    return response
+}
+</code></pre>
+
+<p>```</p>
+
+<p><strong>Starting manager</strong></p>
+
+<p>Manager is ready and after <em>fatJar</em> task we can launch it using</p>
+
+<p>```</p>
+
+<pre><code>java -jar simple-manager/build/libs/simple-manager-1.0-shadow.jar 18000
+</code></pre>
+
+<p>```</p>
+
+<p>To verify it is working we can open (<a href="http://localhost:18000/delegate">http://localhost:18000/delegate</a>) in browser to see message &ldquo;Work done by Worker_1&rdquo;.</p>
+
+<p>Manager doesn&rsquo;t know anything about its workers. Only thing he know is that service is registered under specific path in ZooKeeper. And it is
+that simple no matter if we have multiple workers launched locally or spread across different servers in different countries.</p>
+
+<h3>Out of the box load-balancing with ZooKeeper</h3>
+
+<p>Imagine situation that manager gets so many tasks from his CEO that he needs more than one worker to delegate job. In a standard
+case we will be forced to scale workers and place load balancer in front of them. But ZooKeeper gives us this feature without any
+additional work.</p>
+
+<p>Let&rsquo;s add some more workers listening on different ports:</p>
+
+<p>```</p>
+
+<pre><code>java -jar simple-worker/build/libs/simple-worker-1.0-shadow.jar Worker_1 18005 &amp;
+
+java -jar simple-worker/build/libs/simple-worker-1.0-shadow.jar Worker_2 18006 &amp;
+
+java -jar simple-worker/build/libs/simple-worker-1.0-shadow.jar Worker_3 18007 &amp;
+
+java -jar simple-worker/build/libs/simple-worker-1.0-shadow.jar Worker_4 18008 &amp;
+</code></pre>
+
+<p>```</p>
+
+<p>The trick is that all workers are registered under the same path in ZooKeeper, so when we list nodes under
+<em>/load-balancing-example/worker</em> we will see four instances:</p>
+
+<p>```
+[zk: localhost:2181(CONNECTED) 0] ls /load-balancing-example/worker  <enter>
+[d5bc4eb9-8ebb-4b7c-813e-966a25fdd843, 13de9196-bfeb-4c1a-b632-b8b9969b9c0b, 85cd1387-2be8-4c08-977a-0798017379b1, 9e07bd1d-c615-430c-8dcb-bf228e9b56fc]</p>
+
+<p>```</p>
+
+<p>What is most important here is that to utilize all these four new workers, manager doesn&rsquo;t require any changes in the code.
+We can launch new worker instances as traffic increases or shut them down when there is nothing to do. Manager is decoupled from these actions,
+it still calls <em>ServiceProvider</em> to get instance of worker and passes job to him.</p>
+
+<p>So now when we open <a href="http://localhost:18000/delegate">http://localhost:18000/delegate</a> and hit refresh several times we will see:</p>
+
+<p>```</p>
+
+<pre><code>Work done by Worker_1
+Work done by Worker_2
+Work done by Worker_3
+Work done by Worker_4
+Work done by Worker_1
+Work done by Worker_2
+Work done by Worker_3
+</code></pre>
+
+<p>```</p>
+
+<p>How is it implemented under the hood? By default ServiceProvider uses Round-robin ProviderStrategy implementation which
+rotates instances available under given path so each gets some job to do. Of course we can implement our custom strategy
+if default mechanism doesn&rsquo;t suit our needs.</p>
+
+<h3>Summary</h3>
+
+<p>That&rsquo;s all for today. As you can see in by using Apache ZooKeeper and Curator we can live without separate load balancers that need
+to be deployed, monitored and managed. Infrastructure in a microservices architecture is pretty complicated even without them.</p>
+]]></content>
+  </entry>
+  
+</feed>

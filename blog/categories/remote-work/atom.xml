@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: remote work | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/remote-work/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2016-12-12T22:32:01+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Six steps to improve your remote communication with TeamSpeak]]></title>
+    <link href="http://tomaszdziurko.pl/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/"/>
+    <updated>2016-09-02T00:00:00+02:00</updated>
+    <id>http://tomaszdziurko.pl/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak</id>
+    <content type="html"><![CDATA[<p>Few tips to make your TeamSpeak usage a real pleasure</p>
+
+<!-- more -->
+
+
+<p>Communication is the key in any team working on software, this well-known fact is even more true in a company
+working 100% remotely where team members sit at their comfortable desks hundred kilometers away from each other.</p>
+
+<p>Remote work brings many advantages but, at the same time, requires more cautious approach to setting and preserving
+communication within the team. It is very easy to &ldquo;leave&rdquo; your people feeling alone or left without any connection with the
+rest of your company. To resemble the feeling of being together in SoftwareMill we use <a href="https://www.teamspeak.com/">TeamSpeak</a>. In our setup
+TeamSpeak is used as a central hub for voice communication. Each team working on a specific project has its own
+channel (room) where developers &ldquo;sit&rdquo;, any of them can initiate discussion with other team members using &ldquo;push-to-talk&rdquo; in just one click.
+No &ldquo;Can I call you on Skype?&rdquo; questions, no &ldquo;Let&rsquo;s create a group call to discuss it&rdquo;. One click and you are talking with your peers.</p>
+
+<p>But as usual, over the time we have learnt more about TeamSpeak and how we could adjust it to our needs. In this post I am
+going to share a few trick that could make your work with TeamSpeak even more productive.</p>
+
+<h2>Away from keyboard status</h2>
+
+<p>There is almost nothing more irritating than describing a complicated problem to developers in your team
+for a few minutes only to notice that all of them are away from their computers. Of course you can always ask beforehand, but&hellip;
+this quickly becomes a tedious task. To avoid such situations we have introduced a habit to use &ldquo;Toggle away&rdquo; TeamSpeak status
+(marked with red rectangles):</p>
+
+<p><img class="center" src="/images/blog/2016/09/team_speak_away_all.png" width="700"></p>
+
+<p>So in one glance you can check if person is away or not. Clicking this &ldquo;toggle&rdquo; each time is rather a slow and quickly becomes a tedious task
+so we have added a handy shortcut to toggle it on and off. This way we have reached another important topic.</p>
+
+<h2>Shortcuts, shortcuts, shortcuts</h2>
+
+<p>When using any application, as soon as you spot any patterns in your monkey clicking, please spend a few minutes checking if
+this activity could be replaced by a handy shortcut. TeamSpeak is very customizable in this area so you will be able
+to save dozens of clicks every hour. For example I have shortcuts for:</p>
+
+<ul>
+<li>switching to my project channel</li>
+<li>switching to 2nd most frequently used channel</li>
+<li>toggle away status</li>
+</ul>
+
+
+<p><img class="center" src="/images/blog/2016/09/team_speak_shortcuts.png" width="700"></p>
+
+<h2>Place to discuss in smaller groups</h2>
+
+<p>From time to time a smaller group in a project starts diving into specific topic which is not interesting for others.
+After few struggles to find a proper place to continue discussion we decided to create a sub-channel in our project rooms.
+In most cases it is called &ldquo;Couch&rdquo;, &ldquo;Terrace on the roof&rdquo;, &ldquo;Luxury sofa&rdquo;, etc. These channels are easily accessible so
+people could quickly switch to them and keep the discussion flow without unnecessary breaks.</p>
+
+<h2>Default channels</h2>
+
+<p>Another tiny tip, but also saving you a few clicks each day: in your server settings you can set up a default channel
+to join after you start TeamSpeak client. If you spend most of your time in specific channel this setting will make your
+life a bit easier.</p>
+
+<p><img class="center" src="/images/blog/2016/09/team_speak_default_channel.png" width="700"></p>
+
+<h2>Reduce TeamSpeak client CPU usage</h2>
+
+<p>TeamSpeak client is known for its surprisingly high CPU consumption. I have seen situations when client was consuming 30 or
+even 40% of CPU time on our Mac Books. After many trial and errors I have observed that disabling following options
+significantly improves the situation:</p>
+
+<ul>
+<li>close small, moving news moving banner at the bottom of your client window</li>
+<li>turn off Animated GIF Support in <em>Preferences &ndash;> Design</em></li>
+<li>turn off Echo Reduction and Echo cancellation in <em>Preferences &ndash;> Capture</em> (however, depending on your headphones/speakers setup, this might reduce sound quality)</li>
+</ul>
+
+
+<p>After such tuning my TS client rarely goes above 10% of CPU.</p>
+
+<h2>Text to Speech for most important events, others turned off</h2>
+
+<p>Quite often I hear &ldquo;User joined your channel&rdquo; message and to know who has just stepped in I need to find TS window
+and check it visually. Same happens when I am in the middle of conversation with a developer from my team and suddenly
+I hear &ldquo;User disconnected&rdquo; and I am not sure if this is my current interlocutor and I should wait for him or someone else.</p>
+
+<p>Both situations are irritating interruptions. To limit their number you can simply:</p>
+
+<ol>
+<li>Disable notifications on almost all events in in <em>Preferences &ndash;> Notifications</em> window. I only have &ldquo;user left/joined/disconnected your channel&rdquo; enabled.</li>
+<li>Switch to &ldquo;Default Text To Speech&rdquo; under <em>Preferences &ndash;> Notifications &ndash;> Sound Pack</em></li>
+</ol>
+
+
+<p><img class="center" src="/images/blog/2016/09/team_speak_text_to_speech.png" width="700"></p>
+
+<ol>
+<li>Download &ldquo;Text to Speech&rdquo; voice pack in your native language for your OS. This applies only if user names in your team/company sound weird in English :)</li>
+</ol>
+
+
+<p><img class="center" src="/images/blog/2016/09/text_to_speech.png" width="700"></p>
+
+<ol>
+<li>Edit messages about events you are interested in, for example you can replace</li>
+</ol>
+
+
+<p><code>
+CLIENT_CONNECTION_CONNECTED_CURRENT_CHANNEL = say("${clientname} entered your channel")
+</code>
+with translated:</p>
+
+<p><code>
+CLIENT_CONNECTION_CONNECTED_CURRENT_CHANNEL = say("${clientname} dołączył do twojego kanału")
+</code></p>
+
+<p>All messages are configured in <em>settings.ini</em> file located in your TeamSpeak installation folder (for example under OS X it is
+<em>/Applications/TeamSpeak 3 Client.app/Contents/SharedSupport/sound/default_speech/settings.ini</em>)</p>
+
+<p>After these steps number of notifications is really small and those most important are self descriptive instead of enigmatic
+<em>User joined your channel</em>.</p>
+
+<h2>Wrap up</h2>
+
+<p>TeamSpeak is a very useful tool for any remote communication, in our company it quickly became essential for every team working
+on software project. With these small adjustments presented above it can be even better and make your work a bit easier.</p>
+
+<p><em>Note: This was was originally posted on <a href="https://softwaremill.com/six-steps-to-improve-your-remote-communication-with-teamspeak/">SoftwareMill Blog</a></em>.</p>
+]]></content>
+  </entry>
+  
+</feed>

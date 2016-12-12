@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Akka | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/akka/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2016-12-12T22:32:01+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Handle every event in your Akka application]]></title>
+    <link href="http://tomaszdziurko.pl/2014/06/handle-every-event-in-your-akka-application/"/>
+    <updated>2014-06-03T09:48:54+02:00</updated>
+    <id>http://tomaszdziurko.pl/2014/06/handle-every-event-in-your-akka-application</id>
+    <content type="html"><![CDATA[<p>Event here, event there, events flying everywhere. Post about checking that every Akka event will finally find its home</p>
+
+<!-- more -->
+
+
+<p><img class="center" src="/images/blog/2014/06/akka-logo.png"></p>
+
+<p><a href="http://akka.io">Akka</a> and reactive, event-based applications are new approach to creating software. We are using Akka pretty intensively
+in our current Scala-based project. Events fit our use cases especially well as we are communicating with external API which might be slow.
+This could damage user experience when handled using traditional synchronous approach. But luckily, our requests can be performed
+asynchronously so passing them to Actor seemed a good idea.</p>
+
+<h3>When things get ouf of control</h3>
+
+<p>But while being cool and very useful, events can still hurt project when handled by inexperienced hands. Asynchronous nature makes
+application flow hard to understand at first glance. And each time you add a new actor or event type to your system, probability
+that you will forget to handle something properly increases.</p>
+
+<p>Let&rsquo;s look at the example class, this is an actor handling events associated with Image tags and comments:</p>
+
+<p>``` scala</p>
+
+<p>class YourActor extends Actor {</p>
+
+<pre><code>override def receive = {
+    case event: ImageTagged =&gt;
+      doSomething()
+    case event: OtherImageTaggedByFriend =&gt;
+      doSomething2()
+    case event: MostMotedUserImage =&gt;
+      doSomething3()
+    case event: MostCommentedFriendImageChosen =&gt;
+      doSomething4()
+  }
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<p>and when you add next event, let&rsquo;s say <em>MostLikedFriendImage</em> you can easily forget to add handler case section in actor,
+especially if there is more than one actor listening for this type of event.</p>
+
+<h3>DRY violating solution</h3>
+
+<p>There is one simple solution that will allow to detect forgotten handlers. We can add case _ to each actor:</p>
+
+<p>``` scala</p>
+
+<p>class YourActor extends Actor {</p>
+
+<pre><code>override def receive = {
+    case event: ImageTagged =&gt;
+      doSomething()
+    case event: OtherImageTaggedByFriend =&gt;
+      doSomething2()
+    case event: MostMotedUserImage =&gt;
+      doSomething3()
+    case event: MostCommentedFriendImageChosen =&gt;
+      doSomething4()
+    case event: _ : 
+      logger.error("Received unknown event " + event.getClass.toString)
+  }
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<p>And while it looks pretty ok for one or two actors, adding same code fragment to multiple actors is troublesome and violates DRY
+principle. But, what is most dangerous, someone in your team could forget to add it (as someone said <em>“Every manual task that can be forgotten, will be forgotten”</em>).
+So maybe we should pursue better solution?</p>
+
+<h3>React on ANY unhandled event</h3>
+
+<p><img class="center" src="/images/blog/2014/06/event-shall-not-unhandled.jpg"></p>
+
+<p>Luckily, we are not stuck with our error-prone approach. When actor can not handle event that was passed to him <em>UnhandledMessage</em> is
+raised and published to ActorSystem&rsquo;s EventStream.</p>
+
+<p>So to handle every forgotten event we could create listener and subscribe it to EventStream:</p>
+
+<p>``` scala</p>
+
+<p>class UnhandledMessageListener extends Actor {</p>
+
+<p>  val logger = LoggerFactory.getLogger(getClass)</p>
+
+<p>  override def receive = {</p>
+
+<pre><code>case message: UnhandledMessage =&gt;
+  logger.error(s"CRITICAL! No actors found for message ${message.getMessage}"))
+
+  if (!Environment.isProduction) {
+    // Fail fast, fail LOUD
+    logger.error("Shutting application down")
+    System.exit(-1)
+  }
+</code></pre>
+
+<p>  }
+}</p>
+
+<p>```</p>
+
+<p>And subscribing code fragment:</p>
+
+<p>``` scala Subscribe logic</p>
+
+<p> val actorSystem = ActorSystem.create(&ldquo;projectActorSystem&rdquo;)</p>
+
+<p> val listener = actorSystem.actorOf(Props(new UnhandledMessageListener()))
+ actorSystem.eventStream.subscribe(listener, classOf[UnhandledMessage])</p>
+
+<p>```</p>
+
+<p>and that&rsquo;s it. Now every time there is an event that wasn&rsquo;t handled by actor, we will know about it, especially when application
+is deployed in a non-production environment :)</p>
+]]></content>
+  </entry>
+  
+</feed>

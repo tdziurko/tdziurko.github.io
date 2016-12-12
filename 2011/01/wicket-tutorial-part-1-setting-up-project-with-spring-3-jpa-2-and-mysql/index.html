@@ -1,0 +1,741 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Wicket Tutorial, part 1 - setting up project with Spring 3, JPA 2 and MySQL - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="Tomasz Dziurko - blog, my personal notes about development, learning, reading, productivity and other stuff">
+    
+    <meta name="keywords" content="Wicket, tutorial, Wicket tutorial, how to, start, learn, setting up project, Spring, JPA, Maven" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/11/elon-musk-amazing-entrepreneur-difficult-person-book-review/">Elon Musk - an Amazing Entrepreneur and a Difficult Person - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/">Six Steps to Improve Your Remote Communication With TeamSpeak</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/08/jvm-bloggers-docker-compose-and-views-counter/">What's New in JVM Bloggers - Docker Compose and Views Counter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/04/varidesk-standing-desk-review/">Varidesk - an Adjustable Standing Desk - Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/podsumowanie-ankiety-o-jvm-bloggers/">Podsumowanie Ankiety O JVM Bloggers</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Wicket Tutorial, Part 1 - Setting Up Project With Spring 3, JPA 2 and MySQL</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Today I start my personal project <strong>Item Directory</strong> which will be developed as a element of Wicket Tutorial series on this blog. Item Directory will be a web application to help you manage your collections of items (books, CDs, movies or even postage stamps).  Application is built with<strong> Java, Wicket, JPA, Spring 3 and MySQL</strong> as a database. It is a response for my family needs to manage some items hidden in shelves, bookcases and cabinets where we need something and we think &ldquo;We have it somewhere, but I have no idea where it is located&rdquo; :)</p>
+
+<h2>Is this Wicket tutorial for me?</h2>
+
+<p>This tutorial is for Java developers who want learn about this great framework in practise not only from reading a book. Because I like to learn while creating something, this tutorial will guide you through development process. I will concentrate mainly on adding new features and developing project instead of explaining every single aspect of how Wicket works in its internals or every single line of code I created. But those parts I think are worth some explanation will be discussed in detail.</p>
+
+<p>Of course if something seems unclear to you or you think I should write some longer explanation in some part of my post, please send a comment and I will try to answer to your needs as best as I can :) Moreover all code will be available to download from Mercurial repository, so you can easily download and deploy application with Jetty to test and see how it exactly works.</p>
+
+<p>And last thing: as it is my first bigger tutorial published here, all comments, suggestions, etc. are very appreciated. Additionally, ideas what to do/implement next are also welcome and will be considered :)</p>
+
+<!-- more -->
+
+
+<h2>Beginning</h2>
+
+<p>This post will be dedicated to setting up project base with very simple (but working!) Wicket, Spring 3, JPA 2 and MySQL integration. For those who want Maven archetypes to start Wicket project in one command there are two places to go:</p>
+
+<ul>
+<li><p><a href="http://code.google.com/p/wicketcool/">Wicket Cool</a>, project by <a href="http://www.paulszulc.com/">Paul Szulc</a> offering rather complicated but very useful archetype for Wicket, HSQLDB, <a href="http://www.liquibase.org/">Liquibase</a>, JPA 2, Spring technology stack. I like it very much although it has some flaws. In my last Wicket commercial project our team used WicketCool as a base for development.</p></li>
+<li><p><a href="http://www.jweekend.com/dev/LegUp">Wicket Leg Up</a>, project by <a href="http://www.jweekend.com">jWeekend</a>, providing archetype with many different technologies to use with Wicket.</p></li>
+</ul>
+
+
+<p>My initial commit is mainly based on <strong>WicketCool</strong> because I like its Maven modularization and clean application architecture layers. But as it&rsquo;s too sophisticated for purposes of this tutorial and for ItemDirectory early development I removed some stuff to make things easier to understand. My project base does not contain: Liquibase integration, testing classes (yes, I did that intentionally to make project less complex, sorry TDD lovers), HSQLDB (I use MySQL instead). I also removed and modified some classes to make them easier to understand at the beginning of this tutorial. In some cases I plan to use those deleted elements in the future, but currently they are redundant.</p>
+
+<h2>Project source code</h2>
+
+<p>Source code for this post can be downloaded from Bitbucket: <a href="https://bitbucket.org/tdziurko/item-directory/get/a61e7cf66cc3.tar.gz">https://bitbucket.org/tdziurko/item-directory/get/a61e7cf66cc3.tar.gz</a><a href="https://bitbucket.org/tdziurko/item-directory/src/a61e7cf66cc3"> </a>or pulled with Mercurial using command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>hg clone https://bitbucket.org/tdziurko/item-directory -r "Base Project"</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>Latest application version is always available at <a href="https://bitbucket.org/tdziurko/item-directory/overview">https://bitbucket.org/tdziurko/item-directory/overview</a> or with command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>hg clone https://bitbucket.org/tdziurko/item-directory</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h2>Project Overview</h2>
+
+<p>ItemDirectory is a Maven project consisting of three child projects: domain, service and webapplication. These three names are self-explanatory so it should be clear what will be located in each of these sub-projects. After downloading it you must first prepare MySQL (two scripts located in itemdirectory/itemdirectory.domain/src/main/resources/sql and then execute two Maven commands to run  application locally:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>mvn clean install</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>in itemdirectory dir and:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mvn jetty:run</span></code></pre></td></tr></table></div></figure>
+
+
+<p>in itemdirectory\itemdirectory.webapplication dir.</p>
+
+<p>And after a while when Maven tries to download half of the Internet, you could type <a href="http://localhost:9090/item-directory/">http://localhost:9090/item-directory/</a> to see following page:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2011/01/ItemDirectoryHello.png" alt="" /></p>
+
+<h2>First step &ndash; make this technology stack work for me</h2>
+
+<p>Note: this part should be read with downloaded source code as in some cases I won&rsquo;t post complete and every code listing.</p>
+
+<p>In domain project we have few elements worth noting:</p>
+
+<ol>
+<li><p> Directory src/main/resources/sql with two SQL scripts to create database and create first table.</p></li>
+<li><p> One interface (<em>IEntity</em>) and one abstract class (<em>AbstractEntity</em>) for entity classes to gather all repeating code in one place.</p></li>
+<li><p> One interface (<em>DAO</em>) and one abstract class (<em>AbstractDAO</em>) for all DAO classes.</p></li>
+<li><p> Simple <em>User</em> class to represent user of our application.</p></li>
+<li><p> <em>UserDao</em> and <em>UserDaoImpl</em> classes for access to <em>users</em> table.</p></li>
+<li><p> <em>domain-context.xml</em> file with Spring general configuration (data source, transactions, enabled beans config with annotations, etc.).</p></li>
+</ol>
+
+
+<p>In service project there are only service classes for actions connected with User class. Service layer is the place where all application logic will be located.</p>
+
+<p>And now, the most important part of this post: webapplication project and its contents. This part of ItemDirectory application needs more detailed explanation.</p>
+
+<p><strong>Web.xml, deployment descriptor:</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;web-app</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/j2ee&quot;</span>
+</span><span class='line'>  <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+</span><span class='line'>  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd&quot;</span>
+</span><span class='line'>  <span class="na">version=</span><span class="s">&quot;2.4&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  
+</span><span class='line'>    <span class="nt">&lt;display-name&gt;</span>Item Directory<span class="nt">&lt;/display-name&gt;</span>
+</span><span class='line'>  
+</span><span class='line'>    <span class="nt">&lt;filter&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;filter-name&gt;</span>openEntityManagerInViewFilter<span class="nt">&lt;/filter-name&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;filter-class&gt;</span>
+</span><span class='line'>            org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter
+</span><span class='line'>        <span class="nt">&lt;/filter-class&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/filter&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;filter-mapping&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;filter-name&gt;</span>openEntityManagerInViewFilter<span class="nt">&lt;/filter-name&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/filter-mapping&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;context-param&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;param-name&gt;</span>contextConfigLocation<span class="nt">&lt;/param-name&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;param-value&gt;</span>/WEB-INF/applicationContext.xml<span class="nt">&lt;/param-value&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/context-param&gt;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nt">&lt;listener&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;listener-class&gt;</span>
+</span><span class='line'>            org.springframework.web.context.ContextLoaderListener
+</span><span class='line'>        <span class="nt">&lt;/listener-class&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/listener&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;filter&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;filter-name&gt;</span>wicket.filter<span class="nt">&lt;/filter-name&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;filter-class&gt;</span>org.apache.wicket.protocol.http.WicketFilter<span class="nt">&lt;/filter-class&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;init-param&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;param-name&gt;</span>applicationFactoryClassName<span class="nt">&lt;/param-name&gt;</span>
+</span><span class='line'>          <span class="nt">&lt;param-value&gt;</span>
+</span><span class='line'>              org.apache.wicket.spring.SpringWebApplicationFactory
+</span><span class='line'>          <span class="nt">&lt;/param-value&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;/init-param&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/filter&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;filter-mapping&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;filter-name&gt;</span>wicket.filter<span class="nt">&lt;/filter-name&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/filter-mapping&gt;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/web-app&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What do we have here?</p>
+
+<p>First, some Spring-related configuration: <em>Open Session In View</em> filter (or <em>Open Entity Manager in View</em> like they call it for JPA), location of applicationContext.xml and context loader listener to allow our application interact with Spring. And after this there are elements indispensable in every Wicket application: declaration of Wicket filter and Wicket Application class. The only thing to add is that thanks to the <em>SpringWebApplicationFactory</em> instance of our Application object will be created and managed by Spring.</p>
+
+<p><strong>Wicket Application class:</strong></p>
+
+<p>Next very important file is class <em>Application.java</em>, the heart of every Wicket application. From here we can change every aspect of both Wicket and our application configuration:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="nd">@Component</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&quot;wicketApplication&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="kd">extends</span> <span class="n">WebApplication</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DEFAULT_ENCODING</span> <span class="o">=</span> <span class="s">&quot;UTF-8&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Autowired</span>
+</span><span class='line'>        <span class="kd">private</span> <span class="n">ApplicationContext</span> <span class="n">applicationContext</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">.</span><span class="na">init</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">addComponentInstantiationListener</span><span class="o">(</span><span class="k">new</span> <span class="n">SpringComponentInjector</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">applicationContext</span><span class="o">,</span> <span class="kc">true</span><span class="o">));</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">getMarkupSettings</span><span class="o">().</span><span class="na">setDefaultMarkupEncoding</span><span class="o">(</span><span class="n">DEFAULT_ENCODING</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">getRequestCycleSettings</span><span class="o">().</span><span class="na">setResponseRequestEncoding</span><span class="o">(</span><span class="n">DEFAULT_ENCODING</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// (...)</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">if</span> <span class="o">(</span><span class="n">getConfigurationType</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">WebApplication</span><span class="o">.</span><span class="na">DEPLOYMENT</span><span class="o">))</span> <span class="o">{</span>
+</span><span class='line'>          <span class="n">getMarkupSettings</span><span class="o">().</span><span class="na">setStripWicketTags</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">getMarkupSettings</span><span class="o">().</span><span class="na">setStripComments</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>          <span class="n">getMarkupSettings</span><span class="o">().</span><span class="na">setCompressWhitespace</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+</span><span class='line'>      <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// (...)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getConfigurationType</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">WebApplication</span><span class="o">.</span><span class="na">DEVELOPMENT</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@Override</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="n">Class</span> <span class="nf">getHomePage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">HomePage</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Application</span> <span class="nf">get</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="o">(</span><span class="n">Application</span><span class="o">)</span> <span class="n">WebApplication</span><span class="o">.</span><span class="na">get</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Interesting places in this class are:</p>
+
+<ul>
+<li><p><em>@Component </em>declaration to inform Spring about our Wicket application class which needs to be instantiated.</p></li>
+<li><p><em>@Autowired applicationContext</em> to allow Spring to inject beans in Wicket components.</p></li>
+<li><p>overridden method <em>init()</em> to change default configuration: character encoding, Spring component to inject beans and flags to make sure that our application deployed on the production server will not contain redundant white spaces and Wicket tags in HTML code</p></li>
+<li><p>declared home page of our application</p></li>
+<li><p>application configured to work in development mode that will allow us to debug errors faster and easier.</p></li>
+</ul>
+
+
+<p><strong>Classes for web pages:</strong></p>
+
+<p>Every web application should have at least one web page to present some information to the user. We will start with two  classes: <em>BasePage</em> will be a skeleton of every page in ItemDirectory application. This class in the future will contain common layout, top and left menu which in most cases will be the same for every page in our web app. In HTML file for this class there is one interesting element: <em>wicket-child</em> a place-holder for content added by pages extending BasePage class:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;</span>
+</span><span class='line'><span class="cp">    &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="na">xml:lang=</span><span class="s">&quot;en&quot;</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span>
+</span><span class='line'>  <span class="na">xmlns:wicket=</span><span class="s">&quot;http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nt">&lt;wicket:child/&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With this abstract page our only one concrete web page HomePage.html can look like that:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;</span>
+</span><span class='line'><span class="cp">    &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="na">xml:lang=</span><span class="s">&quot;en&quot;</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span>
+</span><span class='line'>  <span class="na">xmlns:wicket=</span><span class="s">&quot;http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;wicket:head&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;title&gt;</span>Item Directory v0.1<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/wicket:head&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;wicket:extend&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;h1</span> <span class="na">wicket:id=</span><span class="s">&quot;helloLabel&quot;</span><span class="nt">&gt;&lt;/h1&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;currentTime&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;br/&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;br/&gt;</span>
+</span><span class='line'>      Number of user in database: <span class="nt">&lt;span</span> <span class="na">wicket:id=</span><span class="s">&quot;numberOfUsers&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/wicket:extend&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Wicket while rendering this web page will omit everything placed outside <em>wicket-extend</em> tags except some places marked with other Wicket tags (like _ wicket:head<em> which allow to add some data from concrete class to web page header). Framework in render phase will place all elements between </em>wicket-extend<em> from HomePage.html in BasePage.html file replacing </em>wicket:child_ tag. This works like simple inheritance: child page tells its parent what content to render in the defined place in parent&rsquo;s content.</p>
+
+<p>And as you should already know, like in every Wicket application our <em>HomePage.html</em> file needs accompanying Java class <em>HomePage.java</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.markup.html.basic.Label</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.apache.wicket.spring.injection.annot.SpringBean</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">pl.tomaszdziurko.itemdirectory.service.users.UserService</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">pl.tomaszdziurko.itemdirectory.web.BasePage</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomePage</span> <span class="kd">extends</span> <span class="n">BasePage</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nd">@SpringBean</span>
+</span><span class='line'>  <span class="kd">private</span> <span class="n">UserService</span> <span class="n">userService</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">HomePage</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">initGui</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">initGui</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;helloLabel&quot;</span><span class="o">,</span> <span class="s">&quot;Wicket is saying &#39;Hello&#39; to you!&quot;</span><span class="o">));</span>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;currentTime&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">toString</span><span class="o">()));</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Label</span><span class="o">(</span><span class="s">&quot;numberOfUsers&quot;</span><span class="o">,</span> <span class="n">userService</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;&quot;</span><span class="o">));</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In this class @SpringBean annotation is responsible for providing access to beans (UserService bean in this case) and method <em>initGui()</em> contains three labels to render something to the user. The last label confirms that our access to the database through service layer, domain layer to MySQL is working properly.</p>
+
+<p>And this is the end of the first part of Wicket tutorial. I hope you find it useful. Any comments appreciated! In next post we will talk about the first version of application layout and how to add new data to database.</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-09T19:58:58+01:00" data-updated="true" itemprop="datePublished">Jan 9<span>th</span>, 2011</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>, <a class='category' href='/blog/categories/item-directory-application/'>Item Directory application</a>, <a class='category' href='/blog/categories/java/'>Java</a>, <a class='category' href='/blog/categories/wicket/'>Wicket</a>, <a class='category' href='/blog/categories/wicket-tutorial/'>Wicket Tutorial</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2010/12/custom-pagingnavigator-with-changing-items-per-page-in-wicket/" title="Previous: Custom PagingNavigator with changing items per page in Wicket">&laquo; Custom PagingNavigator with changing items per page in Wicket</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/" title="Next: Wicket Tutorial, part 2 - adding common layout to the project">Wicket Tutorial, part 2 - adding common layout to the project &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/';
+        var disqus_url = 'http://tomaszdziurko.pl/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

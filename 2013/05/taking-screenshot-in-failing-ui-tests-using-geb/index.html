@@ -1,0 +1,508 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Taking a screenshot when UI tests written in Geb fail - Tomasz Dziurko</title>
+	<meta name="author" content="Tomasz Dziurko">
+
+    
+	<meta name="description" content="Tomasz Dziurko - blog, my personal notes about development, learning, reading, productivity and other stuff">
+    
+    <meta name="keywords" content="geb, screenshot, failing test" />
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/feed" rel="alternate" title="Tomasz Dziurko" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts 
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-8528065-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<a href="http://tomaszdziurko.pl"><img src="http://www.gravatar.com/avatar/6748c894c49b39b48101c39c8cf0871a?s=160" alt="Profile Picture" style="width: 160px;" /></a>
+	
+</div>
+<hgroup>
+  <h1><a href="/">Tomasz Dziurko</a></h1>
+  
+    <p class="subtitle">Code Hard Go Pro</p>
+  
+</hgroup>
+
+
+
+
+
+
+<nav id="sub-nav">
+	<div class="social">
+		
+		
+		
+		<a class="twitter" href="http://twitter.com/TomaszDziurko" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/tdziurko" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		<a class="linkedin" href="http://www.linkedin.com/in/TomaszDziurko" title="LinkedIn">LinkedIn</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/feed" title="RSS">RSS</a>
+		
+		
+	</div>
+</nav>
+
+<nav id="main-nav">
+<ul class="main-navigation">
+  <h4><li><a href="/">Blog</a></li></h4>
+  <h4><li><a href="/blog/archives">Archives</a></li></h4>
+  <h4><li><a href="/blog/categories">Categories</a></li></h4>
+  <h4><li><a href="/about">About</a></li></h4>
+  <h4><li><a href="https://www.goodreads.com/user/show/9486100-tomasz">Goodreads profile</a></li></h4>
+
+</ul>
+
+
+
+    <section>
+        <form action="https://www.google.com/search" method="get">
+            <input type="hidden" name="q" value="site:tomaszdziurko.pl" />
+            <input class="search" type="search" name="q" results="0" placeholder="Search"/>
+        </form>
+    <section>
+
+    <br/>
+    <h4 style="color: #EFEFEF;">My company</h4>
+    <a href="http://softwaremill.com"><img src="/images/sml_logo.png" width="250px"></a>
+    <br/>
+    <a href="http://codebrag.com"><img src="/images/codebrag.jpeg" width="250px"></a>
+        
+</nav>
+
+<!--<nav id="sub-nav">-->
+<!--<br>-->
+<!--<section>
+  <h2 style="color:#EFEFEF">Recent Posts</h2>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2016/11/elon-musk-amazing-entrepreneur-difficult-person-book-review/">Elon Musk - an Amazing Entrepreneur and a Difficult Person - Book Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/">Six Steps to Improve Your Remote Communication With TeamSpeak</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/08/jvm-bloggers-docker-compose-and-views-counter/">What's New in JVM Bloggers - Docker Compose and Views Counter</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/04/varidesk-standing-desk-review/">Varidesk - an Adjustable Standing Desk - Review</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2016/03/podsumowanie-ankiety-o-jvm-bloggers/">Podsumowanie Ankiety O JVM Bloggers</a>
+      </li>
+    
+  </ul>
+</section>
+-->
+<!--</nav>-->
+
+<!--<nav id="sub-nav">-->
+<!---->
+<!--<section class="aboutme">-->
+  <!--<p style="font-style: italic;">-->
+    <!--I am Java/Scala developer working remotely from small city in Poland.-->
+  <!--</p>-->
+<!--</section>-->
+<!---->
+<!--</nav>-->
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+	<h1 class="title" itemprop="name">Taking a Screenshot When UI Tests Written in Geb Fail</h1>
+	<div class="entry-content" itemprop="articleBody"><p>There is nothing worse than being reported that UI test failed but without clear evidence what exactly went wrong.
+And what could be better evidence than screenshot just after the failure?</p>
+
+<!-- more -->
+
+
+<p>This is a second post about <a href="http://www.gebish.org/"><strong>Geb</strong></a> in a short time. This time we will learn how to configure Geb to take a screenshot every time our UI test fails. Image of page at the moment when test failed is often very helpful in debugging mysteriously failing UI test on CI server and can save a lot of time when trying to solve such problems.</p>
+
+<h3>The Problem</h3>
+
+<p>We need a simple way to configure Geb UI tests to take a screenshot on each test fail. This should be &ldquo;add and forget&rdquo; config that does not need any changes when we add more tests to our application.</p>
+
+<h3>Solution</h3>
+
+<p>We have to find some type of listener that waits for different test results and fires proper method when test fails. In <a href="http://testng.org/">TestNG</a> we have a <a href="http://testng.org/javadocs/org/testng/TestListenerAdapter.html">TestListenerAdapter</a> so probably Geb or Spock should have something similar.</p>
+
+<p>After some digging I was able to locate <em>IRunListener</em> with method I need:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IRunListener</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">beforeSpec</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">SpecInfo</span> <span class="n">specInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">beforeFeature</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">FeatureInfo</span> <span class="n">featureInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">beforeIteration</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">IterationInfo</span> <span class="n">iterationInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">afterIteration</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">IterationInfo</span> <span class="n">iterationInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">afterFeature</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">FeatureInfo</span> <span class="n">featureInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">afterSpec</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">SpecInfo</span> <span class="n">specInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">ErrorInfo</span> <span class="n">errorInfo</span><span class="o">);</span> <span class="c1">// &lt; -- this is it</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">specSkipped</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">SpecInfo</span> <span class="n">specInfo</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">featureSkipped</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">spockframework</span><span class="o">.</span><span class="na">runtime</span><span class="o">.</span><span class="na">model</span><span class="o">.</span><span class="na">FeatureInfo</span> <span class="n">featureInfo</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Simple version of test failure listener</strong>
+Luckily this interface comes with abstract class named <em>AbstractRunListener</em> that allows us to implement only methods we want instead of fulfilling the whole contract specified by IRunListener.</p>
+
+<p>So our first step will be to print something to the console every time our test fails:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">TakeScreenshotOnTestFailureListener</span> <span class="kd">extends</span> <span class="n">AbstractRunListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="kt">def</span> <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">ErrorInfo</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;Error in method &quot;</span> <span class="o">+</span> <span class="n">error</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
+</span><span class='line'>   <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Adding custom listener to all tests with Spock extension</strong>
+But except implementation of a listener, we have to add this listener to our tests. Currently in Spock this is possible only with extensions. Again, I had to find proper extension to use and ended with interface IGlobalExtension which has only one method visiting each spec (test method) in our codebase:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IGlobalExtension</span> <span class="o">{</span>
+</span><span class='line'>  <span class="kt">void</span> <span class="nf">visitSpec</span><span class="o">(</span><span class="n">SpecInfo</span> <span class="n">spec</span><span class="o">);</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So extension implementation looks as follows, to each visited spec we add our TakeScreenshotOnTestFailureListener listener:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">GlobalSpecExtension</span> <span class="kd">implements</span> <span class="n">IGlobalExtension</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nd">@Override</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="nf">visitSpec</span><span class="o">(</span><span class="n">SpecInfo</span> <span class="n">specInfo</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">specInfo</span><span class="o">.</span><span class="na">addListener</span><span class="o">(</span><span class="k">new</span> <span class="n">TakeScreenshotOnTestFailureListener</span><span class="o">())</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Registering Spock global extension</strong>
+Each global extension have to be registered to Spock. This can be achieved by placing text file with easy to remember name in META-INF/services directory. File must be named <em>org.spockframework.runtime.extension.IGlobalExtension</em> and should contain full name of our implementation of IGlobalExtension interface:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="n">com</span><span class="o">.</span><span class="na">smscpl</span><span class="o">.</span><span class="na">mc5</span><span class="o">.</span><span class="na">uitests</span><span class="o">.</span><span class="na">geb_extensions</span><span class="o">.</span><span class="na">GlobalSpecExtension</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Taking a screenshot on each UI test fail</strong>
+Now on each test fail we will see that our text message is printed to the console. This proves that our solution is going in the right direction and last thing still not implemented is taking a screenshot.</p>
+
+<p>Taking a screenshot using Selenium driver is quite easy, it is one method call, but before that we have to acquire driver instance in our listener class. Directly it is impossible to access driver directly from the listener so we need to store it in globally accessible object. Simplest solution is to save reference to the driver when we create it in our GebConfig file. So let&rsquo;s create a singleton that will hold our browser:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="nd">@Singleton</span>
+</span><span class='line'><span class="kd">class</span> <span class="nc">BrowserInstance</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">def</span> <span class="n">FirefoxDriver</span> <span class="n">browser</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and initialise it in GebConfig.groovy script located in root package of our project:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="n">driver</span> <span class="o">=</span>
+</span><span class='line'>    <span class="o">{</span>
+</span><span class='line'>        <span class="n">newDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">()</span>
+</span><span class='line'>        <span class="n">BrowserInstance</span><span class="o">.</span><span class="na">instance</span><span class="o">.</span><span class="na">browser</span> <span class="o">=</span> <span class="n">newDriver</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">newDriver</span>
+</span><span class='line'>    <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now we can access driver from our listener object, so final taking screenshot logic is pretty straightforward:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='groovy'><span class='line'><span class="kd">class</span> <span class="nc">TakeScreenshotOnTestFailureListener</span> <span class="kd">extends</span> <span class="n">AbstractRunListener</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>   <span class="kt">def</span> <span class="kt">void</span> <span class="nf">error</span><span class="o">(</span><span class="n">ErrorInfo</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>       <span class="n">File</span> <span class="n">screenFile</span> <span class="o">=</span> <span class="n">BrowserInstance</span><span class="o">.</span><span class="na">instance</span><span class="o">.</span><span class="na">browser</span><span class="o">.</span><span class="na">getScreenshotAs</span><span class="o">(</span><span class="n">OutputType</span><span class="o">.</span><span class="na">FILE</span><span class="o">);</span> <span class="c1">// take a screenshot</span>
+</span><span class='line'>
+</span><span class='line'>       <span class="n">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">createFileName</span><span class="o">(</span><span class="n">error</span><span class="o">)</span> <span class="c1">// generate file name based on test class and method names</span>
+</span><span class='line'>       <span class="n">File</span> <span class="n">destinationFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s2">&quot;java.io.tmpdir&quot;</span><span class="o">)</span> <span class="o">+</span> <span class="n">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s2">&quot;file.separator&quot;</span><span class="o">)</span> <span class="o">+</span> <span class="n">fileName</span><span class="o">)</span>
+</span><span class='line'>       <span class="n">Files</span><span class="o">.</span><span class="na">copy</span><span class="o">(</span><span class="n">screenFile</span><span class="o">,</span> <span class="n">destinationFile</span><span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'>       <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s2">&quot;##teamcity[publishArtifacts &#39;&quot;</span> <span class="o">+</span> <span class="n">destinationFile</span><span class="o">.</span><span class="na">getAbsolutePath</span><span class="o">()</span> <span class="o">+</span> <span class="s2">&quot;&#39;]&quot;</span><span class="o">);</span> <span class="c1">// publish as artifact in TeamCity</span>
+</span><span class='line'>   <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">def</span> <span class="kd">private</span> <span class="n">String</span> <span class="nf">createFileName</span><span class="o">(</span><span class="n">ErrorInfo</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">specName</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">parent</span><span class="o">.</span><span class="na">name</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">testName</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="na">method</span><span class="o">.</span><span class="na">name</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">milliseconds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Date</span><span class="o">().</span><span class="na">getTime</span><span class="o">()</span>
+</span><span class='line'>        <span class="n">String</span> <span class="n">fileName</span> <span class="o">=</span> <span class="n">specName</span> <span class="o">+</span> <span class="s2">&quot;: &#39;&quot;</span> <span class="o">+</span> <span class="n">testName</span> <span class="o">+</span> <span class="s2">&quot;&#39; &quot;</span> <span class="o">+</span> <span class="n">milliseconds</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span>
+</span><span class='line'>        <span class="n">fileName</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>And that&rsquo;s all. Each test fail will now appear with corresponding screenshot from browser.</p>
+</div>
+
+
+<span class="post_end">
+    <br/>
+	  
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tomasz Dziurko</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-27T19:30:36+02:00" data-updated="true" itemprop="datePublished">May 27<span>th</span>, 2013</time>
+	  <span class="categories">
+
+
+	<a class='category' href='/blog/categories/how-to/'>How-to</a>
+
+
+</span>
+</span>
+</article>
+<div class="article_end">
+	<div class="page">
+		<p class="meta">
+		  
+			<a class="basic-alignment left" href="/2013/05/reusing-browser-instance-geb-ui-tests/" title="Previous: Reusing browser instance in Geb UI tests">&laquo; Reusing browser instance in Geb UI tests</a>
+		  
+		  
+			<a class="basic-alignment right" href="/2013/07/transparently-persist-retrieve-encrypted-data-database/" title="Next: Transparently persist and retrieve encrypted data from database">Transparently persist and retrieve encrypted data from database &raquo;</a>
+		  
+		</p>
+	</div>
+</div>
+
+
+<div class="share">
+    <div class="addthis_toolbox addthis_default_style ">
+        
+        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+        
+        
+        <a class="addthis_button_tweet"></a>
+        
+        
+        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+        
+        <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - Tomasz Dziurko -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+<script type="text/javascript">
+      var disqus_shortname = 'tomaszdziurko';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/';
+        var disqus_url = 'http://tomaszdziurko.pl/2013/05/taking-screenshot-in-failing-ui-tests-using-geb/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>

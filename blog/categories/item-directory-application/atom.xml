@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Item Directory application | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/item-directory-application/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2016-12-12T22:32:01+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Deploying Java Web Application on Jelastic]]></title>
+    <link href="http://tomaszdziurko.pl/2012/10/deploying-java-web-application-jelastic/"/>
+    <updated>2012-10-09T21:44:34+02:00</updated>
+    <id>http://tomaszdziurko.pl/2012/10/deploying-java-web-application-jelastic</id>
+    <content type="html"><![CDATA[<p>Some time ago having your own full-fledged hosting with Java, Tomcat and any database wasn&rsquo;t cheap, but luckily we live in a very interesting times and now there are many virtual hosting services in the Cloud providing an easy and affordable way to deploy your application and make it available to users.</p>
+
+<p>And what is the best in such solutions, they grow with your application or startup. Services are free or almost free when your web application doesn&rsquo;t need much memory and processors but when your web-app starts to gather more users' attention and you have more and more concurrent sessions and visits each day, you could easily enhance your setup to match your needs. Everything is a matter of a few clicks, simple and fast.</p>
+
+<p>To test how this deployment process look like, I&rsquo;ve decided to put my [Wicket tutorial](<a href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/) web application online. It consist of three pages and two tables in database so I think it shouldn't be a too complicated process to deploy it online. And as a Java hosting service I've chosen [Jelastic](http://jelastic.com), recent winner of [2012 Duke's Choice Awards](http://www.java.net/dukeschoice) announced during JavaOne conference this year. Duke's Choice Award is something like a Oscar in the Java world, so I thought that Jelastic might be a good choice to start with.<!-- more --></p>
+
+<h3>First steps</h3>
+
+<p>So after creating an account and choosing a hosting in Germany (which is the closest one to Poland where I live) I am redirected to my personal administration panel where in a straightforward step-by-step wizard I am requested to choose container /server (Tomcat 6/7,  Jetty amd Glassfish are available) and then my subdomain name. After that my server is deployed and after a moment I could check that <a href="http://tomaszdziurko.jelastic.dogado.eu/">http://tomaszdziurko.jelastic.dogado.eu/</a> is live and running. User is also encouraged to try and deploy pre-defined Hello World application. The whole process is extremely easy, just one click and in a moment we could check that we&rsquo;ve just deployed our first war on Jelastic:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2012/10/jelastic-demo.jpeg" alt="" /></p>
+
+<h3>Configuring more real application environment</h3>
+
+<p>So far everything was easy, but we didn&rsquo;t touch any real scenario so now it&rsquo;s high time to start deploying our example Wicket application. First step is to upload application war to the Jelastic. Then we have to enable and configure our database with three tables. To do that we choose &ldquo;Environment topology&rdquo; next to our only server and here we could turn on/off many interesting features: load balancers, caching solutions, multiple containers, SSL-s and what we currently need SQL and/or NoSQL database:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2012/10/dbConfig.jpeg" alt="" /></p>
+
+<p>So let&rsquo;s enable MySQL 5.5 and wait some time until it is configured and started on our virtual server. When everything is ready we will receive an email with login and password to our MySQL database instance. Now we could login to myPhpAdmin web interface and create user and MySQL tables required by our Wicket application. Because database url is no longer localhost:3306 we have to modify properties file in our project, rebuild it and upload war again. After that we are ready to deploy application on Jelastic. Simply, we click &ldquo;Deploy&rdquo; icon and then choose context name where application will be accessible. After that we must wait for &ldquo;Success&rdquo; message from deployment process and now we could check if <a href="http://tomaszdziurko.jelastic.dogado.eu/item-directory">http://tomaszdziurko.jelastic.dogado.eu/item-directory</a> is working as expected.</p>
+
+<h3>More and more options to choose and play with</h3>
+
+<p>This basic scenario has shown you how simple Java web application with database connecticity could be deployed on <a href="http://jelastic.com">Jelastic</a>. Of course in any business you will need more sophisticated stuff, but there aren&rsquo;t many things that you will not find available in this service. Most interesting stuff what you can do is:</p>
+
+<ul>
+<li><p>link your web-app to private Git/SVN repository and deploy it directly from Jelastic admin panel</p></li>
+<li><p>choose from multiple SQL and NoSQL databases</p></li>
+<li><p>launch your Virtual Dedicated Server (VDS) with root privileges and full control there</p></li>
+<li><p>use predefined load balancing and session replication configuration</p></li>
+<li><p>add new or duplicate server or database in a few clicks</p></li>
+<li><p>enable SSL</p></li>
+<li><p>use latest Java 7 in your applications</p></li>
+</ul>
+
+
+<h3>There are some cons too</h3>
+
+<p>Of course there are some drawbacks present. From what I&rsquo;ve noticed there are four things I find useful but missing on Jelastic:</p>
+
+<ul>
+<li><p><del>ability to set a few environment variables without buying whole VDS. I wanted to use these variables to deploy open source project directly from Github repository but with database login/password stored not in the publicly available source code but in these variables that could be loaded later in application and used to connect to database.</del> Update: looks like it is possible. See comment below by Marina Sprawa from Jelastic</p></li>
+<li><p>premium account type with pricing that is more suitable for people that only want to play with Jelastic and their pet projects longer than for 2 weeks using trial period</p></li>
+<li><p><del>ability to configure continuous deployment environment that auto deploys latest version each time when new commit appears in the repository</del> Update: it is also possible, see comment by Marina below</p></li>
+<li><p>JBoss 6 or 7 as an application server to choose from. I am not a big fan of Glassfish so for Java EE application I would prefer to use JBoss product.</p></li>
+</ul>
+
+
+<h3>Summary</h3>
+
+<p>So to sum up, service looks very interesting and if you consider using external service provider to deploy, scale and tune your production environment, Jelastic is one of the best choices currently available. Its options to quickly and easily configure load balancing and other parameters and hardware that is required when your application suddenly becomes very popular are a life-saver. Even for smaller projects there are many stuff that you will appreciate and quickly get accustomed to, so Jelastic looks as a good place to launching your startup application online.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Wicket Tutorial, part 9 – storing and loading user preferences from cookies]]></title>
+    <link href="http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-storing-loading-user-preferences-cookies/"/>
+    <updated>2011-07-16T00:05:09+02:00</updated>
+    <id>http://tomaszdziurko.pl/2011/07/wicket-tutorial-part-9-storing-loading-user-preferences-cookies</id>
+    <content type="html"><![CDATA[<p>In the previous post we learnt a few tricks regarding internationalization features in Wicket. Today we will go further and will let application to remember some user preferences using HTTP Cookies. Storing some basic data in cookies is an easy and popular way of letting user customize look and feel of web application he uses very often. Some portals use cookies to render modules in order chosen by user so that most interesting information are in the top.</p>
+
+<p>In our ItemDirectory web application we don&rsquo;t have (yet!) any sophisticated mechanism which could rely on cookies so we will show how it can be used to store and load language selected by the user.</p>
+
+<!-- more -->
+
+
+<h3>Storing information in cookies</h3>
+
+<p>So first thing we need to do is store which language user wants to use. So we must modify changeUserLocaleTo() method in LanguagePanel class:</p>
+
+<p>``` java
+public class LanguagePanel extends Panel {</p>
+
+<p>  // (&hellip;)</p>
+
+<p>  private void changeUserLocaleTo(String localeString) {</p>
+
+<pre><code>getSession().setLocale(new Locale(localeString));
+
+Cookie languageCookie = new Cookie(Application.LANGUAGE_COOKIE_NAME, localeString);
+languageCookie.setMaxAge(Application.LANGUAGE_COOKIE_AGE);
+((WebResponse)getResponse()).addCookie(languageCookie);
+</code></pre>
+
+<p>  }
+}
+```</p>
+
+<p>This mechanism is rather easy to understand. Besides setting session locale we also create and put language cookie with name and age defined as static fields in our Application class. We just have to remember to add our new or modified cookie to response so it will be send back to the browser.
+After this we can run jetty with deployed application and check that after clicking there is a cookie with information about selected language.</p>
+
+<h3>Loading information from cookies</h3>
+
+<p>Now we have some information in cookie waiting for our application to use it. The best moment to utilize such information is while creating new session so application could load preferences from cookie and store it in user session object. So lets play with method in WebApplication class which creates new user session:</p>
+
+<p>``` java
+public class Application extends WebApplication {</p>
+
+<p>  // (&hellip;)</p>
+
+<p>  @Override
+  public Session newSession(Request request, Response response) {</p>
+
+<pre><code>Session session = super.newSession(request, response);
+session = trySetLanguageFromCookie(session, request, response);
+
+return session;
+</code></pre>
+
+<p>  }
+}
+```</p>
+
+<p>So far so good, but the most important things happen in trySetLanguageFromCookie() method</p>
+
+<p>``` java
+private Session trySetLanguageFromCookie(Session session, Request request, Response response) {</p>
+
+<p>  Cookie[] cookies = ((WebRequest) request).getCookies();</p>
+
+<p>  if (cookies == null || cookies.length == 0) {</p>
+
+<pre><code>return session;
+</code></pre>
+
+<p>  }</p>
+
+<p>  for (Cookie cookie : cookies) {</p>
+
+<pre><code>if (LANGUAGE_COOKIE_NAME.equals(cookie.getName())) {  // (1)
+  session.setLocale(new Locale(cookie.getValue()));   // (2)
+
+  cookie.setMaxAge(LANGUAGE_COOKIE_AGE);
+  ((WebResponse)response).addCookie(cookie);          // (4)
+  break;
+}
+</code></pre>
+
+<p>  }</p>
+
+<p>  return session;
+}
+```</p>
+
+<p>In this method we first try to find <strong>(1)</strong> cookie named LANGUAGE_COOKIE_NAME and if we find it, we modify <strong>(2)</strong> session locale according to data loaded from the cookie. And another thing we could do is refresh <strong>(4)</strong> just loaded cookie so if user won&rsquo;t click flag for a long time (as he doesn&rsquo;t have to because we automatically set proper locale basing on cookie), he won&rsquo;t lose his preference.</p>
+
+<p>Now, everything should work fine. User can choose language when he enters our application for a first time and later we load this information from cookie, set proper locale and refresh cookie so it won&rsquo;t expire.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Wicket Tutorial, part 8 – adding internationalization support]]></title>
+    <link href="http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-adding-internationalization-support/"/>
+    <updated>2011-06-20T21:52:06+02:00</updated>
+    <id>http://tomaszdziurko.pl/2011/06/wicket-tutorial-part-8-adding-internationalization-support</id>
+    <content type="html"><![CDATA[<p>Today we will continue Wicket tutorial series with adding support to multiple languages in web application. Ok, let&rsquo;s do it step by step.</p>
+
+<h3>Create form to change language</h3>
+
+<p>To make our changes visible and testable at the beginning we add form to change application language. To make it more reusable we will implement it as a Wicket panel.
+So first, let&rsquo;s create html and Java files:</p>
+
+<!-- more -->
+
+
+<p>LanguagePanel.html</p>
+
+<p>``` html</p>
+
+<pre><code>&lt;form wicket:id="languageForm" action=""&gt;
+        &lt;input wicket:id="polishButton" type="image" src="images/pl.png"
+               name="image" width="25" height="25" style="border-style: none;"/&gt;
+        &lt;input wicket:id="englishButton" type="image" src="images/gb.png"
+               name="image" width="25" height="25" style="border-style: none;"/&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>```</p>
+
+<p>LanguagePanel.java:</p>
+
+<p>``` java
+public class LanguagePanel extends Panel {</p>
+
+<pre><code>Logger log = LoggerFactory.getLogger(LanguagePanel.class);
+
+public LanguagePanel(String id) {
+    super(id);
+
+    Form languageForm = new Form("languageForm");   // (1)
+
+    languageForm.add(createLocaleChangingButton("polishButton", "PL"));
+    languageForm.add(createLocaleChangingButton("englishButton", "GB"));
+
+    add(languageForm);
+}
+
+private Button createLocaleChangingButton(final String buttonId, final String localeString) {
+    return new Button(buttonId) {
+        @Override
+        public void onSubmit() {
+            changeUserLocaleTo(localeString);    // (2)
+        }
+    };
+}
+
+private void changeUserLocaleTo(String localeString) {
+    getSession().setLocale(new Locale(localeString));      // (3)
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>As you can see it&rsquo;s simple panel with form containing two buttons to change language to Polish and English. We just create form <strong>(1)</strong>, add two buttons which both call <strong>(2)</strong> the same method <em>changeUserLocaleTo() </em><strong>(3)</strong> with different parameter. Method does one, but very important thing: it changes locale of user Sesssion object so all localized strings will be rendered in the chosen language.</p>
+
+<p>Next thing we need to do is add just created panel somewhere to the application. I will place it in the header bar in the BasePage with some styling:</p>
+
+<p>``` html
+(&hellip;)</p>
+
+<ul>
+    <!-- MENU -->
+    <li><a>Home</a></li>
+    <li><a>Item locations</a></li>
+    <li><a href="#">About application</a></li>
+    <li style="float: right; padding-top: 20px; padding-right: 20px;">
+            <span wicket:id="languagePanel"/>
+        </li>
+    <!-- END MENU -->
+</ul>
+
+
+<p>(&hellip;)
+```</p>
+
+<p>We are almost done with this point but as we would like to test if language switching is working on the main page, we must add properties file for second language. And as properties gathered in Application.properties file doesn&rsquo;t seem to work when language is changed, we will move them to BasePage.properties:</p>
+
+<p><code>xml
+applicationName=Item Directory
+applicationHeader=Manage your items easily!
+</code></p>
+
+<p>and BasePage_pl.properties (for Polish language)</p>
+
+<p><code>xml
+applicationName=Item Directory
+applicationHeader=Zarządzaj swoimi przedmiotami z łatwością!
+</code></p>
+
+<p>Ok, it should work and when you run jetty server <em>mvn jetty:run</em>, enter application and click flag of Poland you should see:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2011/06/item11.png" alt="" /></p>
+
+<p>Small improvement can be done with titles of flag images to inform user to which locale he will switch after clicking. This is good occasion to show nice feature of wicket:message which can render not only localized text but also to localize elements in other html tags like title in input HTML element. To make it work we simply add <em>wicket:message=&ldquo;element_name:key_from_properties_bundle&rdquo;</em>. In LanguagePanel.html we want to localize title so we add <em>wicket:message=&ldquo;title:pl&rdquo;</em> to input:</p>
+
+<p>``` html
+<form wicket:id="languageForm" action=""></p>
+
+<pre><code>&lt;input wicket:id="polishButton" type="image" wicket:message="title:pl" src="images/pl.png"
+     name="image" width="25" height="25" style="border-style: none;"/&gt;
+ &lt;input wicket:id="englishButton" type="image" wicket:message="title:gb" src="images/gb.png"
+     name="image" width="25" height="25" style="border-style: none;"/&gt;
+</code></pre>
+
+<p></form>
+```</p>
+
+<p>and after adding pl and gb keys to properties file we could see localized &ldquo;on hover&rdquo; title messages over both flags.</p>
+
+<h3>Localizing messages shown to the user</h3>
+
+<p>After doing some tedious job (not covered here, but visible in commits) with replacing static texts with wicket:message elements and completing properties files with new keys we could introduce another Wicket feature when it comes to localization: localizing text added or created inside the Java code.</p>
+
+<p>First example of using localization in Wicket inside Java files is welcome text on the main page. There are two ways to localize it. The worse one is getString(propertyName) method which returns localized String. But this method has one big drawback, it will work only when new instance of Page is created. When you (like in our language switching form) return to the current page, it will use old text value in previously selected language. This drawback is not present in the second way with <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/StringResourceModel.html">StringResourceModel</a> class:</p>
+
+<p>HomePage.java:</p>
+
+<p>``` java</p>
+
+<pre><code>private void initGui() {
+    add(new Label("helloLabel", new StringResourceModel("welcomeLabel", this, null)));
+    add(new Label("currentTime", new Date().toString()));
+
+    add(new Label("numberOfUsers", userService.size() +""));
+}
+</code></pre>
+
+<p>```</p>
+
+<p>If you are more interested in arguments of this class constructor please read <a href="http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/StringResourceModel.html">javadocs</a> where you can find detailed description how all this stuff is working.</p>
+
+<p>Another place we could use StringResourceModel is feedback message after location was deleted:</p>
+
+<p>RemoveLocationLink fragment:</p>
+
+<p>``` java</p>
+
+<pre><code>@Override
+public void onClick() {
+    locationService.remove(location);
+    getSession().info(new StringResourceModel("locationRemoved", this, null,
+        new Object[] { location.getName() }).getString());
+    setResponsePage(LocationsPage.class);
+}
+</code></pre>
+
+<p>```</p>
+
+<p>alongside with properties message:</p>
+
+<p><code>xml
+locationRemoved=Location {0} was removed
+</code></p>
+
+<p>In the constructor of StringResourceModel we pass array of parameters which is used to prepare message. You can notice simple way of inserting passed values into text with {0} notation (like in <a href="http://download.oracle.com/javase/1.4.2/docs/api/java/text/MessageFormat.html">MessageFormat</a> class). Of course this and other constructors of SRM are explained well in javadoc mentioned above :) Also worth to notice is call of getString() method on StringResourceModel which returns String representation of this ResourceModel object.</p>
+
+<h3><strong>Localizing complete pages or panels</strong></h3>
+
+<p>Sometimes adding wicket:message isn&rsquo;t enough and we might want to localize whole page or panel. The first example which comes to my mind is page with regulations in e-shop web application. There would be large amount of text which should be translated to language chosen by the user. Of course we could use many, many wicket:message elements but there is better and faster way :)</p>
+
+<p>To show how it works we will create localized sidebar panel of our application:</p>
+
+<p style="text-align:center;"><img src="/images/blog/2011/06/item2.png" alt="" /></p>
+
+<p>First we create empty Java class for panel and move sidebar markup to corresponding panel HTML file:</p>
+
+<p>``` java
+public class RightSidebarPanel extends Panel {</p>
+
+<pre><code>public RightSidebarPanel(String id) {
+    super(id);
+}
+</code></pre>
+
+<p>}
+<code>
+</code> html</p>
+
+<!-- SIDEBAR -->
+
+
+<h4>About</h4>
+
+
+<p>This is example application to help you manage your items hidden in many locations across your home.</p>
+
+<h4>Links</h4>
+
+
+<ul class="blocklist">
+  <li>
+    <a title="Source code of this application" href="https://bitbucket.org/tdziurko/item-directory/src">
+      Source code of this application
+    </a>
+  </li>
+  <li>
+    <a title="Tutorial about creating this application"
+      href="<a href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/">
+      Tutorial about creating this application
+    </a>
+  </li>
+  <li>
+    <a title="Tomasz Dziurko" href="http://tomaszdziurko.pl/">Author</a>
+  </li>
+  <li>
+    <a title="Spyka Webmaster resources" href="http://www.spyka.net">
+      Template Created by Spyka
+    </a>
+  </li>
+</ul>
+
+
+<!-- SIDEBAR -->
+
+
+<p>```</p>
+
+<p>We need to add just created panel to BasePage java class and then, if we run application, home page screen won&rsquo;t change at all. Ok, now we are ready to the final trick :) Instead of replacing static text with wicket:message elements we create RightSidebarPanel_pl.html file next to standard one and replace whole content with text in Polish language. After this, Wicket uses Polish HTML file when user choose this language and English for users visiting us from other coutries. Easy and straightforward.</p>
+
+<p>Ok, that&rsquo;s all about localization in Wicket and in ItemDirectory application. As an extra one small improvement of usability :)</p>
+
+<h3>Tweak page header and application title</h3>
+
+<p>One thing I was missing in previous versions of Item Directory was title linked to main page. As in many other web pages I was clicking it to navigate to home page but previously I had forgott to add this functionality to it didn&rsquo;t work. And now, as we are adding title in other language, it&rsquo;s good occasion to fix it. So first we embed title and header in a href elements in HTML page and then we add links to BasePage Java class:</p>
+
+<p><code>html
+  &lt;!-- TITLE --&gt;
+  &lt;h1&gt;&lt;a href="#" wicket:id="headerHomePageLink"&gt;&lt;wicket:message key="applicationName"/&gt;&lt;/a&gt;&lt;/h1&gt;
+  &lt;h2&gt;&lt;a href="#" wicket:id="headerHomePageLink2"&gt;&lt;wicket:message key="applicationHeader"/&gt;&lt;/a&gt;&lt;/h2&gt;
+  &lt;!-- END TITLE --&gt;
+</code>
+``` java</p>
+
+<pre><code>private void addHeaderLinks() {
+    add(new BookmarkablePageLink("headerHomePageLink", Application.get().getHomePage()));
+    add(new BookmarkablePageLink("headerHomePageLink2", Application.get().getHomePage()));
+}
+</code></pre>
+
+<p>```</p>
+
+<p>As you can see in HTML snippet I used <em>wicket:message</em> element which provides simple and easy to use label in markup functionality without any Java code. So it&rsquo;s good to utilize this Wicket feature in places with static text which maybe will need internationalization in the future and isn&rsquo;t connected with any particular logic.</p>
+
+<p>Thank you for reading. If you have any comments or ideas, don&rsquo;t hesitate to share them with me and other reader below this post.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Wicket Tutorial, part 7 – editing and removing item locations]]></title>
+    <link href="http://tomaszdziurko.pl/2011/05/wicket-tutorial-part-7-editing-and-removing-item-locations/"/>
+    <updated>2011-05-07T20:45:32+02:00</updated>
+    <id>http://tomaszdziurko.pl/2011/05/wicket-tutorial-part-7-editing-and-removing-item-locations</id>
+    <content type="html"><![CDATA[<p>Welcome back to our practical Wicket tutorial series. I apologize for long break after last post (shame on me as it was published more than 1,5 month ago) but I had many unplanned things with higher priority: Wicket demo appplication  on <a href="http://33degree.org/talks.html#BOFWebFrameworks">33rdDegree</a> conference to prepare, a conference itself and most time-consuming one, I damaged knee ligament during football match and after that everyday for three weeks I was driving to the hospital for rehabilitation so day became too short to write something here. But now everything seems to be ok and I have some spare time to continue Wicket tutorial subject.</p>
+
+<p>Today we will add two new features: editing and removing locations from our application. Currently we don&rsquo;t have any items connected with locations so deleting shouldn&rsquo;t be too complicated. Later on, when we add some items, we will have to rework this functionality but now it shouldn&rsquo;t bother us too much.</p>
+
+<!-- more -->
+
+
+<h3>Editing locations</h3>
+
+<p>To edit location we should first add link to the LocationsPage redirecting user to edit page:</p>
+
+<p>``` html</p>
+
+<table>
+    <tr>
+        <th>ID</th><th>Name</th><th>Actions</th> <!-- new header column -->
+    </tr>
+    <span wicket:id="locations">
+        <tr>
+        <td><span wicket:id="id"></span></td>
+        <td><span wicket:id="name"></span></td>
+            <td><a href wicket:id="editLocationLink">Edit</a></td> <!-- this is new -->
+        </tr>
+    </span>
+</table>
+
+
+<p>```</p>
+
+<p>In the corresponding Java class we add link to edit page:</p>
+
+<p>``` java
+ ListView<Location> locations = new ListView<Location>(&ldquo;locations&rdquo;, createModelForLocations()) {
+   @Override
+   protected void populateItem(final ListItem<Location> item) {</p>
+
+<pre><code> item.add(new Label("id", new PropertyModel&lt;Location&gt;(item.getModel(), "id")));
+ item.add(new Label("name", new PropertyModel&lt;Location&gt;(item.getModel(), "name")));
+
+ Link&lt;BasePage&gt; editLocationLink = new Link&lt;BasePage&gt;("editLocationLink") {
+   @Override
+   public void onClick() {
+     setResponsePage(new AddEditLocationPage(item.getModelObject().getId()));
+   }
+ };
+
+ item.add(editLocationLink);
+</code></pre>
+
+<p>   }
+ };
+```</p>
+
+<p>Careful reader might notice that we have new class here, AddEditLocationPage. But it&rsquo;s just old renamed AddLocationPage after some refactoring to reuse it for both creating new and editing existing locations. As in the code listing above, we are passing Id of location to the constructor to inform which object we are going to edit.</p>
+
+<p><strong>Refactoring AddLocationPage to AddEditLocationPage</strong></p>
+
+<p>Apart from renaming both Java and HTML files we have to introduce some major changes to this Java class.</p>
+
+<p>First we add constructor taking id as a parameter:</p>
+
+<p>``` java</p>
+
+<p>public AddEditLocationPage(Long locationId) {
+  Location location = locationService.findById(locationId);
+  setDefaultModel(new Model<Location>(location));
+  initGui();
+}
+```</p>
+
+<p><em>setDefaultModel</em> will enable other components from the page to use loaded location as a source of rendered data. After this, to  be consistent we change constructor for new locations too:</p>
+
+<p><code>java
+public AddEditLocationPage() {
+  setDefaultModel(new Model&lt;Location&gt;(new Location()));
+  initGui();
+}
+</code></p>
+
+<p>After these changes initGui() method needs some tweaks because it should use data from default page model and not from String name field:</p>
+
+<p>``` java</p>
+
+<p>private void initGui() {
+ Form<Location> addLocationForm = new Form<Location>(&ldquo;addLocationForm&rdquo;,
+   new CompoundPropertyModel<Location>(getDefaultModel()));  // (1)</p>
+
+<p> add(addLocationForm);</p>
+
+<p> Label nameLabel = new Label(&ldquo;nameLabel&rdquo;, &ldquo;Location name&rdquo;);
+ addLocationForm.add(nameLabel);</p>
+
+<p> addLocationForm.add(createLabelFieldWithValidation()); // (2)</p>
+
+<p> Button submitButton = new Button(&ldquo;submitButton&rdquo;) {
+   @Override
+   public void onSubmit() {</p>
+
+<pre><code> Location location = getLocationFromPageModel(); // (3)
+
+ if(location.isNew()) {              // (4)
+   locationService.save(location);
+   getSession().info("Location added successfully");
+   }
+ else {
+   locationService.update(location);
+   getSession().info("Location updated successfully");
+ }
+
+ setResponsePage(LocationsPage.class);
+</code></pre>
+
+<p>   }
+ };
+ addLocationForm.add(submitButton);
+}</p>
+
+<p>private RequiredTextField<String> createLabelFieldWithValidation() {     // (5)
+ RequiredTextField<String> nameField = new RequiredTextField<String>(&ldquo;name&rdquo;);
+ nameField.setLabel(new Model<String>(&ldquo;Name&rdquo;));
+ nameField.add(LengthBetweenValidator.lengthBetween(MIN_LOCATION_NAME_LENGTH, MAX_LOCATION_NAME_LENGTH));</p>
+
+<p> nameField.add(createUniqueLocationNameValidator());   // (6)</p>
+
+<p> return nameField;
+}</p>
+
+<p>private UniqueEntityValidator<String> createUniqueLocationNameValidator() {    // (7)
+ UniqueEntityValidator<String> locationNameValidator = null;
+ if(getLocationFromPageModel().isNew()) {
+   locationNameValidator = new UniqueEntityValidator<String>(locationDao, &ldquo;name&rdquo;);
+ }
+ else {
+   locationNameValidator = new UniqueEntityValidator<String>(locationDao, getLocationFromPageModel().getId(), &ldquo;name&rdquo;);  // (8)
+ }</p>
+
+<p> return locationNameValidator;
+}</p>
+
+<p>@SuppressWarnings(&ldquo;unchecked&rdquo;)
+private Location getLocationFromPageModel() {       // (9)
+  return (Location) getDefaultModel().getObject();
+}</p>
+
+<p>```</p>
+
+<p><strong>This code listing needs some explanation:</strong></p>
+
+<p>In <strong>(1) </strong>we are changing model of Form to use default model from parent page so we could load data from existing or new (just created) location.</p>
+
+<p>Then in <strong>(2) </strong>extracted method createLabelFieldWithValidation()<strong> </strong>is invoked and inside it <strong>(5) </strong> input field component is created and (more important)  proper validator is assigned to this input field<strong> (6)</strong>.</p>
+
+<p>The way how validator is created<strong> (7) </strong>depends on whether we edit existing location and our unique name check should not create an error if the same location with the same name is found<strong> (8) </strong>or we just create new location and any existing location with the same name should prevent application from creating a new one. In this method we use helper method <strong>(9)</strong> extracting Location from page model.</p>
+
+<p>Ok. that&rsquo;s everything we have to do to add edit feature. We now can edit and add new locations as shown on the screen shot below.</p>
+
+<p style="text-align:center;"><img src="/images/blog/2011/05/SS-20110507141140.png" alt="" /></p>
+
+<h3>Removing locations</h3>
+
+<p>To start adding this feature we place another link in the LocationsPage HTML file (next to Edit one) and add link to Java class:</p>
+
+<p>``` java
+ListView<Location> locations = new ListView<Location>(&ldquo;locations&rdquo;, createModelForLocations()) {
+  @Override</p>
+
+<pre><code>protected void populateItem(final ListItem&lt;Location&gt; item) {
+item.add(new Label("id", new PropertyModel&lt;Location&gt;(item.getModel(), "id")));
+item.add(new Label("name", new PropertyModel&lt;Location&gt;(item.getModel(), "name")));
+
+Link&lt;BasePage&gt; editLocationLink = new Link&lt;BasePage&gt;("editLocationLink") {
+  @Override
+  public void onClick() {
+    setResponsePage(new AddEditLocationPage(item.getModelObject().getId()));
+  }
+};
+
+item.add(editLocationLink);
+item.add(new RemoveLocationLink("removeLocationLink", item.getModelObject())); // new remove link component
+</code></pre>
+
+<p>  }
+};
+```</p>
+
+<p>And because we know that in the future logic for removing location will be more complicated, it will be easier to change it if we create remove location link as a separate class:</p>
+
+<p>``` java</p>
+
+<p>public class RemoveLocationLink extends Link<Void> {</p>
+
+<p>  @SpringBean
+  LocationService locationService;</p>
+
+<p>  private final Location location;</p>
+
+<p>  public RemoveLocationLink(String componentId, Location location) {</p>
+
+<pre><code>super(componentId);
+this.location = location;
+</code></pre>
+
+<p>  }</p>
+
+<p>  @Override
+  public void onClick() {</p>
+
+<pre><code>locationService.remove(location);
+
+getSession().info("Location '" + location.getName() + "' was removed");
+setResponsePage(LocationsPage.class);
+</code></pre>
+
+<p>  }</p>
+
+<p>}
+```</p>
+
+<p>We are almost done. The last thing we need to change is method in service class responsible for removing entity.  Without this change we will be trying to delete detached entity so we should use removeSafely() method instead of remove():</p>
+
+<p>``` java</p>
+
+<p>public class LocationServiceImpl implements LocationService {</p>
+
+<p> @Autowired
+ private LocationDao locationDao;</p>
+
+<p> // (..)</p>
+
+<p> public void remove(Location location) {
+   locationDao.removeSafely(location);
+ }</p>
+
+<p> // (&hellip;)
+}</p>
+
+<p>```</p>
+
+<p>which is implemented in AbstractDAO class:</p>
+
+<p>``` java
+public void removeSafely(EntityClass entity) {
+  getEntityManager().remove(</p>
+
+<pre><code>getEntityManager().getReference(getClazz(), entity.getId()));
+</code></pre>
+
+<p>}</p>
+
+<p>```</p>
+
+<p>After this small change application is ready for tests and we can check that everything works just fine.</p>
+
+<p style="text-align:center;"><img src="/images/blog/2011/05/SS-20110507202517.png" alt="" /></p>
+
+<h3>Summary</h3>
+
+<p>That&rsquo;s all for today. Latest source code is available <a href="https://bitbucket.org/tdziurko/item-directory/src">here</a> next to both changesets to view and analyse  <a href="https://bitbucket.org/tdziurko/item-directory/changeset/45020512e60b">(editing location</a> and <a href="https://bitbucket.org/tdziurko/item-directory/changeset/9e6a2c58e4e7">removing location</a>).  Thank you for you time and as always, any comments, suggestions, etc are welcome :)</p>
+
+<p>Next episode will be released in a week or two maximum, so stay tuned!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Wicket tutorial series - building web application from scratch]]></title>
+    <link href="http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch/"/>
+    <updated>2011-03-12T21:53:55+01:00</updated>
+    <id>http://tomaszdziurko.pl/2011/03/wicket-tutorial-series-building-web-application-scratch</id>
+    <content type="html"><![CDATA[<p>This post aggregates the  series of Wicket tutorial articles from this blog. But as this tutorial is still not finished and new posts will be published in the near future, please return here again to find new parts or (simpler) just add my <a href="http://www.tomaszdziurko.pl/feed">RSS</a> to your reader.</p>
+
+<h3>Wicket tutorial series</h3>
+
+<ol>
+<li><p><a href="/2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/">Wicket Tutorial, part 1 – setting up project with Spring 3, JPA 2 and MySQL</a></p></li>
+<li><p><a href="/2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/">Wicket Tutorial, part 2 – adding common layout to the project</a></p></li>
+<li><p><a href="/2011/02/wicket-tutorial-part-3-form-application/">Wicket Tutorial, part 3 – first form in our application</a></p></li>
+<li><p><a href="/2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/">Wicket Tutorial, part 4 – custom validator for unique entity name</a></p></li>
+<li><p><a href="/2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/">Wicket tutorial, part 5 – generic unique entity validator</a></p></li>
+<li><p><a href="/2011/03/wicket-tutorial-part-6-listing-locations-simple-manner/">Wicket Tutorial, part 6 – listing locations in a simple manner</a></p></li>
+<li><p><a href="/2011/05/wicket-tutorial-part-7-editing-and-removing-item-locations/">Wicket Tutorial, part 7 – editing and removing item locations</a></p></li>
+<li><p><a href="/2011/06/wicket-tutorial-part-8-adding-internationalization-support/">Wicket Tutorial, part 8 &ndash; adding internationalization support</a></p></li>
+<li><p><a href="/2011/07/wicket-tutorial-part-9-storing-loading-user-preferences-cookies/">Wicket Tutorial, part 9 – storing and loading user preferences from cookies</a></p></li>
+</ol>
+
+
+<p>You might also be interested in post <a href="/2010/02/wicket-useful-links/">Wicket – useful links</a> with other good tutorials, presentations and tools I found useful while learning and using Wicket.</p>
+]]></content>
+  </entry>
+  
+</feed>

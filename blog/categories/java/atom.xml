@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: java | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2016-12-12T22:32:01+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Podsumowanie ankiety o JVM Bloggers]]></title>
+    <link href="http://tomaszdziurko.pl/2016/03/podsumowanie-ankiety-o-jvm-bloggers/"/>
+    <updated>2016-03-06T09:10:00+01:00</updated>
+    <id>http://tomaszdziurko.pl/2016/03/podsumowanie-ankiety-o-jvm-bloggers</id>
+    <content type="html"><![CDATA[<p>JVM Bloggers &ndash; ankieta i głos ludu kodującego</p>
+
+<!-- more -->
+
+
+<pre><code>Dear reader, 
+this post is written in Polish as it summarizes a survey conducted in developers 
+community in Poland. Questions were in Polish, answers are in Polish so logically 
+it makes sense to comment them in Polish as well.
+</code></pre>
+
+<br/>
+
+
+<p>Dwa tygodnie temu przygotowałem ankietę dotyczącą projektu <a href="https://github.com/tdziurko/jvm-bloggers">JVM Bloggers</a> i poprosiłem o jej wypełnienie programistów z naszej społeczności.
+Na podstawie odpowiedzi chciałem się dowiedzieć o tym co ludzie sądzą o samym pomyśle, jakie mają odczucia wobec niektórych jego elementów oraz które
+z planowanych nowych funkcjonalności są dla nich ważne, a które zupełnie zbędne. Liczyłem też na parę ciekawych pomysłów, które pojawią się w odpowiedziac na pytania otwarte.
+I jak się okazuje, nie zawiodłem się :)</p>
+
+<p>Po zebraniu 81 odpowiedzi, przyszła pora na podsumowanie, a ponieważ projekt jest open source to wyniki ankiety też mogą być jawne :)</p>
+
+<h1>Odbiór projektu</h1>
+
+<p>Zaraz po starcie projektu miałem trochę wątpliwości, że jednak może to jest zupełnie <em>bes sęsu</em>, ale patrząc na ogólny odbiór JVM Bloggers,
+chyba nie jest tak źle, bo <strong>90,1%</strong> osób ocenia projekt jako <em>Fajny</em> lub <em>Bardzo fajny</em>.</p>
+
+<p><img class="center" src="/images/blog/2016/03/general_reception.png" width="900"></p>
+
+<h1>Sekcja Varia</h1>
+
+<p>Ten element nie był już oceniany tak dobrze (58% osób uważa, że jest <em>Fajna</em> lub <em>Bardzo fajna</em>), ale mniej jest również osób, które uważają, że <em>Varia</em> jest zbędna (tylko 3,7%).
+Dla sporej części Varia <em>po prostu jest</em> :)</p>
+
+<p><img class="center" src="/images/blog/2016/03/varia_reception.png" width="900"></p>
+
+<h1>Ocena pomysłów na nowe funkcjonalności</h1>
+
+<p>Główną częścią ankiety były pytania na temat propozycji nowych funkcjonalności, które z czasem będa dodawane do projektu.</p>
+
+<p><img class="center" src="/images/blog/2016/03/global_rss.png" width="900"></p>
+
+<p><img class="center" src="/images/blog/2016/03/most_commented_posts.png" width="900"></p>
+
+<p><img class="center" src="/images/blog/2016/03/most_read_posts.png" width="900"></p>
+
+<p><img class="center" src="/images/blog/2016/03/most_rt_likes_tweets.png" width="900"></p>
+
+<p><img class="center" src="/images/blog/2016/03/website_with_all_editions.png" width="900"></p>
+
+<p>Jak widać dwie najbardziej przydatne rzeczy okiem uczestników ankiety to zbiorczy RSS ze wszystkimi wpisami oraz strona
+z najnowszym oraz archiwalnymi wydaniami newslettera. Pozostałe rzeczy cieszyły się mniejszą, ale tylko o kilka procent, przychylnością :)</p>
+
+<h1>Integracja z Social Media</h1>
+
+<p>Trochę mnie to zaskoczyło, ale okazało się, że integracja z Social Media raczej nie jest potrzebna i ludzie wolą otrzymywać zbiorczo
+informację na maila (lub mieć RSS0a niż być bombardowani powiadomieniami na FB/Twitterze/G+</p>
+
+<p>Wyniki ankiety pokazały też, że Google Plus faktycznie umiera, bo prawie nikt z tego regularnie nie korzysta.</p>
+
+<p><img class="center" src="/images/blog/2016/03/publication_on_twitter.png" width="700"></p>
+
+<p><img class="center" src="/images/blog/2016/03/publication_on_fb.png" width="700"></p>
+
+<p><img class="center" src="/images/blog/2016/03/publication_on_gplus.png" width="700"></p>
+
+<h1>Pytania otwarte</h1>
+
+<p>Jak to najczęściej bywa, najwięcej ciekawych rzeczy pojawiło się w odpowiedziach na pytania otwarte. Poniżej moje komentarze do niektórych wypowiedzi:</p>
+
+<ul>
+<li><em>&ldquo;projekt miał dotyczyć polskich blogów, a już pojawił się Spring Blog, który chyba wszyscy zainteresowani i tak subskrybują, ida tą drogą za chwile będą jeszcze blogi Oracle, IntelliJ, etc&rdquo;</em></li>
+</ul>
+
+
+<p>mój komentarz: Blog Springa pojawił się tylko dlatego, że czasami pisze tam Polak (<a href="http://toomuchdocing.com">Marcin Grzejszczak</a>), który pracuje w Pivotalu. Pozostałe wpisy nie przechodzą moderacji.</p>
+
+<ul>
+<li><em>&ldquo;nie wszystkie wpisy techniczne ze śledzonych blogów sa publikowane przez co jesli wiem, że ktoś publikuje ciekawe wpisy techniczne niedotyczące Javy to i tak trzymam jego blog w moich RSSach&rdquo;</em></li>
+</ul>
+
+
+<p>mój komentarz: blogi programistów nie sa moderowane poza przypadkami jakichś mocno politycznych/mało cenzuralnych wpisów. Wszystko poza nimi dotychczas wpadało do newslettera.</p>
+
+<ul>
+<li><p>Zbiorczy RSS i strona z aktualnym i poprzednimi wydaniami newslettera &ndash; to są dwie rzeczy, które chcemy
+zaimplementować w pierwszej kolejności. Jest już nawet domena <a href="http://jvm-bloggers.com">http://jvm-bloggers.com</a> :)</p></li>
+<li><p>Kilka osób zaproponowało przeniesienie sekcji &ldquo;Varia&rdquo; na dół. Może to jest dobry pomysł, chociaż wtedy mało kto może do niej dotrzeć :) Co o tym sądzicie?</p></li>
+<li><p>Głosowanie na fajne posty: to wymaga trochę więcej czasu i kodowania i nie wiem czy naprawdę warto coś takiego robić.</p></li>
+</ul>
+
+
+<h1>Podsumowanie</h1>
+
+<p>Wszystkie odpowiedzi na pyt. otwarte można zobaczyć pod <a href="http://bit.ly/1RuX3z5">tym linkiem</a> (można komentować). Ciągle szukamy też osób,
+które chciałyby pomóc w kodowaniu :) Więcej info oraz kontakt na <a href="https://github.com/tdziurko/jvm-bloggers">GitHubie</a>.</p>
+
+<p>A Wy co sądzicie o wynikach ankiety? Co sądzicie o planowanych funkcjonalnościach? Zachęcam do komentowania tutaj lub w GoogleDocs.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[My impressions after Advanced Data Structures at Coursera]]></title>
+    <link href="http://tomaszdziurko.pl/2016/02/coursera-advanced-data-structures-summary/"/>
+    <updated>2016-02-22T11:00:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2016/02/coursera-advanced-data-structures-summary</id>
+    <content type="html"><![CDATA[<p>Short summary after I have finished &ldquo;Advanced Data Structures in Java&rdquo; at Coursera</p>
+
+<!-- more -->
+
+
+<p>Online course <a href="https://www.coursera.org/learn/advanced-data-structures/">&ldquo;Advanced Data Structures in Java&rdquo;</a> at Coursera have finished last week and I felt
+that after these cool five weeks it is worth to recap and summarise my impressions.</p>
+
+<p><img class="center" src="/images/blog/2016/02/graphs.png" width="900" height="600">
+<em>image source: <a href="http://lin-ear-th-inking.blogspot.com/2013/05/flight-paths-in-jeql-redux.html">http://lin-ear-th-inking.blogspot.com</a></em></p>
+
+<h1>Course Content</h1>
+
+<p>At start, do not be mislead by course name. It is not about all advanced data structures what would be a very broad topic, but about graphs,
+searching algorithms and path calculations.</p>
+
+<p>During the first week we have learnt about data structures that can be used to represent graphs &ndash; Adjacency Matrix and Adjacency
+List &ndash; and what are best use cases to choose each of them. Next we had to create a class hierarchy for map search engine to be used as
+a framework during the rest of our assignments. Assignment from this week also required to implement <a href="https://en.wikipedia.org/wiki/Breadth-first_search">Breadth-first Search</a>
+(BFS) algorithm. <a href="https://en.wikipedia.org/wiki/Depth-first_search">DFS</a> was also covered but we have not coded it
+in our assignments as it can not be used to find shortest paths.</p>
+
+<p>Third week was about implementing <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra</a> and
+<a href="https://en.wikipedia.org/wiki/A*_search_algorithm">A-Star</a> algorithms and how they can be created using BFS as a base. Using BFS as a starting point
+helped me to understand these algorithms much faster. Fourth week was theoretical one, only one without an assignment. So there were no coding but more lectures about
+<a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">Travelling Salesman Problem</a>, NP Complete and NP Hard problems and different types
+of graphs (Eulerian, Hamiltonian).</p>
+
+<p>Final week was the most creative one as we were asked to implement an extension to any of algorithms we have learnt about. We could extend A*
+or Dijkstra to use not only distance but also road type or speed limits to find the fastest route or we could try to improve speed of any of these algorithms or&hellip;
+or we could create completely original extension. I have chosen to implement something I called &ldquo;Route Calculation Cache&rdquo;, quote from my submission:</p>
+
+<p><blockquote><p></p></p><p><p>My extension remembers calculated routes and when another user wants to find similar route, extension will retrieve<br/>this stored route instead of starting duplicated and extensive calculation. This will decrease execution time<br/>and user will see routes in a shorter time.</p></p><p><p></p></blockquote></p>
+
+<p>And after that course ended after five weeks with graphs.</p>
+
+<h1>My impressions</h1>
+
+<ul>
+<li><p>Sophisticated algorithms are not the thing we use frequently at work so it was very funny feeling to
+learn again stuff that I was forced to memorize several years ago at university. Obviously now I was more motivated
+so learning was more enjoyable process than when I was a young student.</p></li>
+<li><p>Test datasets can be obtained for any area using provided application so everyone was able to test A* or Dijkstra
+using streets from their neighbourhood. You could check if your route to work is optimal or not ;) Below fragment of my home city
+with calculated example route:</p></li>
+</ul>
+
+
+<p><img class="center" src="/images/blog/2016/02/plock_dijkstra.png" width="700" height="520"></p>
+
+<ul>
+<li><p>Peer reviews. Our solutions for Week3 and (partly) Week5 were reviewed by other developers attending this course. At first
+I was not convinced that it will bring any value to my learning process, but it appeared that comparing how
+people from different countries and with different backgrounds designed classes hierarchy to solve same problem
+was an interesting experience. I saw approaches similar to mine but also completely different ones but still valid.
+Another topic is different approach to documenting code: some developers shared my view and used comments only where it
+was really, really necessary and tried to write self-explanatory code. But in some people&rsquo;s solutions I saw
+as many lines of documentation as lines of code :)</p></li>
+<li><p>Good peer pressure: because I have advertised this course at <a href="https://github.com/tdziurko/jvm-bloggers/">JVM Bloggers</a>
+newsletter I was motivated to graduate :) And the more people I know tweeted that they are joining, the more motivated
+I was to complete assignments week by week. Discussing about course with developers from my company helped a lot too.
+Generally this is one of the finest features of online courses: motivating others and getting motivation :)</p></li>
+</ul>
+
+
+<h1>Wrap up</h1>
+
+<p>I am happy that I have enrolled &ldquo;Advanced Data Structures in Java&rdquo;. I have refreshed some long forgotten
+knowledge about graph structures, learnt a lot too so definitely it was time well spent. Also a satisfaction after
+successfully finishing a five-weeks long course is a nice feeling.</p>
+
+<p>And what about you? What are you thoughts about this course or online courses in general?</p>
+]]></content>
+  </entry>
+  
+</feed>

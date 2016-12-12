@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: general | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/general/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2016-12-12T22:32:01+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Time to summarize my 2015]]></title>
+    <link href="http://tomaszdziurko.pl/2016/01/time-to-summarize-my-2015/"/>
+    <updated>2016-01-06T11:00:10+01:00</updated>
+    <id>http://tomaszdziurko.pl/2016/01/time-to-summarize-my-2015</id>
+    <content type="html"><![CDATA[<p>2015 passed away, we are one year older :)</p>
+
+<!-- more -->
+
+
+<p>It&rsquo;s January 2016 &ndash; a month to make new year&rsquo;s resolutions and create summaries so I wanted to look back at 2015 and think about what happened and what changed during last year in my life.</p>
+
+<h1>Speaker</h1>
+
+<p>The biggest change is that I have become a public speaker! This was a long awaited achievement to unlock and for last 2 or 3 years many people were asking me when I am going to speak somewhere
+(yes I am looking at you <a href="http://szimano.org/">Szimano</a> and <a href="http://www.warski.org/blog/">Adam</a> :) ) and finally, finally I made it.</p>
+
+<p>It started with a debut at Warsaw JUG meetup, then I visited Torun JUG and finally my first presentation at a conference, the famous and very popular <a href="http://2015.confitura.pl/">Confitura</a>. All three talks were extremely terrifying to me, I even compared my stage fright with
+a jump from the plane I once did and I am still not sure which one was more stressful :)</p>
+
+<p><img class="center" src="/images/blog/2016/01/jump2.jpg" width="600" height="450"></p>
+
+<p>But afterwards it appeared that my presentation was not so bad and was voted as <strong>2nd best</strong> during Confitura. Yay :)</p>
+
+<p>So if you are thinking about giving a talk at local JUG or any other meetup, just do it! It is an awesome experience and you will learn a lot, especially about yourself, your emotions and how to deal with them.</p>
+
+<p><strong>Hesitate no more, because&hellip;</strong></p>
+
+<p><img class="center" src="/images/blog/2016/01/speaker.png" width="600" height="450"></p>
+
+<p>Whole 2015 finished with two talk at Java User Group meetups and four talks at various IT conferences. Not too bad, not too bad Mr Tomek :)</p>
+
+<h1>JVM Bloggers</h1>
+
+<p>I bet you have an idea for a interesting pet project that came to your mind while, while ago and is still somewhere in your head. I have plenty of them too, but in 2015 I finally converted one of them into a working system.</p>
+
+<p><a href="https://github.com/tdziurko/jvm-bloggers">JVM Bloggers</a> is an application with goal to promote blogging JVM programmers in Poland by sharing info about new blog posts with as many Polish developers as possible.
+Every Friday at 12AM (it&rsquo;s almost weekend, isn&rsquo;t it? :) ) JVM Bloggers sends a summary with new posts from last seven days to mailing lists of every JUG in Poland. So far reception is very good, some people even started to blog more regularly :)</p>
+
+<p>Of course there are many cool features waiting to be implemented, but MVP is live and that is one of my successes in 2015.</p>
+
+<h1>Work</h1>
+
+<p>2015 was a &ldquo;Microservices Hype&rdquo; year, everyone wanted to listen, read and even implement something related to microservices. I was lucky to be a part of the team that started with a Proof of Concept of new microservices approach
+in a large financial institution.</p>
+
+<p>After that we could start actually implementing various microservices for our client. So it was really, really interesting year with many new topics, architectural decision and challenges.
+I have learnt a lot about designing reliable systems working in a complicated ecosystem and, of course, I had a chance to touch <em>&ldquo;The Legendary Monolith&rdquo; &trade;</em> which probably exists in every company migrating to microservices :)</p>
+
+<p>I was involved in creating <a href="https://github.com/4finance/micro-infra-spring">micro-infra-spring</a> library that helps to integrate, test and create microservice ecosystems working with Spring and Spring Boot. Part of our code even
+landed in <a href="http://cloud.spring.io/spring-cloud-zookeeper/">Spring Cloud Zookeeper</a> thanks to tireless <a href="http://toomuchcoding.blogspot.com/">Marcin Grzejszczak</a>.</p>
+
+<h1>Other stuff and some numbers</h1>
+
+<ul>
+<li><p>despite my irregular <a href="https://twitter.com/TomaszDziurko">Twitter activity</a>, number of my followers surprisingly increased by 250 people and is closer to 1000 than I have ever expected :)</p></li>
+<li><p>I have produced <strong>ONLY</strong> four blog posts last year, definitely thing to improve in 2016 and very poor result when compared to 10 posts in 2014
+(including thought-provoking and very popular &ndash; 61 comments, 1st place at reddit for some time &ndash; <a href="http://tomaszdziurko.pl/2014/09/why-sometimes-i-hate-myself/">Why sometimes I hate myself</a></p></li>
+<li><p>my presentation <a href="http://www.slideshare.net/tomaszdziurko/google-guava-almost-everything-you-need-to-know">&ldquo;Google guava &ndash; almost everything you need to know&rdquo;</a> reached over 44k views at Slideshare, kind of useful stuff if you&rsquo;re stuck with Java 1.6 or 1.7</p></li>
+<li><p>despite decreased blogging activity my blog had over 110 000 views</p></li>
+<li><p>I didn&rsquo;t manage to fulfill my <a href="https://www.goodreads.com/user_challenges/2004136">2015 Reading Challenge</a>, but among 15 read titles I&rsquo;ve read two really very good (and also very large) ones:
+a historical one <a href="https://www.goodreads.com/book/show/13528287-the-second-world-war">The Second World War</a>, the biggest single book (almost 1000 pages) I was ever able to finish and
+<a href="https://www.goodreads.com/book/show/11468377-thinking-fast-and-slow">Thinking, Fast and Slow</a> a very, very interesting book describing how our mind works and how it can be easily deceived to make different, sometimes wrong, decisions.
+So despite not reading planned 24 books it was still quite good reading year for me.</p></li>
+</ul>
+
+
+<h1>Plans for 2016</h1>
+
+<p>There are some, but I am not going to make any New Year&rsquo;s Resolutions :) I want to be more regular in the most of my already existing activities, read more,
+pick books more carefully (but this is a topic for a separate post) and learn some new stuff while trying to help <a href="http://warszawa.jug.pl/">Warsaw JUG</a>
+running and sharing knowledge with developers in Poland.</p>
+]]></content>
+  </entry>
+  
+</feed>

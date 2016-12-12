@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: hiring | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/hiring/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2016-12-12T22:32:01+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Speaker at Java Developers' Day 2015]]></title>
+    <link href="http://tomaszdziurko.pl/2015/10/speaker-at-java-developers-day-2015/"/>
+    <updated>2015-10-07T03:00:10+02:00</updated>
+    <id>http://tomaszdziurko.pl/2015/10/speaker-at-java-developers-day-2015</id>
+    <content type="html"><![CDATA[<p>Showing 1011 mistakes developers make during recruitment process</p>
+
+<!-- more -->
+
+
+<p><img class="center" src="/images/blog/2015/10/jdd_speaker.png" width="400" height="400"></p>
+
+<p>Next week I will be speaking at <a href="http://15.jdd.org.pl">Java Developer&rsquo;s Day 2015</a> in Cracow. So if you are planning to change your job in the near future or just want to know what mistakes developers make during
+recruitment process, fell invited to my talk (in Polish unfortunately) during <a href="http://15.jdd.org.pl/agenda/agenda/13/">2nd day of conference, at 9am</a>.</p>
+
+<p>During my presentation I will tell you about the most frequent and the most ridiculous mistakes during recruitment process in <a href="http://softwaremill.com">SoftwareMill</a> where I am one of the people responsible for hiring talented developers.
+Surprisingly these errors quite often could be mapped to mistakes that developers make at work: either when they code or during other activities during work hours. So expect rather light talk without hardcore coding, with plenty of jokes and
+funny situations from real life of developer-recruiter.</p>
+
+<p><img class="center" src="/images/blog/2015/10/jdd_talk_start.png" width="900" height="600"></p>
+
+<h2>Plans for the future</h2>
+
+<p>But if you have different plans or simply can&rsquo;t attend JDD, I will be presenting this talk at Poznan JUG in January 2016 and probably also in Łódź and Warsaw in next few months. So if you want to discuss or ask something, please catch me during these events.</p>
+
+<p>See you at <a href="http://15.jdd.org.pl">JDD</a>!</p>
+]]></content>
+  </entry>
+  
+</feed>

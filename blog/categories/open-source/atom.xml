@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: open-source | Tomasz Dziurko]]></title>
+  <link href="http://tomaszdziurko.pl/blog/categories/open-source/atom.xml" rel="self"/>
+  <link href="http://tomaszdziurko.pl/"/>
+  <updated>2016-12-12T22:32:01+01:00</updated>
+  <id>http://tomaszdziurko.pl/</id>
+  <author>
+    <name><![CDATA[Tomasz Dziurko]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Podsumowanie ankiety o JVM Bloggers]]></title>
+    <link href="http://tomaszdziurko.pl/2016/03/podsumowanie-ankiety-o-jvm-bloggers/"/>
+    <updated>2016-03-06T09:10:00+01:00</updated>
+    <id>http://tomaszdziurko.pl/2016/03/podsumowanie-ankiety-o-jvm-bloggers</id>
+    <content type="html"><![CDATA[<p>JVM Bloggers &ndash; ankieta i głos ludu kodującego</p>
+
+<!-- more -->
+
+
+<pre><code>Dear reader, 
+this post is written in Polish as it summarizes a survey conducted in developers 
+community in Poland. Questions were in Polish, answers are in Polish so logically 
+it makes sense to comment them in Polish as well.
+</code></pre>
+
+<br/>
+
+
+<p>Dwa tygodnie temu przygotowałem ankietę dotyczącą projektu <a href="https://github.com/tdziurko/jvm-bloggers">JVM Bloggers</a> i poprosiłem o jej wypełnienie programistów z naszej społeczności.
+Na podstawie odpowiedzi chciałem się dowiedzieć o tym co ludzie sądzą o samym pomyśle, jakie mają odczucia wobec niektórych jego elementów oraz które
+z planowanych nowych funkcjonalności są dla nich ważne, a które zupełnie zbędne. Liczyłem też na parę ciekawych pomysłów, które pojawią się w odpowiedziac na pytania otwarte.
+I jak się okazuje, nie zawiodłem się :)</p>
+
+<p>Po zebraniu 81 odpowiedzi, przyszła pora na podsumowanie, a ponieważ projekt jest open source to wyniki ankiety też mogą być jawne :)</p>
+
+<h1>Odbiór projektu</h1>
+
+<p>Zaraz po starcie projektu miałem trochę wątpliwości, że jednak może to jest zupełnie <em>bes sęsu</em>, ale patrząc na ogólny odbiór JVM Bloggers,
+chyba nie jest tak źle, bo <strong>90,1%</strong> osób ocenia projekt jako <em>Fajny</em> lub <em>Bardzo fajny</em>.</p>
+
+<p><img class="center" src="/images/blog/2016/03/general_reception.png" width="900"></p>
+
+<h1>Sekcja Varia</h1>
+
+<p>Ten element nie był już oceniany tak dobrze (58% osób uważa, że jest <em>Fajna</em> lub <em>Bardzo fajna</em>), ale mniej jest również osób, które uważają, że <em>Varia</em> jest zbędna (tylko 3,7%).
+Dla sporej części Varia <em>po prostu jest</em> :)</p>
+
+<p><img class="center" src="/images/blog/2016/03/varia_reception.png" width="900"></p>
+
+<h1>Ocena pomysłów na nowe funkcjonalności</h1>
+
+<p>Główną częścią ankiety były pytania na temat propozycji nowych funkcjonalności, które z czasem będa dodawane do projektu.</p>
+
+<p><img class="center" src="/images/blog/2016/03/global_rss.png" width="900"></p>
+
+<p><img class="center" src="/images/blog/2016/03/most_commented_posts.png" width="900"></p>
+
+<p><img class="center" src="/images/blog/2016/03/most_read_posts.png" width="900"></p>
+
+<p><img class="center" src="/images/blog/2016/03/most_rt_likes_tweets.png" width="900"></p>
+
+<p><img class="center" src="/images/blog/2016/03/website_with_all_editions.png" width="900"></p>
+
+<p>Jak widać dwie najbardziej przydatne rzeczy okiem uczestników ankiety to zbiorczy RSS ze wszystkimi wpisami oraz strona
+z najnowszym oraz archiwalnymi wydaniami newslettera. Pozostałe rzeczy cieszyły się mniejszą, ale tylko o kilka procent, przychylnością :)</p>
+
+<h1>Integracja z Social Media</h1>
+
+<p>Trochę mnie to zaskoczyło, ale okazało się, że integracja z Social Media raczej nie jest potrzebna i ludzie wolą otrzymywać zbiorczo
+informację na maila (lub mieć RSS0a niż być bombardowani powiadomieniami na FB/Twitterze/G+</p>
+
+<p>Wyniki ankiety pokazały też, że Google Plus faktycznie umiera, bo prawie nikt z tego regularnie nie korzysta.</p>
+
+<p><img class="center" src="/images/blog/2016/03/publication_on_twitter.png" width="700"></p>
+
+<p><img class="center" src="/images/blog/2016/03/publication_on_fb.png" width="700"></p>
+
+<p><img class="center" src="/images/blog/2016/03/publication_on_gplus.png" width="700"></p>
+
+<h1>Pytania otwarte</h1>
+
+<p>Jak to najczęściej bywa, najwięcej ciekawych rzeczy pojawiło się w odpowiedziach na pytania otwarte. Poniżej moje komentarze do niektórych wypowiedzi:</p>
+
+<ul>
+<li><em>&ldquo;projekt miał dotyczyć polskich blogów, a już pojawił się Spring Blog, który chyba wszyscy zainteresowani i tak subskrybują, ida tą drogą za chwile będą jeszcze blogi Oracle, IntelliJ, etc&rdquo;</em></li>
+</ul>
+
+
+<p>mój komentarz: Blog Springa pojawił się tylko dlatego, że czasami pisze tam Polak (<a href="http://toomuchdocing.com">Marcin Grzejszczak</a>), który pracuje w Pivotalu. Pozostałe wpisy nie przechodzą moderacji.</p>
+
+<ul>
+<li><em>&ldquo;nie wszystkie wpisy techniczne ze śledzonych blogów sa publikowane przez co jesli wiem, że ktoś publikuje ciekawe wpisy techniczne niedotyczące Javy to i tak trzymam jego blog w moich RSSach&rdquo;</em></li>
+</ul>
+
+
+<p>mój komentarz: blogi programistów nie sa moderowane poza przypadkami jakichś mocno politycznych/mało cenzuralnych wpisów. Wszystko poza nimi dotychczas wpadało do newslettera.</p>
+
+<ul>
+<li><p>Zbiorczy RSS i strona z aktualnym i poprzednimi wydaniami newslettera &ndash; to są dwie rzeczy, które chcemy
+zaimplementować w pierwszej kolejności. Jest już nawet domena <a href="http://jvm-bloggers.com">http://jvm-bloggers.com</a> :)</p></li>
+<li><p>Kilka osób zaproponowało przeniesienie sekcji &ldquo;Varia&rdquo; na dół. Może to jest dobry pomysł, chociaż wtedy mało kto może do niej dotrzeć :) Co o tym sądzicie?</p></li>
+<li><p>Głosowanie na fajne posty: to wymaga trochę więcej czasu i kodowania i nie wiem czy naprawdę warto coś takiego robić.</p></li>
+</ul>
+
+
+<h1>Podsumowanie</h1>
+
+<p>Wszystkie odpowiedzi na pyt. otwarte można zobaczyć pod <a href="http://bit.ly/1RuX3z5">tym linkiem</a> (można komentować). Ciągle szukamy też osób,
+które chciałyby pomóc w kodowaniu :) Więcej info oraz kontakt na <a href="https://github.com/tdziurko/jvm-bloggers">GitHubie</a>.</p>
+
+<p>A Wy co sądzicie o wynikach ankiety? Co sądzicie o planowanych funkcjonalnościach? Zachęcam do komentowania tutaj lub w GoogleDocs.</p>
+]]></content>
+  </entry>
+  
+</feed>
