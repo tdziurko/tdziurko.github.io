@@ -4,7 +4,7 @@ title: Lobotomy to your object oriented thinking - "Elegant Objects, volume 1" b
 description: My impressions after reading this popular but quite controversial book about object-oriented programming
 date: 2017-07-26
 author: tomek
-image: '/images/homer-brain.jpg'
+image: '/images/elegant-objects.png'
 tags: [Reading, Review]
 tags_color: '#477690'
 ---
@@ -20,7 +20,8 @@ it will challenge what you think a proper object-oriented design is and it will 
 so called "good practices" you have seen during your career. Fasten your belts, move your coffee mug away from your 
 keyboard and keep reading.
 
-![Elegant objects book cover]({{site.baseurl}}/images/elegant-objects-cover.jpg)
+![Lobotomy to your brain]({{site.baseurl}}/images/homer-brain.jpg)
+*Image from [http://simpsons.wikia.com](http://simpsons.wikia.com)*
 
 ## Content
 
