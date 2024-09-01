@@ -1,7 +1,7 @@
 ---
 username: tomek
 name: Tomasz Dziurko
-image: '/images/01-1.jpg'
+image: '/images/tomek.jpg'
 cover:
 location: Poland
 website: https://tomaszdziurko.com
