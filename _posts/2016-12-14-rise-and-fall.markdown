@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Rise and Fall
-description: One day you can rise, one day you can fall
+description: Short story about one football (or maybe IT) team
 date: 2016-12-14 15:01:35
 author: tomek
 image: '/images/unsure.png'
