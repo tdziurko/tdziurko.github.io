@@ -31,7 +31,7 @@ menu__settings:
 hero:
   enable: true
   hero__title: Tomasz Dziurko - personal website
-  hero__description: Sharing my (still limited) knowledge and experience as a VP of Engineering, voicing my thoughts, noting something to future myself and everything I find vaulable to share over Internet.
+  hero__description: Sharing my (still limited but growing) knowledge and experience, voicing my thoughts, noting things for my future self, and posting everything I find valuable on the Internet.
   hero__image: # You can add hero image. For example '/images/06.jpg'
 
 
@@ -92,7 +92,7 @@ mailchimp__settings:
 
 #-------------------------------
 # Footer Settings
-footer__description: Sharing my (still limited) knowledge and experience, voicing my thoughts, noting something to future myself and everything I find vaulable to share over Internet.
+footer__description: Sharing my (still limited but growing) knowledge and experience, voicing my thoughts, noting things for my future self, and posting everything I find valuable on the Internet.
 
 
 # Social Links
