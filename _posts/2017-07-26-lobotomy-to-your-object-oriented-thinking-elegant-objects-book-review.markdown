@@ -56,7 +56,7 @@ and not a fully-independent entity that is capable of acting on its own
 * Avoid mocking hell by using no mocks, provide default (fake) implementations of all interfaces that could be later used in your tests. This way other developers won't have to setup everything in each test, they could simply use fake implementations that need to be written once.
 * Avoid mutable state.
 
-> Mutable objects are an abuse of the entire object oriented paradigm.
+> Mutable objects are an abuse of the entire object-oriented paradigm.
 
 * Avoid temporary coupling between lines: with immutable objects you do not have two separate phases of 
 object instantiation and object initialization (first "new", then multiple setters) so we can not 
