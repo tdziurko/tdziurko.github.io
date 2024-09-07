@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why sometimes I hate myself
-description: 
+description: On being too harsh to yourself
 date: 2014-09-16
 author: tomek
 image: '/images/sadness.jpg'

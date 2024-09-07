@@ -5,7 +5,7 @@ description: Short story about one football (or maybe IT) team
 date: 2016-12-14 15:01:35
 author: tomek
 image: '/images/unsure.png'
-tags: [IT Management]
+tags: [IT Management, Random thoughts]
 tags_color: '#477690'
 ---
 
