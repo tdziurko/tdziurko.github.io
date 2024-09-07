@@ -89,7 +89,7 @@ and I should wait for him or someone else.
 
 Both situations are irritating interruptions. To limit their number you can simply:
 
-1. Disable notifications on almost all events in in Preferences –> Notifications window. 
+1. Disable notifications on almost all events in Preferences –> Notifications window. 
 I only have “user left/joined/disconnected your channel” enabled.
 2. Switch to “Default Text To Speech” under Preferences –> Notifications –> Sound Pack ![Text to Speech]({{site.baseurl}}/images/team_speak_text_to_speech-1.png)
 4. Download “Text to Speech” voice pack in your native language for your OS. This applies only 
@@ -109,7 +109,7 @@ All messages are configured in _settings.ini_ file located in your TeamSpeak ins
 (for example under OS X it is _/Applications/TeamSpeak3Client.app/ Contents/SharedSupport/sound/default_speech/settings.ini_).
 
 After these steps number of notifications is really small and those most important are self-descriptive 
-nstead of enigmatic User joined your channel.
+instead of enigmatic User joined your channel.
 
 ## Wrap up
 
