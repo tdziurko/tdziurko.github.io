@@ -11,7 +11,7 @@ tags_color: '#477690'
 
 Today I am going to share my experience with a website that changed the way I interact with books. I am a developer, 
 member of industry that is constantly changing, evolving and coining new ideas, new approaches and of course new 
-languages and frameworks. And this constant change forces us to learn new stuff and or course to read A LOT.
+languages and frameworks. And this constant change forces us to learn new stuff and of course to read **A LOT**.
 
 [Goodreads](https://goodreads.com) is a website for book readers helping them to track what they read and 
 recommend what they should pick next. I am so satisfied user that I have decided to share my positive 
