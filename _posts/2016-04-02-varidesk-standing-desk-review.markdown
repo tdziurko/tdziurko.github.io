@@ -2,7 +2,7 @@
 layout: post
 title: Varidesk – an Adjustable Standing Desk – Review
 description: My impressions after six months with Varidesk standing desk
-date: 2016-09-02
+date: 2016-04-02
 author: tomek
 image: '/images/varidesk_official.jpg'
 tags: [Remote Work, Productivity]
