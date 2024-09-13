@@ -6,7 +6,7 @@ date: 2017-07-26
 author: tomek
 image: '/images/elegant-objects.png'
 tags: [Reading, Review]
-tags_color: '#477690'
+tags_color: '#a149cb'
 ---
 > Step one in the transformation of a successful procedural developer into a successful object developer is a lobotomy.
 >

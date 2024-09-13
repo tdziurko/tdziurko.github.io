@@ -6,7 +6,7 @@ date: 2021-07-29 12:00:00
 author: tomek
 image: '/images/blogpost-holacracy-software-house.png'
 tags: [Company culture, IT Management, Remote work, Holacracy]
-tags_color: '#477690'
+tags_color: '#835F46'
 ---
 
 ## Part 2 of the interview with Tomek Dziurko, SoftwareMill's VP of Engineering

@@ -6,7 +6,7 @@ date: 2009-05-10
 author: tomek
 image: '/images/jpa-audit.png'
 tags: [Programming, Java]
-tags_color: '#477690'
+tags_color: '#a149cb'
 ---
 
 Recently for a first time  have to create in the application functionality to track changes in the database made by users. 

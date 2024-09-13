@@ -6,7 +6,7 @@ date: 2016-11-07
 author: tomek
 image: '/images/elon-musk-book-cover.png'
 tags: [Reading, Review]
-tags_color: '#477690'
+tags_color: '#b25642'
 ---
 
 From time to time I like to read a book about someone extraordinary, with great achievements in some areas that 

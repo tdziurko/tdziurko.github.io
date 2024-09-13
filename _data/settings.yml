@@ -16,14 +16,17 @@ menu__settings:
       url: '/blog/'
     - title: 'Videos'
       url: '/videos/'
-    - title: 'Pages'
-      submenu:
-      - url: '/about/'
-        title: 'About'
-      - url: '/contact/'
-        title: 'Contact'
-      - url: '/elements/'
-        title: 'Elements'
+    - url: '/about-me/'
+      title: 'About Me'
+    - url: '/contact/'
+      title: 'Contact'
+
+#    - title: 'Pages'
+#     - url: '/about-me/'
+#        title: 'About Me'
+#
+   #   - url: '/elements/'
+   #     title: 'Elements'
 
 
 #-------------------------------
@@ -31,7 +34,7 @@ menu__settings:
 hero:
   enable: true
   hero__title: Tomasz Dziurko - personal website
-  hero__description: Sharing my (still limited but growing) knowledge and experience, voicing my thoughts, noting things for my future self, and posting everything I find valuable on the Internet.
+  hero__description: Currently working as a VP of Engineering at SoftwareMill, 100% remote software consulting company. On this blog I am sharing my thoughts, noting things for my future self, and writing about everything I find valuable on the Internet.
   hero__image: # You can add hero image. For example '/images/06.jpg'
 
 
@@ -39,7 +42,7 @@ hero:
 # Author Global Settings
 author:
   author__name: Tomasz Dziurko
-  author__bio: Currenlty working as a VP of Engineering, dedicated to helping engineers to grow and develop their skills, leveraging my robust technical background amassed over 15 years blended with pretty good interpersonal skills :)
+  author__bio: Currently working as a VP of Engineering at SoftwareMill, 100% remote software consulting company. On this blog I am sharing my thoughts, noting things for my future self, and writing about everything I find valuable on the Internet.
   author__avatar: /images/01-1.jpg
 
 
@@ -63,7 +66,7 @@ videos__settings:
 # Tag Section Settings
 tag__settings:
   enable: true
-  tag: travel # To display the tag section, specify your favorite tag.
+  tag: reading # To display the tag section, specify your favorite tag.
 
 
 #-------------------------------
@@ -92,7 +95,7 @@ mailchimp__settings:
 
 #-------------------------------
 # Footer Settings
-footer__description: Sharing my (still limited but growing) knowledge and experience, voicing my thoughts, noting things for my future self, and posting everything I find valuable on the Internet.
+footer__description: Currently working as a VP of Engineering at SoftwareMill, 100% remote software consulting company. On this blog I am sharing my thoughts, noting things for my future self, and writing about everything I find valuable on the Internet.
 
 
 # Social Links
@@ -109,18 +112,18 @@ footer__menu__settings:
   menu__items:
     - title: 'Home'
       url: '/'
-    - title: 'About'
-      url: '/about/'
+    - title: 'About Me'
+      url: '/about-me/'
     - title: 'Contact'
       url: '/contact/'
-    - title: 'Elements'
-      url: '/elements/'
+  #- title: 'Elements'
+  #    url: '/elements/'
 
 
 #-------------------------------
 # Contact Settings
 contact:
-  email: tdziurko@gmail.com # Add your form_id
+  email: mpwaerww # Add your form_id
   description: Mria comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want. # Add a description of your form
 
 # NOTE

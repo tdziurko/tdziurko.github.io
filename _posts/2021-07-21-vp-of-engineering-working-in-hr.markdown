@@ -6,7 +6,7 @@ date: 2021-07-21 12:00:00
 author: tomek
 image: '/images/vp-of-eng.png'
 tags: [Company culture, IT Management, Remote work]
-tags_color: '#477690'
+tags_color: '#618770'
 ---
 
 ## Can VP of Engineering handle recruitment processes too?
