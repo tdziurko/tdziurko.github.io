@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Brzydka Pani od HR radzi, czyli 1011 błędów, które popełniają programiści
+title: Brzydka Pani od HR radzi, czyli 1011 błędów, które popełniają programiści - Confitura 2015
 description: Moja debiutancka, trochę poważna, trochę żartobliwa prezentacja na konferencji Confitura 2015 o błędach w rekrutacji, błędach w kodzie i jak programista-rekruter postrzega kandydata. Wybrana trzecią najlepszą prezentacją konferencji. 
 date: 2015-11-13 15:01:35 +0300
 author: tomek
