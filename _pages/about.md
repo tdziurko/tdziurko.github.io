@@ -11,7 +11,10 @@ for over 15 years I was a Software Engineer (Junior/Regular/Senior) and a Team L
 decided to widen my horizons and go back to school again. After extremely intensive two years, in 2024 I graduated 
 at MBA studies at [Kozminski University](https://www.kozminski.edu.pl/en), the #1 business school in Central and Eastern Europe. 
 
-More details about experience and carrer path on [My LinkedIn profile](https://www.linkedin.com/in/tomaszdziurko/).
+More details about experience and career path on [My LinkedIn profile](https://www.linkedin.com/in/tomaszdziurko/).
+
+PS: This website is still partially migrated from my older blog, so not all materials
+(especially blog posts from years 2010-2020) are here yet :)
 
 {:refdef: style="text-align: center;"}
 ![Tomasz Dziurko]({{site.baseurl}}/images/tomek-1-smaller.png)
