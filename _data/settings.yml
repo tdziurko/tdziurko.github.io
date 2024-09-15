@@ -137,4 +137,4 @@ disqus-identifier: anvod-studio-test # Add your shortname for Disqus Comment. Fo
 
 #-------------------------------
 # Google Analytics
-google-analytics: # Add your GA Tracking Id
+google-analytics: UA-8528065 # Add your GA Tracking Id
