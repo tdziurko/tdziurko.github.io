@@ -87,7 +87,7 @@ mailchimp__settings:
   enable: false
   mailchimp__title: Get interesting news
   mailchimp__description: Subscribe to our newsletter and we’ll send you the emails of latest posts.
-  mailchimp__identifier: frnla.us6.list-manage.com/subscribe/post?u=6314d69a3f315af7ce3fb00a0&amp;id=3038727cc3 # Add your MailChimp form identifier. For example - frnla.us6.list-manage.com/subscribe/post?u=6314d69a3f315af7ce3fb00a0&amp;id=3038727cc3
+  mailchimp__identifier: gmail.us21.list-manage.com/subscribe/post?u=8aeb9c31a5c97a3a5f9ff2740&amp;id=0e31fd7793&amp # Add your MailChimp form identifier. For example - gmail.us21.list-manage.com/subscribe/post?u=8aeb9c31a5c97a3a5f9ff2740&amp;id=0e31fd7793&amp
   mailchimp__input__text: Your email address
   mailchimp__button__text: Subscribe
   mailchimp__background__image: /images/subscribe-bg.jpg
@@ -100,12 +100,12 @@ footer__description: Currently working as a VP of Engineering at SoftwareMill, 1
 
 # Social Links
 social:
-- {icon: "twitter", link: "https://twitter.com/TomaszDziurko"}
-- {icon: "bluesky", link: "https://bsky.app/profile/tomasz-dziurko.bsky.social"}
-- {icon: "linkedin", link: "https://www.linkedin.com/in/tomaszdziurko/"}
+- {icon: "fa-brands fa-x-twitter", link: "https://x.com/TomaszDziurko"}
+- {icon: "fa-brands fa-bluesky", link: "https://bsky.app/profile/tomasz-dziurko.bsky.social"}
+- {icon: "fa-brands fa-linkedin", link: "https://www.linkedin.com/in/tomaszdziurko/"}
 
-# Example of adding a new link to the footer - {icon: "instagram", link: "https://instagram.com"}
-# Other icons can be found at https://ionicons.com/v4/
+# Example of adding a new link to the footer - {icon: "instagram", link: "fa-brands fa-instagram"}
+# Other icons can be found at https://fontawesome.com/icons
 
 
 # Footer Navigation

@@ -68,7 +68,49 @@ A paragraph looks like this — Globally incubate standards compliant channels b
 
 ***
 
+## Callouts
 
+{: .note }
+Useful information that users should know, even when skimming content.
+
+{: .tip }
+Helpful advice for doing things better or more easily.
+
+{: .important }
+Key information users need to know to achieve their goal.
+
+{: .warning }
+Urgent info that needs immediate user attention to avoid problems.
+
+{: .caution }
+Advises about risks or negative outcomes of certain actions.
+
+```markdown
+{: .note }
+Useful information that users should know, even when skimming content.
+```
+
+```markdown
+{: .tip }
+Helpful advice for doing things better or more easily.
+```
+
+```markdown
+{: .important }
+Key information users need to know to achieve their goal.
+```
+
+```markdown
+{: .warning }
+Urgent info that needs immediate user attention to avoid problems.
+```
+
+```markdown
+{: .caution }
+Advises about risks or negative outcomes of certain actions.
+```
+
+***
 
 ## Syntax Highlighter
 
