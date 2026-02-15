@@ -4,7 +4,7 @@ title: Effective Java – make your code better – book review
 description:  
 date: 2009-07-26
 author: tomek
-image: '/images/effective-java-book-cover.png'
+image: '/images/book-effective.png'
 tags: [Reading]
 tags_color: '#8c8f8c'
 ---
