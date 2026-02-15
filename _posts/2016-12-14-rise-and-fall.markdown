@@ -6,7 +6,7 @@ date: 2016-12-14 15:01:35
 author: tomek
 image: '/images/unsure.png'
 tags: [IT Management, Random thoughts]
-tags_color: '#835F46'
+tags_color: '#449479'
 ---
 
 Far, far away from here there was a football league with many strong teams, some medium ones and a few struggling to survive. 

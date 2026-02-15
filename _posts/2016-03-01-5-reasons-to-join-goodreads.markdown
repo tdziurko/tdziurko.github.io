@@ -6,7 +6,7 @@ date: 2016-03-01
 author: tomek
 image: '/images/circle-library.jpeg'
 tags: [Reading]
-tags_color: '#835F46'
+tags_color: '#8c8f8c'
 ---
 
 Today I am going to share my experience with a website that changed the way I interact with books. I am a developer, 

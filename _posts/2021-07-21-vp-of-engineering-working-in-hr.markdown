@@ -4,9 +4,9 @@ title: VP of Engineering working in HR?
 description: First part of interview with me as a part of some external cooperation in SoftwareMill, company I work for.
 date: 2021-07-21 12:00:00
 author: tomek
-image: '/images/vp-of-eng.png'
+image: '/images/vpoe-cover.png'
 tags: [Company culture, IT Management, Remote work]
-tags_color: '#618770'
+tags_color: '#449479'
 ---
 
 ## Can VP of Engineering handle recruitment processes too?

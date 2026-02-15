@@ -6,7 +6,7 @@ date: 2016-09-02
 author: tomek
 image: '/images/headphones.png'
 tags: [Remote Work, Productivity]
-tags_color: '#477690'
+tags_color: '#814c9c'
 ---
 
 Communication is the key in any team working on software, this well-known fact is even more true in a company 

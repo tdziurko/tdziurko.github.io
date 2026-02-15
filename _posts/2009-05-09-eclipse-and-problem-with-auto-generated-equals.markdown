@@ -6,7 +6,7 @@ date: 2009-05-09
 author: tomek
 image: '/images/equals.png'
 tags: [Programming, Java]
-tags_color: '#b25642'
+tags_color: '#5fb05f'
 ---
 
 JSF table `<rich:dataTable>` was using HashMap to represent data. This Map contained objects collected from the 

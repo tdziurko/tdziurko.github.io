@@ -6,8 +6,8 @@ date: 2023-12-23 15:01:35 +0300
 author: tomek
 image: '/images/swiateczna-opowiesc.jpg'
 video_embed: https://www.youtube.com/embed/8do5qHNhH4c
-tags: [video, In Polish, Leadership]
-tags_color: '#b25642'
+tags: [Video, In Polish, Leadership]
+tags_color: '#449479'
 ---
 
 Tuż przed Świętami 2023, w ramach łapania oddechu pojawiłem się jako gość w podcaście [Osobowości IT](https://www.youtube.com/@OSOBOWOSCIIT) prowadzonym 

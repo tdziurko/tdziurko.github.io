@@ -5,8 +5,8 @@ description: (In Polish) Wrażenia z największej bezpłatnej konferencji o Javi
 date: 2009-07-07
 author: tomek
 image: '/images/equals.png'
-tags: [Java, Conferences]
-tags_color: '#477690'
+tags: [Conferences, Java]
+tags_color: '#aeb85f'
 ---
 
 Właśnie wróciłem z konferencji Javarsovia 2009. Ogólne wrażenia jak najbardziej pozytywne, dokładniejsza relacja poniżej. 

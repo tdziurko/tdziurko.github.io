@@ -6,7 +6,7 @@ date: 2016-04-02
 author: tomek
 image: '/images/varidesk_official.jpg'
 tags: [Remote Work, Productivity]
-tags_color: '#618770'
+tags_color: '#317b94'
 ---
 
 I was thinking about buying a standing desk for quite some time, but always when I was almost convinced to buy one, 

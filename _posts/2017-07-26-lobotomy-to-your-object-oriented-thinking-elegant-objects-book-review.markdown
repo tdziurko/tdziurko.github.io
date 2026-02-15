@@ -5,8 +5,8 @@ description: My impressions after reading this popular but quite controversial b
 date: 2017-07-26
 author: tomek
 image: '/images/elegant-objects.png'
-tags: [Reading, Review]
-tags_color: '#a149cb'
+tags: [Reading, Programming]
+tags_color: '#8c8f8c'
 ---
 > Step one in the transformation of a successful procedural developer into a successful object developer is a lobotomy.
 >

@@ -4,9 +4,9 @@ title: Holacracy in a software house
 description: Second part of interview with me as a part of some external cooperation in SoftwareMill, company I work for.
 date: 2021-07-29 12:00:00
 author: tomek
-image: '/images/blogpost-holacracy-software-house.png'
+image: '/images/holacracy-cover.png'
 tags: [Company culture, IT Management, Remote work, Holacracy]
-tags_color: '#835F46'
+tags_color: '#993c8b'
 ---
 
 ## Part 2 of the interview with Tomek Dziurko, SoftwareMill's VP of Engineering

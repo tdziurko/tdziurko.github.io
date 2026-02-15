@@ -6,7 +6,7 @@ date: 2014-09-16
 author: tomek
 image: '/images/sadness.jpg'
 tags: [Random thoughts]
-tags_color: '#618770'
+tags_color: '#449479'
 ---
 
 We all like to perceive ourselves as 100% professionals, real craftsmen, brushing up and sharpening our toolset all the time. 
