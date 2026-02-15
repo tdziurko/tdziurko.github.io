@@ -34,7 +34,7 @@ menu__settings:
 hero:
   enable: true
   hero__title: Tomasz Dziurko - personal website
-  hero__description: Currently working as a VP of Engineering at SoftwareMill, 100% remote software consulting company. On this blog I am sharing my thoughts, noting things for my future self, and writing about everything I find valuable on the Internet.
+  hero__description: Currently VP of Engineering at SoftwareMill, a fully remote software consulting firm. This blog is where I share my insights, keep notes for my future self, and write about anything I find valuable online.
   hero__image: # You can add hero image. For example '/images/06.jpg'
 
 
@@ -42,7 +42,7 @@ hero:
 # Author Global Settings
 author:
   author__name: Tomasz Dziurko
-  author__bio: Currently working as a VP of Engineering at SoftwareMill, 100% remote software consulting company. On this blog I am sharing my thoughts, noting things for my future self, and writing about everything I find valuable on the Internet.
+  author__bio: Currently serving as VP of Engineering at SoftwareMill, a fully remote software consulting firm. This blog is where I share my insights, keep notes for my future self, and write about anything I find valuable online.
   author__avatar: /images/01-1.jpg
 
 
@@ -101,6 +101,7 @@ footer__description: Currently working as a VP of Engineering at SoftwareMill, 1
 # Social Links
 social:
 - {icon: "twitter", link: "https://twitter.com/TomaszDziurko"}
+- {icon: "bluesky", link: "https://bsky.app/profile/tomasz-dziurko.bsky.social"}
 - {icon: "linkedin", link: "https://www.linkedin.com/in/tomaszdziurko/"}
 
 # Example of adding a new link to the footer - {icon: "instagram", link: "https://instagram.com"}
