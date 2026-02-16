@@ -42,8 +42,8 @@ hero:
 # Author Global Settings
 author:
   author__name: Tomasz Dziurko
-  author__bio: Currently serving as VP of Engineering at SoftwareMill, a fully remote software consulting firm. This blog is where I share my insights, keep notes for my future self, and write about anything I find valuable online.
-  author__avatar: /images/01-1.jpg
+  author__bio: Currently VP of Engineering at SoftwareMill, a fully remote software consulting firm. This blog is where I share my insights, keep notes for my future self, and write about anything I find valuable online.
+  author__avatar: /images/tomek-2.png
 
 
 #-------------------------------
