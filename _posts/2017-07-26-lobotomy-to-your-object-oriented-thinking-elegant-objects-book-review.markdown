@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lobotomy to your object oriented thinking - "Elegant Objects, volume 1" book review
+title: Lobotomy to your object-oriented thinking - "Elegant Objects, volume 1" book review
 description: My impressions after reading this popular but quite controversial book about object-oriented programming
 date: 2017-07-26
 author: tomek

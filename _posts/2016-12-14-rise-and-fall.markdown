@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Rise and Fall
-description: Short story about one football (or maybe IT) team
+description: Short story about one football (or perhaps IT) team
 date: 2016-12-14 15:01:35
 author: tomek
 image: '/images/unsure.png'

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: VP of Engineering working in HR?
-description: First part of interview with me as a part of some external cooperation in SoftwareMill, company I work for.
+description: First part of an interview with me as a part of an external cooperation in SoftwareMill, company I work for.
 date: 2021-07-21 12:00:00
 author: tomek
 image: '/images/vpoe-cover.png'
@@ -11,7 +11,7 @@ tags_color: '#449479'
 
 ## Can VP of Engineering handle recruitment processes too?
 
-#### First part of interview with Tomek Dziurko, SoftwareMill’s VP of Engineering
+#### First part of an interview with Tomek Dziurko, SoftwareMill’s VP of Engineering
 
 Part 2 is available [here]({{site.baseurl}}/blog/holacracy-in-a-software-house)
 

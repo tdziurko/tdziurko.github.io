@@ -95,7 +95,7 @@ mailchimp__settings:
 
 #-------------------------------
 # Footer Settings
-footer__description: Currently working as a VP of Engineering at SoftwareMill, 100% remote software consulting company. On this blog I am sharing my thoughts, noting things for my future self, and writing about everything I find valuable on the Internet.
+footer__description: Currently working as a VP of Engineering at SoftwareMill, 100% remote software consulting company. On this blog I am sharing my thoughts, documenting things for my future self, and writing about everything I find valuable on the Internet.
 
 
 # Social Links
@@ -125,7 +125,7 @@ footer__menu__settings:
 # Contact Settings
 contact:
   email: mpwaerww # Add your form_id
-  description: If you would like to ask my anything or just share your thoughts about something, just drop me a line using the form below.
+  description: If you would like to ask me anything or just share your thoughts about something, just drop me a line using the form below.
 
 # NOTE
 # Mria theme comes with a contact form built-in. You can use this form with Formspree (https://formspree.io/) service and get up to 50 submissions for free. Also, you can easily switch to another service if you want.
