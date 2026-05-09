@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NNTP, Apache Commons and non-US Characters
-description: Another problem with auto-generated code
+description: Making Apache Commons work with Polish characters
 date: 2009-04-25
 author: tomek
 image: '/images/pexels-envelope.jpeg'
