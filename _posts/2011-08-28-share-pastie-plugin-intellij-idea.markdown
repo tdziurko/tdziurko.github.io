@@ -71,7 +71,7 @@ Pasties are listed there starting from the newest and each item has its link whi
 
 Source code is available on GitHub – [link](https://github.com/softwaremill/idea-pastie-plugin)
 
-If you want to receive notifications when a new version is released you can [follow me](http://twitter.com/#!/TomaszDziurko) on Twitter, check the plugin home page or its repository. If you have any suggestions, improvements, etc. you can always contact me via e-mail, Twitter or GitHub private message.
+If you want to receive notifications when a new version is released you can [follow me](https://x.com/TomaszDziurko) on Twitter, check the plugin home page or its repository. If you have any suggestions, improvements, etc. you can always contact me via e-mail, Twitter or GitHub private message.
 
 I will try to write some more about my general thoughts and experiences about developing a plugin for IntelliJ IDEA soon in a separate post.
 
