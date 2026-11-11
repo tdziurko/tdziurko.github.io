@@ -41,7 +41,7 @@ Don’t strive for perfection immediately; instead, try to unleash your creativi
 
 It is vital to choose the right objectives. We have all heard of New Year’s resolutions that are abandoned by the end of January. The problem is often that they are not well-thought-out. To make goals easier to achieve, follow these five rules:
 
-* **Specific:** The more detailed, the better. Instead of "I will lose weight," say "I will lose 10kg."
+* **Specific:** The more detailed, the better. Instead of "I will lose weight," say "I will lose 10 kg."
 * **Measurable:** If an objective is specific, it is usually easy to measure. Ten kilos is a clear metric.
 * **Achievable:** It isn't a good idea to say "I will learn Scala in one week" because that is nearly impossible. Instead, say "I will learn how to create a console calculator in Scala in one week." That is doable.
 * **Relevant:** You should care about your objective. If you dislike Microsoft products, picking C# as a new language won't work well. You will find it impossible to motivate yourself if you dislike what you are trying to achieve. Choose a language you have positive associations with—perhaps Scala or Kotlin.

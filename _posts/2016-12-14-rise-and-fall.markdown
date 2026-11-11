@@ -27,18 +27,18 @@ at a given point of his career as a professional footballer.
 But suddenly something changed – the league was joined by a new team – Team Z. Their sponsor was an overseas company with 
 apparently endless amount of money to invest. Team Z took a different approach, the approach that was never tried before in 
 this league – they wanted to pay the most and at the same time be a great place for any footballer to improve their skills. 
-They hired one of the most experienced footballer in the league and soon made him a manager. With his renown and connections, 
+They hired one of the most experienced footballers in the league and soon made him a manager. With his renown and connections, 
 Team Z was able to convince many highly skilled players to sign contracts and play for them. It was even easier as the wages 
 were also one of the best in the league.
 
-The first season was very successful, Team Z was playing extremely well bringing their owners what they have sought: 
+The first season was very successful, Team Z was playing extremely well bringing their owners what they had sought: 
 points and trophies. Their tactic was fresh and effective: dividing game into very small phases that can be trained and 
 improved separately proved to be what footballers like.
 
 ![Trophies]({{site.baseurl}}/images/trophies.jpg)
 
 During that season they became even stronger: a big name, a really big one with many awards, joined their ranks. 
-As a result, all these famous players and modern tactic made Team Z one of the most wanted place for any aspiring 
+As a result, all these famous players and modern tactic made Team Z one of the most wanted places for any aspiring 
 footballer and club’s e-mail was flooded by agents eager to put their clients there.
 
 ## The Fall
@@ -51,9 +51,9 @@ as it could affect both morale and quality of his team.
 
 Or maybe it was his experience that caused the tension to grow? After all, he didn’t have any business background and, 
 as an ex-player who recently joined manager ranks, he tried to get best training methods, best shoes and best balls 
-available on the market for his players, so they could play best football. But one reason or another, one day 
+available on the market for his players, so they could play best football. But for one reason or another, one day 
 the manager left the team (or maybe was sacked?) and soon decided to get back to playing football in another club. 
-Team Z was left shocked. They were sure that everything will change now, but no one knew what would the future be…
+Team Z was left shocked. They were sure that everything would change now, but no one knew what would the future be…
 
 ![Unsure person]({{site.baseurl}}/images/unsure.png)
 
@@ -76,6 +76,6 @@ footballers that were not aware of the difficult history and unknown future of t
 
 ## Summary
 
-Many pundits wonder how the future of Team Z will look like. Either they will find their form and recover lost morale, 
+Many pundits wonder how the future of Team Z will look. Either they will find their form and recover lost morale, 
 or stay in the mediocrity, looking at next leaving players and finding it more and more difficult to find valuable 
 replacements.

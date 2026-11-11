@@ -21,7 +21,7 @@ Confitura started in 2007 as Javarsovia. However, due to a mysterious company tr
 
 When I reached the conference venue, I was surprised by the very short queues at the registration desks. Everything went smoothly—perhaps thanks to the use of QR codes as e-tickets. Within a minute, I had my bag, which even included a trendy fidget spinner toy! 🙂
 
-**Keep IT clean: mid-sized building blocks and hexagonal architecture in real life by [Jakub Narbrdalik](https://twitter.com/jnabrdalik)**
+**Keep IT clean: mid-sized building blocks and hexagonal architecture in real life by [Jakub Nabrdalik](https://twitter.com/jnabrdalik)**
 
 Every time you attend one of Jakub’s talks, you can be sure your time won’t be wasted. This time was no different: a very good presentation on limiting class visibility as a step toward cleaner architecture, better testability, and happier developers. He also covered packages and subpackages, managing the visibility of Spring beans, and a high-level look at CQRS architecture. With Kuba’s talk, Confitura started with some very "meaty" technical content. [Link to the slides](https://jakubn.gitlab.io/keepitclean/#1)
 

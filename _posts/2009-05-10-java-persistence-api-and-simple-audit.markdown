@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java Persistence API and Simple Audit
-description: A simple way to add auditing to you database operations
+description: A simple way to add auditing to your database operations
 date: 2009-05-10
 author: tomek
 image: '/images/jpa-audit.png'
@@ -9,13 +9,13 @@ tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---
 
-Recently for a first time  have to create in the application functionality to track changes in the database made by users. 
-There are some existing solutions and one of I found using Google is very interesting article at JavaLobby 
+Recently for the first time I had to create in the application functionality to track changes in the database made by users.
+There are some existing solutions and one of them I found using Google is a very interesting article at JavaLobby 
 “Using a Hibernate Interceptor to set audit trail properties”. But there is a much simpler solution which I present here.
 
 If we are using Java Persistence API we can pick very useful annotations: `@PrePersist` and `@PreUpdate`. Suppose that in 
-every class we want to gather data about who and when created database record and who and when edited it for a last time. 
-Because such functionality is needed in every entity class we can move logic to common abstract class which will 
+every class we want to gather data about who and when created database record and who and when edited it for the last time. 
+Because such functionality is needed in every entity class we can move logic to a common abstract class which will 
 be extended by all concrete entity classes:
 
 ```java
@@ -67,11 +67,12 @@ public abstract class BaseEntity {
   setModifiedBy(user.getName());
   setModifiedOn(new Date());
  }
+}
 ```
 
-Methods marked by annotations are called just before saving changes in database, so we can add our 
+Methods marked by annotations are called just before saving changes in the database, so we can add our 
 information about user and date of operation.
 
 All annotations with similar effect existing in JPA are: PostLoad, PostPersist, PostRemove, PostUpdate, 
 PrePersist, PreRemove, PreUpdate. Thanks to them we could be informed about all read/write/delete operations 
-in our application. This can be very useful when in example we want to add such data to log files.
+in our application. This can be very useful when for example we want to add such data to log files.

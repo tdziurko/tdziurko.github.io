@@ -9,7 +9,7 @@ tags: [Reading]
 tags_color: '#8c8f8c'
 ---
 
-The first step to overcoming your weaknesses is to acknowledge and name them. For me, I know I struggle with public speaking. While my diploma thesis was solid and my source code wasn't bad at all, the way I presented them to the committee—the people who held the "Yes" or "No" to my degree—was far from what I’d call a "decent presentation." To put it bluntly: it certainly wasn’t my best performance; in fact, it was probably close to my worst.🙂
+The first step to overcoming your weaknesses is to acknowledge and name them. For me, I know I struggle with public speaking. While my diploma thesis was solid and my source code wasn't bad at all, the way I presented them to the committee—the people who held the "Yes" or "No" to my degree—was far from what I’d call a "decent presentation." To put it bluntly: it certainly wasn’t my best performance; in fact, it was probably close to my worst. 🙂
 
 And that’s why I recently bought an interesting book ["Confessions of a Public Speaker"](http://www.amazon.com/Confessions-Public-Speaker-Scott-Berkun/dp/0596801998) by Scott Berkun.
 
@@ -29,7 +29,7 @@ Scott Berkun explains that for thousands of years, our brains have been conditio
 > 1. Standing alone 
 > 2. In open territory with no place to hide
 > 3. Without a weapon 
-> 4. In front of large crowd of creatures staring at you
+> 4. In front of a large crowd of creatures staring at you
 >
 
 Because of this, it is impossible to feel completely relaxed when our minds perceive our position as a threat. We simply need to learn how to handle that stress effectively. Even world-famous performers (like Bono from U2) experience stage fright; they have simply learned how to maintain control in front of a crowd.
@@ -51,7 +51,7 @@ Berkun provides numerous useful tips on how to "suck less" at public speaking. I
 
 ## Summary
 
-I found Confessions of a Public Speaker to be a fascinating guide to giving successful presentations. Beyond the practical hints, it leaves you with the comforting realization that public speaking isn't as fearsome as you once thought. That shift in perspective alone makes it worth the read.
+I found "Confessions of a Public Speaker" to be a fascinating guide to giving successful presentations. Beyond the practical hints, it leaves you with the comforting realization that public speaking isn't as fearsome as you once thought. That shift in perspective alone makes it worth the read.
 
 Scott Berkun – about the author:
 * website: [http://www.scottberkun.com/](http://www.scottberkun.com/)

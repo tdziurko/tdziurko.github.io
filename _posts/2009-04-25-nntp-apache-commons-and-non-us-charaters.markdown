@@ -9,10 +9,10 @@ tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---
 
-Like every weekend, today I was spending time on writing application for my MSc thesis. Among few tasks I planned
+Like every weekend, today I was spending time on writing application for my MSc thesis. Among a few tasks I planned
 for today one was connected with sending messages / notifications to the internal discussion group of my dormitory using NNTP protocol.
 
-Short research showed that this should be a piece of cake. Below small code snippet showing how to send message using library 
+Short research showed that this should be a piece of cake. Below is a small code snippet showing how to send a message using the library
 [Apache Commons Net](http://commons.apache.org/net/).
 
 ```java
@@ -27,7 +27,7 @@ public class Main {
         Writer postArticle = client.postArticle();
  
         SimpleNNTPHeader headers =
-                new SimpleNNTPHeader("Test Author &amp;lt;author@gmail.com&gt;", 
+                new SimpleNNTPHeader("Test Author <author@gmail.com>", 
                                      "Test kodowania polskich znaków"
                 );
         headers.addNewsgroup("pw.test");
@@ -55,7 +55,7 @@ Then instead of “ąęóśłżźćń” I saw strange characters.
 To solve this problem I tried many things: changing encoding in the header, changing encoding in the NetBeans 
 project or even changing encoding in my newsreader (yes, yes, I even started to blame poor Thunderbird :) ) 
 but nothing helped. Then I decided to look into source code of Apache Commons Net library and after a short investigation 
-I found source of all my problems: org.apache.commons.net.nntp.NNTP class:
+I found the source of all my problems: `org.apache.commons.net.nntp.NNTP` class:
 
 
 ```java
@@ -98,11 +98,11 @@ public class NNTP extends SocketClient {
 }
 
 ```
-As you can see the creation of both Reader and Writer uses ISO-8859-1 encoding which do not support Polish characters. 
-And when I began to wonder how to build library after changing __DEFAULT_ENCODING to “UTF-8” I noticed pom.xml in the source file. 
+As you can see the creation of both Reader and Writer uses ISO-8859-1 encoding which does not support Polish characters.
+And when I began to wonder how to build the library after changing `__DEFAULT_ENCODING` to “UTF-8” I noticed pom.xml in the source file. 
 Hallelujah! – I thought – Maven to the rescue 🙂
 
-With Netbeans Maven plugin onboard I fixed encoding and ran all tests. To my surprise  not all ended green. Quick question to Uncle Google and I knew that 
-some tests fail on the systems with non-English default locale. Not to spend too much time on this issue I just commented out these tests and built new jar.
+With NetBeans Maven plugin onboard I fixed encoding and ran all tests. To my surprise not all ended green. Quick question to Uncle Google and I knew that 
+some tests fail on the systems with non-English default locale. Not to spend too much time on this issue I just commented out these tests and built a new jar.
 
-After that, all Polish character are properly sent to discussion group.
+After that, all Polish characters are properly sent to the discussion group.

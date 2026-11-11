@@ -13,7 +13,7 @@ W majowo-czerwcowym wydaniu czasopisma [HR Business Partner](https://hrbusinessp
 artykuł "Nigdy nie mieliśmy biura. Case study SoftwareMill", w którym opisuję nasze (SoftwareMill) podejście do budowania kultury organizacyjnej, 
 zaangażowania oraz efektywności w ponad 80-osobowej firmie zdalnej.
 
-Pierwsze kilka akapitów poniżej, a całość można przeczytać albo w wersji papierowej numeru albo [na stronie czasopisma](https://hrbusinesspartner.pl/artykul/nigdy-nie-mielismy-biura-case-study-softwaremill).
+Pierwsze kilka akapitów poniżej, a całość można przeczytać albo w wersji papierowej numeru, albo [na stronie czasopisma](https://hrbusinesspartner.pl/artykul/nigdy-nie-mielismy-biura-case-study-softwaremill).
 
 Zaprogramowaliśmy się w SoftwareMill na 100-procentową pracę zdalną od dnia zero. Obecnie jesteśmy ponad 80-osobową organizacją, 
 w której osoby z firmy znają się lepiej nawzajem, niż kiedy pracowały stacjonarnie w biurze. Oto, co u nas działa i pozwala budować 

@@ -31,7 +31,7 @@ as possible. Feedback that's timely, delivered following a given situation is a 
 still remember all of it and it’s easier to communicate.
 
 **KS**: It seems that SoftwareMill is open to internal discussion. You don’t have departments but so-called guilds. 
-I take there's more to that than just a different name?
+I take it there's more to that than just a different name?
 
 **TD**: SoftwareMill used to be a flat company, so everyone could express themselves in any area. Whenever a decision 
 had to be made, we asked for everyone’s opinion, and we made decisions together by a company-wide vote. And it was great, 
@@ -49,7 +49,7 @@ business goals, and reasons for the course of action are. It’s important to no
 you simply need to express interest and consciously decide that “OK, I’m interested in this area of the company’s activity, 
 so I want to do this, I want to and have the time to keep track of this.” We haven’t completely got rid of our flat 
 structure. Decisions that impact the entire company are still made via voting by every member of the company. Here, 
-we stick to the values SoftwareMill grew out of – everyone can add do their own bit and shape the company.
+we stick to the values SoftwareMill grew out of – everyone can do their own bit and shape the company.
 
 
 Full article can be read at SoftwareMill's Blog [here](https://softwaremill.com/holacracy-in-a-software-house/).

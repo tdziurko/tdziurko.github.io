@@ -18,7 +18,7 @@ more than 250 pages I can say one thing:
 >  
 
 After this book, my awareness of how good Java code should look improved a lot. I learnt a lot of interesting and useful 
-approaches to developing code in different situations. And, in spite of being heavily packed with knowledge, I cannot say that reading this book was difficult. It was a nice lecture, although some topics are more complicated and forced me to slow down and analyse paragraphs one by one.
+approaches to developing code in different situations. And, in spite of being heavily packed with knowledge, I cannot say that reading this book was difficult. It was a nice read, although some topics are more complicated and forced me to slow down and analyse paragraphs one by one.
 
 Advice presented by the author is useful to any programmer, even for those considering themselves as very experienced Java masters. I am not yet at such a level, so I found many tips and tricks inside. In my opinion, the most interesting chapters are those about: 
 
@@ -29,6 +29,6 @@ Advice presented by the author is useful to any programmer, even for those consi
 
 The most boring part of the book is the chapter about serialization, but probably mainly because of my lack of experience in this area.
 
-A very nice thing about the Effective Java book is its modularization. Every topic is an autonomic part and can be read separately. If some areas are not interesting for you, you can skip them and continue reading in another place without finding yourself in a dead end because something was explained in a chapter you skipped.
+A very nice thing about the Effective Java book is its modularization. Every topic is an autonomous part and can be read separately. If some areas are not interesting for you, you can skip them and continue reading in another place without finding yourself in a dead end because something was explained in a chapter you skipped.
 
-I consider this book a really, really good position to read. The advice which can be found inside will be helpful for every Java developer, so I suggest that you should buy it and place it in your home library.
+I consider this book a really, really good book to read. The advice which can be found inside will be helpful for every Java developer, so I suggest that you should buy it and place it in your home library.
