@@ -10,6 +10,8 @@
 <script>
   var disqus_loaded = false;
   var disqus_shortname = '{{ site.data.settings.disqus-identifier }}';
+  // custom: stable thread URL (canonical, without query/hash) so comments don't split across URL variants
+  var disqus_config = function () { this.page.url = '{{ page.url | absolute_url }}'; };
   var disqus_container = document.getElementById("disqus_thread");
   function disqus() {
     if (!disqus_loaded) {
