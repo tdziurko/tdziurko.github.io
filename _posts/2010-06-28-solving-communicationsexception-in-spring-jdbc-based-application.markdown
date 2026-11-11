@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Solving com.mysql.jdbc.exceptions.jdbc4.CommunicationsException in Spring JDBC based application
+title: Solving CommunicationsException in Spring JDBC based application
 description: How to fix MySQL connections closed after a night of inactivity using Commons-DBCP validation
 date: 2010-06-28
 author: tomek
