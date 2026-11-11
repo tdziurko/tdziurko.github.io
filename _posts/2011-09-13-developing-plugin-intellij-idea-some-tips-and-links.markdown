@@ -21,7 +21,7 @@ Before starting writing your mind-blowing and super-extra-useful plugin you shou
 
 [Plugin Development FAQ](http://confluence.jetbrains.net/display/IDEADEV/Plugin+Development+FAQ) – the best place with ready solutions and answers to your questions and problems
 
-[Open API forum](http://devnet.jetbrains.net/community/idea/open_api_and_plugin_development) – a place to go if you are really stuck with your problem
+Open API forum – a place to go if you are really stuck with your problem
 
 ## Show me the code
 

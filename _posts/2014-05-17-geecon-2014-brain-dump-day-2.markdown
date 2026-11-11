@@ -19,7 +19,7 @@ The second part of my notes from the [GeeCON 2014](http://2014.geecon.org/) conf
 ### Sam Newman – Deploying And Testing Microservices
 
 - [Technology Radar](http://www.thoughtworks.com/radar/#/) from ThoughtWorks
-- Book [“Building Microservices”](http://shop.oreilly.com/product/0636920033158.do) by Sam Newman, currently in early version
+- Book “Building Microservices” by Sam Newman, currently in early version
 - It’s worth following [Sam Newman](https://twitter.com/samnewman) on Twitter
 - [Mountebank](http://www.mbtest.org/) – tool to provide test doubles using various protocols (http, https, etc)
 - “Get good at releasing services independently”

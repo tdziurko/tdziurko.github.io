@@ -12,7 +12,7 @@ tags_color: '#5fb05f'
 Here are some useful links, materials and books which I am going to use while preparing for Sun Certified Web Component 
 Developer (SCWCD):
 
-- [Head First Servlets and JSP, Second Edition](http://oreilly.com/catalog/9780596516680/) book
+- Head First Servlets and JSP, Second Edition book
 - [Java Servlet 2.4 Specification](http://www.jcp.org/aboutJava/communityprocess/final/jsr154/index.html)
 - [JavaServer Pages 2.0 Specification](http://jcp.org/aboutJava/communityprocess/final/jsr152/index.html)
 - [Standard Tag Library for JavaServer Pages](http://jcp.org/aboutJava/communityprocess/final/jsr052/index2.html)

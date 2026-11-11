@@ -16,7 +16,7 @@ which seemed to grow and grow) and that's why SCWCD mission took me so long.
 
 I started preparations as usual, by downloading specifications and adding API to Firefox bookmarks (list of links
 [here](/blog/lets-start-preperations-to-scwcd)). Then I bought
-[Head First Servlets and JSP](http://oreilly.com/catalog/9780596516680/), the most recommended book for this
+Head First Servlets and JSP, the most recommended book for this
 certificate. I had ambitiously assumed that I would be able to write more detailed posts about what I learnt but
 unfortunately lack of time didn't allow me to do it.
 

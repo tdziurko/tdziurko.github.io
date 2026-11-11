@@ -33,7 +33,7 @@ During this talk we were shown code snippets that are cool in various ways. We s
 
 **Number of books I bought during the conference**
 
-For every book publisher an IT conference is a good place to sell its titles, for us an additional 20-30% discount is also a good thing to have so I see growing numbers of stands with books during such events. GeeCON was no different and had Helion (IT books publisher from Poland) present with some discounts and interesting titles. But during this conference we had something less usual. A self-publishing author, Tomek Kaczanowski, who was also a speaker at GeeCON was selling his book _Practical Unit Testing with TestNG and Mockito_ ([http://practicalunittesting.com/](http://practicalunittesting.com/)). And because this book is getting some good reviews, is about good and efficient testing in Java and finally the author is my fellow Pole, I didn’t hesitate to buy it. If you’re really into testing in Java, you should consider doing the same 🙂
+For every book publisher an IT conference is a good place to sell its titles, for us an additional 20-30% discount is also a good thing to have so I see growing numbers of stands with books during such events. GeeCON was no different and had Helion (IT books publisher from Poland) present with some discounts and interesting titles. But during this conference we had something less usual. A self-publishing author, Tomek Kaczanowski, who was also a speaker at GeeCON was selling his book _Practical Unit Testing with TestNG and Mockito_. And because this book is getting some good reviews, is about good and efficient testing in Java and finally the author is my fellow Pole, I didn’t hesitate to buy it. If you’re really into testing in Java, you should consider doing the same 🙂
 
 ## 3
 
@@ -45,7 +45,7 @@ The first day of the conference started with three key-notes by Bruce Eckel, Iva
 
 **Four pubs in Bar-Hopping contest**
 
-[Allegro](http://allegro.pl/), one of the sponsors, organized an entertaining contest. During evening/night after the first conference day every attendee could get a free beer in one of four pubs in Poznań’s Old Market Square. With every beer we received a stamp on a coupon. Those who collected all four stamps could win a prize if they woke up very, very early the next morning and showed up near the Allegro stand in the conference hall. Unfortunately I chatted too long in one of the pubs and when we reached the last one, there was no one giving stamps 😉 But the whole idea of the contest was great and fun was great as well, during that evening I had an opportunity to talk with old friends, meet many new interesting people and even chat with some homeless guy who (if we would give him 5 Polish Zlotys) promised that he could make the Polish national team finish Euro 2012 as runners-up 🙂
+Allegro, one of the sponsors, organized an entertaining contest. During evening/night after the first conference day every attendee could get a free beer in one of four pubs in Poznań’s Old Market Square. With every beer we received a stamp on a coupon. Those who collected all four stamps could win a prize if they woke up very, very early the next morning and showed up near the Allegro stand in the conference hall. Unfortunately I chatted too long in one of the pubs and when we reached the last one, there was no one giving stamps 😉 But the whole idea of the contest was great and fun was great as well, during that evening I had an opportunity to talk with old friends, meet many new interesting people and even chat with some homeless guy who (if we would give him 5 Polish Zlotys) promised that he could make the Polish national team finish Euro 2012 as runners-up 🙂
 
 ## Around 10
 
@@ -56,7 +56,7 @@ I like passionate people, most of GeeCON attendees are passionate about what we 
 - After listening to Gavin King about #Ceylon I maybe understand why authors of #Kotlin refused to work with him. #geecon – [link](https://twitter.com/novoj/status/203071063867928576)
 - #ceylon Gavin King is having a bad day. Angry and cursing way too much. Come on, relax! #geecon – [link](https://twitter.com/codecopkofler/status/203067974960168960)
 - Listening to gavin king at #geecon … dude you should at least pretend you are modest :p hard to listen to you without getting biased – [link](https://twitter.com/szimano/status/203066626193620992)
-- #geecon Enjoying the #ceylon talk with Gavin King and his nice and gentle way of expressing his opinions :–) – [link](http://twitter.com/adambien/status/203066600990048257)
+- #geecon Enjoying the #ceylon talk with Gavin King and his nice and gentle way of expressing his opinions :–) – link
 
 ## 11
 

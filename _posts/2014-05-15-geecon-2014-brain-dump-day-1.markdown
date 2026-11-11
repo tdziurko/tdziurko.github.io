@@ -31,7 +31,7 @@ Inspired by the post [“Min/max note taking for conferences”](http://scottber
 
 - Very often forgotten point of retrospectives: “reflect how to become more effective”
 - Ice breakers: Fact or fiction game – everyone tells three (2 true, 1 false) sentences about himself and lets other team members try to guess
-- Worth reading and trying: [40 Icebreakers for Small Groups](http://insight.typepad.co.uk/40_icebreakers_for_small_groups.pdf)
+- Worth reading and trying: 40 Icebreakers for Small Groups
 - Very important rule “Do not leave the retrospective room without saying what you wanted to say”
 - Gather data about specific topics. e.g. how people perceive communication inside of the team, quality of the job, etc. and then check how these indicators are changing when you compare them with results from the retrospectives in the past
 - Give people space and time to share appreciations. Allow them to give “kudos” to others.

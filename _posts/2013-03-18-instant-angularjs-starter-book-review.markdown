@@ -9,7 +9,7 @@ tags: [Reading]
 tags_color: '#8c8f8c'
 ---
 
-Some time ago I received an offer from [Packt Publishing](http://www.packtpub.com/) to write a review of their new small book about AngularJS framework “[Instant AngularJS Starter](http://www.packtpub.com/angularjs-to-build-dynamic-web-applications/book)”. And because I still consider myself as an AngularJS beginner, I decided to give it a go.
+Some time ago I received an offer from Packt Publishing to write a review of their new small book about AngularJS framework “Instant AngularJS Starter”. And because I still consider myself as an AngularJS beginner, I decided to give it a go.
 
 ## Content
 

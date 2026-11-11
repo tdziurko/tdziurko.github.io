@@ -21,7 +21,7 @@ so called "good practices" you have seen during your career. Fasten your belts, 
 keyboard and keep reading.
 
 ![Lobotomy to your brain]({{site.baseurl}}/images/homer-brain.jpg)
-*Image from [http://simpsons.wikia.com](http://simpsons.wikia.com)*
+*Image from http://simpsons.wikia.com*
 
 ## Content
 

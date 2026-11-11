@@ -52,7 +52,7 @@ I can only regret that I’ve read it after almost 7 years of work as a develope
 - People aspiring to become masters of software craftsmanship need to plan for the long term
 - The things we build for customers **can** be beautiful but **must** be useful
 - If you’re worried that your current job is rotting your brain, it probably is
-- [StickyMinds.com](http://www.stickyminds.com/) – interesting portal about quality in our industry
+- StickyMinds.com – interesting portal about quality in our industry
 - Your goal should be to become skilled rather than experienced
 - Keep reading! Keep your personal reading list so you always have some books to choose from (my personal choice is [GoodReads](http://goodreads.com/))
 - Keep a list of even small things you’ve learnt. Some kind of diary where you can put all meaningful stuff you encounter during your daily job.

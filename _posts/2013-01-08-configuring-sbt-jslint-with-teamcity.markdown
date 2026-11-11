@@ -17,7 +17,7 @@ In my current project we are working with rather non-standard technologies for a
 
 ### Toolbox
 
-After some research it appeared that [JSLint](http://www.jslint.com/) is for JS the same as [FindBugs](http://findbugs.sourceforge.net/) for Java so we decided to try it out in our project. Luckily there is a [JSLint SBT plugin](https://github.com/philcali/sbt-jslint) so we weren’t forced to carve our own solution.
+After some research it appeared that [JSLint](http://www.jslint.com/) is for JS the same as FindBugs for Java so we decided to try it out in our project. Luckily there is a [JSLint SBT plugin](https://github.com/philcali/sbt-jslint) so we weren’t forced to carve our own solution.
 
 ## Configuration
 

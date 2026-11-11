@@ -11,15 +11,15 @@ tags_color: '#317b94'
 
 A few days ago it turned out that somewhere on the Internet there is a person or maybe two who think that my blog posts are a little bit above _pathetic, boring, useless_ level and maybe if they re-post them on their website, their click ratio and number of visitors will increase. Pretty naive thinking but who knows 🙂
 
-So they’ve contacted me and asked if I want to join their _DZone Most Valuable Blogger (MVB) Program_ (more details [here](http://www.dzone.com/aboutmvb)). _Why not_, I thought. And after a few e-mails I can officially announce:
+So they’ve contacted me and asked if I want to join their _DZone Most Valuable Blogger (MVB) Program_. _Why not_, I thought. And after a few e-mails I can officially announce:
 
 ## I am a member of the Most Valuable Blogger Program at DZone
 
 But you may ask _What it really gives_?
 
 - I have this cool badge you can see on the right
-- My ugly face is [among](http://www.dzone.com/page/mvbs) many people that are much smarter than me. So if you calculate average _smartness_ it will look like I am much smarter than in reality which is good
-- I actually can go and say _Hi, I am MVB too_ to many well-known people in the Java World: [Matt Raible](http://www.dzone.com/user/91624), [Hamlet D’Arcy](http://www.dzone.com/user/258218), [Martin Fowler](http://www.dzone.com/user/323432) and many others
+- My ugly face is among many people that are much smarter than me. So if you calculate average _smartness_ it will look like I am much smarter than in reality which is good
+- I actually can go and say _Hi, I am MVB too_ to many well-known people in the Java World: Matt Raible, Hamlet D’Arcy, Martin Fowler and many others
 - Maybe my boss will give me a raise? Boss, Boss, are you reading this?
 - [Tomek Nurkiewicz](https://www.nurkiewicz.com/) is no longer the only person from Poland in the MVB program. Update: It appeared that there are more Poles (Adam Warski, Łukasz Budnik) on that list than I expected. Good for us 🙂
 - I received a bonus **+10** to my e-peni … erhhm… my e-charisma
@@ -30,4 +30,4 @@ What it really gives is a satisfaction that all this blogging is worth something
 
 So keep visiting this blog. I will try not to let you down and write something interesting from time to time 🙂
 
-PS: If you think that this MVB is cool, please check this guy that I have a pleasure to work with – Konrad Malawski. He was interviewed and is featured in the latest Java Magazine published by Oracle, [this Oracle](http://oracle.com/)! This is impressive. Congratz again man! 🙂
+PS: If you think that this MVB is cool, please check this guy that I have a pleasure to work with – Konrad Malawski. He was interviewed and is featured in the latest Java Magazine published by Oracle, this Oracle! This is impressive. Congratz again man! 🙂
