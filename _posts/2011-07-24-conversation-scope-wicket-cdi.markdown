@@ -7,6 +7,8 @@ author: tomek
 image: '/images/stocksnap-wicket-cdi.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/07/conversation-scope-wicket-cdi/
 ---
 
 Some time ago I was asked to do some research about integrating Wicket with conversation scope from Context and Dependency Injection (CDI) from the JEE6 specification. And as not everything was clear and easy to run, I decided to post my findings in this blog.

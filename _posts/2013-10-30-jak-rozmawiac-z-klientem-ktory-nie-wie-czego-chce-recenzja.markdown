@@ -7,6 +7,8 @@ author: tomek
 image: '/images/szyte-na-miare-book-cover.jpg'
 tags: [In Polish, Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2013/10/jak-rozmawiac-z-klientem-ktory-nie-wie-czego-chce-recenzja/
 ---
 
 Bardzo fajna książka na temat, który jest często zaniedbywany przez programistów: komunikacji z klientem.

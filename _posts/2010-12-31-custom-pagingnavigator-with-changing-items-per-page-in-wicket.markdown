@@ -7,6 +7,8 @@ author: tomek
 image: '/images/pexels-wicket-paginator.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2010/12/custom-pagingnavigator-with-changing-items-per-page-in-wicket/
 ---
 
 In one of my recent projects I had to create a Wicket pagination component with one additional functionality allowing the user to dynamically change the maximum number of items presented on each page.

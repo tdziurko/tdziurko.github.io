@@ -7,6 +7,8 @@ author: tomek
 image: '/images/pexels-wicket-errors.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2010/06/simple-notification-about-errors-in-wicket-based-application/
 ---
 
 Today I am going to describe a simple and quick trick in Apache Wicket which allows our web application to send an email every time when something goes wrong.

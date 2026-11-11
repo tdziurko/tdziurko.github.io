@@ -7,6 +7,8 @@ author: tomek
 image: '/images/warsaw.jpg'
 tags: [In Polish, Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2011/10/warsjawa-2011-tuz-tuz/
 ---
 
 Jak co roku, w październiku rusza kolejna konferencja organizowana przez [Warszawski JUG](https://sites.google.com/site/warszawajug/), młodsza siostra [Confitury](http://confitura.pl/), czyli [Warsjawa](http://warsjawa.pl/). Edycja 2011 przynosi sporo zmian i generalnie widać, że przez rok całej imprezie znacznie się przytyło, bo w porównaniu do zeszłorocznej edycji oferuje aż 4 równoległe ścieżki: trzy poświęcone w całości zgłębieniu konkretnej tematyki poprzez warsztaty oraz czwartą, która jest ścieżką mieszaną z 2,5-godzinnymi warsztatami oraz trzema prezentacjami.

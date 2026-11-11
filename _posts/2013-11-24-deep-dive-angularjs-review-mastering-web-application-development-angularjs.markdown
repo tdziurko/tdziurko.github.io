@@ -7,6 +7,9 @@ author: tomek
 image: '/images/mastering-angularjs-book-cover.jpg'
 tags: [Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2013/11/deep-dive-angularjs-review-mastering-web-applic/
+  - /2013/11/deep-dive-angularjs-review-mastering-web-application-development-angularjs/
 ---
 
 The first complete book about AngularJS. Pretty good, very useful and written by our fellow man from Poland. Could I ask for more?

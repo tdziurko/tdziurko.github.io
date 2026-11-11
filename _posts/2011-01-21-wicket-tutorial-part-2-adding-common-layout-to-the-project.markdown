@@ -7,6 +7,8 @@ author: tomek
 image: '/images/wicket-tutorial-2-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/01/wicket-tutorial-part-2-adding-common-layout-to-the-project/
 ---
 
 Hello everyone! In the [previous](/blog/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql) post we set up a base project using Wicket for our future development of ItemDirectory web application. That post, which was intended to be mainly about Wicket, surprisingly gathered some attention amongst Spring fans and was even mentioned in [the weekly summary at SpringSource.com](https://web.archive.org/web/20110906121925/http://www.springsource.org/node/2994).

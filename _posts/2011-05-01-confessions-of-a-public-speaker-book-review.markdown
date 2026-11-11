@@ -7,6 +7,8 @@ author: tomek
 image: '/images/confessions-public-speaker-cover.png'
 tags: [Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2011/05/why-we-dont-like-public-speeches-and-what-can-be-done-about-it/
 ---
 
 The first step to overcoming your weaknesses is to acknowledge and name them. For me, I know I struggle with public speaking. While my diploma thesis was solid and my source code wasn't bad at all, the way I presented them to the committee—the people who held the "Yes" or "No" to my degree—was far from what I’d call a "decent presentation." To put it bluntly: it certainly wasn’t my best performance; in fact, it was probably close to my worst. 🙂

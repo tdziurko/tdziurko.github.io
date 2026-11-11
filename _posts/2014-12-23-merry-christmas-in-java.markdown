@@ -7,6 +7,8 @@ author: tomek
 image: '/images/christmas-tree-cover.png'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2014/12/merry-christmas-in-java/
 ---
 
 Programmable Christmas wishes and carol, how cool is this?

@@ -7,6 +7,8 @@ author: tomek
 image: '/images/dockerizing-spring-boot-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2016/01/dockerizing-spring-boot-application/
 ---
 
 Docker here, Docker there, I see Dockers everywhere.

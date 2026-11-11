@@ -7,6 +7,9 @@ author: tomek
 image: '/images/blocked-road.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2010/06/solving-com-mysql-jdbc-exceptions-jdbc4-communi/
+  - /2010/06/solving-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-in-spring-jdbc-based-application/
 ---
 
 Last week after releasing the first version of a Wicket, Spring and JDBC based application into production I noticed strange behavior. Every day the first attempt to enter the service caused an unexpected exception. A quick glance at Tomcat logs showed code presented below:

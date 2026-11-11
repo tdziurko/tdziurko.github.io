@@ -7,6 +7,8 @@ author: tomek
 image: '/images/book-scwcd.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2009/04/lets-start-preperations-to-scwcd/
 ---
 
 Here are some useful links, materials and books which I am going to use while preparing for Sun Certified Web Component 

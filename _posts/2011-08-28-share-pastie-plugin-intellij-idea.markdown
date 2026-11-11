@@ -7,6 +7,8 @@ author: tomek
 image: '/images/share-pastie-plugin-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/08/share-pastie-plugin-intellij-idea/
 ---
 
 When I started working for a new company I also changed my IDE so since June I have been using IntelliJ IDEA. And I can undoubtedly say that it is worth every penny or Polish Zloty to be more precise 🙂 It is more stable than Eclipse and it has many well supported extensions which are working out of the box without any, really ANY issues.

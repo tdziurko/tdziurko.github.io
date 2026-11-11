@@ -7,6 +7,8 @@ author: tomek
 image: '/images/geb-screenshot-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2013/05/taking-screenshot-in-failing-ui-tests-using-geb/
 ---
 
 There is nothing worse than being reported that a UI test failed but without clear evidence of what exactly went wrong. And what could be better evidence than a screenshot just after the failure?

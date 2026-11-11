@@ -7,6 +7,8 @@ author: tomek
 image: '/images/intellij-memory-settings.png'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2015/11/1-and-the-only-one-to-customize-intellij-idea-memory-settings/
 ---
 
 _Don’t be a Scrooge and give your IDE some more memory_

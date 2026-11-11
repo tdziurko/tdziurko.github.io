@@ -7,6 +7,8 @@ author: tomek
 image: '/images/wicket-tutorial-8-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/06/wicket-tutorial-part-8-adding-internationalization-support/
 ---
 
 Today we will continue the Wicket tutorial series with adding support for multiple languages in the web application. Ok, let’s do it step by step.

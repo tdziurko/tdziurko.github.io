@@ -7,6 +7,8 @@ author: tomek
 image: '/images/woman-notebook.jpg'
 tags: [In Polish, Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2009/12/java-i-programowanie-jak-zaczac-i-z-czego-sie-uczyc/
 ---
 
 Ostatnio kilku moich znajomych ze studiów pytało mnie w rozmowach od czego zaczynałem naukę Javy, co mogę polecić, jakie

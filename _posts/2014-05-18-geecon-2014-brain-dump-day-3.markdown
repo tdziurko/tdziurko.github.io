@@ -7,6 +7,8 @@ author: tomek
 image: '/images/geecon-2014-day-3-cover.jpg'
 tags: [Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2014/05/geecon-2014-brain-dump-day-3/
 ---
 
 The last, third post with my notes from the [GeeCON 2014](http://2014.geecon.org/) conference. Pretty short? I am not going to justify myself, but it was the third day and everyone was a bit tired after two intensive days and nights in Cracow.

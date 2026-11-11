@@ -7,6 +7,8 @@ author: tomek
 image: '/images/remote-retrospectives.jpg'
 tags: [Remote Work, Productivity]
 tags_color: '#317b94'
+redirect_from:
+  - /2012/04/tools-retrospectives-distributed-teams/
 ---
 
 In [our](http://softwaremill.com/) company we work remotely from different locations across Poland. And because we work using agile, after each iteration (in my project usually every 2 weeks) we have a sprint retrospective when we share our insights about what was good and bad in the last sprint. Then we vote on minuses, discuss them and try to extract action items to perform so those problems are less likely to recur in the future.

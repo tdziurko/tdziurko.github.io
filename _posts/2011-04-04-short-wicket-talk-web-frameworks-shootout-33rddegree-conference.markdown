@@ -7,6 +7,8 @@ author: tomek
 image: '/images/stocksnap-33rddegree-talk.jpg'
 tags: [Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2011/04/short-wicket-talk-web-frameworks-shootout-33rddegree-conference/
 ---
 
 If you, by any chance, are one of the [33rdDegree](http://33degree.org/) conference participants and you are interested in developing web applications using Java/JVM environment you should also be interested in one of the BOF sessions on Wednesday during the conference: [Web frameworks shootout](http://33degree.org/talks.html#BOFWebFrameworks).

@@ -7,6 +7,8 @@ author: tomek
 image: '/images/confitura-entrance.jpg'
 tags: [Conferences, Java, Confitura]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2017/07/confitura-2017-greatness-delivered/
 ---
 
 Last weekend, I attended Confitura 2017. This year's conference had about 1,400 attendees, 5 tracks, and 35 presentations; everyone could find something interesting to listen to and learn from. This post is a review of that great event.

@@ -7,6 +7,8 @@ author: tomek
 image: '/images/wicket-tutorial-7-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/05/wicket-tutorial-part-7-editing-and-removing-item-locations/
 ---
 
 Welcome back to our practical Wicket tutorial series. I apologize for the long break after the last post (shame on me as it was published more than 1,5 months ago) but I had many unplanned things with higher priority: Wicket demo application on [33rdDegree](http://33degree.org/talks.html#BOFWebFrameworks) conference to prepare, the conference itself and the most time-consuming one, I damaged a knee ligament during a football match and after that every day for three weeks I was driving to the hospital for rehabilitation so the day became too short to write something here. But now everything seems to be ok and I have some spare time to continue Wicket tutorial subject.

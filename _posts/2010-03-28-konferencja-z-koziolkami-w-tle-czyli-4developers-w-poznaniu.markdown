@@ -7,6 +7,8 @@ author: tomek
 image: '/images/poznan.jpg'
 tags: [In Polish, Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2010/03/konferencja-z-koziolkami-w-tle-czyli-4developers-w-poznaniu/
 ---
 
 W piątek miałem przyjemność uczestniczyć w konferencji 4Developers w Poznaniu. Wyprawa na godzinę 10 wymagała bardzo porannej pobudki, aby samochodem zebrać ekipę z całej Warszawy i wyruszyć polskimi drogami do miasta znanego z trykających się koziołków i ogromnego zoo.

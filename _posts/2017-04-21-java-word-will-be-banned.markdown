@@ -7,6 +7,8 @@ author: tomek
 image: '/images/java-banned-stop.jpg'
 tags: [Programming, Java, Random thoughts]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2017/04/java-word-will-be-banned/
 ---
 
 This article is my reaction to the recent Javaslang changing name to Vavr. Please be aware that all content is **completely fictitious** and in many cases ironic.

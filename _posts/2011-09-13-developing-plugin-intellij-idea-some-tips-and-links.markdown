@@ -7,6 +7,8 @@ author: tomek
 image: '/images/stocksnap-intellij-plugin.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/09/developing-plugin-intellij-idea-some-tips-and-links/
 ---
 
 When I started thinking about writing my first plugin for IntelliJ IDEA the biggest problem was the lack of good and comprehensive guides on how to do it and how to do it well gathered in one place. So this post will be a written collection of my personal experiences, links and other resources I found useful and noteworthy on my road to releasing [Share with Pastie](/blog/share-pastie-plugin-intellij-idea) plugin to the public IntelliJ repository.

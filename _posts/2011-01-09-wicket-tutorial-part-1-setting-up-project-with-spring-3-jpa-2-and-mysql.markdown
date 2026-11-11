@@ -7,6 +7,9 @@ author: tomek
 image: '/images/wicket-tutorial-1-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/01/wicket-tutorial-part-1-setting-up-project-with-/
+  - /2011/01/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql/
 ---
 
 Today I start my personal project **Item Directory** which will be developed as an element of Wicket Tutorial series on this blog. Item Directory will be a web application to help you manage your collections of items (books, CDs, movies or even postage stamps). The application is built with **Java, Wicket, JPA, Spring 3 and MySQL** as a database. It is a response to my family’s needs to manage some items hidden in shelves, bookcases and cabinets where we need something and we think “We have it somewhere, but I have no idea where it is located” 🙂

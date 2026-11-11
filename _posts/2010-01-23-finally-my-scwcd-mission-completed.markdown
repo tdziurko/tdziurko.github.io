@@ -7,6 +7,8 @@ author: tomek
 image: '/images/stocksnap-scwcd.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2010/01/finally-my-scwcd-mission-completed/
 ---
 
 Much later than planned (check [my post](/blog/lets-start-preperations-to-scwcd) when I revealed my intent to pass

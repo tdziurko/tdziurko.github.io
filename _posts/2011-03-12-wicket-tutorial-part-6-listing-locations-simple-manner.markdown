@@ -7,6 +7,8 @@ author: tomek
 image: '/images/wicket-tutorial-6-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/03/wicket-tutorial-part-6-listing-locations-simple-manner/
 ---
 
 Today we will add a simple listing view for locations added to the database in previous posts. I said ‘simple’ as there are some more sophisticated ways to show many items using Wicket but probably we will not have many locations to show in our application so a simple view without pagination should be ok. A more complicated way (DataTable component) will be covered in the future when we add the ‘listing items’ feature.

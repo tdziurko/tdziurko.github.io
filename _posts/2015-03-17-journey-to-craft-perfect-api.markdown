@@ -7,6 +7,8 @@ author: tomek
 image: '/images/perfect-stamp.jpg'
 tags: [Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2015/03/journey-to-craft-perfect-api/
 ---
 
 Trying to be perfect in a never taught art.

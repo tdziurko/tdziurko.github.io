@@ -7,6 +7,8 @@ author: tomek
 image: '/images/belgium-devoxx.jpg'
 tags: [Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2011/11/my-relation-devoxx-2011/
 ---
 
 Last week I had the pleasure to attend the [Devoxx](http://devoxx.com/) conference, the biggest and one of the most known events for Java developers. As a member of a 7-man team from our company (thank you [SoftwareMill](http://softwaremill.com/) 🙂) I spent 4 days in Belgium among over 3500 developers being a witness of many great presentations and only a few not so good. Below are some of my notes and impressions.

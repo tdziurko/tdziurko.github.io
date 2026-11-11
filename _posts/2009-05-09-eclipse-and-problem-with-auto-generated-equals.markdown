@@ -7,6 +7,8 @@ author: tomek
 image: '/images/equals.png'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2009/05/eclipse-and-problem-with-auto-generated-equals/
 ---
 
 JSF table `<rich:dataTable>` was using HashMap to represent data. This Map contained objects collected from the 

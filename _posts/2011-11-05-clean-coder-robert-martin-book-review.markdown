@@ -7,6 +7,8 @@ author: tomek
 image: '/images/clean-coder-cover.png'
 tags: [Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2011/11/clean-coder/
 ---
 
 Some time ago, I discovered a very interesting page on InformIT called the [eBook Deal of the Day](http://www.informit.com/deals/index.aspx), where you can buy IT ebooks for only $9.99. Every 24 hours (or sometimes slightly longer), they change the title available at this amazing price, so it is worth checking periodically or following them on Twitter.

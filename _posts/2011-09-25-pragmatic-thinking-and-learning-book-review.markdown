@@ -7,6 +7,8 @@ author: tomek
 image: '/images/pragmatic-thinking-learning-cover.png'
 tags: [Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2011/09/pragmatic-thinking-and-learning-how-to-think-consciously/
 ---
 
 ## How to think consciously about thinking and learning

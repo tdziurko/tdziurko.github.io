@@ -7,6 +7,8 @@ author: tomek
 image: '/images/geecon-2014-day-2-cover.jpg'
 tags: [Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2014/05/geecon-2014-brain-dump-day-2/
 ---
 
 The second part of my notes from the [GeeCON 2014](http://2014.geecon.org/) conference. Day two was the most interesting and richest day of the conference so are the notes.

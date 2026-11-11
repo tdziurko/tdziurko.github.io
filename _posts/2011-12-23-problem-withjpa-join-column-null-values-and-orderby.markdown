@@ -7,6 +7,8 @@ author: tomek
 image: '/images/data-jpa.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/12/problem-withjpa-join-column-null-values-and-orderby/
 ---
 
 Recently I’ve encountered a tricky and hard to spot problem with JPA2, joins with null values and ordering. But finally I managed to solve it and as I couldn’t find anything related to this issue in Google, I think it is worth sharing our working solution.

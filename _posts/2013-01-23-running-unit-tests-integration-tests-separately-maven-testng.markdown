@@ -7,6 +7,9 @@ author: tomek
 image: '/images/maven-testng-integration-tests-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2013/01/running-unit-tests-integration-tests-separately-maven-testng/
+  - /2013/01/running-unit-tests-integration-tests-separately/
 ---
 
 Recently for my new pet project I decided that I would like to have some tests executed during the standard `mvn test` and some other ones only during a different phase, let’s call it integration phase. I googled and googled and nothing seemed to work, so after struggling with making my setup work I’ve decided to write down my findings on how I was able to configure TestNG with Maven to run integration and unit tests separately.

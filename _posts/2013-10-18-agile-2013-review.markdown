@@ -7,6 +7,8 @@ author: tomek
 image: '/images/agile-by-example-2013-cover.png'
 tags: [Conferences, Agile]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2013/10/agile-2013-review/
 ---
 
 Notes, thoughts and comments after my second agile conference in my career. A few interesting ideas, some already known approaches. Anyway, I do not regret being there.

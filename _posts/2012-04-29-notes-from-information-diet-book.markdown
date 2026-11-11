@@ -7,6 +7,8 @@ author: tomek
 image: '/images/information-diet.jpg'
 tags: [Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2012/04/notes-from-information-diet-book/
 ---
 
 During [33rd Degree](http://2012.33degree.org/) conference in Cracow O’Reilly had its stand with books at very attractive prices and similarly to the previous year I couldn’t resist buying something. This time I decided to get [“The Information Diet”](http://www.amazon.com/The-Information-Diet-Conscious-Consumption/dp/1449304680) by Clay Johnson.

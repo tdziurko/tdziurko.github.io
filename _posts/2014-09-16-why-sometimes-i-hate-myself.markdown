@@ -7,6 +7,8 @@ author: tomek
 image: '/images/sadness.jpg'
 tags: [Random thoughts]
 tags_color: '#449479'
+redirect_from:
+  - /2014/09/why-sometimes-i-hate-myself/
 ---
 
 We all like to perceive ourselves as 100% professionals, real craftsmen, brushing up and sharpening our toolset all the time. 

@@ -7,6 +7,8 @@ author: tomek
 image: '/images/coursera-graphs.png'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2016/02/coursera-advanced-data-structures-summary/
 ---
 
 _Short summary after I have finished “Advanced Data Structures in Java” at Coursera_

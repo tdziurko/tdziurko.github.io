@@ -7,6 +7,8 @@ author: tomek
 image: '/images/jdd-2015-talk-cover.png'
 tags: [Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2015/10/speaker-at-java-developers-day-2015/
 ---
 
 Showing 1011 mistakes developers make during the recruitment process.

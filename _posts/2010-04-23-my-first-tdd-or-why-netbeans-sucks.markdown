@@ -7,6 +7,8 @@ author: tomek
 image: '/images/netbeans-tdd.png'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2010/04/my-first-tdd-or-why-netbeans-sucks/
 ---
 
 This week was very intensive in terms of education. First, a three-day training about Test-Driven Development at Pragmatists, then a presentation about Vaadin by [Bartek Kuczyński](http://koziolekweb.pl/) at Warsaw JUG meeting.
