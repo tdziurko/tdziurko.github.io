@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{% if page.tags contains 'In Polish' %}pl{% else %}en{% endif %}"> <!-- custom: per-post language -->
 
 {% include head.html %}
 

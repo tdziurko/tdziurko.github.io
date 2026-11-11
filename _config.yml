@@ -11,6 +11,7 @@ permalink: /:title
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-redirect-from # custom: 301-style redirects from old WordPress URLs
 
 paginate: 7
 paginate_path: "/blog/page/:num"
@@ -54,3 +55,17 @@ defaults:
 
 sass:
   style: compressed
+
+# custom: keep internal/demo files out of the build
+exclude:
+  - Tags.md
+  - CLAUDE.md
+  - README.md
+  - _README.md
+  - _CHANGELOG.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - gemfiles
+  - .jekyll-cache

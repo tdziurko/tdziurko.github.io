@@ -7,6 +7,8 @@ author: tomek
 image: '/images/zookeeper-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2014/07/zookeeper-curator-and-microservices-load-balancing/
 ---
 
 How Zookeeper makes sure that every worker happily gets some stuff to do from job delegating manager

@@ -7,6 +7,8 @@ author: tomek
 image: '/images/bug-envers.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2012/10/fixing-bug-hibernate-envers/
 ---
 
 Recently in our project a strange bug was reported. In one report where we display historical data provided by [Hibernate Envers](http://www.jboss.org/envers), users encountered duplicated records in the dropdown used for filtering. We tried to find a source of this bug, but after spending a few hours looking at the code responsible for this functionality we had to give up and ask for a dump from the production database to check what actually is stored in one table. And when we got it and started investigating, it turned out that there is a bug in Hibernate Envers 3.6 that is a cause of our problems. But luckily after some investigation and invaluable help from [Adam Warski](http://www.warski.org/blog/) (author of Envers) we were able to fix this issue.

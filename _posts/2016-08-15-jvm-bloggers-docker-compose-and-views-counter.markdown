@@ -7,6 +7,8 @@ author: tomek
 image: '/images/containers.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2016/08/jvm-bloggers-docker-compose-and-views-counter/
 ---
 
 Version 0.10.0 is live with Docker Compose and views counter.

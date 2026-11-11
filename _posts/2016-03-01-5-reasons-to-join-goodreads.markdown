@@ -7,6 +7,8 @@ author: tomek
 image: '/images/circle-library.jpeg'
 tags: [Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2016/03/5-reasons-to-join-goodreads/
 ---
 
 Today I am going to share my experience with a website that changed the way I interact with books. I am a developer, 

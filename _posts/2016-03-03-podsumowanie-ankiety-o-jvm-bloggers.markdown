@@ -7,6 +7,8 @@ author: tomek
 image: '/images/jvm-bloggers-survey-cover.jpg'
 tags: [In Polish, Java]
 tags_color: '#317b94'
+redirect_from:
+  - /2016/03/podsumowanie-ankiety-o-jvm-bloggers/
 ---
 
 Dwa tygodnie temu przygotowałem ankietę dotyczącą projektu [JVM Bloggers](https://github.com/tdziurko/jvm-bloggers) i poprosiłem o jej wypełnienie programistów z naszej społeczności. Na podstawie odpowiedzi chciałem się dowiedzieć o tym co ludzie sądzą o samym pomyśle, jakie mają odczucia wobec niektórych jego elementów oraz które z planowanych nowych funkcjonalności są dla nich ważne, a które zupełnie zbędne. Liczyłem też na parę ciekawych pomysłów, które pojawią się w odpowiedziach na pytania otwarte. I jak się okazuje, nie zawiodłem się 🙂

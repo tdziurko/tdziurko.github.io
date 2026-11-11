@@ -7,6 +7,8 @@ author: tomek
 image: '/images/javarsovia-2009-cover.jpg'
 tags: [In Polish, Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2009/07/javarsovia-2009-wrazenia/
 ---
 
 Właśnie wróciłem z konferencji Javarsovia 2009. Ogólne wrażenia jak najbardziej pozytywne, dokładniejsza relacja poniżej. 

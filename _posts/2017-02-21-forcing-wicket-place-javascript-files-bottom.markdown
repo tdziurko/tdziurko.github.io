@@ -7,6 +7,8 @@ author: tomek
 image: '/images/wicket-javascript-bottom-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2017/02/forcing-wicket-place-javascript-files-bottom/
 ---
 
 When you add any Wicket component library, e.g. Wicket-Bootstrap to your project, usually it adds some JavaScript and CSS resources to every page or panel. But the problem is that these JS files are added in the `<head>` section of your page while all Internet knowledge says that JS should be placed at the bottom of the page for better performance and faster loading times. In this post I will show how we could configure Wicket to place JS files wherever we want.

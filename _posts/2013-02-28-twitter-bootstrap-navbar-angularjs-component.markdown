@@ -7,6 +7,8 @@ author: tomek
 image: '/images/angularjs-navbar-cover.jpg'
 tags: [Programming, JavaScript]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2013/02/twitter-bootstrap-navbar-angularjs-component/
 ---
 
 You all know Twitter Bootstrap, don’t you? It’s the awesome library to make your web application look pretty good without spending many hours on CSS. We are using Bootstrap based design in our current project that also uses AngularJS and as we are planning to have many new pages, we decided that the earlier we introduce some components to our UI the better. And, what shouldn’t be a surprise, the navigation bar naturally became the first candidate.

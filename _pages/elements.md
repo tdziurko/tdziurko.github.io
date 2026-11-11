@@ -2,6 +2,8 @@
 layout: page
 title: Elements
 permalink: /elements/
+sitemap: false
+noindex: true # custom: theme demo page
 image: '/images/38.jpg'
 ---
 

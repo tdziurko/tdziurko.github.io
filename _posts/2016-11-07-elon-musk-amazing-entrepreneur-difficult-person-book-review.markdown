@@ -7,6 +7,8 @@ author: tomek
 image: '/images/elon-musk-book-cover.png'
 tags: [Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2016/11/elon-musk-amazing-entrepreneur-difficult-person-book-review/
 ---
 
 From time to time I like to read a book about someone extraordinary, with great achievements in some areas that 

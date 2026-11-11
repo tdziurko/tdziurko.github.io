@@ -7,6 +7,8 @@ author: tomek
 image: '/images/headphones.png'
 tags: [Remote Work, Productivity]
 tags_color: '#814c9c'
+redirect_from:
+  - /2016/09/six-steps-to-improve-your-remote-communication-with-teamspeak/
 ---
 
 Communication is the key in any team working on software, this well-known fact is even more true in a company 

@@ -7,6 +7,8 @@ author: tomek
 image: '/images/wicket-tutorial-5-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/02/wicket-tutorial-part-5-generic-unique-entity-validator/
 ---
 
 As I promised in the [previous post](/blog/wicket-tutorial-part-4-custom-validator-unique-entity), today we will focus on transforming our unique name validator in Wicket into a generic one. So now, let’s simply list what we are going to achieve:

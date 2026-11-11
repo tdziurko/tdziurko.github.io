@@ -7,6 +7,8 @@ author: tomek
 image: '/images/padlock.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2010/08/submitting-ssl-and-no-ssl-html-forms-using-jmeter/
 ---
 
 JMeter is a well-known tool for testing the performance of web applications, databases and many other things (check [project official site](http://jakarta.apache.org/jmeter/index.html) for more). Today I am going to show how to test a web application with JMeter when the user needs to be logged-in to take some actions (JMeter must fill and submit the login form first).

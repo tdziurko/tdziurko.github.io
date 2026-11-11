@@ -1,0 +1,32 @@
+---
+layout: null
+permalink: /llms.txt
+sitemap: false
+---
+# {{ site.data.settings.title }}
+
+> Personal website and blog of Tomasz Dziurko, {{ site.data.settings.seo.job_title }} at {{ site.data.settings.seo.works_for.name }} ({{ site.data.settings.seo.works_for.url }}), a 100% remote software consultancy and part of the VirtusLab group. He writes about scaling engineering organizations, remote-first culture, engineering progression systems (career ladders), post-acquisition integration and, in older posts, Java/JVM programming, conferences and book reviews. Posts are in English, some in Polish.
+
+Key facts about the author:
+
+- Leads engineering progression and growth for ~80 engineers at SoftwareMill; co-authored its badge-based engineering ladder.
+- Elected VP of Engineering in a company-wide vote in a flat organization (92.7% in favour at 88% turnout).
+- 15 years as a software engineer and team leader (Java, Scala); MBA, Kozminski University (2024).
+- Community: co-organized the Confitura conference, led the Warsaw Java User Group, founded JVM Poland and JVM Bloggers.
+- Profiles: {% for link in site.data.settings.social %}{{ link.link }}{% unless forloop.last %}, {% endunless %}{% endfor %}{% for link in site.data.settings.seo.same_as %}, {{ link }}{% endfor %}
+
+## Main pages
+
+- [About Me]({{ '/about-me/' | absolute_url }}): bio, responsibilities, results, background, talks and community work
+- [Blog]({{ '/blog/' | absolute_url }}): all posts, newest first
+- [Videos]({{ '/videos/' | absolute_url }}): recorded talks and interviews
+- [Contact]({{ '/contact/' | absolute_url }}): contact form
+- [RSS feed]({{ '/feed.xml' | absolute_url }})
+
+## Posts in English
+{% for post in site.posts %}{% unless post.tags contains 'In Polish' %}
+- [{{ post.title }}]({{ post.url | absolute_url }}) ({{ post.date | date: '%Y-%m-%d' }}): {{ post.description | strip_html | strip_newlines }}{% endunless %}{% endfor %}
+
+## Posts in Polish
+{% for post in site.posts %}{% if post.tags contains 'In Polish' %}
+- [{{ post.title }}]({{ post.url | absolute_url }}) ({{ post.date | date: '%Y-%m-%d' }}): {{ post.description | strip_html | strip_newlines }}{% endif %}{% endfor %}

@@ -7,6 +7,8 @@ author: tomek
 image: '/images/jasmine-teamcity-cover.jpg'
 tags: [Programming, JavaScript]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2013/03/jasmine-tests-reporter-teamcity-scala-sbt/
 ---
 
 This post is basically a re-post of an article I have written on the [blog of my company](http://softwaremill.com/bootzooka-iteration-11-project-rename-and-jasmine-tests-visibility-in-teamcity). But before you go there to read the full story, please check this short introduction below to decide if you are interested 🙂

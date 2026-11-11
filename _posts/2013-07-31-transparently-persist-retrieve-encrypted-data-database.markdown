@@ -7,6 +7,8 @@ author: tomek
 image: '/images/jasypt-encryption-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2013/07/transparently-persist-retrieve-encrypted-data-database/
 ---
 
 Big brother is watching… always so why not encrypt everything. And then, auto-decrypt and encrypt our data stored in the Database? Here comes Jasypt.

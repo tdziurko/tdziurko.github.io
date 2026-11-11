@@ -7,6 +7,8 @@ author: tomek
 image: '/images/apprenticeship-patterns-book-cover.jpg'
 tags: [Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2014/07/apprenticeship-patterns-book-review/
 ---
 
 130 pages to help you nurture your passion and become a better developer. Pretty good deal, isn’t it?

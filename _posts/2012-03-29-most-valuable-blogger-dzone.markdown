@@ -7,6 +7,8 @@ author: tomek
 image: '/images/dzone-mvb-cover.png'
 tags: [Random thoughts]
 tags_color: '#317b94'
+redirect_from:
+  - /2012/03/most-valuable-blogger-dzone/
 ---
 
 A few days ago it turned out that somewhere on the Internet there is a person or maybe two who think that my blog posts are a little bit above _pathetic, boring, useless_ level and maybe if they re-post them on their website, their click ratio and number of visitors will increase. Pretty naive thinking but who knows 🙂

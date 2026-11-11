@@ -7,6 +7,8 @@ author: tomek
 image: '/images/akka-unhandled-events-cover.jpg'
 tags: [Programming, Scala]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2014/06/handle-every-event-in-your-akka-application/
 ---
 
 Event here, event there, events flying everywhere. Post about checking that every Akka event will finally find its home.

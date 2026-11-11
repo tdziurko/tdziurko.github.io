@@ -7,6 +7,8 @@ author: tomek
 image: '/images/wicket-tutorial-9-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/07/wicket-tutorial-part-9-storing-loading-user-preferences-cookies/
 ---
 
 In the [previous post](/blog/wicket-tutorial-part-8-adding-internationalization-support) we learnt a few tricks regarding internationalization features in Wicket. Today we will go further and will let the application remember some user preferences using HTTP Cookies. Storing some basic data in cookies is an easy and popular way of letting the user customize the look and feel of a web application he uses very often. Some portals use cookies to render modules in the order chosen by the user so that the most interesting information is at the top.

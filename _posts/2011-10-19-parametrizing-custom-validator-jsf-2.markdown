@@ -7,6 +7,8 @@ author: tomek
 image: '/images/nuclear-bomb.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/10/parametrizing-custom-validator-jsf-2/
 ---
 
 Writing a custom validator in JSF 2 is not a complicated task. You implement the _Validator_ interface, add the _@FacesValidator_ annotation and insert the validator declaration in _faces-config.xml_, that’s all. A piece of cake. But let’s consider the following scenario:

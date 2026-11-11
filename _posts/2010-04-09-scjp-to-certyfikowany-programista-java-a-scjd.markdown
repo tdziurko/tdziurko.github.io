@@ -7,6 +7,8 @@ author: tomek
 image: '/images/scjd-cover.jpg'
 tags: [In Polish, Random thoughts]
 tags_color: '#317b94'
+redirect_from:
+  - /2010/04/scjp-to-certyfikowany-programista-java-a-scjd/
 ---
 
 Pewnie nie uwierzycie, ale istnieją miejsca na Ziemi, w których nie chcą od ręki uznać dyplomu SCJP 😉 i potrzebują tłumaczenia na język ojczysty.

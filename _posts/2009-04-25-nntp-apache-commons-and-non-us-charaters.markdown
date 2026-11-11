@@ -7,6 +7,8 @@ author: tomek
 image: '/images/pexels-envelope.jpeg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2009/04/nntp-apache-commons-and-non-us-charaters/
 ---
 
 Like every weekend, today I was spending time on writing application for my MSc thesis. Among a few tasks I planned

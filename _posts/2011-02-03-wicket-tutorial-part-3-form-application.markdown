@@ -7,6 +7,8 @@ author: tomek
 image: '/images/wicket-tutorial-3-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/02/wicket-tutorial-part-3-form-application/
 ---
 
 Hello Visitor 🙂 In previous posts we created a [base project](/blog/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql) and added [common layout](/blog/wicket-tutorial-part-2-adding-common-layout-to-the-project) to ItemDirectory Wicket application. Today we are going to add the first form to allow users to insert some data into our application.

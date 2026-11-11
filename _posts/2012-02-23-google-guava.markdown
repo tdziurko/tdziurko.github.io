@@ -7,6 +7,8 @@ author: tomek
 image: '/images/google-guava-slides-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2012/02/google-guava/
 ---
 
 Some time ago at [SoftwareMill](http://softwaremill.com/) during our weekly Friday meeting to share knowledge I’ve presented Google Guava API. And as it ended with quite a long presentation and quite many lines of code I thought that this might be interesting for some Java Developers outside our company.

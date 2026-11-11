@@ -7,6 +7,8 @@ author: tomek
 image: '/images/confitura-2012-volunteers-cover.jpg'
 tags: [In Polish, Conferences]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2012/06/confitura-2012-wolontariusze-poszukiwani/
 ---
 
 W związku z dynamicznym rozwojem naszej konferencji aktualnie poszukujemy osób na stanowisko Wolontariusz oraz Fotograf. Poniżej opis stanowisk oraz wymagania.

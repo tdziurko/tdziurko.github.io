@@ -7,6 +7,8 @@ author: tomek
 image: '/images/pexels-cracow.jpeg'
 tags: [In Polish, Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2009/10/java-developers-day-2009-moimi-oczami/
 ---
 
 Siedzę sobie w pociągu relacji Kraków-Warszawa, za oknem już ciemno, pogoda z tych raczej dołujących, ale na szczęście PKP 

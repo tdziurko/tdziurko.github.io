@@ -7,6 +7,8 @@ author: tomek
 image: '/images/xstream-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2013/04/xstream-xstreamely-easy-work-xml-data-java/
 ---
 
 From time to time there is a moment when we have to deal with XML data. And most of the time it is not the happiest day in our life. There is even a term “XML hell” describing a situation when a programmer has to deal with many XML configuration files that are hard to comprehend. But, like it or not, sometimes we have no choice, mostly because the specification from the client says something like “use configuration written in XML file” or something similar. And in such cases, [XStream](http://x-stream.github.io/) comes with its very cool features that make dealing with XML really less painful.

@@ -7,6 +7,8 @@ author: tomek
 image: '/images/flag-poland.jpg'
 tags: [In Polish, Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2010/03/clean-code-po-polsku-juz-jest/
 ---
 
 Długo czekałem na ten moment i oto jest: polskie wydanie książki Roberta C. Martina “Clean Code”. Możemy co prawda ponarzekać na czas oczekiwania na polskie tłumaczenie (ponad 1,5 roku), ale nie zmienia to faktu, że cieszy pojawienie się w naszym ojczystym języku pozycji, która jest ze wszystkich stron chwalona i polecana każdemu programiście.

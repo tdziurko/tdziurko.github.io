@@ -7,6 +7,8 @@ author: tomek
 image: '/images/servlet-life-cycle-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2010/04/the-life-cycle-of-servlet/
 ---
 
 ## Life cycle of a servlet from the perspective of the container

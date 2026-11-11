@@ -7,6 +7,8 @@ author: tomek
 image: '/images/instant-angularjs-starter-book-cover.jpg'
 tags: [Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2013/03/instant-angularjs-starter-book-review/
 ---
 
 Some time ago I received an offer from Packt Publishing to write a review of their new small book about AngularJS framework “Instant AngularJS Starter”. And because I still consider myself as an AngularJS beginner, I decided to give it a go.

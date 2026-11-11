@@ -7,6 +7,8 @@ author: tomek
 image: '/images/book-scjp.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2009/04/my-impressions-after-passing-scjp/
 ---
 
 It's been some time since I passed my Sun Certified Java Programmer (SCJP) version 1.5, but maybe this post will help

@@ -7,6 +7,8 @@ author: tomek
 image: '/images/iphone-mobilization.jpg'
 tags: [In Polish, Conferences]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2011/10/sobotnia-mobilizacja-na-mobilizacje/
 ---
 
 W sobotę w Łodzi odbyła się pierwsza edycja konferencji [Mobilization](http://mobilization.pl/) organizowanej przez JUG z tego miasta. Ponieważ w tematyce technologii mobilnych czuję się mocno zielony i poza warsztatami z Androida na ostatniej Warsjawie nie miałem z tą częścią programowania styczności, zdecydowałem się zainwestować sobotę na poszerzenie moich horyzontów w tym obszarze.

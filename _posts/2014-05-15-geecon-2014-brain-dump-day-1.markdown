@@ -7,6 +7,8 @@ author: tomek
 image: '/images/geecon-2014-day-1-cover.jpg'
 tags: [Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2014/05/geecon-2014-brain-dump-day-1/
 ---
 
 Inspired by the post [“Min/max note taking for conferences”](http://scottberkun.com/2014/min-max-note-taking/) I’ve noted down my impressions, most interesting sentences, mentioned tools/books/blogs during the ongoing [GeeCON 2014](http://2014.geecon.org/) conference. This is my “Brain dump” after Day 1.

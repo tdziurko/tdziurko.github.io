@@ -7,6 +7,8 @@ author: tomek
 image: '/images/elegant-objects.png'
 tags: [Reading, Programming]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2017/07/lobotomy-to-your-object-oriented-thinking-elegant-objects-book-review/
 ---
 > Step one in the transformation of a successful procedural developer into a successful object developer is a lobotomy.
 >

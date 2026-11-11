@@ -7,6 +7,8 @@ author: tomek
 image: '/images/pexels-wicket-modal.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2010/02/wicket-ajax-modal-are-you-sure-window/
 ---
 
 While developing a web application with Wicket I sometimes need to check whether the user really, really does want to do something, for example to delete an entity from the database. The first and easiest choice that comes to my mind is to use a JavaScript window.

@@ -7,6 +7,8 @@ author: tomek
 image: '/images/varidesk_official.jpg'
 tags: [Remote Work, Productivity]
 tags_color: '#317b94'
+redirect_from:
+  - /2016/04/varidesk-standing-desk-review/
 ---
 
 I was thinking about buying a standing desk for quite some time, but always when I was almost convinced to buy one, 

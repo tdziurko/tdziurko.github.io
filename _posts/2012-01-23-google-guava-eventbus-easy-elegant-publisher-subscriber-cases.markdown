@@ -7,6 +7,9 @@ author: tomek
 image: '/images/guava-eventbus-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2012/01/google-guava-eventbus-easy-elegant-publisher-su/
+  - /2012/01/google-guava-eventbus-easy-elegant-publisher-subscriber-cases/
 ---
 
 Google Guava in version number 10 introduced a new package [eventbus](https://guava.dev/releases/11.0.1/api/docs/com/google/common/eventbus/package-summary.html) with a few very interesting classes to deal with the listener (or publisher – subscriber) use case. Below I present my short introduction to the EventBus class and its family.

@@ -7,6 +7,9 @@ author: tomek
 image: '/images/individuals-interactions-book-cover.png'
 tags: [Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2012/01/human-side-agile-methodology-review-individuals-interactions-agile-guide/
+  - /2012/01/human-side-agile-methodology-review-individuals/
 ---
 
 Some time ago, after I wrote a review of [*The Clean Coder*]({{site.baseurl}}/blog/clean-coder-robert-martin-book-review/), I received a tweet from @InformIT mentioning they enjoyed my post. After a few emails with a representative from Pearson, I received three books to read and review. *Individuals and Interactions: An Agile Guide* is the first of them.

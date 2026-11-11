@@ -7,6 +7,8 @@ author: tomek
 image: '/images/chat-bot-slap.jpg'
 tags: [Programming, JavaScript]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2014/12/chat-bot-scripting-and-polish-orthography/
 ---
 
 A few lines of script to help developers to learn orthography.

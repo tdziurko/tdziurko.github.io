@@ -7,6 +7,8 @@ author: tomek
 image: '/images/wicket-bootstrap-navbar-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2012/03/using-twitter-bootstrap-navbar-as-a-wicket-component/
 ---
 
 All of you probably heard about Twitter Bootstrap, an awesome set of components allowing to create nice looking web pages and applications without diving deeply into CSS/JS hacks. If you want to see what this library is capable of, please visit [http://builtwithbootstrap.com/](http://builtwithbootstrap.com/) and check how people use it to build their websites.

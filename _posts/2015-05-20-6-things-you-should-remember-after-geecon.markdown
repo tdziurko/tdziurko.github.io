@@ -7,6 +7,8 @@ author: tomek
 image: '/images/geecon-2015-recap-cover.png'
 tags: [Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2015/05/6-things-you-should-remember-after-geecon/
 ---
 
 1200 developers, 75 speakers, 80 talks and 6 important things to remember.

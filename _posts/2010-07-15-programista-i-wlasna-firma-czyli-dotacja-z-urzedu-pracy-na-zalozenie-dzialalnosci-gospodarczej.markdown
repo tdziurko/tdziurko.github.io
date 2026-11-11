@@ -7,6 +7,9 @@ author: tomek
 image: '/images/dollars.jpg'
 tags: [In Polish]
 tags_color: '#317b94'
+redirect_from:
+  - /2010/07/programista-i-wlasna-firma-czyli-dotacja-z-urze/
+  - /2010/07/programista-i-wlasna-firma-czyli-dotacja-z-urzedu-pracy-na-zalozenie-dzialalnosci-gospodarczej/
 ---
 
 Jakiś czas temu zakończyłem trwający ponad trzy miesiące proces zdobywania dotacji z Urzędu Pracy na założenie własnej 

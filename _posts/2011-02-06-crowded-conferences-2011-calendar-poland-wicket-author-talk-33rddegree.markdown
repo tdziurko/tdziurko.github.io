@@ -7,6 +7,9 @@ author: tomek
 image: '/images/stocksnap-conferences-2011.jpg'
 tags: [Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2011/02/crowded-conferences-2011-calendar-poland-wicket-author-talk-33rddegree/
+  - /2011/02/crowded-conferences-2011-calendar-poland-wicket/
 ---
 
 This year seems to be really great for those Java Developers here in Poland who want to learn and listen about new technologies, methodologies, etc. at conference meetings. When I examined the conferences calendar I found it very packed with many interesting events. And only one thing is troublesome when you are, like me, freelancing: you have to take a day or two off (so you don’t work and earn money) and moreover, you have to pay for the conference with your own cash 🙂 Such a situation forces me to analyse and think carefully about which conference to attend and which I should skip.

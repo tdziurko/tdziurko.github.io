@@ -7,6 +7,8 @@ author: tomek
 image: '/images/jcommander-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2012/05/jcommander-parsing-command-line-parameters-ease/
 ---
 
 From time to time each of us has to create a small console application to perform a few tedious tasks that can be automated so we can concentrate on more creative ones instead. And every time I had to build such an app I struggled with passing options via command line parameters. Instead of concentrating on implementing logic, I had to create a parser, validator and so on. And in another console application I had to do the same… again and again. But thankfully it’s over.

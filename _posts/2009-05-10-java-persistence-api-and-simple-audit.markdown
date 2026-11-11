@@ -7,6 +7,8 @@ author: tomek
 image: '/images/jpa-audit.png'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2009/05/java-persistence-api-and-simple-audit/
 ---
 
 Recently for the first time I had to create in the application functionality to track changes in the database made by users.

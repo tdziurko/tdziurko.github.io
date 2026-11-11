@@ -7,6 +7,8 @@ author: tomek
 image: '/images/sbt-jslint-teamcity-cover.jpg'
 tags: [Programming, JavaScript]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2013/01/configuring-sbt-jslint-with-teamcity/
 ---
 
 In this post I will shortly describe the configuration process of the JSLint SBT plugin and then the TeamCity build config that reacts on errors/warnings raised by this plugin.

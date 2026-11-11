@@ -133,9 +133,31 @@ contact:
 
 #-------------------------------
 # Comment Section (Disqus)
-disqus-identifier: anvod-studio-test # Add your shortname for Disqus Comment. For example anvodstudio-demo
+disqus-identifier: tomaszdziurko # Add your shortname for Disqus Comment. For example anvodstudio-demo
 
 
 #-------------------------------
 # Google Analytics
 google-analytics: UA-8528065 # Add your GA Tracking Id
+
+#-------------------------------
+# SEO / structured data (custom, used by _includes/seo-schema.html)
+seo:
+  twitter_handle: TomaszDziurko
+  job_title: VP of Engineering
+  works_for:
+    name: SoftwareMill
+    url: https://softwaremill.com
+  alumni_of:
+    - name: Kozminski University
+      url: https://www.kozminski.edu.pl/en
+  knows_about:
+    - Engineering management
+    - Remote work
+    - Engineering career ladders
+    - Post-acquisition integration
+    - Company culture
+    - Java
+    - Scala
+  same_as: # profiles that identify the same person (social links above are added automatically)
+    - https://github.com/tdziurko

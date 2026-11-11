@@ -7,6 +7,8 @@ author: tomek
 image: '/images/book-effective.png'
 tags: [Reading]
 tags_color: '#8c8f8c'
+redirect_from:
+  - /2009/07/effective-java-make-your-code-better-book-review/
 ---
 
 Recently I bought a book I wanted to read for a long time, the Polish translation of “Effective Java (2nd edition)” 

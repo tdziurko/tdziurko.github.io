@@ -7,6 +7,8 @@ author: tomek
 image: '/images/stocksnap-jdd2010.jpg'
 tags: [Conferences, Java]
 tags_color: '#aeb85f'
+redirect_from:
+  - /2010/10/jdd-2010-from-my-perspective/
 ---
 
 A few days ago I attended a Java Developers’ Day 2010 conference in Cracow. If someone asked me to sum up this event I would say: not bad but definitely not very good. I think that the popularity of Java conferences in Poland made people who are responsible for organizing JDD think that whether they do it very well or they just screw some things up it won’t affect the number of developers who are willing to pay for tickets. This is a short summary of JDD’10. If you are interested in more complaints and a few praises please continue reading this post 🙂

@@ -7,6 +7,8 @@ author: tomek
 image: '/images/wicket-tutorial-intro-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/03/wicket-tutorial-series-building-web-application-scratch/
 ---
 
 This post aggregates the series of Wicket tutorial articles from this blog. But as this tutorial is still not finished and new posts will be published in the near future, please return here again to find new parts or (simpler) just add my [RSS](http://www.tomaszdziurko.com/feed) to your reader.

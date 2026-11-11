@@ -7,6 +7,8 @@ author: tomek
 image: '/images/wicket-remember-me-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2012/09/remember-functionality-apache-wicket/
 ---
 
 It is quite common in web applications to have “Remember Me” functionality that allows the user to be automatically logged in each time when he visits our website.

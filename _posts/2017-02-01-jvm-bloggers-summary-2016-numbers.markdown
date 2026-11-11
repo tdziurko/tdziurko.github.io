@@ -7,6 +7,8 @@ author: tomek
 image: '/images/jvm-bloggers-stats.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2017/02/jvm-bloggers-summary-2016-numbers/
 ---
 
 2016 was the first full year when the [JVM Bloggers](https://jvm-bloggers.com/) project was running so to sum up this period of time I have gathered some numbers to share with you.

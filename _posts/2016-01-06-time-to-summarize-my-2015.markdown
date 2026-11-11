@@ -7,6 +7,8 @@ author: tomek
 image: '/images/skydiving-jump.jpg'
 tags: [Random thoughts]
 tags_color: '#317b94'
+redirect_from:
+  - /2016/01/time-to-summarize-my-2015/
 ---
 
 _2015 passed away, we are one year older 🙂_

@@ -7,6 +7,8 @@ author: tomek
 image: '/images/wicket-tutorial-4-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2011/02/wicket-tutorial-part-4-custom-validator-unique-entity/
 ---
 
 Welcome back to our [Wicket tutorial](/blog/wicket-tutorial-series-building-web-application-scratch) series! 🙂 As I mentioned in the [previous post](/blog/wicket-tutorial-part-3-form-application), today we will concentrate on building a validator stopping the user from adding an item location with a non-unique name. At first we will start with a non-generic but working validator and then we will try to make it as flexible as possible. Ok, so let’s write some code!

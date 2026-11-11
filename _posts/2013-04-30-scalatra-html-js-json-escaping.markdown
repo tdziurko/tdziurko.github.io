@@ -7,6 +7,8 @@ author: tomek
 image: '/images/scalatra.png'
 tags: [Programming, Scala]
 tags_color: '#5fb05f'
+redirect_from:
+  - /2013/04/scalatra-html-js-json-escaping/
 ---
 
 Auto-escaping data in an API response is always good except the moments when it is not… because suddenly in a small edge case we need some unescaped data on the client side.
