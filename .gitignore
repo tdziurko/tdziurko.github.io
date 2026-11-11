@@ -5,3 +5,5 @@ _site
 .DS_Store
 mria-jekyll-theme-v1.3/
 CLAUDE.md
+vendor/
+.bundle/
