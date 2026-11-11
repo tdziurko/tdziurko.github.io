@@ -13,35 +13,30 @@ organizations that scale without losing the people who make them work.
 {: refdef}
 
 ## What I do
+- Build a remote-first engineering culture based on trust, where people
+  get the space, feedback and support they need to grow
 - Lead engineering progression and growth for ~80 engineers working
   across a dozen-plus client projects
-- Own team composition and staffing: who goes to which client, at what
-  rate, and when to rotate
+- Co-decide team composition and staffing: who goes to which client, at
+  what rate, and when to rotate
 - Bridge Engineering, People and Sales: hiring, promotions, demand
   and allocation
 - Drive the people and operations side of SoftwareMill's integration
   into the VirtusLab group
 
 ## Selected results
-- Scaled the organization from 10 to 110 people; co-authored the
-  engineering ladder from ~20 people onwards
-- Designed a badge-based progression system adopted in a company-wide
-  vote (92% turnout); 121 promotions in four years
+- Co-authored the engineering ladder, a badge-based progression system,
+  from ~20 people onwards
 - Earned the VP role through a company-wide vote in a flat organization:
   92.7% in favour at 88% turnout
-- Led post-acquisition integration of two organizations (~200 people):
-  shared workspace, SSO, ATS, onboarding and offboarding
 - #1 Great Place To Work 2025 (50–99 employees), during the integration
 
-## How I work
-I build systems rather than one-off decisions, iterate in the open,
-and let data settle arguments.
-
 ## Background
-15 years as a software engineer and team leader (Java, Scala).
-MSc Eng. in Telecommunications and Computer Science; MBA, [Kozminski
-University](https://www.kozminski.edu.pl/en) (2024); Academy of Modern Competencies for Top Executives
-(ANKTE), Kozminski University (2025).
+- 15 years as a software engineer and team leader (Java, Scala)
+- MSc Eng. in Telecommunications and Computer Science
+- MBA, [Kozminski University](https://www.kozminski.edu.pl/en) (2024)
+- Academy of Modern Competencies for Top Executives (ANKTE), Kozminski
+  University (2025)
 
 ## Speaking
 - SoDA Conference 2021, Łódź: panel "Czy lepsza kultura to większa retencja?"
