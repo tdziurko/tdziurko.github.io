@@ -114,7 +114,7 @@ and after adding pl and gb keys to the properties file we could see localized â€
 
 After doing some tedious job (not covered here, but visible in commits) with replacing static texts with wicket:message elements and completing properties files with new keys we could introduce another Wicket feature when it comes to localization: localizing text added or created inside the Java code.
 
-The first example of using localization in Wicket inside Java files is the welcome text on the main page. There are two ways to localize it. The worse one is getString(propertyName) method which returns localized String. But this method has one big drawback, it will work only when a new instance of Page is created. When you (like in our language switching form) return to the current page, it will use the old text value in previously selected language. This drawback is not present in the second way with [StringResourceModel](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/StringResourceModel.html) class:
+The first example of using localization in Wicket inside Java files is the welcome text on the main page. There are two ways to localize it. The worse one is getString(propertyName) method which returns localized String. But this method has one big drawback, it will work only when a new instance of Page is created. When you (like in our language switching form) return to the current page, it will use the old text value in previously selected language. This drawback is not present in the second way with [StringResourceModel](https://web.archive.org/web/20121201082500/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/StringResourceModel.html) class:
 
 HomePage.java:
 
@@ -127,7 +127,7 @@ private void initGui() {
 }
 ```
 
-If you are more interested in arguments of this class constructor please read [javadocs](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/StringResourceModel.html) where you can find a detailed description how all this stuff is working.
+If you are more interested in arguments of this class constructor please read [javadocs](https://web.archive.org/web/20121201082500/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/StringResourceModel.html) where you can find a detailed description how all this stuff is working.
 
 Another place we could use StringResourceModel is the feedback message after a location was deleted:
 

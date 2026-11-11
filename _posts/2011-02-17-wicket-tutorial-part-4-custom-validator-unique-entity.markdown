@@ -46,7 +46,7 @@ But with a unique constraint on the name field in the locations table in our dat
 
 ## Solution
 
-The easiest way to prevent the user from causing such exceptions is to create a custom validator checking if such a location is already in our database. And as we will be validating String input we will use [StringValidator](http://wicket.apache.org/apidocs/1.4/index.html?org/apache/wicket/validation/validator/StringValidator.html) class as a base class for our own validator called UniqueLocationNameValidator:
+The easiest way to prevent the user from causing such exceptions is to create a custom validator checking if such a location is already in our database. And as we will be validating String input we will use [StringValidator](https://web.archive.org/web/20130912081425/http://wicket.apache.org/apidocs/1.4/index.html?org/apache/wicket/validation/validator/StringValidator.html) class as a base class for our own validator called UniqueLocationNameValidator:
 
 ```java
 public class UniqueLocationNameValidator extends StringValidator {
@@ -80,7 +80,7 @@ So starting from the beginning of the listing above:
 
 1. As we will need a service object to communicate with the locations database table, we are injecting LocationService
 2. In the future, we will also use this validator to validate locations while editing them. The Id of the currently edited object will prevent the validator from firing an error when the found object has the same Id as edited one. Currently we will not use this feature.
-3. @SpringBean annotation is working without any other effort only in Wicket [Component](http://wicket.apache.org/apidocs/1.4/index.html?org/apache/wicket/Component.html) class and its children so when we want to use it in a different class, we have to tell Wicket to auto inject beans here.
+3. @SpringBean annotation is working without any other effort only in Wicket [Component](https://web.archive.org/web/20140210115127/http://wicket.apache.org/apidocs/1.4/index.html?org/apache/wicket/Component.html) class and its children so when we want to use it in a different class, we have to tell Wicket to auto inject beans here.
 4. onValidate() method is the core of the validating class. We try to search for a location with the same name as provided by the user and if application finds one and its Id is different from edited entity object, we fire an error message.
 
 The error message can be defined in a properties file and, as we will probably use our validator in more than one place, we add it in Application.properties file:

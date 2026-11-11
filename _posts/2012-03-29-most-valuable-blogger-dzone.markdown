@@ -21,7 +21,7 @@ But you may ask _What it really gives_?
 - My ugly face is [among](http://www.dzone.com/page/mvbs) many people that are much smarter than me. So if you calculate average _smartness_ it will look like I am much smarter than in reality which is good
 - I actually can go and say _Hi, I am MVB too_ to many well-known people in the Java World: [Matt Raible](http://www.dzone.com/user/91624), [Hamlet D’Arcy](http://www.dzone.com/user/258218), [Martin Fowler](http://www.dzone.com/user/323432) and many others
 - Maybe my boss will give me a raise? Boss, Boss, are you reading this?
-- [Tomek Nurkiewicz](http://nurkiewicz.blogspot.com/) is no longer the only person from Poland in the MVB program. Update: It appeared that there are more Poles (Adam Warski, Łukasz Budnik) on that list than I expected. Good for us 🙂
+- [Tomek Nurkiewicz](https://www.nurkiewicz.com/) is no longer the only person from Poland in the MVB program. Update: It appeared that there are more Poles (Adam Warski, Łukasz Budnik) on that list than I expected. Good for us 🙂
 - I received a bonus **+10** to my e-peni … erhhm… my e-charisma
 
 Ok, end of these stupid jokes 🙂

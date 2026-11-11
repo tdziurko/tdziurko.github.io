@@ -87,7 +87,7 @@ Mockito allows us to automatically inject all mocks into the object we are going
 @InjectMocks private ObjectUnderTest object = new ObjectUnderTest();
 ```
 
-Of course it has some limitations (see [JavaDocs](http://docs.mockito.googlecode.com/hg/1.9.0/org/mockito/InjectMocks.html)) but it’s good to know that such feature is already in Mockito.
+Of course it has some limitations (see [JavaDocs](https://javadoc.io/doc/org.mockito/mockito-core/1.9.0/org/mockito/InjectMocks.html)) but it’s good to know that such feature is already in Mockito.
 
 **[Make-it-easy](http://code.google.com/p/make-it-easy/) – A tiny framework that makes it easy to write Test Data Builders in Java**
 
@@ -115,7 +115,7 @@ public void testCaluculationSummary() {
 
 **Testing and capturing method arguments**
 
-Mockito gives us another very useful feature, the ability to check what arguments were passed to methods using [ArgumentCaptor](http://docs.mockito.googlecode.com/hg/org/mockito/ArgumentCaptor.html):
+Mockito gives us another very useful feature, the ability to check what arguments were passed to methods using [ArgumentCaptor](https://site.mockito.org/javadoc/current/org/mockito/ArgumentCaptor.html):
 
 ```java
 @Test

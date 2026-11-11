@@ -27,7 +27,7 @@ Every time you attend one of Jakub’s talks, you can be sure your time won’t 
 
 **Studium przypadku wystarczająco dobrej architektury by [Jakub Kubryński](https://twitter.com/jkubrynski)**
 
-The story of a startup and a CEO who needs to balance the eagerness to refactor with the cost of doing so. It included many useful tips on how to apply a "good enough" approach to a project, what to automate, and which metrics to measure to understand what is happening in your system. Kuba explained how they ensure microservices can communicate with each other ([Spring Cloud Contract](http://cloud.spring.io/spring-cloud-contract/spring-cloud-contract.html)), why end-to-end tests should only cover the most critical paths, and why your users are often your best testers. [Link to the slides](https://speakerdeck.com/jkubrynski/case-study-of-the-good-enough-architecture)
+The story of a startup and a CEO who needs to balance the eagerness to refactor with the cost of doing so. It included many useful tips on how to apply a "good enough" approach to a project, what to automate, and which metrics to measure to understand what is happening in your system. Kuba explained how they ensure microservices can communicate with each other ([Spring Cloud Contract](https://spring.io/projects/spring-cloud-contract)), why end-to-end tests should only cover the most critical paths, and why your users are often your best testers. [Link to the slides](https://speakerdeck.com/jkubrynski/case-study-of-the-good-enough-architecture)
 
 **Reactive web services by [Kamil Szymański](https://twitter.com/kszdev)**
 

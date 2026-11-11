@@ -11,7 +11,7 @@ tags_color: '#8c8f8c'
 
 The first complete book about AngularJS. Pretty good, very useful and written by our fellow man from Poland. Could I ask for more?
 
-[AngularJS](http://angularjs.org/) is a very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There was no really good reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to “Mastering Web Application Development with AngularJS” that is no longer the case.
+[AngularJS](https://docs.angularjs.org/) is a very popular JavaScript framework for writing Single Page Applications but despite its popularity, it had surprisingly poor book coverage. There was no really good reference book covering all aspects of using Angular and covering it in a more detailed way. But thanks to “Mastering Web Application Development with AngularJS” that is no longer the case.
 
 ## Overview
 

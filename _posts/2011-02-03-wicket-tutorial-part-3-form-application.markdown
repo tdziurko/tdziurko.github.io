@@ -202,10 +202,10 @@ public class AddLocationPage extends BasePage {
 
 The HTML file is rather self-explanatory: a simple form with one input field and a submit button. But the java page class needs a more elaborate explanation:
 
-In **(1)** we create a Wicket form with a model to gather data from the user. We use [CompoundPropertyModel](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/CompoundPropertyModel.html) which automatically connects components with properties of model object with the same id/name. In our page model object is AddLocationPage itself and its _name_ field (with usage of Compound model) works as a model for TextField component with id _name_.
+In **(1)** we create a Wicket form with a model to gather data from the user. We use [CompoundPropertyModel](https://web.archive.org/web/20130602025900/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/CompoundPropertyModel.html) which automatically connects components with properties of model object with the same id/name. In our page model object is AddLocationPage itself and its _name_ field (with usage of Compound model) works as a model for TextField component with id _name_.
 
 > Concept of models is one of the most important elements of Wicket and you should understand what models do and how they work. In this tutorial I am concentrating on practical usage of Wicket, so theory isn’t covered in great detail.  
-> Although you can read more about models on two [[1]](https://cwiki.apache.org/WICKET/working-with-wicket-models.html) and [[2]](https://cwiki.apache.org/WICKET/more-on-models.html) Wiki pages and generally in two presentations by Mystic Coders. Links to them can be found in the “Tutorial, guides” section in Wicket – useful links post
+> Although you can read more about models on two [[1]](https://cwiki.apache.org/confluence/display/WICKET/Working+with+Wicket+models) and [[2]](https://cwiki.apache.org/confluence/display/WICKET/More+on+models) Wiki pages and generally in two presentations by Mystic Coders. Links to them can be found in the “Tutorial, guides” section in Wicket – useful links post
 
 In **(2)**, **(3)** and **(4)** we create and add to our form: label for input field, input field (note that it’s called _name_, as property in page class) and submit button with overridden onSubmit method in which we place save logic.
 
@@ -223,11 +223,11 @@ So we must add some validators first:
 
 **Required text field**
 
-There are two ways to make a field required: you can call _TextField.setRequired(true)_ or you can replace [TextField](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/form/TextField.html) component with [RequiredTextField](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/form/RequiredTextField.html) one. In our application I chose the latter.
+There are two ways to make a field required: you can call _TextField.setRequired(true)_ or you can replace [TextField](https://web.archive.org/web/20131122081223/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/form/TextField.html) component with [RequiredTextField](https://web.archive.org/web/20130522130648/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/form/RequiredTextField.html) one. In our application I chose the latter.
 
 **String length validation**
 
-Adding length validation in Wicket is very, very easy. We use [StringValidator](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/validation/validator/StringValidator.html) and one of its nested classes: ExactLengthValidator, LengthBetweenValidator, MaximumLengthValidator or MinimumLengthValidator. In our case the java code looks like that:
+Adding length validation in Wicket is very, very easy. We use [StringValidator](https://web.archive.org/web/20130613152554/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/validation/validator/StringValidator.html) and one of its nested classes: ExactLengthValidator, LengthBetweenValidator, MaximumLengthValidator or MinimumLengthValidator. In our case the java code looks like that:
 
 ```java
 // (...), final constants for lengths are defined here
@@ -243,7 +243,7 @@ This validator needs a longer explanation as it will be our first custom validat
 
 ## Show user what’s wrong or what’s ok
 
-Now, when we have some validation it would be cool to be able to tell the user what he did wrong or when his action performed successfully. In Wicket there is a component dedicated to showing feedback to the user: [FeedbackPanel](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/panel/FeedbackPanel.html). And as it will be potentially used in every page we will add it in BasePage class:
+Now, when we have some validation it would be cool to be able to tell the user what he did wrong or when his action performed successfully. In Wicket there is a component dedicated to showing feedback to the user: [FeedbackPanel](https://web.archive.org/web/20140605093122/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/panel/FeedbackPanel.html). And as it will be potentially used in every page we will add it in BasePage class:
 
 ```java
 public abstract class BasePage extends WebPage {

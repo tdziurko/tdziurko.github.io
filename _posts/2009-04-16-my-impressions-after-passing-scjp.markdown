@@ -18,7 +18,7 @@ somebody to choose his way to prepare for this exam and also increase his chance
   simply "must have" for anyone planning to get his own, shiny SCJP certificate. This book covers everything you may
   encounter at the exam. I read it once from cover to cover and repeated chapters that contain areas I didn't feel
   comfortable with (Generics, Threads).
-- exam simulator [EnthuWare JQ+](http://www.enthuware.com/jqplusv5/), it costs only 25$ or 18$ (discount for students)
+- exam simulator [EnthuWare JQ+](https://web.archive.org/web/20090604064031/http://www.enthuware.com/jqplusv5/), it costs only 25$ or 18$ (discount for students)
   and it helped me significantly to achieve a better result
 - your favorite IDE to test your ideas, doubts and just to play with example questions from the book and simulator.
 - [Mariusz Lipiński's blog](http://www.mariuszlipinski.pl/search/label/SCJP) (beware: it's in Polish) where the author

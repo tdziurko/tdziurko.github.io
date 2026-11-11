@@ -71,7 +71,7 @@ A little explanation of the code above: we are using JPA2 Criteria Api which is 
 
 ## Generic validator
 
-The first step to create a flexible validator is to rename it to a more proper form. So now our class UniqueLocationNameValidator is UniqueEntityValidator. And since we are going to use classes other than only String for a validated property, we now can’t extend [StringValidator](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/validation/validator/StringValidator.html). Instead of it, we will use [AbstractValidator](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/validation/validator/AbstractValidator.html). But as it’s generic we must introduce a generic parameter too and the signature of the new class will look like this:
+The first step to create a flexible validator is to rename it to a more proper form. So now our class UniqueLocationNameValidator is UniqueEntityValidator. And since we are going to use classes other than only String for a validated property, we now can’t extend [StringValidator](https://web.archive.org/web/20130613152554/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/validation/validator/StringValidator.html). Instead of it, we will use [AbstractValidator](https://web.archive.org/web/20140228185926/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/validation/validator/AbstractValidator.html). But as it’s generic we must introduce a generic parameter too and the signature of the new class will look like this:
 
 ```java
 public class UniqueEntityValidator<PropertyClass> extends AbstractValidator<PropertyClass>

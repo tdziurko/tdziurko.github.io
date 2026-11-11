@@ -123,11 +123,11 @@ public class LocationsPage extends BasePage {
 }
 ```
 
-So what is happening in the code above? Let me explain it in more detail. In **(1)** we add a new method to initGui(), in **(2)** we create [ListView](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/list/ListView.html) component which renders a list of objects in a selected way. In **(2)** you can also notice a createModelForLocations() method invocation, but this method will be covered a little later. ListView class has one method we have to implement: populateItem **(3)** which is called for each object from the collection or collection model passed to ListView.
+So what is happening in the code above? Let me explain it in more detail. In **(1)** we add a new method to initGui(), in **(2)** we create [ListView](https://web.archive.org/web/20140604102036/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/list/ListView.html) component which renders a list of objects in a selected way. In **(2)** you can also notice a createModelForLocations() method invocation, but this method will be covered a little later. ListView class has one method we have to implement: populateItem **(3)** which is called for each object from the collection or collection model passed to ListView.
 
 In this method we must add two labels declared inside locations element in HTML file, and we do it in **(4)**. And here, as authors of Wicket and developers using this framework suggest, we use a model instead of sending a pure String value to the component. Why? Because if we use a property of an entity loaded from the database, we are connecting view with this data and when the page state is serialized the entity object is serialized too. And if our application uses Open Session in View we could end with the whole object graph serialized which will dramatically increase memory needed for each user session. So this is not what we really want 🙂
 
-In **(4)** we are using [PropertyModel](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/PropertyModel.html) which wraps Location model to get one property from it, id or name. Model wrapping is one of the best ways to use Wicket models effectively. Thanks to it we have only one Location model and we can wrap it many times in many ways to use it in different situations.
+In **(4)** we are using [PropertyModel](https://web.archive.org/web/20131025213752/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/PropertyModel.html) which wraps Location model to get one property from it, id or name. Model wrapping is one of the best ways to use Wicket models effectively. Thanks to it we have only one Location model and we can wrap it many times in many ways to use it in different situations.
 
 Now, it’s time to talk about the mysterious method creating the model for our ListView component **(5)**:
 
@@ -144,7 +144,7 @@ private LoadableDetachableModel<List<Location>> createModelForLocations() {
 }
 ```
 
-In this method we are using [LoadableDetachableModel](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/LoadableDetachableModel.html), another feature which you should use often if you want your applications to be memory efficient. This model (more detailed info can be found [here](https://cwiki.apache.org/WICKET/detachable-models.html)) has one nice feature, it nullifies the model object at the end of each request and loads it when needed. So no risk to have your 100000 entity objects serialized when the page is saved on the server.
+In this method we are using [LoadableDetachableModel](https://web.archive.org/web/20140222174507/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/LoadableDetachableModel.html), another feature which you should use often if you want your applications to be memory efficient. This model (more detailed info can be found [here](https://cwiki.apache.org/confluence/display/WICKET/Detachable+Models)) has one nice feature, it nullifies the model object at the end of each request and loads it when needed. So no risk to have your 100000 entity objects serialized when the page is saved on the server.
 
 ## Results
 
@@ -156,7 +156,7 @@ Working as expected. But if we view this page with an empty database it will loo
 
 ListView component isn’t rendered (no locations so nothing to show) but as it is placed inside the table and under the row with headers this part of HTML is visible. We must fix it and additionally, we will add an information label when there are no locations.
 
-The simplest way of hiding a component is to call the setVisible(false) method but as we want to hide pure HTML which isn’t directly assigned to any Wicket component, this way won’t work. In such cases the framework provides _wicket:enclosure_ tag (read more about Wicket tags [here](https://cwiki.apache.org/WICKET/wickets-xhtml-tags.html)) which renders html inside only when the connected Wicket component is visible. Let me show this in practice:
+The simplest way of hiding a component is to call the setVisible(false) method but as we want to hide pure HTML which isn’t directly assigned to any Wicket component, this way won’t work. In such cases the framework provides _wicket:enclosure_ tag (read more about Wicket tags [here](https://cwiki.apache.org/confluence/display/WICKET/Wicket%27s+XHTML+tags)) which renders html inside only when the connected Wicket component is visible. Let me show this in practice:
 
 ```html
 <wicket:enclosure child="locations">

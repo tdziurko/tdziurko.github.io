@@ -9,7 +9,7 @@ tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---
 
-Hello everyone! In the [previous](/blog/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql) post we set up a base project using Wicket for our future development of ItemDirectory web application. That post, which was intended to be mainly about Wicket, surprisingly gathered some attention amongst Spring fans and was even mentioned in [the weekly summary at SpringSource.com](http://www.springsource.org/node/2994).
+Hello everyone! In the [previous](/blog/wicket-tutorial-part-1-setting-up-project-with-spring-3-jpa-2-and-mysql) post we set up a base project using Wicket for our future development of ItemDirectory web application. That post, which was intended to be mainly about Wicket, surprisingly gathered some attention amongst Spring fans and was even mentioned in [the weekly summary at SpringSource.com](https://web.archive.org/web/20110906121925/http://www.springsource.org/node/2994).
 
 Ok, enough about the past. Today we are going to add some nice common layout to ItemDirectory. Go go go! 🙂
 
@@ -127,7 +127,7 @@ applicationName = Item Directory
 applicationHeader = Manage your items easily!
 ```
 
-Next in BasePage.html replace application name and header text and page title with Wicket element `<wicket:message key="keyName"/>`. This element will tell Wicket to load text from properties file (more about this [here](https://cwiki.apache.org/WICKET/wickets-xhtml-tags.html) in Wicket Wiki)
+Next in BasePage.html replace application name and header text and page title with Wicket element `<wicket:message key="keyName"/>`. This element will tell Wicket to load text from properties file (more about this [here](https://cwiki.apache.org/confluence/display/WICKET/Wicket%27s+XHTML+tags) in Wicket Wiki)
 
 ```html
 (...)

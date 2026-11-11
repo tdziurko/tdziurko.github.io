@@ -19,7 +19,7 @@ We need a simple way to configure Geb UI tests to take a screenshot on each test
 
 ### Solution
 
-We have to find some type of listener that waits for different test results and fires the proper method when a test fails. In [TestNG](http://testng.org/) we have a [TestListenerAdapter](http://testng.org/javadocs/org/testng/TestListenerAdapter.html) so probably Geb or Spock should have something similar.
+We have to find some type of listener that waits for different test results and fires the proper method when a test fails. In [TestNG](http://testng.org/) we have a [TestListenerAdapter](https://web.archive.org/web/20161124224801/http://testng.org/javadocs/org/testng/TestListenerAdapter.html) so probably Geb or Spock should have something similar.
 
 After some digging I was able to locate _IRunListener_ with the method I need:
 

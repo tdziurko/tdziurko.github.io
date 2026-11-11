@@ -11,11 +11,11 @@ tags_color: '#5fb05f'
 
 It is quite common in web applications to have “Remember Me” functionality that allows the user to be automatically logged in each time when he visits our website.
 
-Such feature can be implemented using [Spring Security](http://static.springsource.org/spring-security/site/), but in my opinion using a request based authentication framework with a component based web framework is not the best idea. These two worlds just do not fit well together so I prefer to use my own baked solution which I will present below.
+Such feature can be implemented using [Spring Security](https://spring.io/projects/spring-security), but in my opinion using a request based authentication framework with a component based web framework is not the best idea. These two worlds just do not fit well together so I prefer to use my own baked solution which I will present below.
 
 ## Base project
 
-We start with a simple web application written using the latest, still hot [Apache Wicket 6](http://wicket.apache.org/2012/09/05/wicket-6.0.0-released.html). You can download complete sources from [GitHub](https://github.com/tdziurko/wicket-rememberme) and start the application using `mvn clean compile jetty:run`.
+We start with a simple web application written using the latest, still hot [Apache Wicket 6](https://wicket.apache.org/news/2012/09/05/wicket-6.0.0-released.html). You can download complete sources from [GitHub](https://github.com/tdziurko/wicket-rememberme) and start the application using `mvn clean compile jetty:run`.
 
 Base application consists of two pages:
 

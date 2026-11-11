@@ -87,7 +87,7 @@ It is not what we wanted, so we need to configure our application to add JS file
 
 ## Solution
 
-First, let’s start with some background. Each time a component wants to add something to the page header (for example using [IHeaderContributor](https://ci.apache.org/projects/wicket/apidocs/7.x/org/apache/wicket/markup/html/IHeaderContributor.html)) it creates a new instance of [HeaderItem](https://ci.apache.org/projects/wicket/apidocs/7.x/org/apache/wicket/markup/head/HeaderItem.html) object. By default all HeaderItems are rendered in `<head>`, but we could modify this behaviour using [IHeaderResponseDecorator](https://ci.apache.org/projects/wicket/apidocs/7.x/org/apache/wicket/markup/html/IHeaderResponseDecorator.html) and [FilteringHeaderResponse](https://ci.apache.org/projects/wicket/apidocs/7.x/org/apache/wicket/markup/head/filter/FilteringHeaderResponse.html) to separate HeaderItems into two places to render: header and a defined place in our page body.
+First, let’s start with some background. Each time a component wants to add something to the page header (for example using [IHeaderContributor](https://nightlies.apache.org/wicket/apidocs/7.x/org/apache/wicket/markup/html/IHeaderContributor.html)) it creates a new instance of [HeaderItem](https://nightlies.apache.org/wicket/apidocs/7.x/org/apache/wicket/markup/head/HeaderItem.html) object. By default all HeaderItems are rendered in `<head>`, but we could modify this behaviour using [IHeaderResponseDecorator](https://nightlies.apache.org/wicket/apidocs/7.x/org/apache/wicket/markup/html/IHeaderResponseDecorator.html) and [FilteringHeaderResponse](https://nightlies.apache.org/wicket/apidocs/7.x/org/apache/wicket/markup/head/filter/FilteringHeaderResponse.html) to separate HeaderItems into two places to render: header and a defined place in our page body.
 
 First, we should define a place where all JS files should be rendered by adding a `<wicket:container>` element with id:
 
@@ -123,7 +123,7 @@ public void init()
 }
 ```
 
-Our decorator should use a filter that is already in Wicket core module, a [JavaScriptFilteredIntoFooterHeaderResponse](https://ci.apache.org/projects/wicket/apidocs/7.x/org/apache/wicket/markup/head/filter/JavaScriptFilteredIntoFooterHeaderResponse.html) that does exactly what we need:
+Our decorator should use a filter that is already in Wicket core module, a [JavaScriptFilteredIntoFooterHeaderResponse](https://nightlies.apache.org/wicket/apidocs/7.x/org/apache/wicket/markup/head/filter/JavaScriptFilteredIntoFooterHeaderResponse.html) that does exactly what we need:
 
 > A header response that creates two buckets. The header bucket will contain all references to CSS and markup from the `<head>` section from the page. The other bucket will contain all other header items, and you will need to add a HeaderResponseContainer to the footer of your page (typically just before the end body tag) to render those items.
 

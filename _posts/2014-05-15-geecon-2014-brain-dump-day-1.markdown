@@ -55,7 +55,7 @@ Inspired by the post [“Min/max note taking for conferences”](http://scottber
 ### Tim Boudreau – Node.js for Java developers
 
 - Speaker webpage to check – [http://timboudreau.com/](http://timboudreau.com/)
-- [hapi](http://spumko.github.io/) – rich framework for building web applications and services for Node.js
+- [hapi](https://hapi.dev/) – rich framework for building web applications and services for Node.js
 - [joi](https://github.com/spumko/joi) – library for JSON validation
 
 ### Olga Madejska – ‘I will never deploy on Fridays’ – yeah, right…

@@ -9,7 +9,7 @@ tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---
 
-Google Guava in version number 10 introduced a new package [eventbus](http://docs.guava-libraries.googlecode.com/git-history/v11.0.1/javadoc/com/google/common/eventbus/package-summary.html) with a few very interesting classes to deal with the listener (or publisher – subscriber) use case. Below I present my short introduction to the EventBus class and its family.
+Google Guava in version number 10 introduced a new package [eventbus](https://guava.dev/releases/11.0.1/api/docs/com/google/common/eventbus/package-summary.html) with a few very interesting classes to deal with the listener (or publisher – subscriber) use case. Below I present my short introduction to the EventBus class and its family.
 
 ## Basics
 
@@ -134,7 +134,7 @@ Now let’s analyze some more interesting features of EventBus.
 
 ### Dead Event
 
-The first unusual thing is a [DeadEvent](http://docs.guava-libraries.googlecode.com/git-history/v11.0.1/javadoc/com/google/common/eventbus/DeadEvent.html) class, a predefined event which is fired when we’ve posted any type of event but no one was there to receive it. To see how it works let’s create a listener waiting for dead events:
+The first unusual thing is a [DeadEvent](https://guava.dev/releases/11.0.1/api/docs/com/google/common/eventbus/DeadEvent.html) class, a predefined event which is fired when we’ve posted any type of event but no one was there to receive it. To see how it works let’s create a listener waiting for dead events:
 
 ```java
 /**

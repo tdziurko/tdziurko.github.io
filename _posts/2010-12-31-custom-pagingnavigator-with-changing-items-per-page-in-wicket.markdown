@@ -15,7 +15,7 @@ The finished component will look like below:
 
 ![custom paginator](/images/wicket-custom-paginator.png)
 
-Of course I was not going to implement this from scratch, because most of the work had already been done by Wicket authors and committers in the component [PagingNavigator](http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/navigation/paging/PagingNavigator.html). The source of this component as a reference to changes I made can be found [here](http://pastebin.com/kwzBG9mH).
+Of course I was not going to implement this from scratch, because most of the work had already been done by Wicket authors and committers in the component [PagingNavigator](https://web.archive.org/web/20121104180749/http://wicket.apache.org/apidocs/1.4/org/apache/wicket/markup/html/navigation/paging/PagingNavigator.html). The source of this component as a reference to changes I made can be found [here](http://pastebin.com/kwzBG9mH).
 
 ## The first steps in creating our component
 

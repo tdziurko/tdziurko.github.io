@@ -13,7 +13,7 @@ The second part of my notes from the [GeeCON 2014](http://2014.geecon.org/) conf
 
 ### Hazem Saleh – Jasmine Automated Tests for JavaScript
 
-- Testing asynchronous code with [Jasmine](http://jasmine.github.io/2.0/introduction.html) looks really ugly. [Michał Ostruszka](http://michalostruszka.pl/) suggests using [Mocha](http://visionmedia.github.io/mocha/) for such use cases.
+- Testing asynchronous code with [Jasmine](https://web.archive.org/web/20220115173539/http://jasmine.github.io/2.0/introduction.html) looks really ugly. [Michał Ostruszka](http://michalostruszka.pl/) suggests using [Mocha](https://mochajs.org/) for such use cases.
 - [Istanbul](https://github.com/gotwarlost/istanbul) – code coverage for JavaScript
 
 ### Sam Newman – Deploying And Testing Microservices

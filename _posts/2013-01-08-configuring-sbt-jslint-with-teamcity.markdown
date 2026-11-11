@@ -13,7 +13,7 @@ In this post I will shortly describe the configuration process of the JSLint SBT
 
 ## Problem
 
-In my current project we are working with rather non-standard technologies for a decent Java developer. Our backend runs on Scala and [Scalatra](http://www.scalatra.org/) and serves pure JSON to the frontend written in JavaScript and [AngularJS](http://angularjs.org/). And as we are far from being seasoned JS developers, we want to have the quality of our JS codebase guarded by some automatic tool.
+In my current project we are working with rather non-standard technologies for a decent Java developer. Our backend runs on Scala and [Scalatra](http://www.scalatra.org/) and serves pure JSON to the frontend written in JavaScript and [AngularJS](https://docs.angularjs.org/). And as we are far from being seasoned JS developers, we want to have the quality of our JS codebase guarded by some automatic tool.
 
 ### Toolbox
 
