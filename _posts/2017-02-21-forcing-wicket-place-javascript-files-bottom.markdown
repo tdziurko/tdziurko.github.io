@@ -4,7 +4,7 @@ title: Forcing Wicket to place JavaScript files at the bottom
 description: Rendering JavaScript resources at the bottom of the page in Apache Wicket using FilteringHeaderResponse
 date: 2017-02-21
 author: tomek
-image: '/images/wicket-tshirt.png'
+image: '/images/wicket-javascript-bottom-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---

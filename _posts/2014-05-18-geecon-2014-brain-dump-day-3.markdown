@@ -4,7 +4,7 @@ title: GeeCON 2014 – Brain dump, Day 3
 description: My notes, tools and books from the third, final day of GeeCON 2014
 date: 2014-05-18
 author: tomek
-image: '/images/geecon-2014.png'
+image: '/images/geecon-2014-day-3-cover.jpg'
 tags: [Conferences, Java]
 tags_color: '#aeb85f'
 ---

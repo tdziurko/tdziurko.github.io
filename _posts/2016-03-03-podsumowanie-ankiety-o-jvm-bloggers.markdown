@@ -4,7 +4,7 @@ title: Podsumowanie ankiety o JVM Bloggers
 description: (In Polish) Wyniki ankiety o projekcie JVM Bloggers i plany nowych funkcjonalności
 date: 2016-03-03
 author: tomek
-image: '/images/jvm-bloggers-logo.png'
+image: '/images/jvm-bloggers-survey-cover.jpg'
 tags: [In Polish, Java]
 tags_color: '#317b94'
 ---

@@ -4,7 +4,7 @@ title: GeeCON 2014 – Brain dump, Day 1
 description: My notes, quotes, tools and books from the first day of GeeCON 2014
 date: 2014-05-15
 author: tomek
-image: '/images/geecon-2014.png'
+image: '/images/geecon-2014-day-1-cover.jpg'
 tags: [Conferences, Java]
 tags_color: '#aeb85f'
 ---
