@@ -42,7 +42,7 @@ somebody to choose his way to prepare for this exam and also increase his chance
 
 More about other people's preparations can be found at:
 
-- (in Polish) [here](http://www.goldenline.pl/forum/scjp)
+- (in Polish) SCJP forum at GoldenLine
 - [SCJP Wall of Fame](http://faq.javaranch.com/java/ScjpWallOfFame) at JavaRanch portal, check links next to the
   people's names
 

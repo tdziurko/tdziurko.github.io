@@ -35,7 +35,7 @@ After taking all these steps press Ctrl-E (just in case, to clear previous resul
 
 ## Sending post-data to more complicated form using proxy
 
-**Example site:** [GoldenLine](http://www.goldenline.pl/) – Polish service very similar to [LinkedIn](http://www.linkedin.com/)  
+**Example site:** GoldenLine – Polish service very similar to [LinkedIn](http://www.linkedin.com/)  
 **Use case:** log in the user and then check if the main page rendered properly.
 
 This one explains the situation when we want to test an application with a more complicated login form that we don’t know exactly how it works (we are only an application tester or the form is too complicated for full analysis with Firebug). In such a scenario proxy recording is a very useful JMeter feature.
@@ -50,14 +50,14 @@ This one explains the situation when we want to test an application with a more 
 8. Again, to check if it’s working add View Results Tree and run your plan (Ctrl-R).
 
 Note 1: Sometimes you will have to add Http Cookie Manager and/or Http Header Manager to your thread group for the plan to start working as expected.  
-Note 2: JMeter sometimes can’t handle HTTPS, SSL requests, more information about solutions [here](http://wiki.apache.org/jakarta-jmeter/JMeterAndHTTPS) and more about suggested program ([BadBoy](http://www.badboy.com.au/)) below.
+Note 2: JMeter sometimes can’t handle HTTPS, SSL requests, more information about solutions was available on the JMeter wiki and more about suggested program (BadBoy) below.
 
 ## Sending post-data to secured, SSL login form
 
 **Example site:** [Nasza-Klasa](http://www.nk.pl/) – Polish social service  
 **Use case:** log in the user and then check if the main page rendered properly.
 
-Sometimes the tested application uses encryption, SSL and HTTPS protocol. Lately JMeter gained a new feature called HTTPS spoofing and sometimes it will suffice but, as I experienced many problems with this function, I describe another suggested way of testing secure requests with BadBoy application which is a more advanced request recorder helping to test web applications (for more about BadBoy visit [online docs](http://www.badboysoftware.biz/docs/)).
+Sometimes the tested application uses encryption, SSL and HTTPS protocol. Lately JMeter gained a new feature called HTTPS spoofing and sometimes it will suffice but, as I experienced many problems with this function, I describe another suggested way of testing secure requests with BadBoy application which is a more advanced request recorder helping to test web applications (for more about BadBoy see its documentation).
 
 1. Download and install BadBoy.
 2. Run it.
@@ -71,7 +71,7 @@ Sometimes the tested application uses encryption, SSL and HTTPS protocol. Lately
 7. Fill and submit the login form.
 8. Wait till the whole page is loaded then stop recording.
 9. Use File menu to export recorded script to JMeter.
-10. Open script with JMeter. At the moment I wrote this post there is a compatibility problem between BadBoy and the latest (2.4) version of JMeter ([forum thread](http://www.badboysoftware.biz/forum/viewtopic.php?p=8874)), so I used JMeter 2.3.4.
+10. Open script with JMeter. At the moment I wrote this post there is a compatibility problem between BadBoy and the latest (2.4) version of JMeter (reported on the BadBoy forum), so I used JMeter 2.3.4.
 11. Check recorded data in the Thread Group Element. Disable (or delete if you are sure) some redundant data (requests to images, statistics server, etc.).
 12. To check if it’s working add View Results Tree and run your plan (Ctrl-R).
 

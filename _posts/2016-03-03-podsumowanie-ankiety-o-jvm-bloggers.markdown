@@ -74,6 +74,6 @@ mój komentarz: blogi programistów nie są moderowane poza przypadkami jakichś
 
 ## Podsumowanie
 
-Wszystkie odpowiedzi na pyt. otwarte można zobaczyć pod [tym linkiem](http://bit.ly/1RuX3z5) (można komentować). Ciągle szukamy też osób, które chciałyby pomóc w kodowaniu 🙂 Więcej info oraz kontakt na [GitHubie](https://github.com/tdziurko/jvm-bloggers).
+Wszystkie odpowiedzi na pyt. otwarte były dostępne w osobnym dokumencie. Ciągle szukamy też osób, które chciałyby pomóc w kodowaniu 🙂 Więcej info oraz kontakt na [GitHubie](https://github.com/tdziurko/jvm-bloggers).
 
 A Wy co sądzicie o wynikach ankiety? Co sądzicie o planowanych funkcjonalnościach? Zachęcam do komentowania tutaj lub w GoogleDocs.

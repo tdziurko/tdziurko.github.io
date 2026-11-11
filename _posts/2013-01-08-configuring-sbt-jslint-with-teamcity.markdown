@@ -97,7 +97,7 @@ And finally our build is fully configured to report and react on problems in Jav
 
 ![tc-step4](/images/jslint-teamcity-tc-step4.png)
 
-Reference commits from my current project:
+Reference commits from my current project (no longer publicly available):
 
-- [commit 1](https://github.com/softwaremill/bootstrap/commit/1a2d764db96c58ded2c07c9b88a6214f9b1b5794)
-- [commit 2](https://github.com/softwaremill/bootstrap/commit/c284acadcfdcad5cdaad1f082a6dab51d1f92107) (only the last modification in Build.scala)
+- commit `1a2d764`
+- commit `c284aca` (only the last modification in Build.scala)

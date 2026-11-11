@@ -17,7 +17,7 @@ So if you want to:
 
 - hear about Wicket, about the new features in the hot new 1.5 version from a person as close as it is possible to Wicket developers team
 - attend Android/Scala/Git workshops for free
-- meet one of the most well-known Polish speakers: [Jacek Laskowski](http://jlaskowski.blogspot.com/) (when I think “Java Polish blogger” he’s the one to come first to my mind), [Sławomir Sobótka](http://art-of-software.blogspot.com/) (craftsmanship is probably his unrevealed and top secret second name), [Szczepan Faber](http://monkeyisland.pl/about/) (bartender at [Mockito](http://mockito.org/)), [Paweł Lipiński](http://sprawnainzynieriaoprogramowania.blogspot.com/) (great TDD presentation show-man)
+- meet one of the most well-known Polish speakers: [Jacek Laskowski](http://jlaskowski.blogspot.com/) (when I think “Java Polish blogger” he’s the one to come first to my mind), [Sławomir Sobótka](http://art-of-software.blogspot.com/) (craftsmanship is probably his unrevealed and top secret second name), Szczepan Faber (bartender at [Mockito](http://mockito.org/)), Paweł Lipiński (great TDD presentation show-man)
 - hear and even talk with Ted Neward, Linda Rising, Sang Shin (those who don’t know these names, shame on you! 🙂)
 - see when Martijn Dashorst (Wicket talk) /Nicolas Leroux ([Play talk](http://33degree.org/talks.html#Play)) / Dierk König ([Grails talk](http://33degree.org/talks.html#RichGrailsUIs)) attacks and argues with Matt Raible after his talk [Comparing JVM Web Frameworks](http://33degree.org/talks.html#ComparingJVMWebFrameworks) when Matt will declare that none of Wicket/Play/Grails is the best of the best web frameworks? 😉
 

@@ -27,7 +27,7 @@ The second part of my notes from the [GeeCON 2014](http://2014.geecon.org/) conf
 - [“Consumer Driven Contracts”](http://martinfowler.com/articles/consumerDrivenContracts.html) article by Martin Fowler
 - [Pact](https://github.com/realestate-com-au/pact) – tool enabling consumer driven contract testing
 - [Packer](http://www.packer.io/) – tool for creating identical images for multiple platforms
-- [Ansible](http://www.ansible.com/home) – tool to automate app deployment, configuration management, etc., [further reading](http://red-badger.com/blog/2013/06/29/ansible/)
+- [Ansible](http://www.ansible.com/home) – tool to automate app deployment, configuration management, etc.
 - One service per machine
 
    - pros: easy to reason about (who to blame when CPU is 100%)

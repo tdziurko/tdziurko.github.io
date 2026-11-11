@@ -19,7 +19,7 @@ Jako programista Java wybrałem ścieżkę z tego języka. I żaden z wykładów
 
 ## Prezentacje
 
-[Walka o życie – kuzyni i następcy Javy opanowują świat](http://wilgucki.blogspot.com/2010/03/wrazenia-po-4developers-2010.html)
+Walka o życie – kuzyni i następcy Javy opanowują świat
 
 (+) szybki i konkretny, z wyjątkiem wstępu, przegląd przez języki działające na JVM
 
@@ -31,7 +31,7 @@ Automatyczne generowanie kodu
 
 (+) ciekawa dyskusja na koniec podczas zadawania pytań prowadzącemu
 
-(–) temat trochę mniej interesujący i przydatny niż [prezentacja Tomasza Skutnika z JDD](http://09.jdd.org.pl/prelegenci/tomasz-skutnik) o obsłudze wyjątków w aplikacjach klasy enterprise.
+(–) temat trochę mniej interesujący i przydatny niż prezentacja Tomasza Skutnika z JDD o obsłudze wyjątków w aplikacjach klasy enterprise.
 
 TopLink Grid – skalowanie aplikacji korzystających z Java Persistence API
 

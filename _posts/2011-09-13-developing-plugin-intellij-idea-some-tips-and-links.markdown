@@ -9,7 +9,7 @@ tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---
 
-When I started thinking about writing my first plugin for IntelliJ IDEA the biggest problem was the lack of good and comprehensive guides on how to do it and how to do it well gathered in one place. So this post will be a written collection of my personal experiences, links and other resources I found useful and noteworthy on my road to releasing [Share with Pastie](/blog/share-pastie-plugin-intellij-idea) plugin to the [public IntelliJ repository](http://plugins.intellij.net/plugin/?idea&id=6267).
+When I started thinking about writing my first plugin for IntelliJ IDEA the biggest problem was the lack of good and comprehensive guides on how to do it and how to do it well gathered in one place. So this post will be a written collection of my personal experiences, links and other resources I found useful and noteworthy on my road to releasing [Share with Pastie](/blog/share-pastie-plugin-intellij-idea) plugin to the public IntelliJ repository.
 
 ## Links
 
@@ -29,7 +29,7 @@ Resources in the above links are helpful but sooner or later you will have to di
 
 open your console and type: `git clone git://git.jetbrains.org/idea/community.git idea`
 
-or check [IntelliJ IDEA 10 source code at GrepCode](http://grepcode.com/snapshot/repository.grepcode.com/java/ext/com.jetbrains/intellij-idea/10.0/)
+or check IntelliJ IDEA 10 source code at GrepCode
 
 I have used both ways: Git repository to checkout the whole project, open it in IDEA and find usages, etc, and GrepCode to quickly find what a single code fragment looks like.
 
@@ -53,7 +53,7 @@ Editor editor = DataKeys.EDITOR.getData(actionEvent.getDataContext());
 // and so on...
 ```
 
-The list of all places available in this way can be found in [DataKeys](http://grepcode.com/file/repository.grepcode.com/java/ext/com.jetbrains/intellij-idea/10.0/com/intellij/openapi/actionSystem/DataKeys.java) class (and its parents) constants list.
+The list of all places available in this way can be found in DataKeys class (and its parents) constants list.
 
 **Balloon with info or error message**
 

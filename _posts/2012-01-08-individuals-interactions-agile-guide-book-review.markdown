@@ -9,7 +9,7 @@ tags: [Reading]
 tags_color: '#8c8f8c'
 ---
 
-Some time ago, after I wrote a review of [*The Clean Coder*]({{site.baseurl}}/blog/clean-coder-robert-martin-book-review/), I received a tweet from [@InformIT](https://twitter.com/InformIT) mentioning they enjoyed my post. After a few emails with a representative from Pearson, I received three books to read and review. *Individuals and Interactions: An Agile Guide* is the first of them.
+Some time ago, after I wrote a review of [*The Clean Coder*]({{site.baseurl}}/blog/clean-coder-robert-martin-book-review/), I received a tweet from @InformIT mentioning they enjoyed my post. After a few emails with a representative from Pearson, I received three books to read and review. *Individuals and Interactions: An Agile Guide* is the first of them.
 
 ## Review
 

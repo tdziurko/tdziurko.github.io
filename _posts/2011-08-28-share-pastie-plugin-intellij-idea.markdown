@@ -31,7 +31,7 @@ So seven steps every time I want to share code with someone. Seven steps, eleven
 
 ## The solution
 
-As we are all using IntelliJ IDEA and most of the code we want to share is viewed using IDEA I thought about writing a plugin which could automate sharing code fragments with Pastie.org. And after several hours I was able to release the 0.1 version. We started using it and some new features I hadn’t thought of before were requested, also some bugs appeared too 🙂 So I spent some more time on adding new things and fixing bugs and currently [Share with Pastie](http://plugins.intellij.net/plugin/?idea&id=6267) version 0.4 is available. And now the workflow looks like that:
+As we are all using IntelliJ IDEA and most of the code we want to share is viewed using IDEA I thought about writing a plugin which could automate sharing code fragments with Pastie.org. And after several hours I was able to release the 0.1 version. We started using it and some new features I hadn’t thought of before were requested, also some bugs appeared too 🙂 So I spent some more time on adding new things and fixing bugs and currently Share with Pastie version 0.4 is available. And now the workflow looks like that:
 
 1. Select interesting code fragment inside IntelliJ IDEA (two clicks)
 2. Press Ctrl+Shift+P or right mouse click and choose “Share with Pastie.org” (one click)
@@ -67,7 +67,7 @@ Pasties are listed there starting from the newest and each item has its link whi
 
 ## Summary
 
-“Share with Pastie” can be downloaded from the central IntelliJ IDEA plugin repository – [link](http://plugins.intellij.net/plugin/?idea&id=6267).
+“Share with Pastie” was available in the central IntelliJ IDEA plugin repository.
 
 Source code is available on GitHub – [link](https://github.com/softwaremill/idea-pastie-plugin)
 

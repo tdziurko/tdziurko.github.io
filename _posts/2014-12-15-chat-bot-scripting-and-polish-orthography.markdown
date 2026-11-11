@@ -140,7 +140,7 @@ errors =
 
 ### Backlog
 
-So after two iterations we have a stable script doing what we want and keeping our orthography skills sharp. Complete source code is available [at GitHub](https://github.com/softwaremill/hal-9k/blob/master/scripts/grammar-corrector.coffee). But as we are using this script, some new ideas started appearing and landed in my backlog for future versions:
+So after two iterations we have a stable script doing what we want and keeping our orthography skills sharp. Complete source code was available at GitHub. But as we are using this script, some new ideas started appearing and landed in my backlog for future versions:
 
 - Store most often misspelled words in a database
 - Store users making most mistakes and print ‘hall of fame’ table

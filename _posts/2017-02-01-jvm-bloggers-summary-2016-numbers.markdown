@@ -50,7 +50,7 @@ During 2016 we have published 1306 articles (blog posts, video recordings, etc.)
 
 ### 2883
 
-Number of messages posted on our [Slack channel](https://jvm-bloggers-slack.herokuapp.com/) where we discuss new features and occasional bugs.
+Number of messages posted on our Slack channel where we discuss new features and occasional bugs.
 
 ### Commit history visualisation
 
@@ -58,4 +58,4 @@ And as an extra, short visualisation of JVM Bloggers development created by Marc
 
 <iframe width="600" height="400" src="https://www.youtube.com/embed/ovERMYC3VmU" frameborder="0" allowfullscreen="true"></iframe>
 
-If you want to join and help with JVM Bloggers development, please catch us on [Slack](https://jvm-bloggers-slack.herokuapp.com/) 🙂
+If you want to join and help with JVM Bloggers development, please catch us on Slack 🙂

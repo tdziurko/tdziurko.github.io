@@ -15,7 +15,7 @@ _2015 passed away, we are one year older 🙂_
 
 The biggest change is that I have become a public speaker! This was a long awaited achievement to unlock and for the last 2 or 3 years many people were asking me when I am going to speak somewhere (yes I am looking at you [Szimano](http://szimano.org/) and [Adam](http://www.warski.org/blog/) 🙂) and finally, finally I made it.
 
-It started with a debut at a Warsaw JUG meetup, then I visited Torun JUG and finally my first presentation at a conference, the famous and very popular [Confitura](http://2015.confitura.pl/). All three talks were extremely terrifying to me, I even compared my stage fright with a jump from the plane I once did and I am still not sure which one was more stressful 🙂
+It started with a debut at a Warsaw JUG meetup, then I visited Torun JUG and finally my first presentation at a conference, the famous and very popular Confitura. All three talks were extremely terrifying to me, I even compared my stage fright with a jump from the plane I once did and I am still not sure which one was more stressful 🙂
 
 ![jump2](/images/skydiving-jump.jpg)
 

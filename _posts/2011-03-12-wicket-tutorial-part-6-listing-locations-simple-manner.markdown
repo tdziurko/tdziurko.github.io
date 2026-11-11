@@ -9,7 +9,7 @@ tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---
 
-Today we will add a simple listing view for locations added to the database in previous posts. I said ‘simple’ as there are some more sophisticated ways to show many items using Wicket but probably we will not have many locations to show in our application so a simple view without pagination should be ok. A more complicated way ([DataTable](http://wicketstuff.org/wicket14/repeater/?wicket:bookmarkablePage=:org.apache.wicket.examples.repeater.DataTablePage) component) will be covered in the future when we add the ‘listing items’ feature.
+Today we will add a simple listing view for locations added to the database in previous posts. I said ‘simple’ as there are some more sophisticated ways to show many items using Wicket but probably we will not have many locations to show in our application so a simple view without pagination should be ok. A more complicated way (DataTable component) will be covered in the future when we add the ‘listing items’ feature.
 
 But first a small bug I found in our DAO layer. In class AbstractDAO we created the method findByProperty and there is one line there:
 

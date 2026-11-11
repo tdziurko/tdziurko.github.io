@@ -18,7 +18,7 @@ Inspired by the post [“Min/max note taking for conferences”](http://scottber
 
 ### Jurgen Appelo – The 7 Duties of Great Software Professionals
 
-- Won Entrepreneur of the Year 1999 in Holland – [details](http://www.nieuwsbank.nl/inp/1999/12/1215R099.htm) in Dutch (Google Translate for English version)
+- Won Entrepreneur of the Year 1999 in Holland – as reported in the Dutch press at the time
 - Recommended book [“Drive”](https://www.goodreads.com/book/show/6452796-drive)
 - Measure how you spend time to find ways where you can optimise things
 - There is [ALE 2014 Unconference](http://ale2014.alenetwork.eu/) in Cracow in August, looking very interesting
@@ -54,7 +54,7 @@ Inspired by the post [“Min/max note taking for conferences”](http://scottber
 
 ### Tim Boudreau – Node.js for Java developers
 
-- Speaker webpage to check – [http://timboudreau.com/](http://timboudreau.com/)
+- Speaker webpage to check – http://timboudreau.com/
 - [hapi](https://hapi.dev/) – rich framework for building web applications and services for Node.js
 - [joi](https://github.com/spumko/joi) – library for JSON validation
 

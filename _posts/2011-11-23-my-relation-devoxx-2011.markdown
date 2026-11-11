@@ -118,14 +118,14 @@ In this presentation Roy van Rijn has told us about his clash with [Shazam](http
 
 If you really want to read more about Devoxx 2011 below are some links to other places where you can find more information about this conference:
 
-- official summary: [http://www.devoxx.com/display/DV11/2011/11/22/Devoxx+2011+The+Good,+The+Bad+and+The+Ugly](http://www.devoxx.com/display/DV11/2011/11/22/Devoxx+2011+The+Good,+The+Bad+and+The+Ugly)
+- official summary: http://www.devoxx.com/display/DV11/2011/11/22/Devoxx+2011+The+Good,+The+Bad+and+The+Ugly
 - Backstage of Devoxx: [http://www.touilleur-express.fr/2011/11/15/devoxx-2011-who-are-those-angels/](http://www.touilleur-express.fr/2011/11/15/devoxx-2011-who-are-those-angels/)
 - [http://dailylog.lenart.org.pl/2011/11/21/shared-experience/](http://dailylog.lenart.org.pl/2011/11/21/shared-experience/)
 - http://blog.jqno.nl/devoxx-2011-post-mortem
 - [http://javaheap.wordpress.com/2011/11/19/devoxx-2011/](http://javaheap.wordpress.com/2011/11/19/devoxx-2011/)
 - http://theworldisanapple.com/devoxx-2011/
-- [http://labs.consol.de/lang/de/blog/devoxx/devoxx-2011-wrap-up/](http://labs.consol.de/lang/de/blog/devoxx/devoxx-2011-wrap-up/)
-- [http://blog.avisi.nl/2011/11/18/devoxx11-3/](http://blog.avisi.nl/2011/11/18/devoxx11-3/)
+- http://labs.consol.de/lang/de/blog/devoxx/devoxx-2011-wrap-up/
+- http://blog.avisi.nl/2011/11/18/devoxx11-3/
 - [http://odedpeer.blogspot.com/2011/11/devoxx-2011.html](http://odedpeer.blogspot.com/2011/11/devoxx-2011.html)
 - [http://blogs.oracle.com/geertjan/entry/what_is_happening_vs_what](http://blogs.oracle.com/geertjan/entry/what_is_happening_vs_what)
 - [http://www.tbray.org/ongoing/When/201x/2011/11/21/Devoxx](http://www.tbray.org/ongoing/When/201x/2011/11/21/Devoxx)
@@ -138,7 +138,7 @@ If you really want to read more about Devoxx 2011 below are some links to other 
 - [http://blog.nava.de/2011/11/24/devoxx-2011-ruckblick/](http://blog.nava.de/2011/11/24/devoxx-2011-ruckblick/) (in German)
 - Video relation: [http://vimeo.com/3217035](http://vimeo.com/32170355)
 - Summary after discussion panel about women in IT at Devoxx: [http://mechanitis.blogspot.com/2011/11/why-we-shouldnt-target-women.htm](http://mechanitis.blogspot.com/2011/11/why-we-shouldnt-target-women.html)
-- Photos: [https://picasaweb.google.com/100790864147050997007/Devoxx2011#](https://picasaweb.google.com/100790864147050997007/Devoxx2011#)
+- Photos: https://picasaweb.google.com/100790864147050997007/Devoxx2011#
 - Photos 2: [https://plus.google.com/u/0/photos/118041907032714528693/albums/5676724380994368977](https://plus.google.com/u/0/photos/118041907032714528693/albums/5676724380994368977)
 
 Uff, that’s all for now. Thank you for reading! 🙂
