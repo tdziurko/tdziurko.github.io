@@ -4,7 +4,7 @@ title: Most Valuable Blogger at DZone
 description: I joined DZone Most Valuable Blogger program - what it gives (jokingly and seriously)
 date: 2012-03-29
 author: tomek
-image: '/images/placeholder-dzone-mvb.png'
+image: '/images/dzone-mvb-cover.png'
 tags: [Random thoughts]
 tags_color: '#317b94'
 ---

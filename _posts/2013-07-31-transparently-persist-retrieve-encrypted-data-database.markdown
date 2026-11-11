@@ -4,7 +4,7 @@ title: Transparently persist and retrieve encrypted data in the database
 description: Automatic encryption and decryption of entity fields with Jasypt and Hibernate
 date: 2013-07-31
 author: tomek
-image: '/images/placeholder-jasypt-encryption.png'
+image: '/images/jasypt-encryption-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---

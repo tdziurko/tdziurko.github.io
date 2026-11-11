@@ -4,7 +4,7 @@ title: Jasmine tests reporter for TeamCity in Scala/sbt
 description: Making sbt-jasmine-plugin report JavaScript tests to TeamCity
 date: 2013-03-26
 author: tomek
-image: '/images/placeholder-jasmine-teamcity.png'
+image: '/images/jasmine-teamcity-cover.jpg'
 tags: [Programming, JavaScript]
 tags_color: '#5fb05f'
 ---

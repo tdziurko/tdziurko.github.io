@@ -4,7 +4,7 @@ title: Google Guava EventBus – easy and elegant publisher/subscriber cases
 description: Introduction to EventBus from Google Guava with listeners, dead events and events hierarchy
 date: 2012-01-23
 author: tomek
-image: '/images/placeholder-guava-eventbus.png'
+image: '/images/guava-eventbus-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---

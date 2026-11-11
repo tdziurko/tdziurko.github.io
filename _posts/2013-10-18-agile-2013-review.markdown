@@ -4,7 +4,7 @@ title: Agile 2013 review
 description: Notes, thoughts and comments after Agile By Example 2013 conference in Warsaw
 date: 2013-10-18
 author: tomek
-image: '/images/placeholder-agile-by-example-2013.png'
+image: '/images/agile-by-example-2013-cover.png'
 tags: [Conferences, Agile]
 tags_color: '#aeb85f'
 ---

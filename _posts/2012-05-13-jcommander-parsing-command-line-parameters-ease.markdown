@@ -4,7 +4,7 @@ title: JCommander – parsing command line parameters with ease
 description: Parsing, validating and converting command line parameters in Java with JCommander
 date: 2012-05-13
 author: tomek
-image: '/images/placeholder-jcommander.png'
+image: '/images/jcommander-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---

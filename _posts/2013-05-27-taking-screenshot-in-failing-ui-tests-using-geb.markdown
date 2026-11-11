@@ -4,7 +4,7 @@ title: Taking screenshot in failing UI tests using Geb
 description: Configuring Geb and Spock to automatically take a browser screenshot whenever a UI test fails
 date: 2013-05-27
 author: tomek
-image: '/images/placeholder-geb-screenshot.png'
+image: '/images/geb-screenshot-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---

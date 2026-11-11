@@ -4,7 +4,7 @@ title: The life cycle of a servlet
 description: Servlet life cycle from the perspective of the container and the user
 date: 2010-04-21
 author: tomek
-image: '/images/placeholder-servlet-life-cycle.png'
+image: '/images/servlet-life-cycle-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---

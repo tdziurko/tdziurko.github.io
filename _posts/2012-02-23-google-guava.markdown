@@ -4,7 +4,7 @@ title: Google Guava
 description: Slides and code from my presentation "Google Guava - almost everything you need to know"
 date: 2012-02-23
 author: tomek
-image: '/images/placeholder-google-guava.png'
+image: '/images/google-guava-slides-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---

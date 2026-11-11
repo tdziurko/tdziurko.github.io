@@ -4,7 +4,7 @@ title: "\"Remember me\" functionality in Apache Wicket"
 description: Implementing "Remember Me" auto-login with cookies in Apache Wicket 6 without external libraries
 date: 2012-09-14
 author: tomek
-image: '/images/placeholder-wicket-remember-me.png'
+image: '/images/wicket-remember-me-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---

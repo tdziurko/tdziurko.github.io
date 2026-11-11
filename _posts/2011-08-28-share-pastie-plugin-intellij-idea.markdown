@@ -4,7 +4,7 @@ title: Share with Pastie plugin for IntelliJ IDEA
 description: IntelliJ IDEA plugin sharing code fragments via Pastie.org in just a few clicks
 date: 2011-08-28
 author: tomek
-image: '/images/placeholder-share-pastie-plugin.png'
+image: '/images/share-pastie-plugin-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---

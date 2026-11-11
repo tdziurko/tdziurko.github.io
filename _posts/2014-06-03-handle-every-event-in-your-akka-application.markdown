@@ -4,7 +4,7 @@ title: Handle every event in your Akka application
 description: Detecting unhandled Akka messages globally by subscribing to UnhandledMessage on the EventStream
 date: 2014-06-03
 author: tomek
-image: '/images/placeholder-akka-unhandled-events.png'
+image: '/images/akka-unhandled-events-cover.jpg'
 tags: [Programming, Scala]
 tags_color: '#5fb05f'
 ---

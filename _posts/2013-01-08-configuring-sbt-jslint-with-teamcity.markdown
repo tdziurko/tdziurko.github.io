@@ -4,7 +4,7 @@ title: Configuring sbt + JSLint with TeamCity
 description: Checking JavaScript code with sbt-jslint plugin and failing TeamCity builds on JSLint errors
 date: 2013-01-08
 author: tomek
-image: '/images/placeholder-sbt-jslint-teamcity.png'
+image: '/images/sbt-jslint-teamcity-cover.jpg'
 tags: [Programming, JavaScript]
 tags_color: '#5fb05f'
 ---

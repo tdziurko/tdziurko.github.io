@@ -4,7 +4,7 @@ title: Using Twitter Bootstrap navbar as a Wicket component
 description: Building a reusable, pure Java Wicket component wrapping Twitter Bootstrap navigation bar
 date: 2012-03-28
 author: tomek
-image: '/images/placeholder-wicket-bootstrap-navbar.png'
+image: '/images/wicket-bootstrap-navbar-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---

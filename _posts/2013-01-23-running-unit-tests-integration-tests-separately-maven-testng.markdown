@@ -4,7 +4,7 @@ title: Running unit tests and integration tests separately with Maven and TestNG
 description: Configuring Maven Failsafe plugin to run TestNG integration tests separately from unit tests
 date: 2013-01-23
 author: tomek
-image: '/images/placeholder-maven-testng-integration-tests.png'
+image: '/images/maven-testng-integration-tests-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---

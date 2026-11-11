@@ -4,7 +4,7 @@ title: SCJP to certyfikowany programista Java, a SCJD?
 description: (In Polish) O tłumaczeniu przysięgłym certyfikatów Javy w polskim urzędzie
 date: 2010-04-09
 author: tomek
-image: '/images/placeholder-scjd.jpg'
+image: '/images/scjd-cover.jpg'
 tags: [In Polish, Random thoughts]
 tags_color: '#317b94'
 ---
