@@ -4,7 +4,7 @@ title: Merry Christmas in Java
 description: Computer-generated Christmas wishes and "Silent Night" carol written completely in Java
 date: 2014-12-23
 author: tomek
-image: '/images/christmas-tree-cover.png'
+image: '/images/christmas-tree-cover.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 redirect_from:

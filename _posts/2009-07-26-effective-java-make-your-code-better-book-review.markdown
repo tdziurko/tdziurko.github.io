@@ -4,7 +4,7 @@ title: Effective Java – make your code better – book review
 description: 'Review of "Effective Java" by Joshua Bloch, the best book for intermediate and advanced Java programmers'
 date: 2009-07-26
 author: tomek
-image: '/images/book-effective.png'
+image: '/images/book-effective.jpg'
 tags: [Reading]
 tags_color: '#8c8f8c'
 redirect_from:

@@ -4,7 +4,7 @@ title: Confessions of a Public Speaker - book review
 description: 'Review of "Confessions of a Public Speaker" by Scott Berkun and what it teaches about preparing for a talk'
 date: 2011-05-01
 author: tomek
-image: '/images/confessions-public-speaker-cover.png'
+image: '/images/confessions-public-speaker-cover.jpg'
 tags: [Reading]
 tags_color: '#8c8f8c'
 redirect_from:

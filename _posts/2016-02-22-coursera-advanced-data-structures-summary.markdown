@@ -4,7 +4,7 @@ title: My Impressions After Advanced Data Structures at Coursera
 description: Summary of the "Advanced Data Structures in Java" course at Coursera - graphs, BFS, Dijkstra and A*
 date: 2016-02-22
 author: tomek
-image: '/images/coursera-graphs.png'
+image: '/images/coursera-graphs.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 redirect_from:
@@ -15,7 +15,7 @@ _Short summary after I have finished “Advanced Data Structures in Java” at C
 
 Online course [“Advanced Data Structures in Java”](https://www.coursera.org/learn/advanced-data-structures/) at Coursera finished last week and I felt that after these cool five weeks it is worth recapping and summarise my impressions.
 
-![graphs](/images/coursera-graphs.png)
+![graphs](/images/coursera-graphs.jpg)
 
 _image source: [http://lin-ear-th-inking.blogspot.com](http://lin-ear-th-inking.blogspot.com/2013/05/flight-paths-in-jeql-redux.html)_
 
@@ -38,7 +38,7 @@ And after that the course ended after five weeks with graphs.
 - Sophisticated algorithms are not the thing we use frequently at work so it was very funny feeling to learn again stuff that I was forced to memorize several years ago at university. Obviously now I was more motivated so learning was a more enjoyable process than when I was a young student.
 - Test datasets can be obtained for any area using provided application so everyone was able to test A* or Dijkstra using streets from their neighbourhood. You could check if your route to work is optimal or not 😉 Below is a fragment of my home city with a calculated example route:
 
-![plock_dijkstra](/images/coursera-plock-dijkstra.png)
+![plock_dijkstra](/images/coursera-plock-dijkstra.jpg)
 
 - Peer reviews. Our solutions for Week3 and (partly) Week5 were reviewed by other developers attending this course. At first I was not convinced that it will bring any value to my learning process, but it appeared that comparing how people from different countries and with different backgrounds designed a class hierarchy to solve the same problem was an interesting experience. I saw approaches similar to mine but also completely different ones but still valid. Another topic is a different approach to documenting code: some developers shared my view and used comments only where it was really, really necessary and tried to write self-explanatory code. But in some people’s solutions I saw as many lines of documentation as lines of code 🙂
 - Good peer pressure: because I have advertised this course at [JVM Bloggers](https://github.com/tdziurko/jvm-bloggers/) newsletter I was motivated to graduate 🙂 And the more people I know tweeted that they are joining, the more motivated I was to complete assignments week by week. Discussing the course with developers from my company helped a lot too. Generally this is one of the finest features of online courses: motivating others and getting motivation 🙂

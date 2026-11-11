@@ -4,7 +4,7 @@ title: Brzydka Pani od HR radzi, czyli 1011 błędów, które popełniają progr
 description: Moja debiutancka, trochę poważna, trochę żartobliwa prezentacja na konferencji Confitura 2015 o błędach w rekrutacji, błędach w kodzie i jak programista-rekruter postrzega kandydata. Uznana za trzecią najlepszą prezentację na tej konferencji. 
 date: 2015-11-13 15:01:35 +0300
 author: tomek
-image: '/images/brzydka-pani-cover.png'
+image: '/images/brzydka-pani-cover.jpg'
 video_embed: https://www.youtube.com/embed/4Dr3dTTxiEk
 tags: [Video, In Polish, Recruitment, Confitura, Conference]
 tags_color: '#62a13f'

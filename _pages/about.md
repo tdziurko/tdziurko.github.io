@@ -12,7 +12,7 @@ consultancy and part of the VirtusLab group. I build engineering
 organizations that scale without losing the people who make them work.
 
 {:refdef: style="text-align: center;"}
-![Tomasz Dziurko]({{site.baseurl}}/images/tomek-1-smaller.png)
+![Tomasz Dziurko]({{site.baseurl}}/images/tomek-1-smaller.jpg)
 {: refdef}
 
 ## What I do

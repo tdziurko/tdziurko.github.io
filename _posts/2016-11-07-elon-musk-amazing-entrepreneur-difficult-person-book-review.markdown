@@ -4,7 +4,7 @@ title: Elon Musk – an amazing entrepreneur and a difficult person – book rev
 description: 'Review of Elon Musk''s biography, the story of an amazing entrepreneur and a difficult person'
 date: 2016-11-07
 author: tomek
-image: '/images/elon-musk-book-cover.png'
+image: '/images/elon-musk-book-cover.jpg'
 tags: [Reading]
 tags_color: '#8c8f8c'
 redirect_from:
@@ -34,7 +34,7 @@ After this sale, he launched Tesla and SpaceX – his two most renowned companie
 electric cars, the latter sends rockets into space and aims to send astronauts to Mars and launch a colony there 
 “making humans a Multiplanetary Species”.
 
-![SpaceX rocket launch]({{site.baseurl}}/images/space_x.png)
+![SpaceX rocket launch]({{site.baseurl}}/images/space_x.jpg)
 
 ## Difficult personality
 

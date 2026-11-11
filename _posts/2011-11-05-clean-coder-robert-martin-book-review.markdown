@@ -4,7 +4,7 @@ title: The Clean Coder - another great book by Robert C. Martin - book review
 description: 'Review of "The Clean Coder" by Robert C. Martin and how to act as a professional developer'
 date: 2011-11-05
 author: tomek
-image: '/images/clean-coder-cover.png'
+image: '/images/clean-coder-cover.jpg'
 tags: [Reading]
 tags_color: '#8c8f8c'
 redirect_from:
