@@ -53,7 +53,7 @@ public class DateNotInThePastValidator implements Validator {
 
 And if we provide the key value in the properties file we will see something like this:
 
-![](/images/jsf-validator-1.png)
+![JSF custom validator error message read from the properties file](/images/jsf-validator-1.png)
 
 So it looks like we have a working and production-ready custom validator.
 
@@ -61,7 +61,7 @@ So it looks like we have a working and production-ready custom validator.
 
 But while our form becomes more and more complex we might encounter the issue described on the screen below:
 
-![](/images/jsf-validator-21.png)
+![Form with several date fields showing the same validation message](/images/jsf-validator-21.png)
 
 So the problem is how can the user determine which date is valid and which is not? Our validator uses the same property key to display both error messages.
 
@@ -106,5 +106,5 @@ Our property value for error should have value _can not be in the past_ as _Date
 
 And a working example should show something similar to this screen:
 
-![](/images/jsf-validator-3.png)
+![Parametrized JSF validator showing a message specific to each field](/images/jsf-validator-3.png)
 

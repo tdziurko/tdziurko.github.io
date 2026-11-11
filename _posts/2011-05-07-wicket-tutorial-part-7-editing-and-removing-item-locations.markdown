@@ -152,7 +152,7 @@ The way the validator is created **(7)** depends on whether we edit an existing 
 
 Ok, that’s everything we have to do to add the edit feature. We now can edit and add new locations as shown on the screen shot below.
 
-![](/images/wicket-tutorial-7-ss-20110507141140.png)
+![Editing an existing item location](/images/wicket-tutorial-7-ss-20110507141140.png)
 
 ## Removing locations
 
@@ -233,7 +233,7 @@ public void removeSafely(EntityClass entity) {
 
 After this small change the application is ready for tests and we can check that everything works just fine.
 
-![](/images/wicket-tutorial-7-ss-20110507202517.png)
+![Locations list with a confirmation that a location was removed](/images/wicket-tutorial-7-ss-20110507202517.png)
 
 ## Summary
 

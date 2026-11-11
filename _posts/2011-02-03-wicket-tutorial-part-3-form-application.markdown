@@ -328,7 +328,7 @@ Location added successfully", reporter = submitButton, level = INFO]
 
 And after this we will see that everything is working as expected:
 
-![](/images/wicket-tutorial-3-ss-20110203121714.png)
+![Working form for adding a new item location](/images/wicket-tutorial-3-ss-20110203121714.png)
 
 ## Summary
 

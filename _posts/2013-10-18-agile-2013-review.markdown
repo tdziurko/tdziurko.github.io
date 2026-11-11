@@ -15,7 +15,7 @@ Notes, thoughts and comments after my second agile conference in my career. A fe
 
 I’ve just returned from my trip to Warsaw to attend the 3rd edition of [Agile By Example](http://agilebyexample.com/).
 
-![](/images/agile-by-example-2013.jpg)
+![Agile By Example 2013 conference](/images/agile-by-example-2013.jpg)
 
 Here are my thoughts, impressions and notes after this event.
 

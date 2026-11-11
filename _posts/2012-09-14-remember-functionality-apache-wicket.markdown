@@ -24,11 +24,11 @@ Base application consists of two pages:
 - Home Page: displays a welcome message for logged and not-logged users or either logout or login link.
 - Login Page: allows the user to login based on a simple in-memory collection of users. Some working login/password pairs: John/john, Lisa/lisa, Tom/tom.
 
-![](/images/wicket-remember-me-home-page1.jpg)
+![Home page of the sample application for a guest user](/images/wicket-remember-me-home-page1.jpg)
 
-![](/images/wicket-remember-me-login-page.jpg)
+![Login page of the sample application](/images/wicket-remember-me-login-page.jpg)
 
-![](/images/wicket-remember-me-home-page2.jpg)
+![Home page of the sample application after logging in](/images/wicket-remember-me-home-page2.jpg)
 
 ## Remember Me functionality
 
@@ -238,7 +238,7 @@ So after three steps we should have ‘Remember Me’ working. To check it quick
 
 and then start the application `mvn clean compile jetty:run`, go to the login page, login, close the browser and after over 1 minute (when session expires) open it again on [http://localhost:8080](http://localhost:8080/). You should see something like this:
 
-![](/images/wicket-remember-me-auto-logged.jpg)
+![User automatically logged in by the Remember Me cookie after the session expired](/images/wicket-remember-me-auto-logged.jpg)
 
 So it works. But we still need one more thing: allow the user to remove cookies and turn-off auto-login.
 

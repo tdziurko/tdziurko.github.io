@@ -175,7 +175,7 @@ Now we can rebuild our application to push the image to DockerHub:
 
 After a few minutes we will see a message _BUILD SUCCESSFUL_ and if you visit your DockerHub public profile page you should see something similar:
 
-![](/images/docker-hub-image.png)
+![Docker image of the application on the Docker Hub profile page](/images/docker-hub-image.png)
 
 which means that our Docker image with application is there waiting for deployment to an AWS EC2 machine. But this is a material for another blog post 🙂
 

@@ -17,7 +17,7 @@ When you add any Wicket component library, e.g. Wicket-Bootstrap to your project
 
 Let’s start with a simple one-page-one-form Wicket application counting days from the user’s birthday:
 
-![](/images/wicket-js-bottom-sample-app.png)
+![Sample Wicket application counting days since the user's birthday](/images/wicket-js-bottom-sample-app.png)
 
 It has a dependency on the earlier mentioned Wicket-Bootstrap because we need its DatePicker component:
 

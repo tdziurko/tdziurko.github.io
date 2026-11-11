@@ -31,7 +31,7 @@ mvn install jetty:run -P jetty
 
 And when you open the browser you should see
 
-![](/images/wicket-cdi-numberguess.png)
+![Number guessing game built with Wicket and CDI](/images/wicket-cdi-numberguess.png)
 
 It is a simple game in which the user must guess a number.
 
@@ -146,11 +146,11 @@ with corresponding HTML element in HomePage.html file.
 
 And when we try to guess a number and then click the new link, we will see:
 
-![](/images/wicket-cdi-withlink.png)
+![Number guessing game with a link to the second page](/images/wicket-cdi-withlink.png)
 
 and then
 
-![](/images/wicket-cdi-secondpage.png)
+![Second page showing the same conversation id and game instance](/images/wicket-cdi-secondpage.png)
 
 So as you can see, we have the same conversation id and the same game instance. So it’s working.
 

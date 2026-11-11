@@ -15,7 +15,7 @@ When I started working for a new company I also changed my IDE so since June I h
 
 But this is not a post about the greatness of the JetBrains product. Since we all are working remotely (max distance between developers is about 650km) we use plenty of tools which allow us to collaborate, communicate and share ideas through the Internet. Skype, GoogleDocs, [Planning Poker](http://planningpoker.com/), tinyPM, company wiki are all among them. But one thing we are doing a few times each day is sharing code fragments online. When I have a problem, I post code so we can talk about it, when I have an idea how to solve something, I post code to other team members and they can say whether my solution sucks or rocks. Mostly we share code using [Pastie.org](http://pastie.org/) service.
 
-![](/images/pastie-pastie-home.png)
+![Pastie.org home page](/images/pastie-pastie-home.png)
 
 ## The problem
 
@@ -38,12 +38,12 @@ As we are all using IntelliJ IDEA and most of the code we want to share is viewe
 1. Select interesting code fragment inside IntelliJ IDEA (two clicks)
 2. Press Ctrl+Shift+P or right mouse click and choose “Share with Pastie.org” (one click)
 
-   ![](/images/pastie-plugin-1.png)
+   ![Share with Pastie.org option in the IntelliJ IDEA editor context menu](/images/pastie-plugin-1.png)
 
 3. Plugin sends selected fragment to Pastie.org. Language for syntax highlighting is chosen using the file extension of the file on which “Share with Pastie” was called.
 4. A link to your **private** (available only through the direct link) pastie is stored in your clipboard and you are informed about this fact by a green balloon.
 
-   ![](/images/pastie-plugin-2.png)
+   ![Green balloon confirming the Pastie link was copied to the clipboard](/images/pastie-plugin-2.png)
 
 5. You can paste the link to your teammates thousands of kilometers away from you.
 
@@ -57,13 +57,13 @@ There are some additional features which were not planned at the beginning but a
 
 While developing an application you might need to copy and share something not only from the opened file but from the console output (or log) your application produced. So since version 0.4 the plugin allows you to share code directly from the console view:
 
-![](/images/pastie-plugin-31.png)
+![Sharing console output with Pastie from IntelliJ IDEA](/images/pastie-plugin-31.png)
 
 **Pasties history**
 
 Sometimes you might share something with the plugin and then, without thinking, copy something else to the clipboard. And then what? Your link to the last code shared with Pastie is lost? It would be but [Tomek Szymański](http://szimano.org/) suggested an interesting feature that older links could be stored somewhere and user should be able to access them later. So I implemented a history window with recent pasties and links to them. It is available as a separate tool window at the bottom of IDEA:
 
-![](/images/pastie-plugin-4.png)
+![Share with Pastie tool window listing recently shared pastes with copy-link actions](/images/pastie-plugin-4.png)
 
 Pasties are listed there starting from the newest and each item has its link which can be copied to the clipboard too.
 

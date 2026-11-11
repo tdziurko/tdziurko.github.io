@@ -22,27 +22,27 @@ Po zebraniu 81 odpowiedzi, przyszła pora na podsumowanie, a ponieważ projekt j
 
 Zaraz po starcie projektu miałem trochę wątpliwości, że jednak może to jest zupełnie _bes sęsu_, ale patrząc na ogólny odbiór JVM Bloggers, chyba nie jest tak źle, bo **90,1%** osób ocenia projekt jako _Fajny_ lub _Bardzo fajny_.
 
-![](/images/jvm-bloggers-survey-general-reception.png)
+![Ankieta JVM Bloggers: ogólna ocena projektu](/images/jvm-bloggers-survey-general-reception.png)
 
 ## Sekcja Varia
 
 Ten element nie był już oceniany tak dobrze (58% osób uważa, że jest _Fajna_ lub _Bardzo fajna_), ale mniej jest również osób, które uważają, że _Varia_ jest zbędna (tylko 3,7%). Dla sporej części Varia _po prostu jest_ 🙂
 
-![](/images/jvm-bloggers-survey-varia-reception.png)
+![Ankieta JVM Bloggers: ocena sekcji Varia](/images/jvm-bloggers-survey-varia-reception.png)
 
 ## Ocena pomysłów na nowe funkcjonalności
 
 Główną częścią ankiety były pytania na temat propozycji nowych funkcjonalności, które z czasem będą dodawane do projektu.
 
-![](/images/jvm-bloggers-survey-global-rss.png)
+![Ankieta JVM Bloggers: zainteresowanie zbiorczym kanałem RSS](/images/jvm-bloggers-survey-global-rss.png)
 
-![](/images/jvm-bloggers-survey-most-commented-posts.png)
+![Ankieta JVM Bloggers: zainteresowanie listą najczęściej komentowanych wpisów](/images/jvm-bloggers-survey-most-commented-posts.png)
 
-![](/images/jvm-bloggers-survey-most-read-posts.png)
+![Ankieta JVM Bloggers: zainteresowanie listą najczęściej czytanych wpisów](/images/jvm-bloggers-survey-most-read-posts.png)
 
-![](/images/jvm-bloggers-survey-most-rt-likes-tweets.png)
+![Ankieta JVM Bloggers: zainteresowanie listą najpopularniejszych tweetów](/images/jvm-bloggers-survey-most-rt-likes-tweets.png)
 
-![](/images/jvm-bloggers-survey-website-with-all-editions.png)
+![Ankieta JVM Bloggers: zainteresowanie stroną ze wszystkimi wydaniami](/images/jvm-bloggers-survey-website-with-all-editions.png)
 
 Jak widać dwie najbardziej przydatne rzeczy okiem uczestników ankiety to zbiorczy RSS ze wszystkimi wpisami oraz strona z najnowszym oraz archiwalnymi wydaniami newslettera. Pozostałe rzeczy cieszyły się mniejszą, ale tylko o kilka procent, przychylnością 🙂
 
@@ -52,11 +52,11 @@ Trochę mnie to zaskoczyło, ale okazało się, że integracja z Social Media ra
 
 Wyniki ankiety pokazały też, że Google Plus faktycznie umiera, bo prawie nikt z tego regularnie nie korzysta.
 
-![](/images/jvm-bloggers-survey-publication-on-twitter.png)
+![Ankieta JVM Bloggers: korzystanie z Twittera](/images/jvm-bloggers-survey-publication-on-twitter.png)
 
-![](/images/jvm-bloggers-survey-publication-on-fb.png)
+![Ankieta JVM Bloggers: korzystanie z Facebooka](/images/jvm-bloggers-survey-publication-on-fb.png)
 
-![](/images/jvm-bloggers-survey-publication-on-gplus.png)
+![Ankieta JVM Bloggers: korzystanie z Google Plus](/images/jvm-bloggers-survey-publication-on-gplus.png)
 
 ## Pytania otwarte
 

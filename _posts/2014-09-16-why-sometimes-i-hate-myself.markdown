@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Why sometimes I hate myself
-description: On being too harsh to yourself
+description: On being too harsh to yourself when the community expects you to blog, speak, learn new languages and write open source, all at once.
 date: 2014-09-16
 author: tomek
 image: '/images/sadness.jpg'

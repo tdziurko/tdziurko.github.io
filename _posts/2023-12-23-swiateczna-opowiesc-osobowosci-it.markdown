@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Świąteczna opowieść. Polska branża IT w 2023
-description: Gościnny występ w cyklu Osobowości IT z podsumowaniem polskiej branży IT w 2023, przewidywaniami, co się zdarzy w 2024 oraz jak wyglądały nasze ścieżki kariery. 
+description: "Gościnnie w Osobowościach IT: podsumowanie polskiej branży IT w 2023, przewidywania na 2024 i nasze ścieżki kariery."
 date: 2023-12-23 15:01:35 +0300
 author: tomek
 image: '/images/swiateczna-opowiesc.jpg'

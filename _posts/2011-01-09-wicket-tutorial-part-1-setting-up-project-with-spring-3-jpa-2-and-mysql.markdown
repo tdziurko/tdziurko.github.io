@@ -57,7 +57,7 @@ mvn jetty:run
 
 And after a while when Maven tries to download half of the Internet, you could type [http://localhost:9090/item-directory/](http://localhost:9090/item-directory/) to see the following page:
 
-![](/images/wicket-tutorial-1-itemdirectoryhello.png)
+![Item Directory application start page after the first run](/images/wicket-tutorial-1-itemdirectoryhello.png)
 
 ## First step – make this technology stack work for me
 

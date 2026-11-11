@@ -15,7 +15,7 @@ redirect_from:
 
 GeeCON 2015 is over so it is a good time for a summary of this great conference. Below is a list of my reflections during and just after this great event.
 
-![](/images/geecon-2015.png)
+![GeeCON 2015 conference logo](/images/geecon-2015.png)
 
 ### 1. Microservices are ultra fancy now
 

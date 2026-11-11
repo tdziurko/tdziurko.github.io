@@ -44,7 +44,7 @@ Form<AddLocationPage> addLocationForm = new Form<AddLocationPage>("addLocationFo
 
 But with a unique constraint on the name field in the locations table in our database, trying to insert a new location with a name equal to another existing location will, as expected, end with such error:
 
-![](/images/wicket-tutorial-4-ss-20110215205613.png)
+![Database unique constraint error after adding a duplicate location name](/images/wicket-tutorial-4-ss-20110215205613.png)
 
 ## Solution
 
@@ -115,7 +115,7 @@ nameField.add(locationNameValidator);
 
 And when we submit this form with existing location name we will see feedback message showing that validation is working:
 
-![](/images/wicket-tutorial-4-ss-20110215220102.png)
+![Validation message shown for an already existing location name](/images/wicket-tutorial-4-ss-20110215220102.png)
 
 Ok, this is a good moment for a short break. If you want to see complete changes we made so far in the code, please refer to the [GitHub repository](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce). And now at this point we could end this post, as we reached our goal for today: validation is complete and running. But there is one problem…
 

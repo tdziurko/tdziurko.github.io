@@ -1,7 +1,7 @@
 ---
 layout: post
 title: O wspieraniu rozwoju i integracji programistów w czasach koronawirusa - 4Developers 2021
-description: Co robić, żeby ludzie w firmie zdalnej byli zgrani, mieli wsparcie w rozwoju i czuli się zintegrowani - moja prezentacja na 4Developers w czasach pandemii, więc online  
+description: "Moja prezentacja z 4Developers 2021 (online): jak w firmie zdalnej dbać o zgranie zespołu, rozwój ludzi i integrację."
 date: 2021-05-27 12:00:00
 author: tomek
 image: '/images/4devs-cover.jpg'
