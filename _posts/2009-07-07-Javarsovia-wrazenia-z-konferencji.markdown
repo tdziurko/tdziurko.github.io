@@ -5,7 +5,7 @@ description: (In Polish) Wrażenia z największej bezpłatnej konferencji o Javi
 date: 2009-07-07
 author: tomek
 image: '/images/equals.png'
-tags: [Conferences, Java]
+tags: [In Polish, Conferences, Java]
 tags_color: '#aeb85f'
 ---
 

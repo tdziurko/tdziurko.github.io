@@ -5,7 +5,7 @@ description: (In Polish) Wrażenia z konferencji Java Developers’ Day 2009 w K
 date: 2009-10-16
 author: tomek
 image: '/images/pexels-cracow.jpeg'
-tags: [Conferences, Java]
+tags: [In Polish, Conferences, Java]
 tags_color: '#aeb85f'
 ---
 
