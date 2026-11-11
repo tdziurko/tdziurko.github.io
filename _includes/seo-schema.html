@@ -1,0 +1,81 @@
+<!-- custom: JSON-LD structured data (Person, WebSite, BlogPosting) for search engines and AI assistants -->
+{%- assign s = site.data.settings -%}
+{%- assign seo = s.seo -%}
+{%- assign person_id = '/about-me/#person' | absolute_url -%}
+{%- assign website_id = '/#website' | absolute_url -%}
+{%- assign social_links = s.social | map: 'link' -%}
+{%- assign same_as = social_links | concat: seo.same_as -%}
+{%- capture knows_about -%}{{ seo.knows_about | jsonify }}{%- endcapture -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "{{ person_id }}",
+      "name": {{ s.author.author__name | jsonify }},
+      "alternateName": "Tomek Dziurko",
+      "url": "{{ '/about-me/' | absolute_url }}",
+      "image": "{{ s.author.author__avatar | absolute_url }}",
+      "description": {{ s.description | jsonify }},
+      "jobTitle": {{ seo.job_title | jsonify }},
+      "worksFor": { "@type": "Organization", "name": {{ seo.works_for.name | jsonify }}, "url": "{{ seo.works_for.url }}" },
+      "alumniOf": [{% for a in seo.alumni_of %}{ "@type": "CollegeOrUniversity", "name": {{ a.name | jsonify }}, "url": "{{ a.url }}" }{% unless forloop.last %},{% endunless %}{% endfor %}],
+      "knowsAbout": {{ knows_about }},
+      "sameAs": {{ same_as | jsonify }}
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ website_id }}",
+      "url": "{{ '/' | absolute_url }}",
+      "name": {{ s.title | jsonify }},
+      "description": {{ s.description | jsonify }},
+      "inLanguage": ["en", "pl"],
+      "author": { "@id": "{{ person_id }}" },
+      "publisher": { "@id": "{{ person_id }}" }
+    }
+    {%- if page.collection == 'posts' -%},
+    {%- if page.tags contains 'In Polish' %}{% assign post_lang = 'pl' %}{% else %}{% assign post_lang = 'en' %}{% endif %}
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ page.url | absolute_url }}#article",
+      "mainEntityOfPage": "{{ page.url | absolute_url }}",
+      "url": "{{ page.url | absolute_url }}",
+      "headline": {{ page.title | strip_html | truncate: 110 | jsonify }},
+      "name": {{ page.title | strip_html | jsonify }},
+      "description": {{ page.description | default: page.excerpt | strip_html | strip_newlines | strip | jsonify }},
+      {%- if page.image %}
+      "image": "{{ page.image | absolute_url }}",
+      {%- endif %}
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+      "inLanguage": "{{ post_lang }}",
+      "keywords": {{ page.tags | jsonify }},
+      "wordCount": {{ page.content | strip_html | number_of_words }},
+      "author": { "@id": "{{ person_id }}" },
+      "publisher": { "@id": "{{ person_id }}" },
+      "isPartOf": { "@id": "{{ website_id }}" }
+      {%- if page.video_embed -%},
+      "video": {
+        "@type": "VideoObject",
+        "name": {{ page.title | strip_html | jsonify }},
+        "description": {{ page.description | default: page.title | strip_html | strip_newlines | jsonify }},
+        "embedUrl": "{{ page.video_embed }}",
+        "uploadDate": "{{ page.date | date_to_xmlschema }}",
+        "thumbnailUrl": "{{ page.image | absolute_url }}"
+      }
+      {%- endif %}
+    }
+    {%- elsif page.url == '/about-me/' -%},
+    {
+      "@type": "ProfilePage",
+      "@id": "{{ page.url | absolute_url }}",
+      "url": "{{ page.url | absolute_url }}",
+      "name": {{ page.title | jsonify }},
+      "mainEntity": { "@id": "{{ person_id }}" },
+      "isPartOf": { "@id": "{{ website_id }}" }
+    }
+    {%- endif %}
+  ]
+}
+</script>

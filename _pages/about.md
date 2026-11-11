@@ -2,6 +2,9 @@
 layout: page
 title: About Me
 permalink: /about-me/
+description: Tomasz Dziurko, VP of Engineering at SoftwareMill. Scaling remote engineering organizations, engineering progression systems and post-acquisition integration.
+redirect_from:
+  - /about/
 ---
 
 I'm Tomek, VP of Engineering at [SoftwareMill](https://softwaremill.com), a 100% remote software
