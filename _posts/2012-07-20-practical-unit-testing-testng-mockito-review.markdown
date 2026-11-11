@@ -4,14 +4,12 @@ title: Practical Unit Testing with TestNG and Mockito – review
 description: Review of Tomek Kaczanowski's book and my personal takeaways about TestNG and Mockito
 date: 2012-07-20
 author: tomek
-image: '/images/practical-unit-testing.png'
+image: '/images/practical-unit-testing-book-cover.jpg'
 tags: [Reading]
 tags_color: '#8c8f8c'
 ---
 
 Book “_Practical Unit Testing with TestNG and Mockito_” ([website](http://practicalunittesting.com/)) covers a wide spectrum of knowledge about testing in the Java environment using aforementioned libraries. But if you prefer JUnit over TestNG or PowerMock over Mockito, it is still a valid and very good source of information about proper and painless testing. But of course, TestNG and Mockito users will be able to get the most of this title. Below you can read some of my thoughts after reading this book.
-
-![](/images/practical-unit-testing.png)
 
 ## Quick look at content
 
