@@ -4,7 +4,7 @@ title: The Apprenticeship Patterns – book review
 description: Review of "Apprenticeship Patterns" - a short book helping to nurture passion and become a better developer
 date: 2014-07-13
 author: tomek
-image: '/images/apprenticeship-patterns-cover.jpg'
+image: '/images/apprenticeship-patterns-book-cover.jpg'
 tags: [Reading]
 tags_color: '#8c8f8c'
 ---

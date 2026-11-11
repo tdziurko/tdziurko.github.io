@@ -4,7 +4,7 @@ title: Jak rozmawiać z klientem, który nie wie czego chce – recenzja
 description: (In Polish) Recenzja książki Michała Bartyzela "Oprogramowanie szyte na miarę" o komunikacji z klientem
 date: 2013-10-30
 author: tomek
-image: '/images/szyte-na-miare.png'
+image: '/images/szyte-na-miare-book-cover.jpg'
 tags: [In Polish, Reading]
 tags_color: '#8c8f8c'
 ---
