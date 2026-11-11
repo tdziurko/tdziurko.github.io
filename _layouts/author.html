@@ -28,10 +28,14 @@ layout: default
         <span class="author__social__item"><i class="fa-solid fa-location-dot"></i> {{ page.location }}</span>
       {% endif %}
       {% if page.website %}
-        <a class="author__social__item" href="{{ page.website }}" aria-label="Website link"><i class="fa-solid fa-link"></i> Website</a>
+        <a class="author__social__item" href="{{ page.website }}" aria-label="About me"><i class="fa-solid fa-user"></i> About me</a> <!-- custom: was "Website" -->
       {% endif %}
       {% if page.twitter %}
-        <a class="author__social__item" href="{{ page.twitter }}" aria-label="Twitter link"><i class="fa-brands fa-x-twitter"></i> Twitter</a>
+        <a class="author__social__item" href="{{ page.twitter }}" aria-label="X link"><i class="fa-brands fa-x-twitter"></i> X</a>
+      {% endif %}
+      <!-- custom: LinkedIn link -->
+      {% if page.linkedin %}
+        <a class="author__social__item" href="{{ page.linkedin }}" aria-label="LinkedIn link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
       {% endif %}
       {% if page.facebook %}
         <a class="author__social__item" href="{{ page.facebook }}" aria-label="Facebook link"><i class="fa-brands fa-facebook"></i> Facebook</a>
