@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Pragmatic Thinking and Learning - book review
-description:  
+description: 'Review of "Pragmatic Thinking and Learning" by Andy Hunt and the most interesting concepts about how our brains work'
 date: 2011-09-25
 author: tomek
 image: '/images/pragmatic-thinking-learning-cover.png'

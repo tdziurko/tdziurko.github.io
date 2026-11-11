@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Elon Musk – an amazing entrepreneur and a difficult person – book review
-description:  
+description: 'Review of Elon Musk''s biography, the story of an amazing entrepreneur and a difficult person'
 date: 2016-11-07
 author: tomek
 image: '/images/elon-musk-book-cover.png'
