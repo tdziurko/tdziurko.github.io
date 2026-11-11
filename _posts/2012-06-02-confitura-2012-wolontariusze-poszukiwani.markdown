@@ -4,7 +4,7 @@ title: Confitura 2012 – wolontariusze poszukiwani
 description: (In Polish) Ogłoszenie o naborze wolontariuszy i fotografów na konferencję Confitura 2012
 date: 2012-06-02
 author: tomek
-image: '/images/confitura-2012.png'
+image: '/images/confitura-2012-volunteers-cover.jpg'
 tags: [In Polish, Conferences]
 tags_color: '#aeb85f'
 ---

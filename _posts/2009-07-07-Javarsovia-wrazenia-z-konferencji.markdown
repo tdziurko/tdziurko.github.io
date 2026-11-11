@@ -4,7 +4,7 @@ title: Javarsovia 2009 - wrażenia z konferencji
 description: (In Polish) Wrażenia z największej bezpłatnej konferencji o Javie w Polsce
 date: 2009-07-07
 author: tomek
-image: '/images/equals.png'
+image: '/images/javarsovia-2009-cover.jpg'
 tags: [In Polish, Conferences, Java]
 tags_color: '#aeb85f'
 ---
