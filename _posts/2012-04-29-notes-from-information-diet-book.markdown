@@ -11,8 +11,6 @@ tags_color: '#8c8f8c'
 
 During [33rd Degree](http://2012.33degree.org/) conference in Cracow O’Reilly had its stand with books at very attractive prices and similarly to the previous year I couldn’t resist buying something. This time I decided to get [“The Information Diet”](http://www.amazon.com/The-Information-Diet-Conscious-Consumption/dp/1449304680) by Clay Johnson.
 
-![](/images/information-diet-book.jpg)
-
 The _A Case for Conscious Consumption_ subtitle looked very promising as I, as probably most people working in IT, have a problem with too many sources to read, check and analyze to extract information that is relevant and worth spending my time on. And I hoped that this book would help me to solve this issue.
 
 ## Information obesity like a food obesity
