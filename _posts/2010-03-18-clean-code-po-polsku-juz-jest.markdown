@@ -18,7 +18,7 @@ Dear Reader, this post is in my native language as it covers topic that makes se
 
 Na początku wrażenia estetyczne: okładka polskiego wydania jest dużo ładniejsza niż angielskiego. Nie zawsze podobały mi się okładki proponowane przez Helion w polskich wydaniach, ale tutaj akurat trafili bardzo dobrze i nowoczesny wygląd świetnie oddaje treść i tematykę publikacji.
 
-![](/images/clean-code-pl.jpg)
+![Okładka polskiego wydania książki Czysty kod](/images/clean-code-pl.jpg)
 
 Więcej o samej książce i jej treści można przeczytać na [blogu Pawła Zubkiewicza](http://pawelzubkiewicz.blogspot.com/2008/11/clean-code.html) oraz w [recenzjach na Amazon.com](http://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/product-reviews/0132350882/ref=dp_top_cm_cr_acr_txt?ie=UTF8&showViewpoints=1). Chociaż książkę mam od prawie 2 tygodni, przeczytałem może 30%. Nie jest to książka lekka, trzeba się nad nią skoncentrować, by w pełni zrozumieć co chcieli przekazać nam autorzy. Sami zresztą piszą w niej:
 

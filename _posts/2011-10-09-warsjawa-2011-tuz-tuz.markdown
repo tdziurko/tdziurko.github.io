@@ -13,7 +13,7 @@ redirect_from:
 
 Jak co roku, w październiku rusza kolejna konferencja organizowana przez [Warszawski JUG](https://sites.google.com/site/warszawajug/), młodsza siostra [Confitury](http://confitura.pl/), czyli [Warsjawa](http://warsjawa.pl/). Edycja 2011 przynosi sporo zmian i generalnie widać, że przez rok całej imprezie znacznie się przytyło, bo w porównaniu do zeszłorocznej edycji oferuje aż 4 równoległe ścieżki: trzy poświęcone w całości zgłębieniu konkretnej tematyki poprzez warsztaty oraz czwartą, która jest ścieżką mieszaną z 2,5-godzinnymi warsztatami oraz trzema prezentacjami.
 
-![](/images/warsjawa2011-logo.png)
+![Logo konferencji Warsjawa 2011](/images/warsjawa2011-logo.png)
 
 {: .tip }
 Dear Reader, this post is in my native language as it covers topic that makes sense only for people from Poland. But please feel free to browse my other articles as majority of them are written in English.

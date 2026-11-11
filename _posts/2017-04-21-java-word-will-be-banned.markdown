@@ -15,7 +15,7 @@ This article is my reaction to the recent Javaslang changing name to Vavr. Pleas
 
 Reports are coming in from all over the world that some mysterious man in a dark suit contacted various companies strongly suggesting that they should stop using the word “Java” in any form or “bad things might happen”.
 
-![](/images/java-banned-selection.png)
+![Fake News Times front page headline: Will Java almost disappear?](/images/java-banned-selection.png)
 
 By now we were not aware of the number of such incidents but recently many people from different countries and various industries contacted us to share their stories. Below we present some of them:
 
@@ -37,7 +37,7 @@ Individuals, governments, but also companies were on the radar of this unknown a
 
 ## Jawa, the motorbike
 
-![](/images/jawa-353.jpg)
+![Jawa 353 motorbike](/images/jawa-353.jpg)
 
 Another company that was contacted by “Java word defenders” was a Czech motorbike manufacturer named [Jawa](http://jawa.eu/). In this case a phrase describing their latest model “The fastest Jawa in the history” was the reason why a suited man appeared in their headquarters near Prague claiming that
 
@@ -49,7 +49,7 @@ Many of you might have heard about [Devoxx](https://devoxx.com/) conference orig
 
 > someone might think that Javapolis is a secret Java Police department in our corporation responsible for hunting for incorrect usages of ‘Java’ word which is of course ridiculous and might show our company in a bad light
 
-![](/images/breaking-news.jpg)
+![Breaking news](/images/breaking-news.jpg)
 
 ## Spartak Myjava, the football club
 

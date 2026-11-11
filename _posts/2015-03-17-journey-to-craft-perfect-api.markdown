@@ -15,11 +15,11 @@ Trying to be perfect in a never taught art.
 
 Several years ago our projects were lone islands, doing everything inside, sometimes communicating via a database or from time to time via XML and Web Services. Rarely did a developer have to consume a sophisticated API and almost never we had to create one. And because there was no need to write that, no one was teaching how to do it properly.
 
-![](/images/perfect-stamp.jpg)
+![Stamp with the word Perfect](/images/perfect-stamp.jpg)
 
 Nowadays things look completely different, we live in the era of public APIs: Twitter, Facebook, microservices, nanoservices, two-line-services. Everything should have a perfect REST API: well thought out, nicely designed and easy to use. But how to achieve these goals? This is the main subject of a short book “Web API Design – Crafting Interfaces that Developers Love” by Brian Mulloy [available for free on ApiGee site](http://apigee.com/about/resources/ebooks/web-api-design).
 
-![](/images/web-api-design.jpg)
+![Cover of the book Web API Design](/images/web-api-design.jpg)
 
 ## What is this book about
 

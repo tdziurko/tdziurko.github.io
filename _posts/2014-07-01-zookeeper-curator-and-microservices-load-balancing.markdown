@@ -15,11 +15,11 @@ How Zookeeper makes sure that every worker happily gets some stuff to do from jo
 
 [Apache ZooKeeper](http://zookeeper.apache.org/) is a tool to register, manage and discover services working on different machines. It is an indispensable member in the technology stack when we have to deal with a distributed system with many nodes which need to know where their dependencies are launched.
 
-![](/images/zookeeper-logo.png)
+![Apache ZooKeeper logo](/images/zookeeper-logo.png)
 
 However ZooKeeper is pretty low level and even standard use-cases require many lines of code. That is why [Apache Curator](http://curator.apache.org/) was born – a much more friendly and easier to use wrapper library over ZooKeeper. Using Curator we can deliver more with less code and in a much cleaner way.
 
-![](/images/curator-logo.png)
+![Apache Curator logo](/images/curator-logo.png)
 
 > “Guava is to Java what Curator is to ZooKeeper” – Patrick Hunt, ZooKeeper committer
 

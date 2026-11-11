@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Confitura 2017 – greatness delivered
-description: Last weekend, I attended Confitura 2017. This year's conference had about 1,400 attendees, 5 tracks, and 35 presentations — there was something interesting for everyone to learn. This is my review.
+description: "My review of Confitura 2017, the 11th edition of the Polish Java/JVM conference: about 1,400 attendees, 5 tracks and 35 presentations."
 date: 2017-07-04
 author: tomek
 image: '/images/confitura-entrance.jpg'

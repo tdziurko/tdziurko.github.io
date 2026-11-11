@@ -17,7 +17,7 @@ A standard retrospective is easy, you sit next to other people from your project
 
 ### [Cosketch](http://cosketch.com/)
 
-![](/images/retro-cosketch.png)
+![Cosketch online whiteboard used for a remote retrospective](/images/retro-cosketch.png)
 
 **Pros:**
 
@@ -34,7 +34,7 @@ A standard retrospective is easy, you sit next to other people from your project
 
 ### [Corkboard](http://corkboard.me/)
 
-![](/images/retro-corkboard.jpg)
+![Corkboard online sticky-notes board used for a remote retrospective](/images/retro-corkboard.jpg)
 
 **Pros:**
 
@@ -50,7 +50,7 @@ A standard retrospective is easy, you sit next to other people from your project
 
 ### Chalky
 
-![](/images/retro-chalky.jpg)
+![Chalky online board used for a remote retrospective](/images/retro-chalky.jpg)
 
 **Pros:**
 

@@ -52,7 +52,7 @@ public void testSomething() {
 
 And after running such tests in html report we will see something like presented on the screenshot below:
 
-![](/images/testng-reporter.jpg)
+![TestNG HTML report with custom log messages](/images/testng-reporter.jpg)
 
 and additionally all such messages are gathered in one, separate report.
 

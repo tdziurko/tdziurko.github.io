@@ -19,7 +19,7 @@ Ok, enough about the past. Today we are going to add some nice common layout to 
 
 As winning “The best designed web application ever” award is not the purpose of this tutorial, I didn’t want to spend a lot of time on creating a beautiful layout. After a short search in Google results I found a nice free template which seems to suit our tutorial needs well:
 
-![](/images/wicket-tutorial-2-template.png)
+![Free website template chosen for the Item Directory application](/images/wicket-tutorial-2-template.png)
 
 The author of this free template is [Spyka](http://www.spyka.net/) and you can download it from [here](http://www.spyka.net/web-templates/static/). There you can find two other colour variations of our template (if you don’t like orange 🙂) and many others to choose from if you want to choose completely different one.
 
@@ -33,7 +33,7 @@ After downloading the template we need to take the following steps in order to m
 
 Because we are planning to use a consistent layout across the whole application we will put common elements (marked as **blue, transparent area** on the image below) in BasePage.html and elements changing in each page (marked as **green area**) in corresponding page class. Using this technique will allow us to place logic responsible for repeating layout things in one place (BasePage class) and logic responsible for generating page-specific data in each page class inheriting from BasePage.
 
-![](/images/wicket-tutorial-2-layout.png)
+![Page layout with common elements in BasePage and page-specific content marked](/images/wicket-tutorial-2-layout.png)
 
 So after pasting complete index.html contents into BasePage.html we delete the part responsible for the green area (everything in `<div class="content">` tag) and replace it with marker `<wicket:child/>` which will inform Wicket that filling this area is a role of the inheriting class and not a BasePage class itself. After these modifications the changed part of the HTML file should look like presented below:
 
@@ -88,11 +88,11 @@ You don’t have to worry about content outside wicket:extend element as it will
 
 OK, we are done with template adding. If you want to view the code, it is available in the [GitHub repository](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce). Result should be like that:
 
-![](/images/wicket-tutorial-2-ss-20110121083415.png)
+![Item Directory application with the new layout applied](/images/wicket-tutorial-2-ss-20110121083415.png)
 
 Isn’t it much better than the previous one? 🙂
 
-![](/images/wicket-tutorial-1-itemdirectoryhello.png)
+![Item Directory application start page before adding the layout](/images/wicket-tutorial-1-itemdirectoryhello.png)
 
 ### Cleaning out the layout
 
@@ -107,7 +107,7 @@ Note that these are only plans, and can be changed, even You can change the list
 
 So currently we don’t need most of these links in the layout. I leave empty places to (maybe) fill them with additional requested features in the future. After cleaning the main page looks like that:
 
-![](/images/wicket-tutorial-2-ss-20110121090414.png)
+![Main page after cleaning up unused layout links](/images/wicket-tutorial-2-ss-20110121090414.png)
 
 List of changes (complete source code can be viewed [here](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce)):
 
@@ -151,7 +151,7 @@ Next in BasePage.html replace application name and header text and page title wi
 
 When we reload the page after Jetty noticed changes in the code, we could see the page looking exactly the same as before adding properties file so everything seems to work correctly. But when we look at the title bar in the web browser:
 
-![](/images/wicket-tutorial-2-ss-20110121093821.png)
+![Page title read from the properties file shown in the browser title bar](/images/wicket-tutorial-2-ss-20110121093821.png)
 
 Oh no! – you might think – I screwed something up! But don’t worry, it’s not a bug, it’s a feature 🙂 Do you remember the fragment of Application.java class?
 

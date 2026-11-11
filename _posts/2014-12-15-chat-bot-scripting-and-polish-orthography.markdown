@@ -20,7 +20,7 @@ In [our remote company](http://softwaremill.com/) we are heavily using text mess
 We have been using Slack for some time and I’ve planned to play with custom scripting since the beginning of Slack in SoftwareMill. Yet I didn’t have any idea good enough that I would love to implement it right away.
 That was the case until last week when I’ve noticed that we are making quite a lot of orthographic mistakes. And when you often see words written with an error, your internal ‘correct or not’ detector starts to go haywire – you are no longer sure if that word should be written this way or another. So I’ve decided to write a script that will try to spot such errors, correct and comment on them in a gentle way 🙂
 
-![](/images/chat-bot-slap.jpg)
+![Woman slapping a man in a tuxedo](/images/chat-bot-slap.jpg)
 
 ### Intro
 

@@ -15,7 +15,7 @@ Programmable Christmas wishes and carol, how cool is this?
 
 Christmas is a special time for everyone: for regular people but even for us, nerds and geeks that feel really strange sitting at the table far away from our computers, our natural environment.
 
-![](/images/christmas-tree.jpg)
+![Christmas tree](/images/christmas-tree.jpg)
 
 And in this special time I have a special message for you, my Dear Readers:
 

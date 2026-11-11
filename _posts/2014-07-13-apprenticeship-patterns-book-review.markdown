@@ -17,7 +17,7 @@ Between reading hardcore programming books (like [“Scala for the impatient”]
 
 There are many books about being a good developer, but recently when I was “feeding” my bookshelf one title caught my attention: [“Apprenticeship Patterns: Guidance for the Aspiring Software Craftsman”](https://www.goodreads.com/book/show/5608045-apprenticeship-patterns).
 
-![](/images/apprenticeship-patterns.jpg)
+![Cover of the book Apprenticeship Patterns](/images/apprenticeship-patterns.jpg)
 
 **Important note:** After finishing the book I’ve learnt that its online version is available for free [here](http://chimera.labs.oreilly.com/books/1234000001813/index.html) 🙂
 

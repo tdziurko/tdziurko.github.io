@@ -15,11 +15,11 @@ Last week I had the pleasure to attend the [Devoxx](http://devoxx.com/) conferen
 
 ## Devoxx conference
 
-![](/images/devoxx-2011-banner.png)
+![Devoxx 2011 conference banner](/images/devoxx-2011-banner.png)
 
 Devoxx (few years ago named JavaPolis) is a conference organized in Antwerp. The whole event takes place in a large cinema center allowing attendees to sit in very comfortable conditions and choose from seven (!) simultaneous sessions, each held in a separate hall. What is more interesting, keynotes were run in one hall and live-streamed to other ones so everyone could watch them like a movie on the cinema’s screen. Between sessions, also on the screens, we could read live tweet stream (#devoxx) so sometimes when WiFi was not working we could still see what people write about the conference and presentations, check example photo below or live site which were displayed on the screens:
 
-![](/images/devoxx-2011-tweet-wall.jpg)
+![Tweet wall at Devoxx 2011](/images/devoxx-2011-tweet-wall.jpg)
 
 After registration we received wristbands with bar code and qr code. At first it seemed strange to wear it all the time during these three days, but later when I wanted to register for a few contests and all I needed to do was to show my hand and let them scan my barcode, I started to appreciate this neat idea allowing me to spend less time writing my contact details at each sponsor booth and more time talking with people and socializing.
 

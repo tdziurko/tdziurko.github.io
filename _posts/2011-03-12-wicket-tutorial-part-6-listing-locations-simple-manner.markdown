@@ -150,11 +150,11 @@ In this method we are using [LoadableDetachableModel](https://web.archive.org/we
 
 ## Results
 
-![](/images/wicket-tutorial-6-ss-20110312191713.png)
+![List of locations rendered with Wicket ListView](/images/wicket-tutorial-6-ss-20110312191713.png)
 
 Working as expected. But if we view this page with an empty database it will look rather strange:
 
-![](/images/wicket-tutorial-6-ss-20110312192333.png)
+![Locations table with no rows when the database is empty](/images/wicket-tutorial-6-ss-20110312192333.png)
 
 ListView component isn’t rendered (no locations so nothing to show) but as it is placed inside the table and under the row with headers this part of HTML is visible. We must fix it and additionally, we will add an information label when there are no locations.
 
@@ -219,7 +219,7 @@ add(noLocationsLabel);
 
 After these improvements our page is ready:
 
-![](/images/wicket-tutorial-6-ss-20110312194653.png)
+![Final locations list page with an empty-state message](/images/wicket-tutorial-6-ss-20110312194653.png)
 
 Page is ready, you are ready to use ListView component in your projects so we reached the end of this post. As usual the latest source code is available [here](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce).
 

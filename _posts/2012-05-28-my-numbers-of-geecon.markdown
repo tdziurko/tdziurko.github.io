@@ -13,7 +13,7 @@ redirect_from:
 
 This year is very intensive with regard to IT conferences. I’ve already attended three of them and at least two more are scheduled. The last event I’ve had a pleasure to participate in was [GeeCON 2012](http://2012.geecon.org/) in Poznań. Below are some of my personal impressions after this event.
 
-![](/images/geecon-2012.png)
+![GeeCON 2012 conference logo](/images/geecon-2012.png)
 
 ## 0
 

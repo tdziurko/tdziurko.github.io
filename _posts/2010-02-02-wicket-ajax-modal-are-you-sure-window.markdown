@@ -72,7 +72,7 @@ public class HomePage extends WebPage {
 
 Finally, we can see how it looks:
 
-![](/images/wicket-javascript-window.png)
+![Default JavaScript confirmation dialog in a Wicket application](/images/wicket-javascript-window.png)
 
 It solves our problem but in the era of Web2.0, rounded corners and shiny looks it isn’t enough. Why can’t we use an ajax modal window to ask the user for confirmation? It would make our application look good and our css magician could make it look even better.
 So let’s try creating a reusable ‘Are you sure?’ ajax modal window with Wicket.
@@ -355,5 +355,5 @@ public class HomePage extends WebPage {
 
 And after clicking ‘Ajax Action!’ we could see that it’s working as intended:
 
-![](/images/wicket-ajax-modal-window.png)
+![Ajax modal confirmation window in a Wicket application](/images/wicket-ajax-modal-window.png)
 

@@ -18,7 +18,7 @@ Dear Reader, this post is in my native language as it covers topic that makes se
 
 Jak się okazało nie tylko mnie zainteresowała ta tematyka, bo na listę uczestników załapałem się tuż przed zamknięciem rejestracji, a, jak pisali organizatorzy, na liście rezerwowej czekało na uśmiech losu ponad 50 osób! Ale jeśli weźmiemy pod uwagę fakt, że była to pierwsza w Polsce konferencja całkowicie poświęcona technologiom mobilnym to nie ma się co dziwić tak dużemu zainteresowaniu.
 
-![](/images/mobilization-2011.png)
+![Logo konferencji Mobilization 2011](/images/mobilization-2011.png)
 
 ## Prelekcje
 

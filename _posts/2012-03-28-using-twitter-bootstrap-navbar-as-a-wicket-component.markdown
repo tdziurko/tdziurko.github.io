@@ -17,7 +17,7 @@ But this post isn’t supposed to be about Bootstrap itself. In a few next parag
 
 Before styling applied:
 
-![](/images/wicket-bootstrap-navbar-screenshot-0101.png)
+![Wicket application navigation before applying Twitter Bootstrap styles](/images/wicket-bootstrap-navbar-screenshot-0101.png)
 
 After:
 
@@ -75,7 +75,7 @@ public enum MenuItemEnum {
 
 Clean markup of Bootstrap NavBar may look like that:
 
-![](/images/wicket-bootstrap-navbar-screenshot-015.png)
+![Twitter Bootstrap NavBar divided into reusable components](/images/wicket-bootstrap-navbar-screenshot-015.png)
 
 And if you look attentively enough you will notice that it could be divided into smaller, reusable and independent elements:
 
