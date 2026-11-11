@@ -49,7 +49,7 @@ Many of you might have heard about [Devoxx](https://devoxx.com/) conference orig
 
 > someone might think that Javapolis is a secret Java Police department in our corporation responsible for hunting for incorrect usages of ‘Java’ word which is of course ridiculous and might show our company in a bad light
 
-![](/images/breaking-news.png)
+![](/images/breaking-news.jpg)
 
 ## Spartak Myjava, the football club
 

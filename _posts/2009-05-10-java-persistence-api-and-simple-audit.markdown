@@ -4,7 +4,7 @@ title: Java Persistence API and Simple Audit
 description: A simple way to add auditing to your database operations
 date: 2009-05-10
 author: tomek
-image: '/images/jpa-audit.png'
+image: '/images/jpa-audit.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 redirect_from:

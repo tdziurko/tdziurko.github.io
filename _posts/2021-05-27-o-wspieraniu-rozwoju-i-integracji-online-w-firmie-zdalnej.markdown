@@ -4,7 +4,7 @@ title: O wspieraniu rozwoju i integracji programistów w czasach koronawirusa - 
 description: Co robić, żeby ludzie w firmie zdalnej byli zgrani, mieli wsparcie w rozwoju i czuli się zintegrowani - moja prezentacja na 4Developers w czasach pandemii, więc online  
 date: 2021-05-27 12:00:00
 author: tomek
-image: '/images/4devs-cover.png'
+image: '/images/4devs-cover.jpg'
 video_embed: https://www.youtube.com/embed/tWSKyuN7W9c
 tags: [Video, In Polish, Conference, Remote Work, Company Culture]
 tags_color: '#814c9c'

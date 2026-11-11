@@ -4,7 +4,7 @@ title: "One and the Only One Reason to Customize IntelliJ IDEA Memory Settings"
 description: Benchmark of four IntelliJ IDEA memory settings on a big monolith and microservices
 date: 2015-11-23
 author: tomek
-image: '/images/intellij-memory-settings.png'
+image: '/images/intellij-memory-settings.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 redirect_from:

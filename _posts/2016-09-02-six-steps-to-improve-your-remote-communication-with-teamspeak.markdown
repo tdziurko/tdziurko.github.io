@@ -4,7 +4,7 @@ title: Six Steps to Improve Your Remote Communication With TeamSpeak
 description: A few tips to make your TeamSpeak usage a real pleasure 
 date: 2016-09-02
 author: tomek
-image: '/images/headphones.png'
+image: '/images/headphones.jpg'
 tags: [Remote Work, Productivity]
 tags_color: '#814c9c'
 redirect_from:

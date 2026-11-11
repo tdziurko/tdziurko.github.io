@@ -34,7 +34,7 @@ A standard retrospective is easy, you sit next to other people from your project
 
 ### [Corkboard](http://corkboard.me/)
 
-![](/images/retro-corkboard.png)
+![](/images/retro-corkboard.jpg)
 
 **Pros:**
 
@@ -50,7 +50,7 @@ A standard retrospective is easy, you sit next to other people from your project
 
 ### Chalky
 
-![](/images/retro-chalky.png)
+![](/images/retro-chalky.jpg)
 
 **Pros:**
 

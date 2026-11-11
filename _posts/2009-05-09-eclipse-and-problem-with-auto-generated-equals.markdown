@@ -4,7 +4,7 @@ title: Eclipse and Problem With Auto Generated Equals()
 description: Another problem with auto-generated code
 date: 2009-05-09
 author: tomek
-image: '/images/equals.png'
+image: '/images/equals.jpg'
 tags: [Programming, Java]
 tags_color: '#5fb05f'
 redirect_from:

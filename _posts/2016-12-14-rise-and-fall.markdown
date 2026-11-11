@@ -4,7 +4,7 @@ title: Rise and Fall
 description: Short story about one football (or perhaps IT) team
 date: 2016-12-14 15:01:35
 author: tomek
-image: '/images/unsure.png'
+image: '/images/unsure.jpg'
 tags: [IT Management, Random thoughts]
 tags_color: '#449479'
 redirect_from:
@@ -16,7 +16,7 @@ Every team wanted to be perceived as the best in the business as it would make s
 much easier. But most experienced players knew that there is a general rule applicable to almost every team: the ones 
 paying the most are also the ones most likely to play boring, old tactic without a chance to learn something new.
 
-![Stadium]({{site.baseurl}}/images/stadium.png)
+![Stadium]({{site.baseurl}}/images/stadium.jpg)
 
 
 Everything seemed to be stable – there were Team A and Team B and they were the best places to improve players’ skills. 
@@ -57,7 +57,7 @@ available on the market for his players, so they could play best football. But f
 the manager left the team (or maybe was sacked?) and soon decided to get back to playing football in another club. 
 Team Z was left shocked. They were sure that everything would change now, but no one knew what would the future be…
 
-![Unsure person]({{site.baseurl}}/images/unsure.png)
+![Unsure person]({{site.baseurl}}/images/unsure.jpg)
 
 Club owners needed some time to find a new person to lead their team, a person more like them, more business-aware. 
 And when they found him, every player was happy and with high hopes for a new, fresh start that will get them back 
@@ -70,7 +70,7 @@ First significant loss was the team captain who soon was followed by a few other
 the season was over and bonuses were given. Each month was bringing news that some footballer from Team Z is 
 joining another club.
 
-![Old crashed airplane]({{site.baseurl}}/images/wreck.png)
+![Old crashed airplane]({{site.baseurl}}/images/wreck.jpg)
 
 And the worst thing was that now, when many people in football industry knew what was happening inside, the number 
 of agents calling Team Z dropped significantly. To overcome this, Team Z started hiring footballers from another league, 

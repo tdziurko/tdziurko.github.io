@@ -4,7 +4,7 @@ title: Lobotomy to your object-oriented thinking - "Elegant Objects, volume 1" b
 description: My impressions after reading this popular but quite controversial book about object-oriented programming
 date: 2017-07-26
 author: tomek
-image: '/images/elegant-objects.png'
+image: '/images/elegant-objects.jpg'
 tags: [Reading, Programming]
 tags_color: '#8c8f8c'
 redirect_from:

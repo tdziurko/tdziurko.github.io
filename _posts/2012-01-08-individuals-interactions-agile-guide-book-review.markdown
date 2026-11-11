@@ -4,7 +4,7 @@ title: Individuals and Interactions - An Agile Guide - Human side of Agile metho
 description: 'Review of "Individuals and Interactions: An Agile Guide", a book about the human side of agile teams'
 date: 2012-01-08
 author: tomek
-image: '/images/individuals-interactions-book-cover.png'
+image: '/images/individuals-interactions-book-cover.jpg'
 tags: [Reading]
 tags_color: '#8c8f8c'
 redirect_from:

@@ -4,7 +4,7 @@ title: "6 things you should remember after GeeCON 2015"
 description: My reflections after GeeCON 2015 - microservices hype, PostgreSQL vs MongoDB, people and remote work
 date: 2015-05-20
 author: tomek
-image: '/images/geecon-2015-recap-cover.png'
+image: '/images/geecon-2015-recap-cover.jpg'
 tags: [Conferences, Java]
 tags_color: '#aeb85f'
 redirect_from:
