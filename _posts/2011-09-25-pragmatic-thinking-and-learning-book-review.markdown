@@ -11,7 +11,7 @@ tags_color: '#8c8f8c'
 
 ## How to think consciously about thinking and learning
 
-I recently finished reading one of the best non-IT books I’ve ever held in my hands: [“Pragmatic Thinking and Learning” by Andy Hunt](http://pragprog.com/book/ahptl/pragmatic-thinking-and-learning). Since there are already many reviews online, I will focus on the concepts I found most interesting and worth remembering.
+I recently finished reading one of the best non-IT books I’ve ever held in my hands: [“Pragmatic Thinking and Learning” by Andy Hunt](https://pragprog.com/titles/ahptl/pragmatic-thinking-and-learning/). Since there are already many reviews online, I will focus on the concepts I found most interesting and worth remembering.
 
 I believe every programmer should read this book. In fact, anyone whose career requires constant learning, effective thinking, and problem-solving skills should read it as well. Why? Because the author has carefully gathered available scientific knowledge about how our brains work, how they process information, and how they store new knowledge. More importantly, he describes how we can change our behavior to make the process of learning and problem-solving as effective as possible. I don’t think I need to convince anyone that effective thinking is useful—if not essential—to our work.
 

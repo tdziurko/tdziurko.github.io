@@ -115,7 +115,7 @@ And when we submit this form with existing location name we will see feedback me
 
 ![](/images/wicket-tutorial-4-ss-20110215220102.png)
 
-Ok, this is a good moment for a short break. If you want to see complete changes we made so far in the code, please refer to this [changeset](https://bitbucket.org/tdziurko/item-directory/changeset/15bf0c549e64) in BitBucket repository. And now at this point we could end this post, as we reached our goal for today: validation is complete and running. But there is one problem…
+Ok, this is a good moment for a short break. If you want to see complete changes we made so far in the code, please refer to the [GitHub repository](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce). And now at this point we could end this post, as we reached our goal for today: validation is complete and running. But there is one problem…
 
 ## We are lazy 🙂
 

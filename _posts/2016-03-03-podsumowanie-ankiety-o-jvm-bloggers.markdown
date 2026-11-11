@@ -68,7 +68,7 @@ mój komentarz: Blog Springa pojawił się tylko dlatego, że czasami pisze tam 
 
 mój komentarz: blogi programistów nie są moderowane poza przypadkami jakichś mocno politycznych/mało cenzuralnych wpisów. Wszystko poza nimi dotychczas wpadało do newslettera.
 
-- Zbiorczy RSS i strona z aktualnym i poprzednimi wydaniami newslettera – to są dwie rzeczy, które chcemy zaimplementować w pierwszej kolejności. Jest już nawet domena [http://jvm-bloggers.com](http://jvm-bloggers.com/) 🙂
+- Zbiorczy RSS i strona z aktualnym i poprzednimi wydaniami newslettera – to są dwie rzeczy, które chcemy zaimplementować w pierwszej kolejności. Jest już nawet domena [https://jvm-bloggers.com](https://jvm-bloggers.com/) 🙂
 - Kilka osób zaproponowało przeniesienie sekcji “Varia” na dół. Może to jest dobry pomysł, chociaż wtedy mało kto może do niej dotrzeć 🙂 Co o tym sądzicie?
 - Głosowanie na fajne posty: to wymaga trochę więcej czasu i kodowania i nie wiem czy naprawdę warto coś takiego robić.
 

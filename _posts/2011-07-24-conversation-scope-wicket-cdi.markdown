@@ -308,5 +308,5 @@ And when we restart jetty and use the link to the SecondPage, we will see correc
 
 As you can see conversation scope from CDI (Weld) in most cases is working with Wicket without any problems. For some specific use cases it needs some tweaks but everything can be achieved easily. So if you are planning to start a new Wicket project in the near future and you want to learn some new and interesting technology, combining your beloved web framework with Context and Dependency Injection (which is very similar to Spring 3) from JEE6 might be a good idea.
 
-All source code from this post is available in [my BitBucket repo](https://bitbucket.org/tdziurko/wicket-cdi-extended).
+All source code from this post is available in my BitBucket repo.
 

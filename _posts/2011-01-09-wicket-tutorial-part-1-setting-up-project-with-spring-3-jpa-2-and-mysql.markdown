@@ -30,16 +30,12 @@ My initial commit is mainly based on **WicketCool** because I like its Maven mod
 
 ## Project source code
 
-Source code for this post can be downloaded from Bitbucket: [https://bitbucket.org/tdziurko/item-directory/get/a61e7cf66cc3.tar.gz](https://bitbucket.org/tdziurko/item-directory/get/a61e7cf66cc3.tar.gz) or pulled with Mercurial using command:
+Source code of the complete application from this tutorial series is available in the [GitHub repository](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce) or with commands:
 
 ```bash
-hg clone https://bitbucket.org/tdziurko/item-directory -r "Base Project"
-```
-
-The latest application version is always available at [https://bitbucket.org/tdziurko/item-directory/overview](https://bitbucket.org/tdziurko/item-directory/overview) or with command:
-
-```bash
-hg clone https://bitbucket.org/tdziurko/item-directory
+git clone https://github.com/tdziurko/item-directory-with-wicket
+cd item-directory-with-wicket
+git checkout c9025bf   # last version using Wicket 1.4, as in this tutorial
 ```
 
 ## Project Overview

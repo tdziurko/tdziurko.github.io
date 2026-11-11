@@ -9,7 +9,7 @@ tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---
 
-2016 was the first full year when the [JVM Bloggers](http://jvm-bloggers.com/) project was running so to sum up this period of time I have gathered some numbers to share with you.
+2016 was the first full year when the [JVM Bloggers](https://jvm-bloggers.com/) project was running so to sum up this period of time I have gathered some numbers to share with you.
 
 ### 19
 
@@ -17,11 +17,11 @@ Number of newsletter issues published on our website. Before the application was
 
 ### 49
 
-Number of new blogs added to the JVM Bloggers project so they could be monitored. 33 of them were personal blogs, 8 were from IT companies and 8 from video channels. To add your blog create a Pull Request with a new entry to one of [these files](http://jvm-bloggers.com/issue/50).
+Number of new blogs added to the JVM Bloggers project so they could be monitored. 33 of them were personal blogs, 8 were from IT companies and 8 from video channels. To add your blog create a Pull Request with a new entry to one of [these files](https://jvm-bloggers.com/issue/50).
 
 ### 50
 
-Issue #50 was the first published online at [our website](http://jvm-bloggers.com/issue/50) at 28th August.
+Issue #50 was the first published online at [our website](https://jvm-bloggers.com/issue/50) at 28th August.
 
 ### 118
 

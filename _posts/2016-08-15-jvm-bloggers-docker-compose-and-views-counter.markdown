@@ -127,13 +127,13 @@ To add this feature the following things were required:
 2. Migration from UUID as a unique blog post identifier to something shorter
 3. Logic to store clicks in the database
 
-Job of [Redirect Controller](https://github.com/tdziurko/jvm-bloggers/blob/24d00aad8f90c5e13087ac91e5db0c9f7fd3fe2a/src/main/java/pl/tomaszdziurko/jvm_bloggers/rest/blogpost_redirect/RedirectController.java) is very simple – get UID from the url parameter (e.g. [http://jvm-bloggers.com/r/wx1LivZ](http://jvm-bloggers.com/r/wx1LivZ)) and redirect the user to the proper blog post. But before 0.10.0 UID was a full
+Job of [Redirect Controller](https://github.com/tdziurko/jvm-bloggers/blob/24d00aad8f90c5e13087ac91e5db0c9f7fd3fe2a/src/main/java/pl/tomaszdziurko/jvm_bloggers/rest/blogpost_redirect/RedirectController.java) is very simple – get UID from the url parameter (e.g. [https://jvm-bloggers.com/r/wx1LivZ](https://jvm-bloggers.com/r/wx1LivZ)) and redirect the user to the proper blog post. But before 0.10.0 UID was a full
 
 ```java
 UUID.randomUUID().toString()
 ```
 
-so instead of a nice and short link we had something like [http://jvm-bloggers.com/r/b877a837-4f5b-4a0b-90b2-981c83c1366e](http://jvm-bloggers.com/r/b877a837-4f5b-4a0b-90b2-981c83c1366e), not very friendly and concise. Simple data migration was necessary and in the new approach UID is a compact 7-char String:
+so instead of a nice and short link we had something like [https://jvm-bloggers.com/r/b877a837-4f5b-4a0b-90b2-981c83c1366e](https://jvm-bloggers.com/r/b877a837-4f5b-4a0b-90b2-981c83c1366e), not very friendly and concise. Simple data migration was necessary and in the new approach UID is a compact 7-char String:
 
 ```java
 RandomStringUtils.randomAlphanumeric(7);

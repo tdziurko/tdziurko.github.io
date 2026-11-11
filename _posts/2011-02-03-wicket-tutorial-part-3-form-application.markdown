@@ -52,7 +52,7 @@ public class Location extends AbstractEntity {
 
 As you can see, Location class is very simple: only one field, but the only thing we want at the moment from this entity is a name describing where an item is stored. Is it “Bookcase in living room, second drawer from the top” or “Cabinet in the saloon, top bookshelf”.
 
-After creating the table and entity we have to prepare DAO and service layer. As it is not closely connected with Wicket I will skip this part, but those more interested in it can find details in [this changeset](https://bitbucket.org/tdziurko/item-directory/changeset/f4daa5e8b912) in the repository.
+After creating the table and entity we have to prepare DAO and service layer. As it is not closely connected with Wicket I will skip this part, but those more interested in it can find details in the [GitHub repository](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce).
 
 ## Add Location Wicket Pages
 
@@ -142,7 +142,7 @@ we configure Wicket to:
 
 Easy! 🙂
 
-Changes from this part can be viewed in these two changesets: [[1]](https://bitbucket.org/tdziurko/item-directory/changeset/cfca7dbd3ad2), [[2]](https://bitbucket.org/tdziurko/item-directory/changeset/9744ed2ec11c)
+Complete source code can be viewed in the [GitHub repository](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce).
 
 ## Add location form
 
@@ -209,7 +209,7 @@ In **(1)** we create a Wicket form with a model to gather data from the user. We
 
 In **(2)**, **(3)** and **(4)** we create and add to our form: label for input field, input field (note that it’s called _name_, as property in page class) and submit button with overridden onSubmit method in which we place save logic.
 
-This part of the tutorial can be viewed in [this changeset](https://bitbucket.org/tdziurko/item-directory/changeset/7b5ed603b8e4).
+Complete source code is available in the [GitHub repository](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce).
 
 ## Validating and saving data
 
@@ -219,7 +219,7 @@ So we must add some validators first:
 
 1. Name field should be required
 2. Name field length should be between 4 and 255.
-3. There should be only one location with the same name (check unique constraint on [locations table](https://bitbucket.org/tdziurko/item-directory/src/7b5ed603b8e4/itemdirectory.domain/src/main/resources/sql/003.locations_table.sql)).
+3. There should be only one location with the same name (check unique constraint on [locations table](https://github.com/tdziurko/item-directory-with-wicket/blob/c9025bfb2f3fdfe0932be0805201133be39605ce/itemdirectory.domain/src/main/resources/sql/003.locations_table.sql)).
 
 **Required text field**
 
@@ -330,4 +330,4 @@ And after this we will see that everything is working as expected:
 
 ## Summary
 
-Ok, we reached the end of this post. We now have a working Wicket form in our application. In the next episode we will create a custom validator to prevent adding non-unique location names. Of course as always you can download the latest source code from [here](https://bitbucket.org/tdziurko/item-directory/src). Hope you will be here for the next part of Wicket tutorial 🙂
+Ok, we reached the end of this post. We now have a working Wicket form in our application. In the next episode we will create a custom validator to prevent adding non-unique location names. Of course as always you can download the latest source code from [here](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce). Hope you will be here for the next part of Wicket tutorial 🙂

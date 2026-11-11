@@ -235,6 +235,6 @@ After this small change the application is ready for tests and we can check that
 
 ## Summary
 
-That’s all for today. Latest source code is available [here](https://bitbucket.org/tdziurko/item-directory/src) next to both changesets to view and analyse [(editing location](https://bitbucket.org/tdziurko/item-directory/changeset/45020512e60b) and [removing location](https://bitbucket.org/tdziurko/item-directory/changeset/9e6a2c58e4e7)). Thank you for your time and as always, any comments, suggestions, etc are welcome 🙂
+That’s all for today. Latest source code is available [here](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce). Thank you for your time and as always, any comments, suggestions, etc are welcome 🙂
 
 Next episode will be released in a week or two maximum, so stay tuned!

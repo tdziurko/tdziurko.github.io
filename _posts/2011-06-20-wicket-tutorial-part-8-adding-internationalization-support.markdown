@@ -177,7 +177,7 @@ This is example application to help you manage your items hidden in many locatio
 <h4>Links</h4>
 <ul class="blocklist">
   <li>
-    <a title="Source code of this application" href="https://bitbucket.org/tdziurko/item-directory/src">
+    <a title="Source code of this application" href="https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce">
       Source code of this application
     </a>
   </li>

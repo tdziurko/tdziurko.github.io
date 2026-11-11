@@ -84,7 +84,7 @@ If you want to be able to view full pages with an external HTML editor you shoul
 
 You don’t have to worry about content outside wicket:extend element as it will be ignored by the framework (except some special cases marked with other wicket tags).
 
-OK, we are done with template adding. If you want to view changes in the repository, here’s the link: [https://bitbucket.org/tdziurko/item-directory/changeset/59ffdc84d325](https://bitbucket.org/tdziurko/item-directory/changeset/59ffdc84d325). Result should be like that:
+OK, we are done with template adding. If you want to view the code, it is available in the [GitHub repository](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce). Result should be like that:
 
 ![](/images/wicket-tutorial-2-ss-20110121083415.png)
 
@@ -107,7 +107,7 @@ So currently we don’t need most of these links in the layout. I leave empty pl
 
 ![](/images/wicket-tutorial-2-ss-20110121090414.png)
 
-List of changes (can be viewed [here](https://bitbucket.org/tdziurko/item-directory/changeset/06241676bd08)):
+List of changes (complete source code can be viewed [here](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce)):
 
 - removed some links from top panel, renamed some of them
 - removed some links from side panel
@@ -172,7 +172,7 @@ Default Wicket behaviour is to render its tags, just to make it easier to debug 
 
 And what now? While developing the application, we will leave this ugly title for now because we might want to look into rendered HTML page source to check something connected with Wicket tags and if they are stripped we won’t see anything useful 🙂 And after production deployment, title will start looking as we planned.
 
-All changes in this step are available in this changeset – [link](https://bitbucket.org/tdziurko/item-directory/changeset/5223e46bc7d0).
+Complete source code is available in the [GitHub repository](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce).
 
 ## Summary
 

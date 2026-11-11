@@ -196,7 +196,7 @@ public class AddLocationPage extends BasePage {
 
 Generic String property allows validator to know that validatable.getValue() in UniqueEntityValidator should return String object and no casting is necessary. This rule applies to any validator we use in this way: unique Integer value, unique Date, etc.
 
-We’re done for today. Source code from this post can be viewed in [this changeset](https://bitbucket.org/tdziurko/item-directory/changeset/b92757c92ac2) in BitBucket repository and complete tutorial source is available [here](https://bitbucket.org/tdziurko/item-directory/src). At this moment I haven’t made a decision what will be the topic of the next post. Maybe you can suggest something what you find most interesting in Wicket and I will try to implement such feature in ItemDirectory application 🙂
+We’re done for today. Complete tutorial source is available [here](https://github.com/tdziurko/item-directory-with-wicket/tree/c9025bfb2f3fdfe0932be0805201133be39605ce). At this moment I haven’t made a decision what will be the topic of the next post. Maybe you can suggest something what you find most interesting in Wicket and I will try to implement such feature in ItemDirectory application 🙂
 
 Thank you for your time!
 
