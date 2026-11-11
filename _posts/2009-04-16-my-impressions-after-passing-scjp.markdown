@@ -43,7 +43,7 @@ somebody to choose his way to prepare for this exam and also increase his chance
 More about other people's preparations can be found at:
 
 - (in Polish) SCJP forum at GoldenLine
-- [SCJP Wall of Fame](http://faq.javaranch.com/java/ScjpWallOfFame) at JavaRanch portal, check links next to the
+- [SCJP Wall of Fame](https://web.archive.org/web/20100210043844/http://faq.javaranch.com/java/ScjpWallOfFame) at JavaRanch portal, check links next to the
   people's names
 
 **PS:** And I got **80%** 🙂

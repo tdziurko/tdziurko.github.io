@@ -35,7 +35,7 @@ A live coding demo showing how to introduce a reactive approach to your project 
 
 **Evolving Architecture by [Daniel Pokusa](https://twitter.com/dpokusa)**
 
-A talk about the career of a software developer trying to understand what makes a "good" architecture and how to build such a system, while making some costly mistakes along the way. It was a very good talk, especially for junior developers; those more experienced might find some of the material familiar. Daniel mentioned several excellent books to read; I personally added the free [Cloud Design Patterns](https://www.microsoft.com/en-us/download/details.aspx?id=420) from Microsoft to my reading list. [Link to the slides](https://www.slideshare.net/danielpokusa/evolving-architecture-4-confitura-2017)
+A talk about the career of a software developer trying to understand what makes a "good" architecture and how to build such a system, while making some costly mistakes along the way. It was a very good talk, especially for junior developers; those more experienced might find some of the material familiar. Daniel mentioned several excellent books to read; I personally added the free [Cloud Design Patterns](https://learn.microsoft.com/en-us/azure/architecture/patterns/) from Microsoft to my reading list. [Link to the slides](https://www.slideshare.net/danielpokusa/evolving-architecture-4-confitura-2017)
 
 **Visa Developer Center by Tomasz Cisowski**
 

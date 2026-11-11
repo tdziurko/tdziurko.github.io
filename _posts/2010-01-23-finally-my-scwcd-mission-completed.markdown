@@ -30,7 +30,7 @@ about this promotion in Polish can be found at
 [Jacek Laskowski's blog](http://jlaskowski.blogspot.com/2010/01/pakiety-certyfikacyjne-od-suna-za-600.html)). I saved
 about 300 Polish Zlotys, bought an exam voucher and an e-simulator with example questions which at the end turned out
 to be very similar to the real exam (not surprising at all 🙂). This simulator, free mocks and notes available at
-[JavaRanch Forum](http://faq.javaranch.com/java/ScwcdLinks) and questions from Head First book were more than enough
+[JavaRanch Forum](https://web.archive.org/web/20100211142449/http://faq.javaranch.com/java/ScwcdLinks) and questions from Head First book were more than enough
 and this time I didn't buy a simulator from WhizLabs or Enthuware.
 
 And what do I think about SCWCD itself? Unfortunately I didn't like it as much as SCJP. That time I felt that
