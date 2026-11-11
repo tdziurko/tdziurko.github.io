@@ -9,7 +9,7 @@ tags: [In Polish, Conferences, Java]
 tags_color: '#aeb85f'
 ---
 
-W piątek miałem przyjemność uczestniczyć w konferencji [4Developers](http://2010.4developers.org.pl/) w Poznaniu. Wyprawa na godzinę 10 wymagała bardzo porannej pobudki, aby samochodem zebrać ekipę z całej Warszawy i wyruszyć polskimi drogami do miasta znanego z trykających się koziołków i ogromnego zoo.
+W piątek miałem przyjemność uczestniczyć w konferencji 4Developers w Poznaniu. Wyprawa na godzinę 10 wymagała bardzo porannej pobudki, aby samochodem zebrać ekipę z całej Warszawy i wyruszyć polskimi drogami do miasta znanego z trykających się koziołków i ogromnego zoo.
 
 {: .tip }
 Dear Reader, this post is in my native language as it covers topic that makes sense only for people from Poland. But please feel free to browse my other articles as majority of them are written in English.
@@ -25,7 +25,7 @@ Jako programista Java wybrałem ścieżkę z tego języka. I żaden z wykładów
 
 (–) za długa i nie do końca dobrze uzasadniona wstawka o analogiach między ekosystemem w przyrodzie, a tym tworzonym przez języki działające na maszynie wirtualnej Javy. Gdyby to było maksymalnie 1-2 slajdy to wszyscy by to przełknęli, ale po którymś z kolei było widać, że ludzie zaczynają się rozglądać i zastanawiać czy na pewno to prezentacja na konferencji informatycznej czy może biologicznej.
 
-[Automatyczne generowanie kodu](http://2010.4developers.org.pl/prelegenci/marek-berkan)
+Automatyczne generowanie kodu
 
 (+) prezentacje ludzi z e-point zawsze trzymają poziom, dobrze przygotowany prelegent, który wiedział co i w jaki sposób chce przekazać
 
@@ -33,7 +33,7 @@ Jako programista Java wybrałem ścieżkę z tego języka. I żaden z wykładów
 
 (–) temat trochę mniej interesujący i przydatny niż [prezentacja Tomasza Skutnika z JDD](http://09.jdd.org.pl/prelegenci/tomasz-skutnik) o obsłudze wyjątków w aplikacjach klasy enterprise.
 
-[TopLink Grid – skalowanie aplikacji korzystających z Java Persistence API](http://2010.4developers.org.pl/prelegenci/waldemar-kot)
+TopLink Grid – skalowanie aplikacji korzystających z Java Persistence API
 
 (+) Waldemar Kot jako prelegent nigdy mnie nie zawiódł pod względem zawartości merytorycznej swoich prezentacji. Tak było na JDD i teraz na 4Developers.
 
@@ -41,13 +41,13 @@ Jako programista Java wybrałem ścieżkę z tego języka. I żaden z wykładów
 
 (–) wszystkie poruszane przez autora tematy to Java Enterprise przez duże i to naprawdę duże “E”, przez co dla części programistów było to jak oglądanie relacji z jazdy testowej Aston Martinem. Co z tego, że fajnie, skoro nigdy nie będę mógł się czymś takim pobawić 🙂
 
-[Zbuduj pierwszą aplikację typu RIA z wykorzystaniem Flex 4](http://2010.4developers.org.pl/prelegenci/piotr-walczyszyn)
+Zbuduj pierwszą aplikację typu RIA z wykorzystaniem Flex 4
 
 (+) pokazanie, że można i to bardzo łatwo zaprząc do jednego wozu dwa tak odmienne rumaki, jak Java i Flex. Pomimo problemów technicznych (przez jakiś czas nie działał internet w hotelu) autor pokazał spore możliwości Flex 4.
 
 (–) brak
 
-[Co nowego w Java SE 7?](http://2010.4developers.org.pl/prelegenci/marcin-kalas)
+Co nowego w Java SE 7?
 
 (+) bardzo dobry poziom merytoryczny, można było się sporo dowiedzieć o tym co szykuje programistom Sun Oracle w nowej odsłonie Javy.
 
@@ -55,13 +55,13 @@ Jako programista Java wybrałem ścieżkę z tego języka. I żaden z wykładów
 
 Nie będę się jednak przesadnie czepiał, bo jak przypomnę sobie moją obronę pracy inżynierskiej, to wypadłem dużo, dużo gorzej 🙂 Marcin ma predyspozycje do jasnego i przystępnego prowadzenia prezentacji, więc myślę, że z każdym kolejnym wystąpieniem będzie coraz lepiej, co sam z chęcią zaobserwuję na jakiejś konferencji w przyszłości.
 
-[Craftsmanship i wzorce projektowe](http://2010.4developers.org.pl/prelegenci/slawomir-sobotka)
+Craftsmanship i wzorce projektowe
 
 (+) spokój, pewność siebie, zawartość merytoryczna. Prowadzący ma bardzo dobrą barwę głosu, taką rzekłbym konferencyjną 🙂 Doskonale pokazał, że wzorce projektowe to nie jest coś co warto znać, ale coś co znać trzeba
 
 (–) brak
 
-[Modele komponentowe SCA, OSGi, Distributed OSGi i OSGi Enterprise a Java EE](http://2010.4developers.org.pl/prelegenci/jacek-laskowski)
+Modele komponentowe SCA, OSGi, Distributed OSGi i OSGi Enterprise a Java EE
 
 (+) i (–) brak
 

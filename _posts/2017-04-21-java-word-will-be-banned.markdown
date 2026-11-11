@@ -9,7 +9,7 @@ tags: [Programming, Java, Random thoughts]
 tags_color: '#5fb05f'
 ---
 
-This article is my reaction to the recent [Javaslang changing name to Vavr](http://blog.vavr.io/javaslang-changes-name-to-vavr/). Please be aware that all content is **completely fictitious** and in many cases ironic.
+This article is my reaction to the recent Javaslang changing name to Vavr. Please be aware that all content is **completely fictitious** and in many cases ironic.
 
 Reports are coming in from all over the world that some mysterious man in a dark suit contacted various companies strongly suggesting that they should stop using the word “Java” in any form or “bad things might happen”.
 

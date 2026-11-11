@@ -23,8 +23,8 @@ And the last thing: as it is my first bigger tutorial published here, all commen
 
 This post will be dedicated to setting up the project base with a very simple (but working!) Wicket, Spring 3, JPA 2 and MySQL integration. For those who want Maven archetypes to start Wicket project in one command there are two places to go:
 
-- [Wicket Cool](http://code.google.com/p/wicketcool/), project by [Paul Szulc](http://www.paulszulc.com/) offering rather complicated but very useful archetype for Wicket, HSQLDB, [Liquibase](http://www.liquibase.org/), JPA 2, Spring technology stack. I like it very much although it has some flaws. In my last Wicket commercial project our team used WicketCool as a base for development.
-- [Wicket Leg Up](http://www.jweekend.com/dev/LegUp), project by [jWeekend](http://www.jweekend.com/), providing an archetype with many different technologies to use with Wicket.
+- [Wicket Cool](http://code.google.com/p/wicketcool/), project by Paul Szulc offering rather complicated but very useful archetype for Wicket, HSQLDB, [Liquibase](http://www.liquibase.org/), JPA 2, Spring technology stack. I like it very much although it has some flaws. In my last Wicket commercial project our team used WicketCool as a base for development.
+- Wicket Leg Up, project by jWeekend, providing an archetype with many different technologies to use with Wicket.
 
 My initial commit is mainly based on **WicketCool** because I like its Maven modularization and clean application architecture layers. But as it’s too sophisticated for the purposes of this tutorial and for ItemDirectory early development I removed some stuff to make things easier to understand. My project base does not contain: Liquibase integration, testing classes (yes, I did that intentionally to make the project less complex, sorry TDD lovers), HSQLDB (I use MySQL instead). I also removed and modified some classes to make them easier to understand at the beginning of this tutorial. In some cases I plan to use those deleted elements in the future, but currently they are redundant.
 

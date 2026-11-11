@@ -17,7 +17,7 @@ In my diploma thesis which involves comparison between Struts 2 and Wicket, I ne
 
 ![SMS gateway site](/images/jmeter-sms-gateway.png)
 
-**Example site:** [http://ebramka.ath.cx/](http://ebramka.ath.cx/) – Polish free sms gateway  
+**Example site:** http://ebramka.ath.cx/ – Polish free sms gateway  
 **Use case:** log in the user and then check if the main page rendered properly.
 
 This one is pretty simple. No HTTPS protocol, no SSL, just pure post data sent to login form.

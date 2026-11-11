@@ -57,7 +57,7 @@ The most entertaining presentation during the first day. There were some “shit
 
 **Jurgen Appelo – keynote**
 
-Jurgen is a quality speaker and his performance during ABE confirmed that. The talk was about intrinsic motivators, driving a change and convincing people to do what we want. Overview can be read [here](http://www.noop.nl/2013/02/champfrogs.html).
+Jurgen is a quality speaker and his performance during ABE confirmed that. The talk was about intrinsic motivators, driving a change and convincing people to do what we want. An overview of his CHAMPFROGS model was published on Jurgen's blog.
 
 - _Fake it until you make it_ which means faking optimism will actually make you more optimistic and change the way other people perceive you.
 - Look like a successful person, people like to be close to the success.
@@ -81,7 +81,7 @@ This one is hard to judge as Michał, like me, is one of [twenty CEOs](https://s
 
 **Tomasz Borowski – Spaceship Commander**
 
-Very interesting talk about introducing gamification to solve some problems in an organisation. Lessons learnt during the process, examples what worked well, things that didn’t and had to be changed along the way. The game written as a core of described gamification process is [available online](http://yougameapp.com/) and also open sourced on [GitHub](https://github.com/miksturait/YouGame).
+Very interesting talk about introducing gamification to solve some problems in an organisation. Lessons learnt during the process, examples what worked well, things that didn’t and had to be changed along the way. The game written as a core of described gamification process is available online and also open sourced on [GitHub](https://github.com/miksturait/YouGame).
 
 - Beware of ending in pontification instead of gamification.
 - Hide worst performers to avoid stupid managers using results of the game as a reason to fire people.

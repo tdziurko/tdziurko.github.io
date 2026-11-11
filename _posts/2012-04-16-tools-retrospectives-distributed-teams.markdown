@@ -46,7 +46,7 @@ A standard retrospective is easy, you sit next to other people from your project
 - No extra features
 - No drawing, only text
 
-### [Chalky](http://chalky.me/)
+### Chalky
 
 ![](/images/retro-chalky.png)
 

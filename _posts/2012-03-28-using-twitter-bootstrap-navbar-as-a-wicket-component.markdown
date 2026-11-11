@@ -9,7 +9,7 @@ tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---
 
-All of you probably heard about [Twitter Bootstrap](http://twitter.github.com/bootstrap/), an awesome set of components allowing to create nice looking web pages and applications without diving deeply into CSS/JS hacks. If you want to see what this library is capable of, please visit [http://builtwithbootstrap.com/](http://builtwithbootstrap.com/) and check how people use it to build their websites.
+All of you probably heard about Twitter Bootstrap, an awesome set of components allowing to create nice looking web pages and applications without diving deeply into CSS/JS hacks. If you want to see what this library is capable of, please visit [http://builtwithbootstrap.com/](http://builtwithbootstrap.com/) and check how people use it to build their websites.
 
 But this post isn’t supposed to be about Bootstrap itself. In a few next paragraphs I will present how I created a reusable Wicket component containing the Bootstrap top navigation bar menu. And the final result using Wicket in our example web-app will look this way:
 

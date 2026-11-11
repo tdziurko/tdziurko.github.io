@@ -9,7 +9,7 @@ tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---
 
-When you add any Wicket component library, e.g. [Wicket-Bootstrap](http://wb-mgrigorov.rhcloud.com/) to your project, usually it adds some JavaScript and CSS resources to every page or panel. But the problem is that these JS files are added in the `<head>` section of your page while all Internet knowledge says that JS should be placed at the bottom of the page for better performance and faster loading times. In this post I will show how we could configure Wicket to place JS files wherever we want.
+When you add any Wicket component library, e.g. Wicket-Bootstrap to your project, usually it adds some JavaScript and CSS resources to every page or panel. But the problem is that these JS files are added in the `<head>` section of your page while all Internet knowledge says that JS should be placed at the bottom of the page for better performance and faster loading times. In this post I will show how we could configure Wicket to place JS files wherever we want.
 
 ## Initial project setup
 

@@ -44,8 +44,8 @@ Poniżej mój subiektywny ranking:
 
    Więcej o tej książce można poczytać we
    [wpisie i komentarzach na blogu Chlebika](http://chlebik.wordpress.com/2009/09/22/thinking-in-java/), natomiast
-   darmową wersję trzeciej edycji Thinking in Java udostępnioną przez autora można ściągnąć
-   [stąd](http://www.planetpdf.com/developer/article.asp?ContentID=6632).
+   darmową wersję trzeciej edycji Thinking in Java udostępnioną przez autora można było ściągnąć
+   z serwisu Planet PDF.
 
 ## Materiały z sieci
 

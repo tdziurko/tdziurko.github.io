@@ -263,7 +263,7 @@ public class Ban {
 }
 ```
 
-Of course we could calculate it manually for each Ban object but using a converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement [Converter](http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/Converter.html) interface so we have to implement three methods with signatures looking a little bit scary:
+Of course we could calculate it manually for each Ban object but using a converter that will do this job for us looks more interesting. Our DaysAgoConverter must implement Converter interface so we have to implement three methods with signatures looking a little bit scary:
 
 ```java
 public class DaysAgoConverter implements Converter {
@@ -282,7 +282,7 @@ public class DaysAgoConverter implements Converter {
 }
 ```
 
-The last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using [AbstractSingleValueConverter](http://xstream.codehaus.org/javadoc/com/thoughtworks/xstream/converters/basic/AbstractSingleValueConverter.html) that shields us from such low level mechanisms. And now our class looks much better:
+The last one is easy as we will convert only Integer class. But there are still two methods left with these HierarchicalStreamWriter, MarshallingContext, HierarchicalStreamReader and UnmarshallingContext parameters. Luckily, we could avoid dealing with them by using AbstractSingleValueConverter that shields us from such low level mechanisms. And now our class looks much better:
 
 ```java
 public class DaysAgoConverter extends AbstractSingleValueConverter {

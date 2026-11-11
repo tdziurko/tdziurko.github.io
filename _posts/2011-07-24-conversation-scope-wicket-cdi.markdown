@@ -13,7 +13,7 @@ Some time ago I was asked to do some research about integrating Wicket with conv
 
 ## Project setup
 
-To make things easier we will base on an existing example web application showing how to integrate Wicket with Weld (CDI) from the project [Seam-Wicket](http://seamframework.org/Seam3/WicketModule) (formerly named [weld-wicket](http://weld-development-discussions.46994.n3.nabble.com/Move-weld-wicket-to-seam-wicket-td724181.html)). So first let’s pull the latest version of Seam-Wicket project from Git:
+To make things easier we will base on an existing example web application showing how to integrate Wicket with Weld (CDI) from the project [Seam-Wicket](http://seamframework.org/Seam3/WicketModule) (formerly named weld-wicket). So first let’s pull the latest version of Seam-Wicket project from Git:
 
 ```bash
 git clone git://github.com/seam/wicket.git

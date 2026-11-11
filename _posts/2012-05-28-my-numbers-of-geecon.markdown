@@ -53,10 +53,10 @@ The first day of the conference started with three key-notes by Bruce Eckel, Iva
 
 I like passionate people, most of GeeCON attendees are passionate about what we do but passion is one thing and cursing to a few hundred people is another one. One or two f*cks are ok, but not ten or even more. And unfortunately during the third key-note Gavin King crossed the line. Maybe Ceylon is good, but presenting this language this way will not lure new programmers into yet-another JVM language. Below are some interesting tweets summarizing people’s feelings during Gavin’s talk 🙂
 
-- After listening to Gavin King about [#Ceylon](http://topsy.com/s?q=%23Ceylon&utm_source=ottertag) I maybe understand why authors of [#Kotlin](http://topsy.com/s?q=%23Kotlin&utm_source=ottertag) refused to work with him. [#geecon](http://topsy.com/s?type=tweet&q=%23geecon) – [link](https://twitter.com/novoj/status/203071063867928576)
-- [#ceylon](http://topsy.com/s?q=%23ceylon&utm_source=ottertag) Gavin King is having a bad day. Angry and cursing way too much. Come on, relax! [#geecon](http://topsy.com/s?type=tweet&q=%23geecon) – [link](https://twitter.com/codecopkofler/status/203067974960168960)
-- Listening to gavin king at [#geecon](http://topsy.com/s?type=tweet&q=%23geecon) … dude you should at least pretend you are modest :p hard to listen to you without getting biased – [link](https://twitter.com/szimano/status/203066626193620992)
-- [#geecon](http://topsy.com/s?type=tweet&q=%23geecon) Enjoying the [#ceylon](http://topsy.com/s?q=%23ceylon&utm_source=ottertag) talk with Gavin King and his nice and gentle way of expressing his opinions :–) – [link](http://twitter.com/adambien/status/203066600990048257)
+- After listening to Gavin King about #Ceylon I maybe understand why authors of #Kotlin refused to work with him. #geecon – [link](https://twitter.com/novoj/status/203071063867928576)
+- #ceylon Gavin King is having a bad day. Angry and cursing way too much. Come on, relax! #geecon – [link](https://twitter.com/codecopkofler/status/203067974960168960)
+- Listening to gavin king at #geecon … dude you should at least pretend you are modest :p hard to listen to you without getting biased – [link](https://twitter.com/szimano/status/203066626193620992)
+- #geecon Enjoying the #ceylon talk with Gavin King and his nice and gentle way of expressing his opinions :–) – [link](http://twitter.com/adambien/status/203066600990048257)
 
 ## 11
 

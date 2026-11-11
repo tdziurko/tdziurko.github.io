@@ -115,7 +115,7 @@ The fix itself contains only a check that registers the audit process that will 
 
 Besides locating the problem and fixing it, there are some more official steps that must be performed to have the fix included in Envers.
 
-- Step 1: Create JIRA issue with bug – [https://hibernate.onjira.com/browse/HHH-7682](https://hibernate.onjira.com/browse/HHH-7682)
+- Step 1: Create JIRA issue with bug – https://hibernate.onjira.com/browse/HHH-7682
 
 - Step 2: Create local branch _Envers-bugfix-HHH-7682_ of forked Hibernate 3.6
 

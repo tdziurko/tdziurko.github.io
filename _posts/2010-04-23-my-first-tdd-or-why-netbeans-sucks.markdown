@@ -9,7 +9,7 @@ tags: [Programming, Java]
 tags_color: '#5fb05f'
 ---
 
-This week was very intensive in terms of education. First, a three-day training about Test-Driven Development at [Pragmatists](http://www.pragmatists.pl/), then a presentation about Vaadin by [Bartek Kuczyński](http://koziolekweb.pl/) at Warsaw JUG meeting.
+This week was very intensive in terms of education. First, a three-day training about Test-Driven Development at Pragmatists, then a presentation about Vaadin by [Bartek Kuczyński](http://koziolekweb.pl/) at Warsaw JUG meeting.
 
 However, in this post I will focus on the most interesting thing, Test-Driven Development training and what I learnt there. The whole event lasted three days and in my opinion it was very effectively spent time. The only thing I didn’t like was a little too long theoretical introduction to the TDD and testing, but it is probably the feature of most trainings that the first chapter must be only about theory. Fortunately, later it started to be much, much more interesting and the workshops began. They consisted of pair programming, writing tests, refactoring to patterns, mocking with [Mockito](http://mockito.org/), everything I expected from this training when I had enrolled. And everything in the amount that helped me to understand the philosophy of software development with TDD on the practical side. Only a basic level, however, because to do it smoothly and quickly I have to spend a lot of time on Test-Driving and learning. But I did the first step.
 

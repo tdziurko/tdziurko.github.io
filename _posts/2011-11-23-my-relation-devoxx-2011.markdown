@@ -15,7 +15,7 @@ Last week I had the pleasure to attend the [Devoxx](http://devoxx.com/) conferen
 
 ![](/images/devoxx-2011-banner.png)
 
-Devoxx (few years ago named JavaPolis) is a conference organized in Antwerp. The whole event takes place in a large cinema center allowing attendees to sit in very comfortable conditions and choose from seven (!) simultaneous sessions, each held in a separate hall. What is more interesting, keynotes were run in one hall and live-streamed to other ones so everyone could watch them like a movie on the cinema’s screen. Between sessions, also on the screens, we could read live tweet stream ([#devoxx](http://twitter.com/#!/search/%23devoxx)) so sometimes when WiFi was not working we could still see what people write about the conference and presentations, check example photo below or [live site](http://wall.devoxx.com/) which were displayed on the screens:
+Devoxx (few years ago named JavaPolis) is a conference organized in Antwerp. The whole event takes place in a large cinema center allowing attendees to sit in very comfortable conditions and choose from seven (!) simultaneous sessions, each held in a separate hall. What is more interesting, keynotes were run in one hall and live-streamed to other ones so everyone could watch them like a movie on the cinema’s screen. Between sessions, also on the screens, we could read live tweet stream ([#devoxx](http://twitter.com/#!/search/%23devoxx)) so sometimes when WiFi was not working we could still see what people write about the conference and presentations, check example photo below or live site which were displayed on the screens:
 
 ![](/images/devoxx-2011-tweet-wall.jpg)
 
@@ -86,7 +86,7 @@ My notes from Matt’s talk:
 
 - The most profitable decisions you have made are those most challenging
 - Best books to learn Scala (in this order): Scala for Intrigued, Scala for the Impatient
-- Another very valuable resource: [Twitter Scala School](http://twitter.github.com/scala_school/)
+- Another very valuable resource: Twitter Scala School
 
 His presentation is available [here](http://raibledesigns.com/rd/entry/my_html5_with_play_scala).
 
@@ -96,7 +96,7 @@ I always wanted to know jQuery better and this presentation was a great occasion
 
 **Java and Home Automation**
 
-Very interesting and entertaining presentation about how Java can be used to automate everyday tasks in our houses. During his talk Vinicius Senger showed how to change the color of lights using a specific tweet, how to start and stop home devices using our beloved language. After he had revealed the tweet command to interact with the light bulb, people started tweeting and changing the colour of lights as he was speaking 🙂 Generally, [jHome Automation API](http://jhome.globalcode.com.br/) looks very promising. The second part of the presentation was held by Eric Bariaux and was about [Open Remote](http://openremote.org/display/HOME/OpenRemote) project. This part was more serious but it also contained a video demonstration of how this project could be used to control various devices in our houses.
+Very interesting and entertaining presentation about how Java can be used to automate everyday tasks in our houses. During his talk Vinicius Senger showed how to change the color of lights using a specific tweet, how to start and stop home devices using our beloved language. After he had revealed the tweet command to interact with the light bulb, people started tweeting and changing the colour of lights as he was speaking 🙂 Generally, jHome Automation API looks very promising. The second part of the presentation was held by Eric Bariaux and was about [Open Remote](http://openremote.org/display/HOME/OpenRemote) project. This part was more serious but it also contained a video demonstration of how this project could be used to control various devices in our houses.
 
 ## Day 3
 
@@ -104,7 +104,7 @@ The last day of Devoxx started with a Technical Discussion Panel with participat
 
 **Securing Java EE Web Apps**
 
-During this talk we have learnt how easily a hacker can exploit some bugs in our web application to grant him admin privileges, etc. Two interesting tools were introduced: [Browser Exploitation Framework (BeEF)](http://www.bindshell.net/tools/beef.html) and [sqlmap](http://sqlmap.sourceforge.net/). They can be used both to perform security and penetration tests or to attack our website.
+During this talk we have learnt how easily a hacker can exploit some bugs in our web application to grant him admin privileges, etc. Two interesting tools were introduced: Browser Exploitation Framework (BeEF) and [sqlmap](http://sqlmap.sourceforge.net/). They can be used both to perform security and penetration tests or to attack our website.
 
 - [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_%28Cross_Site_Scripting%29_Prevention_Cheat_Sheet), an article with a list of steps that should be taken to make an XSS attack much more difficult
 - [ESAPI](https://www.owasp.org/index.php/Category:OWASP_Enterprise_Security_API) (OWASP Enterprise Security API), a library which makes it easier to write more secure web applications
@@ -121,15 +121,15 @@ If you really want to read more about Devoxx 2011 below are some links to other 
 - official summary: [http://www.devoxx.com/display/DV11/2011/11/22/Devoxx+2011+The+Good,+The+Bad+and+The+Ugly](http://www.devoxx.com/display/DV11/2011/11/22/Devoxx+2011+The+Good,+The+Bad+and+The+Ugly)
 - Backstage of Devoxx: [http://www.touilleur-express.fr/2011/11/15/devoxx-2011-who-are-those-angels/](http://www.touilleur-express.fr/2011/11/15/devoxx-2011-who-are-those-angels/)
 - [http://dailylog.lenart.org.pl/2011/11/21/shared-experience/](http://dailylog.lenart.org.pl/2011/11/21/shared-experience/)
-- [http://blog.jqno.nl/devoxx-2011-post-mortem](http://blog.jqno.nl/devoxx-2011-post-mortem)
+- http://blog.jqno.nl/devoxx-2011-post-mortem
 - [http://javaheap.wordpress.com/2011/11/19/devoxx-2011/](http://javaheap.wordpress.com/2011/11/19/devoxx-2011/)
-- [http://theworldisanapple.com/devoxx-2011/](http://theworldisanapple.com/devoxx-2011/)
+- http://theworldisanapple.com/devoxx-2011/
 - [http://labs.consol.de/lang/de/blog/devoxx/devoxx-2011-wrap-up/](http://labs.consol.de/lang/de/blog/devoxx/devoxx-2011-wrap-up/)
 - [http://blog.avisi.nl/2011/11/18/devoxx11-3/](http://blog.avisi.nl/2011/11/18/devoxx11-3/)
 - [http://odedpeer.blogspot.com/2011/11/devoxx-2011.html](http://odedpeer.blogspot.com/2011/11/devoxx-2011.html)
 - [http://blogs.oracle.com/geertjan/entry/what_is_happening_vs_what](http://blogs.oracle.com/geertjan/entry/what_is_happening_vs_what)
 - [http://www.tbray.org/ongoing/When/201x/2011/11/21/Devoxx](http://www.tbray.org/ongoing/When/201x/2011/11/21/Devoxx)
-- [http://jthoenes.bergischweb.de/2011/11/18/devoxx-2011-ive-been-in-paradise/](http://jthoenes.bergischweb.de/2011/11/18/devoxx-2011-ive-been-in-paradise/)
+- http://jthoenes.bergischweb.de/2011/11/18/devoxx-2011-ive-been-in-paradise/
 - [http://blogs.oracle.com/arungupta/entry/it_happens_only_at_devoxx](http://blogs.oracle.com/arungupta/entry/it_happens_only_at_devoxx)
 - [http://wwwilpower.blogspot.com/2011/11/devoxx-2011-meet-us-in-paradise.html](http://wwwilpower.blogspot.com/2011/11/devoxx-2011-meet-us-in-paradise.html)
 - [http://mechanitis.blogspot.com/2011/11/devoxx-story-so-far.html](http://mechanitis.blogspot.com/2011/11/devoxx-story-so-far.html)
