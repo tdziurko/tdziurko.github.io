@@ -4,35 +4,49 @@ title: About Me
 permalink: /about-me/
 ---
 
-## Hello, I'm Tomek
-
-Currently, I work as Vice President of Engineering at [SoftwareMill](https://softwaremill.com). Before that, I was a Software Engineer (Junior/Regular/Senior) and a Team Leader for over 15 years. After two years spent in management, I have 
-decided to widen my horizons and go back to school again. After extremely intensive two years, in 2024 I graduated from
-the MBA studies at [Kozminski University](https://www.kozminski.edu.pl/en), the #1 business school in Central and Eastern Europe. 
-
-More details about experience and career path on [My LinkedIn profile](https://www.linkedin.com/in/tomaszdziurko/).
-
-PS: This website is still partially migrated from my older blog, so not all materials
-(especially blog posts from years 2010-2020) are here yet :)
+I'm Tomek, VP of Engineering at [SoftwareMill](https://softwaremill.com), a 100% remote software
+consultancy and part of the VirtusLab group. I build engineering
+organizations that scale without losing the people who make them work.
 
 {:refdef: style="text-align: center;"}
 ![Tomasz Dziurko]({{site.baseurl}}/images/tomek-1-smaller.png)
 {: refdef}
 
+## What I do
+- Build a remote-first engineering culture based on trust, where people
+  get the space, feedback and support they need to grow
+- Lead engineering progression and growth for ~80 engineers working
+  across a dozen-plus client projects
+- Co-decide team composition and staffing: who goes to which client, at
+  what rate, and when to rotate
+- Bridge Engineering, People and Sales: hiring, promotions, demand
+  and allocation
+- Drive the people and operations side of SoftwareMill's integration
+  into the VirtusLab group
 
-### 17 years of experience || 100% team player || can-do attitude
+## Selected results
+- Co-authored the engineering ladder, a badge-based progression system,
+  from ~20 people onwards
+- Earned the VP role through a company-wide vote in a flat organization:
+  92.7% in favour at 88% turnout
+- #1 Great Place To Work 2025 (50–99 employees), during the integration
 
-Besides work, I love to make things happen:
-* Member of the organization committee of [Confitura](http://confitura.pl) - the biggest free-to-attend Java conference in Poland for 3 years
-* Leader of [Warsaw Java User Group](https://warszawa.jug.pl/) for 3 years
-* Founder of JVM Poland, the biggest Slack group for Java and JVM languages developers in Poland
-* Founder and Lead Developer of [JVM Bloggers](https://jvm-bloggers.com): aggregator of JVM blogs, conference talks and podcasts in Poland
+## Background
+- 15 years as a software engineer and team leader (Java, Scala)
+- MSc Eng. in Telecommunications and Computer Science
+- MBA, [Kozminski University](https://www.kozminski.edu.pl/en) (2024)
+- Academy of Modern Competencies for Top Executives (ANKTE), Kozminski
+  University (2025)
 
-From time to time I leave my comfort zone and speak at various events:
-- SoDA Conference 2021, Łódź - panel "Czy lepsza kultura to większa retencja?"
-- 4Developers 2021, online - "Home office to nie praca zdalna, czyli o wspieraniu rozwoju i integracji programistów w czasach koronawirusa"
-- DevCrowd 2016, Szczecin - "Brzydka Pani od HR radzi, czyli 1011 błędów, które popełniają programiści"
-- 33rdDegree 4 Charity 2015, Wrocław - same talk as above
-- Java Developers' Day 2015, Kraków - - same talk as above
-- SpreadIT 2015, Gliwice - same talk as above
-- Confitura 2015, Warszawa - same talk as above
+## Speaking
+- SoDA Conference 2021, Łódź: panel "Czy lepsza kultura to większa retencja?"
+- 4Developers 2021, online: "Home office to nie praca zdalna, czyli o wspieraniu rozwoju i integracji programistów w czasach koronawirusa"
+- Earlier (2015–2016): "Brzydka Pani od HR radzi, czyli 1011 błędów, które popełniają programiści" at Confitura,
+  33rdDegree 4 Charity, Java Developers' Day, SpreadIT and DevCrowd
+
+## Community
+Co-organized [Confitura](http://confitura.pl) (3 years), led [Warsaw Java User Group](https://warszawa.jug.pl/) (3 years),
+founded JVM Poland and [JVM Bloggers](https://jvm-bloggers.com).
+
+Happy to talk about scaling engineering organizations, post-acquisition
+integration and promotion frameworks: [LinkedIn](https://www.linkedin.com/in/tomaszdziurko/) / [Contact]({{site.baseurl}}/contact/)
